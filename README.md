@@ -1,4 +1,11 @@
-Boilerplate
-===========
+# Fastspot Boilerplate
 
-Fastspot project boilerplate
+For kickstarting internal and client project builds.
+
+Includes:
+
+* Gridlock 
+* jQuery
+* Normalize
+* HTML5 Enabler
+* MatchMedia polyfills
