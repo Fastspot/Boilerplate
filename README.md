@@ -1,0 +1,4 @@
+Boilerplate
+===========
+
+Fastspot project boilerplate
