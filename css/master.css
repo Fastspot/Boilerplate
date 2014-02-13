@@ -131,6 +131,26 @@
 
 	}
 
+/*-------------------------------------------
+  IE8/9/10 - http://blog.keithclark.co.uk/moving-ie-specific-css-into-media-blocks/
+-------------------------------------------*/
+	@media screen\0 {
+
+	}
+
+/*-------------------------------------------
+  IE9/10 - http://blog.keithclark.co.uk/moving-ie-specific-css-into-media-blocks/
+-------------------------------------------*/
+	@media screen and (min-width:0\0) {
+
+	}
+
+/*-------------------------------------------
+  IE10/11 - https://gist.github.com/atk/4025104
+-------------------------------------------*/
+	@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+	}
 
 /*-------------------------------------------
   Print
