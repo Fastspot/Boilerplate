@@ -30,18 +30,20 @@
 		<meta name="twitter:description" content="">
 		<meta name="twitter:image" content="">
 
-		<script src="js/lib/modernizr-2.7.1.min.js"></script>
+		<script src="js/lib/modernizr.custom.js"></script>
 
 		<!-- Compiled CSS -->
         <link rel="stylesheet" href="css/site.css">
 
-		 <!--[if IE 9]>
-        	<script>var IE9 = true;</script>
-			<link rel="stylesheet" href="css/ie9.css">
-		<![endif]-->
         <!--[if IE 8]>
         	<script>var IE8 = true;</script>
+        	<script src="js/site-ie8.js"></script>
 			<link rel="stylesheet" href="css/ie8.css">
+		<![endif]-->
+		<!--[if IE 9]>
+        	<script>var IE9 = true;</script>
+        	<script src="js/site-ie9.js"></script>
+			<link rel="stylesheet" href="css/ie9.css">
 		<![endif]-->
     </head>
     <body class="gridlock">
@@ -55,7 +57,7 @@
 				useCookies: true,
 				position: "bottom-left"
 			};
-			(function(){if(typeof GridlockBookmarklet=='undefined' && !OLDIE){document.body.appendChild(document.createElement('script')).src='http://www.benplum.com/js/gridlock.bookmarklet.js';}else{GridlockBookmarklet();}})();
+			(function(){if(typeof GridlockBookmarklet=='undefined'){document.body.appendChild(document.createElement('script')).src='http://www.benplum.com/js/gridlock.bookmarklet.js';}else{GridlockBookmarklet();}})();
 		</script>
     </body>
 </html>
