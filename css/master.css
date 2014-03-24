@@ -24,11 +24,9 @@
   Elements
 ---------------------------*/
 	html,
-	body { background: #FAFAFA; }
+	body { background: #fff; }
 
 	body { overflow-x: hidden; min-width: 300px; }
-
-	/* body * { word-wrap: break-word; } */
 
 	::selection,
 	::-moz-selection { background: #eee; text-shadow: none; }
@@ -58,14 +56,22 @@
 	ol li {  }
 	ul { list-style: none; }
 	ul li {  }
-	ul li:before { background: #5282AA; border-radius: 100%; content: ''; display: block; float: left; height: 5px; margin: 10px 0 0 -20px; width: 5px; }
+	ul li:before { background: #eee; border-radius: 100%; content: ''; display: block; float: left; height: 5px; margin: 10px 0 0 -20px; width: 5px; }
 
-	hr { border: none; border-top: 1px solid #ccc; clear: both; height: 1px; margin: 0; padding: 0; width: 100%; }
+	hr { background: #eee; border: none; clear: both; height: 1px; margin: 0; padding: 0; width: 100%; }
+
+	iframe { border: none; }
 
 	audio, canvas, img, svg, video { vertical-align: middle; }
 
 	fieldset { border: 0; margin: 0; padding: 0; }
+	input, textarea { border: none; border-radius: 0; padding: 0; }
 	textarea { resize: vertical; }
+
+	menu { margin: 0; padding: 0; }
+	button { background: none; border: none; padding: 0; }
+
+	figure { margin: 0; }
 
 
 /*-------------------------------------------
