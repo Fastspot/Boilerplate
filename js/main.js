@@ -43,33 +43,27 @@ if(!String.prototype.trim){String.prototype.trim=function(){return this.replace(
 
 
 
-/*
-$("#el").module("action", [params...]);
-
-OR
-
-var el = new Module($("#el"));
-el.action(params...);
-*/
-
-
 // Module pattern
+// Use: Module.action(params...);
+
 /*
 var Module = (function($, window) {
 
 	var foo = "bar";
 
-	return module = {
-		action: function() {
-			console.log("new action", this);
-		}
-	};
+	function init() {
+		console.log("new action", this);
+	}
 
+	return {
+		init: init
+	};
 })(jQuery, window);
 */
 
 
 // Plugin pattern
+// Use: $("#el").module("action", [params...]);
 /*
 ;(function ($, window) {
 	"use strict";
