@@ -11,6 +11,38 @@ For kickstarting internal and client project builds. Inspired by [HTML5Boilerpla
 * [Gridlock](https://github.com/benplum/Gridlock) 
 * [Zoetrope](https://github.com/benplum/Zoetrope) 
 
-#### Todo
+#### Building Resources
 
-* Gruntfile for linting resources (?)
+The resources are built using Grunt and output into the base `css/` and `js/` directories. Define resources to be built, as well as variables to be replaced, in the project's `package.json`:
+
+##### CSS
+
+```
+...
+  "css": {
+    "css/site.css": "css/src/site.less"
+  },
+...
+```
+
+##### JS
+
+```
+...
+  "js": {
+    "js/site.js": [
+      "js/src/site.js"
+    ]
+  },
+...
+```
+
+##### Variables
+
+```
+...
+  "vars": {
+	"variable": "value"
+  },
+...
+```
