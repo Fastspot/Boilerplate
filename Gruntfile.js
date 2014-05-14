@@ -14,9 +14,9 @@ module.exports = function(grunt) {
 					'js/src/*/**.js'
 				],
 				tasks: [
-					// 'newer:jshint:all',
+					'newer:jshint:target',
 					'newer:uglify:target:files',
-					'newer:includereplace:all:files'
+					'newer:includereplace:target:files'
 				]
 			},
 			styles: {
@@ -29,17 +29,49 @@ module.exports = function(grunt) {
 				tasks: [
 					'newer:less:target:files'
 				]
+			},
+			dev: {
+				files: [
+					'js/src/**.js',
+					'js/src/*/**.js',
+
+					'css/src/**.css',
+					'css/src/*/**.css',
+					'css/src/**.less',
+					'css/src/*/**.less'
+				],
+				tasks: [
+					'newer:jshint:target',
+					'newer:concat:target:files',
+					'newer:includereplace:target:files',
+
+					'newer:less:target:files'
+				]
 			}
 		},
 		// JS Hint
 		jshint: {
-			all: {
-				src: [ 'site/js/src/**.js' ],
+			target: {
+				src: [
+					'js/src/**.js',
+					'js/src/*/**.js'
+				],
 				options: {
+					ignores: [
+						'js/src/map.js',
+						'js/src/ie/EventListener.js',
+						'js/src/ie/matchMedia.ie8.js',
+						'js/src/ie/matchMedia.ie9.js',
+						'js/src/lib/jquery-ui-datepicker.js',
+						'js/src/lib/modernizr.custom.js',
+						'js/src/lib/utils.js'
+					],
 					globals: {
-						'jQuery': true,
-						'$'     : true
+						'jQuery'   : true,
+						'$'        : true,
+						'WWW_ROOT' : true
 					},
+					'-W003':   true, // used before defined
 					browser:   true,
 					curly:     true,
 					eqeqeq:    true,
@@ -67,6 +99,12 @@ module.exports = function(grunt) {
 				files: '<%= pkg.js %>'
 			}
 		},
+		// Concat
+		concat: {
+			target: {
+				files: '<%= pkg.js %>'
+			}
+		},
 		// LESS
 		less: {
 			target: {
@@ -81,7 +119,7 @@ module.exports = function(grunt) {
 		},
 		// Replace
 		includereplace: {
-			all: {
+			target: {
 				options: {
 					prefix: '@',
 					globals: '<%= pkg.vars %>'
@@ -95,6 +133,7 @@ module.exports = function(grunt) {
 	});
 
 	// Load tasks
+	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -105,13 +144,19 @@ module.exports = function(grunt) {
 	// Default task
 	grunt.registerTask('default', [ 'css', 'js' ]);
 
+	// Watch
+	grunt.registerTask('watcher', [ 'watch:scripts', 'watch:styles' ]);
+
 	// CSS
 	grunt.registerTask('css', [ 'less' ]);
 
 	// JS
-	grunt.registerTask('js', [ 'uglify', 'includereplace' ]);
+	grunt.registerTask('js', [ 'jshint', 'uglify', 'includereplace' ]);
 
-	// Watch
-	grunt.registerTask('all', [ 'watch' ]);
+	// Dev - Watch
+	grunt.registerTask('dev', [ 'watch:dev' ]);
+
+	// Dev - JS
+	grunt.registerTask('dev_js', [ 'jshint', 'concat', 'includereplace' ]);
 
 };
