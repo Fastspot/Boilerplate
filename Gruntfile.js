@@ -15,7 +15,8 @@ module.exports = function(grunt) {
 				],
 				tasks: [
 					'newer:jshint:target',
-					'newer:uglify:target:files',
+					/* 'newer:uglify:target:files', */
+					'newer:concat:target:files',
 					'newer:includereplace:target:files'
 				]
 			},
@@ -29,24 +30,18 @@ module.exports = function(grunt) {
 				tasks: [
 					'newer:less:target:files'
 				]
-			},
-			dev: {
-				files: [
-					'js/src/**.js',
-					'js/src/*/**.js',
-
-					'css/src/**.css',
-					'css/src/*/**.css',
-					'css/src/**.less',
-					'css/src/*/**.less'
-				],
-				tasks: [
-					'newer:jshint:target',
-					'newer:concat:target:files',
-					'newer:includereplace:target:files',
-
-					'newer:less:target:files'
-				]
+			}
+		},
+		// Newer
+		newer: {
+			options: {
+				override: function(details, include) {
+					if (details.task === 'less') {
+						checkForNewerImports(details.path, details.time, include);
+					} else {
+						include(false);
+					}
+				}
 			}
 		},
 		// JS Hint
@@ -132,6 +127,32 @@ module.exports = function(grunt) {
 		}
 	});
 
+	// Newer LESS Imports
+	function checkForNewerImports(lessFile, mTime, include) {
+		var fs = require('fs'),
+			path = require('path');
+
+		fs.readFile(lessFile, "utf8", function(err, data) {
+			var lessDir = path.dirname(lessFile),
+				regex = /@import "(.+?)(\.less)?";/g,
+				shouldInclude = false,
+				match;
+
+			while ((match = regex.exec(data)) !== null) {
+				var importFile = lessDir + '/' + match[1] + '.less';
+				if (fs.existsSync(importFile)) {
+					var stat = fs.statSync(importFile);
+					if (stat.mtime > mTime) {
+						shouldInclude = true;
+						break;
+					}
+				}
+			}
+
+			include(shouldInclude);
+		});
+	}
+
 	// Load tasks
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -144,19 +165,10 @@ module.exports = function(grunt) {
 	// Default task
 	grunt.registerTask('default', [ 'css', 'js' ]);
 
-	// Watch
-	grunt.registerTask('watcher', [ 'watch:scripts', 'watch:styles' ]);
-
 	// CSS
 	grunt.registerTask('css', [ 'less' ]);
 
 	// JS
 	grunt.registerTask('js', [ 'jshint', 'uglify', 'includereplace' ]);
-
-	// Dev - Watch
-	grunt.registerTask('dev', [ 'watch:dev' ]);
-
-	// Dev - JS
-	grunt.registerTask('dev_js', [ 'jshint', 'concat', 'includereplace' ]);
 
 };
