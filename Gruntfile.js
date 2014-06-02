@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		meta: {
-			banner: '/*! Mount Vernon */ \n'
+			banner: '/*! <%= pkg.name %> - <%= pkg.description %> */ \n'
 		},
 		// Watcher
 		watch: {
@@ -52,21 +52,14 @@ module.exports = function(grunt) {
 					'js/src/*/**.js'
 				],
 				options: {
-					ignores: [
-						'js/src/map.js',
-						'js/src/ie/EventListener.js',
-						'js/src/ie/matchMedia.ie8.js',
-						'js/src/ie/matchMedia.ie9.js',
-						'js/src/lib/jquery-ui-datepicker.js',
-						'js/src/lib/modernizr.custom.js',
-						'js/src/lib/utils.js'
-					],
+					ignores: '<%= pkg.js_ignores %>',
 					globals: {
 						'jQuery'   : true,
 						'$'        : true,
 						'WWW_ROOT' : true
 					},
 					'-W003':   true, // used before defined
+					devel:     true, // allow console
 					browser:   true,
 					curly:     true,
 					eqeqeq:    true,
@@ -169,6 +162,6 @@ module.exports = function(grunt) {
 	grunt.registerTask('css', [ 'less' ]);
 
 	// JS
-	grunt.registerTask('js', [ 'jshint', 'uglify', 'includereplace' ]);
+	grunt.registerTask('js', [ 'jshint', 'concat', /* 'uglify',  */'includereplace' ]);
 
 };

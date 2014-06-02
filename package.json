@@ -21,7 +21,10 @@
       "js/src/site.js"
     ]
   },
+  "js_ignores": [
+    "file/to/ignore_when_hinting.js"
+  ],
   "vars": {
-	"variavle": "value"
+	"variable": "value"
   }
 }
