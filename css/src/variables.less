@@ -1,3 +1,33 @@
 /*-------------------------------------------
   Fonts
 -------------------------------------------*/
+
+	
+
+/*-------------------------------------------
+  Mixins
+-------------------------------------------*/
+
+.font-size(@px_size) {
+	@px: @px_size;
+	@rem: (@px_size / @root_font_size);
+	font-size: ~"@{px}px";
+	font-size: ~"@{rem}rem";
+}
+
+.rgba_background(@base, @alpha) {
+	background-color: rgba(red(@base), green(@base), blue(@base), @alpha);
+}
+
+.rgba_text(@base, @alpha) {
+	color: rgba(red(@base), green(@base), blue(@base), @alpha);
+}
+
+.columns(@count, @gap) {
+	-moz-column-count: @count;
+	-moz-column-gap: @gap;
+	-webkit-column-count: @count;
+	-webkit-column-gap: @gap;
+	column-count: @count;
+	column-gap: @gap;
+}
