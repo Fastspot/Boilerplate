@@ -162,6 +162,6 @@ module.exports = function(grunt) {
 	grunt.registerTask('css', [ 'less' ]);
 
 	// JS
-	grunt.registerTask('js', [ 'jshint', 'concat', /* 'uglify',  */'includereplace' ]);
+	grunt.registerTask('js', [ 'jshint', 'concat', 'uglify', 'includereplace' ]);
 
 };
