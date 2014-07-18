@@ -93,18 +93,6 @@ module.exports = function(grunt) {
 				files: '<%= pkg.js %>'
 			}
 		},
-		// LESS
-		less: {
-			target: {
-				options: {
-					banner: '<%= meta.banner %>',
-					report: 'min',
-					cleancss: false,
-					modifyVars: '<%= pkg.vars %>'
-				},
-				files: '<%= pkg.css %>'
-			}
-		},
 		// Replace
 		includereplace: {
 			target: {
@@ -116,6 +104,34 @@ module.exports = function(grunt) {
 				src: '*.js',
 				expand: true,
 				cwd: 'js/'
+			}
+		},
+		// LESS
+		less: {
+			target: {
+				options: {
+					report: 'min',
+					cleancss: false,
+					modifyVars: '<%= pkg.vars %>'
+				},
+				files: '<%= pkg.css %>'
+			}
+		},
+		// Banner
+		usebanner: {
+			banner: {
+				options: {
+					position: 'top',
+					banner: '<%= meta.banner %>',
+					linebreak: false
+				},
+				files: {
+					src: [
+						'css/site.css',
+						'css/site-ie9.css',
+						'css/site-ie9.css'
+					]
+				}
 			}
 		}
 	});
@@ -154,12 +170,13 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-include-replace');
 	grunt.loadNpmTasks('grunt-newer');
+	grunt.loadNpmTasks('grunt-banner');
 
 	// Default task
 	grunt.registerTask('default', [ 'css', 'js' ]);
 
 	// CSS
-	grunt.registerTask('css', [ 'less' ]);
+	grunt.registerTask('css', [ 'less', 'usebanner' ]);
 
 	// JS
 	grunt.registerTask('js', [ 'jshint', 'concat', 'uglify', 'includereplace' ]);
