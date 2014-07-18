@@ -1,0 +1,33 @@
+{
+  "name": "Gridlock",
+  "id": "gridlock",
+  "codename": "fs.gridlock",
+  "version": "3.1.6",
+  "description": "A responsive CSS grid system. Part of the Formstone Library.",
+  "keywords": [
+    "css",
+    "grid",
+    "rwd",
+    "responsive",
+    "formstone",
+    "benplum"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benplum/Gridlock"
+  },
+  "homepage": "http://formstone.it/gridlock/",
+  "demo": "http://formstone.it/components/Gridlock/demo/index.html",
+  "license": "MIT",
+  "author": {
+    "name": "Ben Plum",
+    "email": "mr@benplum.com",
+    "url": "http://www.benplum.com"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-npm2bower-sync": "~0.3.0",
+    "grunt-contrib-less": "~0.11.3",
+    "grunt-banner": "^0.2.3"
+  }
+}

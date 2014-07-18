@@ -14,15 +14,5 @@
   ],
   "ignore": [
     "*.jquery.json"
-  ],
-  "_release": "3.1.6",
-  "_resolution": {
-    "type": "version",
-    "tag": "3.1.6",
-    "commit": "86dc1b609a3403022ef0f8e07eaaf1e5b8367290"
-  },
-  "_source": "git://github.com/benplum/Gridlock.git",
-  "_target": "~3.1.6",
-  "_originalSource": "Gridlock",
-  "_direct": true
+  ]
 }
