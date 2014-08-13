@@ -3,6 +3,7 @@
   "id": "siteId",
   "version": "0.0.1",
   "description": "Site description.",
+  "author": "Fastspot",
   "devDependencies": {
     "grunt": "^0.4.4",
     "grunt-banner": "^0.2.3",

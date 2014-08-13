@@ -4,7 +4,11 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		meta: {
-			banner: '/*! <%= pkg.name %> - <%= pkg.description %> */ \n'
+			banner: '/*! \n' +
+					' * <%= pkg.name %> v<%= pkg.version %> [<%= grunt.template.today("dd-mm-yyyy") %>] \n' +
+					' * <%= pkg.description %> \n' +
+					' * <%= pkg.author %> \n' +
+					' */\n'
 		},
 		// Watcher
 		watch: {
@@ -28,7 +32,8 @@ module.exports = function(grunt) {
 					'css/src/*/**.less'
 				],
 				tasks: [
-					'newer:less:target:files'
+					'newer:less:target:files',
+					'newer:stripmq:all:files'
 				]
 			}
 		},
@@ -117,6 +122,18 @@ module.exports = function(grunt) {
 				files: '<%= pkg.css %>'
 			}
 		},
+		// Strip MQ
+		stripmq: {
+			options: {
+				width: 1000,
+				type: 'screen'
+			},
+			all: {
+				files: {
+					'css/site-ie8.css': [ 'css/site-ie8.css' ]
+				}
+			}
+		},
 		// Banner
 		usebanner: {
 			banner: {
@@ -126,11 +143,7 @@ module.exports = function(grunt) {
 					linebreak: false
 				},
 				files: {
-					src: [
-						'css/site.css',
-						'css/site-ie9.css',
-						'css/site-ie9.css'
-					]
+					src: 'css/*'
 				}
 			}
 		}
@@ -170,13 +183,14 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-include-replace');
 	grunt.loadNpmTasks('grunt-newer');
+	grunt.loadNpmTasks('grunt-stripmq');
 	grunt.loadNpmTasks('grunt-banner');
 
 	// Default task
 	grunt.registerTask('default', [ 'css', 'js' ]);
 
 	// CSS
-	grunt.registerTask('css', [ 'less', 'usebanner' ]);
+	grunt.registerTask('css', [ 'less', 'stripmq', 'usebanner' ]);
 
 	// JS
 	grunt.registerTask('js', [ 'jshint', 'concat', 'uglify', 'includereplace' ]);
