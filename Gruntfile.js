@@ -5,10 +5,10 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 		meta: {
 			banner: '/*! \n' +
-					' * <%= pkg.name %> v<%= pkg.version %> [<%= grunt.template.today("dd-mm-yyyy") %>] \n' +
+					' * <%= pkg.name %> v<%= pkg.version %> [<%= grunt.template.today("yyyy-mm-dd") %>] \n' +
 					' * <%= pkg.description %> \n' +
 					' * <%= pkg.author %> \n' +
-					' */\n'
+					' */ \n\n'
 		},
 		// Watcher
 		watch: {
@@ -19,9 +19,8 @@ module.exports = function(grunt) {
 				],
 				tasks: [
 					'newer:jshint:target',
-					/* 'newer:uglify:target:files', */
-					'newer:concat:target:files',
-					'newer:includereplace:target:files'
+					'newer:concat:target',
+					'newer:includereplace:target'
 				]
 			},
 			styles: {
@@ -32,8 +31,8 @@ module.exports = function(grunt) {
 					'css/src/*/**.less'
 				],
 				tasks: [
-					'newer:less:target:files',
-					'newer:stripmq:all:files'
+					'newer:less:target',
+					'newer:stripmq:all'
 				]
 			}
 		},
@@ -82,7 +81,7 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		// Uglify
+		// Uglify - For production
 		uglify: {
 			options: {
 				banner: '<%= meta.banner %>',
@@ -92,7 +91,7 @@ module.exports = function(grunt) {
 				files: '<%= pkg.js %>'
 			}
 		},
-		// Concat
+		// Concat - For development
 		concat: {
 			target: {
 				files: '<%= pkg.js %>'
@@ -116,8 +115,9 @@ module.exports = function(grunt) {
 			target: {
 				options: {
 					report: 'min',
-					cleancss: false,
-					modifyVars: '<%= pkg.vars %>'
+					cleancss: true,
+					modifyVars: '<%= pkg.vars %>',
+					banner: '<%= meta.banner %>'
 				},
 				files: '<%= pkg.css %>'
 			}
@@ -131,19 +131,6 @@ module.exports = function(grunt) {
 			all: {
 				files: {
 					'css/site-ie8.css': [ 'css/site-ie8.css' ]
-				}
-			}
-		},
-		// Banner
-		usebanner: {
-			banner: {
-				options: {
-					position: 'top',
-					banner: '<%= meta.banner %>',
-					linebreak: false
-				},
-				files: {
-					src: 'css/*'
 				}
 			}
 		}
@@ -184,15 +171,14 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-include-replace');
 	grunt.loadNpmTasks('grunt-newer');
 	grunt.loadNpmTasks('grunt-stripmq');
-	grunt.loadNpmTasks('grunt-banner');
 
 	// Default task
 	grunt.registerTask('default', [ 'css', 'js' ]);
 
 	// CSS
-	grunt.registerTask('css', [ 'less', 'stripmq', 'usebanner' ]);
+	grunt.registerTask('css', [ 'less', 'stripmq' ]);
 
 	// JS
-	grunt.registerTask('js', [ 'jshint', 'concat', 'uglify', 'includereplace' ]);
+	grunt.registerTask('js', [ 'jshint', 'uglify', 'includereplace' ]);
 
 };
