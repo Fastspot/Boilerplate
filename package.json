@@ -35,10 +35,8 @@
     ]
   },
   "js_ignores": [
-  	"js/src/ie/matchMedia.ie8.js",
-  	"js/src/ie/matchMedia.ie9.js",
-    "js/src/lib/modernizr.custom.js",
-    "js/src/lib/utils.js"
+  	"js/src/ie/*/",
+    "js/src/lib/*/"
   ],
   "vars": {
 	"variable": "value"
