@@ -4,11 +4,17 @@
 
 	@root_font_size: 16;
 
+
+	@mobile:	~"only screen and (min-width: 500px)";
+	@tablet:	~"only screen and (min-width: 740px)";
+	@desktop:	~"only screen and (min-width: 980px)";
+	@max:		~"only screen and (min-width: 1220px)";
+
 /*-------------------------------------------
   Mixins
 -------------------------------------------*/
 
-	.font-size(@px_size) {
+	.font_size(@px_size) {
 		@px: @px_size;
 		@rem: (@px_size / @root_font_size);
 		font-size: ~"@{px}px";
@@ -68,6 +74,7 @@
 		bottom: 0;
 		left: 0;
 		position: absolute;
+		margin: auto;
 		right: 0;
 		top: 0;
 	}

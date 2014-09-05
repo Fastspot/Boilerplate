@@ -72,7 +72,6 @@
 
 // Module pattern
 // Use: Module.action(params...);
-
 /*
 var Module = (function($, window) {
 
@@ -86,6 +85,25 @@ var Module = (function($, window) {
 		init: init
 	};
 })(jQuery, window);
+*/
+
+
+// Factory pattern
+// Use: var instance = new Module("#el", { property: value });
+/*
+var Module = function(element) {
+	return (function($,element) {
+		var foo = "bar";
+
+		function init() {
+			console.log("new action", this);
+		}
+
+		return {
+			init: init
+		};
+	})(jQuery,element);
+};
 */
 
 
