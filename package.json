@@ -28,6 +28,8 @@
       "js/src/site.js"
     ],
     "js/site-ie8.js": [
+      "components/html5shiv/dist/html5shiv.min.js",
+      "components/html5shiv/dist/html5shiv-printshiv.min.js",
       "js/src/ie/matchMedia.ie8.js"
     ],
     "js/site-ie9.js": [
