@@ -32,7 +32,14 @@ module.exports = function(grunt) {
 				],
 				tasks: [
 					'newer:less:target',
+					'autoprefixer:target',
 					'newer:stripmq:all'
+				]
+			},
+			config: {
+				files: [
+					'gruntfile.js',
+					'package.json'
 				]
 			}
 		},
@@ -122,6 +129,15 @@ module.exports = function(grunt) {
 				files: '<%= pkg.css %>'
 			}
 		},
+		// Vendor prefixes
+		autoprefixer: {
+			target: {
+				options: {
+					browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1', 'ie >= 8']
+				},
+				src: 'css/*.css',
+			},
+		},
 		// Strip MQ
 		stripmq: {
 			options: {
@@ -171,12 +187,13 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-include-replace');
 	grunt.loadNpmTasks('grunt-newer');
 	grunt.loadNpmTasks('grunt-stripmq');
+	grunt.loadNpmTasks('grunt-autoprefixer');
 
 	// Default task
 	grunt.registerTask('default', [ 'css', 'js' ]);
 
 	// CSS
-	grunt.registerTask('css', [ 'less', 'stripmq' ]);
+	grunt.registerTask('css', [ 'less', 'autoprefixer', 'stripmq' ]);
 
 	// JS
 	grunt.registerTask('js', [ 'jshint', 'uglify', 'includereplace' ]);
