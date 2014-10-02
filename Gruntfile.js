@@ -141,7 +141,7 @@ module.exports = function(grunt) {
 		// Strip MQ
 		stripmq: {
 			options: {
-				width: 1000,
+				width: 1024,
 				type: 'screen'
 			},
 			all: {
@@ -186,8 +186,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-include-replace');
 	grunt.loadNpmTasks('grunt-newer');
-	grunt.loadNpmTasks('grunt-stripmq');
 	grunt.loadNpmTasks('grunt-autoprefixer');
+	grunt.loadNpmTasks('grunt-stripmq');
 
 	// Default task
 	grunt.registerTask('default', [ 'css', 'js' ]);
