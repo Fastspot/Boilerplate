@@ -4,7 +4,7 @@ For kickstarting internal and client project builds. Inspired by [HTML5Boilerpla
 
 ### Installing Dependencies
 
-Resources are installed with grunt. Don't forget the `--save-dev` flag when adding components beyond the defaults defined in `bower.json`.
+Resources are installed with Bower. Don't forget the `--save-dev` flag when adding components beyond the defaults defined in `bower.json`.
 
 ### Building Resources
 
