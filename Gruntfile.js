@@ -38,7 +38,7 @@ module.exports = function(grunt) {
 			},
 			config: {
 				files: [
-					'gruntfile.js',
+					'Gruntfile.js',
 					'package.json'
 				]
 			}
@@ -135,7 +135,7 @@ module.exports = function(grunt) {
 				options: {
 					browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1', 'ie >= 8']
 				},
-				src: 'css/*.css',
+				src: 'css/*.css'
 			},
 		},
 		// Strip MQ

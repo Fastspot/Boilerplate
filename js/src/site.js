@@ -34,7 +34,7 @@
 				   /* .on("scroll", onScroll); */
 
 			$.rubberband({
-				maxWidth: [ 1220, 980, 740, 500, 320 ],
+				// maxWidth: [ 1220, 980, 740, 500, 320 ],
 				minWidth: [ 1220, 980, 740, 500, 320 ]
 			});
 
