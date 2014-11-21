@@ -14,7 +14,8 @@
     "grunt-contrib-watch": "~0.6.0",
     "grunt-include-replace": "^2.0.0",
     "grunt-newer": "^0.7.0",
-    "grunt-stripmq": "0.0.6"
+    "grunt-stripmq": "0.0.6",
+    "load-grunt-tasks": "^1.0.0"
   },
   "css": {
     "css/site.css": "css/src/site.less",
@@ -23,9 +24,9 @@
   },
   "js": {
     "js/site.js": [
-	  "components/jquery/dist/jquery.min.js",
-	  "components/Rubberband/jquery.fs.rubberband.js",
-	  "components/Zoetrope/jquery.fs.zoetrope.js",
+      "components/jquery/dist/jquery.min.js",
+      "components/Rubberband/jquery.fs.rubberband.js",
+      "components/Zoetrope/jquery.fs.zoetrope.js",
       "js/src/site.js"
     ],
     "js/site-ie8.js": [
@@ -38,10 +39,10 @@
     ]
   },
   "js_ignores": [
-  	"js/src/ie/*/",
+    "js/src/ie/*/",
     "js/src/lib/*/"
   ],
   "vars": {
-	"variable": "value"
+    "variable": "value"
   }
 }

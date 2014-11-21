@@ -1,6 +1,8 @@
 /*global module:false*/
 module.exports = function(grunt) {
 
+	require('load-grunt-tasks')(grunt);
+
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		meta: {
@@ -40,7 +42,10 @@ module.exports = function(grunt) {
 				files: [
 					'Gruntfile.js',
 					'package.json'
-				]
+				],
+				options: {
+					reload: true
+				}
 			}
 		},
 		// Newer
@@ -177,17 +182,6 @@ module.exports = function(grunt) {
 			include(shouldInclude);
 		});
 	}
-
-	// Load tasks
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-less');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-include-replace');
-	grunt.loadNpmTasks('grunt-newer');
-	grunt.loadNpmTasks('grunt-autoprefixer');
-	grunt.loadNpmTasks('grunt-stripmq');
 
 	// Default task
 	grunt.registerTask('default', [ 'css', 'js' ]);
