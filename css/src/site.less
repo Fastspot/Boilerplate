@@ -7,23 +7,6 @@
 
 
 /* ==================================================================
-   Transitions
-================================================================== */
-	*,
-	*:link,
-	*:visited,
-	*:hover,
-	*:active,
-	*:focus {
-		transition:
-			background-color 0.15s linear,
-			border-color 0.15s linear,
-			color 0.15s linear,
-			opacity 0.15s linear;
-	}
-
-
-/* ==================================================================
    Animations
 ================================================================== */
 
@@ -59,6 +42,8 @@
 	p {  }
 
 	a {
+		.transition_link();
+
 		text-decoration: none;
 
 		.no-touch &:hover {}
