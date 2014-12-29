@@ -34,14 +34,13 @@
 				   /* .on("scroll", onScroll); */
 
 			$.rubberband({
-				// maxWidth: [ 1220, 980, 740, 500, 320 ],
+				// maxWidth: [ 1219, 979, 739, 499, 319 ],
 				minWidth: [ 1220, 980, 740, 500, 320 ]
 			});
 
 			$.shifter({
 				maxWidth: '979px'
 			});
-
 		}
 
 		function onRespond(e, data) {

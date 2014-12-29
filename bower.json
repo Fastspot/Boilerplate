@@ -1,11 +1,7 @@
 {
   "name": "Boilerplate",
   "devDependencies": {
-    "Gridlock": "~3.1.7",
     "normalize-css": "~3.0.2",
-    "html5shiv": "~3.7.2",
-    "jquery": "~2.1.1",
-    "Rubberband": "~3.1.0",
-    "Zoetrope": "~3.0.3"
+    "html5shiv": "~3.7.2"
   }
 }
