@@ -58,12 +58,14 @@
 	}
 
 	.columns(@count, @gap) {
-		-webkit-column-count: @count;
-		   -moz-column-count: @count;
-		        column-count: @count;
-		-webkit-column-gap: @gap;
-		   -moz-column-gap: @gap;
-		   	    column-gap: @gap;
+        column-count: @count;
+		column-gap: @gap;
+		
+		& > * {
+			// autoprefixer does not prefix this one correctly just yet
+			-webkit-column-break-inside: avoid;
+			column-break-inside: avoid;
+		}
 	}
 
 	.icon_sprite(@left:0, @top:0) {
@@ -75,15 +77,6 @@
 		overflow: hidden;
 		text-indent: 200%;
 		white-space: nowrap;
-	}
-
-	.columns(@count, @gap) {
-		column-count: @count;
-		column-gap: @gap;
-
-		> * {
-			column-break-inside: avoid;
-		}
 	}
 
 	.cover() {
