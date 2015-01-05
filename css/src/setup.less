@@ -18,6 +18,11 @@
 	@desktop_max:	~"only screen and (max-width: 979px)";
 	@max_max:		~"only screen and (max-width: 1219px)";
 
+	@to_tablet:	~"and (max-width: 739px)";
+	@to_desktop:	~"and (max-width: 979px)";
+	@to_max:	~"and (max-width: 1219px)";
+
+
 /* ==================================================================
    Mixins
 ================================================================== */
@@ -58,9 +63,9 @@
 	}
 
 	.columns(@count, @gap) {
-        column-count: @count;
+		column-count: @count;
 		column-gap: @gap;
-		
+
 		& > * {
 			// autoprefixer does not prefix this one correctly just yet
 			-webkit-column-break-inside: avoid;
