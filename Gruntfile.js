@@ -92,7 +92,8 @@ module.exports = function(grunt) {
 		uglify: {
 			options: {
 				banner: '<%= meta.banner %>',
-				report: 'min'
+				report: 'min',
+				sourceMap: true
 			},
 			target: {
 				files: '<%= pkg.js %>'
@@ -100,6 +101,9 @@ module.exports = function(grunt) {
 		},
 		// Concat - For development
 		concat: {
+			options: {
+				sourceMap: true
+			},
 			target: {
 				files: '<%= pkg.js %>'
 			}
@@ -124,7 +128,8 @@ module.exports = function(grunt) {
 					report: 'min',
 					cleancss: true,
 					modifyVars: '<%= pkg.vars %>',
-					banner: '<%= meta.banner %>'
+					banner: '<%= meta.banner %>',
+					compress: true
 				},
 				files: '<%= pkg.css %>'
 			}
