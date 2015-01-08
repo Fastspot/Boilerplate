@@ -8,19 +8,28 @@
 	@base_transition_timing: linear;
 	@base_transition_delay: 0;
 
-	@mobile:		~"only screen and (min-width: 500px)";
-	@tablet:		~"only screen and (min-width: 740px)";
-	@desktop:		~"only screen and (min-width: 980px)";
-	@max:			~"only screen and (min-width: 1220px)";
+	@sm:			~"only screen and (min-width:" (@mq_min_sm * 1px) + ~")";
+	@md:			~"only screen and (min-width:" (@mq_min_md * 1px) + ~")";
+	@lg:			~"only screen and (min-width:" (@mq_min_lg * 1px) + ~")";
+	@xl:			~"only screen and (min-width:" (@mq_min_xl * 1px) + ~")";
 
-	@mobile_max:	~"only screen and (max-width: 499px)";
-	@tablet_max:	~"only screen and (max-width: 739px)";
-	@desktop_max:	~"only screen and (max-width: 979px)";
-	@max_max:		~"only screen and (max-width: 1219px)";
+	@max_sm:	~"only screen and (max-width:" (@mq_max_sm * 1px) + ~")";
+	@max_md:	~"only screen and (max-width:" (@mq_max_md * 1px) + ~")";
+	@max_lg:	~"only screen and (max-width:" (@mq_max_lg * 1px) + ~")";
+	@max_xl:	~"only screen and (max-width:" (@mq_max_xl * 1px) + ~")";
 
-	@to_tablet:	~"and (max-width: 739px)";
-	@to_desktop:	~"and (max-width: 979px)";
-	@to_max:	~"and (max-width: 1219px)";
+	@and_sm:	~"and (max-width:" (@mq_max_sm * 1px) + ~")";
+	@and_md:	~"and (max-width:" (@mq_max_md * 1px) + ~")";
+	@and_lg:	~"and (max-width:" (@mq_max_lg * 1px) + ~")";
+	@and_xl:	~"and (max-width:" (@mq_max_xl * 1px) + ~")";
+
+
+/* ==================================================================
+	 Colors
+================================================================== */
+
+	@white: #fff;
+	@black: #000;
 
 
 /* ==================================================================
