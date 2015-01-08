@@ -14,6 +14,9 @@ module.exports = function(grunt) {
 		},
 		// Watcher
 		watch: {
+			options: {
+				livereload: true
+			},
 			scripts: {
 				files: [
 					'js/src/**/**.js'
