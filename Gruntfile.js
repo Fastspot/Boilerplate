@@ -154,6 +154,26 @@ module.exports = function(grunt) {
 					'css/site-ie8.css': [ 'css/site-ie8.css' ]
 				}
 			}
+		},
+		// Custom Modernizr build
+		modernizr: {
+			target: {
+				devFile: 'components/modernizr/modernizr.js',
+				outputFile: 'js/modernizr.js',
+				"extra" : {
+					"shiv" : false,
+					"printshiv" : false,
+					"load" : true,
+					"mq" : false,
+					"cssclasses" : true
+				},
+				files: {
+					src: [
+						'js/*.js',
+						'css/*.css'
+					]
+				}
+			}
 		}
 	});
 
@@ -190,6 +210,6 @@ module.exports = function(grunt) {
 	grunt.registerTask('css', [ 'less', 'autoprefixer', 'stripmq' ]);
 
 	// JS
-	grunt.registerTask('js', [ 'jshint', 'uglify', 'includereplace' ]);
+	grunt.registerTask('js', [ 'jshint', 'uglify', 'includereplace', 'modernizr' ]);
 
 };

@@ -17,6 +17,7 @@
     "grunt-contrib-uglify": "^0.7.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-include-replace": "^2.0.0",
+    "grunt-modernizr": "^0.6.0",
     "grunt-newer": "^0.8.0",
     "grunt-stripmq": "0.0.6",
     "load-grunt-tasks": "^2.0.0"
