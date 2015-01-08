@@ -30,8 +30,8 @@
 
 			// Init
 			$window.on("snap", onRespond)
-				   .on("resize", onResize);
-				   /* .on("scroll", onScroll); */
+				.on("resize", onResize);
+				// .on("scroll", onScroll);
 
 			$.rubberband({
 				// maxWidth: [ 1219, 979, 739, 499, 319 ],
@@ -41,6 +41,7 @@
 			$.shifter({
 				maxWidth: '979px'
 			});
+
 		}
 
 		function onRespond(e, data) {

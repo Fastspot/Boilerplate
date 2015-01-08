@@ -7,17 +7,16 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 		meta: {
 			banner: '/*! \n' +
-					' * <%= pkg.name %> v<%= pkg.version %> [<%= grunt.template.today("yyyy-mm-dd") %>] \n' +
-					' * <%= pkg.description %> \n' +
-					' * <%= pkg.author %> \n' +
-					' */ \n\n'
+				' * <%= pkg.name %> v<%= pkg.version %> [<%= grunt.template.today("yyyy-mm-dd") %>] \n' +
+				' * <%= pkg.description %> \n' +
+				' * <%= pkg.author %> \n' +
+				' */ \n\n'
 		},
 		// Watcher
 		watch: {
 			scripts: {
 				files: [
-					'js/src/**.js',
-					'js/src/*/**.js'
+					'js/src/**/**.js'
 				],
 				tasks: [
 					'newer:jshint:target',
@@ -27,15 +26,12 @@ module.exports = function(grunt) {
 			},
 			styles: {
 				files: [
-					'css/src/**.css',
-					'css/src/*/**.css',
-					'css/src/**.less',
-					'css/src/*/**.less'
+					'css/src/**/**.{less,css}'
 				],
 				tasks: [
 					'newer:less:target',
 					'autoprefixer:target',
-					'newer:stripmq:all'
+					'newer:stripmq:target'
 				]
 			},
 			config: {
@@ -64,8 +60,7 @@ module.exports = function(grunt) {
 		jshint: {
 			target: {
 				src: [
-					'js/src/**.js',
-					'js/src/*/**.js'
+					'js/src/**/**.js'
 				],
 				options: {
 					ignores: '<%= pkg.js_ignores %>',
@@ -81,7 +76,7 @@ module.exports = function(grunt) {
 					eqeqeq:    true,
 					forin:     true,
 					freeze:    true,
-					immed:	   true,
+					immed:     true,
 					latedef:   true,
 					newcap:    true,
 					noarg:     true,
@@ -149,7 +144,7 @@ module.exports = function(grunt) {
 				width: 1024,
 				type: 'screen'
 			},
-			all: {
+			target: {
 				files: {
 					'css/site-ie8.css': [ 'css/site-ie8.css' ]
 				}
