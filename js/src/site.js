@@ -14,6 +14,16 @@
 			scrollTop = 0,
 			windowHeight = 0,
 			windowWidth = 0,
+			min_xs = "@mq_min_xs",
+			min_sm = "@mq_min_sm",
+			min_md = "@mq_min_md",
+			min_lg = "@mq_min_lg",
+			min_xl = "@mq_min_xl",
+			max_xs = "@mq_max_xs",
+			max_sm = "@mq_max_sm",
+			max_md = "@mq_max_md",
+			max_lg = "@mq_max_lg",
+			max_xl = "@mq_max_xl",
 			$window,
 			$doc,
 			$body,
@@ -30,17 +40,18 @@
 
 			// Init
 			$window.on("snap", onRespond)
-				   .on("resize", onResize);
-				   /* .on("scroll", onScroll); */
+				.on("resize", onResize);
+				// .on("scroll", onScroll);
 
 			$.rubberband({
-				// maxWidth: [ 1219, 979, 739, 499, 319 ],
-				minWidth: [ 1220, 980, 740, 500, 320 ]
+				// maxWidth: [ max_xl, max_lg, max_md, max_sm, max_xs ],
+				minWidth: [ min_xl, min_lg, min_md, min_sm, min_xs ]
 			});
 
 			$.shifter({
-				maxWidth: '979px'
+				maxWidth: max_lg
 			});
+
 		}
 
 		function onRespond(e, data) {

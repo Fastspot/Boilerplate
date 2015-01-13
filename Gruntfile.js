@@ -7,17 +7,19 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 		meta: {
 			banner: '/*! \n' +
-					' * <%= pkg.name %> v<%= pkg.version %> [<%= grunt.template.today("yyyy-mm-dd") %>] \n' +
-					' * <%= pkg.description %> \n' +
-					' * <%= pkg.author %> \n' +
-					' */ \n\n'
+				' * <%= pkg.name %> v<%= pkg.version %> [<%= grunt.template.today("yyyy-mm-dd") %>] \n' +
+				' * <%= pkg.description %> \n' +
+				' * <%= pkg.author %> \n' +
+				' */ \n\n'
 		},
 		// Watcher
 		watch: {
+			options: {
+				livereload: true
+			},
 			scripts: {
 				files: [
-					'js/src/**.js',
-					'js/src/*/**.js'
+					'js/src/**/**.js'
 				],
 				tasks: [
 					'newer:jshint:target',
@@ -27,15 +29,12 @@ module.exports = function(grunt) {
 			},
 			styles: {
 				files: [
-					'css/src/**.css',
-					'css/src/*/**.css',
-					'css/src/**.less',
-					'css/src/*/**.less'
+					'css/src/**/**.{less,css}'
 				],
 				tasks: [
 					'newer:less:target',
 					'autoprefixer:target',
-					'newer:stripmq:all'
+					'newer:stripmq:target'
 				]
 			},
 			config: {
@@ -64,8 +63,7 @@ module.exports = function(grunt) {
 		jshint: {
 			target: {
 				src: [
-					'js/src/**.js',
-					'js/src/*/**.js'
+					'js/src/**/**.js'
 				],
 				options: {
 					ignores: '<%= pkg.js_ignores %>',
@@ -81,7 +79,7 @@ module.exports = function(grunt) {
 					eqeqeq:    true,
 					forin:     true,
 					freeze:    true,
-					immed:	   true,
+					immed:     true,
 					latedef:   true,
 					newcap:    true,
 					noarg:     true,
@@ -97,7 +95,8 @@ module.exports = function(grunt) {
 		uglify: {
 			options: {
 				banner: '<%= meta.banner %>',
-				report: 'min'
+				report: 'min',
+				sourceMap: true
 			},
 			target: {
 				files: '<%= pkg.js %>'
@@ -105,6 +104,9 @@ module.exports = function(grunt) {
 		},
 		// Concat - For development
 		concat: {
+			options: {
+				sourceMap: true
+			},
 			target: {
 				files: '<%= pkg.js %>'
 			}
@@ -129,7 +131,8 @@ module.exports = function(grunt) {
 					report: 'min',
 					cleancss: true,
 					modifyVars: '<%= pkg.vars %>',
-					banner: '<%= meta.banner %>'
+					banner: '<%= meta.banner %>',
+					compress: true
 				},
 				files: '<%= pkg.css %>'
 			}
@@ -149,9 +152,29 @@ module.exports = function(grunt) {
 				width: 1024,
 				type: 'screen'
 			},
-			all: {
+			target: {
 				files: {
 					'css/site-ie8.css': [ 'css/site-ie8.css' ]
+				}
+			}
+		},
+		// Custom Modernizr build
+		modernizr: {
+			target: {
+				devFile: 'components/modernizr/modernizr.js',
+				outputFile: 'js/modernizr.js',
+				"extra" : {
+					"shiv" : false,
+					"printshiv" : false,
+					"load" : true,
+					"mq" : false,
+					"cssclasses" : true
+				},
+				files: {
+					src: [
+						'js/*.js',
+						'css/*.css'
+					]
 				}
 			}
 		}
@@ -190,6 +213,6 @@ module.exports = function(grunt) {
 	grunt.registerTask('css', [ 'less', 'autoprefixer', 'stripmq' ]);
 
 	// JS
-	grunt.registerTask('js', [ 'jshint', 'uglify', 'includereplace' ]);
+	grunt.registerTask('js', [ 'jshint', 'uglify', 'includereplace', 'modernizr' ]);
 
 };
