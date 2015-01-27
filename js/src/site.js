@@ -8,141 +8,104 @@
 
 	// !Site
 	var Site = (function($, window) {
-		// Vars
-		var minWidth = 320,
-			maxWidth = Infinity,
-			scrollTop = 0,
-			windowHeight = 0,
-			windowWidth = 0,
-			minXS = "@mq_min_xs",
-			minSM = "@mq_min_sm",
-			minMD = "@mq_min_md",
-			minLG = "@mq_min_lg",
-			minXL = "@mq_min_xl",
-			maxXS = minXS - 1,
-			maxSM = minSM - 1,
-			maxMD = minMD - 1,
-			maxLG = minLG - 1,
-			maxXL = minXL - 1,
-			$window,
-			$doc,
-			$body,
-			$page,
-			$subnav;
 
-		function init() {
-			// Objects
-			$window = $(window);
-			$doc    = $(document);
-			$body   = $("body");
-			$page   = $(".shifter-page");
-			$subnav = $(".subnavigation");
+		// Controller
 
-			// Init
-			$window.on("snap", onRespond)
-				.on("resize", onResize);
-				// .on("scroll", onScroll);
+		var Controller = function() {
+			this.namespace    = "";
 
-			$.rubberband({
-<<<<<<< HEAD
-				// maxWidth: [ maxXl, maxLG, maxMD, maxSM, maxXS ],
-				minWidth: [ minXS, minSM, minMD, minLG, minXL ]
-=======
-				// maxWidth: [ maxXL, maxLG, maxMD, maxSM, maxXS ],
-				minWidth: [ minXL, minLG, minMD, minSM, minXS ]
->>>>>>> 0700fe2b104782d74e53fee2115c6ba593e2e6e9
-			});
+			this.minWidth     = 320;
+			this.maxWidth     = Infinity;
+			this.scrollTop    = 0;
+			this.windowHeight = 0;
+			this.windowWidth  = 0;
 
-			$.shifter({
-				maxWidth: maxLG + "px"
-			});
+			this.window       = null;
+			this.doc          = null;
 
+			this.$window      = null;
+			this.$doc         = null;
+			this.$body        = null;
+
+			this.onInit       = [];
+			this.onRespond    = [];
+			this.onResize     = [];
+			this.onScroll     = [];
+
+			this.minXS = "@mq_min_xs";
+			this.minSM = "@mq_min_sm";
+			this.minMD = "@mq_min_md";
+			this.minLG = "@mq_min_lg";
+			this.minXL = "@mq_min_xl";
+
+			this.maxXS = this.minXS - 1;
+			this.maxSM = this.minSM - 1;
+			this.maxMD = this.minMD - 1;
+			this.maxLG = this.minLG - 1;
+			this.maxXL = this.minXL - 1;
+		};
+
+		$.extend(Controller.prototype, {
+			init: function(namespace) {
+				// Objects
+				this.namespace = namespace;
+				this.window    = window;
+				this.doc       = document;
+				this.$window   = $(window);
+				this.$doc      = $(document);
+				this.$body     = $("body");
+
+				$.mediaquery({
+					minWidth: [ this.minXS, this.minSM, this.minMD, this.minLG, this.minXL ],
+					maxWidth: [ this.maxXL, this.maxLG, this.maxMD, this.maxSM, this.maxXS ]
+				});
+
+				this.$window.on("mqchange.mediaquery", onRespond)
+							.on(Site.ns("resize"), onResize)
+							.on(Site.ns("scroll"), onScroll);
+
+				iterate(this.onInit);
+			},
+			ns: function(text) {
+				return text + "." + this.namespace;
+			},
+			resize: function() {
+				this.$window.trigger(Site.ns("resize"));
+			},
+			scroll: function() {
+				this.$window.trigger(Site.ns("scroll"));
+			}
+		});
+
+		// New
+
+		var Site = new Controller();
+
+		// Main
+
+		function iterate(items) {
+			for (var i in items) {
+				if (items.hasOwnProperty(i)) {
+					items[i].call(Site, Array.prototype.slice.call(arguments, 1));
+				}
+			}
 		}
 
-		function onRespond(e, data) {
-			maxWidth = data.maxWidth;
-			minWidth = data.minWidth;
+		function onRespond(e, state) {
+			Site.minWidth = state.minWidth;
 
-			$.shifter("close");
+			iterate(Site.onRespond, state);
 		}
 
 		function onResize() {
-			//
+			iterate(Site.onResize);
 		}
 
 		function onScroll() {
-			//
+			Site.scrollTop = Site.$window.scrollTop();
+
+			iterate(Site.onScroll);
 		}
 
-		return {
-			init: init
-		};
+		return Site;
 	})(jQuery, window);
-
-
-	// !Ready
-	$(document).ready(Site.init);
-
-
-
-// Module pattern
-// Use: Module.action(params...);
-/*
-var Module = (function($, window) {
-
-	var foo = "bar";
-
-	function init() {
-		console.log("new action", this);
-	}
-
-	return {
-		init: init
-	};
-})(jQuery, window);
-*/
-
-
-// Factory pattern
-// Use: var instance = new Module("#el", { property: value });
-/*
-var Module = function(element) {
-	return (function($,element) {
-		var foo = "bar";
-
-		function init() {
-			console.log("new action", this);
-		}
-
-		return {
-			init: init
-		};
-	})(jQuery,element);
-};
-*/
-
-
-// Plugin pattern
-// Use: $("#el").module("action", [params...]);
-/*
-;(function ($, window) {
-	"use strict";
-
-	var options = {},
-		pub = {};
-
-	function _init(opts) {
-		opts = $.extend({}, options, opts);
-		return $(this);
-	}
-
-	$.fn.plugin = function(method) {
-		if (pub[method]) {
-			return pub[method].apply(this, Array.prototype.slice.call(arguments, 1));
-		} else if (typeof method === 'object' || !method) {
-			return _init.apply(this, arguments);
-		}
-		return this;
-	};
-})(jQuery, window);
-*/
