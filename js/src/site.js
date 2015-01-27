@@ -44,8 +44,13 @@
 				// .on("scroll", onScroll);
 
 			$.rubberband({
+<<<<<<< HEAD
 				// maxWidth: [ maxXl, maxLG, maxMD, maxSM, maxXS ],
 				minWidth: [ minXS, minSM, minMD, minLG, minXL ]
+=======
+				// maxWidth: [ maxXL, maxLG, maxMD, maxSM, maxXS ],
+				minWidth: [ minXL, minLG, minMD, minSM, minXS ]
+>>>>>>> 0700fe2b104782d74e53fee2115c6ba593e2e6e9
 			});
 
 			$.shifter({

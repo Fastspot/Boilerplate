@@ -177,6 +177,33 @@ module.exports = function(grunt) {
 					]
 				}
 			}
+		},
+		// Optimize images (png, gif, jpg)
+		imagemin: {
+			target: {
+				files: [{
+					expand: true,
+					cwd: 'images/src',
+					src: '**/*.{png,jpg,jpeg,gif}',
+					dest: 'images'
+				}]
+			}
+		},
+		// Optimize images (svg)
+		svgmin: {
+			options: {
+				plugins: [{
+					removeViewBox: true
+				}]
+			},
+			target: {
+				files: [{
+					expand: true,
+					cwd: 'images/src',
+					src: '**/*.svg',
+					dest: 'images'
+				}]
+			}
 		}
 	});
 
