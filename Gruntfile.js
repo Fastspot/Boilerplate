@@ -128,11 +128,9 @@ module.exports = function(grunt) {
 		less: {
 			target: {
 				options: {
-					report: 'min',
-					cleancss: true,
+					compress: true,
 					modifyVars: '<%= pkg.vars %>',
 					banner: '<%= meta.banner %>',
-					compress: true
 				},
 				files: '<%= pkg.css %>'
 			}
@@ -144,7 +142,7 @@ module.exports = function(grunt) {
 					browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1', 'ie >= 8']
 				},
 				src: 'css/*.css'
-			},
+			}
 		},
 		// Strip MQ
 		stripmq: {
