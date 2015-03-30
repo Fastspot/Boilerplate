@@ -79,7 +79,8 @@ module.exports = function(grunt) {
 					globals: {
 						'jQuery'   : true,
 						'$'        : true,
-						'WWW_ROOT' : true
+						'WWW_ROOT' : true,
+						'Site'     : true
 					},
 					'-W003':   true, // used before defined
 					devel:     true, // allow console

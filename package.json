@@ -22,6 +22,7 @@
     "grunt-newer": "^0.8.0",
     "grunt-stripmq": "0.0.6",
     "grunt-svgmin": "^2.0.0",
+    "less-plugin-clean-css": "^1.5.0",
     "load-grunt-tasks": "^2.0.0"
   },
   "css": {
@@ -32,8 +33,9 @@
   "js": {
     "js/site.js": [
       "components/jquery/dist/jquery.min.js",
-      "components/Rubberband/jquery.fs.rubberband.js",
-      "components/Zoetrope/jquery.fs.zoetrope.js",
+      "components/formstone/dist/js/core.js",
+      "components/formstone/dist/js/mediaquery.js",
+      "js/src/modules/page.js",
       "js/src/site.js"
     ],
     "js/site-ie8.js": [
