@@ -37,6 +37,15 @@ module.exports = function(grunt) {
 					'newer:stripmq:target'
 				]
 			},
+			images: {
+				files: [
+					'images/src/**/*.{png,jpg,jpeg,gif,svg}'
+				],
+				tasks: [
+					'newer:imagemin:target',
+					'newer:svgmin:target'
+				]
+			},
 			config: {
 				files: [
 					'Gruntfile.js',
@@ -131,6 +140,9 @@ module.exports = function(grunt) {
 					compress: true,
 					modifyVars: '<%= pkg.vars %>',
 					banner: '<%= meta.banner %>',
+					plugins: [
+						new (require('less-plugin-clean-css'))()
+					]
 				},
 				files: '<%= pkg.css %>'
 			}
