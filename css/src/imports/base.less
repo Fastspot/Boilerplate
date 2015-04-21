@@ -290,6 +290,17 @@
 	.invisible {
 		visibility: hidden;
 	}
+	
+	.offscreen {
+		width: 1px;
+		height: 1px;
+		
+		position: absolute;
+		left: -999px;
+		
+		overflow: hidden;
+		z-index: -999;
+	}
 
 	.print {
 		display: none;
