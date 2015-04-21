@@ -153,65 +153,47 @@
 
 	.margined,
 	.margined_top {
-		&,
-		div.panel-pane &.node {
-			margin-top: 20px;
-		}
+		margin-top: @margin_sm;
 	}
 
 	.margined,
 	.margined_bottom {
-		&,
-		div.panel-pane &.node {
-			margin-bottom: 20px;
-		}
+		margin-bottom: @margin_sm;
 	}
 
 	.margined_md,
 	.margined_md_top {
-		&,
-		div.panel-pane &.node {
-			margin-top: 40px;
+		margin-top: @margin_md;
 
-			@media @min_lg {
-				margin-top: 60px;
-			}
+		@media @min_lg {
+			margin-top: @margin_lg;
 		}
 	}
 
 	.margined_md,
 	.margined_md_bottom {
-		&,
-		div.panel-pane &.node {
-			margin-bottom: 40px;
+		margin-bottom: @margin_md;
 
-			@media @min_lg {
-				margin-bottom: 60px;
-			}
+		@media @min_lg {
+			margin-bottom: @margin_lg;
 		}
 	}
 
 	.margined_lg,
 	.margined_lg_top {
-		&,
-		div.panel-pane &.node {
-			margin-top: 40px;
+		margin-top: @margin_md;
 
-			@media @min_lg {
-				margin-top: 80px;
-			}
+		@media @min_lg {
+			margin-top: @margin_xl;
 		}
 	}
 
 	.margined_lg,
 	.margined_lg_bottom {
-		&,
-		div.panel-pane &.node {
-			margin-bottom: 40px;
+		margin-bottom: @margin_md;
 
-			@media @min_lg {
-				margin-bottom: 80px;
-			}
+		@media @min_lg {
+			margin-bottom: @margin_xl;
 		}
 	}
 
