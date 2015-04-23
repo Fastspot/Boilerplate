@@ -253,4 +253,7 @@ module.exports = function(grunt) {
 	// JS
 	grunt.registerTask('js', [ 'jshint', 'uglify', 'includereplace', 'modernizr' ]);
 
+	// Images
+	grunt.registerTask('img', [ 'imagemin', 'svgmin' ]);
+
 };
