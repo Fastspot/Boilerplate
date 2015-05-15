@@ -94,6 +94,11 @@
 			background-image: url(../images/icons.svg);
 		}
 	}
+	
+	.scale_sprite(@percent:1, @imageOffsetX:0, @imageOffsetY:0) {
+		background-size: floor(@sprite_width * @percent) floor(@sprite_height * @percent);
+		background-position: floor(@imageOffsetX * @percent) floor(@imageOffsetY * @percent);
+	}
 
 	.icon_indent() {
 		overflow: hidden;
@@ -110,6 +115,33 @@
 		right: 0;
 		bottom: 0;
 		left: 0;
+	}
+	
+	/*
+		Cover Image:
+			Use on wrapping element of img (<figure>, <picture>)
+			Will work like background-size: cover; but with static images
+			Won't scale it down though, so good to use with picturefill	
+	*/
+	
+	.cover_image() {
+		position: relative;
+		
+		z-index: 1;
+		
+		img {
+			width: auto;
+			height: auto;
+			
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			
+			min-width: 100% !important;
+			min-height: 100% !important;
+			transform: translate(-50%, -50%);
+			z-index: 0;
+		}
 	}
 
 	.center() {
