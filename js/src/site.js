@@ -109,3 +109,8 @@
 
 		return Site;
 	})(jQuery, window);
+
+	// !Ready
+	$(document).ready(function() {
+		Site.init("Namespace");
+	});

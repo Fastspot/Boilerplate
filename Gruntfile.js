@@ -80,7 +80,7 @@ module.exports = function(grunt) {
 						'jQuery'   : true,
 						'$'        : true,
 						'WWW_ROOT' : true,
-						'Site'     : true
+						'Site'     : true,
 					},
 					'-W003':   true, // used before defined
 					devel:     true, // allow console
@@ -90,6 +90,7 @@ module.exports = function(grunt) {
 					forin:     true,
 					freeze:    true,
 					immed:     true,
+					jquery:    true,
 					latedef:   true,
 					newcap:    true,
 					noarg:     true,
@@ -97,7 +98,8 @@ module.exports = function(grunt) {
 					smarttabs: true,
 					sub:       true,
 					undef:     true,
-					validthis: true
+					unused:    true,
+					validthis: true,
 				}
 			}
 		},

@@ -61,18 +61,14 @@
 			<link rel="stylesheet" href="css/site-ie9.css">
 		<![endif]-->
 	</head>
-	<body class="gridlock">
+	<body class="fs-grid">
 
 		<!-- Compiled JS -->
 		<script src="js/site.js"></script>
 
-		<!-- Girdlock -->
+		<!-- Grid Bookmarklet -->
 		<script>
-			var GridlockBookmarkletConfig = {
-				useCookies: true,
-				position: "bottom-left"
-			};
-			(function(){if(typeof GridlockBookmarklet=='undefined'){document.body.appendChild(document.createElement('script')).src='http://formstone.it/js/gridlock.bookmarklet.js';}else{GridlockBookmarklet();}})();
+			(function(){if(typeof FSGridBookmarklet==='undefined'){document.body.appendChild(document.createElement('script')).src='http://beta.formstone.it/js/bookmarklet/grid.js';}else{FSGridBookmarklet();}})();
 		</script>
 	</body>
 </html>
