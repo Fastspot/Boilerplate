@@ -6,7 +6,7 @@
 
 	@base_transition_duration: 0.25s;
 	@base_transition_timing: linear;
-	@base_transition_delay: 0;
+	@base_transition_delay: 0s;
 
 	@min_sm:		~"only screen and (min-width:" (@mq_min_sm * 1px) + ~")";
 	@min_md:		~"only screen and (min-width:" (@mq_min_md * 1px) + ~")";
@@ -22,7 +22,12 @@
 	@and_max_md:	~"and (max-width:" (@mq_min_md - 1px) + ~")";
 	@and_max_lg:	~"and (max-width:" (@mq_min_lg - 1px) + ~")";
 	@and_max_xl:	~"and (max-width:" (@mq_min_xl - 1px) + ~")";
-
+	
+	@margin_sm: 20px;
+	@margin_md: 40px;
+	@margin_lg: 60px;
+	@margin_xl: 80px;
+	
 
 /* ==================================================================
 	 Colors
@@ -89,6 +94,11 @@
 			background-image: url(../images/icons.svg);
 		}
 	}
+	
+	.scale_sprite(@percent:1, @imageOffsetX:0, @imageOffsetY:0) {
+		background-size: floor(@sprite_width * @percent) floor(@sprite_height * @percent);
+		background-position: floor(@imageOffsetX * @percent) floor(@imageOffsetY * @percent);
+	}
 
 	.icon_indent() {
 		overflow: hidden;
@@ -105,6 +115,33 @@
 		right: 0;
 		bottom: 0;
 		left: 0;
+	}
+	
+	/*
+		Cover Image:
+			Use on wrapping element of img (<figure>, <picture>)
+			Will work like background-size: cover; but with static images
+			Won't scale it down though, so good to use with picturefill	
+	*/
+	
+	.cover_image() {
+		position: relative;
+		
+		z-index: 1;
+		
+		img {
+			width: auto;
+			height: auto;
+			
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			
+			min-width: 100% !important;
+			min-height: 100% !important;
+			transform: translate(-50%, -50%);
+			z-index: 0;
+		}
 	}
 
 	.center() {
