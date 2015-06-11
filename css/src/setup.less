@@ -181,12 +181,12 @@
 
 	.gradient_vertical(@startColor: black, @endColor: white) {
 		background-color: @startColor;
-		background: linear-gradient(180deg, @startColor, @endColor);
+		background: linear-gradient(to bottom, @startColor, @endColor);
 	}
 
 	.gradient_horizontal(@startColor: black, @endColor: white) {
 		background-color: @startColor;
-		background: linear-gradient(90deg, @startColor, @endColor);
+		background: linear-gradient(to right, @startColor, @endColor);
 	}
 
 	.rgba_raw(@base, @alpha) {
