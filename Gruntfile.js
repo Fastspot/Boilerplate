@@ -249,7 +249,7 @@ module.exports = function(grunt) {
 	}
 
 	// Default task
-	grunt.registerTask('default', [ 'css', 'js' ]);
+	grunt.registerTask('default', [ 'css', 'js', 'img' ]);
 
 	// CSS
 	grunt.registerTask('css', [ 'less', 'postcss', 'stripmq' ]);
