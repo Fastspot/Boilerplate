@@ -33,7 +33,7 @@ module.exports = function(grunt) {
 				],
 				tasks: [
 					'newer:less:target',
-					'autoprefixer:target',
+					'postcss:target',
 					'newer:stripmq:target'
 				]
 			},
@@ -151,11 +151,13 @@ module.exports = function(grunt) {
 			}
 		},
 		// Vendor prefixes
-		autoprefixer: {
+		postcss: {
+			options: {
+				processors: [
+					require('autoprefixer-core')({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1', 'ie >= 9']})
+				]
+			},
 			target: {
-				options: {
-					browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1', 'ie >= 8']
-				},
 				src: 'css/*.css'
 			}
 		},
@@ -250,7 +252,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', [ 'css', 'js' ]);
 
 	// CSS
-	grunt.registerTask('css', [ 'less', 'autoprefixer', 'stripmq' ]);
+	grunt.registerTask('css', [ 'less', 'postcss', 'stripmq' ]);
 
 	// JS
 	grunt.registerTask('js', [ 'jshint', 'uglify', 'includereplace', 'modernizr' ]);
