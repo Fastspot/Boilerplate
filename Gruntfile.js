@@ -46,6 +46,14 @@ module.exports = function(grunt) {
 					'newer:svgmin:target'
 				]
 			},
+			static: {
+				files: [
+					'static/src/**/**.html'
+				],
+				tasks: [
+					'includereplace:static'
+				]
+			},
 			config: {
 				files: [
 					'Gruntfile.js',
