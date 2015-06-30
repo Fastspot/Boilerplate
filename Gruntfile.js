@@ -152,28 +152,22 @@ module.exports = function(grunt) {
 		},
 		// LESS
 		less: {
+			options: {
+				compress: true,
+				modifyVars: '<%= pkg.vars %>',
+				banner: '<%= meta.banner %>',
+				plugins: [
+					new (require('less-plugin-clean-css'))()
+				]
+			},
 			target: {
 				options: {
-					compress: true,
 					sourceMapFileInline: true,
-					sourceMap: true,
-					modifyVars: '<%= pkg.vars %>',
-					banner: '<%= meta.banner %>',
-					plugins: [
-						new (require('less-plugin-clean-css'))()
-					]
+					sourceMap: true
 				},
 				files: '<%= pkg.css %>'
 			},
 			production: {
-				options: {
-					compress: true,
-					modifyVars: '<%= pkg.vars %>',
-					banner: '<%= meta.banner %>',
-					plugins: [
-						new (require('less-plugin-clean-css'))()
-					]
-				},
 				files: '<%= pkg.css %>'
 			}
 		},
