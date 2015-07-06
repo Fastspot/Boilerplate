@@ -2,9 +2,9 @@
 	 Animations
 ================================================================== */
 
-	
-	
-	
+
+
+
 /* ==================================================================
 	 Elements
 ================================================================== */
@@ -202,15 +202,15 @@
 	 Background Colors
 ================================================================== */
 
-	
-	
-	
+
+
+
 /* ==================================================================
 	Border Colors
 ================================================================== */
 
-	
-	
+
+
 
 /* ==================================================================
 	 Helpers
@@ -238,13 +238,16 @@
 		clear: both;
 	}
 
-	.clearfix:after {
-		clear: both;
-		content: ".";
-		display: block;
-		height: 0;
-		line-height: 0;
-		visibility: hidden;
+	.clearfix {
+
+		&:after {
+			clear: both;
+			content: ".";
+			display: block;
+			height: 0;
+			line-height: 0;
+			visibility: hidden;
+		}
 	}
 
 	.contain {
@@ -290,14 +293,14 @@
 	.invisible {
 		visibility: hidden;
 	}
-	
+
 	.offscreen {
 		width: 1px;
 		height: 1px;
-		
+
 		position: absolute;
 		left: -999px;
-		
+
 		overflow: hidden;
 		z-index: -999;
 	}
@@ -305,7 +308,7 @@
 	.print {
 		display: none;
 	}
-	
+
 	.responsive_image {
 		display: block;
 
