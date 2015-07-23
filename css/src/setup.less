@@ -1,5 +1,5 @@
 /* ==========================================================================
-	 Variables
+	Variables
 ============================================================================= */
 
 	@root_font_size: 16;
@@ -7,6 +7,8 @@
 	@base_transition_duration: 0.25s;
 	@base_transition_timing: linear;
 	@base_transition_delay: 0s;
+
+	// Width Media Queries
 
 	@min_sm:      ~"only screen and (min-width:" (@mq_min_sm * 1px) + ~")";
 	@min_md:      ~"only screen and (min-width:" (@mq_min_md * 1px) + ~")";
@@ -23,14 +25,27 @@
 	@and_max_lg:  ~"and (max-width:" (@mq_min_lg - 1px) + ~")";
 	@and_max_xl:  ~"and (max-width:" (@mq_min_xl - 1px) + ~")";
 
+	// Height Media Queries
+
+	@min_ht:        ~"(max-height:" (@mq_min_ht * 1px) + ~")";
+	@max_ht:        ~"(max-height:" (@mq_min_ht - 1px) + ~")";
+
+	@and_min_ht:    ~"and (min-height:" (@mq_min_ht * 1px) + ~")";
+	@and_max_ht:    ~"and (max-height:" (@mq_min_ht - 1px) + ~")";
+
+	// Other
+
 	@margin_sm: 20px;
 	@margin_md: 40px;
 	@margin_lg: 60px;
 	@margin_xl: 80px;
 
+	@sprite_width:  800px;
+	@sprite_height: 360px;
+
 
 /* ==========================================================================
-	 Colors
+	Colors
 ============================================================================= */
 
 	@true_white: #fff;
@@ -38,7 +53,7 @@
 
 
 /* ==========================================================================
-	 Mixins
+	Mixins
 ============================================================================= */
 
 	.transition(@duration:0.25s, @timing:linear, @delay:0) {
@@ -174,6 +189,13 @@
 		margin: auto;
 	}
 
+	.text_indent(@height: 0) {
+		display: block;
+		line-height: @height;
+		overflow: hidden;
+		text-indent: 100%;
+	}
+
 	.ellipsis() {
 		overflow: hidden;
 		text-overflow: ellipsis;
@@ -192,4 +214,8 @@
 
 	.rgba_raw(@base, @alpha) {
 		@return: rgba(red(@base), green(@base), blue(@base), @alpha);
+	}
+
+	.font_smoothing {
+		-webkit-font-smoothing: antialiased;
 	}
