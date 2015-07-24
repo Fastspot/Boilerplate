@@ -2,9 +2,9 @@
 	 Animations
 ================================================================== */
 
-	
-	
-	
+
+
+
 /* ==================================================================
 	 Elements
 ================================================================== */
@@ -64,30 +64,77 @@
 	blockquote p {}
 
 	ol,
-	ul {}
+	ul {
+		li {}
+	}
 
-	li {}
+	ol {
+		counter-reset: li;
 
-	ol {}
+		> li {
+			display: block;
+			list-style: none;
 
-	ol li {}
+			&:before {
+				position: absolute;
+				top: 0;
+				right: 100%;
+
+				content: counter(li) ". ";
+				counter-increment: li;
+			}
+		}
+
+		&[type="a"] {
+			> li {
+				&:before {
+					content: counter(li, lower-alpha) ". ";
+				}
+			}
+		}
+
+		&[type="A"] {
+			> li {
+				&:before {
+					content: counter(li, upper-alpha) ". ";
+				}
+			}
+		}
+
+		&[type="i"] {
+			> li {
+				&:before {
+					content: counter(li, lower-roman) ". ";
+				}
+			}
+		}
+
+		&[type="I"] {
+			> li {
+				&:before {
+					content: counter(li, upper-roman) ". ";
+				}
+			}
+		}
+	}
 
 	ul {
 		list-style: none;
-	}
 
-	ul li {}
+		li {
 
-	ul li:before {
-		width: 5px;
-		height: 5px;
+			&:before {
+				width: 5px;
+				height: 5px;
 
-		background: #eee;
-		border-radius: 100%;
-		content: "";
-		display: block;
-		float: left;
-		margin: 10px 0 0 -20px;
+				background: #eee;
+				border-radius: 100%;
+				content: "";
+				display: block;
+				float: left;
+				margin: 10px 0 0 -20px;
+			}
+		}
 	}
 
 	hr {
@@ -202,15 +249,15 @@
 	 Background Colors
 ================================================================== */
 
-	
-	
-	
+
+
+
 /* ==================================================================
 	Border Colors
 ================================================================== */
 
-	
-	
+
+
 
 /* ==================================================================
 	 Helpers
@@ -290,14 +337,14 @@
 	.invisible {
 		visibility: hidden;
 	}
-	
+
 	.offscreen {
 		width: 1px;
 		height: 1px;
-		
+
 		position: absolute;
 		left: -999px;
-		
+
 		overflow: hidden;
 		z-index: -999;
 	}
@@ -305,7 +352,7 @@
 	.print {
 		display: none;
 	}
-	
+
 	.responsive_image {
 		display: block;
 
