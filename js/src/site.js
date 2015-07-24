@@ -4,7 +4,7 @@
 
 	// !IE
 	var IE8 = IE8 || false,
-		IE9 = IE9 || false;
+	    IE9 = IE9 || false;
 
 	// !Site
 	var Site = (function($, window) {
@@ -55,10 +55,12 @@
 				this.$doc      = $(document);
 				this.$body     = $("body");
 
-				$.mediaquery({
-					minWidth: [ this.minXS, this.minSM, this.minMD, this.minLG, this.minXL ],
-					maxWidth: [ this.maxXL, this.maxLG, this.maxMD, this.maxSM, this.maxXS ]
-				});
+				if ($.mediaquery) {
+					$.mediaquery({
+						minWidth: [ this.minXS, this.minSM, this.minMD, this.minLG, this.minXL ],
+						maxWidth: [ this.maxXL, this.maxLG, this.maxMD, this.maxSM, this.maxXS ]
+					});
+				}
 
 				this.$window.on("mqchange.mediaquery", onRespond)
 							.on(Site.ns("resize"), onResize)
