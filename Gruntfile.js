@@ -277,7 +277,7 @@ module.exports = function(grunt) {
 						'js/**.js',
 						'css/**.css',
 						'images/*',
-						'**/*.html'
+						'static/**/*.html'
 					]
 				},
 				options: {
