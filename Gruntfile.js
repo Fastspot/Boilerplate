@@ -153,12 +153,8 @@ module.exports = function(grunt) {
 		// LESS
 		less: {
 			options: {
-				compress: true,
 				modifyVars: '<%= pkg.vars %>',
-				banner: '<%= meta.banner %>',
-				plugins: [
-					new (require('less-plugin-clean-css'))()
-				]
+				banner: '<%= meta.banner %>'
 			},
 			target: {
 				options: {
@@ -168,6 +164,12 @@ module.exports = function(grunt) {
 				files: '<%= pkg.css %>'
 			},
 			production: {
+				options: {
+					compress: true,
+					plugins: [
+						new (require('less-plugin-clean-css'))()
+					]
+				},
 				files: '<%= pkg.css %>'
 			}
 		},
@@ -175,10 +177,16 @@ module.exports = function(grunt) {
 		postcss: {
 			options: {
 				processors: [
-					require('autoprefixer-core')({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1', 'ie >= 9']})
+					require('autoprefixer-core')({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1', 'ie >= 8']})
 				]
 			},
 			target: {
+				options: {
+					map: true
+				},
+				src: 'css/*.css'
+			},
+			production: {
 				src: 'css/*.css'
 			}
 		},
@@ -316,10 +324,10 @@ module.exports = function(grunt) {
 	}
 
 	// Default task
-	grunt.registerTask('default', [ 'less:production', 'postcss', 'js', 'img', 'html' ]);
+	grunt.registerTask('default', [ 'less:production', 'postcss:production', 'stripmq', 'js', 'img', 'html' ]);
 
 	// CSS
-	grunt.registerTask('css', [ 'less:target', 'postcss', 'stripmq' ]);
+	grunt.registerTask('css', [ 'less:target', 'postcss:target', 'stripmq' ]);
 
 	// JS
 	grunt.registerTask('js', [ 'jshint', 'uglify', 'includereplace:target', 'modernizr' ]);
@@ -332,5 +340,8 @@ module.exports = function(grunt) {
 
 	// Develop
 	grunt.registerTask('devel', ['browserSync', 'watch']);
+
+	// Debug (expanded files)
+	grunt.registerTask('debug', [ 'less:target', 'postcss:target', 'stripmq', 'jshint', 'concat', 'includereplace:target', 'img', 'html' ]);
 
 };
