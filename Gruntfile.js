@@ -54,6 +54,14 @@ module.exports = function(grunt) {
 					'includereplace:static'
 				]
 			},
+			prettify: {
+				files: [
+					'static/src/**/**.html'
+				],
+				tasks: [
+					'prettify:target'
+				]
+			},
 			config: {
 				files: [
 					'Gruntfile.js',
