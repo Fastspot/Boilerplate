@@ -106,6 +106,38 @@ module.exports = function(grunt) {
 					smarttabs: true,
 					sub:       true,
 					undef:     true,
+					unused:    false,
+					validthis: true,
+				}
+			},
+			production: {
+				src: [
+					'js/src/**/**.js'
+				],
+				options: {
+					ignores: '<%= pkg.js_ignores %>',
+					globals: {
+						'jQuery'   : true,
+						'$'        : true,
+						'WWW_ROOT' : true,
+						'Site'     : true,
+					},
+					'-W003':   true, // used before defined
+					devel:     true, // allow console
+					browser:   true,
+					curly:     true,
+					eqeqeq:    true,
+					forin:     true,
+					freeze:    true,
+					immed:     true,
+					jquery:    true,
+					latedef:   true,
+					newcap:    true,
+					noarg:     true,
+					nonew:     true,
+					smarttabs: true,
+					sub:       true,
+					undef:     true,
 					unused:    true,
 					validthis: true,
 				}
@@ -330,7 +362,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('css', [ 'less:target', 'postcss:target', 'stripmq' ]);
 
 	// JS
-	grunt.registerTask('js', [ 'jshint', 'uglify', 'includereplace:target', 'modernizr' ]);
+	grunt.registerTask('js', [ 'jshint:production', 'uglify', 'includereplace:target', 'modernizr' ]);
 
 	// Images
 	grunt.registerTask('img', [ 'imagemin', 'svgmin' ]);
