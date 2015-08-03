@@ -219,3 +219,8 @@
 	.font_smoothing {
 		-webkit-font-smoothing: antialiased;
 	}
+
+	.size(@width:0, @height:@width) {
+		width: ~"@{width}px";
+		height: ~"@{height}px";
+	}
