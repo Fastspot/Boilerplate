@@ -83,6 +83,15 @@
 		font-size: ~"@{rem}rem";
 	}
 
+	.size(@width:0, @height:@width) {
+		width: ~"@{width}px";
+		height: ~"@{height}px";
+	}
+
+	.line_height(@lineHeight, @fontSize:@lineHeight) {
+		line-height: (@lineHeight / @fontSize);
+	}
+
 	.rgba_background(@base, @alpha) {
 		background-color: rgba(red(@base), green(@base), blue(@base), @alpha);
 	}
@@ -218,9 +227,10 @@
 
 	.font_smoothing {
 		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
 	}
 
-	.size(@width:0, @height:@width) {
-		width: ~"@{width}px";
-		height: ~"@{height}px";
+	.killFlicker {
+		-webkit-font-smoothing: auto;
+		transform: translateZ(0);
 	}
