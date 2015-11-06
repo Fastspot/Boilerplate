@@ -4,7 +4,7 @@
   "devDependencies": {
     "html5shiv": "~3.7.2",
     "jquery": "~1.11.2",
-    "modernizr": "~2.8.3",
+    "modernizr": "~3.2.0",
     "normalize-css": "~3.0.2"
   }
 }

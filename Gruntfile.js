@@ -18,9 +18,7 @@ module.exports = function(grunt) {
 				livereload: true
 			},
 			scripts: {
-				files: [
-					'js/src/**/**.js'
-				],
+				files: 'js/src/**/**.js',
 				tasks: [
 					'newer:jshint:target',
 					'newer:concat:target',
@@ -28,9 +26,7 @@ module.exports = function(grunt) {
 				]
 			},
 			styles: {
-				files: [
-					'css/src/**/**.{less,css}'
-				],
+				files: 'css/src/**/**.{less,css}',
 				tasks: [
 					'newer:less:target',
 					'postcss:target',
@@ -38,29 +34,19 @@ module.exports = function(grunt) {
 				]
 			},
 			images: {
-				files: [
-					'images/src/**/*.{png,jpg,jpeg,gif,svg}'
-				],
+				files: 'images/src/**/*.{png,jpg,jpeg,gif,svg,ico}',
 				tasks: [
 					'newer:imagemin:target',
 					'newer:svgmin:target'
 				]
 			},
 			static: {
-				files: [
-					'static/src/**/**.html'
-				],
-				tasks: [
-					'includereplace:static'
-				]
+				files: 'static/src/**/**.html',
+				tasks: 'includereplace:static'
 			},
 			prettify: {
-				files: [
-					'static/src/**/**.html'
-				],
-				tasks: [
-					'prettify:target'
-				]
+				files: 'static/src/**/**.html',
+				tasks: 'prettify:target'
 			},
 			config: {
 				files: [
@@ -87,16 +73,14 @@ module.exports = function(grunt) {
 		// JS Hint
 		jshint: {
 			target: {
-				src: [
-					'js/src/**/**.js'
-				],
+				src: 'js/src/**/**.js',
 				options: {
 					ignores: '<%= pkg.js_ignores %>',
 					globals: {
 						'jQuery'   : true,
 						'$'        : true,
 						'WWW_ROOT' : true,
-						'Site'     : true,
+						'Site'     : true
 					},
 					'-W003':   true, // used before defined
 					devel:     true, // allow console
@@ -115,20 +99,18 @@ module.exports = function(grunt) {
 					sub:       true,
 					undef:     true,
 					unused:    false,
-					validthis: true,
+					validthis: true
 				}
 			},
 			production: {
-				src: [
-					'js/src/**/**.js'
-				],
+				src: 'js/src/**/**.js',
 				options: {
 					ignores: '<%= pkg.js_ignores %>',
 					globals: {
 						'jQuery'   : true,
 						'$'        : true,
 						'WWW_ROOT' : true,
-						'Site'     : true,
+						'Site'     : true
 					},
 					'-W003':   true, // used before defined
 					devel:     true, // allow console
@@ -147,7 +129,7 @@ module.exports = function(grunt) {
 					sub:       true,
 					undef:     true,
 					unused:    true,
-					validthis: true,
+					validthis: true
 				}
 			}
 		},
@@ -206,9 +188,7 @@ module.exports = function(grunt) {
 			production: {
 				options: {
 					compress: true,
-					plugins: [
-						new (require('less-plugin-clean-css'))()
-					]
+					plugins: new (require('less-plugin-clean-css'))()
 				},
 				files: '<%= pkg.css %>'
 			}
@@ -238,22 +218,21 @@ module.exports = function(grunt) {
 			},
 			target: {
 				files: {
-					'css/site-ie8.css': [ 'css/site-ie8.css' ]
+					'css/site-ie8.css': 'css/site-ie8.css'
 				}
 			}
 		},
 		// Custom Modernizr build
 		modernizr: {
-			target: {
-				devFile: 'components/modernizr/modernizr.js',
-				outputFile: 'js/modernizr.js',
-				"extra" : {
-					"shiv" : false,
-					"printshiv" : false,
-					"load" : true,
-					"mq" : false,
-					"cssclasses" : true
-				},
+			dist: {
+				devFile: false,
+				"dest": 'js/modernizr.js',
+				"options" : [
+					"load",
+					"setClasses",
+					"testProp",
+					"fnBind"
+				],
 				files: {
 					src: [
 						'js/*.js',
@@ -268,7 +247,7 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					cwd: 'images/src',
-					src: '**/*.{png,jpg,jpeg,gif}',
+					src: '**/*.{png,jpg,jpeg,gif,.ico}',
 					dest: 'images'
 				}]
 			}
@@ -310,9 +289,7 @@ module.exports = function(grunt) {
 				reportpath: "reports/validation-report.json"
 			},
 			target: {
-				src: [
-					'static/*.html'
-				]
+				src: 'static/*.html'
 			}
 		},
 		// HTML formatting
@@ -330,6 +307,12 @@ module.exports = function(grunt) {
 				src: 'static/*.html'
 			}
 		},
+		// Remove any previously-created files
+		clean: {
+			js: 'js/**.{js,map}',
+			css: 'css/**.{css,map}',
+			html: 'static/**.html'
+		},
 		// Browsersync auto refresh
 		browserSync: {
 			target: {
@@ -338,7 +321,7 @@ module.exports = function(grunt) {
 						'js/**.js',
 						'css/**.css',
 						'images/*',
-						'static/**/*.html'
+						'static/**/**.html'
 					]
 				},
 				options: {
@@ -377,7 +360,7 @@ module.exports = function(grunt) {
 	}
 
 	// Default task
-	grunt.registerTask('default', [ 'less:production', 'postcss:production', 'stripmq', 'js', 'img', 'html' ]);
+	grunt.registerTask('default', [ 'clean', 'less:production', 'postcss:production', 'stripmq', 'bless', 'js', 'img', 'html' ]);
 
 	// CSS
 	grunt.registerTask('css', [ 'less:target', 'postcss:target', 'stripmq', 'bless' ]);
@@ -395,6 +378,6 @@ module.exports = function(grunt) {
 	grunt.registerTask('devel', ['browserSync', 'watch']);
 
 	// Debug (expanded files)
-	grunt.registerTask('debug', [ 'less:target', 'postcss:target', 'stripmq', 'jshint', 'concat', 'includereplace:target', 'img', 'html' ]);
+	grunt.registerTask('debug', [ 'clean', 'less:target', 'postcss:target', 'stripmq', 'jshint', 'concat', 'includereplace:target', 'img', 'html' ]);
 
 };
