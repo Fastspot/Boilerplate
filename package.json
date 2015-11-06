@@ -24,7 +24,7 @@
     "grunt-include-replace": "^3.2.0",
     "grunt-modernizr": "^1.0.1",
     "grunt-newer": "^1.1.1",
-    "grunt-postcss": "^0.7.0",
+    "grunt-postcss": "^0.7.1",
     "grunt-prettify": "^0.4.0",
     "grunt-stripmq": "0.0.6",
     "grunt-svgmin": "^2.0.1",
