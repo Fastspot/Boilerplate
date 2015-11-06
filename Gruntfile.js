@@ -289,6 +289,19 @@ module.exports = function(grunt) {
 				}]
 			}
 		},
+		// Bless CSS
+		bless: {
+			target: {
+				options: {
+					compress: true,
+					cacheBuster: false,
+					logCount: true
+				},
+				files: {
+					'css/site-ie.css': 'css/site.css'
+				}
+			}
+		},
 		// HTML validation
 		validation: {
 			options: {
@@ -367,7 +380,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', [ 'less:production', 'postcss:production', 'stripmq', 'js', 'img', 'html' ]);
 
 	// CSS
-	grunt.registerTask('css', [ 'less:target', 'postcss:target', 'stripmq' ]);
+	grunt.registerTask('css', [ 'less:target', 'postcss:target', 'stripmq', 'bless' ]);
 
 	// JS
 	grunt.registerTask('js', [ 'jshint:production', 'uglify', 'includereplace:target', 'modernizr' ]);
