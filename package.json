@@ -41,8 +41,8 @@
       "components/jquery/dist/jquery.min.js",
       "components/formstone/dist/js/core.js",
       "components/formstone/dist/js/mediaquery.js",
-      "js/src/modules/page.js",
-      "js/src/site.js"
+      "js/src/site.js",
+      "js/src/modules/page.js"
     ],
     "js/site-ie8.js": [
       "components/html5shiv/dist/html5shiv.min.js",
