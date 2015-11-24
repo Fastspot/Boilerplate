@@ -100,14 +100,17 @@
 		color: rgba(red(@base), green(@base), blue(@base), @alpha);
 	}
 
+	// 1. Autoprefixer does not prefix correctly
+	// 2. IE 10/11 uses a non-standard
+
 	.columns(@count, @gap) {
 		column-count: @count;
 		column-gap: @gap;
 
 		& > * {
-			// autoprefixer does not prefix this one correctly just yet
-			-webkit-column-break-inside: avoid;
+			-webkit-column-break-inside: avoid; // 1
 			column-break-inside: avoid;
+			break-inside: avoid; // 2
 		}
 	}
 
@@ -211,14 +214,28 @@
 		white-space: nowrap;
 	}
 
+	// 1. Filter for <= IE 9, does not work on pseudo elements
+
 	.gradient_vertical(@startColor: black, @endColor: white) {
 		background-color: @startColor;
 		background: linear-gradient(to bottom, @startColor, @endColor);
+
+		@ieStartColor: argb(@startColor);
+		@ieEndColor:   argb(@endColor);
+
+		filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr='@{ieStartColor}', endColorstr='@{ieEndColor}', GradientType=0)"; // 1
 	}
+
+	// 1. Filter for <= IE 9, does not work on pseudo elements
 
 	.gradient_horizontal(@startColor: black, @endColor: white) {
 		background-color: @startColor;
 		background: linear-gradient(to right, @startColor, @endColor);
+
+		@ieStartColor: argb(@startColor);
+		@ieEndColor:   argb(@endColor);
+
+		filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr='@{ieStartColor}', endColorstr='@{ieEndColor}', GradientType=1)"; // 1
 	}
 
 	.rgba_raw(@base, @alpha) {
