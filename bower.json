@@ -6,6 +6,7 @@
     "formstone": "~0.8.0",
     "jquery": "~1.11.2",
     "modernizr": "~3.2.0",
+    "normalize-css": "~3.0.3",
     "picturefill": "~3.0.0"
   }
 }
