@@ -281,17 +281,6 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		// HTML validation
-		validation: {
-			options: {
-				reset: true,
-				path: "reports/validation-status.json",
-				reportpath: "reports/validation-report.json"
-			},
-			target: {
-				src: 'static/*.html'
-			}
-		},
 		// HTML formatting
 		prettify: {
 			options: {
