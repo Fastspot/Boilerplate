@@ -314,7 +314,9 @@ module.exports = function(grunt) {
 					]
 				},
 				options: {
-					proxy : "localhost:8888",
+					server: {
+						baseDir: "./"
+					},
 					watchTask: true,
 					open: false
 				}
@@ -349,7 +351,10 @@ module.exports = function(grunt) {
 	}
 
 	// Default task
-	grunt.registerTask('default', [ 'clean', 'less:production', 'postcss:production', 'stripmq', 'bless', 'js', 'img', 'html' ]);
+	grunt.registerTask('default', 'build');
+
+	// Build
+	grunt.registerTask('build', [ 'clean', 'less:production', 'postcss:production', 'stripmq', 'bless', 'js', 'img', 'html' ]);
 
 	// CSS
 	grunt.registerTask('css', [ 'less:target', 'postcss:target', 'stripmq', 'bless' ]);

@@ -1,5 +1,5 @@
 {
-  "name": "SiteTitle",
+  "name": "site-title",
   "id": "siteId",
   "version": "0.0.1",
   "description": "Site description.",
@@ -58,6 +58,7 @@
     "js/src/lib/*/"
   ],
   "vars": {
+    "namespace": "namespace",
     "mq_min_ht": "800",
     "mq_min_xs": "320",
     "mq_min_sm": "500",

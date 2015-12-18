@@ -65,7 +65,7 @@
 				this.$window   = $(window);
 				this.$doc      = $(document);
 				this.$body     = $("body");
-				this.touch     = $("html").hasClass("touch");
+				this.touch     = $("html").hasClass("touchevents");
 
 				if ($.mediaquery) {
 					$.mediaquery({
@@ -168,5 +168,5 @@
 
 	// !Ready
 	$(document).ready(function() {
-		Site.init("Namespace");
+		Site.init("@namespace");
 	});
