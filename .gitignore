@@ -1,3 +1,4 @@
 .DS_store
+components/
 node_cache/
 node_modules/

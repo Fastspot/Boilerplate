@@ -166,8 +166,14 @@ module.exports = function(grunt) {
 				cwd: 'js/'
 			},
 			static: {
+				options: {
+					globals: '<%= pkg.vars %>'
+				},
 				dest: 'static',
-				src: '*.html',
+				src: [
+					"*.html",
+					"templates/*.html"
+				],
 				expand: true,
 				cwd: 'static/src'
 			}
@@ -241,13 +247,13 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		// Optimize images (png, gif, jpg)
+		// Optimize images (png, gif, jpg, ico)
 		imagemin: {
 			target: {
 				files: [{
 					expand: true,
 					cwd: 'images/src',
-					src: '**/*.{png,jpg,jpeg,gif,.ico}',
+					src: '**/*.{png,jpg,jpeg,gif,ico}',
 					dest: 'images'
 				}]
 			}
@@ -293,14 +299,43 @@ module.exports = function(grunt) {
 			},
 			target: {
 				expand: true,
-				src: 'static/*.html'
+				src: [
+					"static/*.html",
+					"static/templates/*.html"
+				]
 			}
 		},
 		// Remove any previously-created files
 		clean: {
-			js: 'js/**.{js,map}',
-			css: 'css/**.{css,map}',
-			html: 'static/**.html'
+			js: [
+				"js/*",
+				"!js/src/**",
+			],
+			css: [
+				"css/*",
+				"!css/src/**",
+			],
+			html: [
+				"static/*",
+				"!static/src/**",
+			]
+		},
+		// Create directory listing
+		includeSource: {
+			options: {
+				basePath: 'static/templates',
+				baseUrl: '',
+				templates: {
+					html: {
+						link: '<li><a href="templates/{filePath}">{filePath}</a></li>'
+					}
+				}
+			},
+			target: {
+				files: {
+					'static/index.html': 'static/index.tpl.html'
+				}
+			}
 		},
 		// Browsersync auto refresh
 		browserSync: {
@@ -366,10 +401,10 @@ module.exports = function(grunt) {
 	grunt.registerTask('img', [ 'imagemin', 'svgmin' ]);
 
 	// HTML
-	grunt.registerTask('html', [ 'includereplace:static', 'prettify' ]);
+	grunt.registerTask('html', [ 'includereplace:static', 'prettify', 'includeSource' ]);
 
 	// Develop
-	grunt.registerTask('devel', ['browserSync', 'watch']);
+	grunt.registerTask('devel', ['build', 'browserSync', 'watch']);
 
 	// Debug (expanded files)
 	grunt.registerTask('debug', [ 'clean', 'less:target', 'postcss:target', 'stripmq', 'jshint', 'concat', 'includereplace:target', 'img', 'html' ]);
