@@ -10,9 +10,9 @@
 
 			/* Plugin Defaults */
 
-			$.lightbox("defaults", {
-				mobile: true
-			});
+			// $.lightbox("defaults", {
+			// 	mobile: true
+			// });
 
 
 			/* Picturefill */
@@ -30,22 +30,22 @@
 
 			/* Mobile Main Navigation */
 
-			Site.$body.find(".js-mobile_navigation").navigation({
-				maxWidth: "979px"
-			});
+			// Site.$body.find(".js-mobile_navigation").navigation({
+			// 	maxWidth: "979px"
+			// });
 
 
 			/* Mobile Subnavigation */
 
-			Site.$body.find(".js-navigation")
-				.navigation({
-					maxWidth: "979px"
-				})
-				.on("open.navigation", function() {
-					trackEvent( $(this).data("analytics-open") );
-				}).on("close.navigation", function() {
-					trackEvent( $(this).data("analytics-close") );
-				});
+			// Site.$body.find(".js-navigation")
+			// 	.navigation({
+			// 		maxWidth: "979px"
+			// 	})
+			// 	.on("open.navigation", function() {
+			// 		trackEvent( $(this).data("analytics-open") );
+			// 	}).on("close.navigation", function() {
+			// 		trackEvent( $(this).data("analytics-close") );
+			// 	});
 
 
 			/* Plugins
@@ -128,7 +128,7 @@
 		}
 
 		function scroll() {
-			
+
 		}
 
 		function resize() {
@@ -188,6 +188,6 @@
 		Site.onInit.push(init);
 
 		return {
-			
+
 		};
 	})(jQuery, Site);

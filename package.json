@@ -42,6 +42,7 @@
       "components/jquery/dist/jquery.min.js",
       "components/formstone/dist/js/core.js",
       "components/formstone/dist/js/mediaquery.js",
+      "components/picturefill/dist/picturefill.min.js",
       "js/src/site.js",
       "js/src/modules/page.js"
     ],

@@ -350,7 +350,7 @@ module.exports = function(grunt) {
 				},
 				options: {
 					server: {
-						baseDir: "./"
+						baseDir: "./static"
 					},
 					watchTask: true,
 					open: false
