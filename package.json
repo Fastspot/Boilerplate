@@ -26,6 +26,7 @@
     "grunt-newer": "^1.1.1",
     "grunt-postcss": "^0.7.1",
     "grunt-prettify": "^0.4.0",
+    "grunt-real-favicon": "^0.1.6",
     "grunt-stripmq": "0.0.6",
     "grunt-svgmin": "^3.1.0",
     "less-plugin-clean-css": "^1.5.1",

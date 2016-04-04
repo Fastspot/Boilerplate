@@ -356,6 +356,52 @@ module.exports = function(grunt) {
 					open: false
 				}
 			}
+		},
+		// Favicons - http://realfavicongenerator.net/favicon/grunt
+		realFavicon: {
+			favicons: {
+				src: 'images/favicon.png',
+				dest: 'images/favicons/',
+				options: {
+					iconsPath: '/images/favicons/',
+					html: [ 'static/src/partials/_favicons.html' ],
+					design: {
+						ios: {
+							pictureAspect: 'noChange'
+						},
+						desktopBrowser: {},
+						windows: {
+							pictureAspect: 'noChange',
+							backgroundColor: '<%= pkg.vars.color %>',
+							onConflict: 'override'
+						},
+						androidChrome: {
+							pictureAspect: 'noChange'
+							themeColor: '<%= pkg.vars.color %>',
+							manifest: {
+								name: '<%= pkg.description %>',
+								display: 'browser',
+								orientation: 'notSet',
+								onConflict: 'override',
+								declared: true
+							}
+						},
+						safariPinnedTab: {
+							pictureAspect: 'blackAndWhite',
+							threshold: 75,
+							themeColor: '<%= pkg.vars.color %>'
+						}
+					},
+					settings: {
+						scalingAlgorithm: 'Mitchell',
+						errorOnImageTooSmall: false
+					},
+					versioning: {
+						paramName: 'v',
+						paramValue: '<%= pkg.version %>'
+					}
+				}
+			}
 		}
 	});
 
