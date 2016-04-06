@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "devDependencies": {
     "html5shiv": "~3.7.3",
-    "formstone": "~0.8.0",
+    "formstone": "~1.0.0",
     "jquery": "~1.11.2",
     "modernizr": "~3.2.0",
     "normalize-css": "~3.0.3",
