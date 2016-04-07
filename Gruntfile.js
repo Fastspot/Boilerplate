@@ -376,7 +376,7 @@ module.exports = function(grunt) {
 							onConflict: 'override'
 						},
 						androidChrome: {
-							pictureAspect: 'noChange'
+							pictureAspect: 'noChange',
 							themeColor: '<%= pkg.vars.color %>',
 							manifest: {
 								name: '<%= pkg.description %>',
