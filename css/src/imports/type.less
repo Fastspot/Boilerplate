@@ -84,7 +84,16 @@
 		font-weight: bold;
 	}
 
-	.type() {
+	.body_text {}
+
+	.label_text {}
+
+	.intro_text {}
+
+	.caption_text {}
+
+	.typography {
+		.body_text;
 
 		h1 {
 			.heading_1;
@@ -122,146 +131,189 @@
 	/* WYSIWYG Images
 	============================================================================= */
 
+	.typography {
 
+		img {
+			max-width: 50%;
+		}
 
+		.block_left,
+		.block_right {
+			width: auto;
+			max-width: 50%;
+
+			display: table;
+			table-layout: fixed;
+
+			@media @max_sm {
+				max-width: none;
+
+				float: none;
+				margin-right: 0;
+				margin-left: 0;
+			}
+
+			img {
+				max-width: none;
+			}
+
+			figcaption {
+				caption-side: bottom;
+				display: table-caption;
+			}
+		}
+	}
 
 
 	/* Blockquote
 	============================================================================= */
 
-	blockquote {}
+	.typography {
 
-	blockquote p {}
+		blockquote {}
+
+		blockquote p {}
+	}
 
 
 	/* Lists
 	============================================================================= */
 
-	ol,
-	ul {
-		li {}
-	}
+	.typography {
 
-	ol {
-		counter-reset: li;
+		ol,
+		ul {
+			li {}
+		}
 
-		> li {
-			display: block;
+		ol {
+			counter-reset: li;
+
+			> li {
+				display: block;
+				list-style: none;
+
+				&:before {
+					position: absolute;
+					top: 0;
+					right: 100%;
+
+					content: counter(li) ". ";
+					counter-increment: li;
+				}
+			}
+
+			&[type="a"] {
+				> li {
+					&:before {
+						content: counter(li, lower-alpha) ". ";
+					}
+				}
+			}
+
+			&[type="A"] {
+				> li {
+					&:before {
+						content: counter(li, upper-alpha) ". ";
+					}
+				}
+			}
+
+			&[type="i"] {
+				> li {
+					&:before {
+						content: counter(li, lower-roman) ". ";
+					}
+				}
+			}
+
+			&[type="I"] {
+				> li {
+					&:before {
+						content: counter(li, upper-roman) ". ";
+					}
+				}
+			}
+		}
+
+		ul {
 			list-style: none;
 
-			&:before {
-				position: absolute;
-				top: 0;
-				right: 100%;
+			li {
 
-				content: counter(li) ". ";
-				counter-increment: li;
-			}
-		}
-
-		&[type="a"] {
-			> li {
 				&:before {
-					content: counter(li, lower-alpha) ". ";
-				}
-			}
-		}
+					width: 5px;
+					height: 5px;
 
-		&[type="A"] {
-			> li {
-				&:before {
-					content: counter(li, upper-alpha) ". ";
-				}
-			}
-		}
-
-		&[type="i"] {
-			> li {
-				&:before {
-					content: counter(li, lower-roman) ". ";
-				}
-			}
-		}
-
-		&[type="I"] {
-			> li {
-				&:before {
-					content: counter(li, upper-roman) ". ";
+					background: #eee;
+					border-radius: 100%;
+					content: "";
+					display: block;
+					float: left;
+					margin: 10px 0 0 -20px;
 				}
 			}
 		}
 	}
 
-	ul {
-		list-style: none;
-
-		li {
-
-			&:before {
-				width: 5px;
-				height: 5px;
-
-				background: #eee;
-				border-radius: 100%;
-				content: "";
-				display: block;
-				float: left;
-				margin: 10px 0 0 -20px;
-			}
-		}
-	}
 
 	/* Tables
 	============================================================================= */
 
-	table {
+	.typography {
 
-		thead,
-		tbody {
+		table {
+			.margined;
 
-		}
+			thead,
+			tbody {}
 
-		thead {
+			thead {}
 
-		}
+			tbody {}
 
-		tbody {
+			tr {}
 
-		}
+			th,
+			td {}
 
-		tr {
+			th {}
 
-		}
-
-		th,
-		td {
-
-		}
-
-		th {
-
-		}
-
-		td {
-
+			td {}
 		}
 	}
 
 	// Modified from Bootstrap
 
 	.table_wrapper {
-		// Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
-		min-height: 0.01%;
+		// 1. Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
 
-		@media @max_md {
-			.margined;
+		.margined;
 
-			width: 100%;
+		min-height: 0.01%; // 1
 
-			border-left:  1px solid #CCC;
-			border-right: 1px solid #CCC;
-			overflow-y: hidden;
-			-ms-overflow-style: -ms-autohiding-scrollbar;
+		&.table_wrapper_overflow {
+			.relative;
+
+			border: 1px solid #ccc;
+
+			&:after {
+				.absolute;
+				.gradient_horizontal(fade(@true_black, 0), fade(@true_black, 10));
+
+				width: 20px;
+				height: 100%;
+
+				top: 0;
+				right: 0;
+
+				content: "";
+			}
+
+			.table_wrapper_inner {
+				overflow-y: hidden;
+				-ms-overflow-style: -ms-autohiding-scrollbar;
+			}
 
 			> table {
 				margin: 0;
@@ -276,9 +328,8 @@
 				> tfoot {
 					> tr {
 						> th,
-						> td {
-							white-space: nowrap;
-						}
+						> td {}
+
 						> th:first-child,
 						> td:first-child {
 							border-left: 0;

@@ -165,57 +165,90 @@
 	Background Colors
 ============================================================================= */
 
+	.bg_transparent {
+		background-color: transparent;
+	}
+
+	.bg_true_white {
+		background-color: @true_white;
+	}
+
+	.bg_true_black {
+		background-color: @true_black;
+	}
+
 
 /* ==========================================================================
 	Border Colors
 ============================================================================= */
+
+	.border_true_white {
+		border-color: @true_white;
+	}
+
+	.border_true_black {
+		border-color: @true_black;
+	}
+
+
+/* ==========================================================================
+	Font Colors
+============================================================================= */
+
+	.color_true_white {
+		color: @true_white;
+	}
+
+	.color_true_black {
+		color: @true_black;
+	}
 
 
 /* ==========================================================================
 	Helpers
 ============================================================================= */
 
-	.absolute {
+	.absolute() {
 		position: absolute;
 	}
 
-	.relative {
+	.relative() {
 		position: relative;
 	}
 
-	.fixed {
+	.fixed() {
 		position: fixed;
 	}
 
-	.static {
+	.static() {
 		position: static;
 	}
 
-	.block {
+	.block() {
 		display: block;
 	}
 
-	.block_link {
-		.block;
+	.none() {
+		display: none;
 	}
 
-	.inline {
+	.inline() {
 		display: inline;
 	}
 
-	.inline_block {
+	.inline_block() {
 		display: inline-block;
 	}
 
-	.full_height {
+	.full_height() {
 		height: 100%;
 	}
 
-	.full_width {
+	.full_width() {
 		width: 100%;
 	}
 
-	.full {
+	.full() {
 		.full_width;
 		.full_height;
 	}
@@ -329,6 +362,25 @@
 		}
 	}
 
+	.text_left {
+		text-align: left;
+	}
+
+	.text_center {
+		text-align: center;
+	}
+
+	.text_right {
+		text-align: right;
+	}
+
+	.max_width_item {
+		max-width: 1600px;
+
+		margin-right: auto;
+		margin-left: auto;
+	}
+
 
 /* ==========================================================================
 	Transitions
@@ -362,34 +414,15 @@
 	}
 
 	.responsive_image {
-		display: block;
+		.block;
 
 		picture {
-			display: block;
+			.block;
 		}
 
 		img {
+			.block;
+
 			width: 100%;
 		}
-	}
-
-
-/* ==========================================================================
-	Media Queries
-============================================================================= */
-
-	@media @min_sm {
-
-	}
-
-	@media @min_md {
-
-	}
-
-	@media @min_lg {
-
-	}
-
-	@media @min_xl {
-
 	}

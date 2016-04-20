@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html itemscope="" itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+
+	@@include('../partials/_head.html', {
+		"title": "Home"
+	})
+
+	<body class="fs-grid">
+
+		<!-- Skip-to-Content Link -->
+		<a href="#main_page_title" id="skip_to_content" class="skip_link">Skip to Main Content</a>
+
+		<div class="page_wrapper js-navigation_push">
+
+			<!-- Header -->
+			@@include('../partials/_header.html')
+
+			<!-- Page -->
+			<main class="page" itemprop="mainContentOfPage">
+
+				<!-- Page Feature -->
+				<div class="page_feature">
+					<h1 id="main_page_title" tabindex="-1">Home</h1>
+				</div>
+				<!-- END: Page Feature -->
+
+				<!-- Page Content -->
+				<div class="page_content">
+
+					<!-- Full Width Callouts -->
+					<div class="full_width_callouts">
+					</div>
+					<!-- END: Full Width Callouts -->
+
+				</div>
+				<!-- END: Page Content -->
+
+			</div>
+			<!-- END: Page -->
+
+			@@include('../partials/_footer.html')
+
+		</div> <!-- END: page_wrapper -->
+
+		@@include('../partials/_mobile_sidebar.html')
+
+		@@include('../partials/_footer-js.html')
+	</body>
+</html>

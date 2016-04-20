@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html itemscope="" itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+
+	@@include('../partials/_head.html', {
+		"title": "In Content Components"
+	})
+
+	<body class="fs-grid">
+
+		<!-- Skip-to-Content Link -->
+		<a href="#main_page_title" id="skip_to_content" class="skip_link">Skip to Main Content</a>
+
+		<div class="page_wrapper js-navigation_push">
+
+			<!-- Header -->
+			@@include('../partials/_header.html')
+
+			<!-- Page -->
+			<div class="page">
+
+				<!-- Page Feature -->
+				<div class="page_feature">
+				</div>
+				<!-- END: Page Feature -->
+
+				<!-- Page Content -->
+				<div class="page_content">
+
+					<!-- Page Header -->
+					<div class="page_header">
+						<div class="fs-row">
+							<div class="fs-cell">
+
+								@@include('../partials/navigation/breadcrumb/style-guide.html')
+
+								<h1 id="main_page_title" tabindex="-1">In Content Components</h1>
+
+							</div>
+						</div>
+					</div>
+					<!-- END: Page Header -->
+
+					<div class="fs-row">
+
+						<!-- Sub Nav -->
+						<div class="fs-cell-right fs-lg-4">
+							@@include('../partials/navigation/sub/style-guide.html')
+						</div>
+						<!-- END: Sub Nav -->
+
+						<!-- Main Content -->
+						<div class="fs-cell fs-lg-8">
+							<main class="main_content" itemprop="mainContentOfPage">
+
+								<!-- WYSIWYG - wrap all WYSIWYG text areas in `.typography` -->
+								<div class="typography">
+
+								</div>
+								<!-- END: WYSIWYG -->
+
+								<!-- In Content Callouts -->
+								<div class="in_content_callouts">
+
+								</div>
+								<!-- END: In Content Callouts -->
+
+							</main>
+						</div>
+						<!-- END: Main Content -->
+
+						<!-- Sidebar Callouts -->
+						<div class="fs-cell-right fs-lg-4">
+							<div class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+
+							</div>
+						</div>
+						<!-- END: Sidebar Callouts -->
+
+					</div>
+
+					<!-- Full Width Callouts -->
+					<div class="full_width_callouts">
+					</div>
+					<!-- END: Full Width Callouts -->
+
+				</div>
+				<!-- END: Page Content -->
+
+			</div>
+			<!-- END: Page -->
+
+			@@include('../partials/_footer.html')
+
+		</div> <!-- END: page_wrapper -->
+
+		@@include('../partials/_mobile_sidebar.html')
+
+		@@include('../partials/_footer-js.html')
+	</body>
+</html>

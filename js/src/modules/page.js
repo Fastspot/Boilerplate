@@ -6,13 +6,11 @@
 
 	Site.modules.Page = (function($, Site) {
 
+		var $mainNav;
+
 		function init() {
 
-			/* Plugin Defaults */
-
-			// $.lightbox("defaults", {
-			// 	mobile: true
-			// });
+			$mainNav                      = $(".main_nav");
 
 
 			/* Picturefill */
@@ -20,35 +18,14 @@
 			picturefill();
 
 
-			/* Analytics
+			/* Analytics */
 
 			$.analytics({
 				scrollDepth: true
 			});
-			*/
 
 
-			/* Mobile Main Navigation */
-
-			// Site.$body.find(".js-mobile_navigation").navigation({
-			// 	maxWidth: "979px"
-			// });
-
-
-			/* Mobile Subnavigation */
-
-			// Site.$body.find(".js-navigation")
-			// 	.navigation({
-			// 		maxWidth: "979px"
-			// 	})
-			// 	.on("open.navigation", function() {
-			// 		trackEvent( $(this).data("analytics-open") );
-			// 	}).on("close.navigation", function() {
-			// 		trackEvent( $(this).data("analytics-close") );
-			// 	});
-
-
-			/* Plugins
+			/* Plugins */
 
 			Site.$body.find(".js-background").background();
 			Site.$body.find(".js-carousel").carousel();
@@ -56,43 +33,26 @@
 			Site.$body.find(".js-dropdown").dropdown();
 			Site.$body.find(".js-equalize").equalize();
 			Site.$body.find(".js-lightbox").lightbox({ mobile: true });
+			Site.$body.find(".js-navigation")
+				.navigation({
+					maxWidth: Site.maxLG + "px"
+				})
+				.on("open.navigation", function() {
+					trackEvent( $(this).data("analytics-open") );
+				}).on("close.navigation", function() {
+					trackEvent( $(this).data("analytics-close") );
+				});
+			Site.$body.find(".js-swap").swap();
 			Site.$body.find("input[type=number]").number();
 			Site.$body.find("input[type=range]").range();
-			Site.$body.find(".js-swap").swap();
 			Site.$body.find(".js-tabs").tabs();
-			*/
 
 
 			/* Wrapper for Tables */
 
-			Site.$body.find("table").wrap('<div class="table_wrapper"></div>');
-
-
-			/* Pikaday Date Picker
-
-			if (Site.touch) {
-				Site.$body.find(".js-datepicker, input[type=date]")
-					.attr("type", "date")
-					.removeAttr("placeholder")
-					.on("blur", function() {
-						$(this).trigger("datepicker.change");
-					});
-			} else {
-				Site.$body.find(".js-datepicker, input[type=date]")
-					.attr("type", "text")
-					.pikaday({
-						firstDay: 0,
-						minDate: new Date("2000-01-01"),
-						maxDate: new Date("2020-12-31"),
-						yearRange: [ 2000, 2020 ],
-						format: "MM/DD/YYYY",
-						position: 'bottom left',
-						onSelect: function() {
-							$(".js-datepicker").trigger("datepicker.change");
-						}
-					});
-			}
-			*/
+			Site.$body.find(".typography table")
+				.wrap('<div class="table_wrapper"><div class="table_wrapper_inner"></div></div>');
+			tableOverflow();
 
 
 			/* Generic Toggles */
@@ -118,6 +78,17 @@
 			});
 
 
+			// Display children of focused nav items
+
+			$mainNav.find("a")
+				.focus(function () {
+					$(this).closest(".main_nav_item").addClass("focused");
+				})
+				.blur(function () {
+					$(this).closest(".main_nav_item").removeClass("focused");
+				});
+
+
 			/* Scrolling */
 
 			Site.onScroll.push(scroll);
@@ -133,6 +104,7 @@
 
 		function resize() {
 			scroll();
+			tableOverflow();
 		}
 
 		function respond() {
@@ -181,6 +153,18 @@
 
 				$.analytics.apply(this, data);
 			}
+		}
+
+		function tableOverflow() {
+			$(".table_wrapper").each(function() {
+				$(this).removeClass("table_wrapper_overflow");
+				if ($(this).prop("scrollWidth") > $(this).width() + 1) {
+					$(this).addClass("table_wrapper_overflow");
+				}
+				else {
+					$(this).removeClass("table_wrapper_overflow");
+				}
+			});
 		}
 
 		/* Hook Into Main init Routine */

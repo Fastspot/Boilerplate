@@ -1,0 +1,79 @@
+/* ==========================================================================
+	 Secondary Navigation Common
+============================================================================= */
+
+	.secondary_nav {}
+
+	.secondary_nav_heading {
+		.hide;
+	}
+
+	.secondary_nav_list {}
+
+	.secondary_nav_item {}
+
+	.secondary_nav_link {
+
+		&:active,
+		&:focus,
+		.no-touchevents &:hover {}
+	}
+
+
+/* ==========================================================================
+	 Secondary Navigation Small
+============================================================================= */
+
+	.secondary_nav_sm {
+
+		@media @min_lg {
+			.hide;
+		}
+
+		.secondary_nav {}
+
+		.secondary_nav_heading {
+			.hide;
+		}
+
+		.secondary_nav_list {}
+
+		.secondary_nav_item {}
+
+		.secondary_nav_link {
+			.block;
+
+			&:active,
+			&:focus,
+			.no-touchevents &:hover {}
+		}
+	}
+
+
+/* ==========================================================================
+	 Secondary Navigation Large
+============================================================================= */
+
+	.secondary_nav_lg {
+
+		@media @max_lg {
+			.hide;
+		}
+
+		.secondary_nav {}
+
+		.secondary_nav_heading {
+			.hide;
+		}
+
+		.secondary_nav_list {}
+
+		.secondary_nav_item {}
+
+		.secondary_nav_link {
+
+			&:active,
+			&:focus,
+			.no-touchevents &:hover {}
+		}
+	}
