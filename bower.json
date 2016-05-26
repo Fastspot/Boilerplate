@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "devDependencies": {
     "html5shiv": "~3.7.3",
-    "formstone": "~1.0.0",
+    "formstone": "~1.1.0",
     "jquery": "~1.11.2",
-    "modernizr": "~3.2.0",
-    "normalize-css": "~3.0.3",
-    "picturefill": "~3.0.1"
+    "modernizr": "~3.3.0",
+    "normalize-css": "~4.1.0",
+    "picturefill": "~3.0.2",
+    "what-input": "^2.1.0"
   }
 }

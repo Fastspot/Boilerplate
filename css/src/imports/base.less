@@ -109,6 +109,16 @@
 		}
 	}
 
+	.margined_none,
+	.margined_top_none {
+		margin-top: 0 !important;
+	}
+
+	.margined_none,
+	.margined_bottom_none {
+		margin-bottom: 0 !important;
+	}
+
 
 /* ==================================================================
    Padding
@@ -160,6 +170,16 @@
 		}
 	}
 
+	.padded_none,
+	.padded_top_none {
+		padding-top: 0 !important;
+	}
+
+	.padded_none,
+	.padded_bottom_none {
+		padding-bottom: 0 !important;
+	}
+
 
 /* ==========================================================================
 	Background Colors
@@ -177,10 +197,41 @@
 		background-color: @true_black;
 	}
 
+	.hover_bg_transparent() {
+
+		&:focus,
+		&:active,
+		.no-touchevents &:hover {
+			background-color: transparent;
+		}
+	}
+
+	.hover_bg_true_white() {
+
+		&:focus,
+		&:active,
+		.no-touchevents &:hover {
+			background-color: @true_white;
+		}
+	}
+
+	.hover_bg_true_black() {
+
+		&:focus,
+		&:active,
+		.no-touchevents &:hover {
+			background-color: @true_black;
+		}
+	}
+
 
 /* ==========================================================================
 	Border Colors
 ============================================================================= */
+
+	.border_transparent {
+		border-color: transparent;
+	}
 
 	.border_true_white {
 		border-color: @true_white;
@@ -188,6 +239,33 @@
 
 	.border_true_black {
 		border-color: @true_black;
+	}
+
+	.hover_border_transparent() {
+
+		&:focus,
+		&:active,
+		.no-touchevents &:hover {
+			border-color: transparent;
+		}
+	}
+
+	.hover_border_true_white() {
+
+		&:focus,
+		&:active,
+		.no-touchevents &:hover {
+			border-color: @true_white;
+		}
+	}
+
+	.hover_border_true_black() {
+
+		&:focus,
+		&:active,
+		.no-touchevents &:hover {
+			border-color: @true_black;
+		}
 	}
 
 
@@ -201,6 +279,24 @@
 
 	.color_true_black {
 		color: @true_black;
+	}
+
+	.hover_color_true_white() {
+
+		&:focus,
+		&:active,
+		.no-touchevents &:hover {
+			color: @true_white;
+		}
+	}
+
+	.hover_color_true_black() {
+
+		&:focus,
+		&:active,
+		.no-touchevents &:hover {
+			color: @true_black;
+		}
 	}
 
 
@@ -424,5 +520,27 @@
 			.block;
 
 			width: 100%;
+		}
+	}
+
+
+/* ==========================================================================
+	Input Focus
+============================================================================= */
+
+	// Uses 'What input ?' detection - https://github.com/ten1seven/what-input
+
+	[data-whatinput="mouse"] a:focus,
+	[data-whatinput="mouse"] button:focus,
+	[data-whatinput="touch"] a:focus,
+	[data-whatinput="touch"] button:focus {
+		outline: none;
+	}
+
+	.focus_outline_none() {
+
+		[data-whatinput="mouse"] &:focus,
+		[data-whatinput="touch"] &:focus {
+			outline: none;
 		}
 	}
