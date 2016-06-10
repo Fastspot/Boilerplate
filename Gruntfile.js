@@ -405,6 +405,15 @@ module.exports = function(grunt) {
 		}
 	});
 
+	// Cache buster
+	grunt.config.merge({
+		pkg: {
+			vars: {
+				cache_version: ( new Date() ).getTime()
+			}
+		}
+	});
+
 	// Newer LESS Imports
 	function checkForNewerImports(lessFile, mTime, include) {
 		var fs = require('fs'),
