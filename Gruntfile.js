@@ -182,7 +182,11 @@ module.exports = function(grunt) {
 		less: {
 			options: {
 				modifyVars: '<%= pkg.vars %>',
-				banner: '<%= meta.banner %>'
+				banner: '<%= meta.banner %>',
+				plugins: [
+					new (require('less-plugin-clean-css'))(),
+					require('less-plugin-glob')
+				]
 			},
 			target: {
 				options: {
@@ -193,8 +197,7 @@ module.exports = function(grunt) {
 			},
 			production: {
 				options: {
-					compress: true,
-					plugins: new (require('less-plugin-clean-css'))()
+					compress: true
 				},
 				files: '<%= pkg.css %>'
 			}
