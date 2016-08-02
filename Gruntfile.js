@@ -77,28 +77,28 @@ module.exports = function(grunt) {
 				options: {
 					ignores: '<%= pkg.js_ignores %>',
 					globals: {
-						'jQuery'   : true,
-						'$'        : true,
+						'jQuery'	 : true,
+						'$'				: true,
 						'WWW_ROOT' : true,
-						'Site'     : true
+						'Site'		 : true
 					},
-					'-W003':   true, // used before defined
-					devel:     true, // allow console
-					browser:   true,
-					curly:     true,
-					eqeqeq:    true,
-					forin:     true,
-					freeze:    true,
-					immed:     true,
-					jquery:    true,
-					latedef:   true,
-					newcap:    true,
-					noarg:     true,
-					nonew:     true,
+					'-W003':	 true, // used before defined
+					devel:		 true, // allow console
+					browser:	 true,
+					curly:		 true,
+					eqeqeq:		true,
+					forin:		 true,
+					freeze:		true,
+					immed:		 true,
+					jquery:		true,
+					latedef:	 true,
+					newcap:		true,
+					noarg:		 true,
+					nonew:		 true,
 					smarttabs: true,
-					sub:       true,
-					undef:     true,
-					unused:    false,
+					sub:			 true,
+					undef:		 true,
+					unused:		false,
 					validthis: true
 				}
 			},
@@ -107,28 +107,28 @@ module.exports = function(grunt) {
 				options: {
 					ignores: '<%= pkg.js_ignores %>',
 					globals: {
-						'jQuery'   : true,
-						'$'        : true,
+						'jQuery'	 : true,
+						'$'				: true,
 						'WWW_ROOT' : true,
-						'Site'     : true
+						'Site'		 : true
 					},
-					'-W003':   true, // used before defined
-					devel:     true, // allow console
-					browser:   true,
-					curly:     true,
-					eqeqeq:    true,
-					forin:     true,
-					freeze:    true,
-					immed:     true,
-					jquery:    true,
-					latedef:   true,
-					newcap:    true,
-					noarg:     true,
-					nonew:     true,
+					'-W003':	 true, // used before defined
+					devel:		 true, // allow console
+					browser:	 true,
+					curly:		 true,
+					eqeqeq:		true,
+					forin:		 true,
+					freeze:		true,
+					immed:		 true,
+					jquery:		true,
+					latedef:	 true,
+					newcap:		true,
+					noarg:		 true,
+					nonew:		 true,
 					smarttabs: true,
-					sub:       true,
-					undef:     true,
-					unused:    true,
+					sub:			 true,
+					undef:		 true,
+					unused:		true,
 					validthis: true
 				}
 			}
@@ -171,8 +171,8 @@ module.exports = function(grunt) {
 				},
 				dest: 'static',
 				src: [
-					"*.html",
-					"templates/*.html"
+					'*.html',
+					'templates/*.html'
 				],
 				expand: true,
 				cwd: 'static/src'
@@ -236,12 +236,12 @@ module.exports = function(grunt) {
 		modernizr: {
 			dist: {
 				devFile: false,
-				"dest": 'js/modernizr.js',
-				"options" : [
-					"load",
-					"setClasses",
-					"testProp",
-					"fnBind"
+				'dest': 'js/modernizr.js',
+				'options' : [
+					'load',
+					'setClasses',
+					'testProp',
+					'fnBind'
 				],
 				files: {
 					src: [
@@ -257,7 +257,10 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					cwd: 'images/src',
-					src: '**/*.{png,jpg,jpeg,gif,ico}',
+					src: [
+						'**/*.{png,jpg,jpeg,gif,ico}',
+						'!icons/**'
+					],
 					dest: 'images'
 				}]
 			}
@@ -273,7 +276,10 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					cwd: 'images/src',
-					src: '**/*.svg',
+					src: [
+						'**/*.svg',
+						'!icons/**'
+					],
 					dest: 'images'
 				}]
 			}
@@ -299,29 +305,37 @@ module.exports = function(grunt) {
 				indent_char: '	',
 				preserve_newlines: true,
 				max_preserve_newlines: 4,
-				unformatted: ["code", "pre"]
+				unformatted: ['code', 'pre']
 			},
 			target: {
 				expand: true,
 				src: [
-					"static/*.html",
-					"static/templates/*.html"
+					'static/*.html',
+					'static/templates/*.html'
 				]
 			}
 		},
 		// Remove any previously-created files
 		clean: {
 			js: [
-				"js/*",
-				"!js/src/**",
+				'js/*',
+				'!js/src/**'
 			],
 			css: [
-				"css/*",
-				"!css/src/**",
+				'css/*',
+				'!css/src/**'
 			],
 			html: [
-				"static/*",
-				"!static/src/**",
+				'static/*',
+				'!static/src/**'
+			],
+			img: [
+				'images/*',
+				'!images/src/**'
+			],
+			sprite: [
+				'css/src/imports/icons.less',
+				'images/src/icons.*'
 			]
 		},
 		// Create directory listing
@@ -354,7 +368,7 @@ module.exports = function(grunt) {
 				},
 				options: {
 					server: {
-						baseDir: "./"
+						baseDir: './'
 					},
 					watchTask: true,
 					open: false
@@ -406,6 +420,54 @@ module.exports = function(grunt) {
 					}
 				}
 			}
+		},
+		// SVG sprite file creation
+		svg_sprite: {
+			target: {
+				expand: true,
+				cwd: 'images/src/icons',
+				src: ['**/*.svg'],
+				dest: 'images/src',
+				options: {
+					'dest': 'images/',
+					'shape': {
+						'spacing': {
+							'padding': 10
+						}
+					},
+					'svg': {
+						'xmlDeclaration': false,
+						'doctypeDeclaration': false,
+						'namespaceIDs': false
+					},
+					'mode': {
+						'css': {
+							'common': 'sprite',
+							'prefix': '.icon_%s',
+							'dimensions': '_dims',
+							'sprite': '../src/icons.svg',
+							'bust': false,
+							'render': {
+								'less': {
+									'dest': '../../css/src/imports/icons.less'
+								}
+							},
+							'example': {
+									'dest': '../icons.html'
+							}
+						}
+					}
+				}
+			}
+		},
+		svg2png: {
+			target: {
+				files: [{
+					cwd: 'images/src/',
+					src: ['*.svg'],
+					dest: 'images/src/'
+				}]
+			}
 		}
 	});
 
@@ -414,7 +476,7 @@ module.exports = function(grunt) {
 		var fs = require('fs'),
 			path = require('path');
 
-		fs.readFile(lessFile, "utf8", function(err, data) {
+		fs.readFile(lessFile, 'utf8', function(err, data) {
 			var lessDir = path.dirname(lessFile),
 				regex = /@import "(.+?)(\.less)?";/g,
 				shouldInclude = false,
@@ -448,7 +510,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('js', [ 'jshint:production', 'uglify', 'includereplace:target', 'modernizr' ]);
 
 	// Images
-	grunt.registerTask('img', [ 'imagemin', 'svgmin' ]);
+	grunt.registerTask('img', [ 'svg_sprite', 'svg2png', 'imagemin', 'svgmin' ]);
 
 	// HTML
 	grunt.registerTask('html', [ 'includereplace:static', 'prettify', 'includeSource' ]);
