@@ -115,10 +115,10 @@
 	}
 
 	.icon_sprite(@left:0, @top:0) {
-		background: url(~"../images/icons.png?version=@{cache_version}") no-repeat @left @top;
+		background: resolve(~"../images/icons.png") no-repeat @left @top;
 
 		.svg & {
-			background-image: url(~"../images/icons.svg?version=@{cache_version}");
+			background-image: resolve(~"../images/icons.svg");
 		}
 	}
 

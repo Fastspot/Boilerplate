@@ -206,7 +206,8 @@ module.exports = function(grunt) {
 		postcss: {
 			options: {
 				processors: [
-					require('autoprefixer')({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1', 'ie >= 8']})
+					require('autoprefixer')({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1', 'ie >= 8']}),
+					require('postcss-assets')({cachebuster: true})
 				]
 			},
 			target: {
@@ -408,15 +409,6 @@ module.exports = function(grunt) {
 		}
 	});
 
-	// Cache buster
-	grunt.config.merge({
-		pkg: {
-			vars: {
-				cache_version: ( new Date() ).getTime()
-			}
-		}
-	});
-
 	// Newer LESS Imports
 	function checkForNewerImports(lessFile, mTime, include) {
 		var fs = require('fs'),
@@ -447,7 +439,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', 'build');
 
 	// Build
-	grunt.registerTask('build', [ 'clean', 'less:production', 'postcss:production', 'stripmq', 'bless', 'js', 'img', 'html' ]);
+	grunt.registerTask('build', [ 'clean', 'img', 'less:production', 'postcss:production', 'stripmq', 'bless', 'js', 'html' ]);
 
 	// CSS
 	grunt.registerTask('css', [ 'less:target', 'postcss:target', 'stripmq', 'bless' ]);
@@ -465,6 +457,6 @@ module.exports = function(grunt) {
 	grunt.registerTask('devel', ['build', 'browserSync', 'watch']);
 
 	// Debug (expanded files)
-	grunt.registerTask('debug', [ 'clean', 'less:target', 'postcss:target', 'stripmq', 'jshint', 'concat', 'includereplace:target', 'img', 'html' ]);
+	grunt.registerTask('debug', [ 'clean', 'img', 'less:target', 'postcss:target', 'stripmq', 'jshint', 'concat', 'includereplace:target', 'html' ]);
 
 };
