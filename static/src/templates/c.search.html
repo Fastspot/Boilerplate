@@ -1,0 +1,123 @@
+<!--
+	TODO:
+	1. Update Google CSE key
+	2. Update website URL for noscript link
+-->
+
+<!DOCTYPE html>
+<html itemscope="" itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+
+	@@include('../partials/_head.html', {
+		"title": "Master Sub Page"
+	})
+
+	<body class="fs-grid">
+
+		<!-- Skip-to-Content Link -->
+		<a href="#main_page_title" id="skip_to_content" class="skip_link">Skip to Main Content</a>
+
+		<div class="page_wrapper js-navigation_push">
+
+			<!-- Header -->
+			@@include('../partials/_header.html')
+
+			<!-- Page -->
+			<div class="page">
+
+				<!-- Page Feature -->
+				<div class="page_feature">
+				</div>
+				<!-- END: Page Feature -->
+
+				<!-- Page Content -->
+				<div class="page_content">
+
+					<!-- Page Header -->
+					<div class="page_header">
+						<div class="fs-row">
+							<div class="fs-cell">
+
+								@@include('../partials/navigation/breadcrumb/master-sub.html')
+
+								<h1 id="main_page_title" tabindex="-1">Master Sub Page</h1>
+
+							</div>
+						</div>
+					</div>
+					<!-- END: Page Header -->
+
+					<div class="fs-row">
+
+						<!-- Sub Nav -->
+						<div class="fs-cell-right fs-lg-4">
+							@@include('../partials/navigation/sub/master-sub.html')
+						</div>
+						<!-- END: Sub Nav -->
+
+						<!-- Main Content -->
+						<div class="fs-cell fs-lg-8">
+							<main class="main_content" itemprop="mainContentOfPage">
+
+								<div class="site_search_results">
+									<script>
+										(function()
+										{
+											var cx = '011737558837375720776:mbfrjmyam1g'; // 1
+											var gcse = document.createElement('script');
+											gcse.type = 'text/javascript';
+											gcse.async = true;
+											gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+												'//cse.google.com/cse.js?cx=' + cx;
+											gcse.autoSearchOnLoad = true;
+											var s = document.getElementsByTagName('script')[0];
+											s.parentNode.insertBefore(gcse, s);
+										})();
+									</script>
+									<gcse:search></gcse:search>
+									<noscript>
+										<div class="typography">
+											<p>The site search requires a JavaScript enabled browser. You can also search the site using <a href="https://www.google.com/#q=site:www.*website*.com+%22term%22">Google</a>.</p><!-- 2 -->
+										</div>
+									</noscript>
+								</div>
+
+								<!-- In Content Callouts -->
+								<div class="in_content_callouts">
+
+								</div>
+								<!-- END: In Content Callouts -->
+
+							</main>
+						</div>
+						<!-- END: Main Content -->
+
+						<!-- Sidebar Callouts -->
+						<div class="fs-cell-right fs-lg-4">
+							<div class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+
+							</div>
+						</div>
+						<!-- END: Sidebar Callouts -->
+
+					</div>
+
+					<!-- Full Width Callouts -->
+					<div class="full_width_callouts">
+					</div>
+					<!-- END: Full Width Callouts -->
+
+				</div>
+				<!-- END: Page Content -->
+
+			</div>
+			<!-- END: Page -->
+
+			@@include('../partials/_footer.html')
+
+		</div> <!-- END: page_wrapper -->
+
+		@@include('../partials/_mobile_sidebar.html')
+
+		@@include('../partials/_footer-js.html')
+	</body>
+</html>
