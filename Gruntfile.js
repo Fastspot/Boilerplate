@@ -371,7 +371,16 @@ module.exports = function(grunt) {
 						baseDir: './'
 					},
 					watchTask: true,
-					open: false
+					open: false,
+					notify: {
+						styles: {
+							top: 'auto',
+							bottom: '0',
+							borderBottomLeftRadius: '0',
+							fontSize: '11px',
+							padding: '5px 10px'
+						}
+					}
 				}
 			}
 		},
