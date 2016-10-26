@@ -28,9 +28,9 @@ module.exports = function(grunt) {
 			styles: {
 				files: 'css/src/**/**.{less,css}',
 				tasks: [
-					'newer:less:target',
+					'less:target',
 					'postcss:target',
-					'newer:stripmq:target'
+					'stripmq:target'
 				]
 			},
 			images: {
