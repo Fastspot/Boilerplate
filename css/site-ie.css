@@ -3828,23 +3828,23 @@ figure {
 }
 
 .icon_before:before {
-  background: url('/images/icons.png?158010ecce8') no-repeat 0 0;
+  background: url('/images/icons.png?1580110cca0') no-repeat 0 0;
   content: "";
   display: inline-block;
 }
 
 .svg .icon_before:before {
-  background-image: url('/images/icons.svg?158010ecce8');
+  background-image: url('/images/icons.svg?1580110cca0');
 }
 
 .icon_after:after {
-  background: url('/images/icons.png?158010ecce8') no-repeat 0 0;
+  background: url('/images/icons.png?1580110cca0') no-repeat 0 0;
   content: "";
   display: inline-block;
 }
 
 .svg .icon_after:after {
-  background-image: url('/images/icons.svg?158010ecce8');
+  background-image: url('/images/icons.svg?1580110cca0');
 }
 
 .icon_left:before {
@@ -3864,7 +3864,7 @@ figure {
 }
 
 .icon_center:after {
-  background: url('/images/icons.png?158010ecce8') no-repeat 0 0;
+  background: url('/images/icons.png?1580110cca0') no-repeat 0 0;
   position: absolute;
   top: 0;
   right: 0;
@@ -3876,7 +3876,7 @@ figure {
 }
 
 .svg .icon_center:after {
-  background-image: url('/images/icons.svg?158010ecce8');
+  background-image: url('/images/icons.svg?1580110cca0');
 }
 
 button {
