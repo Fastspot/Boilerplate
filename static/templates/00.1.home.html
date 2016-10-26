@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html itemscope="" itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+
+	<!--
+	TODO:
+	1. Update Client Name
+-->
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="mobile-web-app-capable" content="yes">
+
+		<!-- Page Attributes -->
+		<title>Home | Client Name</title>
+		<!-- 1 -->
+		<meta name="description" content="">
+
+		<!-- Favions / Touch Icons -->
+		<!-- File is gererated by favicon Grunt task:
+http://realfavicongenerator.net/favicon/grunt -->
+
+
+		<!-- Modernizer -->
+		<script src="../../js/modernizr.js"></script>
+
+		<!-- Compiled CSS -->
+		<!--[if gt IE 8]><!-->
+		<link rel="stylesheet" href="../../css/site.css">
+		<!--<![endif]-->
+
+		<!--[if IE 8]>
+		<script>var IE8 = true;</script>
+		<script src="../../js/site-ie8.js"></script>
+		<link rel="stylesheet" href="../../css/site-ie8.css">
+	<![endif]-->
+		<!--[if IE 9]>
+		<script>var IE9 = true;</script>
+		<script src="../../js/site-ie9.js"></script>
+		<link rel="stylesheet" href="../../css/site-ie9.css">
+	<![endif]-->
+		<!--[if lte IE 9]>
+		<link rel="stylesheet" href="../../css/site-ie.css">
+	<![endif]-->
+	</head>
+
+
+	<body class="fs-grid">
+
+		<!-- Skip-to-Content Link -->
+		<a href="#main_page_title" id="skip_to_content" class="skip_link">Skip to Main Content</a>
+
+		<div class="page_wrapper js-navigation_push">
+
+			<!-- Header -->
+			<!--
+	TODO:
+	1. Update specific type of organization
+	(EducationalOrganization, CollegeOrUniversity, etc...)
+	2. Update Client Name
+	3. Logo needs absolute URL - //www.example.com/logo.png
+	4. Update to Client domain
+	5. Path to search page on client domain
+-->
+
+			<!-- Header -->
+			<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+				<div class="fs-row">
+					<div class="fs-cell">
+
+						<!--
+				Logo markup as defined by Google structured data
+				https://developers.google.com/structured-data/customize/logos
+			-->
+						<h1 class="logo header_logo" itemscope itemtype="http://schema.org/Organization">
+							<!-- 1 -->
+							<a class="header_logo_link" itemprop="url" href="00.1.home.html">Client Name</a>
+							<!-- 2 -->
+							<meta itemprop="logo" content="../../images/logo-schema.png">
+							<!-- 3 -->
+							<img src="../../images/logo-print.png" class="print" alt="">
+						</h1>
+
+						<!-- Secondary Navigation -->
+						<nav class="secondary_nav secondary_nav_lg" aria-label="Secondary Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+							<h2 class="secondary_nav_heading">Secondary Navigation</h2>
+							<div class="secondary_nav_list" role="navigation">
+								<div class="secondary_nav_item" itemprop="url">
+									<a class="secondary_nav_link" href="#" itemprop="name">Secondary Link 1</a>
+								</div>
+								<div class="secondary_nav_item" itemprop="url">
+									<a class="secondary_nav_link" href="#" itemprop="name">Secondary Link 2</a>
+								</div>
+							</div>
+						</nav>
+						<!-- END: Secondary Navigation -->
+
+
+						<!-- Main Navigation -->
+						<nav class="main_nav main_nav_lg" aria-label="Site Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+							<h2 class="main_nav_heading">Site Navigation</h2>
+							<div class="main_nav_list" role="navigation">
+								<div class="main_nav_item mobile_nav_1" itemprop="url">
+									<div class="main_nav_item_wrapper">
+										<a class="main_nav_link" href="#" itemprop="name">Main Link 1</a>
+										<button class="js-swap main_nav_toggle" data-swap-target=".mobile_nav_1" data-swap-group="mobile_nav">Expand Navigation</button>
+									</div>
+									<div class="main_nav_children">
+										<div class="main_nav_child_item" itemprop="url">
+											<a class="main_nav_child_link" href="#" itemprop="name">Main Child Link 1</a>
+										</div>
+										<div class="main_nav_child_item" itemprop="url">
+											<a class="main_nav_child_link" href="#" itemprop="name">Main Child Link 2</a>
+										</div>
+									</div>
+								</div>
+								<div class="main_nav_item mobile_nav_2" itemprop="url">
+									<div class="main_nav_item_wrapper">
+										<a class="main_nav_link" href="#" itemprop="name">Main Link 2</a>
+										<button class="js-swap main_nav_toggle" data-swap-target=".mobile_nav_2" data-swap-group="mobile_nav">Expand Navigation</button>
+									</div>
+								</div>
+							</div>
+						</nav>
+						<!-- END: Main Navigation -->
+
+
+						<button class="js-nav_handle mobile_sidebar_handle">Menu</button>
+
+						<div class="site_search" id="site_search" itemscope itemtype="http://schema.org/WebSite" role="search">
+							<meta itemprop="url" content="//www.example.com/">
+							<!-- 4 -->
+							<form class="site_search_form" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+								<meta itemprop="target" content="http://www.example.com/search?q={search_term_string}">
+								<!-- 5 -->
+								<label class="site_search_label" for="site_search_term_string">Search</label>
+								<input class="site_search_input" itemprop="query-input" type="text" id="site_search_term_string" name="search_term_string" placeholder="Search" required aria-required="true">
+								<button class="site_search_button" type="submit" title="submit" aria-label="submit">
+									<span>submit</span>
+								</button>
+							</form>
+						</div>
+
+					</div>
+				</div>
+			</header>
+			<!-- END: Header -->
+
+
+			<!-- Page -->
+			<main class="page" itemprop="mainContentOfPage">
+
+				<!-- Page Feature -->
+				<div class="page_feature">
+					<h1 id="main_page_title" tabindex="-1">Home</h1>
+				</div>
+				<!-- END: Page Feature -->
+
+				<!-- Page Content -->
+				<div class="page_content">
+
+					<!-- Full Width Callouts -->
+					<div class="full_width_callouts">
+					</div>
+					<!-- END: Full Width Callouts -->
+
+				</div>
+				<!-- END: Page Content -->
+
+		</div>
+		<!-- END: Page -->
+
+		<!-- Footer -->
+		<footer id="footer" class="footer" itemscope itemtype="http://schema.org/WPFooter">
+			<div class="fs-row">
+				<div class="fs-cell">
+
+					<div class="footer_address" itemscope itemtype="http://schema.org/PostalAddress">
+						<span class="footer_address_name" itemprop="name">name</span>
+						<span class="footer_address_street" itemprop="streetAddress">street</span>
+						<span class="footer_address_city" itemprop="addressLocality">city</span>
+						<span class="footer_address_state" itemprop="addressRegion">state</span>
+						<span class="footer_address_zip" itemprop="postalCode">zip</span>
+						<span class="footer_address_phone" itemprop="telephone">###-###-###</span>
+					</div>
+
+					<!-- Footer Navigation -->
+					<nav class="footer_nav " aria-label="Footer Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<h2 class="footer_nav_heading">Footer Navigation</h2>
+						<div class="footer_nav_list" role="navigation">
+							<div class="footer_nav_item" itemprop="url">
+								<a class="footer_nav_link" href="#" itemprop="name">Footer Link 1</a>
+							</div>
+							<div class="footer_nav_item" itemprop="url">
+								<a class="footer_nav_link" href="#" itemprop="name">Footer Link 2</a>
+							</div>
+						</div>
+					</nav>
+					<!-- END: Footer Navigation -->
+
+
+					<!--
+	TODO:
+	1. Update specific type of organization
+	(EducationalOrganization, CollegeOrUniversity, etc...)
+	2. Change url to client domain
+-->
+
+					<!--
+	Social profile link markup as defined by Google structured data
+	https://developers.google.com/structured-data/customize/social-profiles
+-->
+
+					<!-- Social Property Links -->
+					<div class="social_nav " itemscope itemtype="http://schema.org/Organization">
+						<!-- 1 -->
+						<link itemprop="url" href="http://www.client-name.com">
+						<!-- 2 -->
+						<h2 class="social_nav_heading">Social</h2>
+						<div class="social_nav_list">
+							<div class="social_nav_item social_nav_item_facebook">
+								<a class="social_nav_link" href="//www.facebook.com/" itemprop="sameAs" target="_blank">
+									<span class="social_nav_label">Facebook</span>
+								</a>
+							</div>
+							<div class="social_nav_item social_nav_item_twitter">
+								<a class="social_nav_link" href="//twitter.com/" itemprop="sameAs" target="_blank">
+									<span class="social_nav_label">Twitter</span>
+								</a>
+							</div>
+							<div class="social_nav_item social_nav_item_instagram">
+								<a class="social_nav_link" href="//www.instagram.com/" itemprop="sameAs" target="_blank">
+									<span class="social_nav_label">Instagram</span>
+								</a>
+							</div>
+							<div class="social_nav_item social_nav_item_youtube">
+								<a class="social_nav_link" href="//www.youtube.com/" itemprop="sameAs" target="_blank">
+									<span class="social_nav_label">Youtube</span>
+								</a>
+							</div>
+							<div class="social_nav_item social_nav_item_linkedin">
+								<a class="social_nav_link" href="//www.linkedin.com/" itemprop="sameAs" target="_blank">
+									<span class="social_nav_label">LinkedIn</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<!-- END: Social Property Links -->
+
+
+				</div>
+			</div>
+		</footer>
+		<!-- END: Footer -->
+
+
+		</div>
+		<!-- END: page_wrapper -->
+
+		<div class="js-navigation mobile_sidebar" hidden data-navigation-handle=".js-nav_handle" data-navigation-content=".js-navigation_push" data-navigation-options='{"type": "overlay", "gravity": "right"}'>
+			<!-- Main Navigation -->
+			<nav class="main_nav main_nav_sm" aria-label="Site Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+				<h2 class="main_nav_heading">Site Navigation</h2>
+				<div class="main_nav_list" role="navigation">
+					<div class="main_nav_item mobile_nav_1" itemprop="url">
+						<div class="main_nav_item_wrapper">
+							<a class="main_nav_link" href="#" itemprop="name">Main Link 1</a>
+							<button class="js-swap main_nav_toggle" data-swap-target=".mobile_nav_1" data-swap-group="mobile_nav">Expand Navigation</button>
+						</div>
+						<div class="main_nav_children">
+							<div class="main_nav_child_item" itemprop="url">
+								<a class="main_nav_child_link" href="#" itemprop="name">Main Child Link 1</a>
+							</div>
+							<div class="main_nav_child_item" itemprop="url">
+								<a class="main_nav_child_link" href="#" itemprop="name">Main Child Link 2</a>
+							</div>
+						</div>
+					</div>
+					<div class="main_nav_item mobile_nav_2" itemprop="url">
+						<div class="main_nav_item_wrapper">
+							<a class="main_nav_link" href="#" itemprop="name">Main Link 2</a>
+							<button class="js-swap main_nav_toggle" data-swap-target=".mobile_nav_2" data-swap-group="mobile_nav">Expand Navigation</button>
+						</div>
+					</div>
+				</div>
+			</nav>
+			<!-- END: Main Navigation -->
+
+
+			<!-- Secondary Navigation -->
+			<nav class="secondary_nav secondary_nav_sm" aria-label="Secondary Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+				<h2 class="secondary_nav_heading">Secondary Navigation</h2>
+				<div class="secondary_nav_list" role="navigation">
+					<div class="secondary_nav_item" itemprop="url">
+						<a class="secondary_nav_link" href="#" itemprop="name">Secondary Link 1</a>
+					</div>
+					<div class="secondary_nav_item" itemprop="url">
+						<a class="secondary_nav_link" href="#" itemprop="name">Secondary Link 2</a>
+					</div>
+				</div>
+			</nav>
+			<!-- END: Secondary Navigation -->
+
+		</div>
+
+
+		<!-- Compiled JS -->
+		<script src="../../js/site.js"></script>
+
+		<!-- Grid Bookmarklet -->
+		<script>
+		(function()
+		{
+			if (typeof FSGridBookmarklet === 'undefined')
+			{
+				document.body.appendChild(document.createElement('script')).src = 'http://formstone.it/js/bookmarklet/grid.js';
+			}
+			else
+			{
+				FSGridBookmarklet();
+			}
+		})();
+		</script>
+
+	</body>
+
+</html>
