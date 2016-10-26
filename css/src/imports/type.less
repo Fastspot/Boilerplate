@@ -26,28 +26,6 @@
 
 	}
 
-	.body_text() {}
-
-	h1, h2, h3, h4, h5, h6 {  }
-
-	p {  }
-
-	a {
-		.transition_link();
-	}
-
-	:link {
-
-	}
-
-	em {
-		font-style: italic;
-	}
-
-	strong {
-		font-weight: bold;
-	}
-
 	h1, h2, h3, h4, h5, h6 {  }
 
 	h1 {  }
@@ -181,6 +159,7 @@
 
 		ol,
 		ul {
+
 			li {}
 		}
 
@@ -202,7 +181,9 @@
 			}
 
 			&[type="a"] {
+
 				> li {
+
 					&:before {
 						content: counter(li, lower-alpha) ". ";
 					}
@@ -210,7 +191,9 @@
 			}
 
 			&[type="A"] {
+
 				> li {
+
 					&:before {
 						content: counter(li, upper-alpha) ". ";
 					}
@@ -218,7 +201,9 @@
 			}
 
 			&[type="i"] {
+
 				> li {
+
 					&:before {
 						content: counter(li, lower-roman) ". ";
 					}
@@ -226,7 +211,9 @@
 			}
 
 			&[type="I"] {
+				
 				> li {
+					
 					&:before {
 						content: counter(li, upper-roman) ". ";
 					}
@@ -243,11 +230,12 @@
 					width: 5px;
 					height: 5px;
 
+					float: left;
+
 					background: #eee;
 					border-radius: 100%;
 					content: "";
 					display: block;
-					float: left;
 					margin: 10px 0 0 -20px;
 				}
 			}

@@ -3595,24 +3595,6 @@ textarea {
   color: #fff;
 }
 
-a,
-a:active,
-a:focus,
-a:hover,
-a:link,
-a:visited {
-  -webkit-transition: background-color .25s linear,border-color .25s linear,box-shadow .25s linear,color .25s linear,opacity .25s linear;
-  transition: background-color .25s linear,border-color .25s linear,box-shadow .25s linear,color .25s linear,opacity .25s linear;
-}
-
-em {
-  font-style: italic;
-}
-
-strong {
-  font-weight: 700;
-}
-
 a {
   text-decoration: none;
 }
@@ -3716,11 +3698,11 @@ strong {
 .typography ul li:before {
   width: 5px;
   height: 5px;
+  float: left;
   background: #eee;
   border-radius: 100%;
   content: "";
   display: block;
-  float: left;
   margin: 10px 0 0 -20px;
 }
 
@@ -4009,10 +3991,10 @@ figure {
 }
 
 .clearfix:after {
+  height: 0;
   clear: both;
   content: ".";
   display: block;
-  height: 0;
   line-height: 0;
   visibility: hidden;
 }
@@ -4156,23 +4138,23 @@ figure {
 }
 
 .icon_before:before {
-  background: url('/images/icons.png?15801186dc0') no-repeat 0 0;
+  background: url('/images/icons.png?15801268338') no-repeat 0 0;
   content: "";
   display: inline-block;
 }
 
 .svg .icon_before:before {
-  background-image: url('/images/icons.svg?158011871a8');
+  background-image: url('/images/icons.svg?15801268720');
 }
 
 .icon_after:after {
-  background: url('/images/icons.png?15801186dc0') no-repeat 0 0;
+  background: url('/images/icons.png?15801268338') no-repeat 0 0;
   content: "";
   display: inline-block;
 }
 
 .svg .icon_after:after {
-  background-image: url('/images/icons.svg?158011871a8');
+  background-image: url('/images/icons.svg?15801268720');
 }
 
 .icon_left:before {
@@ -4192,19 +4174,19 @@ figure {
 }
 
 .icon_center:after {
-  background: url('/images/icons.png?15801186dc0') no-repeat 0 0;
+  background: url('/images/icons.png?15801268338') no-repeat 0 0;
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  display: block;
   content: '';
+  display: block;
   margin: auto;
 }
 
 .svg .icon_center:after {
-  background-image: url('/images/icons.svg?158011871a8');
+  background-image: url('/images/icons.svg?15801268720');
 }
 
 button {
@@ -4315,8 +4297,8 @@ textarea {
 }
 
 .site_search_results .gsc-result img.gs-image {
-  border-width: 0;
   max-width: 100%;
+  border-width: 0;
 }
 
 .site_search_results .gsc-table-cell-thumbnail {
@@ -4343,8 +4325,8 @@ textarea {
 }
 
 .site_search_results img.gs-image {
-  border-width: 0;
   max-width: 100%;
+  border-width: 0;
 }
 
 .site_search_results a.gs-title {
@@ -4560,10 +4542,10 @@ a.skip_link:focus {
 }
 
 .crl_buttons:after {
+  height: 0;
   clear: both;
   content: ".";
   display: block;
-  height: 0;
   line-height: 0;
   visibility: hidden;
 }
