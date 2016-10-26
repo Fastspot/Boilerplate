@@ -351,6 +351,14 @@
 		text-align: right;
 	}
 
+	.text_upper {
+		text-transform: uppercase;
+	}
+
+	.text_none {
+		text-transform: none;
+	}
+
 	.max_width_item {
 		max-width: 1600px;
 
@@ -375,6 +383,7 @@
 
 	.transition_hide {
 		opacity: 0;
+		pointer-events: none;
 		transition:
 			opacity @base_transition_duration,
 			visibility @base_transition_duration;
@@ -383,9 +392,10 @@
 
 	.transition_show {
 		opacity: 1;
+		pointer-events: auto;
 		visibility: visible;
 	}
-	
+
 
 /* ==========================================================================
 	Images
