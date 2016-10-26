@@ -373,6 +373,19 @@
 		transition-timing-function: ease;
 	}
 
+	.transition_hide {
+		opacity: 0;
+		transition:
+			opacity @base_transition_duration,
+			visibility @base_transition_duration;
+		visibility: hidden;
+	}
+
+	.transition_show {
+		opacity: 1;
+		visibility: visible;
+	}
+	
 
 /* ==========================================================================
 	Images
