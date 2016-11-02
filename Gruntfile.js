@@ -441,8 +441,7 @@ module.exports = function(grunt) {
 					'dest': 'images/',
 					'svg': {
 						'xmlDeclaration': false,
-						'doctypeDeclaration': false,
-						'namespaceIDs': false
+						'doctypeDeclaration': false
 					},
 					'mode': {
 						'css': {
