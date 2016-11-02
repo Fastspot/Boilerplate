@@ -1,6 +1,6 @@
 
 /*! 
- * site-title v0.0.1 [2016-10-26] 
+ * site-title v0.0.1 [2016-11-02] 
  * Site description. 
  * Fastspot 
  */
@@ -4080,6 +4080,14 @@ figure {
   text-align: right;
 }
 
+.text_upper {
+  text-transform: uppercase;
+}
+
+.text_none {
+  text-transform: none;
+}
+
 .max_width_item {
   max-width: 1600px;
   margin-right: auto;
@@ -4102,6 +4110,7 @@ figure {
 
 .transition_hide {
   opacity: 0;
+  pointer-events: none;
   -webkit-transition: opacity .25s,visibility .25s;
   transition: opacity .25s,visibility .25s;
   visibility: hidden;
@@ -4109,6 +4118,7 @@ figure {
 
 .transition_show {
   opacity: 1;
+  pointer-events: auto;
   visibility: visible;
 }
 
@@ -4150,23 +4160,23 @@ figure {
 }
 
 .icon_before:before {
-  background: url('/images/icons.png?158015db808') no-repeat 0 0;
+  background: url('/images/icons.png?15825318868') no-repeat 0 0;
   content: "";
   display: inline-block;
 }
 
 .svg .icon_before:before {
-  background-image: url('/images/icons.svg?158015db808');
+  background-image: url('/images/icons.svg?15825318868');
 }
 
 .icon_after:after {
-  background: url('/images/icons.png?158015db808') no-repeat 0 0;
+  background: url('/images/icons.png?15825318868') no-repeat 0 0;
   content: "";
   display: inline-block;
 }
 
 .svg .icon_after:after {
-  background-image: url('/images/icons.svg?158015db808');
+  background-image: url('/images/icons.svg?15825318868');
 }
 
 .icon_left:before {
@@ -4186,7 +4196,7 @@ figure {
 }
 
 .icon_center:after {
-  background: url('/images/icons.png?158015db808') no-repeat 0 0;
+  background: url('/images/icons.png?15825318868') no-repeat 0 0;
   position: absolute;
   top: 0;
   right: 0;
@@ -4198,7 +4208,7 @@ figure {
 }
 
 .svg .icon_center:after {
-  background-image: url('/images/icons.svg?158015db808');
+  background-image: url('/images/icons.svg?15825318868');
 }
 
 button {
