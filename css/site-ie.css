@@ -4160,23 +4160,23 @@ figure {
 }
 
 .icon_before:before {
-  background: url('/images/icons.png?15830191cf0') no-repeat 0 0;
+  background: url('/images/icons.png?158312f3840') no-repeat 0 0;
   content: "";
   display: inline-block;
 }
 
 .svg .icon_before:before {
-  background-image: url('/images/icons.svg?15830191cf0');
+  background-image: url('/images/icons.svg?158312f3c28');
 }
 
 .icon_after:after {
-  background: url('/images/icons.png?15830191cf0') no-repeat 0 0;
+  background: url('/images/icons.png?158312f3840') no-repeat 0 0;
   content: "";
   display: inline-block;
 }
 
 .svg .icon_after:after {
-  background-image: url('/images/icons.svg?15830191cf0');
+  background-image: url('/images/icons.svg?158312f3c28');
 }
 
 .icon_left:before {
@@ -4196,7 +4196,7 @@ figure {
 }
 
 .icon_center:after {
-  background: url('/images/icons.png?15830191cf0') no-repeat 0 0;
+  background: url('/images/icons.png?158312f3840') no-repeat 0 0;
   position: absolute;
   top: 0;
   right: 0;
@@ -4208,7 +4208,7 @@ figure {
 }
 
 .svg .icon_center:after {
-  background-image: url('/images/icons.svg?15830191cf0');
+  background-image: url('/images/icons.svg?158312f3c28');
 }
 
 button {
@@ -4283,13 +4283,13 @@ textarea {
 }
 
 .site_search_results .gsc-search-box td.gsc-search-button:before {
-  background: url('/images/icons.png?15830191cf0') no-repeat 0 0;
+  background: url('/images/icons.png?158312f3840') no-repeat 0 0;
   content: "";
   display: inline-block;
 }
 
 .svg .site_search_results .gsc-search-box td.gsc-search-button:before {
-  background-image: url('/images/icons.svg?15830191cf0');
+  background-image: url('/images/icons.svg?158312f3c28');
 }
 
 .site_search_results .gsc-search-box input.gsc-search-button {
@@ -4304,13 +4304,13 @@ textarea {
 }
 
 .site_search_results .gsc-search-box td.gsc-clear-button:before {
-  background: url('/images/icons.png?15830191cf0') no-repeat 0 0;
+  background: url('/images/icons.png?158312f3840') no-repeat 0 0;
   content: "";
   display: inline-block;
 }
 
 .svg .site_search_results .gsc-search-box td.gsc-clear-button:before {
-  background-image: url('/images/icons.svg?15830191cf0');
+  background-image: url('/images/icons.svg?158312f3c28');
 }
 
 .site_search_results .gsc-search-box div.gsc-clear-button {

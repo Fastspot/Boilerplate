@@ -1,0 +1,53 @@
+<!--
+	# Accordionn Notes
+
+	* Heading is optional - don't draw `.accordion_header` element if there is
+	no heading
+-->
+
+<!-- Accordion -->
+<div class="accordion">
+	<!-- Optional Heading -->
+	<header class="accordion_header">
+		<h2 class="accordion_heading">{{heading}}</h2>
+	</header>
+	<!-- END: Optional Heading -->
+	<div class="accordion_body">
+		{% include 'accordion-item.twig' with {
+			"index": "1",
+			"question": "Does Hamilton require a Writing Supplement in addition to The Common Application Essay?",
+			"answer": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>"
+		} %}
+
+		{% include 'accordion-item.twig' with {
+			"index": "2",
+			"question": "Does Hamilton offer application fee waivers?",
+			"answer": "<p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.</p><p>Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</p>"
+		} %}
+
+		{% include 'accordion-item.twig' with {
+			"index": "3",
+			"question": "Does Hamilton offer merit-based scholarships?",
+			"answer": "<p>Hamilton discontinued offering merit scholarships with the class that entered in the Fall of 2008. At that time, we decided that the primary focus and top priority of our financial aid program was to need-based aid. This decision allows us to continue honoring our long-standing commitment to meet the full demonstrated financial need of all students we admit as well as make Hamilton accessible to talented students from diverse socioeconomic backgrounds.</p><p>Most Hamilton students would qualify for merit scholarships at many other colleges. They choose Hamilton because they recognize that an education here is well worth the investment. As a result, you'll be learning and living with other strong students who also appreciate the value of a Hamilton education and are committed to joining this enduring community of scholars.</p>"
+		} %}
+
+		{% include 'accordion-item.twig' with {
+			"index": "4",
+			"question": "How do I submit supplemental application materials for fine & performing arts?",
+			"answer": "<p>Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</p>"
+		} %}
+
+		{% include 'accordion-item.twig' with {
+			"index": "5",
+			"question": "How and when will I be notified of my decision?",
+			"answer": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p><p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.</p>"
+		} %}
+
+		{% include 'accordion-item.twig' with {
+			"index": "6",
+			"question": "Does Hamilton require a Writing Supplement in addition to The Common Application Essay?",
+			"answer": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>"
+		} %}
+	</div>
+</div>
+<!-- END: Accordion -->

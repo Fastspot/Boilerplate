@@ -41,8 +41,8 @@ module.exports = function(grunt) {
 				]
 			},
 			static: {
-				files: 'static/src/**/**.html',
-				tasks: 'includereplace:static'
+				files: 'static/src/**/**.twig',
+				tasks: 'twigRender'
 			},
 			prettify: {
 				files: 'static/src/**/**.html',
@@ -164,20 +164,23 @@ module.exports = function(grunt) {
 				src: '*.js',
 				expand: true,
 				cwd: 'js/'
-			},
-			static: {
-				options: {
-					globals: '<%= pkg.vars %>'
-				},
-				dest: 'static',
-				src: [
-					'*.html',
-					'templates/*.html'
-				],
-				expand: true,
-				cwd: 'static/src'
 			}
 		},
+		// Twig
+		twigRender: {
+			your_target: {
+	      files: [
+	        {
+	          data: '<%= pkg.vars %>',
+	          expand: true,
+	          cwd: 'static/src/templates/',
+	          src: ['*.twig', '!_*.twig'],
+	          dest: 'static/templates/',
+	          ext: '.html'
+	        }
+	      ]
+	    },
+	  },
 		// LESS
 		less: {
 			options: {
@@ -326,7 +329,7 @@ module.exports = function(grunt) {
 				'!css/src/**'
 			],
 			html: [
-				'static/*',
+				'static/templates',
 				'!static/src/**'
 			],
 			img: [
@@ -516,7 +519,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('img', [ 'svg_sprite', 'svg2png', 'imagemin', 'svgmin' ]);
 
 	// HTML
-	grunt.registerTask('html', [ 'includereplace:static', 'prettify', 'includeSource' ]);
+	grunt.registerTask('html', [ 'twigRender', 'prettify', 'includeSource' ]);
 
 	// Develop
 	grunt.registerTask('devel', ['build', 'browserSync', 'watch']);
