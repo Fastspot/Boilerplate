@@ -1,6 +1,6 @@
 
 /*! 
- * site-title v0.0.1 [2016-11-02] 
+ * site-title v0.0.1 [2016-11-04] 
  * Site description. 
  * Fastspot 
  */
@@ -4160,23 +4160,23 @@ figure {
 }
 
 .icon_before:before {
-  background: url('/images/icons.png?15825318868') no-repeat 0 0;
+  background: url('/images/icons.png?15830191cf0') no-repeat 0 0;
   content: "";
   display: inline-block;
 }
 
 .svg .icon_before:before {
-  background-image: url('/images/icons.svg?15825318868');
+  background-image: url('/images/icons.svg?15830191cf0');
 }
 
 .icon_after:after {
-  background: url('/images/icons.png?15825318868') no-repeat 0 0;
+  background: url('/images/icons.png?15830191cf0') no-repeat 0 0;
   content: "";
   display: inline-block;
 }
 
 .svg .icon_after:after {
-  background-image: url('/images/icons.svg?15825318868');
+  background-image: url('/images/icons.svg?15830191cf0');
 }
 
 .icon_left:before {
@@ -4196,7 +4196,7 @@ figure {
 }
 
 .icon_center:after {
-  background: url('/images/icons.png?15825318868') no-repeat 0 0;
+  background: url('/images/icons.png?15830191cf0') no-repeat 0 0;
   position: absolute;
   top: 0;
   right: 0;
@@ -4208,7 +4208,7 @@ figure {
 }
 
 .svg .icon_center:after {
-  background-image: url('/images/icons.svg?15825318868');
+  background-image: url('/images/icons.svg?15830191cf0');
 }
 
 button {
@@ -4254,117 +4254,173 @@ textarea {
 }
 
 .site_search_results .gsc-control-cse {
-  border-width: 0;
+  background: 0 0;
+  border: 0;
+  font-family: inherit;
+  font-size: inherit;
   padding: 0;
 }
 
-.site_search_results .gsc-control-cse .gs-result .gs-title b {
-  color: inherit;
+.site_search_results .gsc-search-box {
   font-size: inherit;
+  margin-bottom: 20px;
 }
 
-.site_search_results table.gsc-search-box td.gsc-input {
+.site_search_results .gsc-search-box td.gsc-input {
   padding-right: 0;
 }
 
-.site_search_results input.gsc-input {
-  background-color: transparent!important;
+.site_search_results .gsc-search-box input.gsc-input {
+  width: 100%;
+  background-position: 20px 50%!important;
   border: 1px solid #000;
+  font-size: inherit;
   padding: 20px;
 }
 
-.site_search_results input.gsc-search-button {
-  background: #fff;
-  color: #000;
-  border-width: 1px;
-  cursor: pointer;
+.site_search_results .gsc-search-box td.gsc-search-button {
+  width: auto;
 }
 
-.site_search_results div.gsc-clear-button {
+.site_search_results .gsc-search-box td.gsc-search-button:before {
+  background: url('/images/icons.png?15830191cf0') no-repeat 0 0;
+  content: "";
+  display: inline-block;
+}
+
+.svg .site_search_results .gsc-search-box td.gsc-search-button:before {
+  background-image: url('/images/icons.svg?15830191cf0');
+}
+
+.site_search_results .gsc-search-box input.gsc-search-button {
+  height: auto;
+  min-width: 100%;
+  background: 0 0;
+  border: 0;
+  border-radius: 0;
+  font-size: inherit;
+  font-weight: 400;
+  padding: 10px;
+}
+
+.site_search_results .gsc-search-box td.gsc-clear-button:before {
+  background: url('/images/icons.png?15830191cf0') no-repeat 0 0;
+  content: "";
+  display: inline-block;
+}
+
+.svg .site_search_results .gsc-search-box td.gsc-clear-button:before {
+  background-image: url('/images/icons.svg?15830191cf0');
+}
+
+.site_search_results .gsc-search-box div.gsc-clear-button {
+  display: block;
   margin: 0;
-  padding: 0 10px;
+  padding-left: 0;
+  text-align: center;
+}
+
+.site_search_results .gsc-tabsArea {
+  border-bottom: 0;
+  margin: 0;
+}
+
+.site_search_results .gsc-tabsArea .gsc-tabHeader {
+  border: 0;
+  color: inherit;
+  margin: 0;
+  padding: 4px;
+}
+
+.site_search_results .gsc-refinementsArea {
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.site_search_results .gsc-refinementsArea .gsc-refinementHeader {
+  margin: 0;
+  padding: 4px;
 }
 
 .site_search_results .gsc-above-wrapper-area {
   border-bottom: 1px solid #000;
-  padding: 0;
+  padding: 0 0 20px;
 }
 
-.site_search_results .gsc-result-info {
+.site_search_results .gsc-above-wrapper-area .gsc-result-info {
+  color: inherit;
+  font-size: inherit;
   margin: 0;
-  padding: 10px 0;
+  padding-left: 0;
 }
 
-.site_search_results .gsc-webResult {
+.site_search_results .gsc-results {
   width: 100%;
-  padding: 0;
+  padding-bottom: 0;
 }
 
-.site_search_results .gsc-webResult.gsc-result {
-  background: 0 0;
-  border-width: 0;
+.site_search_results .gsc-results .gsc-result:not(.gsc-imageResult) {
+  border: 0;
   border-bottom: 1px solid #000;
-  margin: 0;
+  margin-bottom: 0;
   padding: 20px 0;
 }
 
-.site_search_results .gsc-webResult.gsc-result:hover {
-  background: 0 0;
-  border-width: 0;
-  border-bottom: 1px solid #000;
+.site_search_results .gsc-results .gsc-table-result {
+  font-family: inherit;
+  font-size: inherit;
 }
 
-.site_search_results .gsc-result .gs-title {
+.site_search_results .gsc-results .gsc-thumbnail {
+  padding-right: 20px;
+}
+
+.site_search_results .gsc-results .gsc-thumbnail .gs-image-box {
   height: auto;
+  width: 80px;
+  padding: 0;
 }
 
-.site_search_results .gsc-result img.gs-image {
+.site_search_results .gsc-results .gsc-thumbnail img.gs-image {
   max-width: 100%;
-  border-width: 0;
-}
-
-.site_search_results .gsc-table-cell-thumbnail {
-  padding: 0;
-}
-
-.site_search_results .gs-web-image-box {
-  width: 100px;
-  padding: 0;
-}
-
-.site_search_results a.gs-image {
-  display: block;
-  margin-right: 20px;
-}
-
-.site_search_results a.gs-image picture {
-  display: block;
-}
-
-.site_search_results a.gs-image img {
-  display: block;
   width: 100%;
+  border: 0;
 }
 
-.site_search_results img.gs-image {
-  max-width: 100%;
-  border-width: 0;
+.site_search_results .gsc-results div.gs-title {
+  height: auto;
+  color: inherit;
+  font-size: inherit;
+  margin-bottom: 10px;
+  text-decoration: none;
 }
 
-.site_search_results a.gs-title {
-  display: block;
+.site_search_results .gsc-results a.gs-title {
+  height: inherit;
+  text-decoration: inherit;
 }
 
-.site_search_results .gsc-cursor-box {
-  margin: 10px 0;
+.site_search_results .gsc-results a.gs-title b {
+  text-decoration: inherit;
 }
 
-.site_search_results .gsc-cursor {
-  display: block;
+.site_search_results .gsc-results .gs-snippet {
+  margin-bottom: 10px;
 }
 
-.site_search_results .gsc-cursor-page {
-  background-color: transparent!important;
+.site_search_results .gsc-expansionArea .gsc-cursor-box {
+  box-shadow: 0 -1px 0 0 #000;
+  margin-bottom: 0;
+  padding: 20px 0;
+}
+
+.site_search_results .gsc-expansionArea .gsc-cursor-box .gsc-cursor-page {
+  text-decoration: none;
+}
+
+.site_search_results div.gcsc-branding {
+  padding-bottom: 20px;
 }
 
 @media only screen and (min-width:980px) {
