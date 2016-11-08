@@ -332,10 +332,10 @@ module.exports = function(grunt) {
 				'static/templates',
 				'!static/src/**'
 			],
-			img: [
-				'images/*',
-				'!images/src/**'
-			],
+			// img: [
+			// 	'images/*',
+			// 	'!images/src/**'
+			// ],
 			sprite: [
 				'css/src/imports/icons.less',
 				'images/src/icons.*'
