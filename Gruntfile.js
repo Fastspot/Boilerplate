@@ -34,10 +34,9 @@ module.exports = function(grunt) {
 				]
 			},
 			images: {
-				files: 'images/src/**/*.{png,jpg,jpeg,gif,svg,ico}',
+				files: 'images/src/**/*',
 				tasks: [
-					'newer:imagemin:target',
-					'newer:svgmin:target'
+					'newer:imagemin:target'
 				]
 			},
 			static: {
@@ -254,33 +253,17 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		// Optimize images (png, gif, jpg, ico)
+		// Optimize images
 		imagemin: {
-			target: {
-				files: [{
-					expand: true,
-					cwd: 'images/src',
-					src: [
-						'**/*.{png,jpg,jpeg,gif,ico}',
-						'!icons/**'
-					],
-					dest: 'images'
-				}]
-			}
-		},
-		// Optimize images (svg)
-		svgmin: {
 			options: {
-				plugins: [{
-					removeViewBox: true
-				}]
+				svgoPlugins: [{ removeViewBox: true }]
 			},
 			target: {
 				files: [{
 					expand: true,
 					cwd: 'images/src',
 					src: [
-						'**/*.svg',
+						'**/*',
 						'!icons/**'
 					],
 					dest: 'images'
@@ -470,8 +453,8 @@ module.exports = function(grunt) {
 			target: {
 				files: [{
 					cwd: 'images/src/',
-					src: ['*.svg'],
-					dest: 'images/src/'
+					src: 'icons.svg',
+					dest: 'images/'
 				}]
 			}
 		}
@@ -516,7 +499,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('js', [ 'jshint:production', 'uglify', 'includereplace:target', 'modernizr' ]);
 
 	// Images
-	grunt.registerTask('img', [ 'svg_sprite', 'svg2png', 'imagemin', 'svgmin' ]);
+	grunt.registerTask('img', [ 'svg_sprite', 'svg2png', 'imagemin' ]);
 
 	// HTML
 	grunt.registerTask('html', [ 'includereplace:static', 'prettify', 'includeSource' ]);
