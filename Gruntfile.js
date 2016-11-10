@@ -207,7 +207,10 @@ module.exports = function(grunt) {
 			options: {
 				processors: [
 					require('autoprefixer')({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1', 'ie >= 8']}),
-					require('postcss-assets')({cachebuster: true})
+					require('postcss-assets')({
+						cachebuster: true,
+						baseUrl: '..'
+					})
 				]
 			},
 			target: {
