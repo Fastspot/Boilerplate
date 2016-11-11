@@ -14,9 +14,6 @@ module.exports = function(grunt) {
 		},
 		// Watcher
 		watch: {
-			options: {
-				livereload: true
-			},
 			scripts: {
 				files: 'js/src/**/**.js',
 				tasks: [
@@ -42,10 +39,6 @@ module.exports = function(grunt) {
 			static: {
 				files: 'static/src/**/**.twig',
 				tasks: 'twigRender'
-			},
-			prettify: {
-				files: 'static/src/**/**.html',
-				tasks: 'prettify:target'
 			},
 			config: {
 				files: [
@@ -307,24 +300,6 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		// HTML formatting
-		prettify: {
-			options: {
-				condense: false,
-				indent: 1,
-				indent_char: '	',
-				preserve_newlines: true,
-				max_preserve_newlines: 4,
-				unformatted: ['code', 'pre']
-			},
-			target: {
-				expand: true,
-				src: [
-					'static/*.html',
-					'static/templates/*.html'
-				]
-			}
-		},
 		// Remove any previously-created files
 		clean: {
 			js: [
@@ -517,7 +492,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('img', [ 'svg_sprite', 'imagemin', 'svgmin' ]);
 
 	// HTML
-	grunt.registerTask('html', [ 'twigRender', 'prettify', 'includeSource' ]);
+	grunt.registerTask('html', [ 'twigRender', 'includeSource' ]);
 
 	// Develop
 	grunt.registerTask('devel', ['build', 'browserSync', 'watch']);
