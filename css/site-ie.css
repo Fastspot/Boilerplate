@@ -4160,13 +4160,13 @@ figure {
 }
 
 .icon_before:before {
-  background-image: url('../images/icons.svg?15854a8a7e8');
+  background-image: url('../images/icons.svg?1585576e0e0');
   content: "";
   display: inline-block;
 }
 
 .icon_after:after {
-  background-image: url('../images/icons.svg?15854a8a7e8');
+  background-image: url('../images/icons.svg?1585576e0e0');
   content: "";
   display: inline-block;
 }
@@ -4188,7 +4188,7 @@ figure {
 }
 
 .icon_center:after {
-  background-image: url('../images/icons.svg?15854a8a7e8');
+  background-image: url('../images/icons.svg?1585576e0e0');
   position: absolute;
   top: 0;
   right: 0;
@@ -4271,7 +4271,7 @@ textarea {
 }
 
 .site_search_results .gsc-search-box td.gsc-search-button:before {
-  background-image: url('../images/icons.svg?15854a8a7e8');
+  background-image: url('../images/icons.svg?1585576e0e0');
   content: "";
   display: inline-block;
 }
@@ -4288,7 +4288,7 @@ textarea {
 }
 
 .site_search_results .gsc-search-box td.gsc-clear-button:before {
-  background-image: url('../images/icons.svg?15854a8a7e8');
+  background-image: url('../images/icons.svg?1585576e0e0');
   content: "";
   display: inline-block;
 }

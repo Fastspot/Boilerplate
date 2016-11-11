@@ -23,14 +23,14 @@
 				<img src="../../images/logo-print.png" class="print" alt="">
 			</h1>
 
-			{% include "../partials/navigation/secondary.twig" with {
-				class: "lg"
-			} %}
-
 			{% include "../partials/navigation/main.twig" with {
-				class: "lg"
+				class: "main_nav_lg"
 			} %}
 
+			{% include "../partials/navigation/secondary.twig" with {
+				class: "secondary_nav_lg"
+			} %}
+			
 			<button class="js-nav_handle mobile_sidebar_handle">Menu</button>
 
 			{% include "_site-search.twig" %}
