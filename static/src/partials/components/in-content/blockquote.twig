@@ -1,8 +1,12 @@
-<div class="quote">
+<!-- Blockquote with citation -->
+<figure class="quote">
 	<blockquote class="quote_content">
 		{{quote}}
 	</blockquote>
-	<cite class="quote_cite">
-		{{cite}}
-	</cite>
-</div>
+	{% if cite != null %}
+		<figcaption class="quote_caption">
+			{{cite}}
+		</figcaption>
+	{% endif %}
+</figure>
+<!-- END: Blockquote with citation -->

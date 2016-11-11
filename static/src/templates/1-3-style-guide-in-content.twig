@@ -1,5 +1,8 @@
 {% extends "_base.twig" %}
 
 {% block in_content_callouts %}
-
+	{% include "../partials/components/in-content/blockquote.twig" with {
+		"quote": "<p>If I had asked people what they wanted, they would have said faster horses.</p>",
+		"cite": "Henry Ford"
+	} %}
 {% endblock %}
