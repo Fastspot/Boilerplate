@@ -448,15 +448,6 @@ module.exports = function(grunt) {
 					}
 				}
 			}
-		},
-		svg2png: {
-			target: {
-				files: [{
-					cwd: 'images/src/',
-					src: 'icons.svg',
-					dest: 'images/'
-				}]
-			}
 		}
 	});
 
@@ -499,7 +490,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('js', [ 'jshint:production', 'uglify', 'includereplace:target', 'modernizr' ]);
 
 	// Images
-	grunt.registerTask('img', [ 'svg_sprite', 'svg2png', 'imagemin' ]);
+	grunt.registerTask('img', [ 'svg_sprite', 'imagemin' ]);
 
 	// HTML
 	grunt.registerTask('html', [ 'includereplace:static', 'prettify', 'includeSource' ]);
