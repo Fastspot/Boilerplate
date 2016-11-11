@@ -34,10 +34,9 @@ module.exports = function(grunt) {
 				]
 			},
 			images: {
-				files: 'images/src/**/*.{png,jpg,jpeg,gif,svg,ico}',
+				files: 'images/src/**/*',
 				tasks: [
-					'newer:imagemin:target',
-					'newer:svgmin:target'
+					'newer:imagemin:target'
 				]
 			},
 			static: {
@@ -210,7 +209,10 @@ module.exports = function(grunt) {
 			options: {
 				processors: [
 					require('autoprefixer')({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1', 'ie >= 8']}),
-					require('postcss-assets')({cachebuster: true})
+					require('postcss-assets')({
+						cachebuster: true,
+						baseUrl: '..'
+					})
 				]
 			},
 			target: {
@@ -254,14 +256,19 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		// Optimize images (png, gif, jpg, ico)
+		// Optimize images
 		imagemin: {
+			options: {
+				svgoPlugins: [{
+					removeViewBox: true
+				}]
+			},
 			target: {
 				files: [{
 					expand: true,
 					cwd: 'images/src',
 					src: [
-						'**/*.{png,jpg,jpeg,gif,ico}',
+						'**/*',
 						'!icons/**'
 					],
 					dest: 'images'
@@ -332,10 +339,10 @@ module.exports = function(grunt) {
 				'static/templates',
 				'!static/src/**'
 			],
-			// img: [
-			// 	'images/*',
-			// 	'!images/src/**'
-			// ],
+			img: [
+				'images/*',
+				'!images/src/**'
+			],
 			sprite: [
 				'css/src/imports/icons.less',
 				'images/src/icons.*'
@@ -464,15 +471,6 @@ module.exports = function(grunt) {
 						}
 					}
 				}
-			}
-		},
-		svg2png: {
-			target: {
-				files: [{
-					cwd: 'images/src/',
-					src: ['*.svg'],
-					dest: 'images/src/'
-				}]
 			}
 		}
 	});
