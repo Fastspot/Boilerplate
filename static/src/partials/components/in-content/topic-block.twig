@@ -17,8 +17,9 @@
 				<p>{{description}}</p>
 			</div>
 			<div class="topic_block_links">
-				<a class="topic_block_link" href="">{{link1}}</a>
-				<a class="topic_block_link" href="">{{link2}}</a>
+				{% for link in links %}
+					<a class="topic_block_link" href="">{{link}}</a>
+				{% endfor %}
 			</div>
 		</div>
 	</article>
