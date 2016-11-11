@@ -10,11 +10,11 @@
 	<meta name="mobile-web-app-capable" content="yes">
 
 	<!-- Page Attributes -->
-	<title>{{title}} | Client Name</title><!-- 1 -->
+	<title>{% block title %}{% endblock %} | Client Name</title><!-- 1 -->
 	<meta name="description" content="">
 
 	<!-- Favions / Touch Icons -->
-	{% include '_favicons.html' %}
+	{% include "_favicons.html" %}
 
 	<!-- Modernizer -->
 	<script src="../../js/modernizr.js"></script>

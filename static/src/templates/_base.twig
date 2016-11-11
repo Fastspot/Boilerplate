@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html itemscope="" itemtype="http://schema.org/WebPage" lang="en" class="no-js">
 
-	{% include '../partials/_head.twig' with {
-		'title': 'Template'
-	} %}
+	{% include "../partials/_head.twig" %}
 
 	<body class="fs-grid">
 
@@ -13,7 +11,7 @@
 		<div class="page_wrapper js-navigation_push">
 
 			<!-- Header -->
-			{% include '../partials/_header.twig' %}
+			{% include "../partials/_header.twig" %}
 
 			<!-- Page -->
 			<div class="page">
@@ -32,54 +30,60 @@
 						<div class="fs-row">
 							<div class="fs-cell">
 
-								{% include '../partials/navigation/breadcrumb/master-sub.twig' %}
+								{% block breadcrumb %}
+									{% include "../partials/navigation/breadcrumb/master-sub.twig" %}
+								{% endblock %}
 
-								<h1 id="main_page_title" tabindex="-1">Master Sub Page</h1>
+								<h1 id="main_page_title" tabindex="-1">{% block page_title %}{% endblock %}</h1>
 
 							</div>
 						</div>
 					</div>
 					<!-- END: Page Header -->
 
-					<div class="fs-row">
+					{% block page %}
+						<div class="fs-row">
 
-						<!-- Sub Nav -->
-						<div class="fs-cell-right fs-lg-4">
-							{% include '../partials/navigation/sub/master-sub.twig' %}
-						</div>
-						<!-- END: Sub Nav -->
-
-						<!-- Main Content -->
-						<div class="fs-cell fs-lg-8">
-							<main class="main_content" itemprop="mainContentOfPage">
-
-								{% block main_content %}{% endblock %}
-
-								<!-- WYSIWYG - wrap all WYSIWYG text areas in `.typography` -->
-								<div class="typography">
-									{% block typography %}{% endblock %}
-								</div>
-								<!-- END: WYSIWYG -->
-
-								<!-- In Content Callouts -->
-								<div class="in_content_callouts">
-									{% block in_content_callouts %}{% endblock %}
-								</div>
-								<!-- END: In Content Callouts -->
-
-							</main>
-						</div>
-						<!-- END: Main Content -->
-
-						<!-- Sidebar Callouts -->
-						<div class="fs-cell-right fs-lg-4">
-							<div class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
-								{% block sidebar %}{% endblock %}
+							<!-- Sub Nav -->
+							<div class="fs-cell-right fs-lg-4">
+								{% block sub_nav %}
+									{% include "../partials/navigation/sub/master-sub.twig" %}
+								{% endblock %}
 							</div>
-						</div>
-						<!-- END: Sidebar Callouts -->
+							<!-- END: Sub Nav -->
 
-					</div>
+							<!-- Main Content -->
+							<div class="fs-cell fs-lg-8">
+								<main class="main_content" itemprop="mainContentOfPage">
+
+									{% block main_content %}{% endblock %}
+
+									<!-- WYSIWYG - wrap all WYSIWYG text areas in `.typography` -->
+									<div class="typography">
+										{% block typography %}{% endblock %}
+									</div>
+									<!-- END: WYSIWYG -->
+
+									<!-- In Content Callouts -->
+									<div class="in_content_callouts">
+										{% block in_content_callouts %}{% endblock %}
+									</div>
+									<!-- END: In Content Callouts -->
+
+								</main>
+							</div>
+							<!-- END: Main Content -->
+
+							<!-- Sidebar Callouts -->
+							<div class="fs-cell-right fs-lg-4">
+								<div class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+									{% block sidebar %}{% endblock %}
+								</div>
+							</div>
+							<!-- END: Sidebar Callouts -->
+
+						</div>
+					{% endblock %}
 
 					<!-- Full Width Callouts -->
 					<div class="full_width_callouts">
@@ -93,11 +97,11 @@
 			</div>
 			<!-- END: Page -->
 
-			{% include '../partials/_footer.twig' %}
+			{% include "../partials/_footer.twig" %}
 
 		</div> <!-- END: page_wrapper -->
 
-		{% include '../partials/_footer-js.twig' %}
+		{% include "../partials/_footer-js.twig" %}
 
 	</body>
 </html>
