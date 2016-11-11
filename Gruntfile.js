@@ -514,7 +514,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('js', [ 'jshint:production', 'uglify', 'includereplace:target', 'modernizr' ]);
 
 	// Images
-	grunt.registerTask('img', [ 'svg_sprite', 'svg2png', 'imagemin', 'svgmin' ]);
+	grunt.registerTask('img', [ 'svg_sprite', 'imagemin', 'svgmin' ]);
 
 	// HTML
 	grunt.registerTask('html', [ 'twigRender', 'prettify', 'includeSource' ]);
