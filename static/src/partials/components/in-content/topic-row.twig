@@ -1,6 +1,6 @@
 <!-- Topic Row -->
 <article class="topic_block">
-	{% if image != "" %}
+	{% if image %}
 		<figure class="topic_block_figure">
 			<img class="topic_block_image" src="//spacehold.it/300x225/{{image}}.jpg" alt=""><!-- full-xxsml -->
 		</figure>
@@ -12,7 +12,7 @@
 		<div class="topic_block_description">
 			<p>{{description}}</p>
 		</div>
-		{% if links != "" %}
+		{% if links %}
 			<div class="topic_block_links">
 				{% for link in links %}
 					<a class="topic_block_link" href="#">{{link}}</a>
