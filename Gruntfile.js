@@ -268,25 +268,6 @@ module.exports = function(grunt) {
 				}]
 			}
 		},
-		// Optimize images (svg)
-		svgmin: {
-			options: {
-				plugins: [{
-					removeViewBox: true
-				}]
-			},
-			target: {
-				files: [{
-					expand: true,
-					cwd: 'images/src',
-					src: [
-						'**/*.svg',
-						'!icons/**'
-					],
-					dest: 'images'
-				}]
-			}
-		},
 		// Bless CSS
 		bless: {
 			target: {
@@ -489,7 +470,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('js', [ 'jshint:production', 'uglify', 'includereplace:target', 'modernizr' ]);
 
 	// Images
-	grunt.registerTask('img', [ 'svg_sprite', 'imagemin', 'svgmin' ]);
+	grunt.registerTask('img', [ 'svg_sprite', 'imagemin', ]);
 
 	// HTML
 	grunt.registerTask('html', [ 'twigRender', 'includeSource' ]);
