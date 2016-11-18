@@ -1,7 +1,7 @@
 <nav class="sub_nav {{class}}" aria-label="Additional Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
 	<h2 class="sub_nav_heading">Additional Navigation</h2>
 	<div class="js-navigation sub_nav_list" data-navigation-handle=".sub_nav_heading" role="navigation">
-		{% set subnavLinks = {
+		{% set subLinks = {
 			1: {
 				href: "1-2-style-guide-feature.html",
 				name: "Page Feature Components"
@@ -19,7 +19,7 @@
 				name: "Full Width Components"
 			},
 		} %}
-		{% for link in subnavLinks %}
+		{% for link in subLinks %}
 			<div class="sub_nav_item" itemprop="url">
 				<a class="sub_nav_link" href="{{link.href}}" itemprop="name">{{link.name}}</a>
 			</div>
