@@ -16,9 +16,8 @@
 
 	.main_nav_link {
 
-		&:active,
 		&:focus,
-		.no-touchevents &:hover {}
+		&:hover {}
 	}
 
 	.main_nav_toggle {}
@@ -34,103 +33,101 @@
 	 Main Navigation Small
 ============================================================================= */
 
-	.main_nav_sm {
+.main_nav_sm {
 
-		@media @min_lg {
-			.hide;
-		}
+	@media @min_lg {
+		.hide;
+	}
 
-		.main_nav_heading {}
+	.main_nav_heading {}
 
-		.main_nav_list {}
+	.main_nav_list {}
 
-		.main_nav_item {
+	.main_nav_item {
 
-			&.fs-swap-enabled {
+		&.fs-swap-enabled {
 
-				.main_nav_children {
-					.none;
-				}
-			}
-
-			&.fs-swap-active {
-
-				.main_nav_children {
-					.block;
-				}
+			.main_nav_children {
+				.none;
 			}
 		}
 
-		.main_nav_item_wrapper {}
+		&.fs-swap-active {
 
-		.main_nav_link {
-			.block;
-
-			&:active,
-			&:focus,
-			.no-touchevents &:hover {}
-		}
-
-		.main_nav_toggle {}
-
-		.main_nav_children {}
-
-		.main_nav_child_item {}
-
-		.main_nav_child_link {
-			.block;
+			.main_nav_children {
+				.block;
+			}
 		}
 	}
 
+	.main_nav_item_wrapper {}
 
-	/* ==========================================================================
-		 Main Navigation Large
-	============================================================================= */
+	.main_nav_link {
+		.block;
 
-		.main_nav_lg {
+		&:focus,
+		&:hover {}
+	}
 
-			@media @max_lg {
-				.hide;
-			}
+	.main_nav_toggle {}
 
-			.main_nav_heading {}
+	.main_nav_children {}
 
-			.main_nav_list {}
+	.main_nav_child_item {}
 
-			.main_nav_item {
+	.main_nav_child_link {
+		.block;
+	}
+}
 
-				&.focused,
-				.no-touchevents &:hover {
 
-					.main_nav_children {
-						opacity: 1;
-						visibility: visible;
-					}
-				}
-			}
+/* ==========================================================================
+	 Main Navigation Large
+============================================================================= */
 
-			.main_nav_item_wrapper {}
+.main_nav_lg {
 
-			.main_nav_link {
+	@media @max_lg {
+		.hide;
+	}
 
-				&:active,
-				&:focus,
-				.no-touchevents &:hover {}
-			}
+	.main_nav_heading {}
 
-			.main_nav_toggle {
-				.hide;
-			}
+	.main_nav_list {}
+
+	.main_nav_item {
+
+		&.focused,
+		.no-touchevents &:hover {
 
 			.main_nav_children {
-				opacity: 0;
-				transition:
-					opacity    @base_transition_duration,
-					visibility @base_transition_duration;
-				visibility: hidden;
+				opacity: 1;
+				visibility: visible;
 			}
-
-			.main_nav_child_item {}
-
-			.main_nav_child_link {}
 		}
+	}
+
+	.main_nav_item_wrapper {}
+
+	.main_nav_link {
+
+		&:focus,
+		&:hover {}
+	}
+
+	.main_nav_toggle {
+		.hide;
+	}
+
+	.main_nav_children {
+		opacity: 0;
+		transition:
+			opacity @base_transition_duration,
+			visibility @base_transition_duration;
+		visibility: hidden;
+	}
+
+	.main_nav_child_item {}
+
+	.main_nav_child_link {}
+}

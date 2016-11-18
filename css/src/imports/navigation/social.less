@@ -2,21 +2,26 @@
 	 Social Navigation
 ============================================================================= */
 
-	.social_nav {}
+.social_nav {}
 
-	.social_nav_heading {
-		.hide;
+.social_nav_heading {
+	.hide;
+}
+
+.social_nav_list {}
+
+.social_nav_item {}
+
+.social_nav_link {
+	.icon_before;
+
+	&:focus,
+	&:hover {}
+
+	&[href*=""] {
+
+		&:before {}
 	}
+}
 
-	.social_nav_list {}
-
-	.social_nav_item {}
-
-	.social_nav_link {
-
-		&:active,
-		&:focus,
-		.no-touchevents &:hover {}
-	}
-
-	.social_nav_label {}
+.social_nav_label {}

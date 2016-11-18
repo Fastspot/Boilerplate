@@ -2,51 +2,51 @@
 	Page
 ============================================================================= */
 
-	a.skip_link {
-		.heading_6;
-		.block;
-		.absolute;
-		.text_center;
+a.skip_link {
+	.heading_6;
+	.block;
+	.absolute;
+	.text_center;
 
-		top: 0;
-		right: 0;
-		left: 0;
-		z-index: 100;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 100;
 
-		padding: 20px;
-		transform: translateY(-300%);
-		transition:
-			transform 0.35s,
-			top 0.35s;
+	padding: 20px;
+	transform: translateY(-300%);
+	transition:
+		transform 0.35s,
+		top 0.35s;
+
+	&:focus,
+	&:active {
+		outline: none;
+		transform: translateY(0);
+	}
+
+	.no-csstransforms & {
+		top: -100%;
 
 		&:focus,
 		&:active {
-			outline: none;
-			transform: translateY(0);
-		}
-
-		.no-csstransforms & {
-			top: -100%;
-
-			&:focus,
-			&:active {
-				top: 0;
-			}
+			top: 0;
 		}
 	}
+}
 
-	.page_wrapper {}
+.page_wrapper {}
 
-	.page {}
+.page {}
 
-	.page_header {}
+.page_header {}
 
-	.page_content {}
+.page_content {}
 
-	#main_page_title {
+#main_page_title {
 
-		&:focus,
-		&:active {
-			outline: none;
-		}
+	&:focus,
+	&:active {
+		outline: none;
 	}
+}

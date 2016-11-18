@@ -147,16 +147,14 @@ module.exports = function(grunt) {
 		},
 		// Replace
 		includereplace: {
-			target: {
-				options: {
-					prefix: '@',
-					globals: '<%= pkg.vars %>'
-				},
-				dest: 'js/',
-				src: '*.js',
-				expand: true,
-				cwd: 'js/'
-			}
+			options: {
+				prefix: '@',
+				globals: '<%= pkg.vars %>'
+			},
+			dest: 'js/',
+			src: '*.js',
+			expand: true,
+			cwd: 'js/'
 		},
 		// Twig
 		twigRender: {
@@ -289,39 +287,6 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		// SVG sprite file creation
-		svg_sprite: {
-			target: {
-				expand: true,
-				cwd: 'images/src/icons',
-				src: ['**/*.svg'],
-				dest: 'images/src',
-				options: {
-					'dest': 'images/',
-					'svg': {
-						'xmlDeclaration': false,
-						'doctypeDeclaration': false
-					},
-					'mode': {
-						'css': {
-							'common': 'sprite',
-							'prefix': '.icon_%s',
-							'dimensions': '_dims',
-							'sprite': '../src/icons.svg',
-							'bust': false,
-							'render': {
-								'less': {
-									'dest': '../../css/src/imports/icons.less'
-								}
-							},
-							'example': {
-									'dest': '../icons.html'
-							}
-						}
-					}
-				}
-			}
-		},
 		// Optimize images
 		imagemin: {
 			options: {
@@ -383,6 +348,39 @@ module.exports = function(grunt) {
 					versioning: {
 						paramName: 'v',
 						paramValue: '<%= pkg.version %>'
+					}
+				}
+			}
+		},
+		// SVG sprite file creation
+		svg_sprite: {
+			target: {
+				expand: true,
+				cwd: 'images/src/icons',
+				src: ['**/*.svg'],
+				dest: 'images/src',
+				options: {
+					'dest': 'images/',
+					'svg': {
+						'xmlDeclaration': false,
+						'doctypeDeclaration': false
+					},
+					'mode': {
+						'css': {
+							'common': 'sprite',
+							'prefix': '.icon_%s',
+							'dimensions': '_dims',
+							'sprite': '../src/icons.svg',
+							'bust': false,
+							'render': {
+								'less': {
+									'dest': '../../css/src/imports/icons.less'
+								}
+							},
+							'example': {
+									'dest': '../icons.html'
+							}
+						}
 					}
 				}
 			}
@@ -477,11 +475,11 @@ module.exports = function(grunt) {
 		'clean',
 		'js',
 		'html',
-		'img',
 		'less:production',
 		'postcss:production',
 		'stripmq',
-		'bless'
+		'bless',
+		'img'
 	]);
 
 	// CSS
@@ -496,14 +494,14 @@ module.exports = function(grunt) {
 	grunt.registerTask('js', [
 		'jshint:production',
 		'uglify',
-		'includereplace:target',
+		'includereplace',
 		'modernizr'
 	]);
 
 	// Images
 	grunt.registerTask('img', [
-		'svg_sprite',
-		'imagemin'
+		'imagemin',
+		'svg_sprite'
 	]);
 
 	// HTML
@@ -515,8 +513,8 @@ module.exports = function(grunt) {
 	// Develop
 	grunt.registerTask('devel', [
 		'build',
-		'browserSync',
-		'watch'
+		'watch',
+		'browserSync'
 	]);
 
 	// Debug (expanded files)
@@ -524,12 +522,12 @@ module.exports = function(grunt) {
 		'clean',
 		'jshint',
 		'concat',
-		'includereplace:target',
+		'includereplace',
 		'html',
-		'img',
 		'less:target',
 		'postcss:target',
 		'stripmq',
+		'img'
 	]);
 
 };

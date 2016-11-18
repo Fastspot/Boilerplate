@@ -1,20 +1,6 @@
 {% extends "_base.twig" %}
 
+{% set title = "Style Guide In Content" %}
+
 {% block in_content_callouts %}
-	{% include "../partials/components/in-content/blockquote.twig" with {
-		quote: "<p>If I had asked people what they wanted, they would have said faster horses.</p>",
-		cite: "Henry Ford"
-	} %}
-
-	<div class="cr_heading">Topic Row</div>
-
-	{% include '../partials/components/in-content/topic-row.twig' with {
-		image: "1",
-		title: "Undergraduate",
-		description: "Drew students have the freedom to customize their own education to prepare for a great career. With our incredible faculty mentorship and opportunities for real world, hands-on learning, our graduates leave Drew ready to take on the world!",
-		links: [
-			"How to Apply",
-			"Learn More"
-		]
-	} %}
 {% endblock %}

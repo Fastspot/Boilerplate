@@ -8,10 +8,12 @@
 		<!-- Skip-to-Content Link -->
 		<a href="#main_page_title" id="skip_to_content" class="skip_link">Skip to Main Content</a>
 
+		<!-- Page Wrapper -->
 		<div class="page_wrapper js-navigation_push">
 
 			<!-- Header -->
 			{% include "../partials/_header.twig" %}
+			<!-- END: Header -->
 
 			<!-- Page -->
 			<div class="page">
@@ -26,19 +28,22 @@
 				<div class="page_content">
 
 					<!-- Page Header -->
-					<div class="page_header">
-						<div class="fs-row">
-							<div class="fs-cell">
+					{% block page_header %}
+						<div class="page_header">
+							<div class="fs-row">
+								<div class="fs-cell">
 
-								{% block breadcrumb %}
-									{% include "../partials/navigation/breadcrumb/master-sub.twig" %}
-								{% endblock %}
+									{% block breadcrumb %}
+										{% include "../partials/navigation/breadcrumb.twig" %}
+									{% endblock %}
 
-								<h1 id="main_page_title" tabindex="-1">{% block page_title %}{% endblock %}</h1>
+									{% set page_title = title %}
+									<h1 id="main_page_title" tabindex="-1">{{page_title}}</h1>
 
+								</div>
 							</div>
 						</div>
-					</div>
+					{% endblock %}
 					<!-- END: Page Header -->
 
 					{% block page %}
@@ -47,7 +52,7 @@
 							<!-- Sub Nav -->
 							<div class="fs-cell-right fs-lg-4">
 								{% block sub_nav %}
-									{% include "../partials/navigation/sub/master-sub.twig" %}
+									{% include "../partials/navigation/sub.twig" %}
 								{% endblock %}
 							</div>
 							<!-- END: Sub Nav -->
@@ -97,9 +102,12 @@
 			</div>
 			<!-- END: Page -->
 
+			<!-- Footer -->
 			{% include "../partials/_footer.twig" %}
+			<!-- END: Footer -->
 
-		</div> <!-- END: page_wrapper -->
+		</div>
+		<!-- END: page_wrapper -->
 
 		{% include "../partials/_footer-js.twig" %}
 

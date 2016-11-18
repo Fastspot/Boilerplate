@@ -2,37 +2,29 @@
 
 <div class="cr_color_blocks">
 	<div class="cr_color_block_row">
-		<div class="cr_color_block_cell">
-			<div class="cr_color_block bg_true_black color_true_white">
-				<div class="cr_color_block_content">#000</div>
+		{% set colors = {
+			1: {
+				class: "slim bg_true_black color_true_white",
+				hex: "#000",
+				classTwo: "bg_true_white color_true_black",
+				hexTwo: "#FFF"
+			},
+			2: {
+				class: "slim bg_true_white color_true_black",
+				hex: "#FFF"
+				classTwo: "bg_true_black color_true_white",
+				hexTwo: "#000",
+			}
+		} %}
+		{% for color in colors %}
+			<div class="cr_color_block_cell">
+				<div class="cr_color_block {{color.class}}">
+					<div class="cr_color_block_content">{{color.hex}}</div>
+				</div>
+				<div class="cr_color_block {{color.classTwo}}">
+					<div class="cr_color_block_content">{{color.hexTwo}}</div>
+				</div>
 			</div>
-			<div class="cr_color_block slim bg_true_white color_true_black">
-				<div class="cr_color_block_content">#FFF</div>
-			</div>
-		</div>
-		<div class="cr_color_block_cell">
-			<div class="cr_color_block slim bg_true_white color_true_black">
-				<div class="cr_color_block_content">#FFF</div>
-			</div>
-			<div class="cr_color_block bg_true_black color_true_white">
-				<div class="cr_color_block_content">#000</div>
-			</div>
-		</div>
-		<div class="cr_color_block_cell">
-			<div class="cr_color_block slim bg_true_black color_true_white">
-				<div class="cr_color_block_content">#000</div>
-			</div>
-			<div class="cr_color_block bg_true_white color_true_black">
-				<div class="cr_color_block_content">#FFF</div>
-			</div>
-		</div>
-		<div class="cr_color_block_cell">
-			<div class="cr_color_block slim bg_true_white color_true_black">
-				<div class="cr_color_block_content">#FFF</div>
-			</div>
-			<div class="cr_color_block bg_true_black color_true_white">
-				<div class="cr_color_block_content">#000</div>
-			</div>
-		</div>
+		{% endfor %}
 	</div>
 </div>

@@ -1,7 +1,7 @@
-<!--
+{#
 	TODO:
-	1. Update Client Name
--->
+		1. Update Client Name
+#}
 
 {% block head %}
 	<head>
@@ -10,19 +10,16 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="mobile-web-app-capable" content="yes">
 
-		<!-- Page Attributes -->
-		<title>{% block title %}{% endblock %} | Client Name</title><!-- 1 -->
+		<title>{{title}} | Client Name</title>{# 1 #}
 		<meta name="description" content="">
 
-		<!-- Favions / Touch Icons -->
 		{% include "_favicons.html" %}
 
-		<!-- Modernizer -->
 		<script src="../../js/modernizr.js"></script>
 
-		<!-- Compiled CSS -->
-		<!--[if gt IE 8]><!--><link rel="stylesheet" href="../../css/site.css"><!--<![endif]-->
-
+		<!--[if gt IE 8]><!-->
+			<link rel="stylesheet" href="../../css/site.css">
+		<!--<![endif]-->
 		<!--[if IE 8]>
 			<script>var IE8 = true;</script>
 			<script src="../../js/site-ie8.js"></script>
