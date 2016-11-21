@@ -135,12 +135,6 @@ http://realfavicongenerator.net/favicon/grunt -->
 			</a>
 			<meta itemprop="position" content="1">
 		</div>
-							<div class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-				<span class="breadcrumb_label" itemprop="item">
-					<span class="breadcrumb_name" itemprop="name">Search</span>
-				</span>
-				<meta itemprop="position" content="2">
-			</div>
 			</div>
 </div>
 									
@@ -183,26 +177,30 @@ http://realfavicongenerator.net/favicon/grunt -->
 	
 
 <div class="site_search_results">
-	<script>
-		(function()
-		{
-			var cx = '011737558837375720776:mbfrjmyam1g'; // 1
-			var gcse = document.createElement('script');
-			gcse.type = 'text/javascript';
-			gcse.async = true;
-			gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-				'//cse.google.com/cse.js?cx=' + cx;
-			gcse.autoSearchOnLoad = true;
-			var s = document.getElementsByTagName('script')[0];
-			s.parentNode.insertBefore(gcse, s);
-		} )();
-	</script>
-	<gcse:search></gcse:search>
-	<noscript>
-		<div class="typography">
-			<p>The site search requires a JavaScript enabled browser. You can also search the site using <a href="//www.google.com/#q=site:www.*website*.com+%22term%22">Google</a>.</p>
+	<div class="fs-row">
+		<div class="fs-cell">
+			<script>
+				(function()
+				{
+					var cx = '011737558837375720776:mbfrjmyam1g'; // 1
+					var gcse = document.createElement('script');
+					gcse.type = 'text/javascript';
+					gcse.async = true;
+					gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+						'//cse.google.com/cse.js?cx=' + cx;
+					gcse.autoSearchOnLoad = true;
+					var s = document.getElementsByTagName('script')[0];
+					s.parentNode.insertBefore(gcse, s);
+				} )();
+			</script>
+			<gcse:search></gcse:search>
+			<noscript>
+				<div class="typography">
+					<p>The site search requires a JavaScript enabled browser. You can also search the site using <a href="//www.google.com/#q=site:www.*website*.com+%22term%22">Google</a>.</p>
+				</div>
+			</noscript>
 		</div>
-	</noscript>
+	</div>
 </div>
 
 

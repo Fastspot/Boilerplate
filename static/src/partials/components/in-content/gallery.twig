@@ -1,33 +1,23 @@
 <div class="gallery">
 	<div class="gallery_carousel">
-		{% include "gallery-item.twig" with {
-			image: "1",
-			caption: "Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at."
+		{% set galleries = {
+			1: {
+				caption: "Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at."
+			},
+			2: {
+				caption: "Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at."
+			},
+			3: {
+				caption: "Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at."
+			}
 		} %}
-
-		{% include "gallery-item.twig" with {
-			image: "2",
-			caption: "Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at."
-		} %}
-
-		{% include "gallery-item.twig" with {
-			image: "3",
-			caption: "Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at."
-		} %}
-
-		{% include "gallery-item.twig" with {
-			image: "4",
-			caption: "Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at."
-		} %}
-
-		{% include "gallery-item.twig" with {
-			image: "5",
-			caption: "Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at."
-		} %}
-
-		{% include "gallery-item.twig" with {
-			image: "6",
-			caption: "Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at."
-		} %}
+		{% for gallery in galleries %}
+			<div class="gallery_item">
+				<figure class="gallery_figure">
+					<img class="gallery_image" src="//spacehold.it/760x426/{{loop.index}}.jpg" alt="" />
+					<figcaption class="gallery_caption">{{caption}}</figcaption>
+				</figure>
+			</div>
+		{% endfor %}
 	</div>
 </div>

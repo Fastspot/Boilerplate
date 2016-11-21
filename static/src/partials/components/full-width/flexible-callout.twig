@@ -1,5 +1,7 @@
 <section class="flex_callout {{class}}">
-	<div class="js-background flex_callout_background" data-background-options='{"source": {"0px": "//spacehold.it/740x740/{{image}}.jpg", "740px": "//spacehold.it/980x735/{{image}}.jpg", "980px": "//spacehold.it/1220x686/{{image}}.jpg"}}'></div>
+	{% if background %}
+		<div class="js-background flex_callout_background" data-background-options='{"source": {"0px": "//spacehold.it/740x740/{{background}}.jpg", "740px": "//spacehold.it/980x735/{{background}}.jpg", "980px": "//spacehold.it/1220x686/{{background}}.jpg"}}'></div>
+	{% endif %}
 	<div class="flex_callout_content">
 		<header class="flex_callout_header">
 			<h5 class="flex_callout_label">{{label}}</h5>
@@ -9,8 +11,9 @@
 			<p>{{description}}</p>
 		</div>
 		<div class="flex_callout_links">
-			<a class="flex_callout_link" href="{{link}}">{{explore}}</a>
-			<a class="flex_callout_link" href="{{link}}">{{action}}</a>
+			{% for link in flexLinks %}
+				<a class="flex_callout_link" href="{{link.href}}">{{link.name}}</a>
+			{% endfor %}
 		</div>
 	</div>
 </section>
