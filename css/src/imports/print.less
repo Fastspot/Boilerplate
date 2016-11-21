@@ -11,22 +11,37 @@
 		text-shadow: none !important;
 	}
 
-	a,
-	a:visited {
-		text-decoration: underline;
+	h2,
+	h3,
+	p {
+		orphans: 3;
+		widows: 3;
 	}
 
-	a[href]:after {
-		content: " (" attr(href) ")";
+	h2,
+	h3 {
+		page-break-after: avoid;
+	}
+
+	a {
+		text-decoration: underline;
+
+		&:visited {
+			text-decoration: underline;
+		}
+
+		&[href]:after {
+			content: " (" attr(href) ")";
+		}
+
+		&[href^="javascript:"]:after,
+		&[href^="#"]:after {
+			content: "";
+		}
 	}
 
 	abbr[title]:after {
 		content: " (" attr(title) ")";
-	}
-
-	a[href^="javascript:"]:after,
-	a[href^="#"]:after {
-		content: "";
 	}
 
 	pre,
@@ -46,18 +61,6 @@
 
 	img {
 		max-width: 100% !important;
-	}
-
-	p,
-	h2,
-	h3 {
-		orphans: 3;
-		widows: 3;
-	}
-
-	h2,
-	h3 {
-		page-break-after: avoid;
 	}
 
 	.print {

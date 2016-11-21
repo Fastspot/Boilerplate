@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html itemscope="" itemtype="http://schema.org/WebPage" lang="en" class="no-js">
 
-	{% include "../partials/_head.twig" %}
+	{% embed "../partials/_head.twig" %}
+	{% endembed %}
 
 	<body class="fs-grid">
 
@@ -12,7 +13,8 @@
 		<div class="page_wrapper js-navigation_push">
 
 			<!-- Header -->
-			{% include "../partials/_header.twig" %}
+			{% embed "../partials/_header.twig" %}
+			{% endembed %}
 			<!-- END: Header -->
 
 			<!-- Page -->
@@ -34,7 +36,8 @@
 								<div class="fs-cell">
 
 									{% block breadcrumb %}
-										{% include "../partials/navigation/breadcrumb.twig" %}
+										{% embed "../partials/navigation/breadcrumb.twig" %}
+										{% endembed %}
 									{% endblock %}
 
 									{% set page_title = title %}
@@ -52,7 +55,8 @@
 							<!-- Sub Nav -->
 							<div class="fs-cell-right fs-lg-4">
 								{% block sub_nav %}
-									{% include "../partials/navigation/sub.twig" %}
+									{% embed "../partials/navigation/sub.twig" %}
+									{% endembed %}
 								{% endblock %}
 							</div>
 							<!-- END: Sub Nav -->
@@ -103,13 +107,15 @@
 			<!-- END: Page -->
 
 			<!-- Footer -->
-			{% include "../partials/_footer.twig" %}
+			{% embed "../partials/_footer.twig" %}
+			{% endembed %}
 			<!-- END: Footer -->
 
 		</div>
 		<!-- END: page_wrapper -->
 
-		{% include "../partials/_footer-js.twig" %}
+		{% embed "../partials/_footer-js.twig" %}
+		{% endembed %}
 
 	</body>
 </html>

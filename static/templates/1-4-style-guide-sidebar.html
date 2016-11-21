@@ -90,6 +90,42 @@ http://realfavicongenerator.net/favicon/grunt -->
 
 			<button class="js-nav_handle mobile_sidebar_handle">Menu</button>
 
+			<div class="js-navigation mobile_sidebar" hidden data-navigation-handle=".js-nav_handle" data-navigation-content=".js-navigation_push" data-navigation-options='{"type": "overlay", "gravity": "right"}'>
+
+	<nav class="main_nav main_nav_sm" aria-label="Site Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+	<h2 class="main_nav_heading">Site Navigation</h2>
+	<div class="main_nav_list" role="navigation">
+		<div class="main_nav_item mobile_nav_1" itemprop="url">
+			<div class="main_nav_item_wrapper">
+				<a class="main_nav_link" href="#" itemprop="name">Main Link 1</a>
+				<button class="js-swap main_nav_toggle" data-swap-target=".mobile_nav_1" data-swap-group="mobile_nav">Expand Navigation</button>
+			</div>
+			<div class="main_nav_children">
+				<div class="main_nav_child_item" itemprop="url">
+					<a class="main_nav_child_link" href="#" itemprop="name">Main Child Link 1</a>
+				</div>
+				<div class="main_nav_child_item" itemprop="url">
+					<a class="main_nav_child_link" href="#" itemprop="name">Main Child Link 2</a>
+				</div>
+			</div>
+		</div>
+		<div class="main_nav_item mobile_nav_2" itemprop="url">
+			<div class="main_nav_item_wrapper">
+				<a class="main_nav_link" href="#" itemprop="name">Main Link 2</a>
+				<button class="js-swap main_nav_toggle" data-swap-target=".mobile_nav_2" data-swap-group="mobile_nav">Expand Navigation</button>
+			</div>
+		</div>
+	</div>
+</nav>
+
+	<nav class="secondary_nav secondary_nav_sm" aria-label="Secondary Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+	<h2 class="secondary_nav_heading">Secondary Navigation</h2>
+	<div class="secondary_nav_list" role="navigation">
+			</div>
+</nav>
+
+</div>
+
 			
 
 <div class="site_search" id="site_search" itemscope itemtype="http://schema.org/WebSite" role="search">
@@ -103,7 +139,7 @@ http://realfavicongenerator.net/favicon/grunt -->
 		</button>
 	</form>
 </div>
-			
+
 		</div>
 	</div>
 </header>

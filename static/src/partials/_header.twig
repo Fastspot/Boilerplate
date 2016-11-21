@@ -3,7 +3,8 @@
 		<div class="fs-cell">
 
 			{% include "_logo.twig" with {
-				class: "header_logo"
+				class: "header_logo",
+				name: "Client Name"
 			} %}
 
 			{% include "../partials/navigation/main.twig" with {
@@ -16,8 +17,10 @@
 
 			<button class="js-nav_handle mobile_sidebar_handle">Menu</button>
 
+			{% include "_mobile-sidebar.twig" %}
+
 			{% include "_site-search.twig" %}
-			
+
 		</div>
 	</div>
 </header>

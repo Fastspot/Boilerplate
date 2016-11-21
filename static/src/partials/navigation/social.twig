@@ -15,31 +15,26 @@
 	<h2 class="social_nav_heading">Social</h2>
 	<div class="social_nav_list">
 		{% set socialLinks = {
-			1: {
-				name: "facebook",
+			facebook: {
 				href: "facebook.com"
 			},
-			2: {
-				name: "twitter",
+			twitter: {
 				href: "twitter.com"
 			},
-			3: {
-				name: "instagram",
+			instagram: {
 				href: "instagram.com"
 			},
-			4: {
-				name: "youtube",
+			youtube: {
 				href: "youtube.com"
 			},
-			5: {
-				name: "linkedin",
+			linkedin: {
 				href: "linkedin.com"
 			}
 		} %}
-		{% for link in socialLinks %}
-			<div class="social_nav_item social_nav_item_{{link.name}}">
+		{% for key, link in socialLinks %}
+			<div class="social_nav_item social_nav_item_{{key}}">
 				<a class="social_nav_link" href="{{link.href}}" itemprop="sameAs" target="_blank">
-					<span class="social_nav_label">{{link.name}}</span>
+					<span class="social_nav_label">{{key}}</span>
 				</a>
 			</div>
 		{% endfor %}
