@@ -1,6 +1,6 @@
 
 /*! 
- * site-title v0.0.1 [2016-11-18] 
+ * site-title v0.0.1 [2016-11-21] 
  * Site description. 
  * Fastspot 
  */
@@ -4310,13 +4310,13 @@ figure {
 }
 
 .icon_before:before {
-  background-image: url('../images/icons.svg?1587976d220');
+  background-image: url('../images/icons.svg?15887952b90');
   content: "";
   display: inline-block;
 }
 
 .icon_after:after {
-  background-image: url('../images/icons.svg?1587976d220');
+  background-image: url('../images/icons.svg?15887952b90');
   content: "";
   display: inline-block;
 }
@@ -4338,7 +4338,7 @@ figure {
 }
 
 .icon_center:after {
-  background-image: url('../images/icons.svg?1587976d220');
+  background-image: url('../images/icons.svg?15887952b90');
   position: absolute;
   top: 0;
   right: 0;
@@ -4421,7 +4421,7 @@ textarea {
 }
 
 .site_search_results .gsc-search-box td.gsc-search-button:before {
-  background-image: url('../images/icons.svg?1587976d220');
+  background-image: url('../images/icons.svg?15887952b90');
   content: "";
   display: inline-block;
 }
@@ -4438,7 +4438,7 @@ textarea {
 }
 
 .site_search_results .gsc-search-box td.gsc-clear-button:before {
-  background-image: url('../images/icons.svg?1587976d220');
+  background-image: url('../images/icons.svg?15887952b90');
   content: "";
   display: inline-block;
 }
@@ -4892,7 +4892,7 @@ a.skip_link:focus {
 }
 
 .social_nav_link:before {
-  background-image: url('../images/icons.svg?1587976d220');
+  background-image: url('../images/icons.svg?15887952b90');
   content: "";
   display: inline-block;
 }
@@ -4909,7 +4909,7 @@ a.skip_link:focus {
 }
 
 .fs-carousel-control:before {
-  background-image: url('../images/icons.svg?1587976d220');
+  background-image: url('../images/icons.svg?15887952b90');
   content: "";
   display: inline-block;
 }
