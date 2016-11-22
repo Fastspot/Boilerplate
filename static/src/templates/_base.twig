@@ -1,8 +1,41 @@
 <!DOCTYPE html>
 <html itemscope="" itemtype="http://schema.org/WebPage" lang="en" class="no-js">
 
-	{% embed "../partials/_head.twig" %}
-	{% endembed %}
+	{#
+		TODO:
+			1. Update Client Name
+	#}
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="mobile-web-app-capable" content="yes">
+
+		<title>{{title}} | Client Name</title> {# 1 #}
+		<meta name="description" content="">
+
+		{% include "../partials/_favicons.html" %}
+
+		<script src="../../js/modernizr.js"></script>
+
+		<!--[if gt IE 8]><!-->
+			<link rel="stylesheet" href="../../css/site.css">
+		<!--<![endif]-->
+		<!--[if IE 8]>
+			<script>var IE8 = true;</script>
+			<script src="../../js/site-ie8.js"></script>
+			<link rel="stylesheet" href="../../css/site-ie8.css">
+		<![endif]-->
+		<!--[if IE 9]>
+			<script>var IE9 = true;</script>
+			<script src="../../js/site-ie9.js"></script>
+			<link rel="stylesheet" href="../../css/site-ie9.css">
+		<![endif]-->
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" href="../../css/site-ie.css">
+		<![endif]-->
+	</head>
 
 	<body class="fs-grid">
 
@@ -13,8 +46,32 @@
 		<div class="page_wrapper js-navigation_push">
 
 			<!-- Header -->
-			{% embed "../partials/_header.twig" %}
-			{% endembed %}
+			<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+				<div class="fs-row">
+					<div class="fs-cell">
+
+						{% include "../partials/_logo.twig" with {
+							class: "header_logo",
+							name: "Client Name"
+						} %}
+
+						{% include "../partials/navigation/main.twig" with {
+							class: "main_nav_lg"
+						} %}
+
+						{% include "../partials/navigation/secondary.twig" with {
+							class: "secondary_nav_lg"
+						} %}
+
+						<button class="js-nav_handle mobile_sidebar_handle">Menu</button>
+
+						{% include "../partials/_mobile-sidebar.twig" %}
+
+						{% include "../partials/_site-search.twig" %}
+
+					</div>
+				</div>
+			</header>
 			<!-- END: Header -->
 
 			<!-- Page -->
@@ -107,15 +164,34 @@
 			<!-- END: Page -->
 
 			<!-- Footer -->
-			{% embed "../partials/_footer.twig" %}
-			{% endembed %}
+			<footer id="footer" class="footer" itemscope itemtype="http://schema.org/WPFooter">
+				<div class="fs-row">
+					<div class="fs-cell">
+
+						{% include "../partials/_address.twig" %}
+
+						{% include "../partials/navigation/footer.twig" with {
+							class: ""
+						} %}
+
+						{% include "../partials/navigation/social.twig" with {
+							class: ""
+						} %}
+
+					</div>
+				</div>
+			</footer>
 			<!-- END: Footer -->
 
 		</div>
 		<!-- END: page_wrapper -->
 
-		{% embed "../partials/_footer-js.twig" %}
-		{% endembed %}
+		<script src="../../js/site.js"></script>
+
+		<!-- Grid Bookmarklet -->
+		<script>
+			(function(){if(typeof FSGridBookmarklet==='undefined'){document.body.appendChild(document.createElement('script')).src='http://formstone.it/js/bookmarklet/grid.js';}else{FSGridBookmarklet();}} )();
+		</script>
 
 	</body>
 </html>
