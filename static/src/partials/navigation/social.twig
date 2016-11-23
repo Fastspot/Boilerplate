@@ -14,27 +14,10 @@
 	<link itemprop="url" href="http://www.client-name.com"> {# 2 #}
 	<h2 class="social_nav_heading">Social</h2>
 	<div class="social_nav_list">
-		{% set socialLinks = {
-			facebook: {
-				href: "facebook.com"
-			},
-			twitter: {
-				href: "twitter.com"
-			},
-			instagram: {
-				href: "instagram.com"
-			},
-			youtube: {
-				href: "youtube.com"
-			},
-			linkedin: {
-				href: "linkedin.com"
-			}
-		} %}
-		{% for key, link in socialLinks %}
-			<div class="social_nav_item social_nav_item_{{key}}">
+		{% for link in links %}
+			<div class="social_nav_item social_nav_item_{{link.name}}">
 				<a class="social_nav_link" href="{{link.href}}" itemprop="sameAs" target="_blank">
-					<span class="social_nav_label">{{key}}</span>
+					<span class="social_nav_label">{{link.name}}</span>
 				</a>
 			</div>
 		{% endfor %}

@@ -1,6 +1,6 @@
 
 /*! 
- * site-title v0.0.1 [2016-11-22] 
+ * site-title v0.0.1 [2016-11-23] 
  * Site description. 
  * Fastspot 
  */
@@ -4047,7 +4047,7 @@ textarea {
 }
 
 .site_search_results .gsc-search-box td.gsc-search-button:before {
-  background-image: url('../images/icons.svg?1588d6d9598');
+  background-image: url('../images/icons.svg?1589224d830');
   content: "";
   display: inline-block;
 }
@@ -4064,7 +4064,7 @@ textarea {
 }
 
 .site_search_results .gsc-search-box td.gsc-clear-button:before {
-  background-image: url('../images/icons.svg?1588d6d9598');
+  background-image: url('../images/icons.svg?1589224d830');
   content: "";
   display: inline-block;
 }
@@ -4527,7 +4527,7 @@ a.skip_link:focus {
 }
 
 .social_nav_link:before {
-  background-image: url('../images/icons.svg?1588d6d9598');
+  background-image: url('../images/icons.svg?1589224d830');
   content: "";
   display: inline-block;
 }
@@ -4544,7 +4544,7 @@ a.skip_link:focus {
 }
 
 .fs-carousel-control:before {
-  background-image: url('../images/icons.svg?1588d6d9598');
+  background-image: url('../images/icons.svg?1589224d830');
   content: "";
   display: inline-block;
 }
