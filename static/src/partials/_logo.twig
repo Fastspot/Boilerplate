@@ -8,9 +8,8 @@
 		3. Logo needs absolute URL - //www.example.com/logo.png
 #}
 
-<p>{{logos}}</p>
-<h1 class="logo {{logo.class}}" itemscope itemtype="http://schema.org/Organization"> {# 1 #}
-	<a class="logo_link {{logo.class}}_link" itemprop="url" href="00.1.home.html">{{logo.name}}</a> {# 2 #}
+<h1 class="logo {{class}}" itemscope itemtype="http://schema.org/Organization"> {# 1 #}
+	<a class="logo_link" itemprop="url" href="00.1.home.html">{{name}}</a> {# 2 #}
 	<meta itemprop="logo" content="../../images/logo-schema.png"> {# 3 #}
 	<img src="../../images/logo-print.png" class="print" alt="">
 </h1>
