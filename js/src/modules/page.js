@@ -32,7 +32,9 @@ Site.modules.Page = (function($, Site) {
 		Site.$body.find(".js-checkbox, .js-radio, input[type=checkbox], input[type=radio]").checkbox();
 		Site.$body.find(".js-dropdown").dropdown();
 		Site.$body.find(".js-equalize").equalize();
-		Site.$body.find(".js-lightbox").lightbox({ mobile: true });
+		Site.$body.find(".js-lightbox").lightbox({
+			mobile: true
+		});
 		Site.$body.find(".js-navigation")
 			.navigation({
 				maxWidth: Site.maxLG + "px"

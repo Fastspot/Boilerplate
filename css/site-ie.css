@@ -1,6 +1,6 @@
 
 /*! 
- * site-title v0.0.1 [2016-11-23] 
+ * site-title v0.0.1 [2016-11-28] 
  * Site description. 
  * Fastspot 
  */
@@ -4047,7 +4047,7 @@ textarea {
 }
 
 .site_search_results .gsc-search-box td.gsc-search-button:before {
-  background-image: url('../images/icons.svg?1589224d830');
+  background-image: url('../images/icons.svg?158ac355470');
   content: "";
   display: inline-block;
 }
@@ -4064,7 +4064,7 @@ textarea {
 }
 
 .site_search_results .gsc-search-box td.gsc-clear-button:before {
-  background-image: url('../images/icons.svg?1589224d830');
+  background-image: url('../images/icons.svg?158ac355470');
   content: "";
   display: inline-block;
 }
@@ -4527,7 +4527,7 @@ a.skip_link:focus {
 }
 
 .social_nav_link:before {
-  background-image: url('../images/icons.svg?1589224d830');
+  background-image: url('../images/icons.svg?158ac355470');
   content: "";
   display: inline-block;
 }
@@ -4543,10 +4543,60 @@ a.skip_link:focus {
   display: block;
 }
 
-.fs-carousel-control:before {
-  background-image: url('../images/icons.svg?1589224d830');
+.fs-lightbox {
+  background: 0 0;
+}
+
+.fs-lightbox .fs-lightbox-close:before {
+  background-image: url('../images/icons.svg?158ac355470');
   content: "";
   display: inline-block;
+}
+
+.fs-lightbox .fs-lightbox-container {
+  background: 0 0;
+}
+
+.fs-lightbox .fs-lightbox-content {
+  background: rgba(255,255,255,.75);
+}
+
+.fs-lightbox-control:before {
+  background-image: url('../images/icons.svg?158ac355470');
+  content: "";
+  display: inline-block;
+}
+
+@media print {
+  .fs-carousel .fs-carousel-canister {
+    width: 100%!important;
+    tranform: none!important;
+  }
+}
+
+@media print {
+  .fs-carousel .fs-carousel-item {
+    height: auto!important;
+    width: 100%!important;
+  }
+}
+
+@media print {
+  .fs-carousel-controls {
+    display: none;
+  }
+}
+
+.fs-carousel-control:before {
+  background-image: url('../images/icons.svg?158ac355470');
+  content: "";
+  display: inline-block;
+}
+
+@media print {
+  .fs-carousel-pagination {
+    display: none;
+  }
 }
 
 @media print {

@@ -1,4 +1,4 @@
-/*global module:false*/
+/* global module:false */
 module.exports = function(grunt) {
 
 	require('load-grunt-tasks')(grunt);
@@ -26,8 +26,7 @@ module.exports = function(grunt) {
 				files: 'css/src/**/**.{less,css}',
 				tasks: [
 					'less:target',
-					'postcss:target',
-					'stripmq:target'
+					'postcss:target'
 				]
 			},
 			images: {

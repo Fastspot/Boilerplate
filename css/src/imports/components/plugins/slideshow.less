@@ -2,18 +2,38 @@
 	Slideshow
 ============================================================================= */
 
-.fs-carousel {}
+.fs-carousel {
 
-.fs-carousel-item {
+	.fs-carousel-canister {
 
-	&.fs-carousel-visible {}
+		@media print {
+			width: 100% !important;
+			
+			tranform: none !important;
+		}
+	}
+
+	.fs-carousel-item {
+
+		@media print {
+			height: auto !important;
+			width: 100% !important;
+		}
+
+		&.fs-carousel-visible {}
+	}
 }
 
 
 /* Controls
 ============================================================================= */
 
-.fs-carousel-controls {}
+.fs-carousel-controls {
+
+	@media print {
+		display: none;
+	}
+}
 
 .fs-carousel-control {
 	.icon_before;
@@ -35,7 +55,12 @@
 /* Pagination
 ============================================================================= */
 
-.fs-carousel-pagination {}
+.fs-carousel-pagination {
+
+	@media print {
+		display: none;
+	}
+}
 
 .fs-carousel-page {
 
