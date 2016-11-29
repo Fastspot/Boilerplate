@@ -4041,7 +4041,7 @@ textarea {
 }
 
 .site_search_results .gsc-search-box td.gsc-search-button:before {
-  background-image: url('../images/icons.svg?158b1dc59f0');
+  background-image: url('../images/icons.svg?158b221b3d8');
   content: "";
   display: inline-block;
 }
@@ -4058,7 +4058,7 @@ textarea {
 }
 
 .site_search_results .gsc-search-box td.gsc-clear-button:before {
-  background-image: url('../images/icons.svg?158b1dc59f0');
+  background-image: url('../images/icons.svg?158b221b3d8');
   content: "";
   display: inline-block;
 }
@@ -4522,7 +4522,7 @@ a.skip_link:focus {
 }
 
 .social_nav_link:before {
-  background-image: url('../images/icons.svg?158b1dc59f0');
+  background-image: url('../images/icons.svg?158b221b3d8');
   content: "";
   display: inline-block;
 }
@@ -4538,12 +4538,31 @@ a.skip_link:focus {
   display: block;
 }
 
+.accordion_item_title {
+  position: relative;
+  cursor: pointer;
+}
+
+.accordion_item_indicator:before {
+  background-image: url('../images/icons.svg?158b221b3d8');
+  content: "";
+  display: inline-block;
+}
+
+.accordion_item_description {
+  display: none;
+}
+
+.fs-swap-active .accordion_item_description {
+  display: block;
+}
+
 .fs-lightbox {
   background: 0 0;
 }
 
 .fs-lightbox .fs-lightbox-close:before {
-  background-image: url('../images/icons.svg?158b1dc59f0');
+  background-image: url('../images/icons.svg?158b221b3d8');
   content: "";
   display: inline-block;
 }
@@ -4557,7 +4576,7 @@ a.skip_link:focus {
 }
 
 .fs-lightbox-control:before {
-  background-image: url('../images/icons.svg?158b1dc59f0');
+  background-image: url('../images/icons.svg?158b221b3d8');
   content: "";
   display: inline-block;
 }
@@ -4583,7 +4602,7 @@ a.skip_link:focus {
 }
 
 .fs-carousel-control:before {
-  background-image: url('../images/icons.svg?158b1dc59f0');
+  background-image: url('../images/icons.svg?158b221b3d8');
   content: "";
   display: inline-block;
 }
