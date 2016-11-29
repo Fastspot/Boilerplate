@@ -162,7 +162,7 @@ module.exports = function(grunt) {
 			your_target: {
 	      files: [
 	        {
-	          data: '<%= pkg.vars %>',
+	          data: '<%= pkg %>',
 	          expand: true,
 	          cwd: 'static/src/templates/',
 	          src: [
@@ -347,7 +347,7 @@ module.exports = function(grunt) {
 				dest: 'images/favicons/',
 				options: {
 					iconsPath: '/images/favicons/',
-					html: [ 'static/src/partials/_favicons.html' ],
+					html: [ 'static/src/partials/favicons.html' ],
 					design: {
 						ios: {
 							pictureAspect: 'noChange'

@@ -12,14 +12,10 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="mobile-web-app-capable" content="yes">
 
-		{% block titleVar %}
-			{% set title = "Page" %}
-		{% endblock %}
-
-		<title>{{title}} | Client Name</title> {# 1 #}
+		<title>{{pageTitle|default("Page")}} | {{name}}</title> {# 1 #}
 		<meta name="description" content="">
 
-		{% include "../partials/_favicons.html" %}
+		{% include "../partials/favicons.html" %}
 
 		<script src="../../js/modernizr.js"></script>
 
@@ -41,7 +37,40 @@
 		<![endif]-->
 	</head>
 
-	<body class="fs-grid">
+	<body class="fs-grid theme_{{bodyTheme|default("interior")}}">
+
+		{#
+
+			TODO:
+				Update Navigation Blocks in package.json
+
+		#}
+
+		{% block mainNavVar %}
+			{% set mainNavLinksAlias = mainNavLinks %}
+		{% endblock %}
+
+		{% block secondaryNavVar %}
+			{% set secondaryNavLinksAlias = secondaryNavLinks %}
+		{% endblock %}
+
+		{% block breadcrumbNavVar %}
+			{% set breadcrumbNavLinks = [
+				pageTitle|default("Page")
+			] %}
+		{% endblock %}
+
+		{% block subNavVar %}
+			{% set subNavLinksAlias = subNavLinks %}
+		{% endblock %}
+
+		{% block footerNavVar %}
+			{% set footerNavLinksAlias = footerNavLinks %}
+		{% endblock %}
+
+		{% block socialNavVar %}
+			{% set socialNavLinksAlias = socialNavLinks %}
+		{% endblock %}
 
 		<!-- Skip-to-Content Link -->
 		<a href="#main_page_title" id="skip_to_content" class="skip_link">Skip to Main Content</a>
@@ -53,60 +82,40 @@
 			<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
 				<div class="fs-row">
 					<div class="fs-cell">
-						{% include "../partials/_logo.twig" with {
+						{% include "../partials/logo.twig" with {
 							class: "header_logo",
 							name: title
 						} %}
 
-						{% block mainNavVar %}
-							{% set mainNavLinks = [
-								{
-									name: "Main Link",
-									children: [
-										"One Child",
-										"Two Child"
-									]
-								}
-							] %}
-						{% endblock %}
-
 						{% include "../partials/navigation/main.twig" with {
 							class: "main_nav_lg",
-							links: mainNavLinks
+							links: mainNavLinksAlias
 						} %}
-
-						{% block secondaryNavVar %}
-							{% set secondaryNavLinks = [
-								"Secondary Link"
-							] %}
-						{% endblock %}
 
 						{% include "../partials/navigation/basic.twig" with {
 							class: "secondary_nav",
 							modifier: "lg",
 							label: "Secondary Navigation",
-							links: secondaryNavLinks
+							links: secondaryNavLinksAlias
 						} %}
 
 						<button class="js-nav_handle mobile_sidebar_handle">Menu</button>
 
 						<div class="js-navigation mobile_sidebar" hidden data-navigation-handle=".js-nav_handle" data-navigation-content=".js-navigation_push" data-navigation-options='{"type": "overlay", "gravity": "right"}'>
-
 							{% include "../partials/navigation/main.twig" with {
 								class: "main_nav_sm",
-								links: mainNavLinks
+								links: mainNavLinksAlias
 							} %}
 
 							{% include "../partials/navigation/basic.twig" with {
 								class: "secondary_nav",
 								modifier: "sm",
 								label: "Secondary Navigation",
-								links: secondaryNavLinks
+								links: secondaryNavLinksAlias
 							} %}
-
 						</div>
 
-						{% include "../partials/_site-search.twig" %}
+						{% include "../partials/site-search.twig" %}
 					</div>
 				</div>
 			</header>
@@ -129,21 +138,11 @@
 						<div class="page_header">
 							<div class="fs-row">
 								<div class="fs-cell">
-									{% block breadcrumbNavVar %}
-										{% set breadcrumbNavLinks = [
-											title
-										] %}
-									{% endblock %}
-
 									{% include "../partials/navigation/breadcrumb.twig" with {
-										links: breadcrumbNavLinks
+										links: breadcrumbNavLinksAlias
 									} %}
 
-									{% block page_title_var %}
-										{% set page_title = title %}
-									{% endblock %}
-
-									<h1 id="main_page_title" tabindex="-1">{{page_title}}</h1>
+									<h1 id="main_page_title" tabindex="-1">{{pageTitle}}</h1>
 								</div>
 							</div>
 						</div>
@@ -155,30 +154,9 @@
 
 							<!-- Sub Nav -->
 							<div class="fs-cell-right fs-lg-4">
-								{% block subNavVar %}
-									{% set subNavLinks = [
-										{
-											href: "1-2-style-guide-feature.html",
-											name: "Page Feature Components"
-										},
-										{
-											href: "1-3-style-guide-in-content.html",
-											name: "In Content Components"
-										},
-										{
-											href: "1-4-style-guide-sidebar.html",
-											name: "Sidebar Components"
-										},
-										{
-											href: "1-5-style-guide-full-width.html",
-											name: "Full Width Components"
-										},
-									] %}
-								{% endblock %}
-
 								{% block subNav %}
 									{% include "../partials/navigation/sub.twig" with {
-										links: subNavLinks
+										links: subNavLinksAlias
 									} %}
 								{% endblock %}
 							</div>
@@ -232,49 +210,18 @@
 			<footer id="footer" class="footer" itemscope itemtype="http://schema.org/WPFooter">
 				<div class="fs-row">
 					<div class="fs-cell">
-						{% include "../partials/_address.twig" %}
-
-						{% block footerNavVar %}
-							{% set footerNavLinks = [
-								"Footer Link"
-							] %}
-						{% endblock %}
+						{% include "../partials/address.twig" %}
 
 						{% include "../partials/navigation/basic.twig" with {
 							class: "footer_nav",
 							modifier: "",
 							label: "Footer Navigation",
-							links: footerNavLinks
+							links: footerNavLinksAlias
 						} %}
-
-						{% block socialNavVar %}
-							{% set socialNavLinks = [
-								{
-									name: "facebook",
-									href: "facebook.com"
-								},
-								{
-									name: "twitter",
-									href: "twitter.com"
-								},
-								{
-									name: "instagram",
-									href: "instagram.com"
-								},
-								{
-									name: "youtube",
-									href: "youtube.com"
-								},
-								{
-									name: "linkedin",
-									href: "linkedin.com"
-								}
-							] %}
-						{% endblock %}
 
 						{% include "../partials/navigation/social.twig" with {
 							class: "",
-							links: socialNavLinks
+							links: socialNavLinksAlias
 						} %}
 					</div>
 				</div>

@@ -149,5 +149,60 @@
 			"lrg": "814x1220",
 			"xlrg": "960x1440"
 		}
-	}
+	},
+	"mainNavLinks": [
+		{
+			"name": "Main Link",
+			"children": [
+				"One Child",
+				"Two Child"
+			]
+		}
+	],
+	"secondaryNavLinks": [
+		"Secondary Link"
+	],
+	"subNavLinks": [
+		{
+			"href": "1-2-style-guide-feature.html",
+			"name": "Page Feature Components"
+		},
+		{
+			"href": "1-3-style-guide-in-content.html",
+			"name": "In Content Components"
+		},
+		{
+			"href": "1-4-style-guide-sidebar.html",
+			"name": "Sidebar Components"
+		},
+		{
+			"href": "1-5-style-guide-full-width.html",
+			"name": "Full Width Components"
+		}
+	],
+	"footerNavLinks": [
+		"Footer Link"
+	],
+	"socialNavLinks": [
+		{
+			"name": "facebook",
+			"href": "facebook.com"
+		},
+		{
+			"name": "twitter",
+			"href": "twitter.com"
+		},
+		{
+			"name": "instagram",
+			"href": "instagram.com"
+		},
+		{
+			"name": "youtube",
+			"href": "youtube.com"
+		},
+		{
+			"name": "linkedin",
+			"href": "linkedin.com"
+		}
+	]
 }

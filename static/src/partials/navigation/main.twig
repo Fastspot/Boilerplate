@@ -1,5 +1,9 @@
 <nav class="main_nav {{class}}" aria-label="Site Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
-	<h2 class="main_nav_heading">Site Navigation</h2>
+	{% if title %}
+		<header class="main_nav_header">
+			<h2 class="main_nav_title">Site Navigation</h2>
+		</header>
+	{% endif %}
 	<div class="main_nav_list" role="navigation">
 		{% for link in links %}
 			<div class="main_nav_item mobile_nav_{{loop.index}}" itemprop="url">

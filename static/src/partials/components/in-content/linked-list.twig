@@ -1,0 +1,14 @@
+<div class="linked_list theme_{{class}}">
+	{% if header %}
+		<header class="linked_list_header">
+			<h2 class="linked_list_title"><span>{{title}}</span></h2>
+		</header>
+	{% endif %}
+	<ul class="linked_list_body">
+		{% for link in links %}
+			<li class="linked_list_item">
+				<a class="linked_list_link" href="">{{link.name}}</a>
+			</li>
+		{% endfor %}
+	</ul>
+</div>

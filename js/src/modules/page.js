@@ -165,8 +165,7 @@ Site.modules.Page = (function($, Site) {
 			$(this).removeClass("table_wrapper_overflow");
 			if ($(this).prop("scrollWidth") > $(this).width() + 1) {
 				$(this).addClass("table_wrapper_overflow");
-			}
-			else {
+			} else {
 				$(this).removeClass("table_wrapper_overflow");
 			}
 		});

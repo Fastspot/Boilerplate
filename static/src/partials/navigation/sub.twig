@@ -1,5 +1,9 @@
 <nav class="sub_nav {{class}}" aria-label="Additional Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
-	<h2 class="sub_nav_heading">Additional Navigation</h2>
+	{% if title %}
+		<header class="sub_nav_header">
+			<h2 class="sub_nav_title">Additional Navigation</h2>
+		</header>
+	{% endif %}
 	<div class="js-navigation sub_nav_list" data-navigation-handle=".sub_nav_heading" role="navigation">
 		{% for link in links %}
 			<div class="sub_nav_item" itemprop="url">

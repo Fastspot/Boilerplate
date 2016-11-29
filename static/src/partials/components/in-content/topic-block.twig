@@ -1,12 +1,12 @@
-<div class="topic_list_item" role="listitem">
+<div class="topic_list_item theme_{{theme}}" role="listitem">
 	<article class="topic_block">
 		<figure class="topic_block_figure">
 			<picture class="topic_block_picture">
 				<!--[if IE 9]><video style="display: none;"><![endif]-->
-				<source media="(min-width: 740px)" srcset="//spacehold.it/350x234/hamilton/{{image}}">
-				<source media="(min-width: 500px)" srcset="//spacehold.it/200x200/hamilton/{{image}}">
+				<source media="(min-width: 740px)" srcset="//spacehold.it/350x234/{{image}}">
+				<source media="(min-width: 500px)" srcset="//spacehold.it/200x200/{{image}}">
 				<!--[if IE 9]></video><![endif]-->
-				<img class="topic_block_image" src="//spacehold.it/500x334/hamilton/{{image}}" alt="{{alt}}">
+				<img class="topic_block_image" src="//spacehold.it/500x334/{{image}}" alt="{{alt}}">
 			</picture>
 		</figure>
 		<div class="topic_block_body">
@@ -16,11 +16,13 @@
 			<div class="topic_block_description">
 				<p>{{description}}</p>
 			</div>
-			<div class="topic_block_links">
-				{% for link in links %}
-					<a class="topic_block_link" href="">{{link}}</a>
-				{% endfor %}
-			</div>
+			{% if links %}
+				<div class="topic_block_links">
+					{% for link in links %}
+						<a class="topic_block_link" href="">{{link}}</a>
+					{% endfor %}
+				</div>
+			{% endif %}
 		</div>
 	</article>
 </div>

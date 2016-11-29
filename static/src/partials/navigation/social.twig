@@ -12,7 +12,11 @@
 
 <div class="social_nav {{class}}" itemscope itemtype="http://schema.org/Organization"> {# 1 #}
 	<link itemprop="url" href="http://www.client-name.com"> {# 2 #}
-	<h2 class="social_nav_heading">Social</h2>
+	{% if title %}
+		<header class="social_nav_header">
+			<h2 class="social_nav_title">Social</h2>
+		</header>
+	{% endif %}
 	<div class="social_nav_list">
 		{% for link in links %}
 			<div class="social_nav_item social_nav_item_{{link.name}}">

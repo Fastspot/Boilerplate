@@ -56,7 +56,7 @@
 	Mixins
 ============================================================================= */
 
-	.transition(@duration:0.25s, @timing:linear, @delay:0) {
+	.transition(@duration: 0.25s, @timing: linear, @delay: 0) {
 		transition:
 			background-color @duration @timing,
 			border-color @duration @timing,
@@ -65,7 +65,7 @@
 			opacity @duration @timing;
 	}
 
-	.transition_link(@duration:0.25s, @timing:linear, @delay:0) {
+	.transition_link(@duration: 0.25s, @timing: linear, @delay: 0) {
 
 		&,
 		&:link,
@@ -84,12 +84,12 @@
 		font-size: ~"@{rem}rem";
 	}
 
-	.size(@width:0, @height:@width) {
+	.size(@width: 0, @height: @width) {
 		width: ~"@{width}px";
 		height: ~"@{height}px";
 	}
 
-	.line_height(@lineHeight, @fontSize:@lineHeight) {
+	.line_height(@lineHeight, @fontSize: @lineHeight) {
 		line-height: (@lineHeight / @fontSize);
 	}
 
@@ -115,11 +115,11 @@
 		}
 	}
 
-	.icon_sprite(@left:0, @top:0) {
+	.icon_sprite(@left: 0, @top: 0) {
 		background-image: resolve(~"../images/icons.svg");
 	}
 
-	.scale_sprite(@percent:1, @imageOffsetX:0, @imageOffsetY:0) {
+	.scale_sprite(@percent: 1, @imageOffsetX: 0, @imageOffsetY: 0) {
 		background-size: floor(@sprite_width * @percent) floor(@sprite_height * @percent);
 		background-position: floor(@imageOffsetX * @percent) floor(@imageOffsetY * @percent);
 	}
@@ -214,7 +214,12 @@
 
 	.gradient_vertical(@startColor: black, @endColor: white) {
 		background-color: @startColor;
-		background: linear-gradient(to bottom, @startColor, @endColor);
+		background:
+			linear-gradient(
+				to bottom, 
+					@startColor,
+					@endColor
+			);
 
 		@ieStartColor: argb(@startColor);
 		@ieEndColor:   argb(@endColor);
@@ -226,7 +231,12 @@
 
 	.gradient_horizontal(@startColor: black, @endColor: white) {
 		background-color: @startColor;
-		background: linear-gradient(to right, @startColor, @endColor);
+		background:
+			linear-gradient(
+				to right,
+					@startColor,
+					@endColor
+			);
 
 		@ieStartColor: argb(@startColor);
 		@ieEndColor:   argb(@endColor);
