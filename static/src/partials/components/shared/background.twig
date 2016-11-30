@@ -1,1 +1,8 @@
-<div class="js-background {{class}}" data-background-options='{"source": {"0px": "//spacehold.it/500x282/{{image}}.jpg", "500px": "//spacehold.it/740x416/{{image}}.jpg", "740px": "//spacehold.it/980x552/{{image}}.jpg", "980px": "//spacehold.it/740x740/{{image}}.jpg", "1220px": "//spacehold.it/740x494/{{image}}.jpg"}}'></div>
+<div class="js-background {{class}}_background" data-background-options='{
+	"source": {
+		{% for key, source in sources %}
+			"{{key}}": "//spacehold.it/{{source}}/{{image}}.jpg"{% if not loop.last %},{% endif %}
+		{% endfor %}
+	}
+}'
+></div>
