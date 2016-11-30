@@ -1,4 +1,4 @@
-<div class="accordion theme_{{theme}}">
+<div class="accordion{% if theme %} theme_{{theme}}{% endif %}">
 	{% if title %}
 		<header class="accordion_header">
 			<h2 class="accordion_title">{{title}}</h2>

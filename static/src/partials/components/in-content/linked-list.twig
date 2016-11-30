@@ -1,4 +1,4 @@
-<div class="linked_list theme_{{theme}}">
+<div class="linked_list{% if theme %} theme_{{theme}}{% endif %}">
 	{% if title %}
 		<header class="linked_list_header">
 			<h2 class="linked_list_title"><span>{{title}}</span></h2>

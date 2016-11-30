@@ -1,4 +1,4 @@
-<section class="flex_callout theme_{{theme}}">
+<section class="flex_callout{% if theme %} theme_{{theme}}{% endif %}">
 	{% if background %}
 		<div class="js-background flex_callout_background" data-background-options='{"source": {"0px": "//spacehold.it/740x740/{{background}}.jpg", "740px": "//spacehold.it/980x735/{{background}}.jpg", "980px": "//spacehold.it/1220x686/{{background}}.jpg"}}'></div>
 	{% endif %}
