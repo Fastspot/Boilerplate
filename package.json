@@ -66,7 +66,7 @@
       "components/formstone/dist/js/transition.js",
       "components/formstone/dist/js/upload.js",
       "components/picturefill/dist/picturefill.min.js",
-      "components/what-input/what-input.js",
+      "components/what-input/dist/what-input.js",
       "js/src/site.js",
       "js/src/modules/page.js"
     ],
