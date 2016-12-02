@@ -2,20 +2,24 @@
 	{% if background %}
 		<div class="js-background flex_callout_background" data-background-options='{"source": {"0px": "//spacehold.it/740x740/{{background}}.jpg", "740px": "//spacehold.it/980x735/{{background}}.jpg", "980px": "//spacehold.it/1220x686/{{background}}.jpg"}}'></div>
 	{% endif %}
-	<div class="flex_callout_body">
-		<header class="flex_callout_header">
-			<h2 class="flex_callout_label">{{label}}</h2>
-			<h3 class="flex_callout_title">{{title}}</h3>
-		</header>
-		<div class="flex_callout_description">
-			<p>{{description}}</p>
-		</div>
-		{% if links %}
-			<div class="flex_callout_links">
-				{% for link in flexLinks %}
-					<a class="flex_callout_link" href="{{link.href}}">{{link.name}}</a>
-				{% endfor %}
+	<div class="fs-row">
+		<div class="fs-cell">
+			<div class="flex_callout_body">
+				<header class="flex_callout_header">
+					<h2 class="flex_callout_label">{{label}}</h2>
+					<h3 class="flex_callout_title">{{title}}</h3>
+				</header>
+				<div class="flex_callout_description">
+					<p>{{description}}</p>
+				</div>
+				{% if links %}
+					<div class="flex_callout_links">
+						{% for link in flexLinks %}
+							<a class="flex_callout_link" href="{{link.href}}">{{link.name}}</a>
+						{% endfor %}
+					</div>
+				{% endif %}
 			</div>
-		{% endif %}
+		</div>
 	</div>
 </section>

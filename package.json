@@ -32,7 +32,8 @@
     "less-plugin-clean-css": "^1.5.1",
     "less-plugin-glob": "^1.1.1",
     "load-grunt-tasks": "^3.5.0",
-    "postcss-assets": "^4.1.0"
+    "postcss-assets": "^4.1.0",
+    "time-grunt": "^1.4.0"
   },
   "css": {
     "css/site.css": "css/src/site.less",
@@ -93,116 +94,116 @@
     "mq_min_lg": "980",
     "mq_min_xl": "1220"
   },
-	"img": {
-		"ultrawide": {
-			"xxsml": "300x129",
-			"xsml": "500x214",
-			"sml": "740x317",
-			"med": "980x420",
-			"lrg": "1220x523",
-			"xlrg": "1440x617"
-		},
-		"wide": {
-			"xxsml": "300x169",
-			"xsml": "500x282",
-			"sml": "740x416",
-			"med": "980x552",
-			"lrg": "1220x686",
-			"xlrg": "1440x810"
-		},
-		"full": {
-			"xxsml": "300x225",
-			"xsml": "500x375",
-			"sml": "740x555",
-			"med": "980x735",
-			"lrg": "1220x915",
-			"xlrg": "1440x1080"
-		},
-		"square": {
-			"thumb": "100x100",
-			"xxsml": "300x300",
-			"xsml": "500x500",
-			"sml": "740x740",
-			"med": "980x980"
-		},
-		"classic": {
-			"xxsml": "300x200",
-			"xsml": "500x334",
-			"sml": "740x494",
-			"med": "980x654",
-			"lrg": "1220x814",
-			"xlrg": "1440x960"
-		},
-		"portrait-full": {
-			"xxsml": "225x300",
-			"xsml": "375x500",
-			"sml": "555x740",
-			"med": "735x980",
-			"lrg": "915x1220",
-			"xlrg": "1080x1440"
-		},
-		"portrait-classic": {
-			"xxsml": "200x300",
-			"xsml": "334x500",
-			"sml": "494x740",
-			"med": "654x980",
-			"lrg": "814x1220",
-			"xlrg": "960x1440"
-		}
-	},
-	"mainNavLinks": [
-		{
-			"name": "Main Link",
-			"children": [
-				"One Child",
-				"Two Child"
-			]
-		}
-	],
-	"secondaryNavLinks": [
-		"Secondary Link"
-	],
-	"subNavLinks": [
-		{
-			"href": "1-2-style-guide-feature.html",
-			"name": "Page Feature Components"
-		},
-		{
-			"href": "1-3-style-guide-in-content.html",
-			"name": "In Content Components"
-		},
-		{
-			"href": "1-4-style-guide-sidebar.html",
-			"name": "Sidebar Components"
-		},
-		{
-			"href": "1-5-style-guide-full-width.html",
-			"name": "Full Width Components"
-		}
-	],
-	"footerNavLinks": [
-		"Footer Link"
-	],
-	"socialNavLinks": [
-		{
-			"name": "facebook",
-			"href": "facebook.com"
-		},
-		{
-			"name": "twitter",
-			"href": "twitter.com"
-		},
-		{
-			"name": "instagram",
-			"href": "instagram.com"
-		},
-		{
-			"name": "youtube",
-			"href": "youtube.com"
-		},
-		{
-			"name": "linkedin",
-			"href": "linkedin.com"
-		}
-	]
+  "img": {
+    "ultrawide": {
+      "xxsml": "300x129",
+      "xsml": "500x214",
+      "sml": "740x317",
+      "med": "980x420",
+      "lrg": "1220x523",
+      "xlrg": "1440x617"
+    },
+    "wide": {
+      "xxsml": "300x169",
+      "xsml": "500x282",
+      "sml": "740x416",
+      "med": "980x552",
+      "lrg": "1220x686",
+      "xlrg": "1440x810"
+    },
+    "full": {
+      "xxsml": "300x225",
+      "xsml": "500x375",
+      "sml": "740x555",
+      "med": "980x735",
+      "lrg": "1220x915",
+      "xlrg": "1440x1080"
+    },
+    "square": {
+      "thumb": "100x100",
+      "xxsml": "300x300",
+      "xsml": "500x500",
+      "sml": "740x740",
+      "med": "980x980"
+    },
+    "classic": {
+      "xxsml": "300x200",
+      "xsml": "500x334",
+      "sml": "740x494",
+      "med": "980x654",
+      "lrg": "1220x814",
+      "xlrg": "1440x960"
+    },
+    "portrait-full": {
+      "xxsml": "225x300",
+      "xsml": "375x500",
+      "sml": "555x740",
+      "med": "735x980",
+      "lrg": "915x1220",
+      "xlrg": "1080x1440"
+    },
+    "portrait-classic": {
+      "xxsml": "200x300",
+      "xsml": "334x500",
+      "sml": "494x740",
+      "med": "654x980",
+      "lrg": "814x1220",
+      "xlrg": "960x1440"
+    }
+  },
+  "mainNavLinks": [
+    {
+      "name": "Main Link",
+      "children": [
+        "One Child",
+        "Two Child"
+      ]
+    }
+  ],
+  "secondaryNavLinks": [
+    "Secondary Link"
+  ],
+  "subNavLinks": [
+    {
+      "href": "1-2-style-guide-feature.html",
+      "name": "Page Feature Components"
+    },
+    {
+      "href": "1-3-style-guide-in-content.html",
+      "name": "In Content Components"
+    },
+    {
+      "href": "1-4-style-guide-sidebar.html",
+      "name": "Sidebar Components"
+    },
+    {
+      "href": "1-5-style-guide-full-width.html",
+      "name": "Full Width Components"
+    }
+  ],
+  "footerNavLinks": [
+    "Footer Link"
+  ],
+  "socialNavLinks": [
+    {
+      "name": "facebook",
+      "href": "facebook.com"
+    },
+    {
+      "name": "twitter",
+      "href": "twitter.com"
+    },
+    {
+      "name": "instagram",
+      "href": "instagram.com"
+    },
+    {
+      "name": "youtube",
+      "href": "youtube.com"
+    },
+    {
+      "name": "linkedin",
+      "href": "linkedin.com"
+    }
+  ]
 }
