@@ -19,8 +19,8 @@
 	{% endif %}
 	<div class="social_nav_list">
 		{% for link in links %}
-			<div class="social_nav_item social_nav_item_{{link.name}}">
-				<a class="social_nav_link" href="{{link.href}}" itemprop="sameAs" target="_blank">
+			<div class="social_nav_item">
+				<a class="social_nav_link {{link.name}}" href="{{link.href}}" itemprop="sameAs" target="_blank">
 					<span class="social_nav_label">{{link.name}}</span>
 				</a>
 			</div>
