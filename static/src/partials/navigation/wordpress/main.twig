@@ -2,7 +2,7 @@
 	{% for link in links %}
 		<li id="menu-item-{{loop.index}}" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-{{loop.index}}">
 			<a rel="page" href="#">{{link.name}}</a>
-			<button class="js-swap main_nav_toggle" data-swap-target="#menu-item-{{loop.index}}" data-swap-group="mobile_nav">Expand Navigation</button>
+			<button class="js-swap main_nav_toggle" data-swap-target=".menu-item-{{loop.index}}" data-swap-group="mobile_nav">Expand Navigation</button>
 			{% if link.children %}
 				<ul class="sub-menu">
 					{% for child in link.children %}

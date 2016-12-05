@@ -11,13 +11,26 @@
 
 .breadcrumb_list {}
 
-.breadcrumb_item {}
+.breadcrumb_item {
+	.inline_block;
+
+	&:first-child {
+
+		&:before {}
+	}
+
+	&:not(:last-child) {
+
+		&:after {}
+	}
+}
 
 .breadcrumb_link,
 .breadcrumb_label {}
 
 .breadcrumb_link {
-	
+	.inline_block;
+
 	&:focus,
 	&:hover {}
 }

@@ -389,25 +389,16 @@ module.exports = function(grunt) {
 		},
 		// Remove any previously-created files
 		clean: {
-			js: [
-				'js/*',
-				'!js/src/**'
-			],
 			html: [
 				'static/templates',
 				'!static/src/**'
-			],
-			css: [
-				'css/*',
-				'!css/src/**'
 			],
 			img: [
 				'images/*',
 				'!images/src/**'
 			],
 			sprite: [
-				'css/src/imports/icons.less',
-				'images/src/icons.*'
+				'css/src/imports/icons.less'
 			]
 		},
 		// Browsersync auto refresh
