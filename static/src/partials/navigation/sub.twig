@@ -8,6 +8,24 @@
 		{% for link in links %}
 			<div class="sub_nav_item" itemprop="url">
 				<a class="sub_nav_link" href="{{link.href}}" itemprop="name">{{link.name}}</a>
+				{% if link.children %}
+					<div class="sub_nav_children_one">
+						{% for child in link.children %}
+							<div class="sub_nav_child_item" itemprop="url">
+								<a class="sub_nav_child_link" href="#" itemprop="name">{{child.name}}</a>
+								{% if child.children %}
+									<div class="sub_nav_children_two">
+										{% for subchild in child.children %}
+											<div class="sub_nav_child_item" itemprop="url">
+												<a class="sub_nav_child_link" href="#" itemprop="name">{{subchild}}</a>
+											</div>
+										{% endfor %}
+									</div>
+								{% endif %}
+							</div>
+						{% endfor %}
+					</div>
+				{% endif %}
 			</div>
 		{% endfor %}
 	</div>
