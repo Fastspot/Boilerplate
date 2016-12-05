@@ -56,7 +56,7 @@
 	Mixins
 ============================================================================= */
 
-	.transition(@duration: 0.25s, @timing: linear, @delay: 0) {
+	.transition(@duration: 0.25s, @timing: ease, @delay: 0) {
 		transition:
 			background-color @duration @timing,
 			border-color @duration @timing,
@@ -65,16 +65,8 @@
 			opacity @duration @timing;
 	}
 
-	.transition_link(@duration: 0.25s, @timing: linear, @delay: 0) {
-
-		&,
-		&:link,
-		&:visited,
-		&:hover,
-		&:active,
-		&:focus {
-			.transition(@duration, @timing, @delay)
-		}
+	.transition_link(@duration: 0.25s, @timing: ease, @delay: 0) {
+		.transition(@duration, @timing, @delay);
 	}
 
 	.font_size(@px_size) {
@@ -216,7 +208,7 @@
 		background-color: @startColor;
 		background:
 			linear-gradient(
-				to bottom, 
+				to bottom,
 					@startColor,
 					@endColor
 			);
