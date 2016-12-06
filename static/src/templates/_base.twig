@@ -1,17 +1,125 @@
 <!DOCTYPE html>
 <html itemscope="" itemtype="http://schema.org/WebPage" lang="en" class="no-js">
 
-	{% include "../partials/_head.twig" %}
+	{#
+		TODO:
+			1. Update Client Name
+	#}
 
-	<body class="fs-grid">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="mobile-web-app-capable" content="yes">
+
+		<title>{{pageTitle|default("Page")}} | {{name}}</title> {# 1 #}
+		<meta name="description" content="">
+
+		{% include "../partials/favicons.html" %}
+
+		<script src="../../js/modernizr.js"></script>
+
+		<!--[if gt IE 8]><!-->
+			<link rel="stylesheet" href="../../css/site.css">
+		<!--<![endif]-->
+		<!--[if IE 8]>
+			<script>var IE8 = true;</script>
+			<script src="../../js/site-ie8.js"></script>
+			<link rel="stylesheet" href="../../css/site-ie8.css">
+		<![endif]-->
+		<!--[if IE 9]>
+			<script>var IE9 = true;</script>
+			<script src="../../js/site-ie9.js"></script>
+			<link rel="stylesheet" href="../../css/site-ie9.css">
+		<![endif]-->
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" href="../../css/site-ie.css">
+		<![endif]-->
+	</head>
+
+	<body class="fs-grid theme_{{bodyTheme|default("interior")}}">
+
+		{#
+
+			TODO:
+				Update Navigation Blocks in package.json
+
+		#}
+
+		{% block mainNavVar %}
+			{% set mainNavLinksAlias = mainNavLinks %}
+		{% endblock %}
+
+		{% block secondaryNavVar %}
+			{% set secondaryNavLinksAlias = secondaryNavLinks %}
+		{% endblock %}
+
+		{% block breadcrumbNavVar %}
+			{% set breadcrumbNavLinks = [
+				pageTitle|default("Page")
+			] %}
+		{% endblock %}
+
+		{% block subNavVar %}
+			{% set subNavLinksAlias = subNavLinks %}
+		{% endblock %}
+
+		{% block footerNavVar %}
+			{% set footerNavLinksAlias = footerNavLinks %}
+		{% endblock %}
+
+		{% block socialNavVar %}
+			{% set socialNavLinksAlias = socialNavLinks %}
+		{% endblock %}
 
 		<!-- Skip-to-Content Link -->
 		<a href="#main_page_title" id="skip_to_content" class="skip_link">Skip to Main Content</a>
 
+		<!-- Page Wrapper -->
 		<div class="page_wrapper js-navigation_push">
 
 			<!-- Header -->
-			{% include "../partials/_header.twig" %}
+			<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+				<div class="fs-row">
+					<div class="fs-cell">
+						{% include "../partials/logo.twig" with {
+							class: "header",
+							name: title
+						} %}
+
+						{% include "../partials/navigation/main.twig" with {
+							class: "main_nav_lg",
+							links: mainNavLinksAlias
+						} %}
+
+						{% include "../partials/navigation/basic.twig" with {
+							class: "secondary_nav",
+							modifier: "lg",
+							label: "Secondary Navigation",
+							links: secondaryNavLinksAlias
+						} %}
+
+						<button class="js-nav_handle mobile_sidebar_handle">Menu</button>
+
+						<div class="js-navigation mobile_sidebar" hidden data-navigation-handle=".js-nav_handle" data-navigation-content=".js-navigation_push" data-navigation-options='{"type": "overlay", "gravity": "right"}'>
+							{% include "../partials/navigation/main.twig" with {
+								class: "main_nav_sm",
+								links: mainNavLinksAlias
+							} %}
+
+							{% include "../partials/navigation/basic.twig" with {
+								class: "secondary_nav",
+								modifier: "sm",
+								label: "Secondary Navigation",
+								links: secondaryNavLinksAlias
+							} %}
+						</div>
+
+						{% include "../partials/site-search.twig" %}
+					</div>
+				</div>
+			</header>
+			<!-- END: Header -->
 
 			<!-- Page -->
 			<div class="page">
@@ -26,28 +134,30 @@
 				<div class="page_content">
 
 					<!-- Page Header -->
-					<div class="page_header">
-						<div class="fs-row">
-							<div class="fs-cell">
+					{% block page_header %}
+						<div class="page_header">
+							<div class="fs-row">
+								<div class="fs-cell">
+									{% include "../partials/navigation/breadcrumb.twig" with {
+										links: breadcrumbNavLinks
+									} %}
 
-								{% block breadcrumb %}
-									{% include "../partials/navigation/breadcrumb/master-sub.twig" %}
-								{% endblock %}
-
-								<h1 id="main_page_title" tabindex="-1">{% block page_title %}{% endblock %}</h1>
-
+									<h1 id="main_page_title" tabindex="-1">{{pageTitle}}</h1>
+								</div>
 							</div>
 						</div>
-					</div>
+					{% endblock %}
 					<!-- END: Page Header -->
 
-					{% block page %}
+					{% block page_content %}
 						<div class="fs-row">
 
 							<!-- Sub Nav -->
 							<div class="fs-cell-right fs-lg-4">
-								{% block sub_nav %}
-									{% include "../partials/navigation/sub/master-sub.twig" %}
+								{% block subNav %}
+									{% include "../partials/navigation/sub.twig" with {
+										links: subNavLinksAlias
+									} %}
 								{% endblock %}
 							</div>
 							<!-- END: Sub Nav -->
@@ -55,7 +165,6 @@
 							<!-- Main Content -->
 							<div class="fs-cell fs-lg-8">
 								<main class="main_content" itemprop="mainContentOfPage">
-
 									{% block main_content %}{% endblock %}
 
 									<!-- WYSIWYG - wrap all WYSIWYG text areas in `.typography` -->
@@ -97,11 +206,36 @@
 			</div>
 			<!-- END: Page -->
 
-			{% include "../partials/_footer.twig" %}
+			<!-- Footer -->
+			<footer id="footer" class="footer" itemscope itemtype="http://schema.org/WPFooter">
+				<div class="fs-row">
+					<div class="fs-cell">
+						{% include "../partials/address.twig" %}
 
-		</div> <!-- END: page_wrapper -->
+						{% include "../partials/navigation/basic.twig" with {
+							class: "footer_nav",
+							modifier: "",
+							label: "Footer Navigation",
+							links: footerNavLinksAlias
+						} %}
 
-		{% include "../partials/_footer-js.twig" %}
+						{% include "../partials/navigation/social.twig" with {
+							class: "",
+							links: socialNavLinksAlias
+						} %}
+					</div>
+				</div>
+			</footer>
+			<!-- END: Footer -->
 
+		</div>
+		<!-- END: page_wrapper -->
+
+		<script src="../../js/site.js"></script>
+
+		<!-- Grid Bookmarklet -->
+		<script>
+			(function(){if(typeof FSGridBookmarklet==='undefined'){document.body.appendChild(document.createElement('script')).src='http://formstone.it/js/bookmarklet/grid.js';}else{FSGridBookmarklet();}} )();
+		</script>
 	</body>
 </html>

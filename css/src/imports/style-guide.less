@@ -5,121 +5,123 @@
 /* CRL Basics
 ============================================================================= */
 
-	.cr_heading {
-		.font_size(16);
-		.margined;
+.cr_heading {
+	.font_size(16);
+	.margined;
 
-		color: #999;
-		font-family: Arial, sans-serif;
-		text-transform: uppercase;
-	}
+	color: #999;
+	font-family: Arial, sans-serif;
+	text-transform: uppercase;
+}
 
-	.cr_description {
-		.font_size(14);
-		.line_height(32, 20);
+.cr_description {
+	.font_size(14);
+	.line_height(32, 20);
 
-		color: #999;
-		font-family: Arial, sans-serif;
-	}
+	color: #999;
+	font-family: Arial, sans-serif;
+}
 
 
 /* Color Blocks
 ============================================================================= */
 
-	.cr_color_blocks {
-		.margined_md_bottom;
+.cr_color_blocks {
+	.margined_md_bottom;
+}
+
+.cr_color_block_row {
+	&:extend(.fs_grid_row all);
+
+	.fs_row_row();
+}
+
+.cr_color_block_cell {
+	&:extend(.fs_grid_cell all);
+
+	.fs_cell_lg(3);
+	.fs_cell_md(1, 4);
+	.fs_cell_sm(1, 4);
+	.fs_cell_xs(3);
+}
+
+.cr_color_block {
+	position: relative;
+
+	padding-top: 30%;
+
+	@media @min_sm {
+		padding-top: 50%;
+
+		&:first-child {
+			padding-top: 100%;
+		}
 	}
 
-	.cr_color_block_row {
-		&:extend(.fs_grid_row all);
-
-		.fs_row_row();
-	}
-
-	.cr_color_block_cell {
-		&:extend(.fs_grid_cell all);
-
-		.fs_cell_lg(3);
-		.fs_cell_md(1, 4);
-		.fs_cell_sm(1, 4);
-		.fs_cell_xs(3);
-	}
-
-	.cr_color_block {
-		position: relative;
-
-		padding-top: 30%;
+	&.slim {
 
 		@media @min_sm {
 			padding-top: 50%;
-
-			&:first-child {
-				padding-top: 100%;
-			}
-		}
-
-		&.slim {
-
-			@media @min_sm {
-				padding-top: 50%;
-			}
 		}
 	}
+}
 
-	.cr_color_block_content {
-		.heading_5;
+.cr_color_block_content {
+	.heading_5;
 
-		position: absolute;
-		top: 0;
-		left: 0;
-		z-index: 1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
 
-		line-height: 1.4;
-		padding: 15px;
+	line-height: 1.4;
+	padding: 15px;
 
-		@media @min_md {
-			padding: 20px 25px;
-		}
+	@media @min_md {
+		padding: 20px 25px;
 	}
+}
+
 
 /* Fonts
 ============================================================================= */
 
-	.cr_font {
-		.font_size(48);
-		// .color_black;
+.cr_font {
+	.font_size(48);
+	// .color_black;
 
-		// border-bottom: 1px solid @gray_faint;
-		line-height: 1;
-		margin-bottom: 30px;
-		padding-bottom: 40px;
-	}
+	// border-bottom: 1px solid @gray_faint;
+	line-height: 1;
+	margin-bottom: 30px;
+	padding-bottom: 40px;
+}
+
 
 /* CRL Buttons
 ============================================================================= */
 
-	.crl_buttons {
-		.clearfix;
+.crl_buttons {
+	.clearfix;
 
-		a {
+	a {
 
-			@media @max_sm {
-				.block;
-				.left;
+		@media @max_sm {
+			.block;
+			.left;
 
-				clear: left;
-				margin: 10px 0;
-			}
+			clear: left;
+			margin: 10px 0;
+		}
+
+		@media @min_sm {
+			margin: 10px 10px 10px 0;
+		}
+
+		&:last-child {
 
 			@media @min_sm {
-				margin: 10px 10px 10px 0;
-			}
-
-			&:last-child {
-
-				@media @min_sm {
-					margin-right: 0;
-				}
+				margin-right: 0;
 			}
 		}
 	}
+}

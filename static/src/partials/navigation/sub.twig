@@ -1,0 +1,24 @@
+<nav class="sub_nav {{class}}" aria-label="Additional Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+	{% if title %}
+		<header class="sub_nav_header">
+			<h2 class="sub_nav_title">{{title}}</h2>
+		</header>
+	{% endif %}
+	<button class="js-sub_nav_handle sub_nav_handle">Additional Navigation</button>
+	<div class="js-navigation sub_nav_list" data-navigation-handle=".js-sub_nav_handle" data-navigation-options='{"theme": "sub_nav_base", "labels": {"closed": "Additional Navigation", "Open": "Close"}}'>
+		{% for link in links %}
+			<div class="sub_nav_item" itemprop="url">
+				<a class="sub_nav_link" href="{{link.href}}" itemprop="name">{{link.name}}</a>
+				{% if link.children %}
+					<div class="sub_nav_children_one">
+						{% for child in link.children %}
+							<div class="sub_nav_child_item" itemprop="url">
+								<a class="sub_nav_child_link" href="#" itemprop="name">{{child}}</a>
+							</div>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+		{% endfor %}
+	</div>
+</nav>

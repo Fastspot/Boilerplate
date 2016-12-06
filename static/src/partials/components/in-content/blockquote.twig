@@ -1,5 +1,4 @@
-<!-- Blockquote with citation -->
-<figure class="quote">
+<figure class="quote{% if theme %} theme_{{theme}}{% endif %}">
 	<blockquote class="quote_content">
 		{{quote}}
 	</blockquote>
@@ -9,4 +8,3 @@
 		</figcaption>
 	{% endif %}
 </figure>
-<!-- END: Blockquote with citation -->

@@ -2,27 +2,39 @@
 	 Breadcrumb Navigation
 ============================================================================= */
 
-	.breadcrumb_nav {
+.breadcrumb_nav {
 
-		@media @max_lg {
-			.hide;
-		}
+	@media @max_lg {
+		.hide;
+	}
+}
+
+.breadcrumb_list {}
+
+.breadcrumb_item {
+	.inline_block;
+
+	&:first-child {
+
+		&:before {}
 	}
 
-	.breadcrumb_list {}
+	&:not(:last-child) {
 
-	.breadcrumb_item {}
-
-	.breadcrumb_link,
-	.breadcrumb_label {}
-
-	.breadcrumb_link {
-
-		&:active,
-		&:focus,
-		.no-touchevents &:hover {}
+		&:after {}
 	}
+}
 
-	.breadcrumb_label {}
+.breadcrumb_link,
+.breadcrumb_label {}
 
-	.breadcrumb_name {}
+.breadcrumb_link {
+	.inline_block;
+
+	&:focus,
+	&:hover {}
+}
+
+.breadcrumb_label {}
+
+.breadcrumb_name {}

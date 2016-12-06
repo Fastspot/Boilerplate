@@ -1,33 +1,29 @@
-<div class="gallery">
-	<div class="gallery_carousel">
-		{% include "gallery-item.twig" with {
-			image: "1",
-			caption: "Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at."
-		} %}
-
-		{% include "gallery-item.twig" with {
-			image: "2",
-			caption: "Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at."
-		} %}
-
-		{% include "gallery-item.twig" with {
-			image: "3",
-			caption: "Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at."
-		} %}
-
-		{% include "gallery-item.twig" with {
-			image: "4",
-			caption: "Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at."
-		} %}
-
-		{% include "gallery-item.twig" with {
-			image: "5",
-			caption: "Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at."
-		} %}
-
-		{% include "gallery-item.twig" with {
-			image: "6",
-			caption: "Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at."
-		} %}
+<div class="media_gallery{% if theme %} theme_{{theme}}{% endif %}">
+	{% if title %}
+		<header class="media_gallery_header">
+			<h2 class="media_gallery_title">{{title}}</h2>
+		</header>
+	{% endif %}
+	<div class="media_gallery_body">
+		<div class="js-carousel media_gallery_items" data-carousel-options='{"theme": "base_pagination multi_pagination circle_controls white_circle_controls", "contained": false, "matchHeight": true}'>
+			{% for item in items %}
+				<div class="media_gallery_item">
+					<figure class="media_gallery_figure">
+						{% include '../shared/picture.twig' with {
+							class: "media_gallery"
+							image: item.image,
+							sources: {
+								"1220px": img.wide.med
+							}
+						} %}
+						{% if item.caption %}
+							<figcaption class="media_gallery_figcaption">
+								<span>{{item.caption}}</span>
+							</figcaption>
+						{% endif %}
+					</figure>
+				</div>
+			{% endfor %}
+		</div>
 	</div>
 </div>

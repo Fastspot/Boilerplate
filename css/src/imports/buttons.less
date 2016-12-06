@@ -2,26 +2,32 @@
 	Buttons
 ============================================================================= */
 
-	button {
-		background: none;
-		border: none;
-		padding: 0;
-	}
+button {
+	background: none;
+	border: none;
+	padding: 0;
+}
 
-	.button_base() {}
+.button_base() {
+	.text_center;
 
-	.button_inline {
-		.button_base;
-		.inline_block;
-	}
+	transition:
+		background @base_transition_duration,
+		border @base_transition_duration,
+		box-shadow @base_transition_duration,
+		color @base_transition_duration,
+		transform @base_transition_duration;
+}
 
-	.button_block {
-		.button_base;
-		.block;
-	}
+.button_inline() {
+	.button_base;
+	.inline_block;
 
-	.button_full {
-		.button_base;
-		.block;
-		.text_center;
-	}
+	margin-right: 8px;
+	margin-bottom: 8px;
+}
+
+.button_block() {
+	.button_base;
+	.block;
+}

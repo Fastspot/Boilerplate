@@ -2,19 +2,26 @@
 	 Sub Navigation
 ============================================================================= */
 
-	.sub_nav {}
+.sub_nav {}
 
-	.sub_nav_heading {
+.sub_nav_header {
 
-		@media @min_lg {
-			.hide;
-		}
+	@media @min_lg {
+		.hide;
 	}
+}
 
-	.sub_nav_list {}
+.sub_nav_title {}
 
-	.sub_nav_item {}
+.sub_nav_handle {}
 
-	.sub_nav_link {
-		.block;
-	}
+.sub_nav_list {}
+
+.sub_nav_item {}
+
+.sub_nav_link {
+	.block;
+
+	&:focus,
+	&:hover {}
+}

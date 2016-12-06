@@ -1,7 +1,13 @@
+{#
+	TODO:
+		1. Update to Client domain
+		2. Path to search page on client domain
+#}
+
 <div class="site_search" id="site_search" itemscope itemtype="http://schema.org/WebSite" role="search">
-	<meta itemprop="url" content="//www.example.com/"><!-- 4 -->
+	<meta itemprop="url" content="//www.example.com/"> {# 1 #}
 	<form class="site_search_form" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
-		<meta itemprop="target" content="http://www.example.com/search?q={search_term_string}"><!-- 5 -->
+		<meta itemprop="target" content="http://www.example.com/search?q={search_term_string}"> {# 2 #}
 		<label class="site_search_label" for="site_search_term_string">Search</label>
 		<input class="site_search_input" itemprop="query-input" type="text" id="site_search_term_string" name="search_term_string" placeholder="Search" required aria-required="true">
 		<button class="site_search_button" type="submit" title="submit" aria-label="submit">

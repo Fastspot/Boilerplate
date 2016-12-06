@@ -1,0 +1,14 @@
+<nav class="{{class}}{% if modifier %} {{class}}_{{modifier}}{% endif %}" aria-label="{{label}}" itemscope itemtype="http://schema.org/SiteNavigationElement">
+	{% if title %}
+		<header class="{{class}}_header">
+			<h2 class="{{class}}_title">{{label}}</h2>
+		</header>
+	{% endif %}
+	<div class="{{class}}_list" role="navigation">
+		{% for link in links %}
+			<div class="{{class}}_item" itemprop="url">
+				<a class="{{class}}_link{% if link.modifier %} {{link.modifier}}{% endif %}" href="#" itemprop="name">{{link}}</a>
+			</div>
+		{% endfor %}
+	</div>
+</nav>

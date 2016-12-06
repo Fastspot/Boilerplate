@@ -1,0 +1,39 @@
+/* ==========================================================================
+	Accordion
+============================================================================= */
+
+.accordion {}
+
+.accordion_header {}
+
+.accordion_title {}
+
+.accordion_body {}
+
+.accordion_item {}
+
+.accordion_item_title {
+	.relative;
+
+	cursor: pointer;
+}
+
+.accordion_item_indicator {
+	.icon_before;
+
+	&:before {
+		
+		.fs-swap-active & {}
+	}
+
+	.accordion_item_title:focus &,
+	.accordion_item_title:hover & {}
+}
+
+.accordion_item_description {
+	display: none;
+
+	.fs-swap-active & {
+		.block;
+	}
+}

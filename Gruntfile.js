@@ -1,7 +1,8 @@
-/*global module:false*/
+/* global module:false */
 module.exports = function(grunt) {
 
 	require('load-grunt-tasks')(grunt);
+	require('time-grunt')(grunt);
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -26,8 +27,7 @@ module.exports = function(grunt) {
 				files: 'css/src/**/**.{less,css}',
 				tasks: [
 					'less:target',
-					'postcss:target',
-					'stripmq:target'
+					'postcss:target'
 				]
 			},
 			images: {
@@ -69,28 +69,28 @@ module.exports = function(grunt) {
 				options: {
 					ignores: '<%= pkg.js_ignores %>',
 					globals: {
-						'jQuery'	 : true,
-						'$'				: true,
-						'WWW_ROOT' : true,
-						'Site'		 : true
+						'jQuery': true,
+						'$': true,
+						'WWW_ROOT': true,
+						'Site': true
 					},
-					'-W003':	 true, // used before defined
-					devel:		 true, // allow console
-					browser:	 true,
-					curly:		 true,
-					eqeqeq:		true,
-					forin:		 true,
-					freeze:		true,
-					immed:		 true,
-					jquery:		true,
-					latedef:	 true,
-					newcap:		true,
-					noarg:		 true,
-					nonew:		 true,
+					'-W003': true, // used before defined
+					devel: true, // allow console
+					browser: true,
+					curly: true,
+					eqeqeq: true,
+					forin: true,
+					freeze: true,
+					immed: true,
+					jquery: true,
+					latedef: true,
+					newcap: true,
+					noarg: true,
+					nonew: true,
 					smarttabs: true,
-					sub:			 true,
-					undef:		 true,
-					unused:		false,
+					sub: true,
+					undef: true,
+					unused: false,
 					validthis: true
 				}
 			},
@@ -99,30 +99,39 @@ module.exports = function(grunt) {
 				options: {
 					ignores: '<%= pkg.js_ignores %>',
 					globals: {
-						'jQuery'	 : true,
-						'$'				: true,
-						'WWW_ROOT' : true,
-						'Site'		 : true
+						'jQuery': true,
+						'$': true,
+						'WWW_ROOT': true,
+						'Site': true
 					},
-					'-W003':	 true, // used before defined
-					devel:		 true, // allow console
-					browser:	 true,
-					curly:		 true,
-					eqeqeq:		true,
-					forin:		 true,
-					freeze:		true,
-					immed:		 true,
-					jquery:		true,
-					latedef:	 true,
-					newcap:		true,
-					noarg:		 true,
-					nonew:		 true,
+					'-W003': true, // used before defined
+					devel: true, // allow console
+					browser: true,
+					curly: true,
+					eqeqeq: true,
+					forin: true,
+					freeze: true,
+					immed: true,
+					jquery: true,
+					latedef: true,
+					newcap: true,
+					noarg: true,
+					nonew: true,
 					smarttabs: true,
-					sub:			 true,
-					undef:		 true,
-					unused:		true,
+					sub: true,
+					undef: true,
+					unused: true,
 					validthis: true
 				}
+			}
+		},
+		// Concat - For development
+		concat: {
+			options: {
+				sourceMap: true
+			},
+			target: {
+				files: '<%= pkg.js %>'
 			}
 		},
 		// Uglify - For production
@@ -130,15 +139,6 @@ module.exports = function(grunt) {
 			options: {
 				banner: '<%= meta.banner %>',
 				report: 'min',
-				sourceMap: true
-			},
-			target: {
-				files: '<%= pkg.js %>'
-			}
-		},
-		// Concat - For development
-		concat: {
-			options: {
 				sourceMap: true
 			},
 			target: {
@@ -163,16 +163,36 @@ module.exports = function(grunt) {
 			your_target: {
 	      files: [
 	        {
-	          data: '<%= pkg.vars %>',
+	          data: '<%= pkg %>',
 	          expand: true,
 	          cwd: 'static/src/templates/',
-	          src: ['*.twig', '!_*.twig'],
+	          src: [
+							'*.twig',
+							'!_*.twig'
+						],
 	          dest: 'static/templates/',
 	          ext: '.html'
 	        }
 	      ]
 	    },
 	  },
+		// Create directory listing
+		includeSource: {
+			options: {
+				basePath: 'static/templates',
+				baseUrl: '',
+				templates: {
+					html: {
+						link: '<li><a href="templates/{filePath}">{filePath}</a></li>'
+					}
+				}
+			},
+			target: {
+				files: {
+					'static/index.html': 'static/index.tpl.html'
+				}
+			}
+		},
 		// LESS
 		less: {
 			options: {
@@ -201,7 +221,14 @@ module.exports = function(grunt) {
 		postcss: {
 			options: {
 				processors: [
-					require('autoprefixer')({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1', 'ie >= 8']}),
+					require('autoprefixer')({
+						browsers: [
+							'> 1%',
+							'last 2 versions',
+							'Firefox ESR',
+							'Opera 12.1',
+							'ie >= 8'
+						]}),
 					require('postcss-assets')({
 						cachebuster: true,
 						baseUrl: '..'
@@ -230,6 +257,19 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		// Bless CSS
+		bless: {
+			target: {
+				options: {
+					compress: true,
+					cacheBuster: false,
+					logCount: true
+				},
+				files: {
+					'css/site-ie.css': 'css/site.css'
+				}
+			}
+		},
 		// Custom Modernizr build
 		modernizr: {
 			dist: {
@@ -246,6 +286,39 @@ module.exports = function(grunt) {
 						'js/*.js',
 						'css/*.css'
 					]
+				}
+			}
+		},
+		// SVG sprite file creation
+		svg_sprite: {
+			target: {
+				expand: true,
+				cwd: 'images/src/icons',
+				src: ['**/*.svg'],
+				dest: 'images/src',
+				options: {
+					'dest': 'images/',
+					'svg': {
+						'xmlDeclaration': false,
+						'doctypeDeclaration': false
+					},
+					'mode': {
+						'css': {
+							'common': 'sprite',
+							'prefix': '.icon_%s',
+							'dimensions': '_dims',
+							'sprite': '../src/icons.svg',
+							'bust': false,
+							'render': {
+								'less': {
+									'dest': '../../css/src/imports/icons.less'
+								}
+							},
+							'example': {
+									'dest': '../icons.html'
+							}
+						}
+					}
 				}
 			}
 		},
@@ -266,88 +339,6 @@ module.exports = function(grunt) {
 				}]
 			}
 		},
-		// Bless CSS
-		bless: {
-			target: {
-				options: {
-					compress: true,
-					cacheBuster: false,
-					logCount: true
-				},
-				files: {
-					'css/site-ie.css': 'css/site.css'
-				}
-			}
-		},
-		// Remove any previously-created files
-		clean: {
-			js: [
-				'js/*',
-				'!js/src/**'
-			],
-			css: [
-				'css/*',
-				'!css/src/**'
-			],
-			html: [
-				'static/templates',
-				'!static/src/**'
-			],
-			img: [
-				'images/*',
-				'!images/src/**'
-			],
-			sprite: [
-				'css/src/imports/icons.less',
-				'images/src/icons.*'
-			]
-		},
-		// Create directory listing
-		includeSource: {
-			options: {
-				basePath: 'static/templates',
-				baseUrl: '',
-				templates: {
-					html: {
-						link: '<li><a href="templates/{filePath}">{filePath}</a></li>'
-					}
-				}
-			},
-			target: {
-				files: {
-					'static/index.html': 'static/index.tpl.html'
-				}
-			}
-		},
-		// Browsersync auto refresh
-		browserSync: {
-			target: {
-				bsFiles: {
-					src : [
-						'js/**.js',
-						'css/**.css',
-						'images/*',
-						'static/**/**.html'
-					]
-				},
-				options: {
-					server: {
-						baseDir: './'
-					},
-					watchTask: true,
-					open: false,
-					notify: {
-						styles: {
-							top: 'auto',
-							bottom: '0',
-							borderBottomLeftRadius: '0',
-							fontSize: '11px',
-							padding: '5px 10px'
-						}
-					}
-				}
-			}
-		},
 		// Favicons - http://realfavicongenerator.net/favicon/grunt
 		realFavicon: {
 			favicons: {
@@ -355,7 +346,7 @@ module.exports = function(grunt) {
 				dest: 'images/favicons/',
 				options: {
 					iconsPath: '/images/favicons/',
-					html: [ 'static/src/partials/_favicons.html' ],
+					html: [ 'static/src/partials/favicons.html' ],
 					design: {
 						ios: {
 							pictureAspect: 'noChange'
@@ -394,34 +385,52 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		// SVG sprite file creation
-		svg_sprite: {
+		// Remove any previously-created files
+		clean: {
+			html: [
+				'static/templates',
+				'!static/src/**'
+			],
+			img: [
+				'images/*',
+				'!images/src/**'
+			],
+			css: [
+				'css/*',
+				'!css/src/**'
+			],
+			js: [
+				'js/*',
+				'!js/src/**'
+			],
+			sprite: [
+				'css/src/imports/icons.less'
+			]
+		},
+		// Browsersync auto refresh
+		browserSync: {
 			target: {
-				expand: true,
-				cwd: 'images/src/icons',
-				src: ['**/*.svg'],
-				dest: 'images/src',
+				bsFiles: {
+					src : [
+						'js/**.js',
+						'css/**.css',
+						'images/*',
+						'static/**/**.html'
+					]
+				},
 				options: {
-					'dest': 'images/',
-					'svg': {
-						'xmlDeclaration': false,
-						'doctypeDeclaration': false
+					server: {
+						baseDir: './'
 					},
-					'mode': {
-						'css': {
-							'common': 'sprite',
-							'prefix': '.icon_%s',
-							'dimensions': '_dims',
-							'sprite': '../src/icons.svg',
-							'bust': false,
-							'render': {
-								'less': {
-									'dest': '../../css/src/imports/icons.less'
-								}
-							},
-							'example': {
-									'dest': '../icons.html'
-							}
+					watchTask: true,
+					open: false,
+					notify: {
+						styles: {
+							top: 'auto',
+							bottom: '0',
+							borderBottomLeftRadius: '0',
+							fontSize: '11px',
+							padding: '5px 10px'
 						}
 					}
 				}
@@ -456,27 +465,68 @@ module.exports = function(grunt) {
 	}
 
 	// Default task
-	grunt.registerTask('default', 'build');
+	grunt.registerTask('default', [
+		'build'
+	]);
 
 	// Build
-	grunt.registerTask('build', [ 'clean', 'img', 'less:production', 'postcss:production', 'stripmq', 'bless', 'js', 'html' ]);
+	grunt.registerTask('build', [
+		'clean',
+		'js',
+		'html',
+		'img',
+		'less:production',
+		'postcss:production',
+		'stripmq',
+		'bless'
+	]);
 
 	// CSS
-	grunt.registerTask('css', [ 'less:target', 'postcss:target', 'stripmq', 'bless' ]);
+	grunt.registerTask('css', [
+		'less:target',
+		'postcss:target',
+		'stripmq',
+		'bless'
+	]);
 
 	// JS
-	grunt.registerTask('js', [ 'jshint:production', 'uglify', 'includereplace:target', 'modernizr' ]);
+	grunt.registerTask('js', [
+		'jshint:production',
+		'uglify',
+		'includereplace:target',
+		'modernizr'
+	]);
 
 	// Images
-	grunt.registerTask('img', [ 'svg_sprite', 'imagemin' ]);
+	grunt.registerTask('img', [
+		'svg_sprite',
+		'imagemin'
+	]);
 
 	// HTML
-	grunt.registerTask('html', [ 'twigRender', 'includeSource' ]);
+	grunt.registerTask('html', [
+		'twigRender',
+		'includeSource'
+	]);
 
 	// Develop
-	grunt.registerTask('devel', ['build', 'browserSync', 'watch']);
+	grunt.registerTask('devel', [
+		'build',
+		'browserSync',
+		'watch'
+	]);
 
 	// Debug (expanded files)
-	grunt.registerTask('debug', [ 'clean', 'img', 'less:target', 'postcss:target', 'stripmq', 'jshint', 'concat', 'includereplace:target', 'html' ]);
+	grunt.registerTask('debug', [
+		'clean',
+		'jshint',
+		'concat',
+		'includereplace:target',
+		'html',
+		'img',
+		'less:target',
+		'postcss:target',
+		'stripmq',
+	]);
 
 };
