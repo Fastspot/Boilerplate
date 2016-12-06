@@ -252,9 +252,13 @@ module.exports = function(grunt) {
 		// Optimize images
 		imagemin: {
 			options: {
+<<<<<<< HEAD
 				svgoPlugins: [{
 					removeViewBox: true
 				}]
+=======
+				svgoPlugins: [{ removeViewBox: true }]
+>>>>>>> f3803dfd0be8d5e7a74e707ee6a38a5d82e4d5b7
 			},
 			target: {
 				files: [{
@@ -470,7 +474,11 @@ module.exports = function(grunt) {
 	grunt.registerTask('js', [ 'jshint:production', 'uglify', 'includereplace:target', 'modernizr' ]);
 
 	// Images
+<<<<<<< HEAD
 	grunt.registerTask('img', [ 'svg_sprite', 'imagemin', ]);
+=======
+	grunt.registerTask('img', [ 'svg_sprite', 'imagemin' ]);
+>>>>>>> f3803dfd0be8d5e7a74e707ee6a38a5d82e4d5b7
 
 	// HTML
 	grunt.registerTask('html', [ 'twigRender', 'includeSource' ]);
