@@ -325,9 +325,7 @@ module.exports = function(grunt) {
 		// Optimize images
 		imagemin: {
 			options: {
-				svgoPlugins: [{
-					removeViewBox: true
-				}]
+				svgoPlugins: [{ removeViewBox: true }]
 			},
 			target: {
 				files: [{
@@ -396,6 +394,14 @@ module.exports = function(grunt) {
 			img: [
 				'images/*',
 				'!images/src/**'
+			],
+			css: [
+				'css/*',
+				'!css/src/**'
+			],
+			js: [
+				'js/*',
+				'!js/src/**'
 			],
 			sprite: [
 				'css/src/imports/icons.less'
