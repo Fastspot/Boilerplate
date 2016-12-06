@@ -7,7 +7,7 @@
 	<div class="{{class}}_list" role="navigation">
 		{% for link in links %}
 			<div class="{{class}}_item" itemprop="url">
-				<a class="{{class}}_link{% if link.modifier %} {{link.modifier}}{% endif %}" href="#" itemprop="name">{{link}}</a>
+				<a class="{{class}}_link{% if link.modifier %} {{link.modifier}}{% endif %}" href="#" itemprop="name">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</a>
 			</div>
 		{% endfor %}
 	</div>

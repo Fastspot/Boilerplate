@@ -1,12 +1,10 @@
-<figure class="{{class}}_figure">
-	<picture class="{{class}}_picture">
-		<!--[if IE 9]><video style="display: none;"><![endif]-->
-		{% for key, source in sources %}
-			<source media="(min-width: {{key}})" srcset="//spacehold.it/{{source}}/{{image}}.jpg">
-			{% if loop.last %}
-				<!--[if IE 9]></video><![endif]-->
-				<img class="{{class}}_image" src="//spacehold.it/{{source}}/{{image}}.jpg" alt="">
-			{% endif %}
-		{% endfor %}
-	</picture>
-</figure>
+<picture class="{{class}}_picture">
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	{% for key, source in sources %}
+		<source media="(min-width: {{key}})" srcset="//spacehold.it/{{source}}/{{image}}.jpg">
+		{% if loop.last %}
+			<!--[if IE 9]></video><![endif]-->
+			<img class="{{class}}_image" src="//spacehold.it/{{source}}/{{image}}.jpg" alt="">
+		{% endif %}
+	{% endfor %}
+</picture>

@@ -10,11 +10,11 @@
 				<div class="media_gallery_item">
 					<figure class="media_gallery_figure">
 						{% include "../shared/picture.twig" with {
-							class: "media_gallery"
-							image: item.image,
+							class: "media_gallery",
 							sources: {
 								"1220px": img.wide.med
-							}
+							},
+							image: item.image
 						} %}
 						{% if item.caption %}
 							<figcaption class="media_gallery_figcaption">
