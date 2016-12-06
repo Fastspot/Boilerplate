@@ -1,6 +1,13 @@
 <section class="flex_callout{% if theme %} theme_{{theme}}{% endif %}">
 	{% if background %}
-		<div class="js-background flex_callout_background" data-background-options='{"source": {"0px": "//spacehold.it/740x740/{{background}}.jpg", "740px": "//spacehold.it/980x735/{{background}}.jpg", "980px": "//spacehold.it/1220x686/{{background}}.jpg"}}'></div>
+		{% include '../shared/background.twig' with {
+			class: "flex_callout",
+			sources: {
+				"0px": img.wide.md,
+				"980px": img.wide.lrg
+			},
+			image: 1
+		} %}
 	{% endif %}
 	<div class="fs-row">
 		<div class="fs-cell">
@@ -14,8 +21,8 @@
 				</div>
 				{% if links %}
 					<div class="flex_callout_links">
-						{% for link in flexLinks %}
-							<a class="flex_callout_link" href="{{link.href}}">{{link.name}}</a>
+						{% for link in links %}
+							<a class="flex_callout_link" href="#">{{link.name}}</a>
 						{% endfor %}
 					</div>
 				{% endif %}
