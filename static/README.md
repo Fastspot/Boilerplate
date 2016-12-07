@@ -22,7 +22,6 @@
 		"980px": img.wide.med,
 		"1220px": img.wide.lrg,
 	},
-	fallback: img.wide.sml,
 	image: 1
 } %}
 ```
