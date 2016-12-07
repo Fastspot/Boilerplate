@@ -2,9 +2,7 @@
 	<!--[if IE 9]><video style="display: none;"><![endif]-->
 	{% for key, source in sources %}
 		<source media="(min-width: {{key}})" srcset="//spacehold.it/{{source}}/{{image}}.jpg">
-		{% if loop.last %}
-			<!--[if IE 9]></video><![endif]-->
-			<img class="{{class}}_image" src="//spacehold.it/{{source}}/{{image}}.jpg" alt="">
-		{% endif %}
 	{% endfor %}
+	<!--[if IE 9]></video><![endif]-->
+	<img class="{{class}}_image" src="//spacehold.it/{{fallback}}/{{image}}.jpg" alt="">
 </picture>
