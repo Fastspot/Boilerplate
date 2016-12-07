@@ -134,7 +134,7 @@
       "lrg": "1220x814",
       "xlrg": "1440x960"
     },
-    "portrait-full": {
+    "portraitFull": {
       "xxsml": "225x300",
       "xsml": "375x500",
       "sml": "555x740",
@@ -142,7 +142,7 @@
       "lrg": "915x1220",
       "xlrg": "1080x1440"
     },
-    "portrait-classic": {
+    "portraitClassic": {
       "xxsml": "200x300",
       "xsml": "334x500",
       "sml": "494x740",
