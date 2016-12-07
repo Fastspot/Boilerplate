@@ -65,7 +65,7 @@ grunt devel
 
 ## Quick Installation Guide
 
-Here's a quick guide, without machine dependent downloads, for those who have already gone through the first installation steps and wish to jump in the a new project:
+Here's a quick guide, without machine dependent downloads, for those who have already gone through the first installation steps and wish to jump into a new project:
 
 ```
 bower install
