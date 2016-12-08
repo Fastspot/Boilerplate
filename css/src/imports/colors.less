@@ -33,7 +33,7 @@
 .color(@colors; @index: 1) when (length(@colors) >= @index) {
 	.color(@colors; (@index + 1));
 
-	@color : extract(@colors, @index);
+	@color: extract(@colors, @index);
 
 	.bg_@{color} {
 		background: @@color;
@@ -79,6 +79,36 @@
 	Themes
 ============================================================================= */
 
-.direct_theming() {}
+@themes:
+	true_white,
+	true_black;
 
-.child_theming() {}
+.direct_theming() {
+
+	.direct_theme(@themes; @index: 1) when (length(@themes) >= @index) {
+		.direct_theme(@themes; (@index + 1));
+
+		@theme: extract(@themes, @index);
+
+		&.theme_@{theme} {
+			background: @@theme;
+		}
+	}
+
+	.direct_theme(@themes);
+}
+
+.child_theming() {
+
+	.child_theme(@themes; @index: 1) when (length(@themes) >= @index) {
+		.child_theme(@themes; (@index + 1));
+
+		@theme: extract(@themes, @index);
+
+		.theme_@{theme} & {
+			background: @@theme;
+		}
+	}
+
+	.child_theme(@themes);
+}

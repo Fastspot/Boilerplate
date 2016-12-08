@@ -1,5 +1,5 @@
 /* ==========================================================================
-	 Breadcrumb Navigation
+	Breadcrumb Navigation
 ============================================================================= */
 
 .breadcrumb_nav {
@@ -21,20 +21,21 @@
 
 	&:not(:last-child) {
 
-		&:after {}
+		&:after {
+			content: ">";
+		}
 	}
 }
 
 .breadcrumb_link,
-.breadcrumb_label {}
+.breadcrumb_label {
+	.inline_block;
+}
 
 .breadcrumb_link {
-	.inline_block;
 
 	&:focus,
 	&:hover {}
 }
 
 .breadcrumb_label {}
-
-.breadcrumb_name {}

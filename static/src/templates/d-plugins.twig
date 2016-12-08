@@ -1,0 +1,46 @@
+{% extends "_base.twig" %}
+
+{% set pageTitle = "Plugins" %}
+
+{% block in_content_callouts %}
+
+	<div class="cr_heading">Slideshow</div>
+
+	<div class="js-carousel">
+		<img src="//spacehold.it/320x240/1.jpg" alt="1">
+		<img src="//spacehold.it/320x240/2.jpg" alt="2">
+		<img src="//spacehold.it/320x240/3.jpg" alt="3">
+		<img src="//spacehold.it/320x240/4.jpg" alt="4">
+	</div>
+
+	<div class="cr_heading">Lightbox Video</div>
+
+	<div class="lightbox-gallery">
+		<a href="//www.youtube.com/embed/zsJpUCWfyPE?rel=0&amp;autoplay=1&amp;fs=1" class="js-lightbox button" data-lightbox-gallery="video_gallery" title="Sed posuere consectetur est at lobortis.">YouTube Video</a>
+	</div>
+
+	<div class="cr_heading">Dropdown</div>
+
+	<select name="dropdown" class="js-dropdown">
+		<option value="1">One</option>
+		<option value="2">Two</option>
+		<option value="2">Three</option>
+		<option value="2">Four</option>
+	</select>
+
+	<div class="cr_heading">Accordion</div>
+
+	{% include "../partials/components/in-content/accordion.twig" with {
+		accordions: [
+			{
+				question: "Lorem ipsum yuppy golor",
+				answer: "Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi."
+			},
+			{
+				question: "Lorem ipsum nolom de letuvis",
+				answer: "Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna."
+			}
+		]
+	}%}
+
+{% endblock %}

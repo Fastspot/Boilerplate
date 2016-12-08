@@ -69,9 +69,24 @@
 
 				if ($.mediaquery) {
 					$.mediaquery({
-						minWidth: [ this.minXS, this.minSM, this.minMD, this.minLG, this.minXL ],
-						maxWidth: [ this.maxXL, this.maxLG, this.maxMD, this.maxSM, this.maxXS ],
-						minHeight: [ this.minHTsm, this.minHT ]
+						minWidth: [
+							this.minXS,
+							this.minSM,
+							this.minMD,
+							this.minLG,
+							this.minXL
+						],
+						maxWidth: [
+							this.maxXL,
+							this.maxLG,
+							this.maxMD,
+							this.maxSM,
+							this.maxXS
+						],
+						minHeight: [
+							this.minHTsm,
+							this.minHT
+						]
 					});
 				}
 
@@ -85,8 +100,8 @@
 				iterate(this.onInit);
 
 				this.$window.on("mqchange.mediaquery", onRespond)
-							.on(Controller.ns("resize"), onResize)
-							.on(Controller.ns("scroll"), onScroll);
+					.on(Controller.ns("resize"), onResize)
+					.on(Controller.ns("scroll"), onScroll);
 
 				this.resize();
 			},

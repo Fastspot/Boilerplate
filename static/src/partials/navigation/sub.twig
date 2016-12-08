@@ -13,7 +13,14 @@
 					<div class="sub_nav_children_one">
 						{% for child in link.children %}
 							<div class="sub_nav_child_item" itemprop="url">
-								<a class="sub_nav_child_link" href="#" itemprop="name">{{child}}</a>
+								<a class="sub_nav_child_link" href="#" itemprop="name">{% if child.name %}{{child.name}}{% elseif child %}{{child}}{% endif %}</a>
+								{% if child.children %}
+									<div class="sub_nav_children_underneath">
+										{% for subChild in child.children %}
+											<a class="sub_nav_child_link" href="#" itemprop="name">{{subChild}}</a>
+										{% endfor %}
+									</div>
+								{% endif %}
 							</div>
 						{% endfor %}
 					</div>
