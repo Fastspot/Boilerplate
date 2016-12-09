@@ -72,6 +72,19 @@
 			{% set socialNavLinksAlias = socialNavLinks %}
 		{% endblock %}
 
+		{% if name == "site-title" %}
+			<h2>Update "name"</h2>
+		{% endif %}
+		{% if description == "Site description." %}
+			<h2>Update "description"</h2>
+		{% endif %}
+		{% if repository.url == "url" %}
+			<h2>Update "repository.url"</h2>
+		{% endif %}
+		{% if vars.clientname == "Client Name" %}
+			<h2>Update "vars.clientname"</h2>
+		{% endif %}
+
 		<!-- Skip-to-Content Link -->
 		<a href="#main_page_title" id="skip_to_content" class="skip_link">Skip to Main Content</a>
 
