@@ -9,20 +9,19 @@
 	.text_center;
 
 	top: 0;
-	right: 0;
-	left: 0;
+	left: 50%;
 	z-index: 100;
 
 	padding: 20px;
-	transform: translateY(-200%);
+	transform: translate(-50%, -200%);
 	transition:
 		transform 0.35s,
 		top 0.35s;
 
 	&:focus,
 	&:active {
-		outline: none;
-		transform: translateY(0);
+		outline: 2px solid @black;
+		transform: translate(-50%, 0);
 	}
 
 	.no-csstransforms & {
