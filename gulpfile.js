@@ -2,8 +2,7 @@ var site = 'dist/';
 var gulp = require('gulp'),
 		packageJSON = require('./package.json'),
 		twig = require('gulp-twig'),
-		rename = require('gulp-rename'),
-		imagemin = require('gulp-imagemin');
+		rename = require('gulp-rename');
 
 
 gulp.task('twig', function () {
@@ -22,19 +21,19 @@ gulp.task('twig', function () {
 
 });
 
-
-gulp.task('imagemin', function () {
-
-	return gulp.src([
-		'images/src/**/*',
-		'!images/src/icons/**'
-	])
-		.pipe(imagemin({
-
-		}))
-		.pipe(gulp.dest('images'));
-
-});
+//
+// gulp.task('imagemin', function () {
+//
+// 	return gulp.src([
+// 		'images/src/**/*',
+// 		'!images/src/icons/**'
+// 	])
+// 		.pipe(imagemin({
+//
+// 		}))
+// 		.pipe(gulp.dest('images'));
+//
+// });
 
 
 gulp.task('watch', function() {

@@ -95,36 +95,7 @@ http://realfavicongenerator.net/favicon/grunt -->
 			</div>
 </nav>
 
-						<button class="js-nav_handle mobile_sidebar_handle">Menu</button>
-
-						<div class="js-navigation mobile_sidebar" hidden data-navigation-handle=".js-nav_handle" data-navigation-content=".js-navigation_push" data-navigation-options='{"type": "overlay", "gravity": "right"}'>
-							<nav class="main_nav main_nav_sm" aria-label="Site Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
-		<div class="main_nav_list" role="navigation">
-					<div class="main_nav_item mobile_nav_1" itemprop="url">
-				<div class="main_nav_item_wrapper">
-					<a class="main_nav_link" href="#" itemprop="name">Main Link</a>
-					<button class="js-swap main_nav_toggle" data-swap-target=".mobile_nav_1" data-swap-group="mobile_nav">Expand Navigation</button>
-				</div>
-									<div class="main_nav_children">
-													<div class="main_nav_child_item" itemprop="url">
-								<a class="main_nav_child_link" href="#" itemprop="name">One Child</a>
-							</div>
-													<div class="main_nav_child_item" itemprop="url">
-								<a class="main_nav_child_link" href="#" itemprop="name">Two Child</a>
-							</div>
-											</div>
-							</div>
-			</div>
-</nav>
-
-							<nav class="secondary_nav secondary_nav_sm" aria-label="Secondary Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
-		<div class="secondary_nav_list" role="navigation">
-					<div class="secondary_nav_item" itemprop="url">
-				<a class="secondary_nav_link" href="#" itemprop="name">Secondary Link</a>
-			</div>
-			</div>
-</nav>
-						</div>
+						<a href="#mobile_sidebar" class="js-nav_handle mobile_sidebar_handle">Menu</a>
 
 						
 
@@ -305,6 +276,35 @@ http://realfavicongenerator.net/favicon/grunt -->
 				</div>
 			</footer>
 			<!-- END: Footer -->
+
+			<div class="js-navigation mobile_sidebar" id="mobile_sidebar" hidden data-navigation-handle=".js-nav_handle" data-navigation-content=".js-navigation_push" data-navigation-options='{"type": "overlay", "gravity": "right"}'>
+				<nav class="main_nav main_nav_sm" aria-label="Site Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		<div class="main_nav_list" role="navigation">
+					<div class="main_nav_item mobile_nav_1" itemprop="url">
+				<div class="main_nav_item_wrapper">
+					<a class="main_nav_link" href="#" itemprop="name">Main Link</a>
+					<button class="js-swap main_nav_toggle" data-swap-target=".mobile_nav_1" data-swap-group="mobile_nav">Expand Navigation</button>
+				</div>
+									<div class="main_nav_children">
+													<div class="main_nav_child_item" itemprop="url">
+								<a class="main_nav_child_link" href="#" itemprop="name">One Child</a>
+							</div>
+													<div class="main_nav_child_item" itemprop="url">
+								<a class="main_nav_child_link" href="#" itemprop="name">Two Child</a>
+							</div>
+											</div>
+							</div>
+			</div>
+</nav>
+
+				<nav class="secondary_nav secondary_nav_sm" aria-label="Secondary Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		<div class="secondary_nav_list" role="navigation">
+					<div class="secondary_nav_item" itemprop="url">
+				<a class="secondary_nav_link" href="#" itemprop="name">Secondary Link</a>
+			</div>
+			</div>
+</nav>
+			</div>
 
 		</div>
 		<!-- END: page_wrapper -->

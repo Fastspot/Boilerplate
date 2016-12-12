@@ -43,6 +43,7 @@
 
 			TODO:
 				Update Navigation Blocks in package.json
+				Backend Devs can remove this section
 
 		#}
 
@@ -85,6 +86,8 @@
 			<h2>Update "vars.clientname"</h2>
 		{% endif %}
 
+		{# End: Backend Dev removable blocks #}
+
 		<!-- Skip-to-Content Link -->
 		<a href="#main_page_title" id="skip_to_content" class="skip_link">Skip to Main Content</a>
 
@@ -112,21 +115,7 @@
 							links: secondaryNavLinksAlias
 						} %}
 
-						<button class="js-nav_handle mobile_sidebar_handle">Menu</button>
-
-						<div class="js-navigation mobile_sidebar" hidden data-navigation-handle=".js-nav_handle" data-navigation-content=".js-navigation_push" data-navigation-options='{"type": "overlay", "gravity": "right"}'>
-							{% include "../partials/navigation/main.twig" with {
-								class: "main_nav_sm",
-								links: mainNavLinksAlias
-							} %}
-
-							{% include "../partials/navigation/basic.twig" with {
-								class: "secondary_nav",
-								modifier: "sm",
-								label: "Secondary Navigation",
-								links: secondaryNavLinksAlias
-							} %}
-						</div>
+						<a href="#mobile_sidebar" class="js-nav_handle mobile_sidebar_handle">Menu</a>
 
 						{% include "../partials/site-search.twig" %}
 					</div>
@@ -247,6 +236,20 @@
 				</div>
 			</footer>
 			<!-- END: Footer -->
+
+			<div class="js-navigation mobile_sidebar" id="mobile_sidebar" hidden data-navigation-handle=".js-nav_handle" data-navigation-content=".js-navigation_push" data-navigation-options='{"type": "overlay", "gravity": "right"}'>
+				{% include "../partials/navigation/main.twig" with {
+					class: "main_nav_sm",
+					links: mainNavLinksAlias
+				} %}
+
+				{% include "../partials/navigation/basic.twig" with {
+					class: "secondary_nav",
+					modifier: "sm",
+					label: "Secondary Navigation",
+					links: secondaryNavLinksAlias
+				} %}
+			</div>
 
 		</div>
 		<!-- END: page_wrapper -->
