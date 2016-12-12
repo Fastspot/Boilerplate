@@ -13,19 +13,19 @@ Site.modules.Page = (function($, Site) {
 		$mainNav                      = $(".main_nav");
 
 
-		/* Picturefill */
+		// Picturefill
 
 		picturefill();
 
 
-		/* Analytics */
+		// Analytics
 
 		$.analytics({
 			scrollDepth: true
 		});
 
 
-		/* Plugins */
+		// Plugins
 
 		Site.$body.find(".js-background").background();
 		Site.$body.find(".js-carousel").carousel();
@@ -63,14 +63,14 @@ Site.modules.Page = (function($, Site) {
 		});
 
 
-		/* Wrapper for Tables */
+		// Wrapper for Tables
 
 		Site.$body.find(".typography table")
 			.wrap('<div class="table_wrapper"><div class="table_wrapper_inner"></div></div>');
 		tableOverflow();
 
 
-		/* Generic Toggles */
+		// Generic Toggles
 
 		Site.$body.find(".js-toggle")
 			.not(".js-bound")
@@ -78,7 +78,7 @@ Site.modules.Page = (function($, Site) {
 			.addClass("js-bound");
 
 
-		/* Scroll Nav */
+		// Scroll Nav
 
 		Site.$body.find(".js-scroll_to")
 			.not(".js-bound")
@@ -86,14 +86,14 @@ Site.modules.Page = (function($, Site) {
 			.addClass("js-bound");
 
 
-		/* Responsive Video */
+		// Responsive Video
 
 		$("iframe[src*='vimeo.com'], iframe[src*='youtube.com']", ".typography").each(function() {
 			$(this).wrap('<div class="video_frame"></div>');
 		});
 
 
-		/* Display children of focused nav items */
+		// Display children of focused nav items
 
 		$mainNav.find("a")
 			.focus(function () {
@@ -104,7 +104,7 @@ Site.modules.Page = (function($, Site) {
 			});
 
 
-		/* Scrolling */
+		// Scrolling
 
 		Site.onScroll.push(scroll);
 		Site.onResize.push(resize);
@@ -183,7 +183,7 @@ Site.modules.Page = (function($, Site) {
 		});
 	}
 
-	/* Hook Into Main init Routine */
+	// Hook Into Main init Routine
 
 	Site.onInit.push(init);
 
