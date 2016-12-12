@@ -41,15 +41,26 @@ Site.modules.Page = (function($, Site) {
 				maxWidth: Site.maxLG + "px"
 			})
 			.on("open.navigation", function() {
-				trackEvent( $(this).data("analytics-open") );
+				trackEvent($(this).data("analytics-open"));
+				Site.$body.find(".js-navigation").attr("aria-hidden", "false").removeAttr("hidden");
 			})
 			.on("close.navigation", function() {
-				trackEvent( $(this).data("analytics-close") );
+				trackEvent($(this).data("analytics-close"));
+				Site.$body.find(".js-navigation").attr("aria-hidden", "true").attr("hidden", "");
 			});
 		Site.$body.find(".js-swap").swap();
 		Site.$body.find("input[type=number]").number();
 		Site.$body.find("input[type=range]").range();
 		Site.$body.find(".js-tabs").tabs();
+
+		$.mediaquery("bind", "mq-key", "(min-width: " + Site.minLG + "px)", {
+			enter: function() {
+				$subNav.attr("aria-hidden", "false").removeAttr("hidden");
+			},
+			leave: function() {
+				$subNav.attr("aria-hidden", "true").attr("hidden", "");
+			}
+		});
 
 
 		/* Wrapper for Tables */
