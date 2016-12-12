@@ -7,17 +7,22 @@
 
 .base_dropdown {
 
-	.fs-dropdown-element {}
-
 	.fs-dropdown-selected {
+		.relative;
 
 		&:focus,
 		&:hover {}
 	}
 
+	&.fs-dropdown-open .fs-dropdown-selected {}
+
 	.fs-dropdown-options {}
 
-	.fs-dropdown-item {}
+	.fs-dropdown-item {
+
+		&:focus,
+		&:hover {}
+	}
 }
 
 
