@@ -6,7 +6,8 @@
 
 Site.modules.Page = (function($, Site) {
 
-	var $mainNav;
+	var $mainNav,
+			$subNav;
 
 	function init() {
 
