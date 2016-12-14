@@ -13,19 +13,19 @@ Site.modules.Page = (function($, Site) {
 		$mainNav                      = $(".main_nav");
 
 
-		/* Picturefill */
+		// Picturefill
 
 		picturefill();
 
 
-		/* Analytics */
+		// Analytics
 
 		$.analytics({
 			scrollDepth: true
 		});
 
 
-		/* Plugins */
+		// Plugins
 
 		Site.$body.find(".js-background").background();
 		Site.$body.find(".js-carousel").carousel();
@@ -41,25 +41,36 @@ Site.modules.Page = (function($, Site) {
 				maxWidth: Site.maxLG + "px"
 			})
 			.on("open.navigation", function() {
-				trackEvent( $(this).data("analytics-open") );
+				trackEvent($(this).data("analytics-open"));
+				Site.$body.find(".js-navigation").attr("aria-hidden", "false").removeAttr("hidden");
 			})
 			.on("close.navigation", function() {
-				trackEvent( $(this).data("analytics-close") );
+				trackEvent($(this).data("analytics-close"));
+				Site.$body.find(".js-navigation").attr("aria-hidden", "true").attr("hidden", "");
 			});
 		Site.$body.find(".js-swap").swap();
 		Site.$body.find("input[type=number]").number();
 		Site.$body.find("input[type=range]").range();
 		Site.$body.find(".js-tabs").tabs();
 
+		$.mediaquery("bind", "mq-key", "(min-width: " + Site.minLG + "px)", {
+			enter: function() {
+				$subNav.attr("aria-hidden", "false").removeAttr("hidden");
+			},
+			leave: function() {
+				$subNav.attr("aria-hidden", "true").attr("hidden", "");
+			}
+		});
 
-		/* Wrapper for Tables */
+
+		// Wrapper for Tables
 
 		Site.$body.find(".typography table")
 			.wrap('<div class="table_wrapper"><div class="table_wrapper_inner"></div></div>');
 		tableOverflow();
 
 
-		/* Generic Toggles */
+		// Generic Toggles
 
 		Site.$body.find(".js-toggle")
 			.not(".js-bound")
@@ -67,7 +78,7 @@ Site.modules.Page = (function($, Site) {
 			.addClass("js-bound");
 
 
-		/* Scroll Nav */
+		// Scroll Nav
 
 		Site.$body.find(".js-scroll_to")
 			.not(".js-bound")
@@ -75,14 +86,14 @@ Site.modules.Page = (function($, Site) {
 			.addClass("js-bound");
 
 
-		/* Responsive Video */
+		// Responsive Video
 
 		$("iframe[src*='vimeo.com'], iframe[src*='youtube.com']", ".typography").each(function() {
 			$(this).wrap('<div class="video_frame"></div>');
 		});
 
 
-		/* Display children of focused nav items */
+		// Display children of focused nav items
 
 		$mainNav.find("a")
 			.focus(function () {
@@ -93,7 +104,7 @@ Site.modules.Page = (function($, Site) {
 			});
 
 
-		/* Scrolling */
+		// Scrolling
 
 		Site.onScroll.push(scroll);
 		Site.onResize.push(resize);
@@ -172,7 +183,7 @@ Site.modules.Page = (function($, Site) {
 		});
 	}
 
-	/* Hook Into Main init Routine */
+	// Hook Into Main init Routine
 
 	Site.onInit.push(init);
 
