@@ -161,21 +161,21 @@ module.exports = function(grunt) {
 		// Twig
 		twigRender: {
 			your_target: {
-	      files: [
-	        {
-	          data: '<%= pkg %>',
-	          expand: true,
-	          cwd: 'static/src/templates/',
-	          src: [
+				files: [
+					{
+						data: '<%= pkg %>',
+						expand: true,
+						cwd: 'static/src/templates/',
+						src: [
 							'*.twig',
 							'!_*.twig'
 						],
-	          dest: 'static/templates/',
-	          ext: '.html'
-	        }
-	      ]
-	    },
-	  },
+						dest: 'static/templates/',
+						ext: '.html'
+					}
+				]
+			},
+		},
 		// Create directory listing
 		includeSource: {
 			options: {
@@ -300,22 +300,22 @@ module.exports = function(grunt) {
 					'dest': 'images/',
 					'svg': {
 						'xmlDeclaration': false,
-						'doctypeDeclaration': false
+						'doctypeDeclaration': false,
+						'dimensionAttributes': false
 					},
 					'mode': {
-						'css': {
-							'common': 'sprite',
+						'view': {
+							'dest': './',
+							'bust': false,
 							'prefix': '.icon_%s',
 							'dimensions': '_dims',
-							'sprite': '../src/icons.svg',
-							'bust': false,
 							'render': {
 								'less': {
-									'dest': '../../css/src/imports/icons.less'
+									'dest': '../css/src/imports/icons.less'
 								}
 							},
 							'example': {
-									'dest': '../icons.html'
+								'dest': './icons.html'
 							}
 						}
 					}
@@ -473,8 +473,8 @@ module.exports = function(grunt) {
 	grunt.registerTask('build', [
 		'clean',
 		'js',
-		'html',
 		'img',
+		'html',
 		'less:production',
 		'postcss:production',
 		'stripmq',
