@@ -10,7 +10,7 @@ Site.modules.Page = (function($, Site) {
 			$subNav;
 
 	function init() {
-
+		
 		$mainNav                      = $(".main_nav");
 
 
