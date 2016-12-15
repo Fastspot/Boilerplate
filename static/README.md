@@ -1,3 +1,36 @@
+# Syntax
+
+```twig
+{# Variable Use #}
+{{variable}}
+
+{# Including a file #}
+{% include "" with {
+	links: [
+		{
+			key1: "value",
+			key2: "value"
+		},
+		{}
+	]
+} %}
+
+{# If Statement #}
+{% if condition %}
+{% endif %}
+
+{# If and Elseif Statement #}
+{% if condition %}
+{% elseif condition %}
+{% endif %}
+
+{# Loops #}
+{% for link in links %}
+{% endfor %}
+```
+
+# Partials
+
 ## Picture Partial
 
 ```twig
