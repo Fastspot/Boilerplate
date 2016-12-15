@@ -8,7 +8,7 @@ Site.modules.Module = (function($, Site) {
 
 	}
 
-	/* Hook Into Main init Routine */
+	// Hook Into Main init Routine
 
 	Site.onInit.push(init);
 
