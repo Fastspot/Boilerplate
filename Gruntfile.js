@@ -301,7 +301,7 @@ module.exports = function(grunt) {
 					'svg': {
 						'xmlDeclaration': false,
 						'doctypeDeclaration': false,
-						'dimensionAttributes': false
+						'dimensionAttributes': true
 					},
 					'mode': {
 						'view': {

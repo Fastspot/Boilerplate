@@ -2,11 +2,13 @@ var gulp = require('gulp'),
 		packageJSON = require('./package.json'),
 		browserSync = require('browser-sync').create(),
 		del = require('del'),
-		fs = require('fs'),
 		twig = require('gulp-twig'),
+		directoryMap = require('gulp-directory-map'),
 		rename = require('gulp-rename'),
-		data = require('gulp-data'),
+		replaceInclude = require('gulp-replace-include'),
 		concat = require('gulp-concat-multi'),
+		jshint = require('gulp-jshint'),
+		stylish = require('jshint-stylish'),
 		uglify = require('gulp-uglify'),
 		imagemin = require('gulp-imagemin');
 
@@ -28,17 +30,51 @@ gulp.task('twig', function () {
 
 });
 
+
+gulp.task('create-sitemap', ['twig'], function () {
+
+	return gulp.src('static/templates/*.html')
+		.pipe(directoryMap({
+			filename: 'sitemap.json',
+			prefix: 'links'
+		}))
+		.pipe(gulp.dest('./'));
+
+});
+
+
+gulp.task('sitemap', ['create-sitemap'], function() {
+
+	return gulp.src('static/index.twig')
+		.pipe(twig({
+			data: require('./sitemap.json')
+		}))
+		.pipe(rename({
+			extname: '.html'
+		}))
+		.pipe(gulp.dest('static/'));
+
+});
+
+
 gulp.task('scripts', function () {
 
 	concat(packageJSON.js)
-		.pipe(data(function() {
-			return require('./package.json');
-		}))
 		.pipe(uglify())
 		.pipe(gulp.dest('./'))
 		.pipe(browserSync.stream());
 
 });
+
+
+gulp.task('jshint', function() {
+
+	return gulp.src('js/src/modules/*.js')
+		.pipe(jshint())
+		.pipe(jshint.reporter(stylish));
+
+});
+
 
 gulp.task('imagemin', function () {
 
@@ -101,7 +137,7 @@ gulp.task('browser-sync', function() {
 gulp.task('watch', function() {
 
 	gulp.watch('static/src/**/**.twig', ['twig']);
-	gulp.watch('js/src/**/**.js', ['scripts']);
+	gulp.watch('js/src/**/**.js', ['scripts', 'jshint']);
 
 });
 

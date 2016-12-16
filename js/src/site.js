@@ -34,11 +34,11 @@
 			this.onResize     = [];
 			this.onScroll     = [];
 
-			this.minXS = "@mq_min_xs";
-			this.minSM = "@mq_min_sm";
-			this.minMD = "@mq_min_md";
-			this.minLG = "@mq_min_lg";
-			this.minXL = "@mq_min_xl";
+			this.minXS = "320";
+			this.minSM = "500";
+			this.minMD = "740";
+			this.minLG = "980";
+			this.minXL = "1220";
 
 			this.maxXS = this.minXS - 1;
 			this.maxSM = this.minSM - 1;
@@ -46,8 +46,8 @@
 			this.maxLG = this.minLG - 1;
 			this.maxXL = this.minXL - 1;
 
-			this.minHTsm = parseInt("@mq_min_ht_sm", 10);
-			this.minHT   = parseInt("@mq_min_ht", 10);
+			this.minHTsm = parseInt("800", 10);
+			this.minHT   = parseInt("800", 10);
 
 			this.maxHTsm = this.minHTsm - 1;
 			this.maxHT   = this.minHT - 1;
