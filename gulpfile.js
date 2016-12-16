@@ -10,7 +10,8 @@ var gulp = require('gulp'),
 		jshint = require('gulp-jshint'),
 		stylish = require('jshint-stylish'),
 		uglify = require('gulp-uglify'),
-		imagemin = require('gulp-imagemin');
+		imagemin = require('gulp-imagemin'),
+		svgSprite = require('gulp-svg-sprite');
 
 
 gulp.task('twig', function () {
@@ -95,6 +96,37 @@ gulp.task('imagemin', function () {
 });
 
 
+gulp.task('sprite', function() {
+
+ 	return gulp.src('images/src/icons/*')
+		.pipe(svgSprite({
+			svg: {
+				xmlDeclaration: false,
+				doctypeDeclaration: false,
+				dimensionAttributes: true
+			},
+			mode: {
+				view: {
+					dest: './',
+					bust: false,
+					prefix: '.icon_%s',
+					dimensions: '_dims',
+					render: {
+						less: {
+							dest: '../css/src/imports/icons.less'
+						}
+					},
+					example: {
+						dest: './icons.html'
+					}
+				}
+			}
+		}))
+		.pipe(gulp.dest('images/'));
+
+});
+
+
 gulp.task('clean', function () {
 
 	return del([
@@ -120,6 +152,7 @@ gulp.task('browser-sync', function() {
 		logPrefix: packageJSON.name,
 		ui: false,
 		server: './',
+		startPath: "/static/index.html",
 		notify: {
 			styles: {
 				top: 'auto',
