@@ -250,6 +250,8 @@ gulp.task('default', [
 gulp.task('build', [
   'sitemap',
   'sprite',
+  'imagemin',
   'less',
-  'scripts'
+  'scripts',
+  'modernizr'
 ]);
