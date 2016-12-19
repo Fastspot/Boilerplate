@@ -241,6 +241,15 @@ gulp.task('watch', function() {
 
 
 gulp.task('default', [
+  'build',
 	'watch',
 	'browser-sync'
+]);
+
+
+gulp.task('build', [
+  'sitemap',
+  'sprite',
+  'less',
+  'scripts'
 ]);
