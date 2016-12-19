@@ -86,7 +86,8 @@ gulp.task('less', function() {
 			})
 		]))
 		.pipe(gulpif(util.env.production, cssnano()))
-		.pipe(gulp.dest('css/'));
+		.pipe(gulp.dest('css/'))
+		.pipe(browserSync.stream());
 
 });
 
@@ -113,7 +114,7 @@ gulp.task('ie-less', function() {
 gulp.task('scripts', function () {
 
 	concat(packageJSON.js)
-		.pipe(uglify())
+		.pipe(gulpif(util.env.production, uglify()))
 		.pipe(gulp.dest('./'))
 		.pipe(browserSync.stream());
 
@@ -166,7 +167,8 @@ gulp.task('sprite', function() {
 				}
 			}
 		}))
-		.pipe(gulp.dest('images/'));
+		.pipe(gulp.dest('images/'))
+		.pipe(browserSync.stream());
 
 });
 
