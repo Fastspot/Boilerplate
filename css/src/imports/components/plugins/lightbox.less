@@ -3,7 +3,7 @@
 ============================================================================= */
 
 .fs-lightbox {
-	background: none;
+	background: fade(#fff, 75);
 
 	.fs-lightbox-close {
 		.icon_before;
@@ -16,8 +16,13 @@
 	}
 
 	.fs-lightbox-content {
-		background: fade(#fff, 75);
+		background: none;
 		padding: 20px;
+	}
+
+	.fs-viewer-element,
+	.fs-viewer-element .fs-viewer-wrapper {
+		background: none;
 	}
 
 	.fs-lightbox-video_wrapper {
@@ -26,29 +31,30 @@
 	}
 
 
-/* Controls
-============================================================================= */
-
-	.fs-viewer-controls {}
-
-	.fs-viewer-control {}
-
-	.fs-viewer-control_zoom_out {}
-
-	.fs-viewer-control_zoom_in {}
-
-
-/* Tools
+/* Tools & Controls
 ============================================================================= */
 
 	.fs-lightbox-tools {
+		width: 100% !important;
+
 		background: #333;
 	}
 
-	.fs-lightbox-controls {}
 
-	.fs-lightbox-control {
+/* Controls
+============================================================================= */
+
+	.fs-viewer-controls {
+		width: 100%;
+	}
+
+	.fs-viewer-control {
 		.icon_before;
+
+		&:before {}
+
+		&:focus,
+		&:hover {}
 	}
 
 	.fs-lightbox-control_previous {
@@ -61,11 +67,29 @@
 		&:before {}
 	}
 
+	.fs-viewer-control_zoom_out {
+		display: none;
+	}
+
+	.fs-viewer-control_zoom_in {
+		display: none;
+	}
+
+
+/* Tools
+============================================================================= */
+
 	.fs-lightbox-meta {}
 
-	.fs-lightbox-position {}
+	.fs-lightbox-position {
+		margin: 0;
+	}
 
 	.fs-lightbox-caption {
 		.text_center;
+	}
+
+	.caption {
+		margin: 0;
 	}
 }

@@ -6,7 +6,9 @@
 
 .secondary_nav_header {}
 
-.secondary_nav_title {}
+.secondary_nav_title {
+	.visually_hide;
+}
 
 .secondary_nav_list {}
 
@@ -17,61 +19,4 @@
 
 	&:focus,
 	&:hover {}
-}
-
-
-/* ==========================================================================
-	Secondary Navigation Small
-============================================================================= */
-
-.secondary_nav_sm {
-
-	@media @min_lg {
-		.hide;
-	}
-
-	.secondary_nav {}
-
-	.secondary_nav_title {
-		.hide;
-	}
-
-	.secondary_nav_list {}
-
-	.secondary_nav_item {}
-
-	.secondary_nav_link {
-		.block;
-
-		&:focus,
-		&:hover {}
-	}
-}
-
-
-/* ==========================================================================
-	Secondary Navigation Large
-============================================================================= */
-
-.secondary_nav_lg {
-
-	@media @max_lg {
-		.hide;
-	}
-
-	.secondary_nav {}
-
-	.secondary_nav_title {
-		.hide;
-	}
-
-	.secondary_nav_list {}
-
-	.secondary_nav_item {}
-
-	.secondary_nav_link {
-
-		&:focus,
-		&:hover {}
-	}
 }

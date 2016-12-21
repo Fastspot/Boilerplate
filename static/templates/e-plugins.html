@@ -63,13 +63,16 @@ http://realfavicongenerator.net/favicon/grunt -->
 						
 
 <h1 class="logo header_logo" itemscope itemtype="http://schema.org/Organization"> 
-	<a class="header_logo_link" itemprop="url" href="00-1-home.html"></a> 
+	<a class="header_logo_link" itemprop="url" href="00-1-home.html">site-title</a> 
 	<meta itemprop="logo" content="../../images/logo-schema.png"> 
 	<img src="../../images/logo-print.png" class="print" alt="">
 </h1>
 
 						<nav class="main_nav main_nav_lg" aria-label="Site Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
-		<div class="main_nav_list" role="navigation">
+	<header class="main_nav_header">
+		<h2 class="main_nav_title">Site Navigation</h2>
+	</header>
+	<div class="main_nav_list" role="navigation">
 					<div class="main_nav_item mobile_nav_1" itemprop="url">
 				<div class="main_nav_item_wrapper">
 					<a class="main_nav_link" href="#" itemprop="name">Main Link</a>
@@ -88,7 +91,10 @@ http://realfavicongenerator.net/favicon/grunt -->
 </nav>
 
 						<nav class="secondary_nav secondary_nav_lg" aria-label="Secondary Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
-		<div class="secondary_nav_list" role="navigation">
+	<header class="secondary_nav_header">
+		<h2 class="secondary_nav_title">Secondary Navigation</h2>
+	</header>
+	<div class="secondary_nav_list" role="navigation">
 					<div class="secondary_nav_item" itemprop="url">
 				<a class="secondary_nav_link" href="#" itemprop="name">Secondary Link</a>
 			</div>
@@ -160,7 +166,10 @@ http://realfavicongenerator.net/favicon/grunt -->
 							<!-- Sub Nav -->
 							<div class="fs-cell-right fs-lg-4">
 																	<nav class="sub_nav " aria-label="Additional Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
-		<button class="js-sub_nav_handle sub_nav_handle">Additional Navigation</button>
+	<header class="sub_nav_header">
+		<h2 class="sub_nav_title">Sub Navigation</h2>
+	</header>
+	<button class="js-sub_nav_handle sub_nav_handle">Additional Navigation</button>
 	<div class="js-navigation sub_nav_list" data-navigation-handle=".js-sub_nav_handle" data-navigation-options='{"theme": "sub_nav_base", "labels": {"closed": "Additional Navigation", "Open": "Close"}}'>
 					<div class="sub_nav_item" itemprop="url">
 				<a class="sub_nav_link" href="1-2-style-guide-feature.html" itemprop="name">Page Feature Components</a>
@@ -194,17 +203,36 @@ http://realfavicongenerator.net/favicon/grunt -->
 	<div class="cr_heading">Slideshow</div>
 
 	<div class="js-carousel">
-		<img src="//spacehold.it/320x240/1.jpg" alt="1">
-		<img src="//spacehold.it/320x240/2.jpg" alt="2">
-		<img src="//spacehold.it/320x240/3.jpg" alt="3">
-		<img src="//spacehold.it/320x240/4.jpg" alt="4">
-	</div>
+					<img src="//spacehold.it/320x240/0.jpg" alt="0">
+					<img src="//spacehold.it/320x240/1.jpg" alt="1">
+					<img src="//spacehold.it/320x240/2.jpg" alt="2">
+					<img src="//spacehold.it/320x240/3.jpg" alt="3">
+			</div>
 
 	<div class="cr_heading">Lightbox Video</div>
 
-	<div class="lightbox-gallery">
-		<a href="//www.youtube.com/embed/zsJpUCWfyPE?rel=0&amp;autoplay=1&amp;fs=1" class="js-lightbox button" data-lightbox-gallery="video_gallery" title="Sed posuere consectetur est at lobortis.">YouTube Video</a>
-	</div>
+	<div class="lightbox-video-gallery">
+					<a href="//www.youtube.com/embed/zsJpUCWfyPE?rel=0&amp;autoplay=1&amp;fs=1" class="js-lightbox button" data-lightbox-gallery="video_gallery" title="Sed posuere consectetur est at lobortis.">Video 0</a>
+					<a href="//www.youtube.com/embed/zsJpUCWfyPE?rel=0&amp;autoplay=1&amp;fs=1" class="js-lightbox button" data-lightbox-gallery="video_gallery" title="Sed posuere consectetur est at lobortis.">Video 1</a>
+					<a href="//www.youtube.com/embed/zsJpUCWfyPE?rel=0&amp;autoplay=1&amp;fs=1" class="js-lightbox button" data-lightbox-gallery="video_gallery" title="Sed posuere consectetur est at lobortis.">Video 2</a>
+			</div>
+
+	<div class="cr_heading">Lightbox Gallery</div>
+
+	<div class="lightbox-image-gallery">
+					<a href="//spacehold.it/320x240/0.jpg" class="js-lightbox" data-lightbox-gallery="image_gallery" title="Sed posuere consectetur est at lobortis.">
+				<img src="//spacehold.it/320x240/0.jpg" alt="0">
+			</a>
+					<a href="//spacehold.it/320x240/1.jpg" class="js-lightbox" data-lightbox-gallery="image_gallery" title="Sed posuere consectetur est at lobortis.">
+				<img src="//spacehold.it/320x240/1.jpg" alt="1">
+			</a>
+					<a href="//spacehold.it/320x240/2.jpg" class="js-lightbox" data-lightbox-gallery="image_gallery" title="Sed posuere consectetur est at lobortis.">
+				<img src="//spacehold.it/320x240/2.jpg" alt="2">
+			</a>
+					<a href="//spacehold.it/320x240/3.jpg" class="js-lightbox" data-lightbox-gallery="image_gallery" title="Sed posuere consectetur est at lobortis.">
+				<img src="//spacehold.it/320x240/3.jpg" alt="3">
+			</a>
+			</div>
 
 	<div class="cr_heading">Dropdown</div>
 
@@ -281,7 +309,10 @@ http://realfavicongenerator.net/favicon/grunt -->
 						</div>
 
 						<nav class="footer_nav" aria-label="Footer Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
-		<div class="footer_nav_list" role="navigation">
+	<header class="footer_nav_header">
+		<h2 class="footer_nav_title">Footer Navigation</h2>
+	</header>
+	<div class="footer_nav_list" role="navigation">
 					<div class="footer_nav_item" itemprop="url">
 				<a class="footer_nav_link" href="#" itemprop="name">Footer Link</a>
 			</div>
@@ -294,7 +325,10 @@ http://realfavicongenerator.net/favicon/grunt -->
 
 <div class="social_nav " itemscope itemtype="http://schema.org/Organization"> 
 	<link itemprop="url" href="http://www.client-name.com"> 
-		<div class="social_nav_list">
+	<header class="social_nav_header">
+		<h2 class="social_nav_title">Social Navigation</h2>
+	</header>
+	<div class="social_nav_list">
 					<div class="social_nav_item">
 				<a class="social_nav_link facebook" href="facebook.com" itemprop="sameAs" target="_blank">
 					<span class="social_nav_label">facebook</span>
@@ -328,8 +362,11 @@ http://realfavicongenerator.net/favicon/grunt -->
 			<!-- END: Footer -->
 
 			<div class="js-navigation mobile_sidebar" id="mobile_sidebar" hidden data-navigation-handle=".js-nav_handle" data-navigation-content=".js-navigation_push" data-navigation-options='{"type": "overlay", "gravity": "right"}'>
-				<nav class="main_nav main_nav_sm" aria-label="Site Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
-		<div class="main_nav_list" role="navigation">
+				<nav class="main_nav main_nav_sm" aria-label="" itemscope itemtype="http://schema.org/SiteNavigationElement">
+	<header class="main_nav_header">
+		<h2 class="main_nav_title"></h2>
+	</header>
+	<div class="main_nav_list" role="navigation">
 					<div class="main_nav_item mobile_nav_1" itemprop="url">
 				<div class="main_nav_item_wrapper">
 					<a class="main_nav_link" href="#" itemprop="name">Main Link</a>
@@ -347,8 +384,11 @@ http://realfavicongenerator.net/favicon/grunt -->
 			</div>
 </nav>
 
-				<nav class="secondary_nav secondary_nav_sm" aria-label="Secondary Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
-		<div class="secondary_nav_list" role="navigation">
+				<nav class="secondary_nav secondary_nav_sm" aria-label="" itemscope itemtype="http://schema.org/SiteNavigationElement">
+	<header class="secondary_nav_header">
+		<h2 class="secondary_nav_title"></h2>
+	</header>
+	<div class="secondary_nav_list" role="navigation">
 					<div class="secondary_nav_item" itemprop="url">
 				<a class="secondary_nav_link" href="#" itemprop="name">Secondary Link</a>
 			</div>

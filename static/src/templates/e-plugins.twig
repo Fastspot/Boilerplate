@@ -7,16 +7,27 @@
 	<div class="cr_heading">Slideshow</div>
 
 	<div class="js-carousel">
-		<img src="//spacehold.it/320x240/1.jpg" alt="1">
-		<img src="//spacehold.it/320x240/2.jpg" alt="2">
-		<img src="//spacehold.it/320x240/3.jpg" alt="3">
-		<img src="//spacehold.it/320x240/4.jpg" alt="4">
+		{% for i in 0..3 %}
+			<img src="//spacehold.it/320x240/{{i}}.jpg" alt="{{i}}">
+		{% endfor %}
 	</div>
 
 	<div class="cr_heading">Lightbox Video</div>
 
-	<div class="lightbox-gallery">
-		<a href="//www.youtube.com/embed/zsJpUCWfyPE?rel=0&amp;autoplay=1&amp;fs=1" class="js-lightbox button" data-lightbox-gallery="video_gallery" title="Sed posuere consectetur est at lobortis.">YouTube Video</a>
+	<div class="lightbox-video-gallery">
+		{% for i in 0..2 %}
+			<a href="//www.youtube.com/embed/zsJpUCWfyPE?rel=0&amp;autoplay=1&amp;fs=1" class="js-lightbox button" data-lightbox-gallery="video_gallery" title="Sed posuere consectetur est at lobortis.">Video {{i}}</a>
+		{% endfor %}
+	</div>
+
+	<div class="cr_heading">Lightbox Gallery</div>
+
+	<div class="lightbox-image-gallery">
+		{% for i in 0..3 %}
+			<a href="//spacehold.it/320x240/{{i}}.jpg" class="js-lightbox" data-lightbox-gallery="image_gallery" title="Sed posuere consectetur est at lobortis.">
+				<img src="//spacehold.it/320x240/{{i}}.jpg" alt="{{i}}">
+			</a>
+		{% endfor %}
 	</div>
 
 	<div class="cr_heading">Dropdown</div>

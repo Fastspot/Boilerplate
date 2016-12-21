@@ -95,18 +95,19 @@
 					<div class="fs-cell">
 						{% include "../partials/logo.twig" with {
 							class: "header",
-							name: title
+							name: name
 						} %}
 
 						{% include "../partials/navigation/main.twig" with {
 							class: "main_nav_lg",
+							title: "Site Navigation",
 							links: mainNavLinksAlias
 						} %}
 
 						{% include "../partials/navigation/basic.twig" with {
 							class: "secondary_nav",
 							modifier: "lg",
-							label: "Secondary Navigation",
+							title: "Secondary Navigation",
 							links: secondaryNavLinksAlias
 						} %}
 
@@ -153,6 +154,7 @@
 							<div class="fs-cell-right fs-lg-4">
 								{% block subNav %}
 									{% include "../partials/navigation/sub.twig" with {
+										title: "Sub Navigation",
 										links: subNavLinksAlias
 									} %}
 								{% endblock %}
@@ -219,12 +221,13 @@
 						{% include "../partials/navigation/basic.twig" with {
 							class: "footer_nav",
 							modifier: "",
-							label: "Footer Navigation",
+							title: "Footer Navigation",
 							links: footerNavLinksAlias
 						} %}
 
 						{% include "../partials/navigation/social.twig" with {
 							class: "",
+							title: "Social Navigation",
 							links: socialNavLinksAlias
 						} %}
 					</div>

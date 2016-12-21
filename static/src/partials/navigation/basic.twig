@@ -1,9 +1,7 @@
-<nav class="{{class}}{% if modifier %} {{class}}_{{modifier}}{% endif %}" aria-label="{{label}}" itemscope itemtype="http://schema.org/SiteNavigationElement">
-	{% if title %}
-		<header class="{{class}}_header">
-			<h2 class="{{class}}_title">{{label}}</h2>
-		</header>
-	{% endif %}
+<nav class="{{class}}{% if modifier %} {{class}}_{{modifier}}{% endif %}" aria-label="{{title}}" itemscope itemtype="http://schema.org/SiteNavigationElement">
+	<header class="{{class}}_header">
+		<h2 class="{{class}}_title">{{title}}</h2>
+	</header>
 	<div class="{{class}}_list" role="navigation">
 		{% for link in links %}
 			<div class="{{class}}_item" itemprop="url">
