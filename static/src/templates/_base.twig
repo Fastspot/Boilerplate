@@ -120,7 +120,9 @@
 
 						<a class="site_search_handle" href="#">Search</a>
 
-						{% include "../partials/site-search.twig" %}
+						{% include "../partials/search.twig" with {
+							class: "site"
+						} %}
 					</div>
 				</div>
 			</header>

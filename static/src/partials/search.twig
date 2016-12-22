@@ -1,0 +1,17 @@
+{#
+	TODO:
+		1. Update to Client domain
+		2. Path to search page on client domain
+#}
+
+<div class="{{class}}_search{% if modifier %} {{class}}_search_{{modifier}}{% endif %}" id="search" itemscope itemtype="http://schema.org/WebSite" role="search">
+	<meta itemprop="url" content="//www.example.com/"> {# 1 #}
+	<form class="search_form" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+		<meta itemprop="target" content="http://www.example.com/search?q={search_term_string}"> {# 2 #}
+		<label class="search_label" for="search_term_string">Search</label>
+		<input class="search_input" itemprop="query-input" type="text" id="search_term_string" name="search_term_string" placeholder="Search" required aria-required="true">
+		<button class="search_button" type="submit" title="submit" aria-label="submit">
+			<span>submit</span>
+		</button>
+	</form>
+</div>
