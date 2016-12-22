@@ -17,6 +17,10 @@
 	]
 } %}
 
+{# Using a Block #}
+{% block name %}
+{% endblock %}
+
 {# If Statement #}
 {% if condition %}
 {% endif %}
