@@ -5,13 +5,15 @@
 {{variable}}
 
 {# Including a file #}
-{% include "" with {
-	links: [
+{% include "file.twig" with {
+	class: "",
+	modifier: "",
+	array: ["", ""]
+	associativeArray: [
 		{
-			key1: "value",
-			key2: "value"
-		},
-		{}
+			key1: "",
+			key2: ["", ""]
+		}
 	]
 } %}
 
@@ -21,11 +23,16 @@
 
 {# If and Elseif Statement #}
 {% if condition %}
-{% elseif condition %}
+{% elseif condition == "" %}
+{% elseif condition == 0 %}
+{% elseif not condition %}
+{% elseif condition or anotherCondition %}
+{% elseif condition and anotherCondition %}
 {% endif %}
 
 {# Loops #}
 {% for link in links %}
+	{{link}}
 {% endfor %}
 ```
 
