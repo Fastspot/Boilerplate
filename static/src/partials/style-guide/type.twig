@@ -1,4 +1,4 @@
-<div id="crl_type">
+<div class="crl_type">
 	<h2>Type</h2>
 
 	<!-- Type Styles -->
@@ -75,25 +75,14 @@
 	</ul>
 
 	<!-- Ordered List -->
-	<ol>
-		<li><strong>Morbi leo risus</strong>, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. </li>
-		<li><strong>Porta ac consectetur ac</strong>, vestibulum at eros. Sed posuere consectetur est at lobortis. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</li>
-		<li>
-			<strong>Cum sociis natoque penatibus</strong> et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla.
-			<ul>
-				<li>Donec ullamcorper nulla non metus auctor fringilla.</li>
-				<li>Donec id elit non mi porta gravida at eget metus.</li>
-				<li>
-					Morbi leo risus, porta ac consectetur ac, vestibulum at eros
-					<ul>
-						<li>Donec id elit non mi porta gravida at eget metus.</li>
-						<li>Morbi leo risus, porta ac consectetur ac, vestibulum at eros</li>
-					</ul>
-				</li>
-			</ul>
-		</li>
-		<li><strong>Vestibulum at eros.</strong> Sed posuere consectetur est at lobortis. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</li>
-	</ol>
+	{% for type in ['a', 'A', 'i', 'I'] %}
+		<ol type="{{type}}">
+			<li><strong>Morbi leo risus</strong>, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. </li>
+			<li><strong>Porta ac consectetur ac</strong>, vestibulum at eros. Sed posuere consectetur est at lobortis.</li>
+			<li><strong>Cum sociis natoque penatibus</strong> et magnis dis parturient montes, nascetur ridiculus mus.</li>
+			<li><strong>Vestibulum at eros.</strong> Sed posuere consectetur est at lobortis. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</li>
+		</ol>
+	{% endfor %}
 
 	<div class="cr_heading">Tables</div>
 
@@ -187,5 +176,4 @@
 
 	<!-- Pagination -->
 	{% include "../components/in-content/pagination.twig" %}
-
 </div>

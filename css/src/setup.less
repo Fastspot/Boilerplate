@@ -45,14 +45,6 @@
 
 
 /* ==========================================================================
-	Colors
-============================================================================= */
-
-@true_white: #fff;
-@true_black: #000;
-
-
-/* ==========================================================================
 	Mixins
 ============================================================================= */
 
@@ -83,6 +75,10 @@
 
 .line_height(@lineHeight, @fontSize: @lineHeight) {
 	line-height: (@lineHeight / @fontSize);
+}
+
+.rgba_raw(@base, @alpha) {
+	@return: rgba(red(@base), green(@base), blue(@base), @alpha);
 }
 
 .rgba_background(@base, @alpha) {
@@ -235,10 +231,6 @@
 	@ieEndColor: argb(@endColor);
 
 	filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr='@{ieStartColor}', endColorstr='@{ieEndColor}', GradientType=1)"; // 1
-}
-
-.rgba_raw(@base, @alpha) {
-	@return: rgba(red(@base), green(@base), blue(@base), @alpha);
 }
 
 .font_smoothing() {

@@ -1,14 +1,32 @@
 /* global module:false */
 module.exports = function(grunt) {
 
-	require('load-grunt-tasks')(grunt);
+	grunt.loadNpmTasks('grunt-bless');
+	grunt.loadNpmTasks('grunt-browser-sync');
+	grunt.loadNpmTasks('grunt-contrib-clean');
+	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-imagemin');
+	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-less');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-include-replace');
+	grunt.loadNpmTasks('grunt-include-source');
+	grunt.loadNpmTasks('grunt-modernizr');
+	grunt.loadNpmTasks('grunt-newer');
+	grunt.loadNpmTasks('grunt-postcss');
+	grunt.loadNpmTasks('grunt-real-favicon');
+	grunt.loadNpmTasks('grunt-stripmq');
+	grunt.loadNpmTasks('grunt-svg-sprite');
+	grunt.loadNpmTasks('grunt-twig-render');
+
 	require('time-grunt')(grunt);
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		meta: {
 			banner: '/*! \n' +
-				' * <%= pkg.name %> v<%= pkg.version %> [<%= grunt.template.today("yyyy-mm-dd") %>] \n' +
+				' * <%= pkg.name %> v<%= pkg.version %> [<%= grunt.template.today("yyyy-mm") %>] \n' +
 				' * <%= pkg.description %> \n' +
 				' * <%= pkg.author %> \n' +
 				' */ \n\n'

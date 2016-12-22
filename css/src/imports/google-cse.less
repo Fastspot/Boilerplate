@@ -74,17 +74,24 @@
 			cursor: pointer;
 			font-size: inherit;
 			font-weight: normal;
+			margin-left: 0;
 			padding: 10px;
 		}
 
 		td.gsc-clear-button {
+			.absolute;
 			.icon_before;
+
+			top: 0;
+			right: 0;
 
 			&:before {}
 		}
 
 		div.gsc-clear-button {
-			display: block;
+			.block;
+
+			background: none;
 			margin: 0;
 			padding-left: 0;
 			text-align: center;
@@ -233,7 +240,6 @@
 	.gsc-expansionArea {
 
 		.gsc-cursor-box {
-			box-shadow: 0 -1px 0 0 #000;
 			margin-bottom: 0;
 			padding: 20px 0;
 

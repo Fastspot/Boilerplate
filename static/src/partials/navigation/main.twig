@@ -4,7 +4,7 @@
 	</header>
 	<div class="main_nav_list" role="navigation">
 		{% for link in links %}
-			<div class="main_nav_item mobile_nav_{{loop.index}}" itemprop="url">
+			<div class="main_nav_item mobile_nav_{{loop.index}}{% if loop.index == active %} active{% endif %}" itemprop="url">
 				<div class="main_nav_item_wrapper">
 					<a class="main_nav_link" href="#" itemprop="name">{{link.name}}</a>
 					<button class="js-swap main_nav_toggle" data-swap-target=".mobile_nav_{{loop.index}}" data-swap-group="mobile_nav">Expand Navigation</button>

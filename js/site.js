@@ -1,5 +1,5 @@
 /*! 
- * site-title v0.0.1 [2016-12-21] 
+ * site-title v0.0.1 [2016-12] 
  * Site description. 
  * Fastspot 
  */

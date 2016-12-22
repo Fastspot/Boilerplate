@@ -27,7 +27,8 @@ gulp.task('twig', function () {
 		'!static/src/templates/_*.twig'
 	])
 		.pipe(twig({
-			data: packageJSON
+			data: packageJSON,
+			cache: true
 		}))
 		.pipe(rename({
 			extname: '.html'
@@ -43,7 +44,7 @@ gulp.task('create-sitemap', ['twig'], function () {
 	return gulp.src('static/templates/*.html')
 		.pipe(directoryMap({
 			filename: 'sitemap.json',
-			prefix: 'links'
+			prefix: 'templates'
 		}))
 		.pipe(gulp.dest('./'));
 
@@ -54,7 +55,10 @@ gulp.task('sitemap', ['create-sitemap'], function() {
 
 	return gulp.src('static/index.twig')
 		.pipe(twig({
-			data: require('./sitemap.json')
+			data: {
+				name: packageJSON.name,
+				sitemap: require('./sitemap.json')
+			}
 		}))
 		.pipe(rename({
 			extname: '.html'

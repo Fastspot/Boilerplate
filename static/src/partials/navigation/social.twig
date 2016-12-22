@@ -10,7 +10,7 @@
 	https://developers.google.com/structured-data/customize/social-profiles
 #}
 
-<div class="social_nav {{class}}" itemscope itemtype="http://schema.org/Organization"> {# 1 #}
+<div class="social_nav{% if modifier %} social_nav_{{modifier}}{% endif %}" itemscope itemtype="http://schema.org/Organization"> {# 1 #}
 	<link itemprop="url" href="http://www.client-name.com"> {# 2 #}
 	<header class="social_nav_header">
 		<h2 class="social_nav_title">{{title}}</h2>
@@ -18,7 +18,7 @@
 	<div class="social_nav_list">
 		{% for link in links %}
 			<div class="social_nav_item">
-				<a class="social_nav_link {{link.name}}" href="{{link.href}}" itemprop="sameAs" target="_blank">
+				<a class="social_nav_link {{link.name}}" href="{{link.href}}" target="_blank" itemprop="sameAs">
 					<span class="social_nav_label">{{link.name}}</span>
 				</a>
 			</div>

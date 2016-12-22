@@ -3,7 +3,7 @@
 
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-		<title>Fastspot University</title>
+		<title>{{name}}</title>
 		<style>
 		ul {
 			list-style: none;
@@ -23,11 +23,11 @@
 
 	<body>
 		<header>
-			<h1>Fastspot University</h1>
+			<h1>{{name}}</h1>
 		</header>
 		<main>
 			<ul>
-				{% for link in links %}
+				{% for link in sitemap %}
 					<li>
 						<a href="{{link}}">{{link}}</a>
 					</li>

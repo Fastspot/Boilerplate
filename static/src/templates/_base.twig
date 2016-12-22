@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html itemscope="" itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+<html class="no-js" lang="en" itemscope="" itemtype="http://schema.org/WebPage">
 
 	<head>
 		<meta charset="utf-8">
@@ -7,7 +7,7 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="mobile-web-app-capable" content="yes">
 
-		<title>{{pageTitle|default("Page")}} | {{name}}</title> {# 1 #}
+		<title>{{pageTitle|default("Page")}} | {{vars.name}}</title> {# 1 #}
 		<meta name="description" content="">
 
 		{% include "../partials/favicons.html" %}
@@ -46,6 +46,10 @@
 			{% set mainNavLinksAlias = mainNavLinks %}
 		{% endblock %}
 
+		{% block activePage %}
+			{% set activePageAlias = 1 %}
+		{% endblock %}
+
 		{% block secondaryNavVar %}
 			{% set secondaryNavLinksAlias = secondaryNavLinks %}
 		{% endblock %}
@@ -71,37 +75,38 @@
 		{% if name == "site-title" %}
 			<h2>Update "name"</h2>
 		{% endif %}
+		{% if vars.name == "Client Name" %}
+			<h2>Update "vars.name"</h2>
+		{% endif %}
 		{% if description == "Site description." %}
 			<h2>Update "description"</h2>
 		{% endif %}
 		{% if repository.url == "url" %}
 			<h2>Update "repository.url"</h2>
 		{% endif %}
-		{% if vars.clientname == "Client Name" %}
-			<h2>Update "vars.clientname"</h2>
-		{% endif %}
 
 		{# End: Backend Dev removable blocks #}
 
 		<!-- Skip-to-Content Link -->
-		<a href="#main_page_title" id="skip_to_content" class="skip_link">Skip to Main Content</a>
+		<a class="skip_link" id="skip_to_content" href="#main_page_title" >Skip to Main Content</a>
 
 		<!-- Page Wrapper -->
 		<div class="page_wrapper js-navigation_push">
 
 			<!-- Header -->
-			<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+			<header class="header" id="header" itemscope itemtype="http://schema.org/WPHeader">
 				<div class="fs-row">
 					<div class="fs-cell">
 						{% include "../partials/logo.twig" with {
 							class: "header",
-							name: name
+							name: vars.name
 						} %}
 
 						{% include "../partials/navigation/main.twig" with {
 							class: "main_nav_lg",
 							title: "Site Navigation",
-							links: mainNavLinksAlias
+							links: mainNavLinksAlias,
+							active: activePageAlias
 						} %}
 
 						{% include "../partials/navigation/basic.twig" with {
@@ -111,7 +116,9 @@
 							links: secondaryNavLinksAlias
 						} %}
 
-						<a href="#mobile_sidebar" class="js-nav_handle mobile_sidebar_handle">Menu</a>
+						<a class="js-nav_handle mobile_sidebar_handle" href="#mobile_sidebar">Menu</a>
+
+						<a class="site_search_handle" href="#">Search</a>
 
 						{% include "../partials/site-search.twig" %}
 					</div>
@@ -206,7 +213,7 @@
 			<!-- END: Page -->
 
 			<!-- Footer -->
-			<footer id="footer" class="footer" itemscope itemtype="http://schema.org/WPFooter">
+			<footer class="footer" id="footer" itemscope itemtype="http://schema.org/WPFooter">
 				<div class="fs-row">
 					<div class="fs-cell">
 						<div class="footer_address" itemscope itemtype="http://schema.org/PostalAddress">
@@ -220,13 +227,11 @@
 
 						{% include "../partials/navigation/basic.twig" with {
 							class: "footer_nav",
-							modifier: "",
 							title: "Footer Navigation",
 							links: footerNavLinksAlias
 						} %}
 
 						{% include "../partials/navigation/social.twig" with {
-							class: "",
 							title: "Social Navigation",
 							links: socialNavLinksAlias
 						} %}
@@ -235,7 +240,10 @@
 			</footer>
 			<!-- END: Footer -->
 
-			<div class="js-navigation mobile_sidebar" id="mobile_sidebar" hidden data-navigation-handle=".js-nav_handle" data-navigation-content=".js-navigation_push" data-navigation-options='{"type": "overlay", "gravity": "right"}'>
+			<div class="js-navigation mobile_sidebar" id="mobile_sidebar" hidden data-navigation-handle=".js-nav_handle" data-navigation-content=".js-navigation_push" data-navigation-options='{
+				"type": "overlay",
+				"gravity": "right"
+			}'>
 				{% include "../partials/navigation/main.twig" with {
 					class: "main_nav_sm",
 					links: mainNavLinksAlias
@@ -244,7 +252,7 @@
 				{% include "../partials/navigation/basic.twig" with {
 					class: "secondary_nav",
 					modifier: "sm",
-					label: "Secondary Navigation",
+					title: "Secondary Navigation",
 					links: secondaryNavLinksAlias
 				} %}
 			</div>

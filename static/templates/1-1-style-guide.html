@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html itemscope="" itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+<html class="no-js" lang="en" itemscope="" itemtype="http://schema.org/WebPage">
 
 	<head>
 		<meta charset="utf-8">
@@ -7,7 +7,7 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="mobile-web-app-capable" content="yes">
 
-		<title>Style Guide | site-title</title> 
+		<title>Style Guide | Client Name</title> 
 		<meta name="description" content="">
 
 		<!-- File is gererated by favicon Grunt task:
@@ -43,29 +43,30 @@ http://realfavicongenerator.net/favicon/grunt -->
 							
 							
 							
+							
 					<h2>Update "name"</h2>
+							<h2>Update "vars.name"</h2>
 							<h2>Update "description"</h2>
 							<h2>Update "repository.url"</h2>
-							<h2>Update "vars.clientname"</h2>
 		
 		
 
 		<!-- Skip-to-Content Link -->
-		<a href="#main_page_title" id="skip_to_content" class="skip_link">Skip to Main Content</a>
+		<a class="skip_link" id="skip_to_content" href="#main_page_title" >Skip to Main Content</a>
 
 		<!-- Page Wrapper -->
 		<div class="page_wrapper js-navigation_push">
 
 			<!-- Header -->
-			<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+			<header class="header" id="header" itemscope itemtype="http://schema.org/WPHeader">
 				<div class="fs-row">
 					<div class="fs-cell">
 						
 
 <h1 class="logo header_logo" itemscope itemtype="http://schema.org/Organization"> 
-	<a class="header_logo_link" itemprop="url" href="00-1-home.html">site-title</a> 
-	<meta itemprop="logo" content="../../images/logo-schema.png"> 
-	<img src="../../images/logo-print.png" class="print" alt="">
+	<a class="header_logo_link" itemprop="url" href="00-1-home.html">Client Name</a> 
+	<meta content="../../images/logo-schema.png" itemprop="logo"> 
+	<img class="print" src="../../images/logo-print.png" alt="">
 </h1>
 
 						<nav class="main_nav main_nav_lg" aria-label="Site Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
@@ -73,7 +74,7 @@ http://realfavicongenerator.net/favicon/grunt -->
 		<h2 class="main_nav_title">Site Navigation</h2>
 	</header>
 	<div class="main_nav_list" role="navigation">
-					<div class="main_nav_item mobile_nav_1" itemprop="url">
+					<div class="main_nav_item mobile_nav_1 active" itemprop="url">
 				<div class="main_nav_item_wrapper">
 					<a class="main_nav_link" href="#" itemprop="name">Main Link</a>
 					<button class="js-swap main_nav_toggle" data-swap-target=".mobile_nav_1" data-swap-group="mobile_nav">Expand Navigation</button>
@@ -101,7 +102,9 @@ http://realfavicongenerator.net/favicon/grunt -->
 			</div>
 </nav>
 
-						<a href="#mobile_sidebar" class="js-nav_handle mobile_sidebar_handle">Menu</a>
+						<a class="js-nav_handle mobile_sidebar_handle" href="#mobile_sidebar">Menu</a>
+
+						<a class="site_search_handle" href="#">Search</a>
 
 						
 
@@ -206,7 +209,7 @@ http://realfavicongenerator.net/favicon/grunt -->
 					</div>
 	</div>
 
-	<div id="crl_fonts">
+	<div class="crl_fonts">
 	<h2>Fonts</h2>
 
 	<div class="cr_heading">Font</div>
@@ -214,7 +217,7 @@ http://realfavicongenerator.net/favicon/grunt -->
 
 </div>
 
-	<div id="crl_type">
+	<div class="crl_type">
 	<h2>Type</h2>
 
 	<!-- Type Styles -->
@@ -291,26 +294,31 @@ http://realfavicongenerator.net/favicon/grunt -->
 	</ul>
 
 	<!-- Ordered List -->
-	<ol>
-		<li><strong>Morbi leo risus</strong>, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. </li>
-		<li><strong>Porta ac consectetur ac</strong>, vestibulum at eros. Sed posuere consectetur est at lobortis. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</li>
-		<li>
-			<strong>Cum sociis natoque penatibus</strong> et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla.
-			<ul>
-				<li>Donec ullamcorper nulla non metus auctor fringilla.</li>
-				<li>Donec id elit non mi porta gravida at eget metus.</li>
-				<li>
-					Morbi leo risus, porta ac consectetur ac, vestibulum at eros
-					<ul>
-						<li>Donec id elit non mi porta gravida at eget metus.</li>
-						<li>Morbi leo risus, porta ac consectetur ac, vestibulum at eros</li>
-					</ul>
-				</li>
-			</ul>
-		</li>
-		<li><strong>Vestibulum at eros.</strong> Sed posuere consectetur est at lobortis. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</li>
-	</ol>
-
+			<ol type="a">
+			<li><strong>Morbi leo risus</strong>, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. </li>
+			<li><strong>Porta ac consectetur ac</strong>, vestibulum at eros. Sed posuere consectetur est at lobortis.</li>
+			<li><strong>Cum sociis natoque penatibus</strong> et magnis dis parturient montes, nascetur ridiculus mus.</li>
+			<li><strong>Vestibulum at eros.</strong> Sed posuere consectetur est at lobortis. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</li>
+		</ol>
+			<ol type="A">
+			<li><strong>Morbi leo risus</strong>, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. </li>
+			<li><strong>Porta ac consectetur ac</strong>, vestibulum at eros. Sed posuere consectetur est at lobortis.</li>
+			<li><strong>Cum sociis natoque penatibus</strong> et magnis dis parturient montes, nascetur ridiculus mus.</li>
+			<li><strong>Vestibulum at eros.</strong> Sed posuere consectetur est at lobortis. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</li>
+		</ol>
+			<ol type="i">
+			<li><strong>Morbi leo risus</strong>, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. </li>
+			<li><strong>Porta ac consectetur ac</strong>, vestibulum at eros. Sed posuere consectetur est at lobortis.</li>
+			<li><strong>Cum sociis natoque penatibus</strong> et magnis dis parturient montes, nascetur ridiculus mus.</li>
+			<li><strong>Vestibulum at eros.</strong> Sed posuere consectetur est at lobortis. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</li>
+		</ol>
+			<ol type="I">
+			<li><strong>Morbi leo risus</strong>, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. </li>
+			<li><strong>Porta ac consectetur ac</strong>, vestibulum at eros. Sed posuere consectetur est at lobortis.</li>
+			<li><strong>Cum sociis natoque penatibus</strong> et magnis dis parturient montes, nascetur ridiculus mus.</li>
+			<li><strong>Vestibulum at eros.</strong> Sed posuere consectetur est at lobortis. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</li>
+		</ol>
+	
 	<div class="cr_heading">Tables</div>
 
 	<!-- Table -->
@@ -403,21 +411,20 @@ http://realfavicongenerator.net/favicon/grunt -->
 
 	<!-- Pagination -->
 	<div class="pagination">
-	<a href="#previous" class="pagination_arrow pagination_arrow_left pagination_arrow_disabled">Previous</a>
+	<a class="pagination_arrow pagination_arrow_left pagination_arrow_disabled" href="#previous">Previous</a>
 	<span class="pagination_divider"></span>
 	<span class="pagination_number_link pagination_number_selected">1</span>
-	<a href="#2" class="pagination_number_link">2</a>
-	<a href="#3" class="pagination_number_link">3</a>
-	<a href="#4" class="pagination_number_link">4</a>
-	<a href="#5" class="pagination_number_link">5</a>
+	<a class="pagination_number_link" href="#2">2</a>
+	<a class="pagination_number_link" href="#3">3</a>
+	<a class="pagination_number_link" href="#4">4</a>
+	<a class="pagination_number_link" href="#5">5</a>
 	<span class="pagination_number_link">…</span>
 	<span class="pagination_divider"></span>
-	<a href="#next" class="pagination_arrow pagination_arrow_right">Next</a>
+	<a class="pagination_arrow pagination_arrow_right" href="#next">Next</a>
+</div>
 </div>
 
-</div>
-
-	<div id="crl_buttons">
+	<div class="crl_buttons">
 
 	<h2>Buttons</h2>
 
@@ -439,18 +446,18 @@ http://realfavicongenerator.net/favicon/grunt -->
 
 </div>
 
-	<div id="crl_forms">
+	<div class="crl_forms">
 	<h2>Forms</h2>
 
 	<h3>Form Title</h3>
-	<form action="#" class="">
-		<fieldset class="">
+	<form action="#" class="crl_form">
+		<fieldset class="input_set">
 			<label for="first_name">Name</label>
-			<input type="text" id="first_name" class="">
+			<input id="first_name" type="text">
 		</fieldset>
-		<fieldset class="">
+		<fieldset class="textarea_set">
 			<label for="textarea">Comment</label>
-			<textarea id="textarea" class=""></textarea>
+			<textarea id="textarea"></textarea>
 		</fieldset>
 		<fieldset class="checkbox_set">
 			<legend>Checkboxes</legend>
@@ -467,7 +474,7 @@ http://realfavicongenerator.net/favicon/grunt -->
 				<span class="checkbox_label">Option Three</span>
 			</label>
 		</fieldset>
-		<fieldset class="checkbox_set">
+		<fieldset class="radio_set">
 			<legend>Radio Buttons</legend>
 			<label>
 				<input type="radio" name="radio-set" value="Option One">
@@ -484,7 +491,7 @@ http://realfavicongenerator.net/favicon/grunt -->
 		</fieldset>
 		<fieldset class="form_dropdown required">
 			<label for="dropdown">Categories</label>
-			<select id="dropdown" class="js-dropdown" data-dropdown-options='{"label": "Categories", "theme": "base_dropdown gray_dropdown dropdown_divide"}'>
+			<select class="js-dropdown" id="dropdown" data-dropdown-options='{"label": "Categories", "theme": "base_dropdown gray_dropdown dropdown_divide"}'>
 				<option value="1">Pharetra Quam</option>
 				<option value="2">Magna Vulputate</option>
 				<option value="3">Condimentum</option>
@@ -528,7 +535,7 @@ http://realfavicongenerator.net/favicon/grunt -->
 			<!-- END: Page -->
 
 			<!-- Footer -->
-			<footer id="footer" class="footer" itemscope itemtype="http://schema.org/WPFooter">
+			<footer class="footer" id="footer" itemscope itemtype="http://schema.org/WPFooter">
 				<div class="fs-row">
 					<div class="fs-cell">
 						<div class="footer_address" itemscope itemtype="http://schema.org/PostalAddress">
@@ -555,34 +562,34 @@ http://realfavicongenerator.net/favicon/grunt -->
 
 
 
-<div class="social_nav " itemscope itemtype="http://schema.org/Organization"> 
+<div class="social_nav" itemscope itemtype="http://schema.org/Organization"> 
 	<link itemprop="url" href="http://www.client-name.com"> 
 	<header class="social_nav_header">
 		<h2 class="social_nav_title">Social Navigation</h2>
 	</header>
 	<div class="social_nav_list">
 					<div class="social_nav_item">
-				<a class="social_nav_link facebook" href="facebook.com" itemprop="sameAs" target="_blank">
+				<a class="social_nav_link facebook" href="facebook.com" target="_blank" itemprop="sameAs">
 					<span class="social_nav_label">facebook</span>
 				</a>
 			</div>
 					<div class="social_nav_item">
-				<a class="social_nav_link twitter" href="twitter.com" itemprop="sameAs" target="_blank">
+				<a class="social_nav_link twitter" href="twitter.com" target="_blank" itemprop="sameAs">
 					<span class="social_nav_label">twitter</span>
 				</a>
 			</div>
 					<div class="social_nav_item">
-				<a class="social_nav_link instagram" href="instagram.com" itemprop="sameAs" target="_blank">
+				<a class="social_nav_link instagram" href="instagram.com" target="_blank" itemprop="sameAs">
 					<span class="social_nav_label">instagram</span>
 				</a>
 			</div>
 					<div class="social_nav_item">
-				<a class="social_nav_link youtube" href="youtube.com" itemprop="sameAs" target="_blank">
+				<a class="social_nav_link youtube" href="youtube.com" target="_blank" itemprop="sameAs">
 					<span class="social_nav_label">youtube</span>
 				</a>
 			</div>
 					<div class="social_nav_item">
-				<a class="social_nav_link linkedin" href="linkedin.com" itemprop="sameAs" target="_blank">
+				<a class="social_nav_link linkedin" href="linkedin.com" target="_blank" itemprop="sameAs">
 					<span class="social_nav_label">linkedin</span>
 				</a>
 			</div>
@@ -593,7 +600,10 @@ http://realfavicongenerator.net/favicon/grunt -->
 			</footer>
 			<!-- END: Footer -->
 
-			<div class="js-navigation mobile_sidebar" id="mobile_sidebar" hidden data-navigation-handle=".js-nav_handle" data-navigation-content=".js-navigation_push" data-navigation-options='{"type": "overlay", "gravity": "right"}'>
+			<div class="js-navigation mobile_sidebar" id="mobile_sidebar" hidden data-navigation-handle=".js-nav_handle" data-navigation-content=".js-navigation_push" data-navigation-options='{
+				"type": "overlay",
+				"gravity": "right"
+			}'>
 				<nav class="main_nav main_nav_sm" aria-label="" itemscope itemtype="http://schema.org/SiteNavigationElement">
 	<header class="main_nav_header">
 		<h2 class="main_nav_title"></h2>
@@ -616,9 +626,9 @@ http://realfavicongenerator.net/favicon/grunt -->
 			</div>
 </nav>
 
-				<nav class="secondary_nav secondary_nav_sm" aria-label="" itemscope itemtype="http://schema.org/SiteNavigationElement">
+				<nav class="secondary_nav secondary_nav_sm" aria-label="Secondary Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
 	<header class="secondary_nav_header">
-		<h2 class="secondary_nav_title"></h2>
+		<h2 class="secondary_nav_title">Secondary Navigation</h2>
 	</header>
 	<div class="secondary_nav_list" role="navigation">
 					<div class="secondary_nav_item" itemprop="url">
