@@ -50,6 +50,10 @@
 			{% set activePageAlias = 1 %}
 		{% endblock %}
 
+		{% block sectionVar %}
+			{% set sectionAlias = "" %}
+		{% endblock %}
+
 		{% block secondaryNavVar %}
 			{% set secondaryNavLinksAlias = secondaryNavLinks %}
 		{% endblock %}
@@ -163,7 +167,7 @@
 							<div class="fs-cell-right fs-lg-4">
 								{% block subNav %}
 									{% include "../partials/navigation/sub.twig" with {
-										title: "Sub Navigation",
+										title: sectionAlias,
 										links: subNavLinksAlias
 									} %}
 								{% endblock %}
@@ -242,25 +246,25 @@
 			</footer>
 			<!-- END: Footer -->
 
-			<div class="js-navigation mobile_sidebar" id="mobile_sidebar" hidden data-navigation-handle=".js-nav_handle" data-navigation-content=".js-navigation_push" data-navigation-options='{
-				"type": "overlay",
-				"gravity": "right"
-			}'>
-				{% include "../partials/navigation/main.twig" with {
-					class: "main_nav_sm",
-					links: mainNavLinksAlias
-				} %}
-
-				{% include "../partials/navigation/basic.twig" with {
-					class: "secondary_nav",
-					modifier: "sm",
-					title: "Secondary Navigation",
-					links: secondaryNavLinksAlias
-				} %}
-			</div>
-
 		</div>
 		<!-- END: page_wrapper -->
+
+		<div class="js-navigation mobile_sidebar" id="mobile_sidebar" hidden data-navigation-handle=".js-nav_handle" data-navigation-content=".js-navigation_push" data-navigation-options='{
+			"type": "overlay",
+			"gravity": "right"
+		}'>
+			{% include "../partials/navigation/main.twig" with {
+				class: "main_nav_sm",
+				links: mainNavLinksAlias
+			} %}
+
+			{% include "../partials/navigation/basic.twig" with {
+				class: "secondary_nav",
+				modifier: "sm",
+				title: "Secondary Navigation",
+				links: secondaryNavLinksAlias
+			} %}
+		</div>
 
 		<script src="../../js/site.js"></script>
 
