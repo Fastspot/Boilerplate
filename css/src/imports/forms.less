@@ -12,15 +12,21 @@ fieldset {
 
 legend {}
 
+.label() {}
+
 label {}
 
-input,
-textarea {
+.input() {
 	border: 1px solid #000;
 	border-radius: 0;
 	padding: 0;
 
 	-webkit-appearance: none;
+}
+
+input,
+textarea {
+	.input;
 }
 
 input::-ms-clear {
