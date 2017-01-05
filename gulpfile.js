@@ -4,6 +4,7 @@ var gulp = require('gulp'),
 		del = require('del'),
 		util = require('gulp-util'),
 		gulpif = require('gulp-if'),
+		changed = require('gulp-changed'),
 		twig = require('gulp-twig'),
 		directoryMap = require('gulp-directory-map'),
 		less = require('gulp-less'),
@@ -103,13 +104,14 @@ gulp.task('ie-less', function() {
 		'css/src/site-ie8.less',
 		'css/src/site-ie9.less'
 	])
-		.pipe(postcss([
-			require('postcss-unmq')
-		]))
-		.pipe(bless({
+		.pipe(gulpif(util.env.production, postcss([
+			require('postcss-unmq'),
+			require('postcss-discard-empty')
+		])))
+		.pipe(gulpif(util.env.production, bless({
 			cacheBuster: false,
 			log: true
-		}))
+		})))
 		.pipe(gulp.dest('css/'));
 
 });
@@ -128,6 +130,7 @@ gulp.task('scripts', function () {
 gulp.task('jshint', function() {
 
 	return gulp.src('js/src/modules/*.js')
+		.pipe(changed())
 		.pipe(jshint())
 		.pipe(jshint.reporter(stylish));
 
@@ -239,7 +242,7 @@ gulp.task('browser-sync', function() {
 gulp.task('watch', function() {
 
 	gulp.watch('static/src/**/**.twig', ['twig']);
-	gulp.watch('css/src/**/**', ['less']);
+	gulp.watch('css/src/**/**', ['less', 'ie-less']);
 	gulp.watch('js/src/**/**.js', ['scripts', 'jshint']);
 	gulp.watch('images/src/**/*', ['sprite', 'imagemin']);
 

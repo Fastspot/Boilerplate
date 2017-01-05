@@ -13,12 +13,24 @@
 		{
 			key1: "",
 			key2: ["", ""]
+		},
+		{
+			key1: "",
+			key2: ["", ""]
 		}
 	]
 } %}
 
 {# Using a Block #}
 {% block name %}
+	<p>Content</p>
+{% endblock %}
+
+{# Appending to a Block #}
+{% block name %}
+	{{parent()}}
+
+	<p>Content</p>
 {% endblock %}
 
 {# If Statement #}
@@ -34,27 +46,18 @@
 {% elseif condition and anotherCondition %}
 {% endif %}
 
-{# Loops #}
+{# Loops With an Array #}
 {% for link in links %}
-	{{link}}
+	<a href="">{{link}}</a>
+{% endfor %}
+
+{# Loops With an Associative Array #}
+{% for link in links %}
+	<a href="{{link.href}}">{{link.name}}</a>
 {% endfor %}
 ```
 
 # Partials
-
-## Picture Partial
-
-```twig
-{% include "../partials/shared/picture.twig" with {
-	class: "component",
-	sources: {
-		"980px": img.wide.med,
-		"1220px": img.wide.lrg,
-	},
-	fallback: img.wide.sml,
-	image: 1
-} %}
-```
 
 ## Background Partial
 
@@ -66,6 +69,20 @@
 		"980px": img.wide.med,
 		"1220px": img.wide.lrg,
 	},
+	image: 1
+} %}
+```
+
+## Picture Partial
+
+```twig
+{% include "../partials/shared/picture.twig" with {
+	class: "component",
+	sources: {
+		"980px": img.wide.med,
+		"1220px": img.wide.lrg,
+	},
+	fallback: img.wide.sml,
 	image: 1
 } %}
 ```
