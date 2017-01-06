@@ -164,6 +164,10 @@
 			margin: 0;
 			padding-left: 0;
 		}
+
+		.gsc-orderby-container {
+			display: none;
+		}
 	}
 
 
@@ -222,13 +226,14 @@
 
 			height: inherit;
 
+			color: inherit !important;
 			text-decoration: inherit;
 
 			&:focus,
 			&:hover {}
 
 			b {
-				color: inherit;
+				color: inherit !important;
 				font-size: inherit;
 				text-decoration: inherit;
 			}
@@ -240,7 +245,16 @@
 			margin-bottom: 10px;
 		}
 
-		.gs-visibleUrl {}
+		.gsc-url-top {
+			display: none;
+		}
+
+		.gs-visibleUrl {
+
+			b {
+				font-weight: inherit;
+			}
+		}
 	}
 
 
