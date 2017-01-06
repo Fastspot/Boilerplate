@@ -27,9 +27,9 @@
 		</header>
 		<main>
 			<ul>
-				{% for link in sitemap %}
+				{% for key, link in sitemap.templates %}
 					<li>
-						<a href="{{link}}">{{link}}</a>
+						<a href="{{link}}">{{key}}</a>
 					</li>
 				{% endfor %}
 			</ul>
