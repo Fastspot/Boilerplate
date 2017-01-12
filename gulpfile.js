@@ -158,6 +158,9 @@ gulp.task('sprite', function() {
 				dimensionAttributes: true
 			},
 			mode: {
+				symbol: {
+					dest: './'
+				},
 				view: {
 					dest: './',
 					bust: false,

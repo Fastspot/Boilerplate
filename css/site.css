@@ -5219,6 +5219,9 @@ textarea {
   margin: 0;
   padding-left: 0;
 }
+.site_search_results .gsc-above-wrapper-area .gsc-orderby-container {
+  display: none;
+}
 .site_search_results .gsc-results {
   width: 100%;
   padding-bottom: 0;
@@ -5258,10 +5261,11 @@ textarea {
   font-size: 1rem;
   line-height: 1.5;
   height: inherit;
+  color: inherit !important;
   text-decoration: inherit;
 }
 .site_search_results .gsc-results a.gs-title b {
-  color: inherit;
+  color: inherit !important;
   font-size: inherit;
   text-decoration: inherit;
 }
@@ -5270,6 +5274,12 @@ textarea {
   font-size: 1rem;
   line-height: 1.5;
   margin-bottom: 10px;
+}
+.site_search_results .gsc-results .gsc-url-top {
+  display: none;
+}
+.site_search_results .gsc-results .gs-visibleUrl b {
+  font-weight: inherit;
 }
 .site_search_results .gsc-expansionArea .gsc-cursor-box {
   margin-bottom: 0;
