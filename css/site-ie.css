@@ -1,6 +1,6 @@
 
 /*! 
- * site-title v0.0.1 [2016-12] 
+ * site-title v0.0.1 [2017-01] 
  * Site description. 
  * Fastspot 
  */
@@ -4118,12 +4118,19 @@ textarea {
   padding-right: 0;
 }
 
-.site_search_results .gsc-search-box input.gsc-input {
-  width: 100%;
-  background-position: 20px 50%!important;
+.site_search_results .gsc-search-box .gsc-input-box {
+  height: auto;
   border: 1px solid #000;
+}
+
+.site_search_results .gsc-search-box input.gsc-input {
+  height: auto!important;
+  width: 100%;
+  backgroun-color: transparent!important;
+  background-position: 20px 50%!important;
   font-size: inherit;
-  padding: 20px;
+  margin: 0!important;
+  padding: 20px!important;
 }
 
 .site_search_results .gsc-search-box td.gsc-search-button {
@@ -4154,6 +4161,7 @@ textarea {
 .site_search_results .gsc-search-box input.gsc-search-button {
   height: 100%;
   min-width: 100%;
+  width: auto;
   background: 0 0;
   border: 0;
   border-radius: 0;
@@ -4161,6 +4169,7 @@ textarea {
   cursor: pointer;
   font-size: inherit;
   font-weight: 400;
+  margin-top: 0;
   margin-left: 0;
   padding: 10px;
 }
@@ -4221,6 +4230,10 @@ textarea {
   padding-left: 0;
 }
 
+.site_search_results .gsc-above-wrapper-area .gsc-orderby-container {
+  display: none;
+}
+
 .site_search_results .gsc-results {
   width: 100%;
   padding-bottom: 0;
@@ -4267,11 +4280,12 @@ textarea {
   font-size: 1rem;
   line-height: 1.5;
   height: inherit;
+  color: inherit!important;
   text-decoration: inherit;
 }
 
 .site_search_results .gsc-results a.gs-title b {
-  color: inherit;
+  color: inherit!important;
   font-size: inherit;
   text-decoration: inherit;
 }
@@ -4281,6 +4295,14 @@ textarea {
   font-size: 1rem;
   line-height: 1.5;
   margin-bottom: 10px;
+}
+
+.site_search_results .gsc-results .gsc-url-top {
+  display: none;
+}
+
+.site_search_results .gsc-results .gs-visibleUrl b {
+  font-weight: inherit;
 }
 
 .site_search_results .gsc-expansionArea .gsc-cursor-box {
