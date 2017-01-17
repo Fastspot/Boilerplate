@@ -21,7 +21,7 @@ var gulp = require('gulp'),
 		svgSprite = require('gulp-svg-sprite');
 
 
-gulp.task('twig', function () {
+gulp.task('twig', function() {
 
 	return gulp.src([
 		'static/src/templates/*.twig',
@@ -40,7 +40,7 @@ gulp.task('twig', function () {
 });
 
 
-gulp.task('create-sitemap', ['twig'], function () {
+gulp.task('create-sitemap', ['twig'], function() {
 
 	return gulp.src('static/templates/*.html')
 		.pipe(directoryMap({
@@ -88,7 +88,8 @@ gulp.task('less', function() {
 					'Opera 12.1',
 					'ie >= 8'
 				]
-			})
+			}),
+			require('postcss-discard-empty')
 		]))
 		.pipe(gulpif(util.env.production, cssnano()))
 		.pipe(gulp.dest('css/'))
@@ -117,7 +118,7 @@ gulp.task('ie-less', function() {
 });
 
 
-gulp.task('scripts', function () {
+gulp.task('scripts', function() {
 
 	concat(packageJSON.js)
 		.pipe(gulpif(util.env.production, uglify()))
@@ -130,7 +131,6 @@ gulp.task('scripts', function () {
 gulp.task('jshint', function() {
 
 	return gulp.src('js/src/modules/*.js')
-		.pipe(changed())
 		.pipe(jshint())
 		.pipe(jshint.reporter(stylish));
 
@@ -183,7 +183,7 @@ gulp.task('sprite', function() {
 });
 
 
-gulp.task('imagemin', function () {
+gulp.task('imagemin', function() {
 
 	return gulp.src([
 		'images/src/*',
@@ -202,7 +202,7 @@ gulp.task('imagemin', function () {
 });
 
 
-gulp.task('clean', function () {
+gulp.task('clean', function() {
 
 	return del([
 		'static/templates',
@@ -210,6 +210,7 @@ gulp.task('clean', function () {
 
 		'images/*',
 		'!images/src/**',
+		'!images/svg/**',
 
 		'css/*',
 		'!css/src/**',
