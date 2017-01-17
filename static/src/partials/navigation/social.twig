@@ -12,9 +12,9 @@
 
 <div class="social_nav{% if modifier %} social_nav_{{modifier}}{% endif %}" itemscope itemtype="http://schema.org/Organization"> {# 1 #}
 	<link itemprop="url" href="http://www.client-name.com"> {# 2 #}
-	<header class="social_nav_header">
+	<div class="social_nav_header">
 		<h2 class="social_nav_title">{{title}}</h2>
-	</header>
+	</div>
 	<div class="social_nav_list">
 		{% for link in links %}
 			<div class="social_nav_item">

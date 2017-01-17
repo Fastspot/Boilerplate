@@ -1,7 +1,7 @@
 <nav class="main_nav{% if modifier %} main_nav_{{modifier}}{% endif %}" aria-label="{{title}}" itemscope itemtype="http://schema.org/SiteNavigationElement">
-	<header class="main_nav_header">
+	<div class="main_nav_header">
 		<h2 class="main_nav_title">{{title}}</h2>
-	</header>
+	</div>
 	<div class="main_nav_list" role="navigation">
 		{% for link in links %}
 			<div class="main_nav_item mobile_nav_{{loop.index}}{% if loop.index == active %} active{% endif %}" itemprop="url">
