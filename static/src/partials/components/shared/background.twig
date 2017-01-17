@@ -1,8 +1,1 @@
-<div class="js-background {{class}}_background" data-background-options='{
-	"source": {
-		{% for key, source in sources %}
-			"{{key}}": "//spacehold.it/{{source}}/{{image}}.jpg"{% if not loop.last %},{% endif %}
-		{% endfor %}
-	}
-}'
-></div>
+<div class="js-background {{class}}_background" data-background-options='{"source": {{% for key, source in sources %}"{{key}}": "//spacehold.it/{{source}}/{{image}}.jpg"{% if not loop.last %},{% endif %}{% endfor %}}}'></div>
