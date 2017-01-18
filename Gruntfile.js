@@ -316,6 +316,11 @@ module.exports = function(grunt) {
 				dest: 'images/src',
 				options: {
 					'dest': 'images/',
+					'shape': {
+						'spacing': {
+							'padding': 1
+						}
+					},
 					'svg': {
 						'xmlDeclaration': false,
 						'doctypeDeclaration': false,
