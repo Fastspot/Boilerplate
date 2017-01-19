@@ -89,6 +89,10 @@ gulp.task('less', function() {
 					'ie >= 8'
 				]
 			}),
+			require('postcss-assets')({
+				cachebuster: true,
+				baseUrl: '..'
+			}),
 			require('postcss-discard-empty')
 		]))
 		.pipe(gulpif(util.env.production, cssnano()))

@@ -9,7 +9,7 @@
 			<div class="accordion_item accordion_item_{{loop.index}}">
 				<h3 class="js-swap accordion_item_title" data-swap-target=".accordion_item_{{loop.index}}" data-swap-group="accordion_group">
 					{{accordion.question}}
-					<span class="accordion_item_indicator"></span>
+					<span class="accordion_item_icon">{{sprite.symbol()}}</span>
 				</h3>
 				<div class="accordion_item_description">
 					{{accordion.answer}}

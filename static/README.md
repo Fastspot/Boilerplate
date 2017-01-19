@@ -96,3 +96,8 @@
 	image: 1
 } %}
 ```
+
+## Sprite Macro
+
+```twig
+{{sprite.symbol("name", "modifier")}}

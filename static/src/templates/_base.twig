@@ -94,9 +94,11 @@
 		{% endif %}
 
 		{% macro symbol(name, modifier) %}
-			<svg class="symbol symbol_{{name}} symbol_{{name}}_{{modifier}}">
-				<use xlink:href="#{{name}}"></use>
-			</svg>
+			{% if name %}
+				<svg class="symbol symbol_{{name}}{% if modifier %} symbol_{{modifier}}{% endif %}">
+					<use xlink:href="#{{name}}"></use>
+				</svg>
+			{% endif %}
 		{% endmacro %}
 
 		{% import _self as sprite %}
@@ -114,7 +116,7 @@
 				<div class="fs-row">
 					<div class="fs-cell">
 						{% include "../partials/logo.twig" with {
-							class: "header",
+							modifier: "header",
 							name: vars.name
 						} %}
 
@@ -134,7 +136,10 @@
 
 						<a class="js-nav_handle mobile_sidebar_handle" href="#mobile_sidebar">Menu</a>
 
-						<a class="site_search_handle" href="#">Search</a>
+						<a class="site_search_handle" href="c-search.twig">
+							<span class="site_search_handle_label">Search</span>
+							<span class="site_search_handle_icon">{{sprite.symbol()}}</span>
+						</a>
 
 						{% include "../partials/search.twig" %}
 					</div>

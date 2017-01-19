@@ -2,7 +2,10 @@
 	<div class="sub_nav_header">
 		<h2 class="sub_nav_title">{{title}}</h2>
 	</div>
-	<button class="js-sub_nav_handle sub_nav_handle">Additional Navigation</button>
+	<div class="sub_nav_handle_wrapper">
+		<button class="js-sub_nav_handle sub_nav_handle">Additional Navigation</button>
+		<span class="sub_nav_handle_icon">{{sprite.symbol()}}</span>
+	</div>
 	<div class="js-navigation sub_nav_list" data-navigation-handle=".js-sub_nav_handle" data-navigation-options='{"theme": "sub_nav_base", "labels": {"closed": "Additional Navigation", "Open": "Close"}}'>
 		{% for link in links %}
 			<div class="sub_nav_item" itemprop="url">

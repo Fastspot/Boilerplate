@@ -18,7 +18,8 @@
 	<div class="social_nav_list">
 		{% for link in links %}
 			<div class="social_nav_item">
-				<a class="social_nav_link {{link.name}}" href="{{link.href}}" target="_blank" itemprop="sameAs">
+				<a class="social_nav_link" href="{{link.href}}" target="_blank" itemprop="sameAs">
+					<span class="social_nav_icon">{{sprite.symbol(link.name)}}</span>
 					<span class="social_nav_label">{{link.name}}</span>
 				</a>
 			</div>

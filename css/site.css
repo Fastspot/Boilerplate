@@ -422,6 +422,86 @@ template {
  * Won't scale it down though, so good to use with picturefill
  */
 /* ==========================================================================
+	Elements
+============================================================================= */
+html,
+body {
+  background: #fff;
+}
+body {
+  min-width: 300px;
+  overflow-x: hidden;
+}
+::-moz-selection {
+  background: #eee;
+  text-shadow: none;
+}
+::selection {
+  background: #eee;
+  text-shadow: none;
+}
+iframe {
+  border: none;
+}
+menu {
+  margin: 0;
+  padding: 0;
+}
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+figure {
+  margin: 0;
+}
+hr {
+  width: 100%;
+  height: 1px;
+  background: #eee;
+  border: none;
+  clear: both;
+  margin: 0;
+  padding: 0;
+}
+/* ==========================================================================
+	Margins
+============================================================================= */
+/* ==========================================================================
+	Padding
+============================================================================= */
+/* ==========================================================================
+	Helpers
+============================================================================= */
+.no_select,
+.no_select * {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+/* ==========================================================================
+	Transitions
+============================================================================= */
+/* ==========================================================================
+	Images
+============================================================================= */
+/* ==========================================================================
+	Input Focus
+============================================================================= */
+[data-whatinput="mouse"] a:focus,
+[data-whatinput="mouse"] button:focus,
+[data-whatinput="touch"] a:focus,
+[data-whatinput="touch"] button:focus {
+  outline: none;
+}
+/* ==========================================================================
+	Base Icons
+============================================================================= */
+/* ==========================================================================
 	Plugins
 ============================================================================= */
 /**
@@ -4843,6 +4923,7 @@ strong {
 /* WYSIWYG Images
 ============================================================================= */
 .typography img {
+  height: auto;
   max-width: 50%;
 }
 .typography .block_left,
@@ -4883,7 +4964,7 @@ strong {
   width: 5px;
   height: 5px;
   background: #444;
-  border-radius: 100%;
+  border-radius: 50%;
   content: "";
   margin: 10px 0 0 -15px;
 }
@@ -4956,89 +5037,6 @@ strong {
   border-bottom: 0;
 }
 /* ==========================================================================
-	Elements
-============================================================================= */
-html,
-body {
-  background: #fff;
-}
-body {
-  min-width: 300px;
-  overflow-x: hidden;
-}
-::-moz-selection {
-  background: #eee;
-  text-shadow: none;
-}
-::selection {
-  background: #eee;
-  text-shadow: none;
-}
-iframe {
-  border: none;
-}
-menu {
-  margin: 0;
-  padding: 0;
-}
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-  vertical-align: middle;
-}
-figure {
-  margin: 0;
-}
-hr {
-  width: 100%;
-  height: 1px;
-  background: #eee;
-  border: none;
-  clear: both;
-  margin: 0;
-  padding: 0;
-}
-/* ==========================================================================
-	Margins
-============================================================================= */
-/* ==========================================================================
-	Padding
-============================================================================= */
-/* ==========================================================================
-	Helpers
-============================================================================= */
-.no_select,
-.no_select * {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-.print {
-  display: none;
-}
-/* ==========================================================================
-	Transitions
-============================================================================= */
-/* ==========================================================================
-	Images
-============================================================================= */
-/* ==========================================================================
-	Input Focus
-============================================================================= */
-[data-whatinput="mouse"] a:focus,
-[data-whatinput="mouse"] button:focus,
-[data-whatinput="touch"] a:focus,
-[data-whatinput="touch"] button:focus {
-  outline: none;
-}
-/* ==========================================================================
-	Base Icons
-============================================================================= */
-/* ==========================================================================
 	Buttons
 ============================================================================= */
 button {
@@ -5049,8 +5047,6 @@ button {
 /* Filled
 ============================================================================= */
 /* Bordered
-============================================================================= */
-/* Icons
 ============================================================================= */
 /* ==========================================================================
 	Footer
@@ -5299,11 +5295,15 @@ textarea {
 /* ==========================================================================
 	Header
 ============================================================================= */
-/* Header Logo
+/* ==========================================================================
+	Logo
 ============================================================================= */
+.logo_print {
+  display: none;
+}
 @media print {
-  .header_logo_link {
-    display: none;
+  .logo_print {
+    display: block;
   }
 }
 .icon_logo {
@@ -5669,21 +5669,48 @@ textarea {
 .social_nav_link {
   display: block;
 }
-.social_nav_link:before {
-  background-image: url("../images/svg/sprite.view.svg") !important;
-  background-repeat: no-repeat;
-  content: "";
-  display: inline-block;
-}
 /* ==========================================================================
 	Sub Navigation
 ============================================================================= */
+.sub_nav_handle {
+  position: relative;
+}
 @media only screen and (min-width: 980px ) {
   .sub_nav_handle {
     display: none !important;
     visibility: hidden;
   }
 }
+.sub_nav_handle.fs-navigation-enabled {
+  text-align: center;
+  -webkit-transition: background 0.25s, border 0.25s, box-shadow 0.25s, color 0.25s, -webkit-transform 0.25s;
+  transition: background 0.25s, border 0.25s, box-shadow 0.25s, color 0.25s, -webkit-transform 0.25s;
+  transition: background 0.25s, border 0.25s, box-shadow 0.25s, color 0.25s, transform 0.25s;
+  transition: background 0.25s, border 0.25s, box-shadow 0.25s, color 0.25s, transform 0.25s, -webkit-transform 0.25s;
+  display: block;
+  padding: 20px;
+  text-align: left;
+}
+.sub_nav_handle.fs-navigation-enabled:after {
+  background-image: url("../images/svg/sprite.view.svg") !important;
+  background-repeat: no-repeat;
+  content: "";
+  display: inline-block;
+}
+.sub_nav_handle.fs-navigation-enabled:after {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  -webkit-transform: translate(0, -50%);
+      -ms-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  -webkit-transition: -webkit-transform .25s;
+  transition: -webkit-transform .25s;
+  transition: transform .25s;
+  transition: transform .25s, -webkit-transform .25s;
+}
+/* Sub Nav Links
+============================================================================= */
 .sub_nav_link {
   display: block;
 }
@@ -5705,12 +5732,6 @@ textarea {
 .accordion_item_title {
   position: relative;
   cursor: pointer;
-}
-.accordion_item_indicator:before {
-  background-image: url("../images/svg/sprite.view.svg") !important;
-  background-repeat: no-repeat;
-  content: "";
-  display: inline-block;
 }
 .accordion_item_description {
   display: none;
@@ -5752,12 +5773,6 @@ textarea {
 .fs-carousel .fs-carousel-control {
   cursor: default;
   pointer-events: none;
-}
-.fs-carousel .fs-carousel-control:before {
-  background-image: url("../images/svg/sprite.view.svg") !important;
-  background-repeat: no-repeat;
-  content: "";
-  display: inline-block;
 }
 .fs-carousel .fs-carousel-control.fs-carousel-visible {
   cursor: pointer;
@@ -5855,6 +5870,8 @@ textarea {
 				===================================================================== */
   /* Select
 				===================================================================== */
+  /* Credit Card Section
+				===================================================================== */
   /* Footer
 				===================================================================== */
   /* Thank You Message
@@ -5862,6 +5879,9 @@ textarea {
 }
 .page .page_content .gform_wrapper .gform_body .gfield {
   margin: 20px 0 !important;
+}
+.page .page_content .gform_wrapper .gform_body .gfield.gfield_error {
+  padding: 10px;
 }
 .page .page_content .gform_wrapper .gform_body .gsection {
   border-bottom: 0;
@@ -5910,6 +5930,21 @@ textarea {
 .page .page_content .gform_wrapper .gform_body .ginput_container_list.gfield_list .gfield_list_icons {
   padding: 4px !important;
 }
+.page .page_content .gform_wrapper .gform_body .ginput_cardextras {
+  margin: 20px 0 10px;
+}
+.page .page_content .gform_wrapper .gform_body .ginput_cardextras .ginput_cardinfo_left {
+  width: 100%;
+}
+@media screen and (min-width: 700px) {
+  .page .page_content .gform_wrapper .gform_body .ginput_cardextras .ginput_cardinfo_left {
+    width: 50%;
+    padding-right: 10px;
+  }
+}
+.page .page_content .gform_wrapper .gform_body .ginput_cardextras .ginput_cardinfo_left .fs-dropdown:first-child {
+  margin-bottom: 10px;
+}
 .page .page_content .gform_wrapper .gform_body .gform_page_footer {
   border-top: 0;
   margin: 20px 0;
@@ -5942,12 +5977,6 @@ textarea {
   /* Tools
 ============================================================================= */
 }
-.fs-lightbox .fs-lightbox-close:before {
-  background-image: url("../images/svg/sprite.view.svg") !important;
-  background-repeat: no-repeat;
-  content: "";
-  display: inline-block;
-}
 .fs-lightbox .fs-lightbox-container {
   background: none;
 }
@@ -5969,12 +5998,6 @@ textarea {
 }
 .fs-lightbox .fs-viewer-controls {
   width: 100%;
-}
-.fs-lightbox .fs-viewer-control:before {
-  background-image: url("../images/svg/sprite.view.svg") !important;
-  background-repeat: no-repeat;
-  content: "";
-  display: inline-block;
 }
 .fs-lightbox .fs-viewer-control_zoom_out {
   display: none;

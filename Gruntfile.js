@@ -416,7 +416,8 @@ module.exports = function(grunt) {
 			],
 			img: [
 				'images/*',
-				'!images/src/**'
+				'!images/src/**',
+				'!images/svg/**',
 			],
 			css: [
 				'css/*',
