@@ -183,24 +183,37 @@
     }
   ],
   "secondaryNavLinks": [
-    "Secondary Link"
+    {
+      "modifier": "",
+      "href": "#",
+      "name": "Secondary Link",
+      "children": ""
+    },
   ],
   "subNavLinks": [
     {
+      "modifier": "",
       "href": "1-2-style-guide-feature.html",
-      "name": "Page Feature Components"
+      "name": "Page Feature Components",
+      "children": ""
     },
     {
+      "modifier": "",
       "href": "1-3-style-guide-in-content.html",
-      "name": "In Content Components"
+      "name": "In Content Components",
+      "children": ""
     },
     {
+      "modifier": "",
       "href": "1-4-style-guide-sidebar.html",
-      "name": "Sidebar Components"
+      "name": "Sidebar Components",
+      "children": ""
     },
     {
+      "modifier": "",
       "href": "1-5-style-guide-full-width.html",
-      "name": "Full Width Components"
+      "name": "Full Width Components",
+      "children": ""
     }
   ],
   "footerNavLinks": [
