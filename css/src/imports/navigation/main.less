@@ -100,7 +100,7 @@
 	.main_nav_item {
 
 		&.focused,
-		.no-touchevents &:hover {
+		&:hover {
 
 			.main_nav_children {
 				opacity: 1;
@@ -122,6 +122,8 @@
 	}
 
 	.main_nav_children {
+		.absolute;
+
 		opacity: 0;
 		transition:
 			opacity @base_transition_duration,

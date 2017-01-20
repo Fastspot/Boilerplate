@@ -208,24 +208,34 @@
   ],
   "socialNavLinks": [
     {
-      "name": "facebook",
-      "href": "facebook.com"
+      "modifier": "",
+      "symbol": "",
+      "name": "Facebook",
+      "href": "//www.facebook.com"
     },
     {
-      "name": "twitter",
-      "href": "twitter.com"
+      "modifier": "",
+      "symbol": "",
+      "name": "Twitter",
+      "href": "//www.twitter.com"
     },
     {
-      "name": "instagram",
-      "href": "instagram.com"
+      "modifier": "",
+      "symbol": "",
+      "name": "Instagram",
+      "href": "//www.instagram.com"
     },
     {
-      "name": "youtube",
-      "href": "youtube.com"
+      "modifier": "",
+      "symbol": "",
+      "name": "Youtube",
+      "href": "//www.youtube.com"
     },
     {
-      "name": "linkedin",
-      "href": "linkedin.com"
+      "modifier": "",
+      "symbol": "",
+      "name": "Linkedin",
+      "href": "//www.linkedin.com"
     }
   ]
 }
