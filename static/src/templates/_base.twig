@@ -32,11 +32,11 @@
 		<![endif]-->
 	</head>
 
-	<figure style="display: none">
-		{% include '../../../images/svg/sprite.symbol.svg' %}
-	</figure>
-
 	<body class="fs-grid theme_{{bodyTheme|default("interior")}}">
+
+		<figure class="hide">
+			{% include '../../../images/svg/sprite.symbol.svg' %}
+		</figure>
 
 		{#
 
@@ -141,7 +141,12 @@
 							<span class="site_search_handle_icon">{{sprite.symbol()}}</span>
 						</a>
 
-						{% include "../partials/search.twig" %}
+						{% include "../partials/search.twig" with {
+							modifier: "",
+							placeholder: "Search",
+							buttonText: "submit"
+						} %}
+
 					</div>
 				</div>
 			</header>
