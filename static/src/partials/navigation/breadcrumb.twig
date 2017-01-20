@@ -6,18 +6,24 @@
 <div class="breadcrumb_nav {{class}}">
 	<div class="breadcrumb_list" itemscope itemtype="http://schema.org/BreadcrumbList">
 		<div class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-			<a class="breadcrumb_link" itemprop="item" href="00-1-home.html">
+			<a class="breadcrumb_link" href="00-1-home.html" itemprop="item">
 				<span class="breadcrumb_name" itemprop="name">Home</span>
 			</a>
 			<meta itemprop="position" content="1">
 		</div>
 		{% for link in links %}
-			<div class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-				<span class="breadcrumb_label" itemprop="item">
-					<span class="breadcrumb_name" itemprop="name">{{link}}</span>
-				</span>
-				<meta itemprop="position" content="{{loop.index + 1}}">
-			</div>
+		<div class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+			{% if loop.last %}
+			<span class="breadcrumb_label" itemprop="item">
+				<span class="breadcrumb_name" itemprop="name">{{link.name}}</span>
+			</span>
+			{% else %}
+			<a class="breadcrumb_link" href="{{link.href}}" itemprop="item">
+				<span class="breadcrumb_name" itemprop="name">{{link.name}}</span>
+			</a>
+			{% endif %}
+			<meta itemprop="position" content="{{loop.index + 1}}">
+		</div>
 		{% endfor %}
 	</div>
 </div>

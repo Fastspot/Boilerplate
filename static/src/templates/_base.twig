@@ -66,7 +66,7 @@
 		{% endblock %}
 
 		{% block activePage %}
-			{% set activePageAlias = 1 %}
+			{% set activePageAlias = 0 %}
 		{% endblock %}
 
 		{% block sectionVar %}
@@ -145,7 +145,7 @@
 
 						<a class="js-nav_handle mobile_sidebar_handle" href="#mobile_sidebar">Menu</a>
 
-						<a class="site_search_handle" href="#">
+						<a class="site_search_handle" href="#search">
 							<span class="site_search_handle_label">Search</span>
 							<span class="site_search_handle_icon">{{sprite.symbol()}}</span>
 						</a>
@@ -172,68 +172,63 @@
 
 				<!-- Page Content -->
 				<div class="page_content">
+					<div class="fs-row">
 
-					<!-- Page Header -->
-					{% block page_header %}
-						<div class="page_header">
-							<div class="fs-row">
-								<div class="fs-cell">
-									{% include "../partials/navigation/breadcrumb.twig" with {
-										links: breadcrumbNavLinks
-									} %}
-
-									<h1 id="main_page_title" tabindex="-1">{{pageTitle}}</h1>
-								</div>
-							</div>
+						<!-- Sub Nav -->
+						<div class="fs-cell-right fs-lg-4">
+							{% block subNav %}
+								{% include "../partials/navigation/sub.twig" with {
+									title: sectionAlias,
+									links: subNavLinksAlias
+								} %}
+							{% endblock %}
 						</div>
-					{% endblock %}
-					<!-- END: Page Header -->
+						<!-- END: Sub Nav -->
 
-					{% block page_content %}
-						<div class="fs-row">
+						<!-- Main Content -->
+						<div class="fs-cell fs-lg-8">
+							<main class="main_content" itemprop="mainContentOfPage">
 
-							<!-- Sub Nav -->
-							<div class="fs-cell-right fs-lg-4">
-								{% block subNav %}
-									{% include "../partials/navigation/sub.twig" with {
-										title: sectionAlias,
-										links: subNavLinksAlias
-									} %}
+								<!-- Page Header -->
+								{% block page_header %}
+									<div class="page_header">
+										{% include "../partials/navigation/breadcrumb.twig" with {
+											links: breadcrumbNavLinks
+										} %}
+										{% if pageTitle %}
+										<div class="typography">
+											<h1 class="page_title" id="page_title">{{pageTitle}}</h1>
+										</div>
+										{% endif %}
+									</div>
 								{% endblock %}
-							</div>
-							<!-- END: Sub Nav -->
+								<!-- END: Page Header -->
 
-							<!-- Main Content -->
-							<div class="fs-cell fs-lg-8">
-								<main class="main_content" itemprop="mainContentOfPage">
-									{% block main_content %}{% endblock %}
-
-									<!-- WYSIWYG - wrap all WYSIWYG text areas in `.typography` -->
-									<div class="typography">
-										{% block typography %}{% endblock %}
-									</div>
-									<!-- END: WYSIWYG -->
-
-									<!-- In Content Callouts -->
-									<div class="in_content_callouts">
-										{% block in_content_callouts %}{% endblock %}
-									</div>
-									<!-- END: In Content Callouts -->
-
-								</main>
-							</div>
-							<!-- END: Main Content -->
-
-							<!-- Sidebar Callouts -->
-							<div class="fs-cell-right fs-lg-4">
-								<div class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
-									{% block sidebar %}{% endblock %}
+								<!-- WYSIWYG - wrap all WYSIWYG text areas in `.typography` -->
+								<div class="typography">
+									{% block typography %}{% endblock %}
 								</div>
-							</div>
-							<!-- END: Sidebar Callouts -->
+								<!-- END: WYSIWYG -->
 
+								<!-- In Content Callouts -->
+								<div class="in_content_callouts">
+									{% block in_content_callouts %}{% endblock %}
+								</div>
+								<!-- END: In Content Callouts -->
+
+							</main>
 						</div>
-					{% endblock %}
+						<!-- END: Main Content -->
+
+						<!-- Sidebar Callouts -->
+						<div class="fs-cell-right fs-lg-4">
+							<div class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+								{% block sidebar %}{% endblock %}
+							</div>
+						</div>
+						<!-- END: Sidebar Callouts -->
+
+					</div>
 
 					<!-- Full Width Callouts -->
 					<div class="full_width_callouts">
