@@ -1,13 +1,13 @@
 {
-  "name": "Boilerplate",
+  "name": "boilerplate",
   "version": "0.0.0",
   "devDependencies": {
     "html5shiv": "^3.7.3",
-    "formstone": "^1.3.0",
-    "jquery": "^3.1.1",
+    "formstone": "1.3.0",
+    "jquery": "~1.11.3",
     "modernizr": "^3.3.1",
     "normalize-css": "^5.0.0",
     "picturefill": "^3.0.2",
-    "what-input": "^4.0.3"
+    "what-input": "^4.0.6"
   }
 }
