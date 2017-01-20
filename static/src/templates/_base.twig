@@ -12,6 +12,23 @@
 
 		{% include "../partials/favicons.html" %}
 
+		<!-- G+ & Facebook -->
+		<meta property="og:title" content="{{vars.name}}">
+		<meta property="og:url" content="//{{vars.domain}}/">
+		<meta property="og:type" content="website">
+		<meta property="og:image" content="//{{vars.domain}}/images/social-rectangle.png">
+		<meta property="og:description" content="">
+		<meta property="og:site_name" content="{{vars.name}}">
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:site" content="@{{vars.twitter}}">
+		<meta name="twitter:creator" content="@{{vars.twitter}}">
+		<meta name="twitter:url" content="//twitter.com/{{vars.twitter}}">
+		<meta name="twitter:title" content="{{vars.name}}">
+		<meta name="twitter:description" content="">
+		<meta name="twitter:image" content="//{{vars.domain}}/images/social-rectangle.png">
+
 		<script src="../../js/modernizr.js"></script>
 
 		<!--[if gt IE 8]><!-->
@@ -39,11 +56,9 @@
 		</figure>
 
 		{#
-
 			TODO:
 				Update Navigation Blocks in package.json
 				Backend Devs can remove this section
-
 		#}
 
 		{% block mainNavVar %}
@@ -80,18 +95,12 @@
 			{% set socialNavLinksAlias = socialNavLinks %}
 		{% endblock %}
 
-		{% if name == "site-title" %}
-			<h2>Update "name"</h2>
-		{% endif %}
-		{% if vars.name == "Client Name" %}
-			<h2>Update "vars.name"</h2>
-		{% endif %}
-		{% if description == "Site description." %}
-			<h2>Update "description"</h2>
-		{% endif %}
-		{% if repository.url == "url" %}
-			<h2>Update "repository.url"</h2>
-		{% endif %}
+		{% if name == "site-title" %}<h2>Update "name"</h2>{% endif %}
+		{% if description == "Site description." %}<h2>Update "description"</h2>{% endif %}
+		{% if repository.url == "url" %}<h2>Update "repository.url"</h2>{% endif %}
+		{% if vars.namespace == "namespace" %}<h2>Update "vars.namespace"</h2>{% endif %}
+		{% if vars.name == "Client Name" %}<h2>Update "vars.name"</h2>{% endif %}
+		{% if vars.domain == "www.example.com" %}<h2>Update "vars.domain"</h2>{% endif %}
 
 		{% macro symbol(name, modifier) %}
 			{% if name %}
@@ -136,7 +145,7 @@
 
 						<a class="js-nav_handle mobile_sidebar_handle" href="#mobile_sidebar">Menu</a>
 
-						<a class="site_search_handle" href="c-search.twig">
+						<a class="site_search_handle" href="#">
 							<span class="site_search_handle_label">Search</span>
 							<span class="site_search_handle_icon">{{sprite.symbol()}}</span>
 						</a>

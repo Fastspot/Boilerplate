@@ -1,11 +1,7 @@
-{# To Do #}
-{% set clientDomain = "//www.example.com/" %}
-{% set target = "http://www.example.com/search" %}
-
 <div class="site_search{% if modifier %} site_search_{{modifier}}{% endif %}" id="search{% if modifier %}_{{modifier}}{% endif %}" itemscope itemtype="http://schema.org/WebSite" role="search">
-	<meta itemprop="url" content="{{clientDomain}}">
+	<meta itemprop="url" content="//{{vars.domain}}">
 	<form class="site_search_form" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
-		<meta itemprop="target" content="{{target}}?q={search_term_string}">
+		<meta itemprop="target" content="//{{vars.domain}}/search?q={search_term_string}">
 		<label class="site_search_label" for="search_term_string{% if modifier %}_{{modifier}}{% endif %}">Search</label>
 		<input class="site_search_input" itemprop="query-input" type="text" id="search_term_string{% if modifier %}_{{modifier}}{% endif %}" name="search_term_string{% if modifier %}_{{modifier}}{% endif %}" placeholder="{% if placeholder %}{{placeholder}}{% else %}Search{% endif %}" required aria-required="true">
 		<button class="site_search_button" type="submit" title="submit" aria-label="submit">
