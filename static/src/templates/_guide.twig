@@ -3,6 +3,9 @@
 {# Page title is used in `<title>`, breadcrumb active page, and `.page_title` #}
 {% set pageTitle = "Apply Now" %}
 
+{# Use theme to set page layout: default (2 column), full (1 column), home #}
+{% set bodyTheme = "default" %}
+
 {# Sets index of active item in the main nav, applied to `.main_nav_item` #}
 {% block activePage %}
 	{% set activePageAlias = 1 %}
@@ -59,32 +62,8 @@
 		{
 			"modifier": "",
 			"href": "#",
-			"name": "Visit",
-			"children": ""
-		},
-		{
-			"modifier": "",
-			"href": "#",
-			"name": "New Student Orientation",
-			"children": ""
-		},
-		{
-			"modifier": "",
-			"href": "#",
 			"name": "Degree",
 			"children": [
-				{
-					"modifier": "",
-					"href": "#",
-					"name": "Undergraduate",
-					"children": ""
-				},
-				{
-					"modifier": "",
-					"href": "#",
-					"name": "Graduate",
-					"children": ""
-				},
 				{
 					"modifier": "",
 					"href": "#",
@@ -94,16 +73,6 @@
 							"modifier": "",
 							"href": "#",
 							"name": "College Credit Plus"
-						},
-						{
-							"modifier": "",
-							"href": "#",
-							"name": "Military"
-						},
-						{
-							"modifier": "",
-							"href": "#",
-							"name": "Online Learning"
 						}
 					]
 				}
@@ -126,10 +95,6 @@
 
 	<p>Suspendisse faucibus mi metus, nec efficitur elit convallis id. Ut et ultrices neque. Nullam fermentum sit amet purus sed vestibulum. Etiam convallis neque vitae est porttitor, ac pellentesque tellus consectetur. Fusce ex leo, tempor in tortor eu, iaculis rutrum dui. Duis egestas, orci non aliquam feugiat, justo nisi rutrum urna, at vehicula diam tellus sit amet neque. Maecenas ultricies, augue non efficitur pretium, ligula lectus tempus sem, eu finibus mi nunc in turpis. Quisque aliquam nec leo at mattis. Cras massa libero, vestibulum.</p>
 
-	<h2>Ac Pellentesque Tellus</h2>
-
-	<p>Suspendisse faucibus mi metus, nec efficitur elit convallis id. Ut et ultrices neque. Nullam fermentum sit amet purus sed vestibulum. Etiam convallis neque vitae est porttitor, ac pellentesque tellus consectetur. Fusce ex leo, tempor in tortor eu, iaculis rutrum dui. Duis egestas, orci non aliquam feugiat, justo nisi rutrum urna.</p>
-
 {% endblock %}
 
 {# Include in content components #}
@@ -145,22 +110,6 @@
 			{
 				href: "#",
 				name: "Undergraduate"
-			},
-			{
-				href: "#",
-				name: "Degree Completion"
-			},
-			{
-				href: "#",
-				name: "After Graduation"
-			},
-			{
-				href: "#",
-				name: "Graduate"
-			},
-			{
-				href: "#",
-				name: "Visit Us"
 			}
 		]
 	} %}
@@ -187,22 +136,6 @@
 			},
 			{
 				type: "twitter",
-				href: "#"
-			},
-			{
-				type: "youtube",
-				href: "#"
-			},
-			{
-				type: "instagram",
-				href: "#"
-			},
-			{
-				type: "linkedin",
-				href: "#"
-			},
-			{
-				type: "vimeo",
 				href: "#"
 			}
 		]

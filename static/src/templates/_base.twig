@@ -174,6 +174,7 @@
 				<div class="page_content">
 					<div class="fs-row">
 
+						{% if bodyTheme == "default" %}
 						<!-- Sub Nav -->
 						<div class="fs-cell-right fs-lg-4">
 							{% block subNav %}
@@ -184,9 +185,10 @@
 							{% endblock %}
 						</div>
 						<!-- END: Sub Nav -->
+						{% endif %}
 
 						<!-- Main Content -->
-						<div class="fs-cell fs-lg-8">
+						<div class="fs-cell {% if bodyTheme == "default" %}fs-lg-8{% elseif bodyTheme == "full" %}fs-lg-10 fs-centered{% endif %}">
 							<main class="main_content" id="main_content" itemprop="mainContentOfPage">
 
 								<!-- Page Header -->
@@ -220,13 +222,15 @@
 						</div>
 						<!-- END: Main Content -->
 
+						{% if bodyTheme == "default" %}
 						<!-- Sidebar Callouts -->
-						<div class="fs-cell-right fs-lg-4">
+						<div class="fs-cell-right fs-lg-4 sidebar_cell">
 							<div class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
 								{% block sidebar %}{% endblock %}
 							</div>
 						</div>
 						<!-- END: Sidebar Callouts -->
+						{% endif %}
 
 					</div>
 
@@ -273,10 +277,7 @@
 		</div>
 		<!-- END: page_wrapper -->
 
-		<div class="js-navigation mobile_sidebar" id="mobile_sidebar" hidden data-navigation-handle=".js-nav_handle" data-navigation-content=".js-navigation_push" data-navigation-options='{
-			"type": "overlay",
-			"gravity": "right"
-		}'>
+		<div class="js-navigation mobile_sidebar" id="mobile_sidebar" hidden data-navigation-handle=".js-nav_handle" data-navigation-content=".js-navigation_push" data-navigation-options='{"type": "overlay", "gravity": "right"}'>
 			{% include "../partials/navigation/main.twig" with {
 				modifier: "sm",
 				links: mainNavLinksAlias,
