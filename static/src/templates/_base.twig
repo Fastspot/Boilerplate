@@ -49,7 +49,7 @@
 		<![endif]-->
 	</head>
 
-	<body class="fs-grid theme_{{bodyTheme|default("interior")}}">
+	<body class="fs-grid theme_{{layout|default("interior")}}">
 
 		<figure class="hide">
 			{% include '../../../images/svg/sprite.symbol.svg' %}
@@ -174,9 +174,9 @@
 				<div class="page_content">
 					<div class="fs-row">
 
-						{% if bodyTheme == "default" %}
+						{% if layout == "default" %}
 						<!-- Sub Nav -->
-						<div class="fs-cell-right fs-lg-4">
+						<div class="fs-cell-right fs-lg-4 subnav_cell">
 							{% block subNav %}
 								{% include "../partials/navigation/sub.twig" with {
 									title: sectionAlias,
@@ -188,7 +188,7 @@
 						{% endif %}
 
 						<!-- Main Content -->
-						<div class="fs-cell {% if bodyTheme == "default" %}fs-lg-8{% elseif bodyTheme == "full" %}fs-lg-10 fs-centered{% endif %}">
+						<div class="fs-cell {% if layout == "default" %}fs-lg-8{% elseif layout == "full" %}fs-lg-10 fs-centered{% endif %}">
 							<main class="main_content" id="main_content" itemprop="mainContentOfPage">
 
 								<!-- Page Header -->
@@ -222,7 +222,7 @@
 						</div>
 						<!-- END: Main Content -->
 
-						{% if bodyTheme == "default" %}
+						{% if layout == "default" %}
 						<!-- Sidebar Callouts -->
 						<div class="fs-cell-right fs-lg-4 sidebar_cell">
 							<div class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
