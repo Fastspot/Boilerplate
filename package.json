@@ -21,7 +21,7 @@
     "mq_min_xl": "1220"
   },
   "devDependencies": {
-    "autoprefixer": "^6.6.1",
+    "autoprefixer": "^6.7.0",
     "del": "^2.2.2",
     "grunt": "^1.0.1",
     "grunt-bless": "^1.0.2",
