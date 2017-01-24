@@ -1,14 +1,35 @@
+{#
+	{% include "../partials/components/in-content/gallery.twig" with {
+		theme: "",
+		title: "Media Gallery",
+		items: [
+			{
+				video: "//www.youtube.com/watch?v=XPjQhvjQbSM",
+				image: 1,
+				caption: "Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. <a href='#'>Phasellus viverra</a> nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui."
+			},
+			{
+				video: "",
+				image: 2,
+				caption: ""
+			}
+		]
+	} %}
+#}
+
+<!-- Media Gallery -->
 <div class="media_gallery{% if theme %} theme_{{theme}}{% endif %}">
 	{% if title %}
-		<header class="media_gallery_header">
-			<h2 class="media_gallery_title">{{title}}</h2>
-		</header>
+	<header class="media_gallery_header">
+		<h2 class="media_gallery_title">{{title}}</h2>
+	</header>
 	{% endif %}
 	<div class="media_gallery_body">
-		<div class="js-carousel media_gallery_items" data-carousel-options='{"theme": "base_pagination multi_pagination circle_controls white_circle_controls", "contained": false, "matchHeight": true}'>
+		<div class="js-carousel media_gallery_items" data-carousel-options='{"theme": "base_pagination", "contained": false, "matchHeight": true}'>
 			{% for item in items %}
-				<div class="media_gallery_item">
-					<figure class="media_gallery_figure">
+				<div class="media_gallery_item{% if item.caption is empty %} no_caption{% endif %}{% if item.video %} video{% endif %}">
+					{% if item.video %}<a class="js-lightbox media_item_link" href="{{item.video}}" title="{{item.caption|striptags}}">{% endif %}
+					<figure class="media_gallery_figure" role="group"{% if item.caption %} aria-label="{{item.caption|striptags}}"{% endif %}>
 						{% include "../shared/picture.twig" with {
 							class: "media_gallery",
 							sources: {
@@ -18,13 +39,15 @@
 							image: item.image
 						} %}
 						{% if item.caption %}
-							<figcaption class="media_gallery_figcaption">
-								<p>{{item.caption}}</p>
-							</figcaption>
+						<figcaption class="media_gallery_figcaption">
+							<p>{{item.caption}}</p>
+						</figcaption>
 						{% endif %}
 					</figure>
+					{% if item.video %}</a>{% endif %}
 				</div>
 			{% endfor %}
 		</div>
 	</div>
 </div>
+<!-- END: Media Gallery -->
