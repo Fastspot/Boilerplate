@@ -11,7 +11,8 @@ Site.modules.Page = (function($, Site) {
 
 	function init() {
 
-		$mainNav                      = $(".main_nav");
+		$mainNav                      = $(".js-main-nav");
+		$subNav                       = $(".js-sub-nav");
 
 
 		// Picturefill
@@ -191,5 +192,5 @@ Site.modules.Page = (function($, Site) {
 	return {
 
 	};
-	
+
 })(jQuery, Site);

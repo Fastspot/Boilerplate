@@ -1,8 +1,5 @@
-{#
-	TODO:
-	1. Update Google CSE key
-	2. Update website URL for noscript link
-#}
+{# TODO: #}
+{% set cseKey = "011737558837375720776:mbfrjmyam1g" %}
 
 <div class="site_search_results{% if theme %} theme_{{theme}}{% endif %}">
 	<div class="fs-row">
@@ -10,7 +7,7 @@
 			<script>
 				(function()
 				{
-					var cx = '011737558837375720776:mbfrjmyam1g'; // 1
+					var cx = '{{cseKey}}'; // 1
 					var gcse = document.createElement('script');
 					gcse.type = 'text/javascript';
 					gcse.async = true;
@@ -24,7 +21,7 @@
 			<gcse:search></gcse:search>
 			<noscript>
 				<div class="typography">
-					<p>The site search requires a JavaScript enabled browser. You can also search the site using <a href="//www.google.com/#q=site:www.*website*.com+%22term%22">Google</a>.</p>{# 1 #}
+					<p>The site search requires a JavaScript enabled browser. You can also search the site using <a href="//www.google.com/#q=site:{{vars.domain}}">Google</a>.</p>
 				</div>
 			</noscript>
 		</div>

@@ -2,29 +2,29 @@
 	<div class="fs-row">
 		<div class="fs-cell">
 			{% for item in directories %}
-				<div class="directory_item">
-					<figure class="directory_item_figure">
-						{% if item.image %}
-							<img class="directory_item_image" src="https://spacehold.it/150x200/{{item.image}}.jpg" alt="">
-						{% endif %}
-					</figure>
-					<div class="directory_item_body">
-						<header class="directory_item_header">
-							<h2 class="directory_item_name">{{item.name}}</h2>
-							<a class="directory_item_email" href="mailto:{{item.email}}">{{item.email}}</a>
-							<a class="directory_item_link" href="#">More Info</a>
-						</header>
-						<div class="directory_item_details">
-							<div class="directory_item_attributes">
-								{% for attr in item.attributes %}
-									<div class="directory_item_attribute">
-										<p><strong>{{attr.title}}, </strong>{{attr.division}}</p>
-									</div>
-								{% endfor %}
+			<div class="directory_item">
+				<figure class="directory_item_figure">
+					{% if item.image %}
+					<img class="directory_item_image" src="https://spacehold.it/150x200/{{item.image}}.jpg" alt="">
+					{% endif %}
+				</figure>
+				<div class="directory_item_body">
+					<header class="directory_item_header">
+						<h2 class="directory_item_name">{{item.name}}</h2>
+						<a class="directory_item_email" href="mailto:{{item.email}}">{{item.email}}</a>
+						<a class="directory_item_link" href="#">More Info</a>
+					</header>
+					<div class="directory_item_details">
+						<div class="directory_item_attributes">
+							{% for attr in item.attributes %}
+							<div class="directory_item_attribute">
+								<p><strong>{{attr.title}}, </strong>{{attr.division}}</p>
 							</div>
+							{% endfor %}
 						</div>
 					</div>
 				</div>
+			</div>
 			{% endfor %}
 		</div>
 	</div>

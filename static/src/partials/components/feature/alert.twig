@@ -1,14 +1,39 @@
-<section class="alert{% if theme %} theme_{{theme}}{% endif %}" data-time="{{time}}">
-	<div class="fs-row">
-		<div class="fs-cell">
-			<div class="alert_wrapper">
-				<button class="js-swap alert_close" data-swap-target=".alert"></button>
-				<div class="alert_body">
-					<p class="alert_time"><time>{{date}}</time></p>
-					<h3 class="alert_title">{{title}}</h3>
-					<p class="alert_caption">{{caption}}</p>
+{#
+	{% include "../partials/components/feature/alert.twig" with {
+		theme: "",
+		time: "12:30:45",
+		date: "2016-10-27 1:21:4",
+		href: "#",
+		title: "Alert",
+		description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor aenean massa."
+	} %}
+#}
+
+<!-- Alert -->
+<section class="js-toggle js-alert alert{% if theme %} theme_{{theme}}{% endif %}" role="alert" data-time="{{time}}">
+	<div class="alert_inner">
+		<div class="fs-row">
+			<div class="fs-cell">
+				<div class="alert_wrapper">
+					<button class="js-toggle_handle js-alert-close alert_close">
+						<span class="label">Close Alert</span>
+					</button>
+					<div class="alert_body">
+						<header class="alert_header">
+							<div class="alert_time"><time datetime="{{date|date("Y-m-d")}}">{{date|date("m.d.Y")}}</time></div>
+							<h2 class="alert_title">
+								{% if href %}<a href="{{href}}">{% endif %}
+								{{title}}
+								{% if href %}</a>{% endif %}
+							</h2>
+						</header>
+						<div class="alert_description">
+							<p>{{description}}</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
+<!-- END: Alert -->
