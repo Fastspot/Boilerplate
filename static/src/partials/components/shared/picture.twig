@@ -1,8 +1,20 @@
+{#
+	{% include "../shared/picture.twig" with {
+		class: "media",
+		fallback: "placeholder",
+		image: item.image,
+		sources: {
+			"1220px": img.wide.med,
+			"500px": img.wide.sml
+		}
+	} %}
+#}
+
 <picture class="{{class}}_picture">
 	<!--[if IE 9]><video style="display: none;"><![endif]-->
 	{% for key, source in sources %}
-		<source media="(min-width: {{key}})" srcset="//spacehold.it/{{source}}/{{image}}.jpg">
+		<source media="(min-width: {{key}})" srcset="{% if source == "placeholder" %}../../images/placeholder.png{% else %}/spacehold.it/{{source}}/{{image}}.jpg{% endif %}">
 	{% endfor %}
 	<!--[if IE 9]></video><![endif]-->
-	<img class="{{class}}_image" src="//spacehold.it/{{fallback}}/{{image}}.jpg" alt="">
+	<img class="{{class}}_image" src="{% if fallback == "placeholder" %}../../images/placeholder.png{% else %}/spacehold.it/{{fallback}}/{{image}}.jpg{% endif %}" alt="">
 </picture>
