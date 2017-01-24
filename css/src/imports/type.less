@@ -103,13 +103,28 @@ strong {
 	}
 
 	.block_left,
-	.block_right {
+	.block_right,
+	.block_center {
 		width: auto;
-		max-width: 50%;
-		height: auto;
 
 		display: table;
 		table-layout: fixed;
+
+		img {
+			.block;
+
+			max-width: 100%;
+		}
+
+		figcaption {
+			caption-side: bottom;
+			display: table-caption;
+		}
+	}
+
+	.block_left,
+	.block_right {
+		max-width: 50%;
 
 		@media @max_sm {
 			max-width: none;
@@ -118,14 +133,14 @@ strong {
 			margin-right: 0;
 			margin-left: 0;
 		}
+	}
+
+	.block_center {
+		.text_center;
 
 		img {
-			max-width: 100%;
-		}
-
-		figcaption {
-			caption-side: bottom;
-			display: table-caption;
+			margin-right: auto;
+			margin-left: auto;
 		}
 	}
 }

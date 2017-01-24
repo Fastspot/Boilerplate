@@ -255,11 +255,9 @@ hr {
 	float: left;
 }
 
-.block_left() {
-	float: left;
-}
+.block_left {
+	.left;
 
-.block_left() {
 	margin: 0 20px 20px 0;
 }
 
@@ -267,12 +265,16 @@ hr {
 	float: right;
 }
 
-.block_right() {
-	float: right;
+.block_right {
+	.right;
+
+	margin: 0 0 20px 20px;
 }
 
-.block_right() {
-	margin: 0 0 20px 20px;
+.block_center {
+	.text_center;
+
+	margin: 20px auto;
 }
 
 .clear() {
