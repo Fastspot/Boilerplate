@@ -1,1 +1,19 @@
-<div class="js-background {{class}}_background" data-background-options='{"source": {{% for key, source in sources %}"{{key}}": "//spacehold.it/{{source}}/{{image}}.jpg"{% if not loop.last %},{% endif %}{% endfor %}}}'></div>
+{#
+	{% include "../partials/components/shared/background.twig" with {
+		class: "flex_callout",
+		customClass: "",
+		image: 1,
+		lazy: "true",
+		lazyEdge: "100",
+		sources: {
+			"0px": img.square.sml,
+			"740px": img.ultrawide.med,
+			"980px": img.ultrawide.lrg,
+			"1220px": img.ultrawide.xlrg
+		}
+	} %}
+#}
+
+<div class="{% if customClass == "" or customClass == null %}js-background {% endif %}{{class}}_background" data-background-options='{"source": {
+{% for key, source in sources %}"{{key}}": "//spacehold.it/{{source}}/{{image}}.jpg"{% if not loop.last %}, {% endif %}{% endfor %}
+}{% if customClass %}, "customClass": "{{customClass}}"{% endif %}{% if lazy == "true" %}, "lazy": true{% endif %}{% if lazyEdge %}, "lazyEdge": "{{lazyEdge}}"{% endif %}}'></div>

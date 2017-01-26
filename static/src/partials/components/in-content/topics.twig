@@ -1,0 +1,82 @@
+{#
+	{% include "../partials/components/in-content/topics.twig" with {
+		title: "",
+		topics: [
+			{
+				title: "Financial Aid",
+				image: "10",
+				description: "Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.",
+				links: [
+					{
+						href: "#",
+						name: "Learn More"
+					},
+					{
+						href: "#",
+						name: "Explore Now"
+					}
+				]
+			},
+			{
+				title: "Virtual Tour",
+				image: "9",
+				description: " Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.",
+				links: [
+					{
+						href: "#",
+						name: "Explore Now"
+					}
+				]
+			}
+		]
+	} %}
+#}
+
+<!-- Topic Block -->
+<div class="topic_block">
+	<div class="topic_block_inner">
+		{% if title %}
+		<header class="topic_block_header">
+			<h2 class="topic_block_title">{{title}}</h2>
+		</header>
+		{% endif %}
+		<div class="topic_items">
+			{% for topic in topics %}
+			<article class="topic_row">
+				<div class="topic_row_inner">
+					{% if topic.image %}
+					<figure class="topic_figure">
+						{% include "../shared/picture.twig" with {
+							class: "topic",
+							fallback: img.square.xxsml,
+							image: topic.image,
+							sources: {
+								"500px": img.classic.xxsml,
+							}
+						} %}
+					</figure>
+					{% endif %}
+					<div class="topic_wrapper">
+						<header class="topic_header">
+							<h3 class="topic_title">{{topic.title}}</h3>
+						</header>
+						<div class="topic_body">
+							<div class="topic_description">
+								<p>{{topic.description}}</p>
+							</div>
+						</div>
+						{% if topic.links %}
+						<footer class="topic_links">
+							{% for link in topic.links %}
+								<a class="topic_link" href="{{link.href}}"><span>{{link.name}}</span></a>
+							{% endfor %}
+						</footer>
+						{% endif %}
+					</div>
+				</div>
+			</article>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+<!-- END: Topic Block -->

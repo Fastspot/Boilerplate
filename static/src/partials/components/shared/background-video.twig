@@ -1,1 +1,24 @@
-<div class="js-background {{class}}_background" data-background-options='{"source":{"poster":"//spacehold.it/{{dimension}}/{{image}}.jpg", "video": "{{video}}"}}'></div>
+{#
+	{% include "../partials/components/shared/background-video.twig" with {
+		class: "Background",
+		customClass: "",
+		autoPlay: "false",
+		embedRatio: "1.777777",
+		lazy: "true",
+		lazyEdge: "100",
+		loop: "false",
+		mute: "false",
+		poster: img.wide.lrg,
+		image: 1,
+		sources: {
+			video: "https://www.youtube.com/watch?v=XPjQhvjQbSM",
+			webm: "http://example.com/video.webm",
+			mp4: "http://example.com/video.mp4",
+			ogg: "http://example.com/video.ogv"
+		}
+	} %}
+#}
+
+<div class="{% if customClass == "" or customClass == null %}js-background {% endif %}{{class}}_background" data-background-options='{"source": {
+{% if poster %}"poster": "//spacehold.it/{{poster}}/{{image}}.jpg", {% endif %}{% for key, source in sources %}"{{key}}": "{{source}}"{% if not loop.last %}, {% endif %}{% endfor %}
+}{% if customClass %}, "customClass": "{{customClass}}"{% endif %}{% if autoPlay == "false" %}, "autoPlay": false{% endif %}{% if embedRatio %}, "embedRatio": {{embedRatio}}{% endif %}{% if loop == "false" %}, "loop": false{% endif %}{% if mute == "false" %}, "mute": false{% endif %}{% if lazy == "true" %}, "lazy": true{% endif %}{% if lazyEdge %}, "lazyEdge": "{{lazyEdge}}"{% endif %}}'></div>

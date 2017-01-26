@@ -10,5 +10,9 @@
 }
 
 .mobile_sidebar {
-	outline: 0;
+	.focus_outline_none();
+
+	@media print {
+		.hide;
+	}
 }
