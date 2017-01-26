@@ -1,7 +1,10 @@
 {% extends "_base.twig" %}
 
 {% set pageTitle = "Home" %}
-{% set layout = "home" %}
+
+{% block layout %}
+  {% set layout = "home" %}
+{% endblock %}
 
 {% block full_width_callouts %}
 {% endblock %}

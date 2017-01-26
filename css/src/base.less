@@ -284,13 +284,9 @@ hr {
 .clearfix() {
 
 	&:after {
-		height: 0;
-
 		clear: both;
-		content: ".";
-		display: block;
-		line-height: 0;
-		visibility: hidden;
+		content: "";
+		display: table;
 	}
 }
 

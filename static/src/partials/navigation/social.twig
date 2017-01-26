@@ -3,7 +3,7 @@
 	https://developers.google.com/structured-data/customize/social-profiles
 #}
 
-<div class="social_nav{% if modifier %} social_nav_{{modifier}}{% endif %}" itemscope itemtype="http://schema.org/{{vars.organizationType}}">
+<div class="social_nav{% if modifier %} social_nav_{{modifier}}{% endif %}" itemscope itemtype="http://schema.org/{{vars.type}}">
 	<link itemprop="url" href="//{{vars.domain}}">
 	{% if title %}
 	<div class="social_nav_header">

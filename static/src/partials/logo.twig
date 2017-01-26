@@ -1,15 +1,10 @@
 {#
 	Logo markup as defined by Google structured data
 	https://developers.google.com/structured-data/customize/logos
-	TODO:
-		1. Update specific type of organization
-		(EducationalOrganization, CollegeOrUniversity, etc...)
-		2. Update Client Name
-		3. Logo needs absolute URL - //www.example.com/logo.png
 #}
 
-<h1 class="logo{% if modifier %} logo_{{modifier}}{% endif %}" itemscope itemtype="http://schema.org/Organization"> {# 1 #}
-	<a class="logo_link" itemprop="url" href="00-1-home.html">{{name}}</a> {# 2 #}
+<h1 class="logo{% if modifier %} logo_{{modifier}}{% endif %}" itemscope itemtype="http://schema.org/{{vars.type}}"> {# 1 #}
+	<a class="logo_link" itemprop="url" href="00-1-home.html">{{vars.name}}</a> {# 2 #}
 	<meta content="../../images/logo-schema.png" itemprop="logo"> {# 3 #}
 	<img class="logo_print" src="../../images/logo-print.png" alt="">
 </h1>

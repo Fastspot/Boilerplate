@@ -49,7 +49,11 @@
 		<![endif]-->
 	</head>
 
-	<body class="fs-grid theme_{{layout|default("interior")}}">
+	{% block layout %}
+		{% set layout = "default" %}
+	{% endblock %}
+
+	<body class="fs-grid theme_{{layout}}">
 
 		<figure class="hide">
 			{% include '../../../images/svg/sprite.symbol.svg' %}
@@ -61,29 +65,38 @@
 				Backend Devs can remove this section
 		#}
 
-		{% block navVars %}
-			{% set mainNavLinksAlias = mainNavLinks %}
-			{% set secondaryNavLinksAlias = secondaryNavLinks %}
-			{% set footerNavLinksAlias = footerNavLinks %}
-			{% set socialNavLinksAlias = socialNavLinks %}
-		{% endblock %}
-
 		{% block activePage %}
-			{% set activePageAlias = 0 %}
+			{% set activePage = 0 %}
 		{% endblock %}
 
-		{% block sectionVar %}
-			{% set sectionAlias = "" %}
+		{% block sectionTitle %}
+			{% set sectionTitle = "" %}
 		{% endblock %}
 
-		{% block breadcrumbNavVar %}
+		{% block mainNavLinks %}
+			{% set mainNavLinksAlias = mainNavLinks %}
+		{% endblock %}
+
+		{% block breadcrumbNavLinks %}
 			{% set breadcrumbNavLinks = [
 				pageTitle|default("Page")
 			] %}
 		{% endblock %}
 
-		{% block subNavVar %}
+		{% block subNavLinks %}
 			{% set subNavLinksAlias = subNavLinks %}
+		{% endblock %}
+
+		{% block secondaryNavLinks %}
+			{% set secondaryNavLinksAlias = secondaryNavLinks %}
+		{% endblock %}
+
+		{% block footerNavLinks %}
+			{% set footerNavLinksAlias = footerNavLinks %}
+		{% endblock %}
+
+		{% block socialNavLinks %}
+			{% set socialNavLinksAlias = socialNavLinks %}
 		{% endblock %}
 
 		{% if name == "site-title" %}<h2>Update "name"</h2>{% endif %}
@@ -101,7 +114,11 @@
 			{% endif %}
 		{% endmacro %}
 
-		{% import _self as sprite %}
+		{% macro image(class, dimension, image) %}
+			<img class="{{class}}_image" src="//spacehold.it/{{dimension}}/{{image}}.jpg" alt="">
+		{% endmacro %}
+
+		{% import _self as site %}
 
 		{# End: Backend Dev removable blocks #}
 
@@ -116,15 +133,14 @@
 				<div class="fs-row">
 					<div class="fs-cell">
 						{% include "../partials/logo.twig" with {
-							modifier: "header",
-							name: vars.name
+							modifier: "header"
 						} %}
 
 						{% include "../partials/navigation/main.twig" with {
 							modifier: "lg",
 							title: "Site Navigation",
 							links: mainNavLinksAlias,
-							active: activePageAlias
+							active: activePage
 						} %}
 
 						{% include "../partials/navigation/basic.twig" with {
@@ -170,7 +186,7 @@
 						<div class="fs-cell-right fs-lg-4 subnav_cell">
 							{% block subNav %}
 								{% include "../partials/navigation/sub.twig" with {
-									title: sectionAlias,
+									title: sectiontitle,
 									links: subNavLinksAlias
 								} %}
 							{% endblock %}
@@ -272,7 +288,7 @@
 			{% include "../partials/navigation/main.twig" with {
 				modifier: "sm",
 				links: mainNavLinksAlias,
-				active: activePageAlias
+				active: activePage
 			} %}
 
 			{% include "../partials/navigation/basic.twig" with {
