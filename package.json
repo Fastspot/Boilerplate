@@ -11,7 +11,7 @@
     "namespace": "namespace",
     "name": "Client Name",
     "domain": "www.example.com",
-    "type": "Organization",
+    "schemaType": "Organization",
     "twitter": "TwitterName",
     "color": "",
     "mq_min_ht": "800",
