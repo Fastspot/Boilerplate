@@ -159,6 +159,7 @@ gulp.task('sprite', function() {
 			svg: {
 				xmlDeclaration: false,
 				doctypeDeclaration: false,
+				namespaceIDs: false,
 				dimensionAttributes: true
 			},
 			mode: {
