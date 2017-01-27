@@ -1,10 +1,12 @@
 {#
 	Logo markup as defined by Google structured data
 	https://developers.google.com/structured-data/customize/logos
+
+	1. Change math to schema logo.
 #}
 
-<h1 class="logo{% if modifier %} logo_{{modifier}}{% endif %}" itemscope itemtype="http://schema.org/{{vars.type}}"> {# 1 #}
-	<a class="logo_link" itemprop="url" href="00-1-home.html">{{vars.name}}</a> {# 2 #}
-	<meta content="../../images/logo-schema.png" itemprop="logo"> {# 3 #}
+<h1 class="logo{% if modifier %} logo_{{modifier}}{% endif %}" itemscope itemtype="http://schema.org/{{vars.schemaType}}">
+	<a class="logo_link" itemprop="url" href="00-1-home.html">{{vars.name}}</a>
+	<meta content="../../images/logo-schema.png" itemprop="logo"> {# 1 #}
 	<img class="logo_print" src="../../images/logo-print.png" alt="">
 </h1>
