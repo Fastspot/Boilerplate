@@ -22,7 +22,7 @@
     "mq_min_xl": "1220"
   },
   "devDependencies": {
-    "autoprefixer": "^6.7.0",
+    "autoprefixer": "^6.7.2",
     "del": "^2.2.2",
     "grunt": "^1.0.1",
     "grunt-bless": "^1.0.2",
@@ -39,7 +39,7 @@
     "grunt-modernizr": "^1.0.2",
     "grunt-newer": "^1.2.0",
     "grunt-postcss": "^0.8.0",
-    "grunt-real-favicon": "^0.1.7",
+    "grunt-real-favicon": "^0.2.0",
     "grunt-stripmq": "0.0.6",
     "grunt-svg-sprite": "^1.3.6",
     "grunt-twig-render": "^1.8.0",
@@ -62,7 +62,7 @@
     "gulp-util": "^3.0.8",
     "jshint-stylish": "^2.2.1",
     "less-plugin-clean-css": "^1.5.1",
-    "less-plugin-glob": "^1.1.1",
+    "less-plugin-glob": "^2.0.0",
     "postcss-assets": "^4.1.0",
     "postcss-discard-empty": "^2.1.0",
     "postcss-unmq": "^1.0.2",

@@ -1,0 +1,36 @@
+{% macro symbol(name, modifier) %}
+  {% if name %}
+    <svg class="symbol symbol_{{name}}{% if modifier %} symbol_{{modifier}}{% endif %}">
+      <use xlink:href="#{{name}}"></use>
+    </svg>
+  {% endif %}
+{% endmacro %}
+
+
+{% macro image(class, dimension, image) %}
+  <img class="{{class}}_image" src="//spacehold.it/{{dimension}}/{{image}}.jpg" alt="">
+{% endmacro %}
+
+
+{#
+	{% include "../shared/picture.twig" with {
+		class: "media",
+		fallback: "placeholder",
+		image: item.image,
+		sources: {
+			"1220px": img.wide.med,
+			"500px": img.wide.sml
+		}
+	} %}
+#}
+
+{% macro picture(parameters) %}
+  <picture class="{{parameters.class}}_picture">
+    <!--[if IE 9]><video style="display: none;"><![endif]-->
+    {% for key, source in parameters.sources %}
+    <source media="(min-width: {{key}})" srcset="{% if source == "placeholder" %}../../images/placeholder.png{% else %}//spacehold.it/{{source}}/{{image}}.jpg{% endif %}">
+    {% endfor %}
+    <!--[if IE 9]></video><![endif]-->
+    <img class="{{parameters.class}}_image" src="{% if parameters.fallback == "placeholder" %}../../images/placeholder.png{% else %}//spacehold.it/{{parameters.fallback}}/{{parameters.image}}.jpg{% endif %}" alt="">
+  </picture>
+{% endmacro %}

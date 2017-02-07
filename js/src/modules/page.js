@@ -6,26 +6,10 @@
 
 Site.modules.Page = (function($, Site) {
 
-	var $mainNav,
-			$subNav;
+	var $mainNav = $(".js-main-nav");
+	var $subNav = $(".js-sub-nav");
 
 	function init() {
-
-		$mainNav                      = $(".js-main-nav");
-		$subNav                       = $(".js-sub-nav");
-
-
-		// Picturefill
-
-		picturefill();
-
-
-		// Analytics
-
-		$.analytics({
-			scrollDepth: true
-		});
-
 
 		// Plugins
 
@@ -65,6 +49,29 @@ Site.modules.Page = (function($, Site) {
 		});
 
 
+		// Display children of focused nav items
+
+		$mainNav.find("a")
+			.focus(function() {
+				$(this).closest(".main_nav_item").addClass("focused");
+			})
+			.blur(function() {
+				$(this).closest(".main_nav_item").removeClass("focused");
+			});
+
+
+		// Picturefill
+
+		picturefill();
+
+
+		// Analytics
+
+		$.analytics({
+			scrollDepth: true
+		});
+
+
 		// Wrapper for Tables
 
 		Site.$body.find(".typography table")
@@ -95,17 +102,6 @@ Site.modules.Page = (function($, Site) {
 		});
 
 
-		// Display children of focused nav items
-
-		$mainNav.find("a")
-			.focus(function () {
-				$(this).closest(".main_nav_item").addClass("focused");
-			})
-			.blur(function () {
-				$(this).closest(".main_nav_item").removeClass("focused");
-			});
-
-
 		// Scrolling
 
 		Site.onScroll.push(scroll);
@@ -115,9 +111,7 @@ Site.modules.Page = (function($, Site) {
 		Site.scroll();
 	}
 
-	function scroll() {
-
-	}
+	function scroll() {}
 
 	function resize() {
 		scroll();
@@ -189,8 +183,6 @@ Site.modules.Page = (function($, Site) {
 
 	Site.onInit.push(init);
 
-	return {
-
-	};
+	return {};
 
 })(jQuery, Site);

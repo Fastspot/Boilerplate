@@ -1,36 +1,47 @@
 /* ==========================================================================
-	Typography
+	Type Base
 ============================================================================= */
 
-.heading_1 {
+.heading_1() {
 	.font_size(60);
 	.line_height(70, 60);
 }
 
-.heading_2 {
+.heading_2() {
 	.font_size(50);
 	.line_height(60, 50);
 }
 
-.heading_3 {
+.heading_3() {
 	.font_size(40);
 	.line_height(50, 40);
 }
 
-.heading_4 {
+.heading_4() {
 	.font_size(30);
 	.line_height(40, 30);
 }
 
-.heading_5 {
+.heading_5() {
 	.font_size(20);
 	.line_height(30, 20);
 }
 
-.heading_6 {
+.heading_6() {
 	.font_size(16);
 	.line_height(24, 16);
 }
+
+.body_text() {
+	.font_size(16);
+	.line_height(24, 16);
+}
+
+.label_text() {}
+
+.intro_text() {}
+
+.caption_text() {}
 
 p {}
 
@@ -48,16 +59,9 @@ strong {
 	font-weight: bold;
 }
 
-.body_text {
-	.font_size(16);
-	.line_height(24, 16);
-}
 
-.label_text {}
-
-.intro_text {}
-
-.caption_text {}
+/* typography
+============================================================================= */
 
 .typography {
 	.body_text;
@@ -87,7 +91,7 @@ strong {
 	}
 
 	p {
-		.body_text();
+		.body_text;
 	}
 }
 
