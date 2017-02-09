@@ -70,18 +70,18 @@ hr {
 }
 
 .margined_md_top() {
-	margin-top: @margin_md;
+	.margined_top;
 
-	@media @min_lg {
-		margin-top: @margin_lg;
+	@media @min_md {
+		margin-top: @margin_md;
 	}
 }
 
 .margined_md_bottom() {
-	margin-bottom: @margin_md;
+	.margined_bottom;
 
-	@media @min_lg {
-		margin-bottom: @margin_lg;
+	@media @min_md {
+		margin-bottom: @margin_md;
 	}
 }
 
@@ -91,18 +91,18 @@ hr {
 }
 
 .margined_lg_top() {
-	margin-top: @margin_md;
+	.margined_md_top;
 
 	@media @min_lg {
-		margin-top: @margin_xl;
+		margin-top: @margin_lg;
 	}
 }
 
 .margined_lg_bottom() {
-	margin-bottom: @margin_md;
+	.margined_md_bottom;
 
 	@media @min_lg {
-		margin-bottom: @margin_xl;
+		margin-bottom: @margin_lg;
 	}
 }
 
@@ -143,18 +143,18 @@ hr {
 }
 
 .padded_md_top() {
-	padding-top: @margin_md;
+	.padded_top;
 
-	@media @min_lg {
-		padding-top: @margin_lg;
+	@media @min_md {
+		padding-top: @margin_md;
 	}
 }
 
 .padded_md_bottom() {
-	padding-bottom: @margin_md;
+	.padded_bottom;
 
-	@media @min_lg {
-		padding-bottom: @margin_lg;
+	@media @min_md {
+		padding-bottom: @margin_md;
 	}
 }
 
@@ -164,18 +164,18 @@ hr {
 }
 
 .padded_lg_top() {
-	padding-top: @margin_md;
+	.padded_md_top;
 
 	@media @min_lg {
-		padding-top: @margin_xl;
+		padding-top: @margin_lg;
 	}
 }
 
 .padded_lg_bottom() {
-	padding-bottom: @margin_md;
+	.padded_md_bottom;
 
 	@media @min_lg {
-		padding-bottom: @margin_xl;
+		padding-bottom: @margin_lg;
 	}
 }
 
@@ -185,11 +185,11 @@ hr {
 }
 
 .padded_top_none() {
-	padding-top: 0 !important;
+	padding-top: 0;
 }
 
 .padded_bottom_none() {
-	padding-bottom: 0 !important;
+	padding-bottom: 0;
 }
 
 .padded_none() {
@@ -255,7 +255,7 @@ hr {
 	float: left;
 }
 
-.block_left {
+.block_left() {
 	.left;
 
 	margin: 0 20px 20px 0;
@@ -265,13 +265,13 @@ hr {
 	float: right;
 }
 
-.block_right {
+.block_right() {
 	.right;
 
 	margin: 0 0 20px 20px;
 }
 
-.block_center {
+.block_center() {
 	.text_center;
 
 	margin: 20px auto;
@@ -294,12 +294,15 @@ hr {
 	overflow: hidden;
 }
 
-.no_select,
-.no_select * {
-	user-select: none;
+.no_select() {
+	
+	&,
+	& * {
+		user-select: none;
+	}
 }
 
-.hide {
+.hide() {
 	display: none !important;
 	visibility: hidden;
 }
@@ -344,7 +347,7 @@ hr {
 	z-index: -999;
 }
 
-.video_frame {
+.video_frame() {
 	width: 100%;
 
 	position: relative;

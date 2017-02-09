@@ -6,7 +6,7 @@
 
 @base_transition_duration: 0.25s;
 @base_transition_timing: ease;
-@base_transition_delay: 0s;
+@base_transition_delay: 0.05s;
 
 // Width Media Queries
 
@@ -89,10 +89,14 @@
 	color: rgba(red(@base), green(@base), blue(@base), @alpha);
 }
 
+.inset_border(@color) {
+	box-shadow: inset 0 0 0 1px @color;
+}
+
 // 1. Autoprefixer does not prefix correctly
 // 2. IE 10/11 uses a non-standard
 
-.columns(@count, @gap) {
+.columns(@count, @gap: 0) {
 	column-count: @count;
 	column-gap: @gap;
 
@@ -111,12 +115,6 @@
 .scale_sprite(@percent: 1, @imageOffsetX: 0, @imageOffsetY: 0) {
 	background-size: floor(@sprite_width * @percent) floor(@sprite_height * @percent);
 	background-position: floor(@imageOffsetX * @percent) floor(@imageOffsetY * @percent);
-}
-
-.icon_indent() {
-	overflow: hidden;
-	text-indent: 200%;
-	white-space: nowrap;
 }
 
 .cover() {
@@ -140,7 +138,7 @@
 
 .cover_image() {
 	position: relative;
-	z-index: 1;
+	z-index: 2;
 
 	img {
 		width: auto;
@@ -237,24 +235,6 @@
 .killFlicker() {
 	-webkit-font-smoothing: auto;
 	transform: translateZ(0);
-}
-
-// Keep inline icons from wrapping to a new line
-
-.inline_icon(@width) {
-	padding-right: ~"@{width}px";
-
-	&:after {
-		.inline_block;
-
-		width: ~"@{width}px";
-
-		margin-right: @width * -1px;
-	}
-}
-
-.inset_border(@color) {
-	box-shadow: inset 0 0 0 1px @color;
 }
 
 .word_break() {

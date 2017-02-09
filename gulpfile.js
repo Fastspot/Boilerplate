@@ -39,6 +39,27 @@ gulp.task('twig', function() {
 
 });
 
+gulp.task('twig-templates', function() {
+
+	return gulp.src([
+		'static/src/templates/*.twig',
+		'!static/src/templates/_*.twig'
+	])
+		.pipe(changed('static/templates/', {
+			extension: '.html'
+		}))
+		.pipe(twig({
+			data: packageJSON,
+			cache: true
+		}))
+		.pipe(rename({
+			extname: '.html'
+		}))
+		.pipe(gulp.dest('static/templates/'))
+		.pipe(browserSync.stream());
+
+});
+
 
 gulp.task('create-sitemap', ['twig'], function() {
 
@@ -117,7 +138,7 @@ gulp.task('ie-less', function() {
 			cacheBuster: false,
 			log: true
 		})))
-		.pipe(gulp.dest('css/'));
+		.pipe(gulpif(util.env.production, gulp.dest('css/')));
 
 });
 
@@ -250,7 +271,8 @@ gulp.task('browser-sync', function() {
 
 gulp.task('watch', function() {
 
-	gulp.watch('static/src/**/**.twig', ['twig']);
+	gulp.watch('static/src/templates/*.twig', ['twig-templates']);
+	gulp.watch('static/src/partials/**/**.twig', ['twig']);
 	gulp.watch('css/src/**/**', ['less', 'ie-less']);
 	gulp.watch('js/src/**/**.js', ['scripts', 'jshint']);
 	gulp.watch('images/src/**/*', ['sprite', 'imagemin']);

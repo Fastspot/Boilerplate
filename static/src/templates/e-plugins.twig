@@ -3,7 +3,6 @@
 {% set pageTitle = "Plugins" %}
 
 {% block in_content_callouts %}
-
 	<div class="cr_heading">Slideshow</div>
 
 	<div class="js-carousel">
@@ -44,14 +43,13 @@
 	{% include "../partials/components/in-content/accordion.twig" with {
 		accordions: [
 			{
-				question: "Lorem ipsum yuppy golor",
-				answer: "Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi."
+				label: "Lorem ipsum yuppy golor",
+				description: "Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi."
 			},
 			{
-				question: "Lorem ipsum nolom de letuvis",
-				answer: "Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna."
+				label: "Lorem ipsum nolom de letuvis",
+				description: "Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna."
 			}
 		]
 	}%}
-
 {% endblock %}

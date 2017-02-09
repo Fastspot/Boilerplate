@@ -54,7 +54,7 @@
 	{% endblock %}
 
 	<body class="fs-grid theme_{{layout}}">
-		<figure class="hide">
+		<figure style="display: none;">
 			{% include '../../../images/svg/sprite.symbol.svg' %}
 		</figure>
 
@@ -181,7 +181,7 @@
 										{% include "../partials/navigation/breadcrumb.twig" with {
 											links: breadcrumbNavLinks
 										} %}
-										
+
 										{% if pageTitle %}
 											<div class="typography">
 												<h1 class="page_title" id="page_title">{{pageTitle}}</h1>

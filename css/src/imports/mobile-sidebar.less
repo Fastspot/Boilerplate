@@ -4,8 +4,12 @@
 
 .mobile_sidebar_handle {
 
+	@media print {
+		.none;
+	}
+
 	@media @min_lg {
-		.hide;
+		.none;
 	}
 }
 
@@ -13,6 +17,6 @@
 	.focus_outline_none();
 
 	@media print {
-		.hide;
+		.none;
 	}
 }
