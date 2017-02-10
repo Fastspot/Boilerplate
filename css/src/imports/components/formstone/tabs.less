@@ -1,0 +1,31 @@
+/* ==========================================================================
+	Tabs
+============================================================================= */
+
+.fs-tabs {
+
+	&-enabled {
+		.clearfix;
+	}
+
+	&-tab&-enabled {
+		cursor: pointer;
+	}
+
+	&-tab&-mobile,
+	&-tab_mobile {
+		display: none;
+	}
+
+	&-tab_mobile&-mobile {
+		display: block;
+	}
+
+	&-content&-enabled {
+		display: none;
+	}
+
+	&-content&-active {
+		display: block;
+	}
+}

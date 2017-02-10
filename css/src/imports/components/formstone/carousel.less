@@ -1,0 +1,108 @@
+/* ==========================================================================
+  Carousel
+============================================================================= */
+
+@fs-carousel-transition-duration: 0.5s;
+
+@fs-carousel-control-left: 0;
+@fs-carousel-control-right: 0;
+
+.fs-carousel {
+  position: relative;
+
+  &-enabled&-rtl {
+		direction: rtl;
+	}
+
+	&-enabled &-viewport {
+    .clearfix;
+
+		position: relative;
+	}
+
+	&-enabled &-container {
+    .clearfix;
+	}
+
+  &-enabled&-contained &-container {
+		overflow: hidden;
+	}
+
+	&-enabled &-canister {
+		backface-visibility: hidden;
+		overflow: hidden;
+		transition: transform .5s;
+		transform: translate3d(0, 0, 0);
+	}
+
+	&-enabled&-auto_height &-canister {
+		transition:
+			height .5s,
+			transform .5s;
+	}
+
+
+  /* Items
+	=========================================================================== */
+
+	&-enabled &-item {
+		min-height: 1px;
+
+		display: block;
+		float: left;
+
+		img {
+			-webkit-user-drag: none;
+			user-select: none;
+		}
+	}
+
+  &-enabled&-rtl &-item {
+		float: right;
+	}
+
+	&-single &-item {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	&-single &-item&-visible {
+		position: relative;
+    z-index: 2;
+	}
+
+
+  /* Controls
+	=========================================================================== */
+
+	&-controls {
+		display: none;
+	}
+
+	&-enabled &-controls&-visible,
+	&-controls_custom&-visible {
+		display: block;
+	}
+
+	&-enabled &-control {
+		cursor: pointer;
+	}
+
+
+  /* Pagination
+	=========================================================================== */
+
+	&-pagination {
+		display: none;
+	}
+
+	&-enabled &-pagination&-visible {
+		display: block;
+	}
+
+	&-enabled &-page {
+		cursor: pointer;
+		display: inline-block;
+	}
+}
