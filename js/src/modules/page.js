@@ -35,7 +35,6 @@ Site.modules.Page = (function($, Site) {
 				Site.$body.find(".js-navigation").attr("aria-hidden", "true").attr("hidden", "");
 			});
 		Site.$body.find(".js-swap").swap();
-		Site.$body.find("input[type=number]").number();
 		Site.$body.find("input[type=range]").range();
 		Site.$body.find(".js-tabs").tabs();
 
@@ -47,6 +46,10 @@ Site.modules.Page = (function($, Site) {
 				$subNav.attr("aria-hidden", "true").attr("hidden", "");
 			}
 		});
+
+		if ($(".js-carousel .control_group").length) {
+			setCarouselControls();
+		}
 
 
 		// Display children of focused nav items
@@ -176,6 +179,16 @@ Site.modules.Page = (function($, Site) {
 			} else {
 				$(this).removeClass("table_wrapper_overflow");
 			}
+		});
+	}
+
+	function setCarouselControls() {
+		$(".control_group .fs-carousel-control_previous").each(function() {
+			$(this).append("<span class='icon'><svg class='symbol symbol_left_arrow'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#left_arrow'></use></svg></span>");
+		});
+
+		$(".control_group .fs-carousel-control_next").each(function() {
+			$(this).append("<span class='icon'><svg class='symbol symbol_right_arrow'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#right_arrow'></use></svg></span>");
 		});
 	}
 
