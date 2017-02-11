@@ -13,13 +13,13 @@
 .accordion_item {}
 
 .accordion_item_title {
-	.relative;
+	position: relative;
 
 	cursor: pointer;
 }
 
 .accordion_item_icon {
-	
+
 	.accordion_item_title:focus &,
 	.accordion_item_title:hover & {}
 
@@ -27,13 +27,13 @@
 }
 
 .accordion_item_description {
-	.none;
+	display: none;
 
 	@media print {
-		.block;
+		display: block;
 	}
 
 	.fs-swap-active & {
-		.block;
+		display: block;
 	}
 }

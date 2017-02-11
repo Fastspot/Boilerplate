@@ -9,8 +9,7 @@ button {
 }
 
 .button_base() {
-	.text_center;
-
+	text-align: center;
 	transition:
 		background @base_transition_duration,
 		border @base_transition_duration,
@@ -21,15 +20,16 @@ button {
 
 .button_inline() {
 	.button_base;
-	.inline_block;
 
+	display: inline-block;
 	margin-right: 8px;
 	margin-bottom: 8px;
 }
 
 .button_block() {
 	.button_base;
-	.block;
+
+	display: block;
 }
 
 

@@ -115,8 +115,7 @@ strong {
 		table-layout: fixed;
 
 		img {
-			.block;
-
+			display: block;
 			max-width: 100%;
 		}
 
@@ -140,7 +139,7 @@ strong {
 	}
 
 	.block_center {
-		.text_center;
+		text-align: center;
 
 		img {
 			margin-right: auto;
@@ -194,15 +193,14 @@ strong {
 		li {
 
 			&:before {
-				.left;
-				.block;
-
 				width: 5px;
 				height: 5px;
 
 				background: #444;
 				border-radius: 50%;
 				content: "";
+				display: block;
+				float: left;
 				margin: 10px 0 0 -15px;
 			}
 		}
@@ -232,7 +230,8 @@ strong {
 
 		th {
 			.heading_6;
-			.text_left;
+
+			text-align: left;
 		}
 
 		td {}
@@ -249,17 +248,17 @@ strong {
 	min-height: 0.01%; // 1
 
 	&.table_wrapper_overflow {
-		.relative;
+		position: relative;
 
 		border: 1px solid #ccc;
 
 		&:after {
-			.absolute;
 			.gradient_horizontal(fade(@true_black, 0), fade(@true_black, 10));
 
 			width: 20px;
 			height: 100%;
 
+			position: absolute;
 			top: 0;
 			right: 0;
 

@@ -1,20 +1,20 @@
 /* ==========================================================================
-  Navigation
+	Navigation
 ============================================================================= */
 
 @fs-navigation-offscreen-width: 270px;
 
 .fs-navigation {
 
-  &-lock {
+	&-lock {
 		overflow: hidden;
 	}
 
 
-  /* Overlay
+	/* Overlay
 	=========================================================================== */
 
-  &-overlay-content:before {
+	&-overlay-content:before {
 		width: 100%;
 		height: 100%;
 
@@ -31,8 +31,8 @@
 		display: block;
 		opacity: 0;
 		transition:
-      opacity .25s,
-      visibility .25s;
+			opacity .25s,
+			visibility .25s;
 		visibility: hidden;
 	}
 
@@ -42,11 +42,11 @@
 	}
 
 
-  /* Toggle
+	/* Toggle
 	=========================================================================== */
 
-  &-push-handle&-enabled,
-  &-reveal-handle&-enabled,
+	&-push-handle&-enabled,
+	&-reveal-handle&-enabled,
 	&-overlay-handle&-enabled {
 		cursor: pointer;
 		display: block;
@@ -68,7 +68,7 @@
 	}
 
 
-  /* Overlay
+	/* Overlay
 	=========================================================================== */
 
 	&-push-nav&-enabled,
@@ -80,31 +80,31 @@
 
 		position: fixed;
 		top: 0;
-    z-index: 200;
+		z-index: 200;
 
 		background: #fff;
 		display: block;
 		overflow: auto;
 		-webkit-overflow-scrolling: touch;
-    transition:
-      opacity .25s,
-      transform .25s,
-      visibility .25s;
+		transition:
+			opacity .25s,
+			transform .25s,
+			visibility .25s;
 	}
 
-  &-push-nav&-enabled,
+	&-push-nav&-enabled,
 	&-overlay-nav&-enabled {
-    opacity: 0;
-    visibility: hidden;
-  }
+		opacity: 0;
+		visibility: hidden;
+	}
 
-  &-push-nav&-open,
+	&-push-nav&-open,
 	&-overlay-nav&-open {
-    opacity: 1;
-    visibility: visible;
-  }
+		opacity: 1;
+		visibility: visible;
+	}
 
-  &-push-left-nav&-enabled,
+	&-push-left-nav&-enabled,
 	&-reveal-left-nav&-enabled,
 	&-overlay-left-nav&-enabled {
 		left: 0;
@@ -132,24 +132,24 @@
 		transform: translateX(100%);
 	}
 
-  &-overlay-nav&-open,
+	&-overlay-nav&-open,
 	&-push-nav&-open {
 		transform: translateX(0);
 	}
 
 
-  /* Content
+	/* Content
 	=========================================================================== */
 
 	&-reveal-content&-enabled,
 	&-push-content&-enabled {
 		position: relative;
-    z-index: 400;
+		z-index: 400;
 
 		display: block;
 		overflow: hidden;
 		transform: translateX(0);
-    transition: transform .25s;
+		transition: transform .25s;
 	}
 
 	&-reveal-left-content&-open,

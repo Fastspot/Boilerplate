@@ -11,10 +11,10 @@
 .sub_nav_handle_wrapper {}
 
 .sub_nav_handle {
-	.relative;
+	position: relative;
 
 	@media @min_lg {
-		.none;
+		display: none;
 	}
 
 	&.fs-navigation-enabled {
@@ -23,8 +23,7 @@
 		text-align: left;
 
 		&:after {
-			.absolute;
-
+			position: absolute;
 			top: 50%;
 			right: 20px;
 
@@ -52,7 +51,7 @@
 .sub_nav_item {}
 
 .sub_nav_link {
-	.block;
+	display: block;
 
 	&:focus,
 	&:active,

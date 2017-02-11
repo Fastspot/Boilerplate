@@ -20,7 +20,7 @@
 	=========================================================================== */
 
 	.gsc-search-box {
-		.relative;
+		position: relative;
 
 		font-size: inherit;
 		margin-bottom: 20px;
@@ -48,11 +48,10 @@
 		}
 
 		td.gsc-search-button {
-			.absolute;
-
 			height: 100%;
 			width: auto;
 
+			position: absolute;
 			top: 0;
 			right: 0;
 		}
@@ -75,16 +74,14 @@
 		}
 
 		td.gsc-clear-button {
-			.absolute;
-
+			position: absolute;
 			top: 0;
 			right: 0;
 		}
 
 		div.gsc-clear-button {
-			.block;
-
 			background: none;
+			display: block;
 			margin: 0;
 			padding-left: 0;
 			text-align: center;
@@ -257,9 +254,8 @@
 			padding: 20px 0;
 
 			.gsc-cursor-page {
-				.inline_block;
-
 				background: none;
+				display: inline-block;
 				margin-right: 5px;
 				padding: 0 5px;
 				text-decoration: none;

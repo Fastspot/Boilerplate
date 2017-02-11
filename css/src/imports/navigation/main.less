@@ -17,7 +17,7 @@
 .main_nav_item_wrapper {}
 
 .main_nav_link {
-	.block;
+	display: block;
 
 	&:focus,
 	&:active,
@@ -31,7 +31,7 @@
 .main_nav_child_item {}
 
 .main_nav_child_link {
-	.block;
+	display: block;
 }
 
 
@@ -42,7 +42,7 @@
 .main_nav_sm {
 
 	@media @min_lg {
-		.hide;
+		display: none;
 	}
 
 	.main_nav_title {}
@@ -54,14 +54,14 @@
 		&.fs-swap-enabled {
 
 			.main_nav_children {
-				.none;
+				display: none;
 			}
 		}
 
 		&.fs-swap-active {
 
 			.main_nav_children {
-				.block;
+				display: block;
 			}
 		}
 	}
@@ -92,7 +92,7 @@
 .main_nav_lg {
 
 	@media @max_lg {
-		.hide;
+		display: none;
 	}
 
 	.main_nav_title {}
@@ -122,11 +122,11 @@
 	}
 
 	.main_nav_toggle {
-		.hide;
+		display: none;
 	}
 
 	.main_nav_children {
-		.absolute;
+		position: absolute;
 
 		opacity: 0;
 		transition:
