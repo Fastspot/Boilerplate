@@ -25,7 +25,9 @@
 
 	<div class="lightbox-image-gallery">
 		{% for i in 0..3 %}
-			<a href="//spacehold.it/320x240/{{i}}.jpg" class="js-lightbox" data-lightbox-gallery="image_gallery" title="Sed posuere consectetur est at lobortis.">
+			<a href="//spacehold.it/320x240/{{i}}.jpg" class="js-lightbox" data-lightbox-gallery="image_gallery" title="Sed posuere consectetur est at lobortis." data-lightbox-options='{
+				"thumbnails": true
+			}'>
 				<img src="//spacehold.it/320x240/{{i}}.jpg" alt="{{i}}">
 			</a>
 		{% endfor %}

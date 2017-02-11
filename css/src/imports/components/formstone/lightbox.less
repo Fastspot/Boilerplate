@@ -1,10 +1,13 @@
 /* ==========================================================================
-  Lightbox
+	Lightbox
 ============================================================================= */
 
-@fs-lightbox-z-index: 100;
+@fs-lightbox-z-index: 400;
 
 @fs-lightbox-thumbnail-size: 50px;
+@fs-lightbox-thumbnail-margin: 0 10px 0 0;
+@fs-lightbox-thumbnail-opacity: 0.25;
+@fs-lightbox-thumbnail-padding: 10px;
 @fs-lightbox-thumbnail-scrollbar-size: 30px;
 
 .fs-lightbox {
@@ -14,30 +17,83 @@
 	position: absolute;
 	right: 0;
 	left: 0;
-	z-index: 200;
+	z-index: (@fs-lightbox-z-index + 1);
 
 	opacity: 0;
 	margin: 0 auto;
-
 	transform: translateZ(0);
 
-  &-animating {
-    transition:
-      height .25s,
-      width .25s,
-      top .25s,
-      opacity .25s;
-	}
-
-  &-open {
+	&-open {
 		opacity: 1;
 	}
 
-  &-lock {
+	&-lock {
 		overflow: hidden;
 	}
 
-  &-overlay {
+	&-fixed {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+
+		margin: auto;
+	}
+
+	&-animating {
+		transition:
+			height .25s,
+			width .25s,
+			top .25s,
+			opacity .25s;
+	}
+
+	&-animating &-content,
+	&-animating &-thumbnails,
+	&-animating &-tools,
+	&-animating &-meta,
+	&-animating &-control {
+		transition:
+			opacity .25s,
+			visibility .25s;
+	}
+
+	&-mobile &-image_container {
+		transiton:
+			top .25s,
+			left .25s;
+	}
+
+	&-mobile&-scaling &-image_container {
+		transition: none;
+	}
+
+	&-mobile&-zooming &-image_container {
+		transition:
+			top .25s,
+			left .25s;
+	}
+
+	&-mobile &-image {
+		transition:
+			height .25s,
+			width .25s,
+			top .25s,
+			left .25s;
+	}
+
+	&-mobile&-scaling &-image {
+		transition: none;
+	}
+
+	&-mobile&-zooming &-image {
+		transition:
+			height .25s,
+			width .25s,
+			top .25s,
+			left .25s;
+	}
+
+	&-overlay {
 		width: 100%;
 		height: 100%;
 
@@ -46,7 +102,7 @@
 		right: 0;
 		bottom: 0;
 		left: 0;
-		z-index: 100;
+		z-index: @fs-lightbox-z-index;
 
 		opacity: 0;
 		transition: opacity .25s;
@@ -56,57 +112,11 @@
 		opacity: .75;
 	}
 
-	&-animating &-content,
-	&-animating &-thumbnails,
-	&-animating &-tools,
-	&-animating &-meta,
-	&-animating &-control {
-    transition:
-      opacity .25s,
-      visibility .25s;
-	}
-
-	&-mobile &-image_container {
-    transition:
-      top .25s,
-      left .25s;
-	}
-
-  &-mobile&-scaling &-image_container {
-		transition: none;
-	}
-
-	&-mobile&-zooming &-image_container {
-    transition:
-      top .25s,
-      left .25s;
-	}
-
-	&-mobile &-image {
-    transition:
-      height .25s,
-      width .25s,
-      top .25s,
-      left .25s;
-	}
-
-  &-mobile&-scaling &-image {
-		transition: none;
-	}
-
-  &-mobile&-zooming &-image {
-    transition:
-      height .25s,
-      width .25s,
-      top .25s,
-      left .25s;
-	}
-
 	&-close {
 		position: absolute;
 		top: 0;
 		right: 0;
-		z-index: 400;
+		z-index: (@fs-lightbox-z-index + 5);
 
 		cursor: pointer;
 		display: block;
@@ -114,14 +124,28 @@
 	}
 
 	&-container {
-    .clearfix;
-
 		width: 100%;
 		height: 100%;
+
+		position: relative;
+		z-index: (@fs-lightbox-z-index + 3);
+
+		overflow: hidden;
+	}
+
+	&-content {
+		width: 100%;
+
+		opacity: 1;
+		overflow: hidden;
+		padding: 0;
+		visibility: visible;
 	}
 
 	&-inline &-content {
 		width: auto;
+
+		overflow: auto;
 
 		-webkit-overflow-scrolling: touch;
 	}
@@ -129,6 +153,8 @@
 	&-iframed &-content {
 		width: 100%;
 		height: 100%;
+
+		overflow: auto;
 
 		-webkit-overflow-scrolling: touch;
 	}
@@ -174,6 +200,8 @@
 	}
 
 	&-control {
+		.fs_button;
+
 		position: absolute;
 		top: 0;
 		z-index: (@fs-lightbox-z-index + 5);
@@ -200,10 +228,6 @@
 		visibility: hidden;
 	}
 
-	&-caption {
-    .clearfix;
-	}
-
 	&-toggle {
 		.fs_button;
 
@@ -211,17 +235,16 @@
 	}
 
 	&-thumbnails {
-		height: @fs-lightbox-thumbnail-size + 20;
+		height: @fs-lightbox-thumbnail-size + @fs-lightbox-thumbnail-padding;
 
-		clear: both;
+		position: relative;
+		z-index: 400;
+
 		overflow: hidden;
-		padding: 0;
 	}
 
 	&-thumbnail_container {
 		height: @fs-lightbox-thumbnail-size + @fs-lightbox-thumbnail-scrollbar-size;
-
-		position: relative;
 
 		overflow-x: scroll;
 		overflow-y: hidden;
@@ -239,10 +262,12 @@
 
 		background: none;
 		border: none;
+		cursor: pointer;
 		display: inline-block;
-		opacity: .75;
+		margin: @fs-lightbox-thumbnail-margin;
+		opacity: @fs-lightbox-thumbnail-opacity;
 		overflow: hidden;
-		transition: opacity .25s linear;
+		transition: opacity .25s;
 
 		&:last-child {
 			margin: 0;
@@ -261,7 +286,7 @@
 	}
 
 	&-thumbnail_item&-active,
-	.no-touchevents &-thumbnail_item:hover {
+	&-thumbnail_item:hover {
 		opacity: 1;
 	}
 
@@ -323,7 +348,14 @@
 		visibility: visible;
 	}
 
-	&-mobile &-control_disabled {
+	&-mobile &-control,
+	&-mobile:hover &-control {
+		visibility: visible;
+	}
+
+	&-mobile &-control_disabled,
+	&-mobile &-control_disabled,
+	&-mobile:hover &-control_disabled {
 		cursor: default !important;
 		opacity: 0;
 		visibility: hidden;
@@ -339,6 +371,7 @@
 
 		overflow-x: hidden;
 		overflow-y: scroll;
+
 		-webkit-overflow-scrolling: touch;
 	}
 
@@ -346,6 +379,8 @@
 		width: auto;
 
 		position: static;
+
+		background: transparent;
 	}
 
 	&-mobile&-touch &-controls {
@@ -372,10 +407,10 @@
 		z-index: (@fs-lightbox-z-index + 4);
 
 		transform: translate(0, 100%);
-    transition:
-      opacity .25s,
-      transform .25s,
-      visibility .25s;
+		transition:
+			transform .25s,
+			opacity .25s .25s,
+			visibility .25s .25s;
 	}
 
 	&-touch&-caption_open &-meta {
@@ -393,10 +428,10 @@
 		z-index: (@fs-lightbox-z-index + 4);
 
 		transform: translate(0, 100%);
-    transition:
-      opacity .25s,
-      transform .25s,
-      visibility .25s;
+		transition:
+			transform .25s,
+			opacity .25s .25s,
+			visibility .25s .25s;
 	}
 
 	&-mobile&-touch &-thumbnail_container {
@@ -417,6 +452,8 @@
 	}
 
 	.fs-viewer {
+		top: 0;
+		bottom: 0;
 
 		&,
 		.fs-viewer-wrapper {
@@ -424,27 +461,28 @@
 			width: auto;
 
 			position: absolute;
-    	top: 0;
 			right: 0;
-    	bottom: 0;
 			left: 0;
 		}
 
+		.fs-viewer-wrapper {
+			top: 0;
+			bottom: 0;
+		}
+
 		.fs-viewer-loading_icon {
-			display: none !important;
+			display: none;
 		}
 
 		.fs-viewer-viewport {
-			top: 5px;
-			right: 15px;
-			bottom: 15px;
-			left: 15px;
+			top: 20px;
+			right: 20px;
+			bottom: 20px;
+			left: 20px;
 		}
 
 		.fs-viewer-controls {
 			position: absolute;
-
-			bottom: 10px;
 		}
 	}
 }
