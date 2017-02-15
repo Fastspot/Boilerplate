@@ -5,7 +5,7 @@
 {% macro symbol(name, modifier) %}
 	{% if name %}
 		<svg class="symbol symbol_{{name}}{% if modifier %} symbol_{{modifier}}{% endif %}">
-			<use xlink:href="#{{name}}"></use>
+			<use xlink:href="../../images/icons.svg{{name}}"></use>
 		</svg>
 	{% endif %}
 {% endmacro %}

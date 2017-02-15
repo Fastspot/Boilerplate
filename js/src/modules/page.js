@@ -2,7 +2,7 @@
 	Page
 -------------------------------------------*/
 
-/* global picturefill */
+/* global picturefill, svg4everybody */
 
 Site.modules.Page = (function($, Site) {
 
@@ -12,6 +12,8 @@ Site.modules.Page = (function($, Site) {
 	function init() {
 
 		// Plugins
+		picturefill();
+		svg4everybody();
 
 		Site.$body.find(".js-background").background();
 		Site.$body.find(".js-carousel").carousel();
@@ -61,11 +63,6 @@ Site.modules.Page = (function($, Site) {
 			.blur(function() {
 				$(this).closest(".main_nav_item").removeClass("focused");
 			});
-
-
-		// Picturefill
-
-		picturefill();
 
 
 		// Analytics
