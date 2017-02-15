@@ -1,28 +1,44 @@
 /* ==========================================================================
-	 Breadcrumb Navigation
+	Breadcrumb Navigation
 ============================================================================= */
 
-	.breadcrumb_nav {
+.breadcrumb_nav {
 
-		@media @max_lg {
-			.hide;
+	@media @max_lg {
+		display: none;
+	}
+}
+
+.breadcrumb_list {}
+
+.breadcrumb_item {
+	display: inline-block;
+
+	&:first-child {
+
+		&:before {}
+	}
+
+	&:not(:last-child) {
+
+		&:after {
+			content: ">";
 		}
 	}
 
-	.breadcrumb_list {}
+	&:last-child {}
+}
 
-	.breadcrumb_item {}
+.breadcrumb_link,
+.breadcrumb_label {
+	display: inline-block;
+}
 
-	.breadcrumb_link,
-	.breadcrumb_label {}
+.breadcrumb_link {
 
-	.breadcrumb_link {
+	&:focus,
+	&:active,
+	&:hover {}
+}
 
-		&:active,
-		&:focus,
-		.no-touchevents &:hover {}
-	}
-
-	.breadcrumb_label {}
-
-	.breadcrumb_name {}
+.breadcrumb_label {}

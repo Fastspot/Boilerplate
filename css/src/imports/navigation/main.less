@@ -1,24 +1,78 @@
 /* ==========================================================================
-	 Main Navigation Common
+	Main Navigation Common
 ============================================================================= */
 
-	.main_nav {}
+.main_nav {}
 
-	.main_nav_heading {
-		.hide;
+.main_nav_header {}
+
+.main_nav_title {
+	.visually_hide;
+}
+
+.main_nav_list {}
+
+.main_nav_item {}
+
+.main_nav_item_wrapper {}
+
+.main_nav_link {
+	display: block;
+
+	&:focus,
+	&:active,
+	&:hover {}
+}
+
+.main_nav_toggle {}
+
+.main_nav_children {}
+
+.main_nav_child_item {}
+
+.main_nav_child_link {
+	display: block;
+}
+
+
+/* ==========================================================================
+	Main Navigation Small
+============================================================================= */
+
+.main_nav_sm {
+
+	@media @min_lg {
+		display: none;
 	}
+
+	.main_nav_title {}
 
 	.main_nav_list {}
 
-	.main_nav_item {}
+	.main_nav_item {
+
+		&.fs-swap-enabled {
+
+			.main_nav_children {
+				display: none;
+			}
+		}
+
+		&.fs-swap-active {
+
+			.main_nav_children {
+				display: block;
+			}
+		}
+	}
 
 	.main_nav_item_wrapper {}
 
 	.main_nav_link {
 
-		&:active,
 		&:focus,
-		.no-touchevents &:hover {}
+		&:active,
+		&:hover {}
 	}
 
 	.main_nav_toggle {}
@@ -28,109 +82,60 @@
 	.main_nav_child_item {}
 
 	.main_nav_child_link {}
+}
 
 
 /* ==========================================================================
-	 Main Navigation Small
+	Main Navigation Large
 ============================================================================= */
 
-	.main_nav_sm {
+.main_nav_lg {
 
-		@media @min_lg {
-			.hide;
-		}
+	@media @max_lg {
+		display: none;
+	}
 
-		.main_nav_heading {}
+	.main_nav_title {}
 
-		.main_nav_list {}
+	.main_nav_list {}
 
-		.main_nav_item {
+	.main_nav_item {
 
-			&.fs-swap-enabled {
+		&.focused,
+		&:active,
+		&:hover {
 
-				.main_nav_children {
-					.none;
-				}
+			.main_nav_children {
+				opacity: 1;
+				visibility: visible;
 			}
-
-			&.fs-swap-active {
-
-				.main_nav_children {
-					.block;
-				}
-			}
-		}
-
-		.main_nav_item_wrapper {}
-
-		.main_nav_link {
-			.block;
-
-			&:active,
-			&:focus,
-			.no-touchevents &:hover {}
-		}
-
-		.main_nav_toggle {}
-
-		.main_nav_children {}
-
-		.main_nav_child_item {}
-
-		.main_nav_child_link {
-			.block;
 		}
 	}
 
+	.main_nav_item_wrapper {}
 
-	/* ==========================================================================
-		 Main Navigation Large
-	============================================================================= */
+	.main_nav_link {
 
-		.main_nav_lg {
+		&:focus,
+		&:active,
+		&:hover {}
+	}
 
-			@media @max_lg {
-				.hide;
-			}
+	.main_nav_toggle {
+		display: none;
+	}
 
-			.main_nav_heading {}
+	.main_nav_children {
+		position: absolute;
 
-			.main_nav_list {}
+		opacity: 0;
+		transition:
+			opacity @base_transition_duration,
+			visibility @base_transition_duration;
+		visibility: hidden;
+	}
 
-			.main_nav_item {
+	.main_nav_child_item {}
 
-				&.focused,
-				.no-touchevents &:hover {
-
-					.main_nav_children {
-						opacity: 1;
-						visibility: visible;
-					}
-				}
-			}
-
-			.main_nav_item_wrapper {}
-
-			.main_nav_link {
-
-				&:active,
-				&:focus,
-				.no-touchevents &:hover {}
-			}
-
-			.main_nav_toggle {
-				.hide;
-			}
-
-			.main_nav_children {
-				opacity: 0;
-				transition:
-					opacity    @base_transition_duration,
-					visibility @base_transition_duration;
-				visibility: hidden;
-			}
-
-			.main_nav_child_item {}
-
-			.main_nav_child_link {}
-		}
+	.main_nav_child_link {}
+}

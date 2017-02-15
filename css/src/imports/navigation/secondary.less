@@ -1,79 +1,23 @@
 /* ==========================================================================
-	 Secondary Navigation Common
+	Secondary Navigation Common
 ============================================================================= */
 
-	.secondary_nav {}
+.secondary_nav {}
 
-	.secondary_nav_heading {
-		.hide;
-	}
+.secondary_nav_header {}
 
-	.secondary_nav_list {}
+.secondary_nav_title {
+	.visually_hide;
+}
 
-	.secondary_nav_item {}
+.secondary_nav_list {}
 
-	.secondary_nav_link {
+.secondary_nav_item {}
 
-		&:active,
-		&:focus,
-		.no-touchevents &:hover {}
-	}
+.secondary_nav_link {
+	display: block;
 
-
-/* ==========================================================================
-	 Secondary Navigation Small
-============================================================================= */
-
-	.secondary_nav_sm {
-
-		@media @min_lg {
-			.hide;
-		}
-
-		.secondary_nav {}
-
-		.secondary_nav_heading {
-			.hide;
-		}
-
-		.secondary_nav_list {}
-
-		.secondary_nav_item {}
-
-		.secondary_nav_link {
-			.block;
-
-			&:active,
-			&:focus,
-			.no-touchevents &:hover {}
-		}
-	}
-
-
-/* ==========================================================================
-	 Secondary Navigation Large
-============================================================================= */
-
-	.secondary_nav_lg {
-
-		@media @max_lg {
-			.hide;
-		}
-
-		.secondary_nav {}
-
-		.secondary_nav_heading {
-			.hide;
-		}
-
-		.secondary_nav_list {}
-
-		.secondary_nav_item {}
-
-		.secondary_nav_link {
-
-			&:active,
-			&:focus,
-			.no-touchevents &:hover {}
-		}
-	}
+	&:focus,
+	&:active,
+	&:hover {}
+}

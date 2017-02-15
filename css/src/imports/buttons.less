@@ -2,26 +2,48 @@
 	Buttons
 ============================================================================= */
 
-	button {
-		background: none;
-		border: none;
-		padding: 0;
-	}
+button {
+	background: none;
+	border: none;
+	padding: 0;
+}
 
-	.button_base() {}
+.button_base() {
+	text-align: center;
+	transition:
+		background @base_transition_duration,
+		border @base_transition_duration,
+		box-shadow @base_transition_duration,
+		color @base_transition_duration,
+		transform @base_transition_duration;
+}
 
-	.button_inline {
-		.button_base;
-		.inline_block;
-	}
+.button_inline() {
+	.button_base;
 
-	.button_block {
-		.button_base;
-		.block;
-	}
+	display: inline-block;
+	margin-right: 8px;
+	margin-bottom: 8px;
+}
 
-	.button_full {
-		.button_base;
-		.block;
-		.text_center;
-	}
+.button_block() {
+	.button_base;
+
+	display: block;
+}
+
+
+/* Filled
+============================================================================= */
+
+.button_fill() {}
+
+.button_fill_hover() {}
+
+
+/* Bordered
+============================================================================= */
+
+.button_bordered() {}
+
+.button_bordered_hover() {}

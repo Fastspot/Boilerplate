@@ -1,39 +1,25 @@
 /* ==========================================================================
-	 Search Common
+	Site Search
 ============================================================================= */
 
-	.search {}
+.site_search_handle {}
 
-	.search_form {}
+.site_search {}
 
-	.search_label {}
+.site_search_form {}
 
-	.search_input {
+.site_search_label {}
 
-		&::placeholder {
-			text-overflow: ellipsis;
-		}
+.site_search_input {
+	.focus_outline_none();
 
-		&[placeholder] {
-			text-overflow: ellipsis;
-		}
+	&::placeholder {
+		text-overflow: ellipsis;
 	}
 
-	.search_button {}
-
-
-/* ==========================================================================
-	 Site Search
-============================================================================= */
-
-	.site_search {}
-
-	.site_search_form {}
-
-	.site_search_label {}
-
-	.site_search_input {
-		.search_input;
+	&[placeholder] {
+		text-overflow: ellipsis;
 	}
+}
 
-	.site_search_button {}
+.site_search_button {}

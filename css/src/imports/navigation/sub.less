@@ -1,20 +1,59 @@
 /* ==========================================================================
-	 Sub Navigation
+	Sub Navigation
 ============================================================================= */
 
-	.sub_nav {}
+.sub_nav {}
 
-	.sub_nav_heading {
+.sub_nav_header {}
 
-		@media @min_lg {
-			.hide;
+.sub_nav_title {}
+
+.sub_nav_handle_wrapper {}
+
+.sub_nav_handle {
+	position: relative;
+
+	@media @min_lg {
+		display: none;
+	}
+
+	&.fs-navigation-enabled {
+		.button_block;
+
+		text-align: left;
+
+		&:after {
+			position: absolute;
+			top: 50%;
+			right: 20px;
+
+			transform: translate(0, -50%);
+			transition: transform .25s;
 		}
 	}
 
-	.sub_nav_list {}
+	&.fs-navigation-open {
 
-	.sub_nav_item {}
-
-	.sub_nav_link {
-		.block;
+		&:after {}
 	}
+}
+
+.sub_nav_handle_icon {}
+
+
+/* Sub Nav Links
+============================================================================= */
+
+.sub_nav_list {
+	.focus_outline_none();
+}
+
+.sub_nav_item {}
+
+.sub_nav_link {
+	display: block;
+
+	&:focus,
+	&:active,
+	&:hover {}
+}

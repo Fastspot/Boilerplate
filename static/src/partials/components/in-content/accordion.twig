@@ -1,0 +1,43 @@
+{#
+	{% include "../partials/components/in-content/accordion.twig" with {
+		theme: "",
+		collapse: false,
+		grouped: "",
+		title: "Lorem ipsum dolor sit amet",
+		accordions: [
+			{
+				active: false,
+				label: "Aenean vulputate eleifend tellus",
+				description: "<p>Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.</p>"
+			},
+			{
+				active: false,
+				label: "Curabitur ullamcorper ultricies nisi",
+				description: "<p>Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p><p>Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.</p>"
+			}
+		]
+	} %}
+#}
+
+<!-- Accordion -->
+<div class="accordion{% if theme %} theme_{{theme}}{% endif %}">
+	{% if title %}
+	<header class="accordion_header">
+		<h2 class="accordion_title">{{title}}</h2>
+	</header>
+	{% endif %}
+	<div class="accordion_body">
+		{% for accordion in accordions %}
+		<div class="js-accordion-item-{{loop.index}} accordion_item">
+			<h3 class="js-swap accordion_item_title" data-swap-target=".js-accordion-item-{{loop.index}}"{% if grouped == "" or grouped == null or grouped == true %} data-swap-group="accordion_group"{% endif %}{% if collapse == false %} data-swap-options='{"collapse": false}'{% endif %}{% if accordion.active == true %} data-swap-active="true"{% endif %}>
+				{{accordion.label}}
+				<span class="accordion_item_icon">{{sprite.symbol()}}</span>
+			</h3>
+			<div class="accordion_item_description">
+				{{accordion.description}}
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+<!-- END: Accordion -->

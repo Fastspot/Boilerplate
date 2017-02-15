@@ -2,51 +2,62 @@
 	Page
 ============================================================================= */
 
-	a.skip_link {
-		.heading_6;
-		.block;
-		.absolute;
-		.text_center;
+.skip_link {
+	.heading_6;
 
-		top: 0;
-		right: 0;
-		left: 0;
-		z-index: 100;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	z-index: 100;
 
-		padding: 20px;
-		transform: translateY(-300%);
-		transition:
-			transform 0.35s,
-			top 0.35s;
+	display: block;
+	padding: 20px;
+	text-align: center;
+	transform: translate(-50%, -200%);
+	transition:
+		transform 0.35s,
+		top 0.35s;
+
+	&:focus,
+	&:active {
+		outline: 2px solid #000;
+		transform: translate(-50%, 0);
+	}
+
+	.no-csstransforms & {
+		top: -100%;
 
 		&:focus,
 		&:active {
-			outline: none;
-			transform: translateY(0);
-		}
-
-		.no-csstransforms & {
-			top: -100%;
-
-			&:focus,
-			&:active {
-				top: 0;
-			}
+			top: 0;
 		}
 	}
+}
 
-	.page_wrapper {}
+.page_wrapper {}
 
-	.page {}
+.page {}
 
-	.page_header {}
+.page_feature {}
 
-	.page_content {}
+.page_content {}
 
-	#main_page_title {
+.subnav_cell {}
 
-		&:focus,
-		&:active {
-			outline: none;
-		}
-	}
+.main_content {
+	.focus_outline_none();
+}
+
+.page_header {}
+
+.page_title {}
+
+.in_content_callouts {}
+
+.sidebar_cell {
+	clear: right;
+}
+
+.sidebar {}
+
+.full_width_callouts {}

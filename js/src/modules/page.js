@@ -2,6 +2,7 @@
 	Page
 -------------------------------------------*/
 
+<<<<<<< HEAD
 /* global picturefill */
 
 Site.modules.Page = (function($, Site) {
@@ -22,9 +23,60 @@ Site.modules.Page = (function($, Site) {
 
 		$.analytics({
 			scrollDepth: true
+=======
+/* global picturefill, svg4everybody */
+
+Site.modules.Page = (function($, Site) {
+
+	var $mainNav = $(".js-main-nav");
+	var $subNav = $(".js-sub-nav");
+
+	function init() {
+
+		// Plugins
+		picturefill();
+		svg4everybody();
+
+		Site.$body.find(".js-background").background();
+		Site.$body.find(".js-carousel").carousel();
+		Site.$body.find(".js-checkbox, .js-radio, input[type=checkbox], input[type=radio]").checkbox();
+		Site.$body.find(".js-dropdown").dropdown();
+		Site.$body.find(".js-equalize").equalize();
+		Site.$body.find(".js-lightbox").lightbox({
+			mobile: true,
+			theme: "fs-light"
+		});
+		Site.$body.find(".js-navigation")
+			.navigation({
+				maxWidth: Site.maxLG + "px"
+			})
+			.on("open.navigation", function() {
+				trackEvent($(this).data("analytics-open"));
+				Site.$body.find(".js-navigation").attr("aria-hidden", "false").removeAttr("hidden");
+			})
+			.on("close.navigation", function() {
+				trackEvent($(this).data("analytics-close"));
+				Site.$body.find(".js-navigation").attr("aria-hidden", "true").attr("hidden", "");
+			});
+		Site.$body.find(".js-swap").swap();
+		Site.$body.find("input[type=range]").range();
+		Site.$body.find(".js-tabs").tabs();
+
+		$.mediaquery("bind", "mq-key", "(min-width: " + Site.minLG + "px)", {
+			enter: function() {
+				$subNav.attr("aria-hidden", "false").removeAttr("hidden");
+			},
+			leave: function() {
+				$subNav.attr("aria-hidden", "true").attr("hidden", "");
+			}
+>>>>>>> twig
 		});
 
+		if ($(".js-carousel .control_group").length) {
+			setCarouselControls();
+		}
 
+<<<<<<< HEAD
 		// Plugins
 
 		Site.$body.find(".js-background").background();
@@ -46,38 +98,84 @@ Site.modules.Page = (function($, Site) {
 		Site.$body.find("input[type=number]").number();
 		Site.$body.find("input[type=range]").range();
 		Site.$body.find(".js-tabs").tabs();
+=======
 
+		// Display children of focused nav items
+>>>>>>> twig
 
+		$mainNav.find("a")
+			.focus(function() {
+				$(this).closest(".main_nav_item").addClass("focused");
+			})
+			.blur(function() {
+				$(this).closest(".main_nav_item").removeClass("focused");
+			});
+
+<<<<<<< HEAD
 		// Wrapper for Tables
 
 		Site.$body.find(".typography table")
 			.wrap('<div class="table_wrapper"><div class="table_wrapper_inner"></div></div>');
 		tableOverflow();
+=======
 
+		// Analytics
+>>>>>>> twig
 
+		$.analytics({
+			scrollDepth: true
+		});
+
+<<<<<<< HEAD
 		// Generic Toggles
 
 		Site.$body.find(".js-toggle")
 			.not(".js-bound")
 			.on("click", ".js-toggle_handle", onToggleClick)
 			.addClass("js-bound");
+=======
 
+		// Wrapper for Tables
+>>>>>>> twig
 
+		Site.$body.find(".typography table")
+			.wrap('<div class="table_wrapper"><div class="table_wrapper_inner"></div></div>');
+		tableOverflow();
+
+<<<<<<< HEAD
 		// Scroll Nav
 
 		Site.$body.find(".js-scroll_to")
 			.not(".js-bound")
 			.on("click", onScrollTo)
 			.addClass("js-bound");
+=======
 
+		// Generic Toggles
+>>>>>>> twig
 
+		Site.$body.find(".js-toggle")
+			.not(".js-bound")
+			.on("click", ".js-toggle_handle", onToggleClick)
+			.addClass("js-bound");
+
+<<<<<<< HEAD
 		// Responsive Video
 
 		$("iframe[src*='vimeo.com'], iframe[src*='youtube.com']", ".typography").each(function() {
 			$(this).wrap('<div class="video_frame"></div>');
 		});
+=======
 
+		// Scroll Nav
+>>>>>>> twig
 
+		Site.$body.find(".js-scroll_to")
+			.not(".js-bound")
+			.on("click", onScrollTo)
+			.addClass("js-bound");
+
+<<<<<<< HEAD
 		// Display children of focused nav items
 
 		$mainNav.find("a")
@@ -87,8 +185,16 @@ Site.modules.Page = (function($, Site) {
 			.blur(function () {
 				$(this).closest(".main_nav_item").removeClass("focused");
 			});
+=======
 
+		// Responsive Video
+>>>>>>> twig
 
+		$("iframe[src*='vimeo.com'], iframe[src*='youtube.com']", ".typography").each(function() {
+			$(this).wrap('<div class="video_frame"></div>');
+		});
+
+<<<<<<< HEAD
 		// Scrolling
 
 		Site.onScroll.push(scroll);
@@ -101,6 +207,19 @@ Site.modules.Page = (function($, Site) {
 	function scroll() {
 
 	}
+=======
+
+		// Scrolling
+
+		Site.onScroll.push(scroll);
+		Site.onResize.push(resize);
+		Site.onRespond.push(respond);
+
+		Site.scroll();
+	}
+
+	function scroll() {}
+>>>>>>> twig
 
 	function resize() {
 		scroll();
@@ -115,7 +234,11 @@ Site.modules.Page = (function($, Site) {
 		Site.killEvent(e);
 
 		var $target = $(e.delegateTarget),
+<<<<<<< HEAD
 			id = $target.attr("href");
+=======
+				id = $target.attr("href");
+>>>>>>> twig
 
 		scrollToElement(id);
 	}
@@ -131,14 +254,25 @@ Site.modules.Page = (function($, Site) {
 	}
 
 	function scrollToPosition(top) {
+<<<<<<< HEAD
 		$("html, body").animate({ scrollTop: top });
+=======
+		$("html, body").animate({
+			scrollTop: top
+		});
+>>>>>>> twig
 	}
 
 	function onToggleClick(e) {
 		Site.killEvent(e);
 
+<<<<<<< HEAD
 		var $target     = $(e.delegateTarget),
 			activeClass = "js-toggle_active";
+=======
+		var $target = $(e.delegateTarget),
+				activeClass = "js-toggle_active";
+>>>>>>> twig
 
 		if ($target.hasClass(activeClass)) {
 			$target.removeClass(activeClass);
@@ -160,18 +294,40 @@ Site.modules.Page = (function($, Site) {
 			$(this).removeClass("table_wrapper_overflow");
 			if ($(this).prop("scrollWidth") > $(this).width() + 1) {
 				$(this).addClass("table_wrapper_overflow");
+<<<<<<< HEAD
 			}
 			else {
+=======
+			} else {
+>>>>>>> twig
 				$(this).removeClass("table_wrapper_overflow");
 			}
 		});
 	}
+<<<<<<< HEAD
+=======
+
+	function setCarouselControls() {
+		$(".control_group .fs-carousel-control_previous").each(function() {
+			$(this).append("<span class='icon'><svg class='symbol symbol_left_arrow'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#left_arrow'></use></svg></span>");
+		});
+
+		$(".control_group .fs-carousel-control_next").each(function() {
+			$(this).append("<span class='icon'><svg class='symbol symbol_right_arrow'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#right_arrow'></use></svg></span>");
+		});
+	}
+>>>>>>> twig
 
 	// Hook Into Main init Routine
 
 	Site.onInit.push(init);
 
+<<<<<<< HEAD
 	return {
 
 	};
+=======
+	return {};
+
+>>>>>>> twig
 })(jQuery, Site);

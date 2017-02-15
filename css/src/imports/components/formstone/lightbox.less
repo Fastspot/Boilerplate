@@ -1,0 +1,488 @@
+/* ==========================================================================
+	Lightbox
+============================================================================= */
+
+@fs-lightbox-z-index: 400;
+
+@fs-lightbox-thumbnail-size: 50px;
+@fs-lightbox-thumbnail-margin: 0 10px 0 0;
+@fs-lightbox-thumbnail-opacity: 0.25;
+@fs-lightbox-thumbnail-padding: 10px;
+@fs-lightbox-thumbnail-scrollbar-size: 30px;
+
+.fs-lightbox {
+	width: 200px;
+	height: 200px;
+
+	position: absolute;
+	right: 0;
+	left: 0;
+	z-index: (@fs-lightbox-z-index + 1);
+
+	opacity: 0;
+	margin: 0 auto;
+	transform: translateZ(0);
+
+	&-open {
+		opacity: 1;
+	}
+
+	&-lock {
+		overflow: hidden;
+	}
+
+	&-fixed {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+
+		margin: auto;
+	}
+
+	&-animating {
+		transition:
+			height .25s,
+			width .25s,
+			top .25s,
+			opacity .25s;
+	}
+
+	&-animating &-content,
+	&-animating &-thumbnails,
+	&-animating &-tools,
+	&-animating &-meta,
+	&-animating &-control {
+		transition:
+			opacity .25s,
+			visibility .25s;
+	}
+
+	&-mobile &-image_container {
+		transiton:
+			top .25s,
+			left .25s;
+	}
+
+	&-mobile&-scaling &-image_container {
+		transition: none;
+	}
+
+	&-mobile&-zooming &-image_container {
+		transition:
+			top .25s,
+			left .25s;
+	}
+
+	&-mobile &-image {
+		transition:
+			height .25s,
+			width .25s,
+			top .25s,
+			left .25s;
+	}
+
+	&-mobile&-scaling &-image {
+		transition: none;
+	}
+
+	&-mobile&-zooming &-image {
+		transition:
+			height .25s,
+			width .25s,
+			top .25s,
+			left .25s;
+	}
+
+	&-overlay {
+		width: 100%;
+		height: 100%;
+
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: @fs-lightbox-z-index;
+
+		opacity: 0;
+		transition: opacity .25s;
+	}
+
+	&-overlay&-open {
+		opacity: .75;
+	}
+
+	&-close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: (@fs-lightbox-z-index + 5);
+
+		cursor: pointer;
+		display: block;
+		overflow: hidden;
+	}
+
+	&-container {
+		width: 100%;
+		height: 100%;
+
+		position: relative;
+		z-index: (@fs-lightbox-z-index + 3);
+
+		overflow: hidden;
+	}
+
+	&-content {
+		width: 100%;
+
+		opacity: 1;
+		overflow: hidden;
+		padding: 0;
+		visibility: visible;
+	}
+
+	&-inline &-content {
+		width: auto;
+
+		overflow: auto;
+
+		-webkit-overflow-scrolling: touch;
+	}
+
+	&-iframed &-content {
+		width: 100%;
+		height: 100%;
+
+		overflow: auto;
+
+		-webkit-overflow-scrolling: touch;
+	}
+
+	&-mobile &-image_container {
+		width: 1px;
+		height: 1px;
+
+		position: absolute;
+
+		margin: 0;
+		transform: translate3D(0, 0, 0);
+	}
+
+	&-image {
+		float: left;
+	}
+
+	&-mobile &-image {
+		position: relative;
+
+		float: none;
+	}
+
+	&-video {
+		width: 100%;
+		height: 100%;
+	}
+
+	&-iframe {
+		width: 100%;
+		height: 100%;
+
+		border: none;
+		float: left;
+		overflow: auto;
+	}
+
+	&-meta {
+		opacity: 1;
+		clear: both;
+		visibility: visible;
+	}
+
+	&-control {
+		.fs_button;
+
+		position: absolute;
+		top: 0;
+		z-index: (@fs-lightbox-z-index + 5);
+
+		cursor: pointer;
+		display: block;
+		margin-right: auto;
+		margin-left: auto;
+		opacity: 1;
+		visibility: visible;
+		white-space: nowrap;
+	}
+
+	&-control_previous {
+		left: 0;
+	}
+
+	&-control_next {
+		right: 0;
+	}
+
+	&-control_disabled {
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	&-toggle {
+		.fs_button;
+
+		display: none;
+	}
+
+	&-thumbnails {
+		height: @fs-lightbox-thumbnail-size + @fs-lightbox-thumbnail-padding;
+
+		position: relative;
+		z-index: 400;
+
+		overflow: hidden;
+	}
+
+	&-thumbnail_container {
+		height: @fs-lightbox-thumbnail-size + @fs-lightbox-thumbnail-scrollbar-size;
+
+		overflow-x: scroll;
+		overflow-y: hidden;
+		-webkit-overflow-scrolling: touch;
+		padding: 0 0 @fs-lightbox-thumbnail-scrollbar-size;
+		text-align: center;
+		white-space: nowrap;
+	}
+
+	&-thumbnail_item {
+		width: @fs-lightbox-thumbnail-size;
+		height: @fs-lightbox-thumbnail-size;
+
+		position: relative;
+
+		background: none;
+		border: none;
+		cursor: pointer;
+		display: inline-block;
+		margin: @fs-lightbox-thumbnail-margin;
+		opacity: @fs-lightbox-thumbnail-opacity;
+		overflow: hidden;
+		transition: opacity .25s;
+
+		&:last-child {
+			margin: 0;
+		}
+
+		img {
+			width: 100%;
+			height: auto;
+
+			position: absolute;
+			top: 50%;
+
+			display: block;
+			transform: translateY(-50%);
+		}
+	}
+
+	&-thumbnail_item&-active,
+	&-thumbnail_item:hover {
+		opacity: 1;
+	}
+
+	&-loading &-content,
+	&-loading &-thumbnails,
+	&-loading &-tools,
+	&-loading &-meta,
+	&-loading &-control {
+		opacity: 0;
+		transition:
+			opacity .25s,
+			visibility .25s;
+		visibility: hidden;
+	}
+
+	&-loading &-loading_icon,
+	&-ready&-loading &-thumbnails,
+	&-ready&-loading &-tools {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	&-mobile {
+		width: 100%;
+		height: 100%;
+
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		border-radius: 0;
+	}
+
+	&-mobile &-container {
+		position: static;
+	}
+
+	&-mobile &-content {
+		height: 100%;
+	}
+
+	&-mobile &-tools {
+		width: 100%;
+
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+
+	&-mobile &-controls {
+		text-align: center;
+	}
+
+	&-mobile &-control {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	&-mobile &-control,
+	&-mobile:hover &-control {
+		visibility: visible;
+	}
+
+	&-mobile &-control_disabled,
+	&-mobile &-control_disabled,
+	&-mobile:hover &-control_disabled {
+		cursor: default !important;
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	&-mobile &-image {
+		transform: translate(0, 0);
+	}
+
+	&-mobile&-inline &-content,
+	&-mobile&-iframe &-content {
+		height: 100%;
+
+		overflow-x: hidden;
+		overflow-y: scroll;
+
+		-webkit-overflow-scrolling: touch;
+	}
+
+	&-mobile&-touch &-tools {
+		width: auto;
+
+		position: static;
+
+		background: transparent;
+	}
+
+	&-mobile&-touch &-controls {
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: (@fs-lightbox-z-index + 5);
+	}
+
+	&-mobile&-touch &-toggle {
+		display: inline-block;
+		margin: 0 5px;
+	}
+
+	&-mobile&-touch &-meta {
+		width: 100%;
+		height: 80%;
+
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: (@fs-lightbox-z-index + 4);
+
+		transform: translate(0, 100%);
+		transition:
+			transform .25s,
+			opacity .25s .25s,
+			visibility .25s .25s;
+	}
+
+	&-touch&-caption_open &-meta {
+		transform: translate(0, 0);
+	}
+
+	&-mobile&-touch &-thumbnails {
+		width: 100%;
+		height: @fs-lightbox-thumbnail-size + 20px;
+
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: (@fs-lightbox-z-index + 4);
+
+		transform: translate(0, 100%);
+		transition:
+			transform .25s,
+			opacity .25s .25s,
+			visibility .25s .25s;
+	}
+
+	&-mobile&-touch &-thumbnail_container {
+		height: (@fs-lightbox-thumbnail-size * 2);
+	}
+
+	&-touch&-thumbnails_open &-thumbnails {
+		transform: translate(0, 0);
+	}
+
+	&-mobile&-touch &-container,
+	&-mobile&-touch &-content {
+		overflow: visible;
+	}
+
+	&-mobile&-touch &-content {
+		position: relative;
+	}
+
+	.fs-viewer {
+		top: 0;
+		bottom: 0;
+
+		&,
+		.fs-viewer-wrapper {
+			height: auto;
+			width: auto;
+
+			position: absolute;
+			right: 0;
+			left: 0;
+		}
+
+		.fs-viewer-wrapper {
+			top: 0;
+			bottom: 0;
+		}
+
+		.fs-viewer-loading_icon {
+			display: none;
+		}
+
+		.fs-viewer-viewport {
+			top: 20px;
+			right: 20px;
+			bottom: 20px;
+			left: 20px;
+		}
+
+		.fs-viewer-controls {
+			position: absolute;
+		}
+	}
+}

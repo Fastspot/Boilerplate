@@ -5,7 +5,7 @@
 .site_search_results {
 
 	/* Entire Search Module
-	============================================================================= */
+	=========================================================================== */
 
 	.gsc-control-cse {
 		background: none;
@@ -17,52 +17,70 @@
 
 
 	/* Search Box Area
-	============================================================================= */
+	=========================================================================== */
 
 	.gsc-search-box {
+		position: relative;
+
 		font-size: inherit;
 		margin-bottom: 20px;
 
 		td.gsc-input {
+			width: 100%;
+
 			padding-right: 0;
 		}
 
+		.gsc-input-box {
+			height: auto;
+		}
+
 		input.gsc-input {
+			height: auto !important;
 			width: 100%;
 
+			background-color: transparent !important;
 			background-position: 20px 50% !important;
 			border: 1px solid #000;
 			font-size: inherit;
-			padding: 20px;
+			margin: 0 !important;
+			padding: 20px !important;
 		}
 
 		td.gsc-search-button {
-			.icon_before;
-
+			height: 100%;
 			width: auto;
 
-			&:before {}
+			position: absolute;
+			top: 0;
+			right: 0;
 		}
 
 		input.gsc-search-button {
-			height: auto;
+			height: 100%;
 			min-width: 100%;
+			width: auto;
 
 			background: none;
 			border: 0;
 			border-radius: 0;
+			color: transparent;
+			cursor: pointer;
 			font-size: inherit;
 			font-weight: normal;
+			margin-top: 0;
+			margin-left: 0;
 			padding: 10px;
 		}
 
 		td.gsc-clear-button {
-			.icon_before;
-
-			&:before {}
+			position: absolute;
+			top: 0;
+			right: 0;
 		}
 
 		div.gsc-clear-button {
+			background: none;
 			display: block;
 			margin: 0;
 			padding-left: 0;
@@ -75,7 +93,7 @@
 
 
 	/* Tabs
-	============================================================================= */
+	=========================================================================== */
 
 	.gsc-tabsArea {
 		border-bottom: 0;
@@ -93,8 +111,9 @@
 		.gsc-tabhActive {}
 	}
 
+
 	/* Refinements
-	============================================================================= */
+	=========================================================================== */
 
 	.gsc-refinementsArea {
 		border-bottom: 0;
@@ -113,7 +132,7 @@
 
 
 	/* Above Wrapper Area
-	============================================================================= */
+	=========================================================================== */
 
 	.gsc-above-wrapper-area {
 		border-bottom: 1px solid #000;
@@ -125,11 +144,15 @@
 			margin: 0;
 			padding-left: 0;
 		}
+
+		.gsc-orderby-container {
+			display: none;
+		}
 	}
 
 
 	/* Results
-	============================================================================= */
+	=========================================================================== */
 
 	.gsc-results {
 		width: 100%;
@@ -152,7 +175,7 @@
 		}
 
 		.gsc-thumbnail {
-			padding-right: 20px;
+			padding: 0 20px 0 0;
 
 			.gs-image-box {
 				height: auto;
@@ -162,11 +185,16 @@
 			}
 
 			img.gs-image {
+				max-height: 100% !important;
 				max-width: 100%;
 				width: 100%;
 
 				border: 0;
 			}
+		}
+
+		.gsc-table-cell-snippet-close {
+			padding: 0;
 		}
 
 		div.gs-title {
@@ -183,9 +211,16 @@
 
 			height: inherit;
 
+			color: inherit !important;
 			text-decoration: inherit;
 
+			&:focus,
+			&:active,
+			&:hover {}
+
 			b {
+				color: inherit !important;
+				font-size: inherit;
 				text-decoration: inherit;
 			}
 		}
@@ -196,22 +231,38 @@
 			margin-bottom: 10px;
 		}
 
-		.gs-visibleUrl {}
+		.gsc-url-top {
+			display: none;
+		}
+
+		.gs-visibleUrl {
+
+			b {
+				font-weight: inherit;
+			}
+		}
 	}
 
 
 	/* Cursor Box
-	============================================================================= */
+	=========================================================================== */
 
 	.gsc-expansionArea {
 
 		.gsc-cursor-box {
-			box-shadow: 0 -1px 0 0 #000;
 			margin-bottom: 0;
 			padding: 20px 0;
 
 			.gsc-cursor-page {
+				background: none;
+				display: inline-block;
+				margin-right: 5px;
+				padding: 0 5px;
 				text-decoration: none;
+
+				&:focus,
+				&:active,
+				&:hover {}
 			}
 
 			.gsc-cursor-current-page {}
@@ -220,9 +271,10 @@
 
 
 	/* Branding
-	============================================================================= */
+	=========================================================================== */
 
 	div.gcsc-branding {
 		padding-bottom: 20px;
+		pointer-events: none;
 	}
 }

@@ -1,341 +1,308 @@
 /* ==========================================================================
-	Typography
+	Type Base
 ============================================================================= */
 
-	.heading_1 {
+.heading_1() {
+	.font_size(60);
+	.line_height(70, 60);
+}
 
+.heading_2() {
+	.font_size(50);
+	.line_height(60, 50);
+}
+
+.heading_3() {
+	.font_size(40);
+	.line_height(50, 40);
+}
+
+.heading_4() {
+	.font_size(30);
+	.line_height(40, 30);
+}
+
+.heading_5() {
+	.font_size(20);
+	.line_height(30, 20);
+}
+
+.heading_6() {
+	.font_size(16);
+	.line_height(24, 16);
+}
+
+.body_text() {
+	.font_size(16);
+	.line_height(24, 16);
+}
+
+.label_text() {}
+
+.intro_text() {}
+
+.caption_text() {}
+
+p {}
+
+a {
+	.transition_link();
+
+	text-decoration: none;
+
+	.touch &[href^=tel] {
+		color:inherit;
+	}
+}
+
+strong {
+	font-weight: bold;
+}
+
+
+/* typography
+============================================================================= */
+
+.typography {
+	.body_text;
+
+	h1 {
+		.heading_1;
 	}
 
-	.heading_2 {
-
+	h2 {
+		.heading_2;
 	}
 
-	.heading_3 {
-
+	h3 {
+		.heading_3;
 	}
 
-	.heading_4 {
-
+	h4 {
+		.heading_4;
 	}
 
-	.heading_5 {
-
+	h5 {
+		.heading_5;
 	}
 
-	.heading_6 {
-
+	h6 {
+		.heading_6;
 	}
 
-	h1, h2, h3, h4, h5, h6 {  }
+	p {}
+}
 
-	h1 {  }
 
-	h2 {  }
+/* WYSIWYG Images
+============================================================================= */
 
-	h3 {  }
+.typography {
 
-	h4 {  }
-
-	h5 {  }
-
-	h6 {  }
-
-	p {  }
-
-	a {
-		.transition_link();
-
-		text-decoration: none;
-
-		.touch &[href^=tel] {
-			color:inherit;
-		}
+	img {
+		height: auto;
+		max-width: 50%;
 	}
 
-	em {
-		font-style: italic;
-	}
+	.block_left,
+	.block_right,
+	.block_center {
+		width: auto;
 
-	strong {
-		font-weight: bold;
-	}
-
-	.body_text {}
-
-	.label_text {}
-
-	.intro_text {}
-
-	.caption_text {}
-
-	.typography {
-		.body_text;
-
-		h1 {
-			.heading_1;
-		}
-
-		h2 {
-			.heading_2;
-		}
-
-		h3 {
-			.heading_3;
-		}
-
-		h4 {
-			.heading_4;
-		}
-
-		h5 {
-			.heading_5;
-		}
-
-		h6 {
-			.heading_6;
-		}
-
-		p {
-			.body_text();
-		}
+		display: table;
+		table-layout: fixed;
 
 		img {
-			max-width: 50%;
+			display: block;
+			max-width: 100%;
+		}
+
+		figcaption {
+			.caption_text;
+
+			caption-side: bottom;
+			display: table-caption;
 		}
 	}
 
-	/* WYSIWYG Images
-	============================================================================= */
+	.block_left,
+	.block_right {
+		max-width: 50%;
 
-	.typography {
+		@media @max_sm {
+			max-width: none;
+
+			float: none;
+			margin-right: 0;
+			margin-left: 0;
+		}
+	}
+
+	.block_center {
+		text-align: center;
 
 		img {
-			max-width: 50%;
-		}
-
-		.block_left,
-		.block_right {
-			width: auto;
-			max-width: 50%;
-
-			display: table;
-			table-layout: fixed;
-
-			@media @max_sm {
-				max-width: none;
-
-				float: none;
-				margin-right: 0;
-				margin-left: 0;
-			}
-
-			img {
-				max-width: 100%;
-			}
-
-			figcaption {
-				caption-side: bottom;
-				display: table-caption;
-			}
+			margin-right: auto;
+			margin-left: auto;
 		}
 	}
+}
 
 
-	/* Blockquote
-	============================================================================= */
+/* Blockquote
+============================================================================= */
 
-	.typography {
+.typography {
 
-		blockquote {}
+	blockquote {
 
-		blockquote p {}
+		p {}
 	}
 
+	.quote {}
 
-	/* Lists
-	============================================================================= */
+	.quote_content {
 
-	.typography {
+		p {}
+	}
 
-		ol,
-		ul {
+	.quote_caption {}
 
-			li {}
-		}
+	.quote_caption_name {}
 
-		ol {
-			counter-reset: li;
+	.quote_caption_title {}
+}
 
-			> li {
+
+/* Lists
+============================================================================= */
+
+.typography {
+
+	ol,
+	ul {
+
+		li {}
+	}
+
+	ol {}
+
+	ul {
+		list-style: none;
+
+		li {
+
+			&:before {
+				width: 5px;
+				height: 5px;
+
+				background: #444;
+				border-radius: 50%;
+				content: "";
 				display: block;
-				list-style: none;
-
-				&:before {
-					position: absolute;
-					top: 0;
-					right: 100%;
-
-					content: counter(li) ". ";
-					counter-increment: li;
-				}
-			}
-
-			&[type="a"] {
-
-				> li {
-
-					&:before {
-						content: counter(li, lower-alpha) ". ";
-					}
-				}
-			}
-
-			&[type="A"] {
-
-				> li {
-
-					&:before {
-						content: counter(li, upper-alpha) ". ";
-					}
-				}
-			}
-
-			&[type="i"] {
-
-				> li {
-
-					&:before {
-						content: counter(li, lower-roman) ". ";
-					}
-				}
-			}
-
-			&[type="I"] {
-
-				> li {
-
-					&:before {
-						content: counter(li, upper-roman) ". ";
-					}
-				}
-			}
-		}
-
-		ul {
-			list-style: none;
-
-			li {
-
-				&:before {
-					width: 5px;
-					height: 5px;
-
-					float: left;
-
-					background: #eee;
-					border-radius: 100%;
-					content: "";
-					display: block;
-					margin: 10px 0 0 -20px;
-				}
+				float: left;
+				margin: 10px 0 0 -15px;
 			}
 		}
 	}
+}
 
 
-	/* Tables
-	============================================================================= */
+/* Tables
+============================================================================= */
 
-	.typography {
+.typography {
 
-		table {
-			.margined;
-
-			thead,
-			tbody {}
-
-			thead {}
-
-			tbody {}
-
-			tr {}
-
-			th,
-			td {}
-
-			th {}
-
-			td {}
-		}
-	}
-
-	// Modified from Bootstrap
-
-	.table_wrapper {
-		// 1. Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
-
+	table {
 		.margined;
 
-		min-height: 0.01%; // 1
+		width: 100%;
 
-		&.table_wrapper_overflow {
-			.relative;
+		border-collapse: collapse;
 
-			border: 1px solid #ccc;
+		tr {
 
-			&:after {
-				.absolute;
-				.gradient_horizontal(fade(@true_black, 0), fade(@true_black, 10));
+			&:nth-child(odd) {}
+		}
 
-				width: 20px;
-				height: 100%;
+		th,
+		td {}
 
-				top: 0;
-				right: 0;
+		th {
+			.heading_6;
 
-				content: "";
+			text-align: left;
+		}
+
+		td {}
+	}
+}
+
+.table_wrapper {
+	// 1. Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
+
+	.margined;
+
+	min-height: 0.01%; // 1
+
+	&.table_wrapper_overflow {
+		position: relative;
+
+		border: 1px solid #ccc;
+
+		&:after {
+			.gradient_horizontal(fade(@true_black, 0), fade(@true_black, 10));
+
+			width: 20px;
+			height: 100%;
+
+			position: absolute;
+			top: 0;
+			right: 0;
+
+			content: "";
+		}
+
+		.table_wrapper_inner {
+			overflow-y: hidden;
+			-ms-overflow-style: -ms-autohiding-scrollbar;
+		}
+
+		> table {
+			margin: 0;
+			border: 0;
+
+			> tbody {
+				border: none;
 			}
 
-			.table_wrapper_inner {
-				overflow-y: hidden;
-				-ms-overflow-style: -ms-autohiding-scrollbar;
-			}
+			> thead,
+			> tbody,
+			> tfoot {
+				> tr {
+					> th,
+					> td {}
 
-			> table {
-				margin: 0;
-				border: 0;
-
-				> tbody {
-					border: none;
-				}
-
-				> thead,
-				> tbody,
-				> tfoot {
-					> tr {
-						> th,
-						> td {}
-
-						> th:first-child,
-						> td:first-child {
-							border-left: 0;
-						}
-						> th:last-child,
-						> td:last-child {
-							border-right: 0;
-						}
+					> th:first-child,
+					> td:first-child {
+						border-left: 0;
+					}
+					> th:last-child,
+					> td:last-child {
+						border-right: 0;
 					}
 				}
+			}
 
-				> tbody,
-				> tfoot {
-					> tr:last-child {
-						> th,
-						> td {
-							border-bottom: 0;
-						}
+			> tbody,
+			> tfoot {
+				> tr:last-child {
+					> th,
+					> td {
+						border-bottom: 0;
 					}
 				}
 			}
 		}
 	}
+}

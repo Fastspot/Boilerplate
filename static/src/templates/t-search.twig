@@ -1,0 +1,11 @@
+{% extends "_base.twig" %}
+
+{% set pageTitle = "Search" %}
+
+{% block layout %}
+	{% set layout = "full" %}
+{% endblock %}
+
+{% block in_content_callouts %}
+	{% include "../partials/components/in-content/google-cse.twig" %}
+{% endblock %}

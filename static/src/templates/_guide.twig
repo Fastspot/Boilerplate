@@ -1,0 +1,157 @@
+{% extends "_base.twig" %}
+
+{# Page title is used in `<title>`, breadcrumb active page, and `.page_title` #}
+{% set pageTitle = "Apply Now" %}
+
+{# Use theme to set page layout: default (2 column), full (1 column), home #}
+{% set layout = "default" %}
+
+{# Sets index of active item in the main nav, applied to `.main_nav_item` #}
+{% block activePage %}
+	{% set activePageAlias = 1 %}
+{% endblock %}
+
+{#
+	Section is drawn above subnav.
+	If no section is set "Additional Navigation" will display above subnav.
+#}
+{% block sectionVar %}
+	{% set sectionAlias = "Admissions &amp Aid" %}
+{% endblock %}
+
+{# Include page feature components #}
+{% block page_feature %}
+
+	{% include "../partials/components/feature/header.twig" with {
+		image: "1",
+		title: "Admissions &amp; Aid",
+		description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor aenean massa."
+	} %}
+
+{% endblock %}
+
+{# Custom breadcrumb links per template #}
+{% block breadcrumbNavVar %}
+	{% set breadcrumbNavLinks = [
+		{
+			"href": "#",
+			"name": "Admissions &amp; Aid"
+		},
+		{
+			"name": "Apply Now"
+		}
+	]
+	%}
+{% endblock %}
+
+{# Custom subnav links per template #}
+{% block subNavVar %}
+	{% set subNavLinksAlias = [
+		{
+			"modifier": "open",
+			"href": "#",
+			"name": "Apply Now",
+			"children": ""
+		},
+		{
+			"modifier": "active",
+			"href": "#",
+			"name": "Meet Your Admissions Counselor",
+			"children": ""
+		},
+		{
+			"modifier": "",
+			"href": "#",
+			"name": "Degree",
+			"children": [
+				{
+					"modifier": "",
+					"href": "#",
+					"name": "Adult Degree Completion",
+					"children": [
+						{
+							"modifier": "",
+							"href": "#",
+							"name": "College Credit Plus"
+						}
+					]
+				}
+			]
+		}
+	]
+	%}
+{% endblock %}
+
+{# Draw your own page header. By default draws breadcrumb nav and page title #}
+{% block page_header %}
+{% endblock %}
+
+{# Main WYSIWYG page content #}
+{% block typography %}
+
+	<div class="intro">
+		<p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</p>
+	</div>
+
+	<p>Suspendisse faucibus mi metus, nec efficitur elit convallis id. Ut et ultrices neque. Nullam fermentum sit amet purus sed vestibulum. Etiam convallis neque vitae est porttitor, ac pellentesque tellus consectetur. Fusce ex leo, tempor in tortor eu, iaculis rutrum dui. Duis egestas, orci non aliquam feugiat, justo nisi rutrum urna, at vehicula diam tellus sit amet neque. Maecenas ultricies, augue non efficitur pretium, ligula lectus tempus sem, eu finibus mi nunc in turpis. Quisque aliquam nec leo at mattis. Cras massa libero, vestibulum.</p>
+
+{% endblock %}
+
+{# Include in content components #}
+{% block in_content_callouts %}
+
+	{% include "../partials/components/in-content/links.twig" with {
+		title: "Related Links",
+		links: [
+			{
+				href: "#",
+				name: "About Us"
+			},
+			{
+				href: "#",
+				name: "Undergraduate"
+			}
+		]
+	} %}
+
+{% endblock %}
+
+{# Include in sidebar components #}
+{% block sidebar %}
+
+	{% include "../partials/components/sidebar/contact.twig" with {
+		title: "Contact Information",
+		name: "Jane Doe",
+		role: "Director of Undergraduate and Graduate Admissions",
+		address: "2600 Street Ave. NW<br> Baltimore, Md 44709",
+		phone: "555 - 471 - 8145",
+		fax: "555 - 471 - 8149",
+		email: "admissions@example.com",
+		url: "//www.example.com",
+		link: "www.example.com",
+		social: [
+			{
+				type: "facebook",
+				href: "#"
+			},
+			{
+				type: "twitter",
+				href: "#"
+			}
+		]
+	} %}
+
+{% endblock %}
+
+{# Include in full width components #}
+{% block full_width_callouts %}
+
+	{% include "../partials/components/full-width/flex.twig" with {
+		color: "black",
+		image: "5",
+		title: "Aenean vulputate eleifend tellus",
+		description: "Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero.",
+		link: "Learn More"
+	} %}
+
+{% endblock %}
