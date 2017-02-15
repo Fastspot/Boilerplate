@@ -22,7 +22,7 @@
 		"mq_min_xl": "1220"
 	},
 	"devDependencies": {
-		"autoprefixer": "^6.7.2",
+		"autoprefixer": "^6.7.3",
 		"del": "^2.2.2",
 		"grunt": "^1.0.1",
 		"grunt-bless": "^1.0.2",
@@ -46,7 +46,7 @@
 		"gulp": "^3.9.1",
 		"gulp-bless": "^3.2.1",
 		"gulp-changed": "^1.3.2",
-		"gulp-concat-multi": "^1.0.0",
+		"gulp-concat-multi": "^1.0.1",
 		"gulp-cssnano": "^2.1.2",
 		"gulp-directory-map": "^0.1.3",
 		"gulp-if": "^2.0.2",
