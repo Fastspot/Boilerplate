@@ -27,10 +27,13 @@
 }
 
 .accordion_item_description {
-	display: none;
 
-	@media print {
-		display: block;
+	.fs-swap-enabled & {
+		display: none;
+
+		@media print {
+			display: block;
+		}
 	}
 
 	.fs-swap-active & {

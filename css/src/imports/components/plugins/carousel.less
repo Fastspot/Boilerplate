@@ -2,62 +2,93 @@
 	Carousel
 ============================================================================= */
 
-.fs-carousel {
+.fs-carousel-canister {
 
-	.fs-carousel-canister {
+	@media print {
+		width: 100% !important;
 
-		@media print {
-			width: 100% !important;
+		tranform: none !important;
+	}
+}
 
-			tranform: none !important;
-		}
+.fs-carousel-item {
+
+	@media print {
+		height: auto !important;
+		width: 100% !important;
 	}
 
-	.fs-carousel-item {
-
-		@media print {
-			height: auto !important;
-			width: 100% !important;
-		}
-
-		&.fs-carousel-visible {}
-	}
+	&.fs-carousel-visible {}
+}
 
 
-/* Controls
+/* ==========================================================================
+   Controls
 ============================================================================= */
 
-	.fs-carousel-controls {
+.fs-carousel-controls {
 
-		@media print {
-			display: none !important;
-		}
+	@media print {
+		.hide();
 	}
+}
+
+.fs-carousel-control {
+	cursor: default;
+	pointer-events: none;
+
+	&.fs-carousel-visible {
+		cursor: pointer;
+		pointer-events: auto;
+	}
+
+	&.fs-carousel-control_previous {}
+
+	&.fs-carousel-control_next {}
+}
+
+
+/* Control Themes
+============================================================================= */
+
+.theme {
+
+	.fs-carousel-controls {}
 
 	.fs-carousel-control {
-		cursor: default;
-		pointer-events: none;
 
-		&.fs-carousel-visible {
-			cursor: pointer;
-			pointer-events: auto;
-		}
+		&.fs-carousel-visible {}
 
-		.fs-carousel-control_previous {}
+		&.fs-carousel-control_previous {}
 
-		.fs-carousel-control_next {}
+		&.fs-carousel-control_next {}
 	}
+}
 
 
-/* Pagination
+/* ==========================================================================
+   Pagination
 ============================================================================= */
 
-	.fs-carousel-pagination {
+.fs-carousel-pagination {
 
-		@media print {
-			display: none;
-		}
+	@media print {
+		.hide();
 	}
+}
+
+.fs-carousel-page {
+
+	&.fs-carousel-active {}
+}
+
+
+/* Pagination Themes
+============================================================================= */
+
+.theme {
+
+	.fs-carousel-pagination {}
 
 	.fs-carousel-page {
 

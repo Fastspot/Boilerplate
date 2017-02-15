@@ -1,15 +1,12 @@
 /* ==========================================================================
-	Forms
-============================================================================= */
-
-/* Dropdowns
+	Dropdowns
 ============================================================================= */
 
 .fs-dropdown {
 	.focus_outline_none();
 
 	.fs-dropdown-selected {
-		position: relative;
+		.relative;
 
 		&:focus,
 		&:active,
@@ -31,7 +28,38 @@
 }
 
 
-/* Checkboxes & Radios
+/* Dropdown Themes
+============================================================================= */
+
+.theme {
+
+	.fs-dropdown {
+
+		.fs-dropdown-selected {
+
+			&:focus,
+			&:active,
+			&:hover {}
+		}
+
+		&.fs-dropdown-open .fs-dropdown-selected {}
+
+		.fs-dropdown-options {}
+
+		.fs-dropdown-item {
+
+			&:focus,
+			&:active,
+			&:hover {}
+
+			&.fs-dropdown-item_selected {}
+		}
+	}
+}
+
+
+/* ==========================================================================
+   Checkboxes & Radios
 ============================================================================= */
 
 .fs-checkbox {
@@ -47,7 +75,8 @@
 }
 
 .fs-checkbox-flag {
-	position: absolute;
+	.absolute;
+
 	top: 0;
 	left: 0;
 
