@@ -1,0 +1,85 @@
+/* ==========================================================================
+	Dropdowns
+============================================================================= */
+
+.fs-dropdown {
+	@include focus_outline_none;
+
+	.fs-dropdown-selected {
+		position: relative;
+
+		&:focus,
+		&:active,
+		&:hover {}
+	}
+
+	&.fs-dropdown-open .fs-dropdown-selected {}
+
+	.fs-dropdown-options {}
+
+	.fs-dropdown-item {
+
+		&:focus,
+		&:active,
+		&:hover {}
+
+		&.fs-dropdown-item_selected {}
+	}
+}
+
+
+/* Dropdown Themes
+============================================================================= */
+
+.theme {
+
+	.fs-dropdown {
+
+		.fs-dropdown-selected {
+
+			&:focus,
+			&:active,
+			&:hover {}
+		}
+
+		&.fs-dropdown-open .fs-dropdown-selected {}
+
+		.fs-dropdown-options {}
+
+		.fs-dropdown-item {
+
+			&:focus,
+			&:active,
+			&:hover {}
+
+			&.fs-dropdown-item_selected {}
+		}
+	}
+}
+
+
+/* ==========================================================================
+   Checkboxes & Radios
+============================================================================= */
+
+.fs-checkbox {
+	@include clearfix;
+
+	margin-bottom: 5px;
+}
+
+.fs-checkbox-marker {
+	margin-right: 10px;
+
+	.fs-checkbox-checked & {}
+}
+
+.fs-checkbox-flag {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	&:before {}
+
+	.fs-checkbox-radio & {}
+}

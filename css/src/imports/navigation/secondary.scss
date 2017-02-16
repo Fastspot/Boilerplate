@@ -1,0 +1,23 @@
+/* ==========================================================================
+	Secondary Navigation Common
+============================================================================= */
+
+.secondary_nav {}
+
+.secondary_nav_header {}
+
+.secondary_nav_title {
+	@include visually_hide;
+}
+
+.secondary_nav_list {}
+
+.secondary_nav_item {}
+
+.secondary_nav_link {
+	display: block;
+
+	&:focus,
+	&:active,
+	&:hover {}
+}

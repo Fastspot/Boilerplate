@@ -1,0 +1,25 @@
+/* ==========================================================================
+	Site Search
+============================================================================= */
+
+.site_search_handle {}
+
+.site_search {}
+
+.site_search_form {}
+
+.site_search_label {}
+
+.site_search_input {
+	@include focus_outline_none;
+
+	&::placeholder {
+		text-overflow: ellipsis;
+	}
+
+	&[placeholder] {
+		text-overflow: ellipsis;
+	}
+}
+
+.site_search_button {}

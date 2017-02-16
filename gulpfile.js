@@ -7,7 +7,8 @@ var gulp = require('gulp'),
 		changed = require('gulp-changed'),
 		twig = require('gulp-twig'),
 		directoryMap = require('gulp-directory-map'),
-		less = require('gulp-less'),
+		sassGlob = require('gulp-sass-glob'),
+		sass = require('gulp-sass'),
 		postcss = require('gulp-postcss'),
 		cssnano = require('gulp-cssnano'),
 		bless = require('gulp-bless'),
@@ -91,16 +92,14 @@ gulp.task('sitemap', ['create-sitemap'], function() {
 });
 
 
-gulp.task('less', function() {
+gulp.task('sass', function() {
 
 	return gulp.src([
-		'css/src/site.less',
+		'css/src/site.scss',
 		'css/src/ie/*'
 	])
-		.pipe(less({
-			modifyVars: packageJSON.vars,
-			plugins: [require('less-plugin-glob')]
-		}))
+		.pipe(sassGlob())
+		.pipe(sass().on('error', sass.logError))
 		.pipe(postcss([
 			require('autoprefixer')({
 				browsers: [
@@ -124,12 +123,12 @@ gulp.task('less', function() {
 });
 
 
-gulp.task('ie-less', function() {
+gulp.task('ie-css', function() {
 
 	return gulp.src([
-		'css/src/site-ie.less',
-		'css/src/site-ie8.less',
-		'css/src/site-ie9.less'
+		'css/src/site-ie.css',
+		'css/src/site-ie8.css',
+		'css/src/site-ie9.css'
 	])
 		.pipe(gulpif(util.env.production, postcss([
 			require('postcss-unmq'),
@@ -187,20 +186,6 @@ gulp.task('sprite', function() {
 			mode: {
 				symbol: {
 					dest: './'
-				},
-				view: {
-					dest: './',
-					bust: false,
-					prefix: '.icon_%s',
-					dimensions: '_dims',
-					render: {
-						less: {
-							dest: '../css/src/imports/icons.less'
-						}
-					},
-					example: {
-						dest: './icons.html'
-					}
 				}
 			}
 		}))
@@ -274,7 +259,7 @@ gulp.task('watch', function() {
 
 	gulp.watch('static/src/templates/*.twig', ['twig-templates']);
 	gulp.watch('static/src/partials/**/**.twig', ['twig']);
-	gulp.watch('css/src/**/**', ['less', 'ie-less']);
+	gulp.watch('css/src/**/**', ['sass', 'ie-css']);
 	gulp.watch('js/src/**/**.js', ['scripts', 'jshint']);
 	gulp.watch('images/src/**/*', ['sprite', 'imagemin']);
 
@@ -292,7 +277,7 @@ gulp.task('build', [
 	'sitemap',
 	'sprite',
 	'imagemin',
-	'less',
+	'sass',
 	'scripts',
 	'modernizr'
 ]);

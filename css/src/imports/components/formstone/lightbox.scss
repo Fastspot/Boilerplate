@@ -1,0 +1,484 @@
+/* ==========================================================================
+	Lightbox
+============================================================================= */
+
+$fs-lightbox-z-index: 400;
+
+$fs-lightbox-thumbnail-size: 50px;
+$fs-lightbox-thumbnail-margin: 0 10px 0 0;
+$fs-lightbox-thumbnail-opacity: 0.25;
+$fs-lightbox-thumbnail-padding: 10px;
+$fs-lightbox-thumbnail-scrollbar-size: 30px;
+
+.fs-lightbox {
+	width: 200px;
+	height: 200px;
+
+	position: absolute;
+	right: 0;
+	left: 0;
+	z-index: ($fs-lightbox-z-index + 1);
+
+	opacity: 0;
+	margin: 0 auto;
+	transform: translateZ(0);
+
+	&-open {
+		opacity: 1;
+	}
+
+	&-lock {
+		overflow: hidden;
+	}
+
+	&-fixed {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+
+		margin: auto;
+	}
+
+	&-animating {
+		transition:
+			height .25s,
+			width .25s,
+			top .25s,
+			opacity .25s;
+	}
+
+	&-animating .fs-lightbox-content,
+	&-animating .fs-lightbox-thumbnails,
+	&-animating .fs-lightbox-tools,
+	&-animating .fs-lightbox-meta,
+	&-animating .fs-lightbox-control {
+		transition:
+			opacity .25s,
+			visibility .25s;
+	}
+
+	&-mobile .fs-lightbox-image_container {
+		transiton:
+			top .25s,
+			left .25s;
+	}
+
+	&-mobile.fs-lightbox-scaling .fs-lightbox-image_container {
+		transition: none;
+	}
+
+	&-mobile.fs-lightbox-zooming .fs-lightbox-image_container {
+		transition:
+			top .25s,
+			left .25s;
+	}
+
+	&-mobile .fs-lightbox-image {
+		transition:
+			height .25s,
+			width .25s,
+			top .25s,
+			left .25s;
+	}
+
+	&-mobile.fs-lightbox-scaling .fs-lightbox-image {
+		transition: none;
+	}
+
+	&-mobile.fs-lightbox-zooming .fs-lightbox-image {
+		transition:
+			height .25s,
+			width .25s,
+			top .25s,
+			left .25s;
+	}
+
+	&-overlay {
+		width: 100%;
+		height: 100%;
+
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: $fs-lightbox-z-index;
+
+		opacity: 0;
+		transition: opacity .25s;
+	}
+
+	&-overlay.fs-lightbox-open {
+		opacity: .75;
+	}
+
+	&-close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: ($fs-lightbox-z-index + 5);
+
+		cursor: pointer;
+		display: block;
+		overflow: hidden;
+	}
+
+	&-container {
+		width: 100%;
+		height: 100%;
+
+		position: relative;
+		z-index: ($fs-lightbox-z-index + 3);
+
+		overflow: hidden;
+	}
+
+	&-content {
+		width: 100%;
+
+		opacity: 1;
+		overflow: hidden;
+		padding: 0;
+		visibility: visible;
+	}
+
+	&-inline .fs-lightbox-content {
+		width: auto;
+
+		overflow: auto;
+
+		-webkit-overflow-scrolling: touch;
+	}
+
+	&-iframed .fs-lightbox-content {
+		width: 100%;
+		height: 100%;
+
+		overflow: auto;
+
+		-webkit-overflow-scrolling: touch;
+	}
+
+	&-mobile .fs-lightbox-image_container {
+		width: 1px;
+		height: 1px;
+
+		position: absolute;
+
+		margin: 0;
+		transform: translate3D(0, 0, 0);
+	}
+
+	&-image {
+		float: left;
+	}
+
+	&-mobile .fs-lightbox-image {
+		position: relative;
+
+		float: none;
+	}
+
+	&-video {
+		width: 100%;
+		height: 100%;
+	}
+
+	&-iframe {
+		width: 100%;
+		height: 100%;
+
+		border: none;
+		float: left;
+		overflow: auto;
+	}
+
+	&-meta {
+		opacity: 1;
+		clear: both;
+		visibility: visible;
+	}
+
+	&-control {
+		position: absolute;
+		top: 0;
+		z-index: ($fs-lightbox-z-index + 5);
+
+		cursor: pointer;
+		display: block;
+		margin-right: auto;
+		margin-left: auto;
+		opacity: 1;
+		visibility: visible;
+		white-space: nowrap;
+	}
+
+	&-control_previous {
+		left: 0;
+	}
+
+	&-control_next {
+		right: 0;
+	}
+
+	&-control_disabled {
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	&-toggle {
+		display: none;
+	}
+
+	&-thumbnails {
+		height: $fs-lightbox-thumbnail-size + $fs-lightbox-thumbnail-padding;
+
+		position: relative;
+		z-index: 400;
+
+		overflow: hidden;
+	}
+
+	&-thumbnail_container {
+		height: $fs-lightbox-thumbnail-size + $fs-lightbox-thumbnail-scrollbar-size;
+
+		overflow-x: scroll;
+		overflow-y: hidden;
+		-webkit-overflow-scrolling: touch;
+		padding: 0 0 $fs-lightbox-thumbnail-scrollbar-size;
+		text-align: center;
+		white-space: nowrap;
+	}
+
+	&-thumbnail_item {
+		width: $fs-lightbox-thumbnail-size;
+		height: $fs-lightbox-thumbnail-size;
+
+		position: relative;
+
+		background: none;
+		border: none;
+		cursor: pointer;
+		display: inline-block;
+		margin: $fs-lightbox-thumbnail-margin;
+		opacity: $fs-lightbox-thumbnail-opacity;
+		overflow: hidden;
+		transition: opacity .25s;
+
+		&:last-child {
+			margin: 0;
+		}
+
+		img {
+			width: 100%;
+			height: auto;
+
+			position: absolute;
+			top: 50%;
+
+			display: block;
+			transform: translateY(-50%);
+		}
+	}
+
+	&-thumbnail_item.fs-lightbox-active,
+	&-thumbnail_item:hover {
+		opacity: 1;
+	}
+
+	&-loading .fs-lightbox-content,
+	&-loading .fs-lightbox-thumbnails,
+	&-loading .fs-lightbox-tools,
+	&-loading .fs-lightbox-meta,
+	&-loading .fs-lightbox-control {
+		opacity: 0;
+		transition:
+			opacity .25s,
+			visibility .25s;
+		visibility: hidden;
+	}
+
+	&-loading .fs-lightbox-loading_icon,
+	&-ready.fs-lightbox-loading .fs-lightbox-thumbnails,
+	&-ready.fs-lightbox-loading .fs-lightbox-tools {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	&-mobile {
+		width: 100%;
+		height: 100%;
+
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		border-radius: 0;
+	}
+
+	&-mobile .fs-lightbox-container {
+		position: static;
+	}
+
+	&-mobile .fs-lightbox-content {
+		height: 100%;
+	}
+
+	&-mobile .fs-lightbox-tools {
+		width: 100%;
+
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+
+	&-mobile .fs-lightbox-controls {
+		text-align: center;
+	}
+
+	&-mobile .fs-lightbox-control {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	&-mobile .fs-lightbox-control,
+	&-mobile:hover .fs-lightbox-control {
+		visibility: visible;
+	}
+
+	&-mobile .fs-lightbox-control_disabled,
+	&-mobile .fs-lightbox-control_disabled,
+	&-mobile:hover .fs-lightbox-control_disabled {
+		cursor: default !important;
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	&-mobile .fs-lightbox-image {
+		transform: translate(0, 0);
+	}
+
+	&-mobile.fs-lightbox-inline .fs-lightbox-content,
+	&-mobile.fs-lightbox-iframe .fs-lightbox-content {
+		height: 100%;
+
+		overflow-x: hidden;
+		overflow-y: scroll;
+
+		-webkit-overflow-scrolling: touch;
+	}
+
+	&-mobile.fs-lightbox-touch .fs-lightbox-tools {
+		width: auto;
+
+		position: static;
+
+		background: transparent;
+	}
+
+	&-mobile.fs-lightbox-touch .fs-lightbox-controls {
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: ($fs-lightbox-z-index + 5);
+	}
+
+	&-mobile.fs-lightbox-touch .fs-lightbox-toggle {
+		display: inline-block;
+		margin: 0 5px;
+	}
+
+	&-mobile.fs-lightbox-touch .fs-lightbox-meta {
+		width: 100%;
+		height: 80%;
+
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: ($fs-lightbox-z-index + 4);
+
+		transform: translate(0, 100%);
+		transition:
+			transform .25s,
+			opacity .25s .25s,
+			visibility .25s .25s;
+	}
+
+	&-touch.fs-lightbox-caption_open .fs-lightbox-meta {
+		transform: translate(0, 0);
+	}
+
+	&-mobile.fs-lightbox-touch .fs-lightbox-thumbnails {
+		width: 100%;
+		height: $fs-lightbox-thumbnail-size + 20px;
+
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: ($fs-lightbox-z-index + 4);
+
+		transform: translate(0, 100%);
+		transition:
+			transform .25s,
+			opacity .25s .25s,
+			visibility .25s .25s;
+	}
+
+	&-mobile.fs-lightbox-touch .fs-lightbox-thumbnail_container {
+		height: ($fs-lightbox-thumbnail-size * 2);
+	}
+
+	&-touch.fs-lightbox-thumbnails_open .fs-lightbox-thumbnails {
+		transform: translate(0, 0);
+	}
+
+	&-mobile.fs-lightbox-touch .fs-lightbox-container,
+	&-mobile.fs-lightbox-touch .fs-lightbox-content {
+		overflow: visible;
+	}
+
+	&-mobile.fs-lightbox-touch .fs-lightbox-content {
+		position: relative;
+	}
+
+	.fs-viewer {
+		top: 0;
+		bottom: 0;
+
+		&,
+		.fs-viewer-wrapper {
+			height: auto;
+			width: auto;
+
+			position: absolute;
+			right: 0;
+			left: 0;
+		}
+
+		.fs-viewer-wrapper {
+			top: 0;
+			bottom: 0;
+		}
+
+		.fs-viewer-loading_icon {
+			display: none;
+		}
+
+		.fs-viewer-viewport {
+			top: 20px;
+			right: 20px;
+			bottom: 20px;
+			left: 20px;
+		}
+
+		.fs-viewer-controls {
+			position: absolute;
+		}
+	}
+}

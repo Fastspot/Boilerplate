@@ -1,0 +1,63 @@
+/* ==========================================================================
+	Page
+============================================================================= */
+
+.skip_link {
+	@include heading_6;
+
+	position: absolute;
+	top: 0;
+	left: 50%;
+	z-index: 100;
+
+	display: block;
+	padding: 20px;
+	text-align: center;
+	transform: translate(-50%, -200%);
+	transition:
+		transform 0.35s,
+		top 0.35s;
+
+	&:focus,
+	&:active {
+		outline: 2px solid #000;
+		transform: translate(-50%, 0);
+	}
+
+	.no-csstransforms & {
+		top: -100%;
+
+		&:focus,
+		&:active {
+			top: 0;
+		}
+	}
+}
+
+.page_wrapper {}
+
+.page {}
+
+.page_feature {}
+
+.page_content {}
+
+.subnav_cell {}
+
+.main_content {
+	@include focus_outline_none;
+}
+
+.page_header {}
+
+.page_title {}
+
+.in_content_callouts {}
+
+.sidebar_cell {
+	clear: right;
+}
+
+.sidebar {}
+
+.full_width_callouts {}

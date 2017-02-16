@@ -1,0 +1,141 @@
+/* ==========================================================================
+	Main Navigation Common
+============================================================================= */
+
+.main_nav {}
+
+.main_nav_header {}
+
+.main_nav_title {
+	@include visually_hide;
+}
+
+.main_nav_list {}
+
+.main_nav_item {}
+
+.main_nav_item_wrapper {}
+
+.main_nav_link {
+	display: block;
+
+	&:focus,
+	&:active,
+	&:hover {}
+}
+
+.main_nav_toggle {}
+
+.main_nav_children {}
+
+.main_nav_child_item {}
+
+.main_nav_child_link {
+	display: block;
+}
+
+
+/* ==========================================================================
+	Main Navigation Small
+============================================================================= */
+
+.main_nav_sm {
+
+	@media #{$min_lg} {
+		display: none;
+	}
+
+	.main_nav_title {}
+
+	.main_nav_list {}
+
+	.main_nav_item {
+
+		&.fs-swap-enabled {
+
+			.main_nav_children {
+				display: none;
+			}
+		}
+
+		&.fs-swap-active {
+
+			.main_nav_children {
+				display: block;
+			}
+		}
+	}
+
+	.main_nav_item_wrapper {}
+
+	.main_nav_link {
+
+		&:focus,
+		&:active,
+		&:hover {}
+	}
+
+	.main_nav_toggle {}
+
+	.main_nav_children {}
+
+	.main_nav_child_item {}
+
+	.main_nav_child_link {}
+}
+
+
+/* ==========================================================================
+	Main Navigation Large
+============================================================================= */
+
+.main_nav_lg {
+
+	@media #{$max_lg} {
+		display: none;
+	}
+
+	.main_nav_title {}
+
+	.main_nav_list {}
+
+	.main_nav_item {
+
+		&.focused,
+		&:active,
+		&:hover {
+
+			.main_nav_children {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+	}
+
+	.main_nav_item_wrapper {}
+
+	.main_nav_link {
+
+		&:focus,
+		&:active,
+		&:hover {}
+	}
+
+	.main_nav_toggle {
+		display: none;
+	}
+
+	.main_nav_children {
+		position: absolute;
+
+		opacity: 0;
+		transition:
+			opacity $base_transition_duration,
+			visibility $base_transition_duration;
+		visibility: hidden;
+	}
+
+	.main_nav_child_item {}
+
+	.main_nav_child_link {}
+}

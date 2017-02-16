@@ -1,0 +1,92 @@
+/* ==========================================================================
+	Lightbox
+============================================================================= */
+
+.fs-lightbox-element {
+
+	@media print {
+		display: block;
+	}
+}
+
+.fs-lightbox {
+	@include focus_outline_none;
+
+	background: fade(#fff, 75%);
+
+	.fs-lightbox-close {}
+
+	.fs-lightbox-container {
+		background: none;
+	}
+
+	.fs-lightbox-content {
+		background: none;
+		padding: 20px;
+	}
+
+	.fs-viewer-element,
+	.fs-viewer-element .fs-viewer-wrapper {
+		background: none;
+	}
+
+	.fs-lightbox-video_wrapper {
+		margin-right: auto !important;
+		margin-left: auto !important;
+	}
+
+
+/* Tools & Controls
+============================================================================= */
+
+	.fs-lightbox-tools {
+		width: 100% !important;
+
+		background: #333;
+	}
+
+
+/* Controls
+============================================================================= */
+
+	.fs-viewer-controls {
+		width: 100%;
+	}
+
+	.fs-viewer-control {
+
+		&:focus,
+		&:active,
+		&:hover {}
+	}
+
+	.fs-lightbox-control_previous {}
+
+	.fs-lightbox-control_next {}
+
+	.fs-viewer-control_zoom_out {
+		display: none;
+	}
+
+	.fs-viewer-control_zoom_in {
+		display: none;
+	}
+
+
+/* Tools
+============================================================================= */
+
+	.fs-lightbox-meta {}
+
+	.fs-lightbox-position {
+		margin: 0;
+	}
+
+	.fs-lightbox-caption {
+		text-align: center;
+	}
+
+	.caption {
+		margin: 0;
+	}
+}

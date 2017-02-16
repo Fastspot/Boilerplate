@@ -1,0 +1,164 @@
+/* ==========================================================================
+	Navigation
+============================================================================= */
+
+$fs-navigation-offscreen-width: 270px;
+
+.fs-navigation {
+
+	&-lock {
+		overflow: hidden;
+	}
+
+
+	/* Overlay
+	=========================================================================== */
+
+	&-overlay-content:before {
+		width: 100%;
+		height: 100%;
+
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 100;
+
+		background: #fff;
+		background: fade(#fff, 75%);
+		content: '';
+		display: block;
+		opacity: 0;
+		transition:
+			opacity .25s,
+			visibility .25s;
+		visibility: hidden;
+	}
+
+	&-overlay-content.fs-navigation-open:before {
+		opacity: 1;
+		visibility: visible;
+	}
+
+
+	/* Toggle
+	=========================================================================== */
+
+	&-push-handle.fs-navigation-enabled,
+	&-reveal-handle.fs-navigation-enabled,
+	&-overlay-handle.fs-navigation-enabled {
+		cursor: pointer;
+		display: block;
+	}
+
+	&-toggle-nav.fs-navigation-enabled {
+		display: none;
+	}
+
+	&-toggle-nav.fs-navigation-open {
+		display: block;
+	}
+
+	&-toggle-handle.fs-navigation-enabled {
+		width: 100%;
+
+		cursor: pointer;
+		display: block;
+	}
+
+
+	/* Overlay
+	=========================================================================== */
+
+	&-push-nav.fs-navigation-enabled,
+	&-reveal-nav.fs-navigation-enabled,
+	&-overlay-nav.fs-navigation-enabled {
+		width: $fs-navigation-offscreen-width;
+		height: 100%;
+		height: calc(100% + 60px);
+
+		position: fixed;
+		top: 0;
+		z-index: 200;
+
+		background: #fff;
+		display: block;
+		overflow: auto;
+		-webkit-overflow-scrolling: touch;
+		transition:
+			opacity .25s,
+			transform .25s,
+			visibility .25s;
+	}
+
+	&-push-nav.fs-navigation-enabled,
+	&-overlay-nav.fs-navigation-enabled {
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	&-push-nav.fs-navigation-open,
+	&-overlay-nav.fs-navigation-open {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	&-push-left-nav.fs-navigation-enabled,
+	&-reveal-left-nav.fs-navigation-enabled,
+	&-overlay-left-nav.fs-navigation-enabled {
+		left: 0;
+	}
+
+	&-push-right-nav.fs-navigation-enabled,
+	&-reveal-right-nav.fs-navigation-enabled,
+	&-overlay-right-nav.fs-navigation-enabled {
+		right: 0;
+	}
+
+	&-push-left-nav.fs-navigation-enabled {
+		transform: translateX(-($fs-navigation-offscreen-width));
+	}
+
+	&-overlay-left-nav.fs-navigation-enabled {
+		transform: translateX(-100%);
+	}
+
+	&-push-right-nav.fs-navigation-enabled {
+		transform: translateX($fs-navigation-offscreen-width);
+	}
+
+	&-overlay-right-nav.fs-navigation-enabled {
+		transform: translateX(100%);
+	}
+
+	&-overlay-nav.fs-navigation-open,
+	&-push-nav.fs-navigation-open {
+		transform: translateX(0);
+	}
+
+
+	/* Content
+	=========================================================================== */
+
+	&-reveal-content.fs-navigation-enabled,
+	&-push-content.fs-navigation-enabled {
+		position: relative;
+		z-index: 400;
+
+		display: block;
+		overflow: hidden;
+		transform: translateX(0);
+		transition: transform .25s;
+	}
+
+	&-reveal-left-content.fs-navigation-open,
+	&-push-left-content.fs-navigation-open {
+		transform: translate($fs-navigation-offscreen-width, 0);
+	}
+
+	&-reveal-right-content.fs-navigation-open,
+	&-push-right-content.fs-navigation-open {
+		transform: translate(-($fs-navigation-offscreen-width), 0);
+	}
+}

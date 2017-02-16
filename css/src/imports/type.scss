@@ -1,0 +1,308 @@
+/* ==========================================================================
+	Type Base
+============================================================================= */
+
+@mixin heading_1() {
+	@include font_size(60);
+	@include line_height(70, 60);
+}
+
+@mixin heading_2() {
+	@include font_size(50);
+	@include line_height(60, 50);
+}
+
+@mixin heading_3() {
+	@include font_size(40);
+	@include line_height(50, 40);
+}
+
+@mixin heading_4() {
+	@include font_size(30);
+	@include line_height(40, 30);
+}
+
+@mixin heading_5() {
+	@include font_size(20);
+	@include line_height(30, 20);
+}
+
+@mixin heading_6() {
+	@include font_size(16);
+	@include line_height(24, 16);
+}
+
+@mixin body_text() {
+	@include font_size(16);
+	@include line_height(24, 16);
+}
+
+@mixin label_text() {}
+
+@mixin intro_text() {}
+
+@mixin caption_text() {}
+
+p {}
+
+a {
+	@include transition_link;
+
+	text-decoration: none;
+
+	.touch &[href^=tel] {
+		color:inherit;
+	}
+}
+
+strong {
+	font-weight: bold;
+}
+
+
+/* typography
+============================================================================= */
+
+.typography {
+	@include body_text;
+
+	h1 {
+		@include heading_1;
+	}
+
+	h2 {
+		@include heading_2;
+	}
+
+	h3 {
+		@include heading_3;
+	}
+
+	h4 {
+		@include heading_4;
+	}
+
+	h5 {
+		@include heading_5;
+	}
+
+	h6 {
+		@include heading_6;
+	}
+
+	p {}
+}
+
+
+/* WYSIWYG Images
+============================================================================= */
+
+.typography {
+
+	img {
+		height: auto;
+		max-width: 50%;
+	}
+
+	.block_left,
+	.block_right,
+	.block_center {
+		width: auto;
+
+		display: table;
+		table-layout: fixed;
+
+		img {
+			display: block;
+			max-width: 100%;
+		}
+
+		figcaption {
+			@include caption_text;
+
+			caption-side: bottom;
+			display: table-caption;
+		}
+	}
+
+	.block_left,
+	.block_right {
+		max-width: 50%;
+
+		@media #{$max_sm} {
+			max-width: none;
+
+			float: none;
+			margin-right: 0;
+			margin-left: 0;
+		}
+	}
+
+	.block_center {
+		text-align: center;
+
+		img {
+			margin-right: auto;
+			margin-left: auto;
+		}
+	}
+}
+
+
+/* Blockquote
+============================================================================= */
+
+.typography {
+
+	blockquote {
+
+		p {}
+	}
+
+	.quote {}
+
+	.quote_content {
+
+		p {}
+	}
+
+	.quote_caption {}
+
+	.quote_caption_name {}
+
+	.quote_caption_title {}
+}
+
+
+/* Lists
+============================================================================= */
+
+.typography {
+
+	ol,
+	ul {
+
+		li {}
+	}
+
+	ol {}
+
+	ul {
+		list-style: none;
+
+		li {
+
+			&:before {
+				width: 5px;
+				height: 5px;
+
+				background: #444;
+				border-radius: 50%;
+				content: "";
+				display: block;
+				float: left;
+				margin: 10px 0 0 -15px;
+			}
+		}
+	}
+}
+
+
+/* Tables
+============================================================================= */
+
+.typography {
+
+	table {
+		@include margined;
+
+		width: 100%;
+
+		border-collapse: collapse;
+
+		tr {
+
+			&:nth-child(odd) {}
+		}
+
+		th,
+		td {}
+
+		th {
+			@include heading_6;
+
+			text-align: left;
+		}
+
+		td {}
+	}
+}
+
+.table_wrapper {
+	// 1. Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
+
+	@include margined;
+
+	min-height: 0.01%; // 1
+
+	&.table_wrapper_overflow {
+		position: relative;
+
+		border: 1px solid #ccc;
+
+		&:after {
+			@include gradient_horizontal(fade($true_black, 0), fade($true_black, 10));
+
+			width: 20px;
+			height: 100%;
+
+			position: absolute;
+			top: 0;
+			right: 0;
+
+			content: "";
+		}
+
+		.table_wrapper_inner {
+			overflow-y: hidden;
+			-ms-overflow-style: -ms-autohiding-scrollbar;
+		}
+
+		> table {
+			margin: 0;
+			border: 0;
+
+			> tbody {
+				border: none;
+			}
+
+			> thead,
+			> tbody,
+			> tfoot {
+				> tr {
+					> th,
+					> td {}
+
+					> th:first-child,
+					> td:first-child {
+						border-left: 0;
+					}
+					> th:last-child,
+					> td:last-child {
+						border-right: 0;
+					}
+				}
+			}
+
+			> tbody,
+			> tfoot {
+				> tr:last-child {
+					> th,
+					> td {
+						border-bottom: 0;
+					}
+				}
+			}
+		}
+	}
+}
