@@ -2,7 +2,7 @@
 	Carousel
 ============================================================================= */
 
-$fs-carousel-transition-duration: 0.5s;
+$fs-carousel-transition-duration: .5s;
 
 $fs-carousel-control-left: 0;
 $fs-carousel-control-right: 0;
@@ -14,28 +14,28 @@ $fs-carousel-control-right: 0;
 		direction: rtl;
 	}
 
-	&-enabled .fs-carousel-viewport {
+	&-enabled &-viewport {
 		@include clearfix;
 
 		position: relative;
 	}
 
-	&-enabled .fs-carousel-container {
+	&-enabled &-container {
 		@include clearfix;
 	}
 
-	&-enabled.fs-carousel-contained .fs-carousel-container {
+	&-enabled.fs-carousel-contained &-container {
 		overflow: hidden;
 	}
 
-	&-enabled .fs-carousel-canister {
+	&-enabled &-canister {
 		backface-visibility: hidden;
 		overflow: hidden;
 		transition: transform .5s;
 		transform: translate3d(0, 0, 0);
 	}
 
-	&-enabled.fs-carousel-auto_height .fs-carousel-canister {
+	&-enabled.fs-carousel-auto_height &-canister {
 		transition:
 			height .5s,
 			transform .5s;
@@ -45,7 +45,7 @@ $fs-carousel-control-right: 0;
 	/* Items
 	=========================================================================== */
 
-	&-enabled .fs-carousel-item {
+	&-enabled &-item {
 		min-height: 1px;
 
 		display: block;
@@ -57,17 +57,17 @@ $fs-carousel-control-right: 0;
 		}
 	}
 
-	&-enabled.fs-carousel-rtl .fs-carousel-item {
+	&-enabled.fs-carousel-rtl &-item {
 		float: right;
 	}
 
-	&-single .fs-carousel-item {
+	&-single &-item {
 		position: absolute;
 		top: 0;
 		left: 0;
 	}
 
-	&-single .fs-carousel-item.fs-carousel-visible {
+	&-single &-item.fs-carousel-visible {
 		position: relative;
 		z-index: 2;
 	}
@@ -80,12 +80,12 @@ $fs-carousel-control-right: 0;
 		display: none;
 	}
 
-	&-enabled .fs-carousel-controls.fs-carousel-visible,
+	&-enabled &-controls.fs-carousel-visible,
 	&-controls_custom.fs-carousel-visible {
 		display: block;
 	}
 
-	&-enabled .fs-carousel-control {
+	&-enabled &-control {
 		cursor: pointer;
 	}
 
@@ -97,11 +97,11 @@ $fs-carousel-control-right: 0;
 		display: none;
 	}
 
-	&-enabled .fs-carousel-pagination.fs-carousel-visible {
+	&-enabled &-pagination.fs-carousel-visible {
 		display: block;
 	}
 
-	&-enabled .fs-carousel-page {
+	&-enabled &-page {
 		cursor: pointer;
 		display: inline-block;
 	}

@@ -30,7 +30,7 @@ $fs-checkbox-toggle-marker-width: 100px;
 		float: left;
 	}
 
-	&-radio .fs-checkbox-marker {
+	&-radio &-marker {
 		border-radius: 100%;
 	}
 
@@ -57,13 +57,13 @@ $fs-checkbox-toggle-marker-width: 100px;
 		transition: transform .25s;
 	}
 
-	&-checked .fs-checkbox-flag:before {
+	&-checked &-flag:before {
 		transform:
 			rotate(45deg)
 			scale(1);
 	}
 
-	&-radio .fs-checkbox-flag {
+	&-radio &-flag {
 		width:	($fs-checkbox-marker-size / 2);
 		height: ($fs-checkbox-marker-size / 2);
 
@@ -84,7 +84,7 @@ $fs-checkbox-toggle-marker-width: 100px;
 		}
 	}
 
-	&-radio.fs-checkbox-checked .fs-checkbox-flag {
+	&-radio.fs-checkbox-checked &-flag {
 		transform: scale(1);
 	}
 
@@ -109,14 +109,14 @@ $fs-checkbox-toggle-marker-width: 100px;
 	/* Toggle
 	=========================================================================== */
 
-	&-toggle .fs-checkbox-marker {
+	&-toggle &-marker {
 		height: $fs-checkbox-toggle-marker-height;
 		width: $fs-checkbox-toggle-marker-width;
 
 		position: relative;
 	}
 
-	&-toggle .fs-checkbox-flag {
+	&-toggle &-flag {
 		height: 100%;
 		width: 50%;
 
@@ -131,7 +131,7 @@ $fs-checkbox-toggle-marker-width: 100px;
 			background .25s;
 	}
 
-	&-toggle.fs-checkbox-checked .fs-checkbox-flag {
+	&-toggle.fs-checkbox-checked &-flag {
 		left: 50%;
 
 		&:before {
@@ -139,11 +139,11 @@ $fs-checkbox-toggle-marker-width: 100px;
 		}
 	}
 
-	&-toggle.fs-checkbox-disabled .fs-checkbox-flag:after {
+	&-toggle.fs-checkbox-disabled &-flag:after {
 		display: none;
 	}
 
-	&-toggle .fs-checkbox-state {
+	&-toggle &-state {
 		width: 50%;
 
 		display: block;
@@ -160,7 +160,7 @@ $fs-checkbox-toggle-marker-width: 100px;
 		}
 	}
 
-	&-toggle .fs-checkbox-label {
+	&-toggle &-label {
 		line-height: $fs-checkbox-toggle-marker-height;
 	}
 }

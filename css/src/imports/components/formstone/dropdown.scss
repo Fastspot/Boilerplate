@@ -45,7 +45,7 @@ $fs-dropdown-max-height: 100px;
 		text-overflow: clip;
 	}
 
-	&-disabled .fs-dropdown-selected {
+	&-disabled &-selected {
 		cursor: default;
 	}
 
@@ -66,25 +66,25 @@ $fs-dropdown-max-height: 100px;
 		overflow-x: hidden;
 	}
 
-	&-open .fs-dropdown-options {
+	&-open &-options {
 		display: block;
 	}
 
-	&-cover .fs-dropdown-options {
+	&-cover &-options {
 		top: 0;
 	}
 
-	&-bottom .fs-dropdown-options {
+	&-bottom &-options {
 		top: auto;
 		bottom: 100%;
 	}
 
-	&-bottom.fs-dropdown-cover .fs-dropdown-options {
+	&-bottom.fs-dropdown-cover &-options {
 		top: auto;
 		bottom: 0;
 	}
 
-	&-multiple .fs-dropdown-options {
+	&-multiple &-options {
 		width: 100%;
 
 		position: static;

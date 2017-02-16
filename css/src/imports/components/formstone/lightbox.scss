@@ -6,7 +6,7 @@ $fs-lightbox-z-index: 400;
 
 $fs-lightbox-thumbnail-size: 50px;
 $fs-lightbox-thumbnail-margin: 0 10px 0 0;
-$fs-lightbox-thumbnail-opacity: 0.25;
+$fs-lightbox-thumbnail-opacity: .25;
 $fs-lightbox-thumbnail-padding: 10px;
 $fs-lightbox-thumbnail-scrollbar-size: 30px;
 
@@ -47,33 +47,33 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 			opacity .25s;
 	}
 
-	&-animating .fs-lightbox-content,
-	&-animating .fs-lightbox-thumbnails,
-	&-animating .fs-lightbox-tools,
-	&-animating .fs-lightbox-meta,
-	&-animating .fs-lightbox-control {
+	&-animating &-content,
+	&-animating &-thumbnails,
+	&-animating &-tools,
+	&-animating &-meta,
+	&-animating &-control {
 		transition:
 			opacity .25s,
 			visibility .25s;
 	}
 
-	&-mobile .fs-lightbox-image_container {
+	&-mobile &-image_container {
 		transiton:
 			top .25s,
 			left .25s;
 	}
 
-	&-mobile.fs-lightbox-scaling .fs-lightbox-image_container {
+	&-mobile.fs-lightbox-scaling &-image_container {
 		transition: none;
 	}
 
-	&-mobile.fs-lightbox-zooming .fs-lightbox-image_container {
+	&-mobile.fs-lightbox-zooming &-image_container {
 		transition:
 			top .25s,
 			left .25s;
 	}
 
-	&-mobile .fs-lightbox-image {
+	&-mobile &-image {
 		transition:
 			height .25s,
 			width .25s,
@@ -81,11 +81,11 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 			left .25s;
 	}
 
-	&-mobile.fs-lightbox-scaling .fs-lightbox-image {
+	&-mobile.fs-lightbox-scaling &-image {
 		transition: none;
 	}
 
-	&-mobile.fs-lightbox-zooming .fs-lightbox-image {
+	&-mobile.fs-lightbox-zooming &-image {
 		transition:
 			height .25s,
 			width .25s,
@@ -142,7 +142,7 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 		visibility: visible;
 	}
 
-	&-inline .fs-lightbox-content {
+	&-inline &-content {
 		width: auto;
 
 		overflow: auto;
@@ -150,7 +150,7 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 		-webkit-overflow-scrolling: touch;
 	}
 
-	&-iframed .fs-lightbox-content {
+	&-iframed &-content {
 		width: 100%;
 		height: 100%;
 
@@ -159,7 +159,7 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 		-webkit-overflow-scrolling: touch;
 	}
 
-	&-mobile .fs-lightbox-image_container {
+	&-mobile &-image_container {
 		width: 1px;
 		height: 1px;
 
@@ -173,7 +173,7 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 		float: left;
 	}
 
-	&-mobile .fs-lightbox-image {
+	&-mobile &-image {
 		position: relative;
 
 		float: none;
@@ -286,11 +286,11 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 		opacity: 1;
 	}
 
-	&-loading .fs-lightbox-content,
-	&-loading .fs-lightbox-thumbnails,
-	&-loading .fs-lightbox-tools,
-	&-loading .fs-lightbox-meta,
-	&-loading .fs-lightbox-control {
+	&-loading &-content,
+	&-loading &-thumbnails,
+	&-loading &-tools,
+	&-loading &-meta,
+	&-loading &-control {
 		opacity: 0;
 		transition:
 			opacity .25s,
@@ -298,9 +298,9 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 		visibility: hidden;
 	}
 
-	&-loading .fs-lightbox-loading_icon,
-	&-ready.fs-lightbox-loading .fs-lightbox-thumbnails,
-	&-ready.fs-lightbox-loading .fs-lightbox-tools {
+	&-loading &-loading_icon,
+	&-ready.fs-lightbox-loading &-thumbnails,
+	&-ready.fs-lightbox-loading &-tools {
 		opacity: 1;
 		visibility: visible;
 	}
@@ -318,15 +318,15 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 		border-radius: 0;
 	}
 
-	&-mobile .fs-lightbox-container {
+	&-mobile &-container {
 		position: static;
 	}
 
-	&-mobile .fs-lightbox-content {
+	&-mobile &-content {
 		height: 100%;
 	}
 
-	&-mobile .fs-lightbox-tools {
+	&-mobile &-tools {
 		width: 100%;
 
 		position: fixed;
@@ -335,34 +335,34 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 		left: 0;
 	}
 
-	&-mobile .fs-lightbox-controls {
+	&-mobile &-controls {
 		text-align: center;
 	}
 
-	&-mobile .fs-lightbox-control {
+	&-mobile &-control {
 		opacity: 1;
 		visibility: visible;
 	}
 
-	&-mobile .fs-lightbox-control,
-	&-mobile:hover .fs-lightbox-control {
+	&-mobile &-control,
+	&-mobile:hover &-control {
 		visibility: visible;
 	}
 
-	&-mobile .fs-lightbox-control_disabled,
-	&-mobile .fs-lightbox-control_disabled,
-	&-mobile:hover .fs-lightbox-control_disabled {
+	&-mobile &-control_disabled,
+	&-mobile &-control_disabled,
+	&-mobile:hover &-control_disabled {
 		cursor: default !important;
 		opacity: 0;
 		visibility: hidden;
 	}
 
-	&-mobile .fs-lightbox-image {
+	&-mobile &-image {
 		transform: translate(0, 0);
 	}
 
-	&-mobile.fs-lightbox-inline .fs-lightbox-content,
-	&-mobile.fs-lightbox-iframe .fs-lightbox-content {
+	&-mobile.fs-lightbox-inline &-content,
+	&-mobile.fs-lightbox-iframe &-content {
 		height: 100%;
 
 		overflow-x: hidden;
@@ -371,7 +371,7 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 		-webkit-overflow-scrolling: touch;
 	}
 
-	&-mobile.fs-lightbox-touch .fs-lightbox-tools {
+	&-mobile.fs-lightbox-touch &-tools {
 		width: auto;
 
 		position: static;
@@ -379,7 +379,7 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 		background: transparent;
 	}
 
-	&-mobile.fs-lightbox-touch .fs-lightbox-controls {
+	&-mobile.fs-lightbox-touch &-controls {
 		position: fixed;
 		right: 0;
 		bottom: 0;
@@ -387,12 +387,12 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 		z-index: ($fs-lightbox-z-index + 5);
 	}
 
-	&-mobile.fs-lightbox-touch .fs-lightbox-toggle {
+	&-mobile.fs-lightbox-touch &-toggle {
 		display: inline-block;
 		margin: 0 5px;
 	}
 
-	&-mobile.fs-lightbox-touch .fs-lightbox-meta {
+	&-mobile.fs-lightbox-touch &-meta {
 		width: 100%;
 		height: 80%;
 
@@ -409,11 +409,11 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 			visibility .25s .25s;
 	}
 
-	&-touch.fs-lightbox-caption_open .fs-lightbox-meta {
+	&-touch.fs-lightbox-caption_open &-meta {
 		transform: translate(0, 0);
 	}
 
-	&-mobile.fs-lightbox-touch .fs-lightbox-thumbnails {
+	&-mobile.fs-lightbox-touch &-thumbnails {
 		width: 100%;
 		height: $fs-lightbox-thumbnail-size + 20px;
 
@@ -430,20 +430,20 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 			visibility .25s .25s;
 	}
 
-	&-mobile.fs-lightbox-touch .fs-lightbox-thumbnail_container {
+	&-mobile.fs-lightbox-touch &-thumbnail_container {
 		height: ($fs-lightbox-thumbnail-size * 2);
 	}
 
-	&-touch.fs-lightbox-thumbnails_open .fs-lightbox-thumbnails {
+	&-touch.fs-lightbox-thumbnails_open &-thumbnails {
 		transform: translate(0, 0);
 	}
 
-	&-mobile.fs-lightbox-touch .fs-lightbox-container,
-	&-mobile.fs-lightbox-touch .fs-lightbox-content {
+	&-mobile.fs-lightbox-touch &-container,
+	&-mobile.fs-lightbox-touch &-content {
 		overflow: visible;
 	}
 
-	&-mobile.fs-lightbox-touch .fs-lightbox-content {
+	&-mobile.fs-lightbox-touch &-content {
 		position: relative;
 	}
 

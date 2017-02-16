@@ -45,11 +45,11 @@ $fs-range-vertical-track-width: 10px;
 		margin: ($fs-range-marker-size / 2) 0;
 	}
 
-	&-labels .fs-range-track {
+	&-labels &-track {
 		width: 80%;
 	}
 
-	&-vertical .fs-range-track {
+	&-vertical &-track {
 		height: 75%;
 		width: $fs-range-vertical-track-width;
 
@@ -70,7 +70,7 @@ $fs-range-vertical-track-width: 10px;
 		background: $fs-range-fill-background-color;
 	}
 
-	&-vertical .fs-range-fill {
+	&-vertical &-fill {
 		height: 1px;
 		width: 100%;
 
@@ -94,7 +94,7 @@ $fs-range-vertical-track-width: 10px;
 		overflow: visible;
 	}
 
-	&-vertical .fs-range-handle {
+	&-vertical &-handle {
 		height: 1px;
 		width: 100%;
 
@@ -111,11 +111,11 @@ $fs-range-vertical-track-width: 10px;
 		margin: -($fs-range-marker-size / 4) 0 0 -($fs-range-marker-size / 2);
 	}
 
-	&-disabled .fs-range-marker {
+	&-disabled &-marker {
 		cursor: default;
 	}
 
-	&-vertical .fs-range-marker {
+	&-vertical &-marker {
 		margin: -($fs-range-marker-size / 2) 0 0 -($fs-range-marker-size / 4);
 	}
 
@@ -130,7 +130,7 @@ $fs-range-vertical-track-width: 10px;
 		line-height: ($fs-range-track-height + $fs-range-marker-size);
 	}
 
-	&-vertical .fs-range-label {
+	&-vertical &-label {
 		height: auto;
 		width: 100%;
 
