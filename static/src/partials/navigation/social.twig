@@ -14,7 +14,7 @@
 		{% for link in links %}
 		<div class="social_nav_item{% if link.modifier %} {{link.modifier}}{% endif %}">
 			<a class="social_nav_link" href="{{link.href}}" target="_blank" itemprop="sameAs">
-				{% if link.symbol %}<span class="social_nav_icon">{{sprite.symbol(link.symbol)}}</span>{% endif %}
+				{% if link.symbol %}<span class="social_nav_icon">{{site.symbol(link.symbol)}}</span>{% endif %}
 				<span class="social_nav_label">{{link.name}}</span>
 			</a>
 		</div>
