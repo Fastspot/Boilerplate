@@ -104,7 +104,6 @@ gulp.task('sass', function() {
 			require('postcss-pxtorem')({
 				propList: [
 					'font-size',
-					'line-height',
 					'letter-spacing'
 				],
 				replace: false

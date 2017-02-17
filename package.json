@@ -229,6 +229,11 @@
     }
   ],
   "dependencies": {
-    "gulp-sass-glob": "^1.0.8"
+    "browser-sync": "^2.18.8",
+    "gulp-jshint": "^2.0.4",
+    "gulp-sass": "^3.1.0",
+    "gulp-sass-glob": "^1.0.8",
+    "jshint": "^2.9.4",
+    "postcss-pxtorem": "^4.0.0"
   }
 }
