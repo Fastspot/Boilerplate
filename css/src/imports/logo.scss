@@ -4,7 +4,13 @@
 
 .logo {}
 
-.logo_link {}
+.logo_link {
+	background-repeat: no-repeat;
+	background-size: contain;
+	color: transparent;
+	display: block;
+	user-select: none;
+}
 
 .logo_print {
 	display: none;
