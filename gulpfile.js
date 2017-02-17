@@ -36,29 +36,9 @@ gulp.task('twig', function() {
 			extname: '.html'
 		}))
 		.pipe(gulp.dest('static/templates/'))
-		.pipe(browserSync.stream());
-
-});
-
-
-gulp.task('twig-templates', function() {
-
-	return gulp.src([
-		'static/src/templates/*.twig',
-		'!static/src/templates/_*.twig'
-	])
-		.pipe(changed('static/templates/', {
-			extension: '.html'
-		}))
-		.pipe(twig({
-			data: packageJSON,
-			cache: true
-		}))
-		.pipe(rename({
-			extname: '.html'
-		}))
-		.pipe(gulp.dest('static/templates/'))
-		.pipe(browserSync.stream());
+		.pipe(browserSync.stream({
+			once: true
+		}));
 
 });
 
@@ -264,8 +244,7 @@ gulp.task('browser-sync', function() {
 
 gulp.task('watch', function() {
 
-	gulp.watch('static/src/templates/*.twig', ['twig-templates']);
-	gulp.watch('static/src/partials/**/**.twig', ['twig']);
+	gulp.watch('static/src/**/*.twig', ['twig']);
 	gulp.watch('css/src/**/**', ['sass', 'ie-css']);
 	gulp.watch('js/src/**/**.js', ['scripts', 'jshint']);
 	gulp.watch('images/src/**/*', ['sprite', 'imagemin']);
