@@ -31,25 +31,17 @@
 
 .cr_color_block_row {}
 
-.cr_color_block_cell {}
+.cr_color_block_cell {
+	display: inline-block;
+	margin-bottom: 4px;
+}
 
 .cr_color_block {
 	position: relative;
-
-	padding-top: 30%;
-
-	@media #{$min_sm} {
-		padding-top: 50%;
-	}
 }
 
 .cr_color_block_content {
 	@include heading_5;
-
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 1;
 
 	line-height: 1.4;
 	padding: 15px;

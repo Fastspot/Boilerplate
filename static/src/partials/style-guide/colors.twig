@@ -1,8 +1,7 @@
 {% set colorGroups = [
 	[
 		{
-			name: "true_black",
-			text: "true_white",
+			text: "#fff",
 			hex: "#000"
 		}
 	]
@@ -13,7 +12,7 @@
 		<div class="cr_color_block_row">
 			{% for color in group %}
 				<div class="cr_color_block_cell">
-					<div class="cr_color_block bg_{{color.name}} color_{{color.text}}">
+					<div class="cr_color_block" style="background: {{color.hex}}; color: {{color.text}}">
 						<div class="cr_color_block_content">{{color.hex}}</div>
 					</div>
 				</div>
