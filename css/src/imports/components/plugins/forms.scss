@@ -2,18 +2,44 @@
 	Dropdowns
 ============================================================================= */
 
-.fs-dropdown {
-	@include focus_outline_none;
+.fs-dropdown {}
+
+.fs-dropdown-selected {
+
+	&:focus,
+	&:active,
+	&:hover {}
+
+	.fs-dropdown-open & {}
+}
+
+.fs-dropdown-options {}
+
+.fs-dropdown-item {
+
+	&:focus,
+	&:active,
+	&:hover {}
+
+	&.fs-dropdown-item_selected {}
+}
+
+
+/* Dropdown Themes
+============================================================================= */
+
+.theme {
+
+	.fs-dropdown {}
 
 	.fs-dropdown-selected {
-		position: relative;
 
 		&:focus,
 		&:active,
 		&:hover {}
-	}
 
-	&.fs-dropdown-open .fs-dropdown-selected {}
+		.fs-dropdown-open & {}
+	}
 
 	.fs-dropdown-options {}
 
@@ -28,43 +54,11 @@
 }
 
 
-/* Dropdown Themes
-============================================================================= */
-
-.theme {
-
-	.fs-dropdown {
-
-		.fs-dropdown-selected {
-
-			&:focus,
-			&:active,
-			&:hover {}
-		}
-
-		&.fs-dropdown-open .fs-dropdown-selected {}
-
-		.fs-dropdown-options {}
-
-		.fs-dropdown-item {
-
-			&:focus,
-			&:active,
-			&:hover {}
-
-			&.fs-dropdown-item_selected {}
-		}
-	}
-}
-
-
 /* ==========================================================================
-   Checkboxes & Radios
+	Checkboxes & Radios
 ============================================================================= */
 
 .fs-checkbox {
-	@include clearfix;
-
 	margin-bottom: 5px;
 }
 

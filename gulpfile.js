@@ -101,6 +101,14 @@ gulp.task('sass', function() {
 		.pipe(sassGlob())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(postcss([
+			require('postcss-pxtorem')({
+				propList: [
+					'font-size',
+					'line-height',
+					'letter-spacing'
+				],
+				replace: false
+			}),
 			require('autoprefixer')({
 				browsers: [
 					'> 1%',

@@ -5,6 +5,8 @@
 $fs-dropdown-max-height: 100px;
 
 .fs-dropdown {
+	@include focus_outline_none;
+	
 	position: relative;
 
 	&-disabled {

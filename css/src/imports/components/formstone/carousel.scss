@@ -33,6 +33,12 @@ $fs-carousel-control-right: 0;
 		overflow: hidden;
 		transition: transform .5s;
 		transform: translate3d(0, 0, 0);
+
+		@media print {
+			width: 100% !important;
+
+			transform: none !important;
+		}
 	}
 
 	&-enabled.fs-carousel-auto_height &-canister {
@@ -50,6 +56,11 @@ $fs-carousel-control-right: 0;
 
 		display: block;
 		float: left;
+
+		@media print {
+			height: auto !important;
+			width: 100% !important;
+		}
 
 		img {
 			-webkit-user-drag: none;
@@ -83,10 +94,20 @@ $fs-carousel-control-right: 0;
 	&-enabled &-controls.fs-carousel-visible,
 	&-controls_custom.fs-carousel-visible {
 		display: block;
+
+		@media print {
+			@include hide;
+		}
 	}
 
 	&-enabled &-control {
-		cursor: pointer;
+		cursor: default;
+		pointer-events: none;
+
+		&.fs-carousel-visible {
+			cursor: pointer;
+			pointer-events: auto;
+		}
 	}
 
 
@@ -99,6 +120,10 @@ $fs-carousel-control-right: 0;
 
 	&-enabled &-pagination.fs-carousel-visible {
 		display: block;
+
+		@media print {
+			@include hide;
+		}
 	}
 
 	&-enabled &-page {

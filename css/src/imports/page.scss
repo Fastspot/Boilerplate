@@ -2,6 +2,38 @@
 	Page
 ============================================================================= */
 
+.page_wrapper {}
+
+.page {}
+
+.page_feature {}
+
+.page_header {}
+
+.page_title {}
+
+.page_content {}
+
+.subnav_cell {}
+
+.main_content {
+	@include focus_outline_none;
+}
+
+.in_content_callouts {}
+
+.sidebar_cell {
+	clear: right;
+}
+
+.sidebar {}
+
+.full_width_callouts {}
+
+
+/* Skip Link
+============================================================================= */
+
 .skip_link {
 	@include heading_6;
 
@@ -15,8 +47,8 @@
 	text-align: center;
 	transform: translate(-50%, -200%);
 	transition:
-		transform 0.35s,
-		top 0.35s;
+		transform .35s,
+		top .35s;
 
 	&:focus,
 	&:active {
@@ -33,31 +65,3 @@
 		}
 	}
 }
-
-.page_wrapper {}
-
-.page {}
-
-.page_feature {}
-
-.page_content {}
-
-.subnav_cell {}
-
-.main_content {
-	@include focus_outline_none;
-}
-
-.page_header {}
-
-.page_title {}
-
-.in_content_callouts {}
-
-.sidebar_cell {
-	clear: right;
-}
-
-.sidebar {}
-
-.full_width_callouts {}

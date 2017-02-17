@@ -4,11 +4,9 @@
 
 $root_font_size: 16;
 
-$base_transition_duration: 0.25s;
+$base_transition_duration: .25s;
 $base_transition_timing: ease;
-$base_transition_delay: 0.05s;
-
-// Width Media Queries
+$base_transition_delay: .05s;
 
 $mq_min_ht: 800;
 $mq_min_xs: 320;
@@ -26,8 +24,6 @@ $max_sm: "screen and (max-width:" + ($mq_min_sm - 1px) + ")";
 $max_md: "screen and (max-width:" + ($mq_min_md - 1px) + ")";
 $max_lg: "screen and (max-width:" + ($mq_min_lg - 1px) + ")";
 $max_xl: "screen and (max-width:" + ($mq_min_xl - 1px) + ")";
-
-// Other
 
 $margin_sm: 20px;
 $margin_md: 40px;
@@ -52,20 +48,9 @@ $margin_xl: 80px;
 	@include transition($duration, $timing, $delay);
 }
 
-@mixin font_size($px_size) {
-	$px: $px_size;
-	$rem: ($px_size / $root_font_size);
-	font-size: "#{px}px";
-	font-size: "#{rem}rem";
-}
-
 @mixin size($width: 0, $height: $width) {
 	width: "#{width}px";
 	height: "#{height}px";
-}
-
-@mixin line_height($lineHeight, $fontSize: $lineHeight) {
-	line-height: ($lineHeight / $fontSize);
 }
 
 @mixin rgba_raw($base, $alpha) {
@@ -98,16 +83,6 @@ $margin_xl: 80px;
 	}
 }
 
-@mixin icon_sprite($left: 0, $top: 0) {
-	background-image: url("../images/svg/sprite.view.svg") !important;
-	background-repeat: no-repeat;
-}
-
-@mixin scale_sprite($percent: 1, $imageOffsetX: 0, $imageOffsetY: 0) {
-	background-size: floor($sprite_width * $percent) floor($sprite_height * $percent);
-	background-position: floor($imageOffsetX * $percent) floor($imageOffsetY * $percent);
-}
-
 @mixin cover() {
 	height: 100%;
 	width: 100%;
@@ -119,13 +94,12 @@ $margin_xl: 80px;
 	left: 0;
 }
 
-/**
- * Cover Image:
- *
- * Use on wrapping element of img (<figure>, <picture>)
- * Will work like background-size: cover; but with static images
- * Won't scale it down though, so good to use with picturefill
- */
+/*
+	Cover Image:
+	Use on wrapping element of img (<figure>, <picture>)
+	Will work like background-size: cover; but with static images
+	Won't scale it down though, so good to use with picturefill
+*/
 
 @mixin cover_image() {
 	position: relative;

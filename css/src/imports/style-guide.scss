@@ -14,8 +14,8 @@
 }
 
 .cr_description {
-	@include font_size(14);
-	@include line_height(32, 20);
+	font-size: 14px;
+	line-height: (32 / 20);
 
 	color: #666;
 	font-family: Arial, sans-serif;
@@ -64,8 +64,7 @@
 ============================================================================= */
 
 .cr_font {
-	@include font_size(48);
-
+	font-size: 48px;
 	line-height: 1;
 	margin-bottom: 30px;
 	padding-bottom: 40px;

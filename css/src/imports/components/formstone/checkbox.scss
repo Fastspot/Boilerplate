@@ -8,6 +8,8 @@ $fs-checkbox-toggle-marker-height: 40px;
 $fs-checkbox-toggle-marker-width: 100px;
 
 .fs-checkbox {
+	@include clearfix;
+
 	cursor: pointer;
 
 	&-disabled {

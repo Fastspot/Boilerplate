@@ -2,45 +2,21 @@
 	Carousel
 ============================================================================= */
 
-.fs-carousel-canister {
-
-	@media print {
-		width: 100% !important;
-
-		transform: none !important;
-	}
-}
-
 .fs-carousel-item {
-
-	@media print {
-		height: auto !important;
-		width: 100% !important;
-	}
 
 	&.fs-carousel-visible {}
 }
 
 
 /* ==========================================================================
-   Controls
+	Controls
 ============================================================================= */
 
-.fs-carousel-controls {
-
-	@media print {
-		@include hide;
-	}
-}
+.fs-carousel-controls {}
 
 .fs-carousel-control {
-	cursor: default;
-	pointer-events: none;
 
-	&.fs-carousel-visible {
-		cursor: pointer;
-		pointer-events: auto;
-	}
+	&.fs-carousel-visible {}
 
 	&.fs-carousel-control_previous {}
 
@@ -67,15 +43,10 @@
 
 
 /* ==========================================================================
-   Pagination
+	Pagination
 ============================================================================= */
 
-.fs-carousel-pagination {
-
-	@media print {
-		@include hide;
-	}
-}
+.fs-carousel-pagination {}
 
 .fs-carousel-page {
 

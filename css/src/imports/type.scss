@@ -3,38 +3,38 @@
 ============================================================================= */
 
 @mixin heading_1() {
-	@include font_size(60);
-	@include line_height(70, 60);
+	font-size: 60px;
+	line-height: (70 / 60);
 }
 
 @mixin heading_2() {
-	@include font_size(50);
-	@include line_height(60, 50);
+	font-size: 50px;
+	line-height: (60 / 50);
 }
 
 @mixin heading_3() {
-	@include font_size(40);
-	@include line_height(50, 40);
+	font-size: 40px;
+	line-height: (50 / 40);
 }
 
 @mixin heading_4() {
-	@include font_size(30);
-	@include line_height(40, 30);
+	font-size: 30px;
+	line-height: (40 / 30);
 }
 
 @mixin heading_5() {
-	@include font_size(20);
-	@include line_height(30, 20);
+	font-size: 20px;
+	line-height: (30 / 20);
 }
 
 @mixin heading_6() {
-	@include font_size(16);
-	@include line_height(24, 16);
+	font-size: 16px;
+	line-height: (24 / 16);
 }
 
 @mixin body_text() {
-	@include font_size(16);
-	@include line_height(24, 16);
+	font-size: 16px;
+	line-height: (24 / 16);
 }
 
 @mixin label_text() {}
@@ -51,13 +51,11 @@ a {
 	text-decoration: none;
 
 	.touch &[href^=tel] {
-		color:inherit;
+		color: inherit;
 	}
 }
 
-strong {
-	font-weight: bold;
-}
+strong {}
 
 
 /* typography
@@ -238,12 +236,13 @@ strong {
 	}
 }
 
+// 1. Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
+
 .table_wrapper {
-	// 1. Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
 
 	@include margined;
 
-	min-height: 0.01%; // 1
+	min-height: .01%; // 1
 
 	&.table_wrapper_overflow {
 		position: relative;
@@ -251,7 +250,7 @@ strong {
 		border: 1px solid #ccc;
 
 		&:after {
-			@include gradient_horizontal(fade($true_black, 0), fade($true_black, 10));
+			@include gradient_horizontal(rgba($true_black, 0), rgba($true_black, .1));
 
 			width: 20px;
 			height: 100%;

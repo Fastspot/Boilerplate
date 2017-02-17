@@ -10,24 +10,14 @@
 }
 
 .fs-lightbox {
-	@include focus_outline_none;
-
-	background: fade(#fff, 75%);
+	background: rgba(#fff, .75);
 
 	.fs-lightbox-close {}
 
-	.fs-lightbox-container {
-		background: none;
-	}
+	.fs-lightbox-container {}
 
 	.fs-lightbox-content {
-		background: none;
 		padding: 20px;
-	}
-
-	.fs-viewer-element,
-	.fs-viewer-element .fs-viewer-wrapper {
-		background: none;
 	}
 
 	.fs-lightbox-video_wrapper {

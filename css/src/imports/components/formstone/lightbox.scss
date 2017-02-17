@@ -11,6 +11,8 @@ $fs-lightbox-thumbnail-padding: 10px;
 $fs-lightbox-thumbnail-scrollbar-size: 30px;
 
 .fs-lightbox {
+	@include focus_outline_none;
+	
 	width: 200px;
 	height: 200px;
 

@@ -2,16 +2,9 @@
 	Viewer
 ============================================================================= */
 
- $fs-viewer-transition-duration: .25s;
- $fs-viewer-transition-timing: ease;
+$fs-viewer-viewport-position: 30px;
 
- $fs-viewer-viewport-position: 30px;
-
- $fs-viewer-wrapper-background: #fff;
- $fs-viewer-z-index: 1;
-
- $fs-viewer-controls-size: 20px;
- $fs-viewer-controls-background: #eee;
+$fs-viewer-controls-size: 20px;
 
 .fs-viewer {
 
@@ -24,7 +17,6 @@
 
 		position: relative;
 
-		background: $fs-viewer-wrapper-background;
 		overflow: hidden;
 		transition: none;
 	}
@@ -46,7 +38,7 @@
 		margin: 0;
 		opacity: 1;
 		transform: translate3D(0, 0, 0);
-		transition: opacity $fs-viewer-transition-duration $fs-viewer-transition-timing;
+		transition: opacity .25s;
 	}
 
 	&-loading &-container {
@@ -66,7 +58,6 @@
 	}
 
 	&-controls {
-		background: $fs-viewer-controls-background;
 		margin: 0 auto;
 	}
 
