@@ -6,12 +6,27 @@ $space: 20px;
 
 @mixin row() {
 	@include clearfix;
-	max-width: $mq_min_xl + ($space * 2);
 
 	margin-right: auto;
 	margin-left: auto;
 	padding-right: $space;
 	padding-left: $space;
+
+	@media #{$min_sm} {
+		max-width: $mq_min_sm + ($space * 2);
+	}
+
+	@media #{$min_md} {
+		max-width: $mq_min_md + ($space * 2);
+	}
+
+	@media #{$min_lg} {
+		max-width: $mq_min_lg + ($space * 2);
+	}
+
+	@media #{$min_xl} {
+		max-width: $mq_min_xl + ($space * 2);
+	}
 }
 
 .row {
