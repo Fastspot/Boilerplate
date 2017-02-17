@@ -7,6 +7,16 @@ body {
 	background: #fff;
 }
 
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
 	min-width: 300px;
 

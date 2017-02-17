@@ -2,24 +2,30 @@
 	Grid
 ============================================================================= */
 
-.grid {
-	padding-right: 30px;
-	padding-left: 30px;
+$space: 20px;
+
+@mixin row() {
+	@include clearfix;
+	max-width: $mq_min_xl + ($space * 2);
+
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: $space;
+	padding-left: $space;
 }
 
 .row {
-	@include clearfix;
-
-	display: flex;
-	flex-wrap: wrap;
-	margin-right: 15px;
-	margin-left: -15px;
+	@include row;
 }
 
-.cell {
+@mixin cell() {
 	width: 100%;
 
 	float: left;
-	padding-right: 15px;
-	padding-left: 15px;
+	padding-right: $space / 2;
+	padding-left: $space / 2;
+}
+
+.cell {
+	@include cell;
 }
