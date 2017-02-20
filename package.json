@@ -22,11 +22,11 @@
     "mq_min_xl": "1220"
   },
   "devDependencies": {
-    "autoprefixer": "^6.7.3",
+    "autoprefixer": "^6.7.4",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-bless": "^3.2.1",
-    "gulp-changed": "^1.3.2",
+    "gulp-changed": "^2.0.0",
     "gulp-concat-multi": "^1.0.1",
     "gulp-cssnano": "^2.1.2",
     "gulp-directory-map": "^0.1.3",

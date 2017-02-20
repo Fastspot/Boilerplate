@@ -12,11 +12,11 @@ fieldset {
 
 legend {}
 
-@mixin label() {}
+@mixin label($theme: null) {}
 
 label {}
 
-@mixin input() {
+@mixin input($theme: null) {
 	appearance: none;
 	border: 1px solid #000;
 	border-radius: 0;

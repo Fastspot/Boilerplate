@@ -55,7 +55,9 @@ a {
 	}
 }
 
-strong {}
+strong {
+	font-weight: 700;
+}
 
 
 /* typography
@@ -63,6 +65,8 @@ strong {}
 
 .typography {
 	@include body_text;
+
+	h1, h2, h3, h4, h5, h6 {}
 
 	h1 {
 		@include heading_1;
@@ -87,6 +91,8 @@ strong {}
 	h6 {
 		@include heading_6;
 	}
+
+	a {}
 
 	p {}
 }
@@ -179,14 +185,31 @@ strong {}
 
 	ol,
 	ul {
+		list-style: none;
 
 		li {}
 	}
 
-	ol {}
+	ol {
+		counter-reset: listing-counter;
+
+		> li {
+
+			&:before {
+				content: counter(listing-counter, decimal) ".";
+
+				@at-root [type="A"] & {
+					content: counter(listing-counter, upper-latin);
+				}
+
+				@at-root [type="a"] & {
+					content: counter(listing-counter, lower-latin);
+				}
+			}
+		}
+	}
 
 	ul {
-		list-style: none;
 
 		li {
 
@@ -239,7 +262,6 @@ strong {}
 // 1. Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
 
 .table_wrapper {
-
 	@include margined;
 
 	min-height: .01%; // 1
@@ -265,43 +287,6 @@ strong {}
 		.table_wrapper_inner {
 			overflow-y: hidden;
 			-ms-overflow-style: -ms-autohiding-scrollbar;
-		}
-
-		> table {
-			margin: 0;
-			border: 0;
-
-			> tbody {
-				border: none;
-			}
-
-			> thead,
-			> tbody,
-			> tfoot {
-				> tr {
-					> th,
-					> td {}
-
-					> th:first-child,
-					> td:first-child {
-						border-left: 0;
-					}
-					> th:last-child,
-					> td:last-child {
-						border-right: 0;
-					}
-				}
-			}
-
-			> tbody,
-			> tfoot {
-				> tr:last-child {
-					> th,
-					> td {
-						border-bottom: 0;
-					}
-				}
-			}
 		}
 	}
 }
