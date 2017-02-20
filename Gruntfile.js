@@ -316,31 +316,27 @@ module.exports = function(grunt) {
 				dest: 'images/src',
 				options: {
 					'dest': 'images/',
-					'shape': {
-						'spacing': {
-							'padding': 1
-						}
-					},
 					'svg': {
 						'xmlDeclaration': false,
 						'doctypeDeclaration': false,
 						'namespaceIDs': false,
-						'dimensionAttributes': true
 					},
 					'mode': {
-						'view': {
-							'dest': './',
-							'bust': false,
+						'css': {
 							'prefix': '.icon_%s',
 							'dimensions': '_dims',
+							'sprite': '../icons.svg',
+							'bust': false,
 							'render': {
 								'less': {
-									'dest': '../css/src/imports/icons.less'
+									'dest': '../../css/src/imports/icons.less'
 								}
-							},
-							'example': {
-								'dest': './icons.html'
 							}
+						},
+						'symbol': {
+							'dest': './',
+							'sprite': 'icons.svg',
+							'example': false
 						}
 					}
 				}
