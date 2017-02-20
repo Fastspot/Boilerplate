@@ -5,14 +5,12 @@
 $fs-lightbox-z-index: 400;
 
 $fs-lightbox-thumbnail-size: 50px;
-$fs-lightbox-thumbnail-margin: 0 10px 0 0;
-$fs-lightbox-thumbnail-opacity: .25;
 $fs-lightbox-thumbnail-padding: 10px;
 $fs-lightbox-thumbnail-scrollbar-size: 30px;
 
 .fs-lightbox {
 	@include focus_outline_none;
-	
+
 	width: 200px;
 	height: 200px;
 
@@ -262,8 +260,8 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 		border: none;
 		cursor: pointer;
 		display: inline-block;
-		margin: $fs-lightbox-thumbnail-margin;
-		opacity: $fs-lightbox-thumbnail-opacity;
+		margin: 0 10px 0 0;
+		opacity: .25;
 		overflow: hidden;
 		transition: opacity .25s;
 

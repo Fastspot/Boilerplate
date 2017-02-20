@@ -2,11 +2,11 @@
 	Dropdown
 ============================================================================= */
 
-$fs-dropdown-max-height: 100px;
+$fs-dropdown-max-height: 280px;
 
 .fs-dropdown {
 	@include focus_outline_none;
-	
+
 	position: relative;
 
 	&-disabled {
