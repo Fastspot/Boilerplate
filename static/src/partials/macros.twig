@@ -42,3 +42,23 @@
 		<img class="{{parameters.class}}_image" src="{% if parameters.fallback == "placeholder" %}../../images/placeholder.png{% else %}//spacehold.it/{{parameters.fallback}}/{{parameters.image}}.jpg{% endif %}" alt="">
 	</picture>
 {% endmacro %}
+
+
+{#
+	{{site.dropdown("component", ["Choices"])}}
+#}
+
+{% macro dropdown(class, choices) %}
+	<div class="fs-dropdown_wrapper {{class}}_dropdown_wrapper">
+		<select class="js-dropdown {{class}}_dropdown">
+			{% for choice in choices %}
+				<option value="{{choice}}" data-topic="{{loop.index}}">{{choice}}</option>
+			{% endfor %}
+		</select>
+		<span class="fs-dropdown_icon {{class}}_dropdown_icon">
+			<svg class="symbol symbol_caret_down symbol_red">
+				<use xlink:href="#caret_down"></use>
+			</svg>
+		</span>
+	</div>
+{% endmacro %}
