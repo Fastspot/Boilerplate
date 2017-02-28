@@ -3,7 +3,7 @@
 		<h2 class="sub_nav_title">{% if title %}{{title}}{% else %}Additional Navigation{% endif %}</h2>
 	</div>
 	<div class="sub_nav_handle_wrapper">
-		<button class="js-sub_nav_handle sub_nav_handle">Additional Navigation <span class="icon">{{sprite.symbol()}}</span></button>
+		<button class="js-sub_nav_handle sub_nav_handle">Additional Navigation <span class="icon">{{site.symbol()}}</span></button>
 	</div>
 	<div class="js-navigation js-sub-nav	sub_nav_list" data-navigation-handle=".js-sub_nav_handle" data-navigation-options='{"theme": "sub_nav_base", "labels": {"closed": "Additional Navigation", "Open": "Close"}}'>
 		{% for link in links %}
