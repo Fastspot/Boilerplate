@@ -43,11 +43,7 @@
 
 @mixin caption_text() {}
 
-p {}
-
 a {
-	@include transition_link;
-
 	text-decoration: none;
 
 	.touch &[href^=tel] {

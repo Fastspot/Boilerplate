@@ -214,17 +214,19 @@ hr {
 
 @mixin block_left() {
 	float: left;
+
 	margin: 0 20px 20px 0;
 }
 
 @mixin block_right() {
 	float: right;
+
 	margin: 0 0 20px 20px;
 }
 
 @mixin block_center() {
-	text-align: center;
 	margin: 20px auto;
+	text-align: center;
 }
 
 @mixin clearfix() {
@@ -306,16 +308,6 @@ hr {
 /* ==========================================================================
 	Transitions
 ============================================================================= */
-
-@mixin transition_default() {
-	transition-duration: $base_transition_duration;
-	transition-timing-function: $base_transition_timing;
-}
-
-@mixin transition_default_ease() {
-	transition-duration: $base_transition_duration;
-	transition-timing-function: ease;
-}
 
 @mixin transition_hide() {
 	opacity: 0;

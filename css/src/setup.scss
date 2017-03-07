@@ -37,24 +37,6 @@ $margin_xl: 80px;
 	Mixins
 ============================================================================= */
 
-@mixin transition($duration: 0.25s, $timing: ease, $delay: 0) {
-	transition:
-		background-color $duration $timing,
-		border-color $duration $timing,
-		box-shadow $duration $timing,
-		color $duration $timing,
-		opacity $duration $timing;
-}
-
-@mixin transition_link($duration: 0.25s, $timing: ease, $delay: 0) {
-	@include transition($duration, $timing, $delay);
-}
-
-@mixin size($width: 0, $height: $width) {
-	width: "#{width}px";
-	height: "#{height}px";
-}
-
 // 1. IE 10/11 uses a non-standard
 
 @mixin columns($count, $gap: 0) {

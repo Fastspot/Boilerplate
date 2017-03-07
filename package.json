@@ -22,7 +22,7 @@
     "mq_min_xl": "1220"
   },
   "devDependencies": {
-    "autoprefixer": "^6.7.4",
+    "autoprefixer": "^6.7.6",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-bless": "^3.2.1",
