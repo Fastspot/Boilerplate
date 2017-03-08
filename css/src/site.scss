@@ -3,23 +3,21 @@
 ============================================================================= */
 
 @import "../../components/normalize-css/normalize";
-@import "fonts.scss";
-@import "setup.scss";
-@import "base.scss";
+@import "imports/base/fonts.scss";
+@import "imports/base/setup.scss";
+@import "imports/base/base.scss";
+@import "imports/base/grid.scss";
 
 @import "imports/colors.scss";
 @import "imports/type.scss";
-@import "imports/grid.scss";
 @import "imports/buttons.scss";
-@import "imports/footer.scss";
 @import "imports/forms.scss";
 @import "imports/google-cse.scss";
-@import "imports/header.scss";
 @import "imports/logo.scss";
-@import "imports/mobile-sidebar.scss";
-@import "imports/page.scss";
 @import "imports/search.scss";
 @import "imports/style-guide.scss";
+
+@import "imports/structure/*.scss";
 
 @import "imports/navigation/*.scss";
 

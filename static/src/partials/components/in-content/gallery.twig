@@ -23,9 +23,9 @@
 <div class="media_gallery{% if theme %} theme_{{theme}}{% endif %}">
 	<div class="media_gallery_inner">
 		{% if title %}
-		<header class="media_gallery_header">
-			<h2 class="media_gallery_title">{{title}}</h2>
-		</header>
+			<header class="media_gallery_header">
+				<h2 class="media_gallery_title">{{title}}</h2>
+			</header>
 		{% endif %}
 		<div class="media_gallery_body">
 			<div class="js-carousel media_gallery_items" data-carousel-options='{"theme": "base_pagination", "contained": false, "matchHeight": true}'>
@@ -44,9 +44,9 @@
 								<span class="media_gallery_symbol">{{sprite.symbol(symbol)}}</span>
 							{% if item.video %}</a>{% endif %}
 							{% if item.caption %}
-							<figcaption class="media_gallery_figcaption">
-								<p>{{item.caption}}</p>
-							</figcaption>
+								<figcaption class="media_gallery_figcaption">
+									<p>{{item.caption}}</p>
+								</figcaption>
 							{% endif %}
 						</figure>
 					</div>

@@ -9,36 +9,40 @@
 	}
 }
 
+
+/* Breadcrumb Links
+============================================================================= */
+
 .breadcrumb_list {}
 
-.breadcrumb_item {
-	display: inline-block;
+	.breadcrumb_item {
+		display: inline-block;
 
-	&:first-child {
+		&:first-child {
 
-		&:before {}
-	}
-
-	&:not(:last-child) {
-
-		&:after {
-			content: ">";
+			&:before {}
 		}
+
+		&:not(:last-child) {
+
+			&:after {
+				content: ">";
+			}
+		}
+
+		&:last-child {}
 	}
 
-	&:last-child {}
-}
+		.breadcrumb_link,
+		.breadcrumb_label {
+			display: inline-block;
+		}
 
-.breadcrumb_link,
-.breadcrumb_label {
-	display: inline-block;
-}
+		.breadcrumb_link {
 
-.breadcrumb_link {
+			&:focus,
+			&:active,
+			&:hover {}
+		}
 
-	&:focus,
-	&:active,
-	&:hover {}
-}
-
-.breadcrumb_label {}
+		.breadcrumb_label {}

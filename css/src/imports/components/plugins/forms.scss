@@ -4,34 +4,6 @@
 
 .fs-dropdown {}
 
-.fs-dropdown-selected {
-
-	&:focus,
-	&:active,
-	&:hover {}
-
-	.fs-dropdown-open & {}
-}
-
-.fs-dropdown-options {}
-
-.fs-dropdown-item {
-
-	&:focus,
-	&:active,
-	&:hover {}
-
-	&.fs-dropdown-item_selected {}
-}
-
-
-/* Dropdown Themes
-============================================================================= */
-
-.theme {
-
-	.fs-dropdown {}
-
 	.fs-dropdown-selected {
 
 		&:focus,
@@ -43,15 +15,14 @@
 
 	.fs-dropdown-options {}
 
-	.fs-dropdown-item {
+		.fs-dropdown-item {
 
-		&:focus,
-		&:active,
-		&:hover {}
+			&:focus,
+			&:active,
+			&:hover {}
 
-		&.fs-dropdown-item_selected {}
-	}
-}
+			&.fs-dropdown-item_selected {}
+		}
 
 
 /* ==========================================================================
@@ -62,18 +33,18 @@
 	margin-bottom: 5px;
 }
 
-.fs-checkbox-marker {
-	margin-right: 10px;
+	.fs-checkbox-marker {
+		margin-right: 10px;
 
-	.fs-checkbox-checked & {}
-}
+		.fs-checkbox-checked & {}
+	}
 
-.fs-checkbox-flag {
-	position: absolute;
-	top: 0;
-	left: 0;
+	.fs-checkbox-flag {
+		position: absolute;
+		top: 0;
+		left: 0;
 
-	&:before {}
+		&:before {}
 
-	.fs-checkbox-radio & {}
-}
+		.fs-checkbox-radio & {}
+	}

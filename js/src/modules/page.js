@@ -37,8 +37,6 @@ Site.modules.Page = (function($, Site) {
 				Site.$body.find(".js-navigation").attr("aria-hidden", "true").attr("hidden", "");
 			});
 		Site.$body.find(".js-swap").swap();
-		Site.$body.find("input[type=range]").range();
-		Site.$body.find(".js-tabs").tabs();
 
 		$.mediaquery("bind", "mq-key", "(min-width: " + Site.minLG + "px)", {
 			enter: function() {

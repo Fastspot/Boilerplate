@@ -89,13 +89,7 @@ gulp.task('sass', function() {
 				replace: false
 			}),
 			require('autoprefixer')({
-				browsers: [
-					'> 1%',
-					'last 2 versions',
-					'Firefox ESR',
-					'Opera 12.1',
-					'ie >= 8'
-				]
+				browsers: ['> 1%']
 			}),
 			require('postcss-assets')({
 				cachebuster: true,
@@ -110,12 +104,10 @@ gulp.task('sass', function() {
 });
 
 
-gulp.task('ie-css', function() {
+gulp.task('ie-css', ['sass'], function() {
 
 	return gulp.src([
-		'css/src/site-ie.css',
-		'css/src/site-ie8.css',
-		'css/src/site-ie9.css'
+		'css/site.css'
 	])
 		.pipe(gulpif(util.env.production, postcss([
 			require('postcss-unmq'),
@@ -124,6 +116,9 @@ gulp.task('ie-css', function() {
 		.pipe(gulpif(util.env.production, bless({
 			cacheBuster: false,
 			log: true
+		})))
+		.pipe(gulpif(util.env.production, rename({
+			basename: 'site-ie'
 		})))
 		.pipe(gulpif(util.env.production, gulp.dest('css/')));
 
@@ -264,6 +259,7 @@ gulp.task('build', [
 	'sprite',
 	'imagemin',
 	'sass',
+	'ie-css',
 	'scripts',
 	'modernizr'
 ]);

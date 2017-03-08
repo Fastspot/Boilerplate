@@ -4,20 +4,24 @@
 
 .footer_nav {}
 
-.footer_nav_header {}
+	.footer_nav_header {}
 
-.footer_nav_title {
-	@include visually_hide;
-}
+		.footer_nav_title {
+			@include visually_hide;
+		}
+
+
+/* Footer Links
+============================================================================= */
 
 .footer_nav_list {}
 
-.footer_nav_item {}
+	.footer_nav_item {}
 
-.footer_nav_link {
-	display: block;
+		.footer_nav_link {
+			display: block;
 
-	&:focus,
-	&:active,
-	&:hover {}
-}
+			&:focus,
+			&:active,
+			&:hover {}
+		}

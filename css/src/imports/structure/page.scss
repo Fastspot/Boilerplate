@@ -4,31 +4,31 @@
 
 .page_wrapper {}
 
-.page {}
+	.page {}
 
-.page_feature {}
+		.page_feature {}
 
-.page_header {}
+		.page_content {}
 
-.page_title {}
+			.subnav_cell {}
 
-.page_content {}
+			.main_content {
+				@include focus_outline_none;
+			}
 
-.subnav_cell {}
+				.page_header {}
 
-.main_content {
-	@include focus_outline_none;
-}
+					.page_title {}
 
-.in_content_callouts {}
+				.in_content_callouts {}
 
-.sidebar_cell {
-	clear: right;
-}
+			.sidebar_cell {
+				clear: right;
+			}
 
-.sidebar {}
+				.sidebar {}
 
-.full_width_callouts {}
+			.full_width_callouts {}
 
 
 /* Skip Link

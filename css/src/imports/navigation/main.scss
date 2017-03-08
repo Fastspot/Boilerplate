@@ -1,131 +1,93 @@
 /* ==========================================================================
-	Main Navigation Common
+	Main Navigation
 ============================================================================= */
 
-.main_nav {}
+.main_nav {
 
-.main_nav_header {}
+	&_sm {
 
-.main_nav_title {
-	@include visually_hide;
+		@media #{$min_lg} {
+			display: none;
+		}
+	}
+
+	&_lg {
+
+		@media #{$max_lg} {
+			display: none;
+		}
+	}
 }
+
+	.main_nav_header {}
+
+		.main_nav_title {
+			@include visually_hide;
+		}
+
+
+/* Main Nav Links
+============================================================================= */
 
 .main_nav_list {}
 
-.main_nav_item {}
-
-.main_nav_item_wrapper {}
-
-.main_nav_link {
-	display: block;
-
-	&:focus,
-	&:active,
-	&:hover {}
-}
-
-.main_nav_toggle {}
-
-.main_nav_children {}
-
-.main_nav_child_item {}
-
-.main_nav_child_link {
-	display: block;
-}
-
-
-/* ==========================================================================
-	Main Navigation Small
-============================================================================= */
-
-.main_nav_sm {
-
-	@media #{$min_lg} {
-		display: none;
-	}
-
-	.main_nav_title {}
-
-	.main_nav_list {}
-
 	.main_nav_item {
 
-		&.fs-swap-enabled {
+		.main_nav_sm & {
 
-			.main_nav_children {
+			&.fs-swap-enabled {
+
+				.main_nav_children {
+					display: none;
+				}
+			}
+
+			&.fs-swap-active {
+
+				.main_nav_children {
+					display: block;
+				}
+			}
+		}
+
+		.main_nav_lg & {
+
+			&.focused,
+			&:active,
+			&:hover {
+
+				.main_nav_children {
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+		}
+	}
+
+	.main_nav_item_wrapper {}
+
+		.main_nav_link {
+			display: block;
+
+			&:focus,
+			&:active,
+			&:hover {}
+		}
+
+		.main_nav_toggle {
+
+			.main_nav_lg & {
 				display: none;
 			}
 		}
 
-		&.fs-swap-active {
 
-			.main_nav_children {
-				display: block;
-			}
-		}
-	}
-
-	.main_nav_item_wrapper {}
-
-	.main_nav_link {
-
-		&:focus,
-		&:active,
-		&:hover {}
-	}
-
-	.main_nav_toggle {}
-
-	.main_nav_children {}
-
-	.main_nav_child_item {}
-
-	.main_nav_child_link {}
-}
-
-
-/* ==========================================================================
-	Main Navigation Large
+/* Main Nav Children
 ============================================================================= */
 
-.main_nav_lg {
+.main_nav_children {
 
-	@media #{$max_lg} {
-		display: none;
-	}
-
-	.main_nav_title {}
-
-	.main_nav_list {}
-
-	.main_nav_item {
-
-		&.focused,
-		&:active,
-		&:hover {
-
-			.main_nav_children {
-				opacity: 1;
-				visibility: visible;
-			}
-		}
-	}
-
-	.main_nav_item_wrapper {}
-
-	.main_nav_link {
-
-		&:focus,
-		&:active,
-		&:hover {}
-	}
-
-	.main_nav_toggle {
-		display: none;
-	}
-
-	.main_nav_children {
+	.main_nav_lg & {
 		position: absolute;
 
 		opacity: 0;
@@ -134,8 +96,10 @@
 			visibility $base_transition_duration;
 		visibility: hidden;
 	}
+}
 
 	.main_nav_child_item {}
 
-	.main_nav_child_link {}
-}
+		.main_nav_child_link {
+			display: block;
+		}

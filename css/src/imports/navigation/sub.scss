@@ -4,41 +4,41 @@
 
 .sub_nav {}
 
-.sub_nav_header {}
+	.sub_nav_header {}
 
-.sub_nav_title {}
+		.sub_nav_title {}
 
-.sub_nav_handle_wrapper {}
+	.sub_nav_handle_wrapper {}
 
-.sub_nav_handle {
-	position: relative;
+		.sub_nav_handle {
+			position: relative;
 
-	@media #{$min_lg} {
-		display: none;
-	}
+			@media #{$min_lg} {
+				display: none;
+			}
 
-	&.fs-navigation-enabled {
-		@include button_block;
+			&.fs-navigation-enabled {
+				@include button_block;
 
-		text-align: left;
+				text-align: left;
 
-		&:after {
-			position: absolute;
-			top: 50%;
-			right: 20px;
+				&:after {
+					position: absolute;
+					top: 50%;
+					right: 20px;
 
-			transform: translate(0, -50%);
-			transition: transform .25s;
+					transform: translate(0, -50%);
+					transition: transform .25s;
+				}
+			}
+
+			&.fs-navigation-open {
+
+				&:after {}
+			}
 		}
-	}
 
-	&.fs-navigation-open {
-
-		&:after {}
-	}
-}
-
-.sub_nav_handle_icon {}
+			.sub_nav_handle_icon {}
 
 
 /* Sub Nav Links
@@ -48,12 +48,12 @@
 	@include focus_outline_none();
 }
 
-.sub_nav_item {}
+	.sub_nav_item {}
 
-.sub_nav_link {
-	display: block;
+		.sub_nav_link {
+			display: block;
 
-	&:focus,
-	&:active,
-	&:hover {}
-}
+			&:focus,
+			&:active,
+			&:hover {}
+		}

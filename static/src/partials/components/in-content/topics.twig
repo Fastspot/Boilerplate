@@ -36,45 +36,45 @@
 <div class="topic_block{% if theme %} theme_{{theme}}{% endif %}">
 	<div class="topic_block_inner">
 		{% if title %}
-		<header class="topic_block_header">
-			<h2 class="topic_block_title">{{title}}</h2>
-		</header>
+			<header class="topic_block_header">
+				<h2 class="topic_block_title">{{title}}</h2>
+			</header>
 		{% endif %}
 		<div class="topic_items">
 			{% for topic in topics %}
-			<article class="topic_row">
-				<div class="topic_row_inner">
-					{% if topic.image %}
-					<figure class="topic_figure">
-						{% include "../shared/picture.twig" with {
-							class: "topic",
-							fallback: img.square.xxsml,
-							image: topic.image,
-							sources: {
-								"500px": img.classic.xxsml,
-							}
-						} %}
-					</figure>
-					{% endif %}
-					<div class="topic_wrapper">
-						<header class="topic_header">
-							<h3 class="topic_title">{{topic.title}}</h3>
-						</header>
-						<div class="topic_body">
-							<div class="topic_description">
-								<p>{{topic.description}}</p>
-							</div>
-						</div>
-						{% if topic.links %}
-						<footer class="topic_links">
-							{% for link in topic.links %}
-								<a class="topic_link" href="{{link.href}}"><span>{{link.name}}</span></a>
-							{% endfor %}
-						</footer>
+				<article class="topic_row">
+					<div class="topic_row_inner">
+						{% if topic.image %}
+							<figure class="topic_figure">
+								{% include "../shared/picture.twig" with {
+									class: "topic",
+									fallback: img.square.xxsml,
+									image: topic.image,
+									sources: {
+										"500px": img.classic.xxsml,
+									}
+								} %}
+							</figure>
 						{% endif %}
+						<div class="topic_wrapper">
+							<header class="topic_header">
+								<h3 class="topic_title">{{topic.title}}</h3>
+							</header>
+							<div class="topic_body">
+								<div class="topic_description">
+									<p>{{topic.description}}</p>
+								</div>
+							</div>
+							{% if topic.links %}
+								<footer class="topic_links">
+									{% for link in topic.links %}
+										<a class="topic_link" href="{{link.href}}"><span>{{link.name}}</span></a>
+									{% endfor %}
+								</footer>
+							{% endif %}
+						</div>
 					</div>
-				</div>
-			</article>
+				</article>
 			{% endfor %}
 		</div>
 	</div>

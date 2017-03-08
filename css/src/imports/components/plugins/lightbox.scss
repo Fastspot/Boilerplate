@@ -16,32 +16,34 @@
 
 	.fs-lightbox-container {}
 
-	.fs-lightbox-content {
-		padding: 20px;
-	}
+		.fs-lightbox-content {
+			padding: 20px;
+		}
 
-	.fs-lightbox-video_wrapper {
-		margin-right: auto !important;
-		margin-left: auto !important;
-	}
+			.fs-lightbox-video_wrapper {
+				margin-right: auto !important;
+				margin-left: auto !important;
+			}
+
+}
 
 
 /* Tools & Controls
 ============================================================================= */
 
-	.fs-lightbox-tools {
-		width: 100% !important;
+.fs-lightbox-tools {
+	width: 100% !important;
 
-		background: #333;
-	}
+	background: #333;
+}
 
 
 /* Controls
 ============================================================================= */
 
-	.fs-viewer-controls {
-		width: 100%;
-	}
+.fs-viewer-controls {
+	width: 100%;
+}
 
 	.fs-viewer-control {
 
@@ -66,7 +68,7 @@
 /* Tools
 ============================================================================= */
 
-	.fs-lightbox-meta {}
+.fs-lightbox-meta {}
 
 	.fs-lightbox-position {
 		margin: 0;
@@ -74,9 +76,8 @@
 
 	.fs-lightbox-caption {
 		text-align: center;
-	}
 
-	.caption {
-		margin: 0;
+		.caption {
+			margin: 0;
+		}
 	}
-}

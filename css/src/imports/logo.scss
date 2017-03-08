@@ -4,19 +4,19 @@
 
 .logo {}
 
-.logo_link {
-	background-position: 0 50%;
-	background-repeat: no-repeat;
-	background-size: contain;
-	color: transparent;
-	display: block;
-	user-select: none;
-}
-
-.logo_print {
-	display: none;
-
-	@media print {
+	.logo_link {
+		background-position: 0 50%;
+		background-repeat: no-repeat;
+		background-size: contain;
+		color: transparent;
 		display: block;
+		user-select: none;
 	}
-}
+
+	.logo_print {
+		display: none;
+
+		@media print {
+			display: block;
+		}
+	}
