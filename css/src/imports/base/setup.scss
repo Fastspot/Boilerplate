@@ -126,23 +126,6 @@ $margin_xl: 80px;
 
 // 1. Filter for <= IE 9, does not work on pseudo elements
 
-@mixin gradient_vertical($startColor: black, $endColor: white) {
-	background-color: $startColor;
-	background:
-		linear-gradient(
-			to bottom,
-				$startColor,
-				$endColor
-		);
-
-	$ieStartColor: argb($startColor);
-	$ieEndColor: argb($endColor);
-
-	filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ieStartColor}', endColorstr='#{ieEndColor}', GradientType=0)"; // 1
-}
-
-// 1. Filter for <= IE 9, does not work on pseudo elements
-
 @mixin gradient_horizontal($startColor: black, $endColor: white) {
 	background-color: $startColor;
 	background:
@@ -156,6 +139,23 @@ $margin_xl: 80px;
 	$ieEndColor: argb($endColor);
 
 	filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ieStartColor}', endColorstr='#{ieEndColor}', GradientType=1)"; // 1
+}
+
+// 1. Filter for <= IE 9, does not work on pseudo elements
+
+@mixin gradient_vertical($startColor: black, $endColor: white) {
+	background-color: $startColor;
+	background:
+		linear-gradient(
+			to bottom,
+				$startColor,
+				$endColor
+		);
+
+	$ieStartColor: argb($startColor);
+	$ieEndColor: argb($endColor);
+
+	filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ieStartColor}', endColorstr='#{ieEndColor}', GradientType=0)"; // 1
 }
 
 @mixin font_smoothing() {

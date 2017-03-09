@@ -147,10 +147,12 @@ gulp.task('jshint', function() {
 gulp.task('modernizr', function() {
 
 	return gulp.src([
-		'js/*.js',
-		'css/*.css'
+		'js/site.js',
+		'js/src/*.js',
+		'css/site.css'
 	])
 		.pipe(modernizr())
+		.pipe(gulpif(util.env.production, uglify()))
 		.pipe(gulp.dest('js/'));
 
 });
@@ -181,7 +183,7 @@ gulp.task('imagemin', function() {
 
 	return gulp.src([
 		'images/src/*',
-		'!images/src/**/*'
+		'!images/src/icons/'
 	])
 		.pipe(imagemin({
 			options: {
@@ -240,7 +242,7 @@ gulp.task('browser-sync', function() {
 gulp.task('watch', function() {
 
 	gulp.watch('static/src/**/*.twig', ['twig']);
-	gulp.watch('css/src/**/**', ['sass', 'ie-css']);
+	gulp.watch('css/src/**/**', ['sass', 'ie-css', 'modernizr']);
 	gulp.watch('js/src/**/**.js', ['scripts', 'jshint']);
 	gulp.watch('images/src/**/*', ['sprite', 'imagemin']);
 

@@ -6,6 +6,10 @@ button {
 	background: none;
 	border: none;
 	padding: 0;
+
+	.csstransforms & {
+		display: none;
+	}
 }
 
 @mixin button() {

@@ -3,9 +3,30 @@
 {% set pageTitle = "Plugins" %}
 
 {% block in_content_callouts %}
+	<div class="cr_heading">Background</div>
+
+	{% include "../partials/components/shared/background.twig" with {
+		class: "",
+		image: 1,
+		sources: {
+			"0px": img.square.sml,
+			"740px": img.ultrawide.med,
+			"980px": img.ultrawide.lrg,
+			"1220px": img.ultrawide.xlrg
+		}
+	} %}
+
 	<div class="cr_heading">Slideshow</div>
 
 	<div class="js-carousel">
+		{% for i in 0..3 %}
+			<div>
+				<img src="//spacehold.it/320x240/{{i}}.jpg" alt="{{i}}">
+			</div>
+		{% endfor %}
+	</div>
+
+	<div class="js-carousel" data-carousel-options='{"single": true}'>
 		{% for i in 0..3 %}
 			<div>
 				<img src="//spacehold.it/320x240/{{i}}.jpg" alt="{{i}}">

@@ -5,42 +5,40 @@
 .fs-carousel {
 	position: relative;
 
-	&-enabled.fs-carousel-rtl {
+	&-rtl {
 		direction: rtl;
 	}
 
-	&-enabled &-viewport {
-		@include clearfix;
-
+	&-viewport {
 		position: relative;
 	}
 
-	&-enabled &-container {
-		@include clearfix;
-	}
+		&-container {
+			@include clearfix;
 
-	&-enabled.fs-carousel-contained &-container {
-		overflow: hidden;
-	}
-
-	&-enabled &-canister {
-		backface-visibility: hidden;
-		overflow: hidden;
-		transition: transform .5s;
-		transform: translate3d(0, 0, 0);
-
-		@media print {
-			width: 100% !important;
-
-			transform: none !important;
+			.fs-carousel-contained & {
+				overflow: hidden;
+			}
 		}
-	}
 
-	&-enabled.fs-carousel-auto_height &-canister {
-		transition:
-			height .5s,
-			transform .5s;
-	}
+			&-enabled &-canister {
+				backface-visibility: hidden;
+				overflow: hidden;
+				transition: transform .5s;
+				transform: translateX(0);
+
+				@media print {
+					width: 100% !important;
+
+					transform: none !important;
+				}
+			}
+
+			&-enabled.fs-carousel-auto_height &-canister {
+				transition:
+					height .5s,
+					transform .5s;
+			}
 
 
 	/* Items
@@ -71,39 +69,40 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-	}
 
-	&-single &-item.fs-carousel-visible {
-		position: relative;
-		z-index: 2;
+		&.fs-carousel-visible {
+			position: relative;
+			z-index: 2;
+		}
 	}
 
 
 	/* Controls
 	=========================================================================== */
 
-	&-controls {
+	&-controls,
+	&-controls_custom {
 		display: none;
-	}
 
-	&-enabled &-controls.fs-carousel-visible,
-	&-controls_custom.fs-carousel-visible {
-		display: block;
-
-		@media print {
-			@include hide;
-		}
-	}
-
-	&-enabled &-control {
-		cursor: default;
-		pointer-events: none;
-
+		&.fs-carousel-visible,
 		&.fs-carousel-visible {
-			cursor: pointer;
-			pointer-events: auto;
+			display: block;
+
+			@media print {
+				@include hide;
+			}
 		}
 	}
+
+		&-control {
+			cursor: default;
+			pointer-events: none;
+
+			&.fs-carousel-visible {
+				cursor: pointer;
+				pointer-events: auto;
+			}
+		}
 
 
 	/* Pagination
@@ -111,18 +110,18 @@
 
 	&-pagination {
 		display: none;
-	}
 
-	&-enabled &-pagination.fs-carousel-visible {
-		display: block;
+		&.fs-carousel-visible {
+			display: block;
 
-		@media print {
-			@include hide;
+			@media print {
+				@include hide;
+			}
 		}
 	}
 
-	&-enabled &-page {
-		cursor: pointer;
-		display: inline-block;
-	}
+		&-page {
+			cursor: pointer;
+			display: inline-block;
+		}
 }

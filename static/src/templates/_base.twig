@@ -269,7 +269,95 @@
 
 		<!-- Grid Bookmarklet -->
 		<script>
-			(function(){if(typeof FSGridBookmarklet==='undefined'){document.body.appendChild(document.createElement('script')).src='http://formstone.it/js/bookmarklet/grid.js';}else{FSGridBookmarklet();}} )();
+			var grid = document.createElement('div');
+			grid.classList.add('helper-grid');
+
+			var xs = document.createElement('span');
+			xs.classList.add('helper-cell');
+			xs.innerHTML = 'xs';
+
+			var sm = document.createElement('span');
+			sm.classList.add('helper-cell');
+			sm.innerHTML = 'sm';
+
+			var md = document.createElement('span');
+			md.classList.add('helper-cell');
+			md.innerHTML = 'md';
+
+			var lg = document.createElement('span');
+			lg.classList.add('helper-cell');
+			lg.innerHTML = 'lg';
+
+			var xl = document.createElement('span');
+			xl.classList.add('helper-cell');
+			xl.innerHTML = 'xl';
+
+			grid.appendChild(xs);
+			grid.appendChild(sm);
+			grid.appendChild(md);
+			grid.appendChild(lg);
+			grid.appendChild(xl);
+
+			document.body.appendChild(grid);
+
+			var cell = document.querySelectorAll('.helper-cell');
+			var activeCell = 'helper-cell-active';
+
+			window.addEventListener('load', determineCells);
+			window.addEventListener('resize', determineCells);
+
+			function determineCells() {
+				var windowWidth = window.innerWidth;
+
+				for(var i = 0; i < cell.length; i++) {
+					cell[i].classList.remove(activeCell);
+				}
+
+				if(windowWidth >= 320 && windowWidth < 500) {
+					xs.classList.add(activeCell);
+				}
+
+				if(windowWidth >= 500 && windowWidth < 740) {
+					sm.classList.add(activeCell);
+				}
+
+				if(windowWidth >= 740  && windowWidth < 980) {
+					md.classList.add(activeCell);
+				}
+
+				if(windowWidth >= 980  && windowWidth < 1220) {
+					lg.classList.add(activeCell);
+				}
+
+				if(windowWidth >= 1220) {
+					xl.classList.add(activeCell);
+				}
+			}
 		</script>
+		<style>
+			.helper-grid {
+				position: fixed;
+				bottom: 0;
+				left: 0;
+
+				background: #222;
+				box-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
+				display: flex;
+				padding: 3px;
+			}
+
+				.helper-cell {
+					color: #fff;
+					display: inline-block;
+					font-size: 12px;
+					padding: 2px 5px;
+					vertical-align: top;
+				}
+
+				.helper-cell-active {
+					background: #fff;
+					color: #000;
+				}
+		</style>
 	</body>
 </html>
