@@ -74,10 +74,7 @@ gulp.task('sitemap', ['create-sitemap'], function() {
 
 gulp.task('sass', function() {
 
-	return gulp.src([
-		'css/src/site.scss',
-		'css/src/ie/*'
-	])
+	return gulp.src('css/src/site.scss')
 		.pipe(sassGlob())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(postcss([
@@ -151,7 +148,14 @@ gulp.task('modernizr', function() {
 		'js/src/*.js',
 		'css/site.css'
 	])
-		.pipe(modernizr())
+		.pipe(modernizr({
+			options: [
+				'load',
+				'setClasses',
+				'testProp',
+				'fnBind'
+			]
+		}))
 		.pipe(gulpif(util.env.production, uglify()))
 		.pipe(gulp.dest('js/'));
 
@@ -244,7 +248,8 @@ gulp.task('watch', function() {
 	gulp.watch('static/src/**/*.twig', ['twig']);
 	gulp.watch('css/src/**/**', ['sass', 'ie-css', 'modernizr']);
 	gulp.watch('js/src/**/**.js', ['scripts', 'jshint']);
-	gulp.watch('images/src/**/*', ['sprite', 'imagemin']);
+	gulp.watch('images/src/icons/*', ['sprite']);
+	gulp.watch('images/src/*', ['imagemin']);
 
 });
 
