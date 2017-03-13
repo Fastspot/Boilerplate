@@ -8,8 +8,6 @@ $fs-checkbox-toggle-marker-height: 40px;
 $fs-checkbox-toggle-marker-width: 100px;
 
 .fs-checkbox {
-	@include clearfix;
-
 	cursor: pointer;
 
 	&-disabled {
@@ -28,8 +26,7 @@ $fs-checkbox-toggle-marker-width: 100px;
 		height: $fs-checkbox-marker-size;
 
 		border: 1px solid;
-		display: block;
-		float: left;
+		display: inline-block;
 	}
 
 	&-radio &-marker {
@@ -41,22 +38,22 @@ $fs-checkbox-toggle-marker-width: 100px;
 		width: 100%;
 
 		margin: 0;
-	}
 
-	&-flag:before {
-		height: 10px;
-		width: 5px;
+		&:before {
+			height: 10px;
+			width: 5px;
 
-		border: 2px solid;
-		border-top: 0;
-		border-left: 0;
-		content: '';
-		display: block;
-		margin: 3px 0 0 6px;
-		transform:
-			rotate(45deg)
-			scale(0);
-		transition: transform .25s;
+			border: 2px solid;
+			border-top: 0;
+			border-left: 0;
+			content: '';
+			display: block;
+			margin: 3px 0 0 6px;
+			transform:
+				rotate(45deg)
+				scale(0);
+			transition: transform .25s;
+		}
 	}
 
 	&-checked &-flag:before {
@@ -96,7 +93,7 @@ $fs-checkbox-toggle-marker-width: 100px;
 
 	&-label {
 		cursor: inherit;
-		display: block;
+		display: inline-block;
 		line-height: $fs-checkbox-marker-size;
 		overflow: hidden;
 		user-select: none;
