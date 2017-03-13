@@ -1,0 +1,71 @@
+/* ==========================================================================
+  Map
+============================================================================= */
+
+.map {}
+
+.map_body {}
+
+.map_content {}
+
+.map_canvas {
+  height: 500px;
+}
+
+.map_lightbox {}
+
+.map_aside {}
+
+
+/* Groups
+============================================================================= */
+
+.map_groups {}
+
+.map_group {}
+
+.map_group_switch {
+  cursor: pointer;
+}
+
+.map_places {
+  display: none;
+
+  &.fs-swap-active {
+    display: block;
+  }
+}
+
+.map_place {
+  cursor: pointer;
+  display: block;
+}
+
+
+/* Filters
+============================================================================= */
+
+.map_filters {}
+
+.map_filter {}
+
+.map_filter_switch {
+  cursor: pointer;
+}
+
+.map_filter_options {
+  display: none;
+
+  &.fs-swap-active {
+    display: block;
+  }
+}
+
+.map_filter_option {
+  cursor: pointer;
+  display: block;
+}
+
+.map_filter_option_button {}
+
+.map_filter_option_input {}
