@@ -3,24 +3,24 @@
 ============================================================================= */
 
 @import "../../components/normalize-css/normalize";
-@import "imports/base/fonts.scss";
-@import "imports/base/setup.scss";
-@import "imports/base/base.scss";
-@import "imports/base/grid.scss";
+@import "base/fonts.scss";
+@import "base/setup.scss";
+@import "base/base.scss";
+@import "base/grid.scss";
 
-@import "imports/colors.scss";
-@import "imports/type.scss";
-@import "imports/buttons.scss";
-@import "imports/forms.scss";
-@import "imports/google-cse.scss";
-@import "imports/logo.scss";
-@import "imports/search.scss";
-@import "imports/style-guide.scss";
+@import "colors.scss";
+@import "type.scss";
+@import "buttons.scss";
+@import "forms.scss";
+@import "google-cse.scss";
+@import "logo.scss";
+@import "search.scss";
+@import "style-guide.scss";
 
-@import "imports/structure/*.scss";
+@import "structure/*.scss";
 
-@import "imports/navigation/*.scss";
+@import "navigation/*.scss";
 
-@import "imports/components/**/*.scss";
+@import "components/**/*.scss";
 
-@import "imports/print.scss";
+@import "print.scss";

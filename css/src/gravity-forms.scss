@@ -37,7 +37,7 @@
 					z-index: initial;
 
 					span {
-						.heading_6;
+						@include h6;
 					}
 				}
 			}

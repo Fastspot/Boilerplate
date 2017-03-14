@@ -12,20 +12,16 @@ Site.modules.Map = (function($, Site) {
 	var lightboxClose;
 	var lightboxBody;
 
-	var state;
+	var state = {};
 
 	var layers = [
 		{
 			label: 'upper',
-			image: '../../images/map.jpg',
-			group: [],
-			control: ''
+			image: '../../images/map.jpg'
 		},
 		{
 			label: 'lower',
-			image: '../../images/map_hue.jpg',
-			group: [],
-			control: ''
+			image: '../../images/map_hue.jpg'
 		}
 	];
 
@@ -100,8 +96,14 @@ Site.modules.Map = (function($, Site) {
 	function setupMap() {
 		map = L.map('map', {
 			crs: L.CRS.Simple,
-			minZoom: 0
+			zoomControl: false,
+			minZoom: 0,
+			attributionControl: false
 		});
+
+		L.control.zoom({
+			position:'bottomright'
+		}).addTo(map);
 
 		bounds = [[0, 0], [2000, 2000]];
 
@@ -110,11 +112,13 @@ Site.modules.Map = (function($, Site) {
 
 	function setupMarkers() {
 		for(var key in data) {
-			for(var point in data[key].points) {
-				var latlng = L.latLng(data[key].points[point].coordinates);
+			var points = data[key].points;
 
-				data[key].points[point].marker = L.marker(latlng, {
-					data: data[key].points[point].attr
+			for(var point in points) {
+				var latlng = L.latLng(points[point].coordinates);
+
+				points[point].marker = L.marker(latlng, {
+					data: points[point].attr
 				}).bindPopup('', {
 					autoPan: false
 				})
@@ -127,10 +131,14 @@ Site.modules.Map = (function($, Site) {
 
 	function setupLayers() {
 		for(var key in layers) {
+			layers[key].group = [];
+
 			for(var group in data) {
-				for(var point in data[group].points) {
-					if(data[group].points[point].attr.layer === layers[key].label) {
-						layers[key].group.push(data[group].points[point].marker);
+				var points = data[group].points;
+
+				for(var point in points) {
+					if(points[point].attr.layer === layers[key].label) {
+						layers[key].group.push(points[point].marker);
 					}
 				}
 			}
@@ -140,6 +148,7 @@ Site.modules.Map = (function($, Site) {
 		}
 
 		layers[0].control.addTo(map);
+		state.layer = layers[0].control._leaflet_id;
 
 		var controlKey = 0;
 
@@ -148,7 +157,17 @@ Site.modules.Map = (function($, Site) {
 			controlKey += 1;
 		}
 
-		L.control.layers(layersControl).addTo(map);
+		L.control.layers(layersControl, null, {
+			position: 'bottomleft'
+		}).addTo(map);
+
+		for(var key in data) {
+			var points = data[key].points;
+
+			for(var point in points) {
+				points[point].attr['layer-id'] = layers[key].control._leaflet_id;
+			}
+		}
 	}
 
 	function setupGroups() {
@@ -182,15 +201,17 @@ Site.modules.Map = (function($, Site) {
 
 			group.append(places);
 
-			for(var point in data[key].points) {
-				var place = el({
+			var points = data[key].points;
+
+			for(var point in points) {
+				points[point].place = el({
 					type: 'button',
 					class: 'map_place',
-					html: data[key].points[point].attr.title,
-					loopAttr: data[key].points[point].attr
+					html: points[point].attr.title,
+					loopAttr: points[point].attr
 				});
 
-				places.append(place);
+				places.append(points[point].place);
 			}
 
 			groups.append(group);
@@ -298,34 +319,41 @@ Site.modules.Map = (function($, Site) {
 		$('.map_lightbox_close').on('click', function() {
 			map.closePopup();
 		});
+
+		map.on('baselayerchange', function(e) {
+			state.layer = e.layer._leaflet_id;
+		});
 	}
 
 	function filterPlace(place) {
 		for(var key in data) {
-			for(var point in data[key].points) {
-				if(data[key].points[point].attr.title === place.title) {
-					data[key].points[point].marker.openPopup();
-					flyToMarker(data[key].points[point].marker);
+			var points = data[key].points;
+
+			for(var point in points) {
+				if(points[point].attr.title === place.title) {
+					points[point].marker.openPopup();
+					flyToMarker(points[point].marker);
 				}
 			}
 		}
 	}
 
 	function updateMap(filterData, filterIndex) {
-		if(filterIndex == 0) {
-			for(var key in data) {
-				for(point in data[key].points) {
-					data[key].points[point].marker.setOpacity(1);
-				}
-			}
-		} else {
-			for(var key in data) {
-				for(point in data[key].points) {
-					data[key].points[point].marker.setOpacity(0);
+		for(var key in data) {
+			var points = data[key].points;
 
-					for(attr in data[key].points[point].attr) {
-						if(data[key].points[point].attr[attr] === filterData) {
-							data[key].points[point].marker.setOpacity(1);
+			for(var point in points) {
+				if(filterIndex === 0 || filterData.length === 0) {
+					$(points[point].place).show();
+					points[point].marker.setOpacity(1);
+				} else {
+					$(points[point].place).hide();
+					points[point].marker.setOpacity(0);
+
+					for(var attr in points[point].attr) {
+						if(points[point].attr[attr] === filterData) {
+							$(points[point].place).show();
+							points[point].marker.setOpacity(1);
 						}
 					}
 				}
@@ -351,7 +379,9 @@ Site.modules.Map = (function($, Site) {
 
 	function openLightbox(e) {
 		$(lightboxBody).html(
-			'<div class="map_lightbox_title">' + e.target.options.data.title + '</div>'
+			'<div class="map_lightbox_content">' +
+				'<div class="map_lightbox_title">' + e.target.options.data.title + '</div>' +
+			'</div>'
 		);
 	}
 

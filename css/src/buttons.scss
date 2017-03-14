@@ -9,7 +9,6 @@ button {
 }
 
 @mixin button() {
-	text-align: center;
 	transition:
 		background $base_transition_duration,
 		border $base_transition_duration,
@@ -30,16 +29,16 @@ button {
 	@include button;
 
 	display: block;
+  text-align: center;
 }
 
 @mixin button_mixed_block() {
-	@include button;
-
-	display: block;
+	@include button_block;
 
 	@media #{$min_xs} {
 		display: inline-block;
 		margin-right: 8px;
 		margin-bottom: 8px;
+    text-align: left;
 	}
 }

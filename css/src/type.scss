@@ -2,32 +2,32 @@
 	Type Base
 ============================================================================= */
 
-@mixin heading_1() {
+@mixin h1() {
 	font-size: 60px;
 	line-height: (70 / 60);
 }
 
-@mixin heading_2() {
+@mixin h2() {
 	font-size: 50px;
 	line-height: (60 / 50);
 }
 
-@mixin heading_3() {
+@mixin h3() {
 	font-size: 40px;
 	line-height: (50 / 40);
 }
 
-@mixin heading_4() {
+@mixin h4() {
 	font-size: 30px;
 	line-height: (40 / 30);
 }
 
-@mixin heading_5() {
+@mixin h5() {
 	font-size: 20px;
 	line-height: (30 / 20);
 }
 
-@mixin heading_6() {
+@mixin h6() {
 	font-size: 16px;
 	line-height: (24 / 16);
 }
@@ -65,27 +65,27 @@ strong {
 	h1, h2, h3, h4, h5, h6 {}
 
 	h1 {
-		@include heading_1;
+		@include h1;
 	}
 
 	h2 {
-		@include heading_2;
+		@include h2;
 	}
 
 	h3 {
-		@include heading_3;
+		@include h3;
 	}
 
 	h4 {
-		@include heading_4;
+		@include h4;
 	}
 
 	h5 {
-		@include heading_5;
+		@include h5;
 	}
 
 	h6 {
-		@include heading_6;
+		@include h6;
 	}
 
 	a {}
@@ -246,7 +246,7 @@ strong {
 		td {}
 
 		th {
-			@include heading_6;
+			@include h6;
 
 			text-align: left;
 		}

@@ -4,7 +4,7 @@
 
 	// !IE
 	var IE8 = IE8 || false,
-	    IE9 = IE9 || false;
+			IE9 = IE9 || false;
 
 	// !Site
 	var Site = (function($, window) {
