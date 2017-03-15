@@ -58,7 +58,6 @@
   },
   "js": {
     "js/site.js": [
-      "js/src/lib/utils.js",
       "components/jquery/dist/jquery.min.js",
       "components/formstone/dist/js/core.js",
       "components/formstone/dist/js/mediaquery.js",
