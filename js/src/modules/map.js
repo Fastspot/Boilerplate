@@ -90,6 +90,7 @@ Site.modules.Map = (function($, Site) {
 			setupFilters();
 			setupLightbox();
 			bindUI();
+			updateMap();
 		}
 	}
 
@@ -161,11 +162,16 @@ Site.modules.Map = (function($, Site) {
 			position: 'bottomleft'
 		}).addTo(map);
 
-		for(var key in data) {
-			var points = data[key].points;
+		for(var key in layers) {
 
-			for(var point in points) {
-				points[point].attr['layer-id'] = layers[key].control._leaflet_id;
+			for(var group in data) {
+				var points = data[group].points;
+
+				for(var point in points) {
+					if(points[point].attr.layer === layers[key].label) {
+						points[point].attr['layer-id'] = layers[key].control._leaflet_id;
+					}
+				}
 			}
 		}
 	}
@@ -322,6 +328,8 @@ Site.modules.Map = (function($, Site) {
 
 		map.on('baselayerchange', function(e) {
 			state.layer = e.layer._leaflet_id;
+
+			updateMap();
 		});
 	}
 
@@ -339,12 +347,22 @@ Site.modules.Map = (function($, Site) {
 	}
 
 	function updateMap(filterData, filterIndex) {
+		if(!(filterData) || !(filterIndex)) {
+			filterData = 0;
+			filterIndex = 0;
+		}
+
 		for(var key in data) {
 			var points = data[key].points;
 
 			for(var point in points) {
-				if(filterIndex === 0 || filterData.length === 0) {
-					$(points[point].place).show();
+				if(filterData.length === 0 || filterIndex === 0) {
+					if(points[point].attr['layer-id'] === state.layer) {
+						$(points[point].place).show();
+					} else {
+						$(points[point].place).hide();
+					}
+
 					points[point].marker.setOpacity(1);
 				} else {
 					$(points[point].place).hide();
