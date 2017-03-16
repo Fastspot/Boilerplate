@@ -28,6 +28,8 @@ button {
 @mixin button_block() {
 	@include button;
 
+	max-width: 380px;
+	
 	display: block;
   text-align: center;
 }

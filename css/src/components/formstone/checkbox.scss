@@ -16,8 +16,8 @@ $fs-checkbox-toggle-marker-width: 100px;
 	}
 
 
-	/* Checkbox & Radio
-	=========================================================================== */
+	// Checkbox & Radio
+	// ===========================================================================
 
 	&-marker {
 		position: relative;
@@ -63,7 +63,7 @@ $fs-checkbox-toggle-marker-width: 100px;
 	}
 
 	&-radio &-flag {
-		width:	($fs-checkbox-marker-size / 2);
+		width: ($fs-checkbox-marker-size / 2);
 		height: ($fs-checkbox-marker-size / 2);
 
 		position: absolute;
@@ -105,8 +105,8 @@ $fs-checkbox-toggle-marker-width: 100px;
 	}
 
 
-	/* Toggle
-	=========================================================================== */
+	// Toggle
+	// ===========================================================================
 
 	&-toggle &-marker {
 		height: $fs-checkbox-toggle-marker-height;

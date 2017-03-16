@@ -10,14 +10,18 @@
 			@include visually_hide;
 		}
 
-	.secondary_nav_list {}
 
-		.secondary_nav_item {}
+// Seconadry Links
+// =============================================================================
 
-			.secondary_nav_link {
-				display: block;
+.secondary_nav_list {}
 
-				&:focus,
-				&:active,
-				&:hover {}
-			}
+	.secondary_nav_item {}
+
+		.secondary_nav_link {
+			display: block;
+
+			&:focus,
+			&:active,
+			&:hover {}
+		}

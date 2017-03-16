@@ -22,7 +22,7 @@
     "mq_min_xl": "1220"
   },
   "devDependencies": {
-    "autoprefixer": "^6.7.6",
+    "autoprefixer": "^6.7.7",
     "browser-sync": "^2.18.8",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
@@ -42,7 +42,7 @@
     "gulp-sass-glob": "^1.0.8",
     "gulp-svg-sprite": "^1.3.6",
     "gulp-twig": "^0.7.0",
-    "gulp-uglify": "^2.0.1",
+    "gulp-uglify": "^2.1.0",
     "gulp-util": "^3.0.8",
     "jshint": "^2.9.4",
     "jshint-stylish": "^2.2.1",

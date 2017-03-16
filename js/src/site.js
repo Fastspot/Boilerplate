@@ -11,28 +11,28 @@
 
 		// !BaseController
 		var BaseController = function() {
-			this.namespace    = "";
+			this.namespace = "";
 
-			this.minWidth     = 320;
-			this.maxWidth     = Infinity;
-			this.scrollTop    = 0;
+			this.minWidth = 320;
+			this.maxWidth = Infinity;
+			this.scrollTop = 0;
 			this.windowHeight = 0;
-			this.windowWidth  = 0;
+			this.windowWidth = 0;
 
-			this.window       = null;
-			this.doc          = null;
+			this.window = null;
+			this.doc = null;
 
-			this.$window      = null;
-			this.$doc         = null;
-			this.$body        = null;
+			this.$window = null;
+			this.$doc = null;
+			this.$body = null;
 
 			// Public modules
-			this.modules      = [];
+			this.modules = [];
 
-			this.onInit       = [];
-			this.onRespond    = [];
-			this.onResize     = [];
-			this.onScroll     = [];
+			this.onInit = [];
+			this.onRespond = [];
+			this.onResize  = [];
+			this.onScroll  = [];
 
 			this.minXS = "320";
 			this.minSM = "500";
@@ -47,10 +47,10 @@
 			this.maxXL = this.minXL - 1;
 
 			this.minHTsm = parseInt("800", 10);
-			this.minHT   = parseInt("800", 10);
+			this.minHT = parseInt("800", 10);
 
 			this.maxHTsm = this.minHTsm - 1;
-			this.maxHT   = this.minHT - 1;
+			this.maxHT = this.minHT - 1;
 
 			this.touch = false;
 		};
@@ -60,12 +60,12 @@
 			init: function(namespace) {
 				// Objects
 				this.namespace = namespace;
-				this.window    = window;
-				this.doc       = document;
-				this.$window   = $(window);
-				this.$doc      = $(document);
-				this.$body     = $("body");
-				this.touch     = $("html").hasClass("touchevents");
+				this.window = window;
+				this.doc = document;
+				this.$window = $(window);
+				this.$doc = $(document);
+				this.$body = $("body");
+				this.touch = $("html").hasClass("touchevents");
 
 				if ($.mediaquery) {
 					$.mediaquery({

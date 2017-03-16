@@ -11,8 +11,8 @@ $fs-navigation-offscreen-width: 270px;
 	}
 
 
-	/* Overlay
-	=========================================================================== */
+	// Overlay
+	// ===========================================================================
 
 	&-overlay-content:before {
 		width: 100%;
@@ -40,8 +40,8 @@ $fs-navigation-offscreen-width: 270px;
 	}
 
 
-	/* Toggle
-	=========================================================================== */
+	// Toggle
+	// ===========================================================================
 
 	&-push-handle.fs-navigation-enabled,
 	&-reveal-handle.fs-navigation-enabled,
@@ -66,8 +66,8 @@ $fs-navigation-offscreen-width: 270px;
 	}
 
 
-	/* Overlay
-	=========================================================================== */
+	// Overlay
+	// ===========================================================================
 
 	&-push-nav.fs-navigation-enabled,
 	&-reveal-nav.fs-navigation-enabled,
@@ -135,8 +135,8 @@ $fs-navigation-offscreen-width: 270px;
 	}
 
 
-	/* Content
-	=========================================================================== */
+	// Content
+	// ===========================================================================
 
 	&-reveal-content.fs-navigation-enabled,
 	&-push-content.fs-navigation-enabled {

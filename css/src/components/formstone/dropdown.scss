@@ -14,8 +14,8 @@ $fs-dropdown-max-height: 280px;
 	}
 
 
-	/* Select
-	=========================================================================== */
+	// Select
+	// ===========================================================================
 
 	&-element {
 		width: 100%;
@@ -32,8 +32,8 @@ $fs-dropdown-max-height: 280px;
 	}
 
 
-	/* Buttoned Select
-	=========================================================================== */
+	// Buttoned Select
+	// ===========================================================================
 
 	&-selected {
 		width: 100%;
@@ -52,8 +52,8 @@ $fs-dropdown-max-height: 280px;
 	}
 
 
-	/* Dropdown
-	=========================================================================== */
+	// Dropdown
+	// ===========================================================================
 
 	&-options {
 		max-height: $fs-dropdown-max-height;
@@ -100,8 +100,8 @@ $fs-dropdown-max-height: 280px;
 	}
 
 
-	/* Dropdown Items
-	=========================================================================== */
+	// Dropdown Items
+	// ===========================================================================
 
 	&-item {
 		width: 100%;
@@ -110,7 +110,6 @@ $fs-dropdown-max-height: 280px;
 		display: block;
 		overflow: hidden;
 		text-align: left;
-		text-decoration: none;
 		text-overflow: ellipsis;
 
 		&_placeholder {
@@ -123,12 +122,8 @@ $fs-dropdown-max-height: 280px;
 	}
 
 
-	/* Scrollbar
-	=========================================================================== */
-
-	.fs-scrollbar {
-		overflow: hidden;
-	}
+	// Scrollbar
+	// ===========================================================================
 
 	.fs-scrollbar-content {
 		max-height: $fs-dropdown-max-height;

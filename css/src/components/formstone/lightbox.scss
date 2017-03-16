@@ -20,7 +20,6 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 	z-index: ($fs-lightbox-z-index + 1);
 
 	opacity: 0;
-	margin: 0 auto;
 	transform: translateZ(0);
 
 	&-open {
@@ -35,8 +34,6 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 		position: fixed;
 		top: 0;
 		bottom: 0;
-
-		margin: auto;
 	}
 
 	&-animating {
@@ -136,10 +133,8 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 	&-content {
 		width: 100%;
 
-		opacity: 1;
 		overflow: hidden;
 		padding: 0;
-		visibility: visible;
 	}
 
 	&-inline &-content {
