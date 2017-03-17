@@ -4,11 +4,15 @@
 
 .site_search_handle {}
 
-.site_search {}
+.site_search {
+	position: relative;
+}
 
 	.site_search_form {}
 
-		.site_search_label {}
+		.site_search_label {
+			@include visually_hide;
+		}
 
 		.site_search_input {
 			@include focus_outline_none;
@@ -22,8 +26,14 @@
 			}
 		}
 
-		.site_search_button {}
+		.site_search_button {
+			cursor: pointer;
+		}
 
-			.site_search_button_label {}
+			.site_search_button_label {
+				@include visually_hide;
+			}
 
-			.site_search_button_icon {}
+			.site_search_button_icon {
+				pointer-events: none;
+			}
