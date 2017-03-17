@@ -9,7 +9,10 @@
 			<div class="js-nav-item-{{loop.index}} main_nav_item{% if loop.index == active %} active{% endif %}{% if link.modifier %} {{link.modifier}}{% endif %}" itemprop="url">
 				<div class="main_nav_item_wrapper">
 					<a class="main_nav_link" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="name">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</a>
-					<button class="js-swap main_nav_toggle" data-swap-target=".js-nav-item-{{loop.index}}" data-swap-group="main_nav">Expand Navigation</button>
+					<button class="js-swap main_nav_toggle" data-swap-target=".js-nav-item-{{loop.index}}" data-swap-group="main_nav">
+						<span class="main_nav_toggle_label">Expand Navigation</span>
+						<span class="main_nav_toggle_icon">{{site.symbol()}}</span>
+					</button>
 				</div>
 				{% if link.children %}
 					<div class="main_nav_children">
