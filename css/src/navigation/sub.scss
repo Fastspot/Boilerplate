@@ -21,24 +21,15 @@
 				@include button_block;
 
 				text-align: left;
-
-				&:after {
-					position: absolute;
-					top: 50%;
-					right: 20px;
-
-					transform: translate(0, -50%);
-					transition: transform .25s;
-				}
 			}
 
-			&.fs-navigation-open {
-
-				&:after {}
-			}
+			&.fs-navigation-open {}
 		}
 
-			.sub_nav_handle_icon {}
+			.sub_nav_handle_icon {
+
+				.fs-navigation-open & {}
+		}
 
 
 // Sub Nav Links
