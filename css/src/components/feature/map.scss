@@ -4,19 +4,15 @@
 
 .map {}
 
-.map_body {
-  position: relative;
-}
+  .map_aside {}
 
-.map_content {}
+  .map_body {
+    position: relative;
+  }
 
-.map_canvas {
-  height: 500px;
-}
-
-.map_lightbox {}
-
-.map_aside {}
+  .map_canvas {
+    height: 500px;
+  }
 
 
 // Leaflet Overrides
@@ -71,24 +67,24 @@
 
 .map_groups {}
 
-.map_group {}
+  .map_group {}
 
-.map_group_switch {
-  cursor: pointer;
-}
+    .map_group_switch {
+      cursor: pointer;
+    }
 
-.map_places {
-  display: none;
+    .map_places {
+      display: none;
 
-  &.fs-swap-active {
-    display: block;
-  }
-}
+      &.fs-swap-active {
+        display: block;
+      }
+    }
 
-.map_place {
-  cursor: pointer;
-  display: block;
-}
+      .map_place {
+        cursor: pointer;
+        display: block;
+      }
 
 
 // Filters
@@ -104,34 +100,55 @@
   }
 }
 
-.map_filter {}
+  .map_filter {
+    position: relative;
 
-.map_filter_switch {
-  width: 100%;
-
-  background: #fff;
-  cursor: pointer;
-  text-align: left;
-}
-
-.map_filter_options {
-  background: #fff;
-  display: none;
-
-  &.fs-swap-active {
-    display: block;
+    display: inline-block;
+    vertical-align: middle;
   }
-}
 
-.map_filter_option {
-  display: block;
-}
+    .map_filter_switch {
+      width: 100%;
 
-.map_filter_option_button {
-  width: 100%;
+      background: #fff;
+      cursor: pointer;
+      text-align: left;
+    }
 
-  cursor: pointer;
-  text-align: left;
-}
+    .map_filter_options {
+      position: absolute;
+      top: 100%;
+      left: 0;
 
-.map_filter_option_input {}
+      background: #fff;
+      display: none;
+
+      &.fs-swap-active {
+        display: block;
+      }
+    }
+
+      .map_filter_option {
+        display: block;
+      }
+
+      .map_filter_option_button {
+        width: 100%;
+
+        cursor: pointer;
+        text-align: left;
+      }
+
+    .map_filter_option_input {}
+
+
+// Lightbox
+// =============================================================================
+
+.map_lightbox {}
+
+  .map_lightbox_close {
+    cursor: pointer;
+  }
+
+  .map_lightbox_body {}

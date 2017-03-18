@@ -12,7 +12,10 @@ Site.modules.Map = (function($, Site) {
 	var lightboxClose;
 	var lightboxBody;
 
-	var state = {};
+	var state = {
+		layer: '',
+		filter: ''
+	};
 
 	var layers = [
 		{
@@ -133,6 +136,7 @@ Site.modules.Map = (function($, Site) {
 	function setupLayers() {
 		for(var key in layers) {
 			layers[key].group = [];
+			layers[key].quantity = 0;
 
 			for(var group in data) {
 				var points = data[group].points;
@@ -163,7 +167,6 @@ Site.modules.Map = (function($, Site) {
 		}).addTo(map);
 
 		for(var key in layers) {
-
 			for(var group in data) {
 				var points = data[group].points;
 
@@ -329,7 +332,7 @@ Site.modules.Map = (function($, Site) {
 		map.on('baselayerchange', function(e) {
 			state.layer = e.layer._leaflet_id;
 
-			updateMap();
+			updateMap(state.filter);
 		});
 	}
 
@@ -347,35 +350,50 @@ Site.modules.Map = (function($, Site) {
 	}
 
 	function updateMap(filterData, filterIndex) {
-		if(!(filterData) || !(filterIndex)) {
-			filterData = 0;
-			filterIndex = 0;
+		if(filterData) state.filter = filterData;
+
+		for(var layer in layers) {
+			layers[layer].quantity = 0;
 		}
 
 		for(var key in data) {
 			var points = data[key].points;
 
 			for(var point in points) {
-				if(filterData.length === 0 || filterIndex === 0) {
-					if(points[point].attr['layer-id'] === state.layer) {
-						$(points[point].place).show();
-					} else {
-						$(points[point].place).hide();
-					}
+				points[point].visible = false;
+				$(points[point].place).hide();
+				points[point].marker.setOpacity(0);
 
-					points[point].marker.setOpacity(1);
-				} else {
-					$(points[point].place).hide();
-					points[point].marker.setOpacity(0);
-
+				if(filterData && filterIndex != 0) {
 					for(var attr in points[point].attr) {
 						if(points[point].attr[attr] === filterData) {
-							$(points[point].place).show();
-							points[point].marker.setOpacity(1);
+							points[point].visible = true;
 						}
+					}
+
+					if(points[point].visible && points[point].attr['layer-id'] === state.layer) {
+						$(points[point].place).show();
+						points[point].marker.setOpacity(1);
+					}
+				} else {
+					points[point].visible = true;
+
+					if(points[point].attr['layer-id'] === state.layer) {
+						$(points[point].place).show();
+						points[point].marker.setOpacity(1);
+					}
+				}
+
+				for(var layer in layers) {
+					if(points[point].visible && points[point].attr['layer-id'] == layers[layer].control._leaflet_id) {
+						layers[layer].quantity += 1;
 					}
 				}
 			}
+		}
+
+		for(var layer in layers) {
+			$('.leaflet-control-layers-base').find('label').eq(layer).find('.map_layer_quantity').html(layers[layer].quantity);
 		}
 	}
 
