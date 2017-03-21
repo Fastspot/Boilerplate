@@ -3,7 +3,7 @@
 ============================================================================= */
 
 .symbol {
-  fill: currentColor;
+	fill: currentColor;
 	transition: fill .25s;
 
 	@media print {
@@ -11,7 +11,7 @@
 	}
 
 	$symbol-colors: (
-    (white, #fff)
+		(white, #fff)
 	);
 
 	@each $label, $color in $symbol-colors {
@@ -22,7 +22,7 @@
 	}
 
 	$symbols: (
-    (symbol_name, 8px, 5px)
+		(symbol_name, 8px, 5px)
 	);
 
 	@each $label, $w, $h in $symbols {

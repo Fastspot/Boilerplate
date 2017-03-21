@@ -29,6 +29,12 @@
 .fs-carousel-pagination {}
 
 	.fs-carousel-page {
+		border-radius: 50%;
+		color: transparent;
+		overflow: hidden;
+
+		&:focus,
+		&:hover {}
 
 		&.fs-carousel-active {}
 	}

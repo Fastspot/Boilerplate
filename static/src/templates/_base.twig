@@ -7,7 +7,7 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="mobile-web-app-capable" content="yes">
 
-		<title>{{pageTitle|default("Page")}} | {{vars.name}}</title> {# 1 #}
+		<title>{{pageTitle|default("Page")}} | {{vars.name}}</title>
 		<meta name="description" content="">
 
 		{% include "../partials/favicons.html" %}
@@ -88,6 +88,14 @@
 
 		{% block secondaryNavLinks %}
 			{% set secondaryNavLinksAlias = secondaryNavLinks %}
+		{% endblock %}
+
+		{% block utilityNavLinks %}
+			{% set utilityNavLinksAlias = utilityNavLinks %}
+		{% endblock %}
+
+		{% block quickNavLinks %}
+			{% set quickNavLinksAlias = quickNavLinks %}
 		{% endblock %}
 
 		{% block footerNavLinks %}
@@ -327,11 +335,11 @@
 					sm.classList.add(activeCell);
 				}
 
-				if(windowWidth >= 740  && windowWidth < 980) {
+				if(windowWidth >= 740 && windowWidth < 980) {
 					md.classList.add(activeCell);
 				}
 
-				if(windowWidth >= 980  && windowWidth < 1220) {
+				if(windowWidth >= 980 && windowWidth < 1220) {
 					lg.classList.add(activeCell);
 				}
 

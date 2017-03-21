@@ -31,7 +31,7 @@ button {
 	max-width: 380px;
 	
 	display: block;
-  text-align: center;
+	text-align: center;
 }
 
 @mixin button_mixed_block() {
@@ -41,6 +41,6 @@ button {
 		display: inline-block;
 		margin-right: 8px;
 		margin-bottom: 8px;
-    text-align: left;
+		text-align: left;
 	}
 }

@@ -32,14 +32,14 @@
 	line-height: (24 / 16);
 }
 
+@mixin intro_text() {}
+
 @mixin body_text() {
 	font-size: 16px;
 	line-height: (24 / 16);
 }
 
 @mixin label_text() {}
-
-@mixin intro_text() {}
 
 @mixin caption_text() {}
 
@@ -88,7 +88,11 @@ strong {
 		@include h6;
 	}
 
-	a {}
+	a {
+		transition:
+			color .25s,
+			background .25s;
+	}
 
 	p {}
 }

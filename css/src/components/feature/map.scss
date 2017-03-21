@@ -1,18 +1,18 @@
 /* ==========================================================================
-  Map
+	Map
 ============================================================================= */
 
 .map {}
 
-  .map_aside {}
+	.map_aside {}
 
-  .map_body {
-    position: relative;
-  }
+	.map_body {
+		position: relative;
+	}
 
-  .map_canvas {
-    height: 500px;
-  }
+	.map_canvas {
+		height: 500px;
+	}
 
 
 // Leaflet Overrides
@@ -20,45 +20,45 @@
 
 .leaflet-container {
 
-  .leaflet-control-zoom {
-    border: 0;
-    margin: 0;
+	.leaflet-control-zoom {
+		border: 0;
+		margin: 0;
 
-    a {
+		a {
 
-      &:first-child {}
+			&:first-child {}
 
-      &:last-child {}
+			&:last-child {}
 
-      &.leaflet-disabled {}
-    }
-  }
+			&.leaflet-disabled {}
+		}
+	}
 
-  .leaflet-control-layers {
-    border: 0;
-    border-radius: 0;
-    color: inherit;
-    margin: 0;
-    padding: 0;
-  }
+	.leaflet-control-layers {
+		border: 0;
+		border-radius: 0;
+		color: inherit;
+		margin: 0;
+		padding: 0;
+	}
 
-    .leaflet-control-layers-toggle {
-      display: none;
-    }
+		.leaflet-control-layers-toggle {
+			display: none;
+		}
 
-    .leaflet-control-layers-list {
-      display: block;
+		.leaflet-control-layers-list {
+			display: block;
 
-      label {
-        cursor: pointer;
-        display: inline-block;
-        padding: 10px;
-      }
-    }
+			label {
+				cursor: pointer;
+				display: inline-block;
+				padding: 10px;
+			}
+		}
 
-  .leaflet-popup-pane {
-    display: none;
-  }
+	.leaflet-popup-pane {
+		display: none;
+	}
 }
 
 
@@ -67,24 +67,24 @@
 
 .map_groups {}
 
-  .map_group {}
+	.map_group {}
 
-    .map_group_switch {
-      cursor: pointer;
-    }
+		.map_group_switch {
+			cursor: pointer;
+		}
 
-    .map_places {
-      display: none;
+		.map_places {
+			display: none;
 
-      &.fs-swap-active {
-        display: block;
-      }
-    }
+			&.fs-swap-active {
+				display: block;
+			}
+		}
 
-      .map_place {
-        cursor: pointer;
-        display: block;
-      }
+			.map_place {
+				cursor: pointer;
+				display: block;
+			}
 
 
 // Filters
@@ -92,54 +92,54 @@
 
 .map_filters {
 
-  @media #{$min_md} {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 500;
-  }
+	@media #{$min_md} {
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 500;
+	}
 }
 
-  .map_filter {
-    position: relative;
+	.map_filter {
+		position: relative;
 
-    display: inline-block;
-    vertical-align: middle;
-  }
+		display: inline-block;
+		vertical-align: middle;
+	}
 
-    .map_filter_switch {
-      width: 100%;
+		.map_filter_switch {
+			width: 100%;
 
-      background: #fff;
-      cursor: pointer;
-      text-align: left;
-    }
+			background: #fff;
+			cursor: pointer;
+			text-align: left;
+		}
 
-    .map_filter_options {
-      position: absolute;
-      top: 100%;
-      left: 0;
+		.map_filter_options {
+			position: absolute;
+			top: 100%;
+			left: 0;
 
-      background: #fff;
-      display: none;
+			background: #fff;
+			display: none;
 
-      &.fs-swap-active {
-        display: block;
-      }
-    }
+			&.fs-swap-active {
+				display: block;
+			}
+		}
 
-      .map_filter_option {
-        display: block;
-      }
+			.map_filter_option {
+				display: block;
+			}
 
-      .map_filter_option_button {
-        width: 100%;
+			.map_filter_option_button {
+				width: 100%;
 
-        cursor: pointer;
-        text-align: left;
-      }
+				cursor: pointer;
+				text-align: left;
+			}
 
-    .map_filter_option_input {}
+		.map_filter_option_input {}
 
 
 // Lightbox
@@ -147,8 +147,8 @@
 
 .map_lightbox {}
 
-  .map_lightbox_close {
-    cursor: pointer;
-  }
+	.map_lightbox_close {
+		cursor: pointer;
+	}
 
-  .map_lightbox_body {}
+	.map_lightbox_body {}

@@ -16,3 +16,26 @@ $gray_60: #666666;
 $gray_70: #4D4D4D;
 $gray_80: #333333;
 $gray_90: #222222;
+
+
+// Themes
+// =============================================================================
+
+$theme-colors: (
+	(black, #000),
+	(white, #fff)
+);
+
+@mixin theme($style: "color") {
+
+	@each $label, $color in $theme-colors {
+
+		.theme_#{$label} & {
+			@if($style == "color") {
+				color: $color;
+			} @else if($style == "background") {
+				background: $color;
+			}
+		}
+	}
+}
