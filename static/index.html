@@ -5,26 +5,72 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<title>site-title</title>
 		<style>
-		ul {
-			list-style: none;
-			padding-left: 0;
-		}
-
-		li:nth-child(odd) {
-			background-color: #ededed;
-		}
-
-		a {
-			display: block;
-			padding: 12px;
-		}
-
-		@media print {
-
-			a {
-				padding: 2px 0;
+			html {
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 			}
-		}
+
+				body {
+					max-width: 800px;
+
+					margin: 0 auto;
+				}
+
+					ul {
+						list-style: none;
+						border: 1px solid #C9C7C6;
+						border-left-width: 3px;
+						padding-left: 0;
+					}
+
+					@media print {
+
+						ul {
+							border: 0;
+						}
+					}
+
+						li {
+							border-bottom: 1px solid #C9C7C6;
+						}
+
+						@media print {
+
+							li {
+								border-bottom: 0;
+							}
+						}
+
+						li:nth-child(odd) {}
+
+						li:last-child {
+							border-bottom: 0;
+						}
+
+							a {
+								color: #005EB8;
+								display: block;
+								padding: 12px 20px;
+								text-decoration: none;
+								transition:
+									background .25s,
+									color .25s;
+							}
+
+							a:hover,
+							a:focus {
+								background: #fafafa;
+							}
+
+							a:visited {
+								color: #8E3A80;
+							}
+
+							@media print {
+
+								a {
+									padding: 2px 0;
+								}
+							}
 		</style>
 	</head>
 

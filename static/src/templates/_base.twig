@@ -167,7 +167,7 @@
 					<div class="row">
 						{% if layout == "default" %}
 							<!-- Sub Nav -->
-							<div class="subnav_cell">
+							<div class="aside_cell subnav_cell">
 								{% block subNav %}
 									{% include "../partials/navigation/sub.twig" with {
 										title: sectiontitle,
@@ -214,7 +214,7 @@
 
 						{% if layout == "default" %}
 							<!-- Sidebar Callouts -->
-							<div class="sidebar_cell">
+							<div class="aside_cell sidebar_cell">
 								<div class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
 									{% block sidebar %}{% endblock %}
 								</div>

@@ -108,8 +108,8 @@
 
 		opacity: 0;
 		transition:
-			opacity $base_transition_duration,
-			visibility $base_transition_duration;
+			opacity $base_speed,
+			visibility $base_speed;
 		visibility: hidden;
 	}
 }

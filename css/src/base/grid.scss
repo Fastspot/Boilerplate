@@ -39,7 +39,3 @@ $space: 20px;
 	padding-right: $space / 2;
 	padding-left: $space / 2;
 }
-
-.cell {
-	@include cell;
-}

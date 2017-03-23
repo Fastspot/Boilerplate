@@ -10,11 +10,11 @@ button {
 
 @mixin button() {
 	transition:
-		background $base_transition_duration,
-		border $base_transition_duration,
-		box-shadow $base_transition_duration,
-		color $base_transition_duration,
-		transform $base_transition_duration;
+		background $base_speed,
+		border $base_speed,
+		box-shadow $base_speed,
+		color $base_speed,
+		transform $base_speed;
 }
 
 @mixin button_inline() {

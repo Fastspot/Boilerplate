@@ -39,3 +39,17 @@ $theme-colors: (
 		}
 	}
 }
+
+@mixin theme-direct($style: "color") {
+
+	@each $label, $color in $theme-colors {
+
+		&.theme_#{$label} {
+			@if($style == "color") {
+				color: $color;
+			} @else if($style == "background") {
+				background: $color;
+			}
+		}
+	}
+}

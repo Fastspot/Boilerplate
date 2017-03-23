@@ -1,12 +1,13 @@
-/* ==========================================================================
-	Imports
-============================================================================= */
+// Imports
+// =============================================================================
 
 @import "../../components/normalize-css/normalize";
 @import "base/fonts.scss";
 @import "base/setup.scss";
 @import "base/base.scss";
 @import "base/grid.scss";
+
+@import "formstone/*.scss";
 
 @import "colors.scss";
 @import "type.scss";

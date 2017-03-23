@@ -3,9 +3,9 @@
 
 $root_font_size: 16;
 
-$base_transition_duration: .25s;
-$base_transition_timing: ease;
-$base_transition_delay: .05s;
+$base_speed: .25s;
+$base_timing: ease;
+$base_delay: .05s;
 
 $mq_min_ht: 800;
 $mq_min_xs: 320;
@@ -420,8 +420,8 @@ $margin_xl: 80px;
 	opacity: 0;
 	pointer-events: none;
 	transition:
-		opacity $base_transition_duration,
-		visibility $base_transition_duration;
+		opacity $base_speed,
+		visibility $base_speed;
 	visibility: hidden;
 }
 
