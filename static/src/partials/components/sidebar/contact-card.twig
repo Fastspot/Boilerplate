@@ -8,10 +8,18 @@
 			<div class="contact_card_description">{{description}}</div>
 		</div>
 		<div class="contact_card_types">
-			<span class="contact_card_type contact_card_phone">{{phone}}</span>
-			<span class="contact_card_type contact_card_phone">{{fax}}</span>
-			<a class="contact_card_type contact_card_email" href="mailto:{{email}}">{{email}}</a>
-			<a class="contact_card_type contact_card_external" href="#">{{external}}</a>
+			{% if phone %}
+				<span class="contact_card_type contact_card_phone">{{phone}}</span>
+			{% endif %}
+			{% if fax %}
+				<span class="contact_card_type contact_card_phone">{{fax}}</span>
+			{% endif %}
+			{% if email %}
+				<a class="contact_card_type contact_card_email" href="mailto:{{email}}">{{email}}</a>
+			{% endif %}
+			{% if external %}
+				<a class="contact_card_type contact_card_external" href="#">{{external}}</a>
+			{% endif %}
 		</div>
 	</div>
 </div>

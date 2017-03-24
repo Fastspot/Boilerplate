@@ -23,20 +23,18 @@
 #}
 
 <div class="linked_list{% if theme %} theme_{{theme}}{% endif %}">
-	<div class="linked_list_inner">
-		{% if title %}
-			<header class="linked_list_header">
-				<h2 class="linked_list_title"><span>{{title}}</span></h2>
-			</header>
-		{% endif %}
-		<div class="linked_list_body">
-			<ul class="linked_list_group">
-				{% for link in links %}
-					<li class="linked_list_item">
-						<a class="linked_list_link" href="{{link.href}}">{{link.name}}</a>
-					</li>
-				{% endfor %}
-			</ul>
-		</div>
+	{% if title %}
+		<header class="linked_list_header">
+			<h2 class="linked_list_title"><span>{{title}}</span></h2>
+		</header>
+	{% endif %}
+	<div class="linked_list_body">
+		<ul class="linked_list_group">
+			{% for link in links %}
+				<li class="linked_list_item">
+					<a class="linked_list_link" href="{{link.href}}">{{link.name}}</a>
+				</li>
+			{% endfor %}
+		</ul>
 	</div>
 </div>
