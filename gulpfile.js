@@ -144,8 +144,7 @@ gulp.task('jshint', function() {
 gulp.task('modernizr', function() {
 
 	return gulp.src([
-		'js/site.js',
-		'js/src/*.js',
+		'js/src/modules/*.js',
 		'css/site.css'
 	])
 		.pipe(modernizr({
@@ -189,13 +188,7 @@ gulp.task('imagemin', function() {
 		'images/src/*',
 		'!images/src/icons/'
 	])
-		.pipe(imagemin({
-			options: {
-				svgoPlugins: [{
-					removeViewBox: true
-				}]
-			}
-		}))
+		.pipe(imagemin())
 		.pipe(gulp.dest('images/'))
 		.pipe(browserSync.stream());
 
