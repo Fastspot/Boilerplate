@@ -16,13 +16,23 @@ Site.modules.Page = (function($, Site) {
 		svg4everybody();
 
 		Site.$body.find(".js-background").background();
-		Site.$body.find(".js-carousel").carousel();
+		Site.$body.find(".js-carousel").carousel({
+			labels: {
+				previous: "Previous",
+				next: "Next"
+			}
+		});
 		Site.$body.find(".js-checkbox, .js-radio, input[type=checkbox], input[type=radio]").checkbox();
 		Site.$body.find(".js-dropdown").dropdown();
 		Site.$body.find(".js-equalize").equalize();
 		Site.$body.find(".js-lightbox").lightbox({
 			mobile: true,
-			theme: "fs-light"
+			theme: "fs-light",
+			labels: {
+				previous: "<span class='fs-lightbox-icon-previous'><svg class='symbol symbol_chevron_left'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#chevron_left'></use></svg></span>",
+				count: "<span class='fs-lightbox-meta-divider'></span>",
+				next: "<span class='fs-lightbox-icon-next'><svg class='symbol symbol_chevron_right'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#chevron_right'></use></svg></span>"
+			}
 		});
 		Site.$body.find(".js-navigation")
 			.navigation({
@@ -46,10 +56,6 @@ Site.modules.Page = (function($, Site) {
 				$subNav.attr("aria-hidden", "true").attr("hidden", "");
 			}
 		});
-
-		if ($(".js-carousel .control_group").length) {
-			setCarouselControls();
-		}
 
 
 		// Display children of focused nav items
@@ -161,15 +167,6 @@ Site.modules.Page = (function($, Site) {
 		});
 	}
 
-	function setCarouselControls() {
-		$(".control_group .fs-carousel-control_previous").each(function() {
-			$(this).append("<span class='icon'><svg class='symbol symbol_left_arrow'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#left_arrow'></use></svg></span>");
-		});
-
-		$(".control_group .fs-carousel-control_next").each(function() {
-			$(this).append("<span class='icon'><svg class='symbol symbol_right_arrow'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#right_arrow'></use></svg></span>");
-		});
-	}
 
 	// Hook Into Main init Routine
 
