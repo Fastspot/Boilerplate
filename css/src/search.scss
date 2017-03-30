@@ -4,6 +4,16 @@
 
 .site_search_handle {}
 
+	.site_search_handle_label {
+		@include visually_hide;
+	}
+
+	.site_search_handle_icon {}
+	
+
+// Search Form
+// ============================================================================= */
+
 .site_search {
 	position: relative;
 }
@@ -27,7 +37,17 @@
 		}
 
 		.site_search_button {
+			height: 100%;
+			width: 40px;
+
+			position: absolute;
+			top: 0;
+			right: 0;
+
 			cursor: pointer;
+
+			&:focus,
+			&:hover {}
 		}
 
 			.site_search_button_label {

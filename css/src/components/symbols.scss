@@ -10,11 +10,12 @@
 		display: none;
 	}
 
-	$symbol-colors: (
-		(white, #fff)
+	$symbol_colors: (
+		(white, #fff),
+		(black, #000)
 	);
 
-	@each $label, $color in $symbol-colors {
+	@each $label, $color in $symbol_colors {
 
 		&_#{$label} {
 			fill: $color;
@@ -22,6 +23,7 @@
 	}
 
 	$symbols: (
+		(symbol_name, 8px, 5px),
 		(symbol_name, 8px, 5px)
 	);
 

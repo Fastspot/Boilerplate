@@ -62,3 +62,48 @@
 		</span>
 	</div>
 {% endmacro %}
+
+
+{#
+	{{site.input("text", "first_name", "First Name")}}
+#}
+
+{% macro input(type, id, label) %}
+	<div class="form_element">
+		<input type="{{type}}" id="{{id}}" />
+		<label for="{{id}}">{{label}}</label>
+	</div>
+{% endmacro %}
+
+
+{#
+	{{site.textarea("text", "first_name", "First Name")}}
+#}
+
+{% macro textarea(id, label) %}
+	<div class="form_element">
+		<textarea id="{{id}}"></textarea>
+		<label for="{{id}}">{{label}}</label>
+	</div>
+{% endmacro %}
+
+
+{#
+	{{site.choices("checkbox", [
+		{
+			name: "option-one",
+			value: "Option One"
+		}
+	])}}
+#}
+
+{% macro choices(type, options) %}
+	<div class="form_element">
+		{% for option in options %}
+			<label>
+				<input type="{{type}}" name="{{option.name}}" value="{{option.value}}">
+				<span class="{{type}}_label">{{option.value}}</span>
+			</label>
+		{% endfor %}
+	</div>
+{% endmacro %}

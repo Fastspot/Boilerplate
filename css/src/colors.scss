@@ -21,14 +21,14 @@ $gray_90: #222222;
 // Themes
 // =============================================================================
 
-$theme-colors: (
+$theme_colors: (
 	(black, #000),
 	(white, #fff)
 );
 
-@mixin theme($style: "color") {
+@mixin theme($list: $theme_colors, $style: "color") {
 
-	@each $label, $color in $theme-colors {
+	@each $label, $color in $list {
 
 		.theme_#{$label} & {
 			@if($style == "color") {
@@ -40,9 +40,9 @@ $theme-colors: (
 	}
 }
 
-@mixin theme-direct($style: "color") {
+@mixin theme-direct($list: $theme_colors, $style: "color") {
 
-	@each $label, $color in $theme-colors {
+	@each $label, $color in $list {
 
 		&.theme_#{$label} {
 			@if($style == "color") {
