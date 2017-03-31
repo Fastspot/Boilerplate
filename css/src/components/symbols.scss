@@ -23,8 +23,8 @@
 	}
 
 	$symbols: (
-		(symbol_name, 8px, 5px),
-		(symbol_name, 8px, 5px)
+		(chevron_left, 20px, 20px),
+		(chevron_right, 20px, 20px)
 	);
 
 	@each $label, $w, $h in $symbols {

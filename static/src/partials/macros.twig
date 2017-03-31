@@ -5,7 +5,7 @@
 {% macro symbol(name, modifier) %}
 	{% if name %}
 		<svg class="symbol symbol_{{name}}{% if modifier %} symbol_{{modifier}}{% endif %}">
-			<use xlink:href="../../images/icons.svg{{name}}"></use>
+			<use xlink:href="#{{name}}"></use>
 		</svg>
 	{% endif %}
 {% endmacro %}
@@ -49,13 +49,13 @@
 #}
 
 {% macro dropdown(class, choices) %}
-	<div class="fs-dropdown_wrapper {{class}}_dropdown_wrapper">
+	<div class="fs-dropdown-wrapper {{class}}_dropdown_wrapper">
 		<select class="js-dropdown {{class}}_dropdown">
 			{% for choice in choices %}
 				<option value="{{choice}}">{{choice}}</option>
 			{% endfor %}
 		</select>
-		<span class="fs-dropdown_icon {{class}}_dropdown_icon">
+		<span class="fs-dropdown-icon {{class}}_dropdown_icon">
 			<svg class="symbol symbol_caret_down">
 				<use xlink:href="#caret_down"></use>
 			</svg>

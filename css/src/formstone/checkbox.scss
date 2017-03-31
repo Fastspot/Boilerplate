@@ -27,6 +27,7 @@ $fs-checkbox-toggle-marker-width: 100px;
 
 		border: 1px solid;
 		display: inline-block;
+		vertical-align: middle;
 	}
 
 	&-radio &-marker {
@@ -37,19 +38,25 @@ $fs-checkbox-toggle-marker-width: 100px;
 		height: 100%;
 		width: 100%;
 
-		margin: 0;
+		position: absolute;
+		top: 0;
+		right: 0;
 
 		&:before {
 			height: 10px;
 			width: 5px;
+
+			position: absolute;
+			top: 50%;
+			left: 50%;
 
 			border: 2px solid;
 			border-top: 0;
 			border-left: 0;
 			content: '';
 			display: block;
-			margin: 3px 0 0 6px;
 			transform:
+				translate(-50%, -50%)
 				rotate(45deg)
 				scale(0);
 			transition: transform .25s;
@@ -58,6 +65,7 @@ $fs-checkbox-toggle-marker-width: 100px;
 
 	&-checked &-flag:before {
 		transform:
+			translate(-50%, -50%)
 			rotate(45deg)
 			scale(1);
 	}
@@ -66,16 +74,14 @@ $fs-checkbox-toggle-marker-width: 100px;
 		width: ($fs-checkbox-marker-size / 2);
 		height: ($fs-checkbox-marker-size / 2);
 
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
+		top: 50%;
+		left: 50%;
 
 		background: #000;
 		border-radius: inherit;
-		margin: auto;
-		transform: scale(0);
+		transform:
+			translate(-50%, -50%)
+			scale(0);
 		transition: transform .25s;
 
 		&:before {
@@ -84,7 +90,9 @@ $fs-checkbox-toggle-marker-width: 100px;
 	}
 
 	&-radio.fs-checkbox-checked &-flag {
-		transform: scale(1);
+		transform:
+			translate(-50%, -50%)
+			scale(1);
 	}
 
 	&-element {
@@ -94,9 +102,8 @@ $fs-checkbox-toggle-marker-width: 100px;
 	&-label {
 		cursor: inherit;
 		display: inline-block;
-		line-height: $fs-checkbox-marker-size;
-		overflow: hidden;
 		user-select: none;
+		vertical-align: middle;
 	}
 
 	&-element_placeholder {

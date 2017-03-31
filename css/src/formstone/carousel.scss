@@ -111,6 +111,7 @@
 
 		&.fs-carousel-visible {
 			display: block;
+			user-select: none;
 
 			@media print {
 				@include hide;

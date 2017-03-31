@@ -6,9 +6,9 @@
 
 	.fs-dropdown-selected {
 
-		&:focus,
-		&:active,
-		&:hover {}
+		.fs-dropdown:focus &,
+		.fs-dropdown:active &,
+		.fs-dropdown:hover & {}
 
 		.fs-dropdown-open & {}
 	}
@@ -24,12 +24,21 @@
 			&.fs-dropdown-item_selected {}
 		}
 
+.fs-dropdown-icon {
+
+	.fs-dropdown:focus + &,
+	.fs-dropdown:active + &,
+	.fs-dropdown:hover + & {}
+
+	.fs-dropdown-open + & {}
+}
+
 
 // Checkboxes & Radios
 // =============================================================================
 
 .fs-checkbox {
-	margin-bottom: 5px;
+	margin-bottom: 10px;
 }
 
 	.fs-checkbox-marker {
@@ -38,12 +47,12 @@
 		.fs-checkbox-checked & {}
 	}
 
-	.fs-checkbox-flag {
-		position: absolute;
-		top: 0;
-		left: 0;
+		.fs-checkbox-flag {
+			position: absolute;
+			top: 0;
+			left: 0;
 
-		&:before {}
+			&:before {}
 
-		.fs-checkbox-radio & {}
-	}
+			.fs-checkbox-radio & {}
+		}

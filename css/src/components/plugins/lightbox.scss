@@ -2,13 +2,6 @@
 	Lightbox
 ============================================================================= */
 
-.fs-lightbox-element {
-
-	@media print {
-		display: block;
-	}
-}
-
 .fs-lightbox {
 	background: rgba(#fff, .75);
 
@@ -37,47 +30,38 @@
 	background: #333;
 }
 
-
-// Controls
-// =============================================================================
-
-.fs-viewer-controls {
-	width: 100%;
-}
-
-	.fs-viewer-control {
-
-		&:focus,
-		&:active,
-		&:hover {}
+	.fs-lightbox-controls {
+		width: 100%;
 	}
 
-	.fs-lightbox-control_previous {}
+		.fs-lightbox-control {
 
-	.fs-lightbox-control_next {}
+			&:focus,
+			&:active,
+			&:hover {}
 
-	.fs-viewer-control_zoom_out {
-		display: none;
-	}
+			&_previous {}
 
-	.fs-viewer-control_zoom_in {
-		display: none;
-	}
-
-
-// Tools
-// =============================================================================
-
-.fs-lightbox-meta {}
-
-	.fs-lightbox-position {
-		margin: 0;
-	}
-
-	.fs-lightbox-caption {
-		text-align: center;
-
-		.caption {
-			margin: 0;
+			&_next {}
 		}
-	}
+
+	.fs-lightbox-meta {}
+
+		.fs-lightbox-meta_content {}
+
+			.fs-lightbox-position {
+				margin: 0;
+			}
+
+				.fs-lightbox-position_current,
+				.fs-lightbox-position_total {}
+
+				.fs-lightbox-meta-divider {}
+
+			.fs-lightbox-caption {
+				text-align: center;
+
+				.caption {
+					margin: 0;
+				}
+			}

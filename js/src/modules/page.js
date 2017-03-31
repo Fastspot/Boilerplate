@@ -18,8 +18,8 @@ Site.modules.Page = (function($, Site) {
 		Site.$body.find(".js-background").background();
 		Site.$body.find(".js-carousel").carousel({
 			labels: {
-				previous: "Previous",
-				next: "Next"
+				previous: "<span class='fs-carousel-icon-previous'><svg class='symbol symbol_chevron_left'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#chevron_left'></use></svg></span>",
+				next: "<span class='fs-carousel-icon-next'><svg class='symbol symbol_chevron_right'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#chevron_right'></use></svg></span>"
 			}
 		});
 		Site.$body.find(".js-checkbox, .js-radio, input[type=checkbox], input[type=radio]").checkbox();
@@ -28,7 +28,9 @@ Site.modules.Page = (function($, Site) {
 		Site.$body.find(".js-lightbox").lightbox({
 			mobile: true,
 			theme: "fs-light",
+			viewer: false,
 			labels: {
+				close: "Close",
 				previous: "<span class='fs-lightbox-icon-previous'><svg class='symbol symbol_chevron_left'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#chevron_left'></use></svg></span>",
 				count: "<span class='fs-lightbox-meta-divider'></span>",
 				next: "<span class='fs-lightbox-icon-next'><svg class='symbol symbol_chevron_right'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#chevron_right'></use></svg></span>"
