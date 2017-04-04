@@ -5,6 +5,7 @@ var gulp = require('gulp'),
 		util = require('gulp-util'),
 		gulpif = require('gulp-if'),
 		changed = require('gulp-changed'),
+		newer = require('gulp-newer'),
 		twig = require('gulp-twig'),
 		directoryMap = require('gulp-directory-map'),
 		sassGlob = require('gulp-sass-glob'),
@@ -175,6 +176,7 @@ gulp.task('imagemin', function() {
 		'images/src/*',
 		'!images/src/icons/'
 	])
+		.pipe(newer('images/'))
 		.pipe(imagemin())
 		.pipe(gulp.dest('images/'));
 
