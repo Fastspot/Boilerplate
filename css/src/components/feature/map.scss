@@ -10,21 +10,29 @@
 		position: relative;
 	}
 
-	.map_canvas {
-		height: 500px;
-	}
+		.map_canvas {
+			height: 500px;
+		}
 
 
 // Leaflet Overrides
 // =============================================================================
 
 .leaflet-container {
+	font: inherit;
 
 	.leaflet-control-zoom {
 		border: 0;
 		margin: 0;
 
 		a {
+			height: 40px;
+			width: 40px;
+
+			border: 0;
+			border-radius: 0;
+			line-height: 40px;
+			margin: 10px;
 
 			&:first-child {}
 
@@ -50,11 +58,34 @@
 			display: block;
 
 			label {
+				position: relative;
+
 				cursor: pointer;
 				display: inline-block;
-				padding: 10px;
 			}
 		}
+
+			.leaflet-control-layers-selector {
+				position: absolute;
+
+				border: 0;
+
+				&:checked {
+
+					+ span {}
+				}
+
+				+ span {
+					display: block;
+					padding: 10px;
+				}
+			}
+
+				.map_layer_quantity_wrapper {}
+
+					.map_layer_quantity {}
+
+				.map_layer_label {}
 
 	.leaflet-popup-pane {
 		display: none;
@@ -145,7 +176,23 @@
 // Lightbox
 // =============================================================================
 
-.map_lightbox {}
+.map_lightbox {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 400;
+
+	opacity: 0;
+	transition:
+		opacity .25s,
+		visibility .25s;
+	visibility: hidden;
+
+	.lightbox-open & {
+		opacity: 1;
+		visibility: visible;
+	}
+}
 
 	.map_lightbox_close {
 		cursor: pointer;

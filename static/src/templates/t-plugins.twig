@@ -8,17 +8,17 @@
 	<div class="js-carousel">
 		{% for i in 0..3 %}
 			<div>
-				<img src="//spacehold.it/320x240/{{i}}.jpg" alt="{{i}}">
+				<img src="//images.fastspot.com/{{vars.namespace}}/320x240/{{i}}.jpg" alt="{{i}}">
 			</div>
 		{% endfor %}
 	</div>
 
 	<h4>Slideshow Single</h4>
-	
+
 	<div class="js-carousel" data-carousel-options='{"single": true}'>
 		{% for i in 0..3 %}
 			<div>
-				<img src="//spacehold.it/320x240/{{i}}.jpg" alt="{{i}}">
+				<img src="//images.fastspot.com/{{vars.namespace}}/320x240/{{i}}.jpg" alt="{{i}}">
 			</div>
 		{% endfor %}
 	</div>
@@ -34,11 +34,11 @@
 	<h4>Lightbox Gallery</h4>
 
 	<div class="lightbox-image-gallery">
-		{% for i in 0..2 %}
-			<a href="//spacehold.it/320x240/{{i}}.jpg" class="js-lightbox" data-lightbox-gallery="image_gallery" title="Sed posuere consectetur est at lobortis." data-lightbox-options='{
+		{% for i in 0..1 %}
+			<a href="//images.fastspot.com/{{vars.namespace}}/320x240/{{i}}.jpg" class="js-lightbox" data-lightbox-gallery="image_gallery" title="Sed posuere consectetur est at lobortis." data-lightbox-options='{
 				"thumbnails": true
 			}'>
-				<img src="//spacehold.it/320x240/{{i}}.jpg" alt="{{i}}">
+				<img src="//images.fastspot.com/{{vars.namespace}}/320x240/{{i}}.jpg" alt="{{i}}">
 			</a>
 		{% endfor %}
 	</div>

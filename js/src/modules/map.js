@@ -29,8 +29,8 @@ Site.modules.Map = (function($, Site) {
 	];
 
 	var layersControl = {
-		'<span class="map_layer_quantity"></span> upper level': '',
-		'<span class="map_layer_quantity"></span> lower level': ''
+		'<span class="map_layer_quantity_wrapper"><span class="map_layer_quantity"></span></span><span class="map_layer_label">upper level</span>': '',
+		'<span class="map_layer_quantity_wrapper"><span class="map_layer_quantity"></span></span><span class="map_layer_label">lower level</span>': ''
 	};
 
 	var data = [
@@ -191,7 +191,7 @@ Site.modules.Map = (function($, Site) {
 			var groupSwitch = el({
 				type: 'button',
 				class: 'map_group_switch',
-				html: data[key].category,
+				html: '<span class="map_group_switch_label">' + data[key].category + '</span>',
 				attr: {
 					'data-swap-group': 'map_group_switch',
 					'data-swap-target': '[data-swap-id="' + data[key].category + '"]'
@@ -216,7 +216,7 @@ Site.modules.Map = (function($, Site) {
 				points[point].place = el({
 					type: 'button',
 					class: 'map_place',
-					html: points[point].attr.title,
+					html: '<span class="map_place_label">' + points[point].attr.title + '</span>',
 					loopAttr: points[point].attr
 				});
 
@@ -414,6 +414,8 @@ Site.modules.Map = (function($, Site) {
 	}
 
 	function openLightbox(e) {
+		$('html').addClass('lightbox-open');
+
 		$(lightboxBody).html(
 			'<div class="map_lightbox_content">' +
 				'<div class="map_lightbox_title">' + e.target.options.data.title + '</div>' +
@@ -422,6 +424,8 @@ Site.modules.Map = (function($, Site) {
 	}
 
 	function closeLightbox() {
+		$('html').removeClass('lightbox-open');
+
 		$(lightboxBody).html('');
 	}
 

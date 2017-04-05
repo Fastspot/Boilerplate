@@ -8,7 +8,7 @@
     "url": "url"
   },
   "vars": {
-    "namespace": "namespace",
+    "namespace": "generic",
     "name": "Client Name",
     "domain": "www.example.com",
     "schemaType": "Organization",
@@ -80,7 +80,8 @@
       "components/svg4everybody/dist/svg4everybody.js",
       "components/what-input/dist/what-input.js",
       "js/src/site.js",
-      "js/src/modules/page.js"
+      "js/src/modules/page.js",
+      "js/src/modules/map.js"
     ],
     "js/site-ie8.js": [
       "components/html5shiv/dist/html5shiv.min.js",

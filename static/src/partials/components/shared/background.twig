@@ -15,5 +15,5 @@
 #}
 
 <div class="{% if customClass == "" or customClass == null %}js-background {% endif %}{{class}}_background" data-background-options='{"source": {
-{% for key, source in sources %}"{{key}}": "//spacehold.it/{{source}}/{{image}}.jpg"{% if not loop.last %}, {% endif %}{% endfor %}
+{% for key, source in sources %}"{{key}}": "//images.fastspot.com/{{vars.namespace}}/{{source}}/{{image}}.jpg"{% if not loop.last %}, {% endif %}{% endfor %}
 }{% if customClass %}, "customClass": "{{customClass}}"{% endif %}{% if lazy == "true" %}, "lazy": true{% endif %}{% if lazyEdge %}, "lazyEdge": "{{lazyEdge}}"{% endif %}}'></div>

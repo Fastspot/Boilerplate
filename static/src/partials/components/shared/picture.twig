@@ -13,8 +13,8 @@
 <picture class="{{class}}_picture">
 	<!--[if IE 9]><video style="display: none;"><![endif]-->
 	{% for key, source in sources %}
-		<source media="(min-width: {{key}})" srcset="{% if source == "placeholder" %}../../images/placeholder.png{% else %}//spacehold.it/{{source}}/{{image}}.jpg{% endif %}">
+		<source media="(min-width: {{key}})" srcset="{% if source == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{vars.namespace}}/{{source}}/{{image}}.jpg{% endif %}">
 	{% endfor %}
 	<!--[if IE 9]></video><![endif]-->
-	<img class="{{class}}_image" src="{% if fallback == "placeholder" %}../../images/placeholder.png{% else %}//spacehold.it/{{fallback}}/{{image}}.jpg{% endif %}" alt="">
+	<img class="{{class}}_image" src="{% if fallback == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{vars.namespace}}/{{fallback}}/{{image}}.jpg{% endif %}" alt="">
 </picture>

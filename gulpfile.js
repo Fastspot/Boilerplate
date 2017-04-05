@@ -258,8 +258,8 @@ gulp.task('build', gulp.parallel(
 ));
 
 gulp.task('default', gulp.series(
-	'build',
 	gulp.parallel(
+		'build',
 		'watch',
 		'browser-sync'
 	),
