@@ -151,7 +151,7 @@ gulp.task('modernizr', function() {
 
 gulp.task('sprite', function() {
 
- 	return gulp.src('images/src/icons/*')
+	return gulp.src('images/src/icons/*')
 		.pipe(svgSprite({
 			svg: {
 				xmlDeclaration: false,
