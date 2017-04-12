@@ -10,19 +10,45 @@
 
 		.page_content {}
 
-			.aside_cell {}
+			.aside_cell {
+
+				@media #{$min_md} {
+					width: 40%;
+
+					float: left;
+
+					padding-right: 20px;
+				}
+
+				@media #{$min_lg} {
+					width: (4 / 12 * 100%);
+				}
+			}
 
 			.subnav_cell {}
 
-			.main_content {
-				@include focus_outline_none;
+			.content_cell {
+
+				@media #{$min_md} {
+					width: 60%;
+
+					float: left;
+				}
+
+				@media #{$min_lg} {
+					width: (8 / 12 * 100%);
+				}
 			}
 
-				.page_header {}
+				.main_content {
+					@include focus_outline_none;
+				}
 
-					.page_title {}
+					.page_header {}
 
-				.in_content_callouts {}
+						.page_title {}
+
+					.in_content_callouts {}
 
 			.sidebar_cell {
 				clear: right;
@@ -45,17 +71,17 @@
 	z-index: 100;
 
 	display: block;
-	padding: 20px;
+	padding: 10px 20px;
 	text-align: center;
 	transform: translate(-50%, -200%);
 	transition:
-		transform .35s,
-		top .35s;
+		top .35s,
+		transform .35s;
 
 	&:focus,
 	&:active {
 		outline: 2px solid #000;
-		transform: translate(-50%, 0);
+		transform: translate(-50%, 20px);
 	}
 
 	.no-csstransforms & {
@@ -63,7 +89,7 @@
 
 		&:focus,
 		&:active {
-			top: 0;
+			top: 20px;
 		}
 	}
 }

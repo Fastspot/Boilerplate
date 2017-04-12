@@ -231,6 +231,27 @@ $margin_xl: 80px;
 	@include margined_lg_bottom;
 }
 
+@mixin margined_xl_top() {
+	@include margined_lg_top;
+
+	@media #{$min_xl} {
+		margin-top: $margin_xl;
+	}
+}
+
+@mixin margined_xl_bottom() {
+	@include margined_lg_bottom;
+
+	@media #{$min_xl} {
+		margin-bottom: $margin_xl;
+	}
+}
+
+@mixin margined_xl() {
+	@include margined_xl_top;
+	@include margined_xl_bottom;
+}
+
 @mixin margined_top_none() {
 	margin-top: 0 !important;
 }
@@ -301,6 +322,27 @@ $margin_xl: 80px;
 @mixin padded_lg() {
 	@include padded_lg_top;
 	@include padded_lg_bottom;
+}
+
+@mixin padded_xl_top() {
+	@include padded_lg_top;
+
+	@media #{$min_xl} {
+		padding-top: $margin_xl;
+	}
+}
+
+@mixin padded_xl_bottom() {
+	@include padded_lg_bottom;
+
+	@media #{$min_xl} {
+		padding-bottom: $margin_xl;
+	}
+}
+
+@mixin padded_xl() {
+	@include padded_xl_top;
+	@include padded_xl_bottom;
 }
 
 @mixin padded_top_none() {

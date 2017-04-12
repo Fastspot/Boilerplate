@@ -95,6 +95,7 @@ gulp.task('sass', function() {
 		]))
 		.pipe(gulpif(util.env.production, cssnano()))
 		.pipe(gulp.dest('css/'))
+		.pipe(browserSync.stream())
 		.pipe(gulpif(util.env.production, postcss([
 			require('postcss-unmq')
 		])))
@@ -238,7 +239,7 @@ gulp.task('reload', function(done) {
 gulp.task('watch', function() {
 
 	gulp.watch('static/src/**/*.twig', gulp.series('twig', 'reload'));
-	gulp.watch('css/src/**/**', gulp.series('sass', 'modernizr', 'reload'));
+	gulp.watch('css/src/**/**', gulp.series('sass'));
 	gulp.watch('js/src/**/**.js', gulp.series(gulp.parallel('scripts', 'jshint'), 'reload'));
 	gulp.watch('images/src/icons/*', gulp.series('sprite', 'reload'));
 	gulp.watch('images/src/*', gulp.series('imagemin', 'reload'));
