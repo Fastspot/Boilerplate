@@ -2,26 +2,19 @@
 	Breadcrumb Navigation
 ============================================================================= */
 
-.breadcrumb_nav {
-
-	@media #{$max_lg} {
-		display: none;
-	}
-}
+.breadcrumb_nav {}
 
 
 // Breadcrumb Links
 // =============================================================================
 
-.breadcrumb_list {}
+.breadcrumb_list {
+	overflow-x: auto;
+	white-space: nowrap;
+}
 
 	.breadcrumb_item {
 		display: inline-block;
-
-		&:first-child {
-
-			&:before {}
-		}
 
 		&:not(:last-child) {
 
@@ -29,8 +22,6 @@
 				content: "/";
 			}
 		}
-
-		&:last-child {}
 	}
 
 		.breadcrumb_link,

@@ -160,12 +160,23 @@
         "One Child",
         "Two Child"
       ]
+    },
+    {
+      "name": "Main Link",
+      "children": [
+        "One Child",
+        "Two Child"
+      ]
     }
   ],
   "secondaryNavLinks": [
     {
       "modifier": "",
-      "href": "#",
+      "name": "Secondary Link",
+      "children": ""
+    },
+    {
+      "modifier": "",
       "name": "Secondary Link",
       "children": ""
     }
@@ -199,6 +210,7 @@
     }
   ],
   "footerNavLinks": [
+    "Footer Link",
     "Footer Link"
   ],
   "socialNavLinks": [

@@ -32,6 +32,11 @@ $space: 20px;
 	@include row;
 }
 
+@mixin grid {
+	margin: 0 $space * -2;
+	overflow: hidden;
+}
+
 @mixin cell() {
 	width: 100%;
 

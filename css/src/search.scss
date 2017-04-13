@@ -9,7 +9,7 @@
 	}
 
 	.site_search_handle_icon {}
-	
+
 
 // Search Form
 // ============================================================================= */
@@ -55,5 +55,10 @@
 			}
 
 			.site_search_button_icon {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+
 				pointer-events: none;
+				transform: translate(-50%, -50%);
 			}

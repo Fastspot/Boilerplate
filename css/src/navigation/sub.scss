@@ -6,7 +6,9 @@
 
 	.sub_nav_header {}
 
-		.sub_nav_title {}
+		.sub_nav_title {
+			@include visually_hide;
+		}
 
 	.sub_nav_handle_wrapper {
 		position: relative;
@@ -17,19 +19,20 @@
 
 			position: relative;
 
+			padding-right: 40px;
 			text-align: left;
 
 			@media #{$min_lg} {
 				display: none;
 			}
-			
+
 			&.fs-navigation-open {}
 		}
 
 		.sub_nav_handle_icon {
 			position: absolute;
 			top: 50%;
-			right: 0;
+			right: 20px;
 
 			transform: translate(0, -50%);
 

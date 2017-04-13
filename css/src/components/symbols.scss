@@ -3,6 +3,8 @@
 ============================================================================= */
 
 .symbol {
+	display: block;
+	stroke: inherit;
 	fill: currentColor;
 	transition: fill .25s;
 
@@ -24,7 +26,9 @@
 
 	$symbols: (
 		(chevron_left, 20px, 20px),
-		(chevron_right, 20px, 20px)
+		(chevron_right, 20px, 20px),
+		(logo, 33px, 20px),
+		(search, 20px, 20px)
 	);
 
 	@each $label, $w, $h in $symbols {

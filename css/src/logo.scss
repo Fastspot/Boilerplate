@@ -2,7 +2,9 @@
 	Logo
 ============================================================================= */
 
-.logo {}
+.logo {
+	margin: 0;
+}
 
 	.logo_link {
 		background-position: 0 50%;
@@ -12,6 +14,17 @@
 		display: block;
 		user-select: none;
 	}
+
+		.logo_link_label {
+
+			.logo_symbol & {
+				@include visually_hide;
+			}
+		}
+
+		.logo_link_symbol {
+			color: #000;
+		}
 
 	.logo_print {
 		display: none;

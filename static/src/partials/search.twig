@@ -6,7 +6,7 @@
 		<input class="site_search_input" itemprop="query-input" type="text" id="search_term_string{% if modifier %}_{{modifier}}{% endif %}" name="search_term_string{% if modifier %}_{{modifier}}{% endif %}" placeholder="{% if placeholder %}{{placeholder}}{% else %}Search{% endif %}" required aria-required="true">
 		<button class="site_search_button" type="submit" title="submit" aria-label="submit">
 			<span class="site_search_button_label">{% if buttonText %}{{buttonText}}{% else %}Submit{% endif %}</span>
-			<span class="site_search_button_icon">{{site.symbol("search", "white")}}</span>
+			<span class="site_search_button_icon">{{site.symbol("search")}}</span>
 		</button>
 	</form>
 </div>

@@ -30,4 +30,6 @@
 
 			.social_nav_icon {}
 
-			.social_nav_label {}
+			.social_nav_label {
+				@include visually_hide;
+			}

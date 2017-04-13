@@ -9,6 +9,8 @@ button {
 }
 
 @mixin button() {
+	background: #eee;
+	padding: 10px;
 	transition:
 		background $base_speed,
 		border $base_speed,
@@ -28,8 +30,6 @@ button {
 @mixin button_block() {
 	@include button;
 
-	max-width: 380px;
-	
 	display: block;
 	text-align: center;
 }
