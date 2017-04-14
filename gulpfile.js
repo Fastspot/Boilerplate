@@ -120,13 +120,13 @@ gulp.task('scripts', function() {
 });
 
 
-gulp.task('jshint', function(done) {
+gulp.task('jshint', function() {
 
-	gulp.src('js/src/modules/*.js')
+	return gulp.src('js/src/modules/*.js', {
+		since: gulp.lastRun('jshint')
+	})
 		.pipe(jshint())
 		.pipe(jshint.reporter(stylish));
-
-	done();
 
 });
 
