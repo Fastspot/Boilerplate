@@ -157,23 +157,16 @@
 
 		// Media Query Change Handler
 		function onRespond(e, state) {
-			Controller.minWidth = state.minWidth;
-
 			iterate(Controller.onRespond, state);
 		}
 
 		// Resize Handler
 		function onResize() {
-			Controller.windowWidth  = Controller.$window.width();
-			Controller.windowHeight = Controller.$window.height();
-
 			iterate(Controller.onResize);
 		}
 
 		// Scroll Handler
 		function onScroll() {
-			Controller.scrollTop = Controller.$window.scrollTop();
-
 			iterate(Controller.onScroll);
 		}
 
