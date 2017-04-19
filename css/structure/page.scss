@@ -16,8 +16,6 @@
 					width: 40%;
 
 					float: right;
-
-					padding-right: 20px;
 				}
 
 				@media #{$min_lg} {
@@ -33,6 +31,8 @@
 					width: 60%;
 
 					float: left;
+
+					padding-right: 20px;
 				}
 
 				@media #{$min_lg} {

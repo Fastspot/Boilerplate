@@ -62,7 +62,9 @@
 						{% if topic.links %}
 							<footer class="topic_links">
 								{% for link in topic.links %}
-									<a class="topic_link" href="{{link.href}}"><span>{{link.name}}</span></a>
+									<a class="topic_link" href="{{link.href}}">
+										<span>{{link.name}}</span>
+									</a>
 								{% endfor %}
 							</footer>
 						{% endif %}

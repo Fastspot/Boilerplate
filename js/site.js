@@ -99,7 +99,8 @@
 				// Init modules before scroll/resize/respond
 				iterate(this.onInit);
 
-				this.$window.on("mqchange.mediaquery", onRespond)
+				this.$window
+					.on("mqchange.mediaquery", onRespond)
 					.on(Controller.ns("resize"), onResize)
 					.on(Controller.ns("scroll"), onScroll);
 

@@ -243,15 +243,20 @@ strong {
 
 		tr {
 
-			&:nth-child(odd) {}
+			&:nth-child(odd) {
+				background: #fafafa;
+			}
 		}
 
 		th,
-		td {}
+		td {
+			padding: 10px 20px;
+		}
 
 		th {
 			@include h6;
 
+			background: $gray_10;
 			text-align: left;
 		}
 

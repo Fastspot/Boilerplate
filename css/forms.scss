@@ -77,6 +77,18 @@ select {
 // Custom Elements
 // =============================================================================
 
+.form_column_flex {
+	display: flex;
+
+	> * {
+		margin-right: 16px;
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+}
+
 .form_column_auto {
 
 	> * {

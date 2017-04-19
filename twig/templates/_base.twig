@@ -29,13 +29,13 @@
 		<meta name="twitter:description" content="">
 		<meta name="twitter:image" content="//{{vars.domain}}/images/social-rectangle.png">
 
-		<script src="../../js/modernizr.js"></script>
+		<script src="../js/modernizr.js"></script>
 
 		{% block stylesheets %}
 		{% endblock %}
 
 		<!--[if gt IE 8]><!-->
-			<link rel="stylesheet" href="../../css/site.css">
+			<link rel="stylesheet" href="../css/site.css">
 		<!--<![endif]-->
 		<!--[if IE 8]>
 			<script>var IE8 = true;</script>
@@ -59,7 +59,7 @@
 	<body class="layout_{{layout}}">
 
 		<figure style="display: none;">
-			{% include '../../../images/svg/sprite.symbol.svg' %}
+			{% include '../../static/svg/sprite.symbol.svg' %}
 		</figure>
 
 		{#
@@ -280,7 +280,7 @@
 			} %}
 		</div>
 
-		<script src="../../js/site.js"></script>
+		<script src="../js/site.js"></script>
 
 		{% block javascript %}
 		{% endblock %}

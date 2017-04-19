@@ -1,7 +1,17 @@
-// Grid
-// =============================================================================
+/* ==========================================================================
+	Grid
+============================================================================= */
 
 $space: 20px;
+
+@mixin grid() {
+	margin: 0 $space * -2;
+	overflow: hidden;
+}
+
+.grid {
+	@include grid;
+}
 
 @mixin row() {
 	@include clearfix;
@@ -30,11 +40,6 @@ $space: 20px;
 
 .row {
 	@include row;
-}
-
-@mixin grid {
-	margin: 0 $space * -2;
-	overflow: hidden;
 }
 
 @mixin cell() {

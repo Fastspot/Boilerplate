@@ -1,0 +1,16 @@
+<div class="pagination_block">
+	<a class="pagination_arrow pagination_arrow_left pagination_arrow_disabled" href="#previous">
+		<span class="pagination_arrow_label">Previous</span>
+		<span class="pagination_arrow_icon">{{site.symbol()}}</span>
+	</a>
+	<nav class="pagination">
+		{% for i in 1..pages %}
+			<a href="#{{i}}" class="pagination_link">{{i}}</a>
+		{% endfor %}
+		<span class="pagination_dots">…</span>
+	</nav>
+	<a class="pagination_arrow pagination_arrow_right" href="#next">
+		<span class="pagination_arrow_label">Next</span>
+		<span class="pagination_arrow_icon">{{site.symbol()}}</span>
+	</a>
+</div>
