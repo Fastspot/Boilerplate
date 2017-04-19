@@ -22,8 +22,6 @@
 
 					ul {
 						list-style: none;
-						border: 1px solid #C9C7C6;
-						border-left-width: 4px;
 						margin-bottom: 80px;
 						padding-left: 0;
 					}
@@ -36,23 +34,36 @@
 					}
 
 						li {
-							border-bottom: 1px solid #C9C7C6;
+							border-left: 4px solid;
 						}
 
 						@media print {
 
 							li {
-								border-bottom: 0;
+								border-right: 0;
+								box-shadow: none;
 							}
 						}
 
-						li:nth-child(odd) {}
+						li:first-child a {
+							border-top: 1px solid #e4e4e4;
+						}
 
-						li:last-child {
-							border-bottom: 0;
+						.fs-style-guide {
+							border-left-color: #aaf;
+						}
+
+						.fs-test {
+							border-left-color: #afa;
+						}
+
+						.fs-page {
+							border-left-color: #faa;
 						}
 
 							a {
+								border-right: 1px solid #e4e4e4;
+								border-bottom: 1px solid #e4e4e4;
 								color: #005EB8;
 								display: block;
 								padding: 12px 20px;
@@ -86,8 +97,10 @@
 		<main>
 			<ul>
 				{% for key, link in sitemap.templates %}
-					<li>
-						<a href="{{link}}">{{key}}</a>
+					<li class="{% if 'fs-style' in key %}fs-style-guide{% elseif 'test' in key %}fs-test{% elseif 'page' in key %}fs-page{% endif %}">
+						<a href="{{link}}">{{key|replace({
+							".html": ""
+						})}}</a>
 					</li>
 				{% endfor %}
 			</ul>

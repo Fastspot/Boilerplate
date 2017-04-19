@@ -31,8 +31,8 @@
 
 			this.onInit = [];
 			this.onRespond = [];
-			this.onResize  = [];
-			this.onScroll  = [];
+			this.onResize = [];
+			this.onScroll = [];
 
 			this.minXS = "320";
 			this.minSM = "500";

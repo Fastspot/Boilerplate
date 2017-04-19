@@ -10,34 +10,38 @@
 			@include visually_hide;
 		}
 
-	.sub_nav_handle_wrapper {
+
+// Sub Nav Handle
+// =============================================================================
+
+.sub_nav_handle_wrapper {
+	position: relative;
+}
+
+	.sub_nav_handle {
+		@include button_block;
+
 		position: relative;
+
+		padding-right: 40px;
+		text-align: left;
+
+		@media #{$min_lg} {
+			display: none;
+		}
+
+		&.fs-navigation-open {}
 	}
 
-		.sub_nav_handle {
-			@include button_block;
+	.sub_nav_handle_icon {
+		position: absolute;
+		top: 50%;
+		right: 20px;
 
-			position: relative;
+		transform: translate(0, -50%);
 
-			padding-right: 40px;
-			text-align: left;
-
-			@media #{$min_lg} {
-				display: none;
-			}
-
-			&.fs-navigation-open {}
-		}
-
-		.sub_nav_handle_icon {
-			position: absolute;
-			top: 50%;
-			right: 20px;
-
-			transform: translate(0, -50%);
-
-			.fs-navigation-open + & {}
-		}
+		.fs-navigation-open + & {}
+	}
 
 
 // Sub Nav Links

@@ -59,7 +59,7 @@ gulp.task('sitemap', function(done) {
 		.pipe(twig({
 			data: {
 				name: packageJSON.name,
-				sitemap: require('./sitemap.json')
+				sitemap: require('./static/sitemap.json')
 			}
 		}))
 		.pipe(rename({
@@ -150,6 +150,7 @@ gulp.task('modernizr', function() {
 
 });
 
+
 gulp.task('sprite', function() {
 
 	return gulp.src('icons/*')
@@ -191,7 +192,7 @@ gulp.task('clean', function(done) {
 });
 
 
-gulp.task('browser-sync', function() {
+gulp.task('browser-sync', function(done) {
 
 	browserSync.init({
 		logPrefix: packageJSON.name,
@@ -208,6 +209,8 @@ gulp.task('browser-sync', function() {
 			}
 		}
 	});
+
+	done();
 
 });
 
@@ -249,10 +252,9 @@ gulp.task('build', gulp.parallel(
 
 
 gulp.task('default', gulp.series(
+	'build',
 	gulp.parallel(
-		'build',
 		'watch',
 		'browser-sync'
-	),
-	'reload'
+	)
 ));

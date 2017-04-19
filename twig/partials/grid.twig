@@ -1,92 +1,82 @@
 <!-- Grid Bookmarklet -->
 <script>
-  var grid = document.createElement('div');
-  grid.classList.add('helper-grid');
+	var grid = document.createElement('div');
+	grid.classList.add('helper-grid');
 
-  var xs = document.createElement('span');
-  xs.classList.add('helper-cell');
-  xs.innerHTML = 'xs';
+	{% set grid = [
+		"xs",
+		"sm",
+		"md",
+		"lg",
+		"xl"
+	] %}
 
-  var sm = document.createElement('span');
-  sm.classList.add('helper-cell');
-  sm.innerHTML = 'sm';
+	{% for item in grid %}
+		var {{item}} = document.createElement('span');
+		{{item}}.classList.add('helper-cell');
+		{{item}}.innerHTML = '{{item}}';
 
-  var md = document.createElement('span');
-  md.classList.add('helper-cell');
-  md.innerHTML = 'md';
+		grid.appendChild({{item}});
+	{% endfor %}
 
-  var lg = document.createElement('span');
-  lg.classList.add('helper-cell');
-  lg.innerHTML = 'lg';
+	document.body.appendChild(grid);
 
-  var xl = document.createElement('span');
-  xl.classList.add('helper-cell');
-  xl.innerHTML = 'xl';
+	var cell = document.querySelectorAll('.helper-cell');
+	var activeCell = 'helper-cell-active';
 
-  grid.appendChild(xs);
-  grid.appendChild(sm);
-  grid.appendChild(md);
-  grid.appendChild(lg);
-  grid.appendChild(xl);
+	window.addEventListener('load', determineCells);
+	window.addEventListener('resize', determineCells);
 
-  document.body.appendChild(grid);
+	function determineCells() {
+		var windowWidth = window.innerWidth;
 
-  var cell = document.querySelectorAll('.helper-cell');
-  var activeCell = 'helper-cell-active';
+		for(var i = 0; i < cell.length; i++) {
+			cell[i].classList.remove(activeCell);
+		}
 
-  window.addEventListener('load', determineCells);
-  window.addEventListener('resize', determineCells);
+		if(windowWidth >= {{vars.mq_min_xs}} && windowWidth < {{vars.mq_min_sm}}) {
+			xs.classList.add(activeCell);
+		}
 
-  function determineCells() {
-    var windowWidth = window.innerWidth;
+		if(windowWidth >= {{vars.mq_min_sm}} && windowWidth < {{vars.mq_min_md}}) {
+			sm.classList.add(activeCell);
+		}
 
-    for(var i = 0; i < cell.length; i++) {
-      cell[i].classList.remove(activeCell);
-    }
+		if(windowWidth >= {{vars.mq_min_md}} && windowWidth < {{vars.mq_min_lg}}) {
+			md.classList.add(activeCell);
+		}
 
-    if(windowWidth >= 320 && windowWidth < 500) {
-      xs.classList.add(activeCell);
-    }
+		if(windowWidth >= {{vars.mq_min_lg}} && windowWidth < {{vars.mq_min_xl}}) {
+			lg.classList.add(activeCell);
+		}
 
-    if(windowWidth >= 500 && windowWidth < 740) {
-      sm.classList.add(activeCell);
-    }
-
-    if(windowWidth >= 740 && windowWidth < 980) {
-      md.classList.add(activeCell);
-    }
-
-    if(windowWidth >= 980 && windowWidth < 1220) {
-      lg.classList.add(activeCell);
-    }
-
-    if(windowWidth >= 1220) {
-      xl.classList.add(activeCell);
-    }
-  }
+		if(windowWidth >= {{vars.mq_min_xl}}) {
+			xl.classList.add(activeCell);
+		}
+	}
 </script>
 <style>
-  .helper-grid {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
+	.helper-grid {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		z-index: 1000;
 
-    background: rgba(20, 20, 20, .75);
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .25);
-    display: flex;
-  }
+		background: rgba(20, 20, 20, .75);
+		box-shadow: 0 0 10px 0 rgba(0, 0, 0, .25);
+		display: flex;
+	}
 
-    .helper-cell {
-      color: #fff;
-      display: inline-block;
-      font-size: 12px;
-      padding: 2px 5px;
-      vertical-align: top;
-    }
+		.helper-cell {
+			color: #fff;
+			display: inline-block;
+			font-size: 12px;
+			padding: 2px 5px;
+			vertical-align: top;
+		}
 
-    .helper-cell-active {
-      background: #fff;
-      color: #000;
-    }
+		.helper-cell-active {
+			background: #fff;
+			color: #000;
+		}
 </style>
