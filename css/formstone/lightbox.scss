@@ -4,13 +4,16 @@
 
 $fs-lightbox-z-index: 400;
 
+$fs-lightbox-control-previous-left: 0;
+$fs-lightbox-control-next-right: 0;
+
 $fs-lightbox-thumbnail-size: 50px;
+$fs-lightbox-thumbnail-margin: 0 10px 0 0;
+$fs-lightbox-thumbnail-opacity: 0.25;
 $fs-lightbox-thumbnail-padding: 10px;
 $fs-lightbox-thumbnail-scrollbar-size: 30px;
 
 .fs-lightbox {
-	@include focus_outline_none;
-
 	width: 200px;
 	height: 200px;
 
@@ -19,29 +22,32 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 	left: 0;
 	z-index: ($fs-lightbox-z-index + 1);
 
+	background: #fff;
 	opacity: 0;
+	margin: 0 auto;
+
 	transform: translateZ(0);
 
-	&-open {
-		opacity: 1;
-	}
-
-	&-lock {
-		overflow: hidden;
+	&,
+	*:not(input):not(textarea) {
+		box-sizing: border-box;
+		user-select: none !important;
 	}
 
 	&-fixed {
 		position: fixed;
 		top: 0;
 		bottom: 0;
+
+		margin: auto;
 	}
 
 	&-animating {
 		transition:
 			height .25s,
 			width .25s,
-			top .25s,
-			opacity .25s;
+			opacity .25s linear,
+			top .25s;
 	}
 
 	&-animating &-content,
@@ -50,21 +56,11 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 	&-animating &-meta,
 	&-animating &-control {
 		transition:
-			opacity .25s,
-			visibility .25s;
+			opacity .25s linear .25s,
+			visibility .25s linear .25s;
 	}
 
 	&-mobile &-image_container {
-		transiton:
-			top .25s,
-			left .25s;
-	}
-
-	&-mobile.fs-lightbox-scaling &-image_container {
-		transition: none;
-	}
-
-	&-mobile.fs-lightbox-zooming &-image_container {
 		transition:
 			top .25s,
 			left .25s;
@@ -78,8 +74,18 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 			left .25s;
 	}
 
+	&-mobile.fs-lightbox-scaling &-image_container {
+		transition: none !important;
+	}
+
 	&-mobile.fs-lightbox-scaling &-image {
-		transition: none;
+		transition: none !important;
+	}
+
+	&-mobile.fs-lightbox-zooming &-image_container {
+		transition:
+			top .25s,
+			left .25s !important;
 	}
 
 	&-mobile.fs-lightbox-zooming &-image {
@@ -87,7 +93,7 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 			height .25s,
 			width .25s,
 			top .25s,
-			left .25s;
+			left .25s !important;
 	}
 
 	&-overlay {
@@ -102,7 +108,11 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 		z-index: $fs-lightbox-z-index;
 
 		opacity: 0;
-		transition: opacity .25s;
+		transition: opacity .25s linear;
+	}
+
+	&-open {
+		opacity: 1;
 	}
 
 	&-overlay.fs-lightbox-open {
@@ -133,8 +143,10 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 	&-content {
 		width: 100%;
 
+		opacity: 1;
 		overflow: hidden;
 		padding: 0;
+		visibility: visible;
 	}
 
 	&-inline &-content {
@@ -188,12 +200,6 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 		overflow: auto;
 	}
 
-	&-meta {
-		opacity: 1;
-		clear: both;
-		visibility: visible;
-	}
-
 	&-control {
 		position: absolute;
 		top: 0;
@@ -221,6 +227,12 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 		visibility: hidden;
 	}
 
+	.no-touchevents & &-control_disabled,
+	.no-touchevents &:hover &-control_disabled {
+		opacity: 0;
+		visibility: hidden;
+	}
+
 	&-toggle {
 		display: none;
 	}
@@ -228,14 +240,15 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 	&-thumbnails {
 		height: $fs-lightbox-thumbnail-size + $fs-lightbox-thumbnail-padding;
 
-		position: relative;
-		z-index: 400;
-
+		clear: both;
 		overflow: hidden;
+		padding: 0;
 	}
 
 	&-thumbnail_container {
 		height: $fs-lightbox-thumbnail-size + $fs-lightbox-thumbnail-scrollbar-size;
+
+		position: relative;
 
 		overflow-x: scroll;
 		overflow-y: hidden;
@@ -255,10 +268,11 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 		border: none;
 		cursor: pointer;
 		display: inline-block;
-		margin: 0 10px 0 0;
-		opacity: .25;
+		margin: $fs-lightbox-thumbnail-margin;
+		opacity: $fs-lightbox-thumbnail-opacity;
 		overflow: hidden;
-		transition: opacity .25s;
+		padding: 0;
+		transition: opacity .25s linear;
 
 		&:last-child {
 			margin: 0;
@@ -277,7 +291,7 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 	}
 
 	&-thumbnail_item.fs-lightbox-active,
-	&-thumbnail_item:hover {
+	.no-touchevents &-thumbnail_item:hover {
 		opacity: 1;
 	}
 
@@ -288,8 +302,8 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 	&-loading &-control {
 		opacity: 0;
 		transition:
-			opacity .25s,
-			visibility .25s;
+			opacity .25s linear,
+			visibility .25s linear;
 		visibility: hidden;
 	}
 
@@ -339,14 +353,14 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 		visibility: visible;
 	}
 
-	&-mobile &-control,
-	&-mobile:hover &-control {
+	.no-touchevents &-mobile &-control,
+	.no-touchevents &-mobile:hover &-control {
 		visibility: visible;
 	}
 
 	&-mobile &-control_disabled,
-	&-mobile &-control_disabled,
-	&-mobile:hover &-control_disabled {
+	.no-touchevents &-mobile &-control_disabled,
+	.no-touchevents &-mobile:hover &-control_disabled {
 		cursor: default !important;
 		opacity: 0;
 		visibility: hidden;
@@ -400,8 +414,8 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 		transform: translate(0, 100%);
 		transition:
 			transform .25s,
-			opacity .25s .25s,
-			visibility .25s .25s;
+			opacity .25s linear .25s,
+			visibility .25s linear .25s;
 	}
 
 	&-touch.fs-lightbox-caption_open &-meta {
@@ -421,8 +435,8 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 		transform: translate(0, 100%);
 		transition:
 			transform .25s,
-			opacity .25s .25s,
-			visibility .25s .25s;
+			opacity    .25s linear .25s,
+			visibility .25s linear .25s;
 	}
 
 	&-mobile.fs-lightbox-touch &-thumbnail_container {
@@ -431,6 +445,10 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 
 	&-touch.fs-lightbox-thumbnails_open &-thumbnails {
 		transform: translate(0, 0);
+	}
+
+	&-lock {
+		overflow: hidden !important;
 	}
 
 	&-mobile.fs-lightbox-touch &-container,
@@ -443,6 +461,7 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 	}
 
 	.fs-viewer {
+
 		top: 0;
 		bottom: 0;
 
@@ -462,18 +481,19 @@ $fs-lightbox-thumbnail-scrollbar-size: 30px;
 		}
 
 		.fs-viewer-loading_icon {
-			display: none;
+			display: none !important;
 		}
 
 		.fs-viewer-viewport {
-			top: 20px;
-			right: 20px;
-			bottom: 20px;
-			left: 20px;
+			top: 5px;
+			right: 15px;
+			bottom: 15px;
+			left: 15px;
 		}
 
 		.fs-viewer-controls {
 			position: absolute;
+			bottom: 10px;
 		}
 	}
 }

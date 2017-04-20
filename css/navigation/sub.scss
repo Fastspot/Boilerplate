@@ -16,6 +16,10 @@
 
 .sub_nav_handle_wrapper {
 	position: relative;
+
+	@media print {
+		display: none;
+	}
 }
 
 	.sub_nav_handle {

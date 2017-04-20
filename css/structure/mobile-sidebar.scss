@@ -4,13 +4,13 @@
 
 .mobile_sidebar_handle_wrapper {
 	position: relative;
+
+	@media print {
+		display: none;
+	}
 }
 
 	.mobile_sidebar_handle {
-
-		@media print {
-			display: none;
-		}
 
 		@media #{$min_lg} {
 			display: none;

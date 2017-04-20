@@ -52,12 +52,15 @@ $fs-navigation-offscreen-width: 270px;
 
 		&.fs-navigation-enabled {
 			display: none;
+
+			@media print {
+				display: block;
+			}
 		}
 
 		&.fs-navigation-open {
 			display: block;
 		}
-
 	}
 
 	&-toggle-handle.fs-navigation-enabled {
