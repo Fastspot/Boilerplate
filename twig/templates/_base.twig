@@ -246,7 +246,14 @@
 			<footer class="footer" id="footer" itemscope itemtype="http://schema.org/WPFooter">
 				<div class="footer_ribbon">
 					<div class="row">
-						{% include "../partials/address.twig" %}
+						{% include "../partials/address.twig" with {
+							name: "Fastspot",
+							street: "2980 Falls Road",
+							city: "Baltimore",
+							state: "MD",
+							zip: "21211",
+							tel: "202-432-1200"
+						} %}
 
 						{% include "../partials/navigation/basic.twig" with {
 							class: "footer_nav",
