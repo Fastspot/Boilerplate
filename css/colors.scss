@@ -22,8 +22,8 @@ $gray_90: #222222;
 // =============================================================================
 
 $theme_colors: (
-	(black, #000),
-	(white, #fff)
+	(black, $black),
+	(white, $white)
 );
 
 @mixin theme($list: $theme_colors, $style: "color") {

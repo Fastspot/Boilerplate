@@ -15,11 +15,10 @@
 
 	.fs-carousel-control {
 
+		&:focus,
+		&:hover {}
+
 		&.fs-carousel-visible {}
-
-		&.fs-carousel-control_previous {}
-
-		&.fs-carousel-control_next {}
 	}
 
 
@@ -31,6 +30,9 @@
 }
 
 	.fs-carousel-page {
+		height: 8px;
+		width: 8px;
+
 		border-radius: 50%;
 		color: transparent;
 		overflow: hidden;

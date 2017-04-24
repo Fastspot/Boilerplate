@@ -17,7 +17,6 @@
 				margin-right: auto !important;
 				margin-left: auto !important;
 			}
-
 }
 
 
@@ -37,12 +36,7 @@
 		.fs-lightbox-control {
 
 			&:focus,
-			&:active,
 			&:hover {}
-
-			&_previous {}
-
-			&_next {}
 		}
 
 	.fs-lightbox-meta {}

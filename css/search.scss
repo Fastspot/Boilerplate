@@ -2,7 +2,9 @@
 	Site Search
 ============================================================================= */
 
-.site_search_handle {}
+.site_search_handle {
+	position: relative;
+}
 
 	.site_search_handle_label {
 		@include visually_hide;
