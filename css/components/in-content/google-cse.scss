@@ -61,7 +61,7 @@
 				min-width: 100%;
 				width: auto;
 
-				background: none;
+				background: url() no-repeat 50% 50%;
 				border: 0;
 				border-radius: 0;
 				color: transparent;
@@ -94,6 +94,7 @@
 
 	.gsc-tabsArea {
 		border-bottom: 0;
+		display: none;
 		margin: 0;
 
 		.gsc-tabHeader {
@@ -114,6 +115,7 @@
 
 	.gsc-refinementsArea {
 		border-bottom: 0;
+		display: none;
 		margin-bottom: 0;
 		padding: 0;
 
@@ -204,7 +206,7 @@
 				}
 
 					a.gs-title {
-						@include h6;
+						@include h5;
 
 						height: inherit;
 
@@ -212,13 +214,11 @@
 						text-decoration: inherit;
 
 						&:focus,
-						&:active,
 						&:hover {}
 
 						b {
 							color: inherit !important;
 							font-size: inherit;
-							font-weight: inherit;
 							text-decoration: inherit;
 						}
 					}
@@ -234,6 +234,7 @@
 				}
 
 				.gs-visibleUrl {
+					color: #22f;
 
 					b {
 						font-weight: inherit;
@@ -262,11 +263,12 @@
 				text-decoration: none;
 
 				&:focus,
-				&:active,
 				&:hover {}
 			}
 
-			.gsc-cursor-current-page {}
+			.gsc-cursor-current-page {
+				color: #22f;
+			}
 		}
 	}
 

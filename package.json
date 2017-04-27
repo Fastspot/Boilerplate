@@ -244,5 +244,19 @@
       "name": "Linkedin",
       "href": "//www.linkedin.com"
     }
+  ],
+  "colorGroups": [
+    [
+      {
+        "text": "#fff",
+        "hex": "#000"
+      }
+    ]
+  ],
+  "fonts": [
+    {
+      "family": "family",
+      "weight": "400"
+    }
   ]
 }
