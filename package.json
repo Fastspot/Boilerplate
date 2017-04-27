@@ -27,7 +27,7 @@
     "del": "^2.2.2",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-bless": "^3.2.1",
-    "gulp-changed": "^2.0.0",
+    "gulp-changed": "^3.0.0",
     "gulp-concat-multi": "^1.0.1",
     "gulp-cssnano": "^2.1.2",
     "gulp-directory-map": "^0.1.3",
