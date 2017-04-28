@@ -7,6 +7,11 @@
     "type": "git",
     "url": "url"
   },
+  "urls": {
+    "trello": "url",
+    "invision": "url",
+    "dev": "url"
+  },
   "vars": {
     "namespace": "generic",
     "name": "Client Name",
