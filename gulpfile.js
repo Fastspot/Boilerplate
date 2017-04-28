@@ -23,6 +23,20 @@ var gulp = require('gulp'),
 		svgSprite = require('gulp-svg-sprite');
 
 
+gulp.task('readme', function() {
+
+	return gulp.src('twig/README.twig')
+		.pipe(twig({
+			data: packageJSON
+		}))
+		.pipe(rename({
+			extname: '.md'
+		}))
+		.pipe(gulp.dest('./'));
+
+});
+
+
 gulp.task('twig', function() {
 
 	return gulp.src([
@@ -236,6 +250,7 @@ gulp.task('watch', function() {
 
 
 gulp.task('build', gulp.parallel(
+	'readme',
 	gulp.series(
 		'sprite',
 		'twig',
