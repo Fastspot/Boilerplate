@@ -1,0 +1,135 @@
+{% block data %}
+	{% set page = {
+		tabTitle: "",
+		title: ""
+	} %}
+{% endblock %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>{{name}} | {{page.tabTitle}}</title>
+		<style>
+			html {
+				font-family: "Neue Haas Grotesk Text Std", Helvetica, Arial, sans-serif;
+			}
+
+				body {
+					max-width: 740px;
+
+					margin: 0 auto;
+					padding: 0 20px;
+				}
+
+					h1, h2, h3, h4, h5, h6 {
+						font-family: "Neue Haas Grotesk Display Std", Helvetica, Arial, sans-serif;
+					}
+
+					h1 {
+						font-size: 8vmin;
+					}
+
+					ul {
+						list-style: none;
+						padding-left: 0;
+					}
+
+
+			/* Ref Group */
+
+			.ref_group ul {
+				background: rgba(0, 0, 0, .0105);
+				border-top: 1px solid #e4e4e4;
+				border-left: 4px solid #e4e4e4;
+			}
+
+			.ref_group > ul {
+				border-left: 8px solid #ddd;
+				margin-bottom: 40px;
+			}
+
+				.ref_group li {
+					border-right: 1px solid #e4e4e4;
+					border-bottom: 1px solid #e4e4e4;
+					padding: 13px 20px 12px;
+					transition:
+						background .25s,
+						color .25s;
+				}
+
+					.ref_group span {
+						display: block;
+						font-weight: 700;
+						margin: 0 0 14px;
+					}
+
+
+			/* Sitemap */
+
+			.sitemap {
+				border-top: 1px solid #e4e4e4;
+				margin-bottom: 80px;
+			}
+
+				.sitemap_item {
+					border-left: 8px solid;
+				}
+
+				.fs-style-guide {
+					border-left-color: #aaf;
+				}
+
+				.fs-test {
+					border-left-color: #afa;
+				}
+
+				.fs-page {
+					border-left-color: #faa;
+				}
+
+				.fs-ref {
+					border-left-color: #aff;
+				}
+
+					.sitemap_link {
+						border-right: 1px solid #e4e4e4;
+						border-bottom: 1px solid #e4e4e4;
+						color: #005EB8;
+						display: block;
+						padding: 13px 20px 12px;
+						text-decoration: none;
+						transition:
+							background .25s,
+							color .25s;
+					}
+
+					.sitemap_link:hover,
+					.sitemap_link:focus {
+						background: #f2f2f2;
+					}
+
+					.sitemap_link:visited {
+						color: #8E3A80;
+					}
+
+					@media print {
+
+						.sitemap_link {
+							padding: 2px 0;
+						}
+					}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>{{page.title|replace({
+				"Site": name
+			})}}</h1>
+		</header>
+		<main>
+			{% block main %}
+			{% endblock %}
+		</main>
+	</body>
+</html>

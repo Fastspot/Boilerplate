@@ -1,0 +1,21 @@
+{% extends "_ref.twig" %}
+
+{% block data %}
+	{% set page = {
+		tabTitle: "Images Reference",
+		title: "Images Reference"
+	} %}
+{% endblock %}
+
+{% block main %}
+	{% for key, images in img %}
+		<div class="ref_group">
+			<h3>{{key}}</h3>
+			<ul>
+				{% for label, image in images %}
+					<li><strong>{{label}}: </strong>{{image}}</li>
+				{% endfor %}
+			</ul>
+		</div>
+	{% endfor %}
+{% endblock %}

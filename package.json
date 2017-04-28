@@ -167,98 +167,100 @@
       "xlrg": "960x1440"
     }
   },
-  "mainNavLinks": [
-    {
-      "name": "Main Link",
-      "children": [
-        "One Child",
-        "Two Child"
-      ]
-    },
-    {
-      "name": "Main Link",
-      "children": [
-        "One Child",
-        "Two Child"
-      ]
-    }
-  ],
-  "secondaryNavLinks": [
-    {
-      "modifier": "",
-      "name": "Secondary Link",
-      "children": ""
-    },
-    {
-      "modifier": "",
-      "name": "Secondary Link",
-      "children": ""
-    }
-  ],
-  "utilityNavLinks": [],
-  "quickNavLinks": [],
-  "subNavLinks": [
-    {
-      "modifier": "",
-      "href": "1-2-style-guide-feature.html",
-      "name": "Page Feature Components",
-      "children": ""
-    },
-    {
-      "modifier": "",
-      "href": "1-3-style-guide-in-content.html",
-      "name": "In Content Components",
-      "children": ""
-    },
-    {
-      "modifier": "",
-      "href": "1-4-style-guide-sidebar.html",
-      "name": "Sidebar Components",
-      "children": ""
-    },
-    {
-      "modifier": "",
-      "href": "1-5-style-guide-full-width.html",
-      "name": "Full Width Components",
-      "children": ""
-    }
-  ],
-  "footerNavLinks": [
-    "Footer Link",
-    "Footer Link"
-  ],
-  "socialNavLinks": [
-    {
-      "modifier": "",
-      "symbol": "",
-      "name": "Facebook",
-      "href": "//www.facebook.com"
-    },
-    {
-      "modifier": "",
-      "symbol": "",
-      "name": "Twitter",
-      "href": "//www.twitter.com"
-    },
-    {
-      "modifier": "",
-      "symbol": "",
-      "name": "Instagram",
-      "href": "//www.instagram.com"
-    },
-    {
-      "modifier": "",
-      "symbol": "",
-      "name": "Youtube",
-      "href": "//www.youtube.com"
-    },
-    {
-      "modifier": "",
-      "symbol": "",
-      "name": "Linkedin",
-      "href": "//www.linkedin.com"
-    }
-  ],
+  "links": {
+    "mainNav": [
+      {
+        "name": "Main Link",
+        "children": [
+          "One Child",
+          "Two Child"
+        ]
+      },
+      {
+        "name": "Main Link",
+        "children": [
+          "One Child",
+          "Two Child"
+        ]
+      }
+    ],
+    "secondaryNav": [
+      {
+        "modifier": "",
+        "name": "Secondary Link",
+        "children": ""
+      },
+      {
+        "modifier": "",
+        "name": "Secondary Link",
+        "children": ""
+      }
+    ],
+    "utilityNav": [],
+    "quickNav": [],
+    "subNav": [
+      {
+        "modifier": "",
+        "href": "1-2-style-guide-feature.html",
+        "name": "Page Feature Components",
+        "children": ""
+      },
+      {
+        "modifier": "",
+        "href": "1-3-style-guide-in-content.html",
+        "name": "In Content Components",
+        "children": ""
+      },
+      {
+        "modifier": "",
+        "href": "1-4-style-guide-sidebar.html",
+        "name": "Sidebar Components",
+        "children": ""
+      },
+      {
+        "modifier": "",
+        "href": "1-5-style-guide-full-width.html",
+        "name": "Full Width Components",
+        "children": ""
+      }
+    ],
+    "footerNav": [
+      "Footer Link",
+      "Footer Link"
+    ],
+    "socialNav": [
+      {
+        "modifier": "",
+        "symbol": "",
+        "name": "Facebook",
+        "href": "//www.facebook.com"
+      },
+      {
+        "modifier": "",
+        "symbol": "",
+        "name": "Twitter",
+        "href": "//www.twitter.com"
+      },
+      {
+        "modifier": "",
+        "symbol": "",
+        "name": "Instagram",
+        "href": "//www.instagram.com"
+      },
+      {
+        "modifier": "",
+        "symbol": "",
+        "name": "Youtube",
+        "href": "//www.youtube.com"
+      },
+      {
+        "modifier": "",
+        "symbol": "",
+        "name": "Linkedin",
+        "href": "//www.linkedin.com"
+      }
+    ]
+  },
   "colorGroups": [
     [
       {

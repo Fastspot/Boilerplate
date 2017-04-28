@@ -77,7 +77,7 @@
 		{% endblock %}
 
 		{% block mainNavLinks %}
-			{% set mainNavLinksAlias = mainNavLinks %}
+			{% set mainNavLinksAlias = links.mainNav %}
 		{% endblock %}
 
 		{% block breadcrumbNavLinks %}
@@ -87,27 +87,27 @@
 		{% endblock %}
 
 		{% block subNavLinks %}
-			{% set subNavLinksAlias = subNavLinks %}
+			{% set subNavLinksAlias = links.subNav %}
 		{% endblock %}
 
 		{% block secondaryNavLinks %}
-			{% set secondaryNavLinksAlias = secondaryNavLinks %}
+			{% set secondaryNavLinksAlias = links.secondaryNav %}
 		{% endblock %}
 
 		{% block utilityNavLinks %}
-			{% set utilityNavLinksAlias = utilityNavLinks %}
+			{% set utilityNavLinksAlias = links.utilityNav %}
 		{% endblock %}
 
 		{% block quickNavLinks %}
-			{% set quickNavLinksAlias = quickNavLinks %}
+			{% set quickNavLinksAlias = links.quickNav %}
 		{% endblock %}
 
 		{% block footerNavLinks %}
-			{% set footerNavLinksAlias = footerNavLinks %}
+			{% set footerNavLinksAlias = links.footerNav %}
 		{% endblock %}
 
 		{% block socialNavLinks %}
-			{% set socialNavLinksAlias = socialNavLinks %}
+			{% set socialNavLinksAlias = links.socialNav %}
 		{% endblock %}
 
 		{% include '../partials/update-notice.twig' %}
