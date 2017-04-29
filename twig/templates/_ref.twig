@@ -1,3 +1,5 @@
+{% import '../partials/macros.twig' as site %}
+
 {% block data %}
 	{% set page = {
 		tabTitle: "",
@@ -30,6 +32,28 @@
 						font-size: 8vmin;
 					}
 
+					.title_logo {
+						background: #000;
+						color: #fff;
+						display: inline-block;
+						margin-right: 10px;
+						padding: 12px 8px 12px 6px;
+						vertical-align: middle;
+					}
+
+						.symbol_logo {
+							height: 5vmin;
+							width: 8vmin;
+
+							display: block;
+							fill: currentColor;
+						}
+
+					.title_label {
+						display: inline-block;
+						vertical-align: middle;
+					}
+
 					ul {
 						list-style: none;
 						padding-left: 0;
@@ -39,8 +63,6 @@
 			/* Ref Group */
 
 			.ref_group ul {
-				background: rgba(0, 0, 0, .0105);
-				border-top: 1px solid #e4e4e4;
 				border-left: 4px solid #e4e4e4;
 			}
 
@@ -50,8 +72,6 @@
 			}
 
 				.ref_group li {
-					border-right: 1px solid #e4e4e4;
-					border-bottom: 1px solid #e4e4e4;
 					padding: 13px 20px 12px;
 					transition:
 						background .25s,
@@ -68,7 +88,6 @@
 			/* Sitemap */
 
 			.sitemap {
-				border-top: 1px solid #e4e4e4;
 				margin-bottom: 80px;
 			}
 
@@ -77,27 +96,30 @@
 				}
 
 				.fs-style-guide {
-					border-left-color: #aaf;
-				}
-
-				.fs-test {
-					border-left-color: #afa;
+					color: #0B35EA;
+					border-left-color: #0B35EA;
 				}
 
 				.fs-page {
-					border-left-color: #faa;
+					color: #6DCF48;
+					border-left-color: #6DCF48;
 				}
 
 				.fs-ref {
-					border-left-color: #aff;
+					color: #FD9A02;
+					border-left-color: #FD9A02;
+				}
+
+				.fs-test {
+					color: #21D2AA;
+					border-left-color: #21D2AA;
 				}
 
 					.sitemap_link {
-						border-right: 1px solid #e4e4e4;
-						border-bottom: 1px solid #e4e4e4;
-						color: #005EB8;
+						color: inherit;
 						display: block;
-						padding: 13px 20px 12px;
+						font-size: 18px;
+						padding: 15px 20px;
 						text-decoration: none;
 						transition:
 							background .25s,
@@ -110,7 +132,7 @@
 					}
 
 					.sitemap_link:visited {
-						color: #8E3A80;
+						color: inherit;
 					}
 
 					@media print {
@@ -122,10 +144,16 @@
 		</style>
 	</head>
 	<body>
+		<figure style="display: none;">
+			{% include '../../static/svg/sprite.symbol.svg' %}
+		</figure>
 		<header>
-			<h1>{{page.title|replace({
-				"Site": name
-			})}}</h1>
+			<h1>
+				<span class="title_logo">{{site.symbol("logo")}}</span>
+				<span class="title_label">{{page.title|replace({
+					"Site": name
+				})}}</span>
+			</h1>
 		</header>
 		<main>
 			{% block main %}

@@ -200,6 +200,7 @@ gulp.task('imagemin', function() {
 gulp.task('clean', function(done) {
 
 	del('static');
+	del(gulpif(util.env.all, 'components'));
 
 	done();
 

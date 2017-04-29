@@ -201,26 +201,32 @@
     "subNav": [
       {
         "modifier": "",
-        "href": "1-2-style-guide-feature.html",
+        "href": "fs-style-guide.html",
+        "name": "Style Guide",
+        "children": ""
+      },
+      {
+        "modifier": "",
+        "href": "fs-style-guide-feature.html",
         "name": "Page Feature Components",
         "children": ""
       },
       {
         "modifier": "",
-        "href": "1-3-style-guide-in-content.html",
+        "href": "fs-style-guide-full-width.html",
+        "name": "Full Width Components",
+        "children": ""
+      },
+      {
+        "modifier": "",
+        "href": "fs-style-guide-in-content.html",
         "name": "In Content Components",
         "children": ""
       },
       {
         "modifier": "",
-        "href": "1-4-style-guide-sidebar.html",
+        "href": "fs-style-guide-sidebar.html",
         "name": "Sidebar Components",
-        "children": ""
-      },
-      {
-        "modifier": "",
-        "href": "1-5-style-guide-full-width.html",
-        "name": "Full Width Components",
         "children": ""
       }
     ],

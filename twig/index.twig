@@ -12,7 +12,13 @@
 		{% for key, link in sitemap.templates %}
 			<li class="sitemap_item {% if 'fs-style' in key %}fs-style-guide{% elseif 'test' in key %}fs-test{% elseif 'page' in key %}fs-page{% elseif 'ref' in key %}fs-ref{% endif %}">
 				<a class="sitemap_link" href="{{link}}">{{key|replace({
-					".html": ""
+					".html": "",
+					"-": " "
+				})|replace({
+					"fs": "",
+					"page": "",
+					"ref": "",
+					"test": ""
 				})}}</a>
 			</li>
 		{% endfor %}
