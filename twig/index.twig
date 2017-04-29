@@ -10,7 +10,7 @@
 {% block main %}
 	<ul class="sitemap">
 		{% for key, link in sitemap.templates %}
-			<li class="sitemap_item {% if 'fs-style' in key %}fs-style-guide{% elseif 'test' in key %}fs-test{% elseif 'page' in key %}fs-page{% elseif 'ref' in key %}fs-ref{% endif %}">
+			<li class="sitemap_item {% if 'fs-style' in key %}fs-style-guide{% elseif 'page' in key %}fs-page{% elseif 'ref' in key %}fs-ref{% elseif 'test' in key %}fs-test{% endif %}">
 				<a class="sitemap_link" href="{{link}}">{{key|replace({
 					".html": "",
 					"-": " "
@@ -23,4 +23,27 @@
 			</li>
 		{% endfor %}
 	</ul>
+	<script>
+		var sitemap = document.querySelector('.sitemap');
+		var fsGuide = document.querySelectorAll('.fs-style-guide');
+		var fsPage = document.querySelectorAll('.fs-page');
+		var fsRef = document.querySelectorAll('.fs-ref');
+		var fsTest = document.querySelectorAll('.fs-test');
+
+		wrap(fsGuide);
+		wrap(fsPage);
+		wrap(fsRef);
+		wrap(fsTest);
+
+		function wrap(element) {
+			var group = document.createElement('div');
+			group.classList.add('sitemap_group');
+
+			for(var i = 0; i < element.length; i++) {
+				group.appendChild(element[i]);
+			}
+
+			sitemap.appendChild(group);
+		}
+	</script>
 {% endblock %}
