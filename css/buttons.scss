@@ -44,3 +44,39 @@ button {
 		text-align: left;
 	}
 }
+
+
+/* Skip Link
+============================================================================= */
+
+.skip_link {
+	@include button_inline;
+
+	position: absolute;
+	top: 0;
+	left: 50%;
+	z-index: 100;
+
+	display: block;
+	padding: 10px 20px;
+	text-align: center;
+	transform: translate(-50%, -200%);
+	transition:
+		top .35s,
+		transform .35s;
+
+	&:focus,
+	&:active {
+		outline: 2px solid #000;
+		transform: translate(-50%, 20px);
+	}
+
+	.no-csstransforms & {
+		top: -100%;
+
+		&:focus,
+		&:active {
+			top: 20px;
+		}
+	}
+}
