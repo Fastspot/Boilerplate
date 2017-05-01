@@ -8,7 +8,7 @@
 {% include "file.twig" with {
 	class: "",
 	modifier: "",
-	array: ["", ""]
+	array: ["", ""],
 	associativeArray: [
 		{
 			key1: "",
