@@ -416,9 +416,11 @@ Site.modules.Map = (function($, Site) {
 	function openLightbox(e) {
 		$('html').addClass('lightbox-open');
 
+		var pointData = e.target.options.data;
+
 		$(lightboxBody).html(
 			'<div class="map_lightbox_content">' +
-				'<div class="map_lightbox_title">' + e.target.options.data.title + '</div>' +
+				'<div class="map_lightbox_title">' + pointData.title + '</div>' +
 			'</div>'
 		);
 	}

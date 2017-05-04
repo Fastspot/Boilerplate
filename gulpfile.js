@@ -101,10 +101,6 @@ gulp.task('sass', function() {
 			}),
 			require('autoprefixer')({
 				browsers: ['> 1%']
-			}),
-			require('postcss-assets')({
-				cachebuster: true,
-				baseUrl: '..'
 			})
 		]))
 		.pipe(gulpif(util.env.production, cssnano()))
@@ -244,7 +240,7 @@ gulp.task('watch', function() {
 	gulp.watch('twig/**/*.twig', gulp.series('twig', 'reload'));
 	gulp.watch('css/**/**', gulp.series('sass'));
 	gulp.watch('js/**/**.js', gulp.series(gulp.parallel('scripts', 'jshint'), 'reload'));
-	gulp.watch('images/icons/*', gulp.series('sprite', 'reload'));
+	gulp.watch('icons/*', gulp.series('sprite', 'twig', 'reload'));
 	gulp.watch('images/*', gulp.series('imagemin', 'reload'));
 
 });

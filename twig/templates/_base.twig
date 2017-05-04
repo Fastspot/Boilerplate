@@ -122,45 +122,47 @@
 		<!-- Page Wrapper -->
 		<div class="js-navigation_push page_wrapper">
 			<!-- Header -->
-			<header class="header" id="header" itemscope itemtype="http://schema.org/WPHeader">
-				<div class="header_ribbon">
-					<div class="row">
-						{% include "../partials/logo.twig" with {
-							modifier: "header",
-							symbol: true
-						} %}
+			{% if layout != "style-guide" %}
+				<header class="header" id="header" itemscope itemtype="http://schema.org/WPHeader">
+					<div class="header_ribbon">
+						<div class="row">
+							{% include "../partials/logo.twig" with {
+								modifier: "header",
+								symbol: true
+							} %}
 
-						{% include "../partials/navigation/main.twig" with {
-							modifier: "lg",
-							title: "Site Navigation",
-							links: mainNavLinksAlias,
-							active: activePage
-						} %}
+							{% include "../partials/navigation/main.twig" with {
+								modifier: "lg",
+								title: "Site Navigation",
+								links: mainNavLinksAlias,
+								active: activePage
+							} %}
 
-						{% include "../partials/navigation/basic.twig" with {
-							class: "secondary_nav",
-							modifier: "lg",
-							title: "Secondary Navigation",
-							links: secondaryNavLinksAlias
-						} %}
+							{% include "../partials/navigation/basic.twig" with {
+								class: "secondary_nav",
+								modifier: "lg",
+								title: "Secondary Navigation",
+								links: secondaryNavLinksAlias
+							} %}
 
-						<a class="mobile_sidebar_handle_wrapper" href="#mobile_sidebar">
-							<span class="js-nav_handle mobile_sidebar_handle">Menu</span>
-						</a>
+							<a class="mobile_sidebar_handle_wrapper" href="#mobile_sidebar">
+								<span class="js-nav_handle mobile_sidebar_handle">Menu</span>
+							</a>
 
-						<a class="site_search_handle" href="#site_search_lg">
-							<span class="site_search_handle_label">Search</span>
-							<span class="site_search_handle_icon">{{site.symbol("search")}}</span>
-						</a>
+							<a class="site_search_handle" href="#site_search_lg">
+								<span class="site_search_handle_label">Search</span>
+								<span class="site_search_handle_icon">{{site.symbol("search")}}</span>
+							</a>
 
-						{% include "../partials/search.twig" with {
-							modifier: "",
-							placeholder: "Search",
-							buttonText: "submit"
-						} %}
+							{% include "../partials/search.twig" with {
+								modifier: "",
+								placeholder: "Search",
+								buttonText: "submit"
+							} %}
+						</div>
 					</div>
-				</div>
-			</header>
+				</header>
+			{% endif %}
 			<!-- END: Header -->
 
 			<!-- Page -->
@@ -174,7 +176,7 @@
 				<!-- Page Content -->
 				<div class="page_content">
 					<div class="row">
-						{% if layout == "default" %}
+						{% if layout == "default" or layout == "style-guide" %}
 							<!-- Sub Nav -->
 							<div class="aside_cell subnav_cell">
 								{% block subNav %}
@@ -193,9 +195,11 @@
 								<!-- Page Header -->
 								{% block page_header %}
 									<div class="page_header">
-										{% include "../partials/navigation/breadcrumb.twig" with {
-											links: breadcrumbNavLinks
-										} %}
+										{% if layout != "style-guide" %}
+											{% include "../partials/navigation/breadcrumb.twig" with {
+												links: breadcrumbNavLinks
+											} %}
+										{% endif %}
 
 										{% if pageTitle %}
 											<div class="typography">
@@ -221,7 +225,7 @@
 						</div>
 						<!-- END: Main Content -->
 
-						{% if layout == "default" %}
+						{% if layout == "default" or layout == "style-guide" %}
 							<!-- Sidebar Callouts -->
 							<div class="aside_cell sidebar_cell">
 								<div class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
@@ -243,31 +247,33 @@
 			<!-- END: Page -->
 
 			<!-- Footer -->
-			<footer class="footer" id="footer" itemscope itemtype="http://schema.org/WPFooter">
-				<div class="footer_ribbon">
-					<div class="row">
-						{% include "../partials/address.twig" with {
-							name: "Fastspot",
-							street: "2980 Falls Road",
-							city: "Baltimore",
-							state: "MD",
-							zip: "21211",
-							tel: "202-432-1200"
-						} %}
+			{% if layout != "style-guide" %}
+				<footer class="footer" id="footer" itemscope itemtype="http://schema.org/WPFooter">
+					<div class="footer_ribbon">
+						<div class="row">
+							{% include "../partials/address.twig" with {
+								name: "Fastspot",
+								street: "2980 Falls Road",
+								city: "Baltimore",
+								state: "MD",
+								zip: "21211",
+								tel: "202-432-1200"
+							} %}
 
-						{% include "../partials/navigation/basic.twig" with {
-							class: "footer_nav",
-							title: "Footer Navigation",
-							links: footerNavLinksAlias
-						} %}
+							{% include "../partials/navigation/basic.twig" with {
+								class: "footer_nav",
+								title: "Footer Navigation",
+								links: footerNavLinksAlias
+							} %}
 
-						{% include "../partials/navigation/social.twig" with {
-							title: "Social Navigation",
-							links: socialNavLinksAlias
-						} %}
+							{% include "../partials/navigation/social.twig" with {
+								title: "Social Navigation",
+								links: socialNavLinksAlias
+							} %}
+						</div>
 					</div>
-				</div>
-			</footer>
+				</footer>
+			{% endif %}
 			<!-- END: Footer -->
 		</div>
 		<!-- END: page_wrapper -->

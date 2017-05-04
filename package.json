@@ -61,7 +61,6 @@
     "gulp-util": "^3.0.8",
     "jshint": "^2.9.4",
     "jshint-stylish": "^2.2.1",
-    "postcss-assets": "^4.1.0",
     "postcss-pxtorem": "^4.0.1",
     "postcss-unmq": "^1.0.2"
   },
@@ -227,6 +226,12 @@
         "modifier": "",
         "href": "fs-style-guide-sidebar.html",
         "name": "Sidebar Components",
+        "children": ""
+      },
+      {
+        "modifier": "",
+        "href": "../",
+        "name": "Sitemap",
         "children": ""
       }
     ],
