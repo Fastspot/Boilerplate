@@ -21,9 +21,7 @@
 		<h3>Project Links</h3>
 		<ul>
 			{% for link in urls %}
-				{% if not loop.last %}
-					<li><a href="{{link.url}}">{{link.name}}</a></li>
-				{% endif %}
+				<li><a href="{{link.url}}">{{link.name}}</a></li>
 			{% endfor %}
 		</ul>
 	</div>
@@ -32,7 +30,7 @@
 		<ul>
 			{% for key, value in vars %}
 				{% if value %}
-					<li><strong>{{key}}: </strong> {{value}}</li>
+					<li><strong>{{key}}: </strong> {% if key == "domain" %}<a href="{{value}}">{% endif %}{{value}}{% if key == "domain" %}</a>{% endif %}</li>
 				{% endif %}
 			{% endfor %}
 		</ul>
