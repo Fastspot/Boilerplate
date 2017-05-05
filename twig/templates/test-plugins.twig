@@ -3,66 +3,81 @@
 {% set pageTitle = "Plugins" %}
 
 {% block in_content_callouts %}
-	<h4>Slideshow Multiple</h4>
-
-	<div class="js-carousel">
-		{% for i in 0..3 %}
-			<div>
-				<img src="//images.fastspot.com/{{vars.namespace}}/320x240/{{i}}.jpg" alt="{{i}}">
-			</div>
-		{% endfor %}
-	</div>
-
-	<h4>Slideshow Single</h4>
-
-	<div class="js-carousel" data-carousel-options='{"single": true}'>
-		{% for i in 0..3 %}
-			<div>
-				<img src="//images.fastspot.com/{{vars.namespace}}/320x240/{{i}}.jpg" alt="{{i}}">
-			</div>
-		{% endfor %}
-	</div>
-
-	<h4>Lightbox Video</h4>
-
-	<div class="lightbox-video-gallery">
-		{% for i in 0..2 %}
-			<a href="//www.youtube.com/embed/zsJpUCWfyPE?rel=0&amp;autoplay=1&amp;fs=1" class="js-lightbox button" data-lightbox-gallery="video_gallery" title="Sed posuere consectetur est at lobortis.">Video {{i}}</a>
-		{% endfor %}
-	</div>
-
-	<h4>Lightbox Gallery</h4>
-
-	<div class="lightbox-image-gallery">
-		{% for i in 0..1 %}
-			<a href="//images.fastspot.com/{{vars.namespace}}/320x240/{{i}}.jpg" class="js-lightbox" data-lightbox-gallery="image_gallery" title="Sed posuere consectetur est at lobortis." data-lightbox-options='{
-				"thumbnails": true
-			}'>
-				<img src="//images.fastspot.com/{{vars.namespace}}/320x240/{{i}}.jpg" alt="{{i}}">
-			</a>
-		{% endfor %}
-	</div>
-
-	<h4>Dropdown</h4>
-
-	{{site.dropdown("base", [
-		"Choice One",
-		"Choice Two",
-		"Choice Three",
-	])}}
-
-	<h4>Accordion</h4>
-
-	{% include "../partials/components/in-content/accordion.twig" with {
-		accordions: [
-			{
-				label: "Lorem ipsum yuppy golor",
-				description: "Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi."
-			},
-			{
-				label: "Lorem ipsum nolom de letuvis",
-				description: "Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna."
-			}
-		]
+	{% set plugins = {
+		carousel: true,
+		lightbox: true,
+		dropdown: true,
+		accordion: true
 	} %}
+
+	{% if plugins.carousel %}
+		<h4>Slideshow Multiple</h4>
+
+		<div class="js-carousel">
+			{% for i in 0..3 %}
+				<div>
+					<img src="//images.fastspot.com/{{vars.namespace}}/320x240/{{i}}.jpg" alt="{{i}}">
+				</div>
+			{% endfor %}
+		</div>
+
+		<h4>Slideshow Single</h4>
+
+		<div class="js-carousel" data-carousel-options='{"single": true}'>
+			{% for i in 0..3 %}
+				<div>
+					<img src="//images.fastspot.com/{{vars.namespace}}/320x240/{{i}}.jpg" alt="{{i}}">
+				</div>
+			{% endfor %}
+		</div>
+	{% endif %}
+
+	{% if plugins.lightbox %}
+		<h4>Lightbox Video</h4>
+
+		<div class="lightbox-video-gallery">
+			{% for i in 0..2 %}
+				<a href="//www.youtube.com/embed/zsJpUCWfyPE?rel=0&amp;autoplay=1&amp;fs=1" class="js-lightbox button" data-lightbox-gallery="video_gallery" title="Sed posuere consectetur est at lobortis.">Video {{i}}</a>
+			{% endfor %}
+		</div>
+
+		<h4>Lightbox Gallery</h4>
+
+		<div class="lightbox-image-gallery">
+			{% for i in 0..1 %}
+				<a href="//images.fastspot.com/{{vars.namespace}}/320x240/{{i}}.jpg" class="js-lightbox" data-lightbox-gallery="image_gallery" title="Sed posuere consectetur est at lobortis." data-lightbox-options='{
+					"thumbnails": true
+				}'>
+					<img src="//images.fastspot.com/{{vars.namespace}}/320x240/{{i}}.jpg" alt="{{i}}">
+				</a>
+			{% endfor %}
+		</div>
+	{% endif %}
+
+	{% if plugins.dropdown %}
+		<h4>Dropdown</h4>
+
+		{{site.dropdown("base", [
+			"Choice One",
+			"Choice Two",
+			"Choice Three",
+		])}}
+	{% endif %}
+
+	{% if plugins.accordion %}
+		<h4>Accordion</h4>
+
+		{% include "../partials/components/in-content/accordion.twig" with {
+			accordions: [
+				{
+					label: "Lorem ipsum yuppy golor",
+					description: "Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi."
+				},
+				{
+					label: "Lorem ipsum nolom de letuvis",
+					description: "Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna."
+				}
+			]
+		} %}
+	{% endif %}
 {% endblock %}

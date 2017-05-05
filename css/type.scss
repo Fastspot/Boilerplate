@@ -98,6 +98,18 @@ strong {
 	}
 
 	p {}
+
+	.intro {
+		@include intro_text;
+	}
+
+	.label {
+		@include label_text;
+	}
+
+	.caption {
+		@include caption_text;
+	}
 }
 
 

@@ -1,9 +1,10 @@
 {% extends "_base.twig" %}
 
-{% set pageTitle = "Style Guide Feature" %}
-
-{% block layout %}
-	{% set layout = "style-guide" %}
+{% block page %}
+	{% set page = {
+		title: "Style Guide Feature",
+		layout: "style-guide"
+	} %}
 {% endblock %}
 
 {% block page_feature %}

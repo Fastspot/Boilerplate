@@ -1,6 +1,11 @@
 {% extends "_base.twig" %}
 
-{% set pageTitle = "Master Sub" %}
+{% block page %}
+	{% set page = {
+		title: "Master Sub",
+		layout: "default"
+	} %}
+{% endblock %}
 
 {% block page_feature %}
 {% endblock %}

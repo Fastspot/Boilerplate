@@ -8,15 +8,52 @@
 
 
 {#
-	{{site.symbol("chevron", "large")}}
+	{{site.symbol("chevron")}}
 #}
 
-{% macro symbol(name, modifier) %}
+{% macro symbol(name) %}
 	{% if name %}
-		<svg class="symbol symbol_{{name}}{% if modifier %} symbol_{{modifier}}{% endif %}">
+		<svg class="symbol symbol_{{name}}">
 			<use xlink:href="#{{name}}"></use>
 		</svg>
 	{% endif %}
+{% endmacro %}
+
+
+{#
+	{{site.table({
+		headers: [
+			"Header",
+			"Header"
+		],
+		rows: [
+			[
+				"Item",
+				"Item"
+			]
+		]
+	})}}
+#}
+
+{% macro table(data) %}
+	<table class="{{data.class}}">
+		<thead>
+			<tr>
+				{% for header in data.headers %}
+					<th>{{header}}</td>
+				{% endfor %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for row in data.rows %}
+				<tr>
+					{% for item in row %}
+						<td>{{item}}</td>
+					{% endfor %}
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 {% endmacro %}
 
 
@@ -27,11 +64,13 @@
 {% macro button(class, label, symbol) %}
 	<a class="{{class}}_link" href="#">
 		<span class="{{class}}_link_label">{{label}}</span>
-		<span class="{{class}}_link_icon">
-			<svg class="symbol symbol_{{symbol}}">
-				<use xlink:href="#{{symbol}}"></use>
-			</svg>
-		</span>
+		{% if symbol %}
+			<span class="{{class}}_link_icon">
+				<svg class="symbol symbol_{{symbol}}">
+					<use xlink:href="#{{symbol}}"></use>
+				</svg>
+			</span>
+		{% endif %}
 	</a>
 {% endmacro %}
 

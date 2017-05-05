@@ -8,7 +8,9 @@
 	<div class="js-navigation js-sub-nav	sub_nav_list" data-navigation-handle=".js-sub_nav_handle" data-navigation-options='{"theme": "sub_nav_base", "labels": {"closed": "Additional Navigation", "Open": "Close"}}'>
 		{% for link in links %}
 			<div class="sub_nav_item{% if link.modifier %} {{link.modifier}}{% endif %}" itemprop="url">
-				<a class="sub_nav_link" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="name">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</a>
+				<a class="sub_nav_link" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="name">
+					<span class="sub_nav_link_label">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
+				</a>
 				{% if link.children %}
 					<div class="sub_nav_children">
 						{% for child in link.children %}

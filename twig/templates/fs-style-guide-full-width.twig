@@ -1,9 +1,10 @@
 {% extends "_base.twig" %}
 
-{% set pageTitle = "Style Guide Full Width" %}
-
-{% block layout %}
-	{% set layout = "style-guide" %}
+{% block page %}
+	{% set page = {
+		title: "Style Guide Full Width",
+		layout: "style-guide"
+	} %}
 {% endblock %}
 
 {% block full_width_callouts %}

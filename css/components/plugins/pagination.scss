@@ -1,30 +1,30 @@
 /* ==========================================================================
-  Pagination
+	Pagination
 ============================================================================= */
 
 .pagination {}
 
-  .pagination_arrow {
+	.pagination_arrow {
 
-    &:focus,
-    &:hover {}
-    
-    &_disabled {}
-  }
+		&:focus,
+		&:hover {}
+		
+		&_disabled {}
+	}
 
-    .pagination_arrow_label {}
+		.pagination_arrow_label {}
 
-    .pagination_arrow_icon {}
+		.pagination_arrow_icon {}
 
-  .pagination_nav {}
+	.pagination_nav {}
 
-    .pagination_link {
-      display: inline-block;
-      padding: 4px;
-      vertical-align: middle;
+		.pagination_link {
+			display: inline-block;
+			padding: 4px;
+			vertical-align: middle;
 
-      &:focus,
-      &:hover {}
-    }
+			&:focus,
+			&:hover {}
+		}
 
-    .pagination_dots {}
+		.pagination_dots {}

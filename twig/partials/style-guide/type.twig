@@ -57,11 +57,9 @@
 
 	<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor.</p>
 
-
-
+	<!-- Blockquote - WYSIWYG -->
 	<div class="cr_heading">WYSIWYG Blockquote</div>
 
-	<!-- Blockquote - WYSIWYG -->
 	<blockquote>
 		<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean lacinia bibendum nulla sed consectetur. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum id ligula porta felis euismod semper.</p>
 	</blockquote>
@@ -76,7 +74,6 @@
 			<span class="quote_caption_name">Aenean massa - </span><span class="quote_caption_title">Nullam dictum felis</span>
 		</figcaption>
 	</figure>
-
 
 	<div class="cr_heading">Lists</div>
 
@@ -125,88 +122,48 @@
 	<div class="cr_heading">Tables</div>
 
 	<!-- Table -->
-
-	<table>
-		<thead>
-			<tr>
-				<th>Colors</th>
-				<th>Shapes</th>
-				<th>Numbers</th>
-				<th>Percentages</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Black</td>
-				<td>Circle</td>
-				<td>One</td>
-				<td>10% of Lorem ipsum dolor sit amet, consectetur.</td>
-			</tr>
-			<tr>
-				<td>Blue</td>
-				<td>Square</td>
-				<td>Two</td>
-				<td>33% of Donec ullamcorper nulla non metus auctor.</td>
-			</tr>
-			<tr>
-				<td>Green</td>
-				<td>Triangle</td>
-				<td>Three</td>
-				<td>5% of Integer posuere erat a ante venenatis.</td>
-			</tr>
-			<tr>
-				<td>Red</td>
-				<td>Rectangle</td>
-				<td>Four</td>
-				<td>90% of Aenean eu leo quam vestibulum.</td>
-			</tr>
-			<tr>
-				<td>White</td>
-				<td>Oval</td>
-				<td>Five</td>
-				<td>100% of Cum sociis natoque penatibus et mus.</td>
-			</tr>
-		</tbody>
-	</table>
-
-	<table>
-		<tr>
-			<th>Colors</th>
-			<th>Shapes</th>
-			<th>Numbers</th>
-			<th>Percentages</th>
-		</tr>
-		<tr>
-			<td>Black</td>
-			<td>Circle</td>
-			<td>One</td>
-			<td>10% of Lorem ipsum dolor sit amet, consectetur.</td>
-		</tr>
-		<tr>
-			<td>Blue</td>
-			<td>Square</td>
-			<td>Two</td>
-			<td>33% of Donec ullamcorper nulla non metus auctor.</td>
-		</tr>
-		<tr>
-			<td>Green</td>
-			<td>Triangle</td>
-			<td>Three</td>
-			<td>5% of Integer posuere erat a ante venenatis.</td>
-		</tr>
-		<tr>
-			<td>Red</td>
-			<td>Rectangle</td>
-			<td>Four</td>
-			<td>90% of Aenean eu leo quam vestibulum.</td>
-		</tr>
-		<tr>
-			<td>White</td>
-			<td>Oval</td>
-			<td>Five</td>
-			<td>100% of Cum sociis natoque penatibus et mus.</td>
-		</tr>
-	</table>
+	{% for i in 1..2 %}
+		{{site.table({
+			headers: [
+				"Colors",
+				"Shapes",
+				"Numbers",
+				"Percentages"
+			],
+			rows: [
+				[
+					"Black",
+					"Circle",
+					"One",
+					"10% of Lorem ipsum dolor sit amet, consectetur."
+				],
+				[
+					"Blue",
+					"Square",
+					"Two",
+					"33% of Donec ullamcorper nulla non metus auctor."
+				],
+				[
+					"Green",
+					"Triangle",
+					"Three",
+					"5% of Integer posuere erat a ante venenatis."
+				],
+				[
+					"Red",
+					"Rectangle",
+					"Four",
+					"90% of Aenean eu leo quam vestibulum."
+				],
+				[
+					"White",
+					"Oval",
+					"Five",
+					"100% of Cum sociis natoque penatibus et mus."
+				]
+			]
+		})}}
+	{% endfor %}
 </div>
 
 <div id="crl_pagination">
@@ -216,5 +173,4 @@
 	{% include "../components/shared/pagination.twig" with {
 		pages: 10
 	} %}
-
 </div>

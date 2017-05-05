@@ -1,17 +1,18 @@
 {% extends "_base.twig" %}
 
+{% block page %}
+	{% set page = {
+		title: "Map",
+		layout: "map"
+	} %}
+{% endblock %}
+
 {% block stylesheets %}
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
 {% endblock %}
 
 {% block javascript %}
 	<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-{% endblock %}
-
-{% set pageTitle = "Map" %}
-
-{% block layout %}
-	{% set layout = "map" %}
 {% endblock %}
 
 {% block full_width_callouts %}

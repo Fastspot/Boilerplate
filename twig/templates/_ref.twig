@@ -41,14 +41,6 @@
 						vertical-align: middle;
 					}
 
-						.symbol_logo {
-							height: 5vmin;
-							width: 8vmin;
-
-							display: block;
-							fill: currentColor;
-						}
-
 					.title_label {
 						display: inline-block;
 						vertical-align: middle;
@@ -141,12 +133,8 @@
 		</style>
 	</head>
 	<body>
-		<figure style="display: none;">
-			{% include '../../static/svg/sprite.symbol.svg' %}
-		</figure>
 		<header>
 			<h1>
-				<span class="title_logo">{{site.symbol("logo")}}</span>
 				<span class="title_label">{{page.title|replace({
 					"Site": name
 				})}}</span>

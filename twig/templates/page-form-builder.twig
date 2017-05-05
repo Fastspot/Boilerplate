@@ -1,6 +1,11 @@
 {% extends "_base.twig" %}
 
-{% set pageTitle = "Form Builder" %}
+{% block page %}
+	{% set page = {
+		title: "Form Builder",
+		layout: "default"
+	} %}
+{% endblock %}
 
 {% block in_content_callouts %}
 	{% include '../partials/style-guide/forms.twig' %}
