@@ -11,7 +11,7 @@
 					<a class="main_nav_link" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="name">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</a>
 					<button class="js-swap main_nav_toggle" data-swap-target=".js-main-nav-item-{{loop.index}}" data-swap-group="main_nav">
 						<span class="main_nav_toggle_label">Expand Navigation</span>
-						<span class="main_nav_toggle_icon">{{site.symbol()}}</span>
+						<span class="main_nav_toggle_icon">{{site.symbol("caret_down")}}</span>
 					</button>
 				</div>
 				{% if link.children %}

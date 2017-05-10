@@ -58,7 +58,7 @@
 
 
 {#
-	{{site.button("class")}}
+	{{site.button("class", "Apply", "arrow_right")}}
 #}
 
 {% macro button(class, label, symbol) %}
@@ -100,11 +100,11 @@
 
 
 {#
-	{{site.dropdown("component", ["Choices"])}}
+	{{site.dropdown("component", ["Choices"], "lg")}}
 #}
 
-{% macro dropdown(class, choices) %}
-	<div class="fs-dropdown-wrapper {{class}}_dropdown_wrapper">
+{% macro dropdown(class, choices, modifier) %}
+	<div class="fs-dropdown-wrapper {{class}}_dropdown_wrapper{% if modifier %} {{class}}_dropdown_wrapper_{{modifier}}{% endif %}">
 		<select class="js-dropdown {{class}}_dropdown">
 			{% for choice in choices %}
 				<option value="{{choice}}">{{choice}}</option>

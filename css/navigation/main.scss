@@ -95,7 +95,16 @@
 				@include visually_hide;
 			}
 
-			.main_nav_toggle_icon {}
+			.main_nav_toggle_icon {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+
+				transform: translate(-50%, -50%);
+				transition: transform .25s;
+				
+				.fs-swap-active & {}
+			}
 
 
 // Main Nav Children
