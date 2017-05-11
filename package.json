@@ -36,12 +36,12 @@
     "mq_min_xl": "1220"
   },
   "devDependencies": {
-    "autoprefixer": "^6.7.7",
+    "autoprefixer": "^7.0.1",
     "browser-sync": "^2.18.8",
     "del": "^2.2.2",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-bless": "^3.2.1",
-    "gulp-changed": "^3.0.0",
+    "gulp-changed": "^3.1.0",
     "gulp-concat-multi": "^1.0.1",
     "gulp-cssnano": "^2.1.2",
     "gulp-directory-map": "^0.1.3",
@@ -51,7 +51,7 @@
     "gulp-less": "^3.3.0",
     "gulp-modernizr": "^1.0.0-alpha",
     "gulp-newer": "^1.3.0",
-    "gulp-postcss": "^6.4.0",
+    "gulp-postcss": "^7.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
     "gulp-sass-glob": "^1.0.8",
