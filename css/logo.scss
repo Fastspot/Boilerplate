@@ -12,7 +12,9 @@
 		background-size: contain;
 		color: transparent;
 		display: block;
+		overflow: hidden;
 		user-select: none;
+		white-space: nowrap;
 	}
 
 		.logo_link_label {
