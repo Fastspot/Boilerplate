@@ -53,7 +53,7 @@
 		.main_nav_lg & {
 
 			&.focused,
-			&:active,
+			&:focus,
 			&:hover {
 
 				.main_nav_children {
@@ -71,9 +71,9 @@
 		.main_nav_link {
 			display: block;
 
-			&:focus,
-			&:active,
-			&:hover {}
+			.main_nav_item.focused &,
+			.main_nav_item:focus &,
+			.main_nav_item:hover & {}
 		}
 
 		.main_nav_toggle {
@@ -102,7 +102,7 @@
 
 				transform: translate(-50%, -50%);
 				transition: transform .25s;
-				
+
 				.fs-swap-active & {}
 			}
 
@@ -121,6 +121,8 @@
 			visibility $base_speed;
 		visibility: hidden;
 	}
+
+	.main_nav_item:last-child & {}
 }
 
 	.main_nav_child_item {}
