@@ -188,23 +188,25 @@
 						<!-- Main Content -->
 						<div class="content_cell">
 							<main class="main_content" id="main_content" itemprop="mainContentOfPage">
-								<!-- Page Header -->
-								{% block page_header %}
-									<div class="page_header">
-										{% if page.layout != "style-guide" %}
-											{% include "../partials/navigation/breadcrumb.twig" with {
-												links: breadcrumbNav
-											} %}
-										{% endif %}
+								{% if layout != "home" %}
+									<!-- Page Header -->
+									{% block page_header %}
+										<div class="page_header">
+											{% if page.layout != "style-guide" %}
+												{% include "../partials/navigation/breadcrumb.twig" with {
+													links: breadcrumbNav
+												} %}
+											{% endif %}
 
-										{% if page.title %}
-											<div class="typography">
-												<h1 class="page_title" id="page_title">{{page.title}}</h1>
-											</div>
-										{% endif %}
-									</div>
-								{% endblock %}
-								<!-- END: Page Header -->
+											{% if page.title %}
+												<div class="typography">
+													<h1 class="page_title" id="page_title">{{page.title}}</h1>
+												</div>
+											{% endif %}
+										</div>
+									{% endblock %}
+									<!-- END: Page Header -->
+								{% endif %}
 
 								<!-- WYSIWYG - wrap all WYSIWYG text areas in `.typography` -->
 								<div class="typography">
