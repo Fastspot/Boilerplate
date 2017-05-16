@@ -69,26 +69,38 @@ strong {
 
 	h1 {
 		@include h1;
+
+		margin: 20px 0;
 	}
 
 	h2 {
 		@include h2;
+
+		margin: 20px 0;
 	}
 
 	h3 {
 		@include h3;
+
+		margin: 20px 0;
 	}
 
 	h4 {
 		@include h4;
+
+		margin: 20px 0;
 	}
 
 	h5 {
 		@include h5;
+
+		margin: 20px 0;
 	}
 
 	h6 {
 		@include h6;
+
+		margin: 20px 0;
 	}
 
 	a {

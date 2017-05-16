@@ -13,18 +13,18 @@
 	}
 
 	$symbols: (
-		(caret_down, 20px, 10px),
-		(chevron_left, 20px, 20px),
-		(chevron_right, 20px, 20px),
-		(logo, 33px, 20px),
-		(search, 20px, 20px)
+		(caret_down, 20, 10),
+		(chevron_left, 20, 20),
+		(chevron_right, 20, 20),
+		(logo, 33, 20),
+		(search, 20, 20)
 	);
 
 	@each $label, $w, $h in $symbols {
 
 		&_#{$label} {
-			height: $h;
-			width: $w;
+			height: $h#{px};
+			width: $w#{px};
 		}
 	}
 }

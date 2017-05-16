@@ -36,8 +36,8 @@
     "mq_min_xl": "1220"
   },
   "devDependencies": {
-    "autoprefixer": "^7.0.1",
-    "browser-sync": "^2.18.8",
+    "autoprefixer": "^7.1.0",
+    "browser-sync": "^2.18.11",
     "del": "^2.2.2",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-bless": "^3.2.1",
