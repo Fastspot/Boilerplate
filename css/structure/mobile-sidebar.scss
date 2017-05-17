@@ -8,14 +8,13 @@
 	@media print {
 		display: none;
 	}
+
+	@media #{$min_lg} {
+		display: none;
+	}
 }
 
-	.mobile_sidebar_handle {
-
-		@media #{$min_lg} {
-			display: none;
-		}
-	}
+	.mobile_sidebar_handle {}
 
 
 // Sidebar
