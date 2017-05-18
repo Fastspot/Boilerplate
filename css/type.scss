@@ -141,6 +141,7 @@ strong {
 		width: auto;
 
 		display: table;
+		margin-bottom: 20px;
 		table-layout: fixed;
 
 		img {
@@ -153,6 +154,7 @@ strong {
 
 			caption-side: bottom;
 			display: table-caption;
+			margin-top: 10px;
 		}
 	}
 
@@ -161,11 +163,29 @@ strong {
 		max-width: 50%;
 
 		@media #{$max_sm} {
-			max-width: none;
+			max-width: 100%;
 
 			float: none;
 			margin-right: 0;
 			margin-left: 0;
+		}
+	}
+
+	.block_left {
+
+		@media #{$min_sm} {
+			float: left;
+
+			margin-right: 20px;
+		}
+	}
+
+	.block_right {
+
+		@media #{$min_sm} {
+			float: right;
+
+			margin-left: 20px;
 		}
 	}
 
