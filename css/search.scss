@@ -10,7 +10,9 @@
 		@include visually_hide;
 	}
 
-	.site_search_handle_icon {}
+	.site_search_handle_icon {
+		pointer-events: none;
+	}
 
 
 // Search Form

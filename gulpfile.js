@@ -196,7 +196,15 @@ gulp.task('imagemin', function() {
 gulp.task('clean', function(done) {
 
 	del('static');
-	del(gulpif(util.env.all, 'components'));
+
+	done();
+
+});
+
+gulp.task('nuke', function(done) {
+
+	del('static');
+	del('components');
 
 	done();
 

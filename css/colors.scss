@@ -40,7 +40,7 @@ $theme_colors: (
 	}
 }
 
-@mixin theme-direct($list: $theme_colors, $style: "color") {
+@mixin theme_direct($list: $theme_colors, $style: "color") {
 
 	@each $label, $color in $list {
 
