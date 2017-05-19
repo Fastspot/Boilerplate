@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+		shell = require('gulp-shell'),
 		packageJSON = require('./package.json'),
 		browserSync = require('browser-sync').create(),
 		del = require('del'),
@@ -21,6 +22,16 @@ var gulp = require('gulp'),
 		modernizr = require('gulp-modernizr'),
 		imagemin = require('gulp-imagemin'),
 		svgSprite = require('gulp-svg-sprite');
+
+
+gulp.task('bower', shell.task([
+	'bower install'
+]));
+
+
+gulp.task('npm', shell.task([
+	'npm install'
+]));
 
 
 gulp.task('readme', function() {
@@ -278,4 +289,11 @@ gulp.task('default', gulp.series(
 		'watch',
 		'browser-sync'
 	)
+));
+
+
+gulp.task('start', gulp.series(
+	'bower',
+	'npm',
+	'default'
 ));
