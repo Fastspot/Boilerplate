@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
-    "browser-sync": "^2.18.11",
+    "browser-sync": "^2.18.12",
     "del": "^2.2.2",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-bless": "^3.2.1",
@@ -58,7 +58,7 @@
     "gulp-shell": "^0.6.3",
     "gulp-svg-sprite": "^1.3.6",
     "gulp-twig": "^0.7.0",
-    "gulp-uglify": "^2.1.2",
+    "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
     "jshint": "^2.9.4",
     "jshint-stylish": "^2.2.1",
