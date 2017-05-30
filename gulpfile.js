@@ -24,16 +24,6 @@ var gulp = require('gulp'),
 		svgSprite = require('gulp-svg-sprite');
 
 
-gulp.task('bower', shell.task([
-	'bower install'
-]));
-
-
-gulp.task('npm', shell.task([
-	'npm install'
-]));
-
-
 gulp.task('readme', function() {
 
 	return gulp.src('twig/README.twig')
@@ -289,11 +279,4 @@ gulp.task('default', gulp.series(
 		'watch',
 		'browser-sync'
 	)
-));
-
-
-gulp.task('start', gulp.series(
-	'bower',
-	'npm',
-	'default'
 ));
