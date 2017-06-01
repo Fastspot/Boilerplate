@@ -120,11 +120,11 @@
 
 
 {#
-	{{site.input("text", "first_name", "First Name")}}
+	{{site.input("text", "first_name", "First Name", "component")}}
 #}
 
-{% macro input(type, id, label) %}
-	<div class="form_element">
+{% macro input(type, id, label, class) %}
+	<div class="{% if class %}{{class}}_form_element {% endif %}form_element">
 		<input type="{{type}}" id="{{id}}" />
 		<label for="{{id}}">{{label}}</label>
 	</div>
