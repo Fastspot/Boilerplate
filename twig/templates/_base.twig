@@ -62,7 +62,7 @@
 		<![endif]-->
 	</head>
 
-	<body class="layout_{{page.layout}}">
+	<body class="layout_{{page.layout}}{% if page.theme %} theme_{{page.theme}}{% endif %}">
 
 		<figure style="display: none;">
 			{% include '../../static/svg/sprite.symbol.svg' %}

@@ -1,7 +1,6 @@
 {#
-	{% include "../partials/components/shared/background-video.twig" with {
-		class: "Background",
-		customClass: "",
+	{% include "../shared/background-video.twig" with {
+		class: "background",
 		autoPlay: "false",
 		embedRatio: "1.777777",
 		lazy: "true",
@@ -19,6 +18,6 @@
 	} %}
 #}
 
-<div class="{% if customClass == "" or customClass == null %}js-background {% endif %}{{class}}_background" data-background-options='{"source": {
+<div class="js-background {{class}}_background" data-background-options='{"source": {
 {% if poster %}"poster": "//images.fastspot.com/{{vars.namespace}}/{{poster}}/{{image}}", {% endif %}{% for key, source in sources %}"{{key}}": "{{source}}"{% if not loop.last %}, {% endif %}{% endfor %}
-}{% if customClass %}, "customClass": "{{customClass}}"{% endif %}{% if autoPlay == "false" %}, "autoPlay": false{% endif %}{% if embedRatio %}, "embedRatio": {{embedRatio}}{% endif %}{% if loop == "false" %}, "loop": false{% endif %}{% if mute == "false" %}, "mute": false{% endif %}{% if lazy == "true" %}, "lazy": true{% endif %}{% if lazyEdge %}, "lazyEdge": "{{lazyEdge}}"{% endif %}}'></div>
+}{% if autoPlay == "false" %}, "autoPlay": false{% endif %}{% if embedRatio %}, "embedRatio": {{embedRatio}}{% endif %}{% if loop == "false" %}, "loop": false{% endif %}{% if mute == "false" %}, "mute": false{% endif %}{% if lazy == "true" %}, "lazy": true{% endif %}{% if lazyEdge %}, "lazyEdge": "{{lazyEdge}}"{% endif %}}'></div>
