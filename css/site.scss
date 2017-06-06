@@ -2,8 +2,10 @@
 // =============================================================================
 
 @import "../components/normalize-css/normalize";
+
 @import "base/fonts.scss";
 @import "base/setup.scss";
+@import "colors.scss";
 @import "base/base.scss";
 @import "base/grid.scss";
 
@@ -11,7 +13,6 @@
 
 @import "symbols.scss";
 @import "helpers.scss";
-@import "colors.scss";
 @import "type.scss";
 @import "buttons.scss";
 @import "forms.scss";

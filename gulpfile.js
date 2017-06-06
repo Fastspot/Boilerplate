@@ -101,7 +101,10 @@ gulp.task('sass', function() {
 				replace: false
 			}),
 			require('autoprefixer')({
-				browsers: ['> 1%']
+				browsers: [
+					'> 1%',
+					'last 2 versions'
+				]
 			})
 		]))
 		.pipe(gulpif(util.env.production, cssnano()))
@@ -250,6 +253,7 @@ gulp.task('watch', function() {
 	gulp.watch('twig/**/*.twig', gulp.series('twig', 'reload'));
 	gulp.watch('css/**/**', gulp.series('sass'));
 	gulp.watch('js/**/**.js', gulp.series(gulp.parallel('scripts', 'jshint'), 'reload'));
+	gulp.watch('components/formstone/src/js/*.js', gulp.series('scripts', 'reload'));
 	gulp.watch('icons/*', gulp.series('sprite', 'twig', 'reload'));
 	gulp.watch('images/*', gulp.series('imagemin', 'reload'));
 
