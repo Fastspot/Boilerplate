@@ -9,7 +9,10 @@
 		direction: rtl;
 	}
 
-	&-viewport {
+	&-viewport,
+	&-wrapper,
+	&-container,
+	&-canister {
 		position: relative;
 	}
 
