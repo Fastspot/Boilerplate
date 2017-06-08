@@ -103,22 +103,17 @@ gulp.task('sass', function() {
 			require('autoprefixer')({
 				browsers: [
 					'> 1%',
-					'last 2 versions'
+					'last 2 versions',
+					'ie >= 10'
 				]
 			})
 		]))
 		.pipe(gulpif(util.env.production, cssnano()))
 		.pipe(gulp.dest('static/css'))
 		.pipe(browserSync.stream())
-		.pipe(gulpif(util.env.production, postcss([
-			require('postcss-unmq')
-		])))
 		.pipe(gulpif(util.env.production, bless({
 			cacheBuster: false,
 			log: true
-		})))
-		.pipe(gulpif(util.env.production, rename({
-			basename: 'site-ie'
 		})))
 		.pipe(gulpif(util.env.production, gulp.dest('static/css')));
 
