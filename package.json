@@ -66,9 +66,7 @@
     "postcss-unmq": "^1.0.2"
   },
   "css": {
-    "css/site.css": "css/site.less",
-    "css/site-ie8.css": "css/ie/site-ie8.less",
-    "css/site-ie9.css": "css/ie/site-ie9.less"
+    "css/site.css": "css/site.scss"
   },
   "js": {
     "js/site.js": [
@@ -96,14 +94,6 @@
       "js/site.js",
       "js/modules/page.js",
       "js/modules/map.js"
-    ],
-    "js/site-ie8.js": [
-      "components/html5shiv/dist/html5shiv.min.js",
-      "components/html5shiv/dist/html5shiv-printshiv.min.js",
-      "js/ie/matchMedia.ie8.js"
-    ],
-    "js/site-ie9.js": [
-      "js/ie/matchMedia.ie9.js"
     ]
   },
   "js_ignores": [
