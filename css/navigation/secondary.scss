@@ -4,11 +4,11 @@
 
 .secondary_nav {}
 
-	.secondary_nav_header {}
+.secondary_nav_header {}
 
-		.secondary_nav_title {
-			@include visually_hide;
-		}
+.secondary_nav_title {
+	@include visually_hide;
+}
 
 
 // Seconadry Links
@@ -16,11 +16,11 @@
 
 .secondary_nav_list {}
 
-	.secondary_nav_item {}
+.secondary_nav_item {}
 
-		.secondary_nav_link {
-			display: block;
+.secondary_nav_link {
+	display: block;
 
-			&:focus,
-			&:hover {}
-		}
+	&:focus,
+	&:hover {}
+}

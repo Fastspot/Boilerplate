@@ -2,7 +2,7 @@
 	Page
 -------------------------------------------*/
 
-/* global picturefill, svg4everybody */
+/* global picturefill */
 
 Site.modules.Page = (function($, Site) {
 
@@ -15,7 +15,6 @@ Site.modules.Page = (function($, Site) {
 
 		// Plugins
 		picturefill();
-		svg4everybody();
 
 		Site.$body.find(".js-background").background();
 		Site.$body.find(".js-carousel").carousel({

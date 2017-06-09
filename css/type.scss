@@ -3,23 +3,39 @@
 ============================================================================= */
 
 @mixin h1() {
-	font-size: 60px;
+	font-size: 30px;
 	line-height: (70 / 60);
+
+	@media #{$min_sm} {
+		font-size: 60px;
+	}
 }
 
 @mixin h2() {
-	font-size: 50px;
+	font-size: 26px;
 	line-height: (60 / 50);
+
+	@media #{$min_sm} {
+		font-size: 50px;
+	}
 }
 
 @mixin h3() {
-	font-size: 40px;
+	font-size: 24px;
 	line-height: (50 / 40);
+
+	@media #{$min_sm} {
+		font-size: 40px;
+	}
 }
 
 @mixin h4() {
-	font-size: 30px;
+	font-size: 22px;
 	line-height: (40 / 30);
+
+	@media #{$min_sm} {
+		font-size: 30px;
+	}
 }
 
 @mixin h5() {
@@ -49,7 +65,7 @@
 a {
 	text-decoration: none;
 
-	.touch &[href^=tel] {
+	&[href^=tel] {
 		color: inherit;
 	}
 }
@@ -105,8 +121,8 @@ strong {
 
 	a {
 		transition:
-			color .25s,
-			background .25s;
+			color 0.25s,
+			background 0.25s;
 	}
 
 	p {}
@@ -175,7 +191,6 @@ strong {
 
 		@media #{$min_sm} {
 			float: left;
-
 			margin-right: 20px;
 		}
 	}
@@ -184,7 +199,6 @@ strong {
 
 		@media #{$min_sm} {
 			float: right;
-
 			margin-left: 20px;
 		}
 	}
@@ -215,16 +229,16 @@ strong {
 
 	.quote {}
 
-		.quote_content {
+	.quote_content {
 
-			p {}
-		}
+		p {}
+	}
 
-		.quote_caption {}
+	.quote_caption {}
 
-			.quote_caption_name {}
+	.quote_caption_name {}
 
-			.quote_caption_title {}
+	.quote_caption_title {}
 }
 
 
@@ -237,23 +251,26 @@ strong {
 	ul {
 		list-style: none;
 
-		li {}
+		li {
+			margin: 10px 0;
+		}
 	}
 
 	ol {
-		counter-reset: listing-counter;
+		counter-reset: li;
 
 		> li {
 
 			&:before {
-				content: counter(listing-counter, decimal) ".";
+				content: counter(li) ". ";
+				counter-increment: li;
 
-				@at-root [type="A"] & {
-					content: counter(listing-counter, upper-latin);
+				@at-root ol[type="A"] li:before {
+					content: counter(li, upper-latin) ". ";
 				}
 
-				@at-root [type="a"] & {
-					content: counter(listing-counter, lower-latin);
+				@at-root ol[type="a"] li:before {
+					content: counter(li, lower-latin) ". ";
 				}
 			}
 		}
@@ -285,8 +302,6 @@ strong {
 .typography {
 
 	table {
-		@include margined;
-
 		width: 100%;
 
 		border-collapse: collapse;
@@ -294,7 +309,7 @@ strong {
 		tr {
 
 			&:nth-child(odd) {
-				background: #fafafa;
+				background: $gray_10;
 			}
 		}
 
@@ -306,7 +321,8 @@ strong {
 		th {
 			@include h6;
 
-			background: $gray_10;
+			background: $gray_60;
+			color: #fff;
 			text-align: left;
 		}
 
@@ -319,7 +335,7 @@ strong {
 .table_wrapper {
 	@include margined;
 
-	min-height: .01%; // 1
+	min-height: 0.01%; // 1
 
 	&.table_wrapper_overflow {
 		position: relative;
@@ -327,7 +343,7 @@ strong {
 		border: 1px solid #ccc;
 
 		&:after {
-			@include gradient_horizontal(rgba(#000, 0), rgba(#000, .1));
+			@include gradient_horizontal(rgba(#000, 0), rgba(#000, 0.1));
 
 			width: 20px;
 			height: 100%;

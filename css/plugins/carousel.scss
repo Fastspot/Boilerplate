@@ -13,13 +13,13 @@
 
 .fs-carousel-controls {}
 
-	.fs-carousel-control {
+.fs-carousel-control {
 
-		&:focus,
-		&:hover {}
+	&:focus,
+	&:hover {}
 
-		&.fs-carousel-visible {}
-	}
+	&.fs-carousel-visible {}
+}
 
 
 // Pagination
@@ -29,18 +29,18 @@
 	text-align: center;
 }
 
-	.fs-carousel-page {
-		height: 8px;
-		width: 8px;
+.fs-carousel-page {
+	height: 8px;
+	width: 8px;
 
-		position: relative;
+	position: relative;
 
-		border-radius: 50%;
-		color: transparent;
-		overflow: hidden;
+	border-radius: 50%;
+	color: transparent;
+	overflow: hidden;
 
-		&:focus,
-		&:hover {}
+	&:focus,
+	&:hover {}
 
-		&.fs-carousel-active {}
-	}
+	&.fs-carousel-active {}
+}

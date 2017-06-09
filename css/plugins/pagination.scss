@@ -4,27 +4,27 @@
 
 .pagination {}
 
-	.pagination_arrow {
+.pagination_arrow {
 
-		&:focus,
-		&:hover {}
-		
-		&_disabled {}
-	}
+	&:focus,
+	&:hover {}
 
-		.pagination_arrow_label {}
+	&_disabled {}
+}
 
-		.pagination_arrow_icon {}
+.pagination_arrow_label {}
 
-	.pagination_nav {}
+.pagination_arrow_icon {}
 
-		.pagination_link {
-			display: inline-block;
-			padding: 4px;
-			vertical-align: middle;
+.pagination_nav {}
 
-			&:focus,
-			&:hover {}
-		}
+.pagination_link {
+	display: inline-block;
+	padding: 4px;
+	vertical-align: middle;
 
-		.pagination_dots {}
+	&:focus,
+	&:hover {}
+}
+
+.pagination_dots {}

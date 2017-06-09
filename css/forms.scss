@@ -4,13 +4,13 @@
 
 form {}
 
-	fieldset {
-		border: 0;
-		margin: 0;
-		padding: 0;
-	}
+fieldset {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
 
-	legend {}
+legend {}
 
 
 // Elements
@@ -104,6 +104,6 @@ select {
 	}
 }
 
-	.form_element {
-		margin-bottom: 20px;
-	}
+.form_element {
+	margin-bottom: 20px;
+}

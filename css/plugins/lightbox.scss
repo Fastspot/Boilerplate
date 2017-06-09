@@ -3,20 +3,20 @@
 ============================================================================= */
 
 .fs-lightbox {
-	background: rgba(#fff, .75);
+	background: rgba(#fff, 0.75);
 
 	.fs-lightbox-close {}
 
 	.fs-lightbox-container {}
 
-		.fs-lightbox-content {
-			padding: 20px;
-		}
+	.fs-lightbox-content {
+		padding: 20px;
+	}
 
-			.fs-lightbox-video_wrapper {
-				margin-right: auto !important;
-				margin-left: auto !important;
-			}
+	.fs-lightbox-video_wrapper {
+		margin-right: auto !important;
+		margin-left: auto !important;
+	}
 }
 
 
@@ -29,33 +29,33 @@
 	background: #333;
 }
 
-	.fs-lightbox-controls {
-		width: 100%;
+.fs-lightbox-controls {
+	width: 100%;
+}
+
+.fs-lightbox-control {
+
+	&:focus,
+	&:hover {}
+}
+
+.fs-lightbox-meta {}
+
+.fs-lightbox-meta_content {}
+
+.fs-lightbox-position {
+	margin: 0;
+}
+
+.fs-lightbox-position_current,
+.fs-lightbox-position_total {}
+
+.fs-lightbox-meta-divider {}
+
+.fs-lightbox-caption {
+	text-align: center;
+
+	.caption {
+		margin: 0;
 	}
-
-		.fs-lightbox-control {
-
-			&:focus,
-			&:hover {}
-		}
-
-	.fs-lightbox-meta {}
-
-		.fs-lightbox-meta_content {}
-
-			.fs-lightbox-position {
-				margin: 0;
-			}
-
-				.fs-lightbox-position_current,
-				.fs-lightbox-position_total {}
-
-				.fs-lightbox-meta-divider {}
-
-			.fs-lightbox-caption {
-				text-align: center;
-
-				.caption {
-					margin: 0;
-				}
-			}
+}

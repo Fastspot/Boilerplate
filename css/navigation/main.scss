@@ -19,11 +19,11 @@
 	}
 }
 
-	.main_nav_header {}
+.main_nav_header {}
 
-		.main_nav_title {
-			@include visually_hide;
-		}
+.main_nav_title {
+	@include visually_hide;
+}
 
 
 // Main Nav Links
@@ -31,80 +31,80 @@
 
 .main_nav_list {}
 
-	.main_nav_item {
+.main_nav_item {
 
-		.main_nav_sm & {
+	.main_nav_sm & {
 
-			&.fs-swap-enabled {
+		&.fs-swap-enabled {
 
-				.main_nav_children {
-					display: none;
-				}
-			}
-
-			&.fs-swap-active {
-
-				.main_nav_children {
-					display: block;
-				}
-			}
-		}
-
-		.main_nav_lg & {
-
-			&.focused,
-			&:focus,
-			&:hover {
-
-				.main_nav_children {
-					opacity: 1;
-					visibility: visible;
-				}
-			}
-		}
-	}
-
-	.main_nav_item_wrapper {
-		position: relative;
-	}
-
-		.main_nav_link {
-			display: block;
-
-			.main_nav_item.focused &,
-			.main_nav_item:focus &,
-			.main_nav_item:hover & {}
-		}
-
-		.main_nav_toggle {
-			height: 100%;
-			width: 50px;
-
-			position: absolute;
-			top: 0;
-			right: 0;
-
-			cursor: pointer;
-
-			.main_nav_lg & {
+			.main_nav_children {
 				display: none;
 			}
 		}
 
-			.main_nav_toggle_label {
-				@include visually_hide;
+		&.fs-swap-active {
+
+			.main_nav_children {
+				display: block;
 			}
+		}
+	}
 
-			.main_nav_toggle_icon {
-				position: absolute;
-				top: 50%;
-				left: 50%;
+	.main_nav_lg & {
 
-				transform: translate(-50%, -50%);
-				transition: transform .25s;
+		&.focused,
+		&:focus,
+		&:hover {
 
-				.fs-swap-active & {}
+			.main_nav_children {
+				opacity: 1;
+				visibility: visible;
 			}
+		}
+	}
+}
+
+.main_nav_item_wrapper {
+	position: relative;
+}
+
+.main_nav_link {
+	display: block;
+
+	.main_nav_item.focused &,
+	.main_nav_item:focus &,
+	.main_nav_item:hover & {}
+}
+
+.main_nav_toggle {
+	height: 100%;
+	width: 50px;
+
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	cursor: pointer;
+
+	.main_nav_lg & {
+		display: none;
+	}
+}
+
+.main_nav_toggle_label {
+	@include visually_hide;
+}
+
+.main_nav_toggle_icon {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	transform: translate(-50%, -50%);
+	transition: transform 0.25s;
+
+	.fs-swap-active & {}
+}
 
 
 // Main Nav Children
@@ -125,8 +125,8 @@
 	.main_nav_item:last-child & {}
 }
 
-	.main_nav_child_item {}
+.main_nav_child_item {}
 
-		.main_nav_child_link {
-			display: block;
-		}
+.main_nav_child_link {
+	display: block;
+}

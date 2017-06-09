@@ -4,58 +4,57 @@
 
 .page_wrapper {}
 
-	.page {}
+.page {}
 
-		.page_feature {}
+.page_feature {}
 
-		.page_content {}
+.page_content {}
 
-			.aside_cell {
+.aside_cell {
 
-				@media #{$min_md} {
-					width: 40%;
+	@media #{$min_md} {
+		width: 40%;
 
-					float: right;
-				}
+		float: right;
+	}
 
-				@media #{$min_lg} {
-					width: percentage(4 / 12);
-				}
-			}
+	@media #{$min_lg} {
+		width: percentage(4 / 12);
+	}
+}
 
-			.subnav_cell {}
+.subnav_cell {}
 
-			.content_cell {
+.content_cell {
 
-				@media #{$min_md} {
-					width: 60%;
+	@media #{$min_md} {
+		width: 60%;
 
-					float: left;
+		float: left;
+		padding-right: 20px;
+	}
 
-					padding-right: 20px;
-				}
+	@media #{$min_lg} {
+		width: percentage(8 / 12);
 
-				@media #{$min_lg} {
-					width: percentage(8 / 12);
+		padding-right: 40px;
+	}
+}
 
-					padding-right: 40px;
-				}
-			}
+.main_content {
+@include focus_outline_none;
+}
 
-				.main_content {
-					@include focus_outline_none;
-				}
+.page_header {}
 
-					.page_header {}
+.page_title {}
 
-						.page_title {}
+.in_content_callouts {}
 
-					.in_content_callouts {}
+.sidebar_cell {
+clear: right;
+}
 
-			.sidebar_cell {
-				clear: right;
-			}
+.sidebar {}
 
-				.sidebar {}
-
-			.full_width_callouts {}
+.full_width_callouts {}

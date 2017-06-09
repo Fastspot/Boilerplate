@@ -6,13 +6,13 @@
 	position: relative;
 }
 
-	.site_search_handle_label {
-		@include visually_hide;
-	}
+.site_search_handle_label {
+	@include visually_hide;
+}
 
-	.site_search_handle_icon {
-		pointer-events: none;
-	}
+.site_search_handle_icon {
+	pointer-events: none;
+}
 
 
 // Search Form
@@ -22,47 +22,47 @@
 	position: relative;
 }
 
-	.site_search_form {}
+.site_search_form {}
 
-		.site_search_label {
-			@include visually_hide;
-		}
+.site_search_label {
+	@include visually_hide;
+}
 
-		.site_search_input {
-			@include focus_outline_none;
+.site_search_input {
+	@include focus_outline_none;
 
-			&::placeholder {
-				text-overflow: ellipsis;
-			}
+	&::placeholder {
+		text-overflow: ellipsis;
+	}
 
-			&[placeholder] {
-				text-overflow: ellipsis;
-			}
-		}
+	&[placeholder] {
+		text-overflow: ellipsis;
+	}
+}
 
-		.site_search_button {
-			height: 100%;
-			width: 40px;
+.site_search_button {
+	height: 100%;
+	width: 40px;
 
-			position: absolute;
-			top: 0;
-			right: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
 
-			cursor: pointer;
+	cursor: pointer;
 
-			&:focus,
-			&:hover {}
-		}
+	&:focus,
+	&:hover {}
+}
 
-			.site_search_button_label {
-				@include visually_hide;
-			}
+.site_search_button_label {
+	@include visually_hide;
+}
 
-			.site_search_button_icon {
-				position: absolute;
-				top: 50%;
-				left: 50%;
+.site_search_button_icon {
+	position: absolute;
+	top: 50%;
+	left: 50%;
 
-				pointer-events: none;
-				transform: translate(-50%, -50%);
-			}
+	pointer-events: none;
+	transform: translate(-50%, -50%);
+}

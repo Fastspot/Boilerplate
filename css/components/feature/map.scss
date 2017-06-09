@@ -4,15 +4,15 @@
 
 .map {}
 
-	.map_aside {}
+.map_aside {}
 
-	.map_body {
-		position: relative;
-	}
+.map_body {
+	position: relative;
+}
 
-		.map_canvas {
-			height: 500px;
-		}
+.map_canvas {
+	height: 500px;
+}
 
 
 // Leaflet Overrides
@@ -50,42 +50,42 @@
 		padding: 0;
 	}
 
-		.leaflet-control-layers-toggle {
-			display: none;
+	.leaflet-control-layers-toggle {
+		display: none;
+	}
+
+	.leaflet-control-layers-list {
+		display: block;
+
+		label {
+			position: relative;
+
+			cursor: pointer;
+			display: inline-block;
+		}
+	}
+
+	.leaflet-control-layers-selector {
+		position: absolute;
+
+		border: 0;
+
+		&:checked {
+
+			+ span {}
 		}
 
-		.leaflet-control-layers-list {
+		+ span {
 			display: block;
-
-			label {
-				position: relative;
-
-				cursor: pointer;
-				display: inline-block;
-			}
+			padding: 10px;
 		}
+	}
 
-			.leaflet-control-layers-selector {
-				position: absolute;
+	.map_layer_quantity_wrapper {}
 
-				border: 0;
+	.map_layer_quantity {}
 
-				&:checked {
-
-					+ span {}
-				}
-
-				+ span {
-					display: block;
-					padding: 10px;
-				}
-			}
-
-				.map_layer_quantity_wrapper {}
-
-					.map_layer_quantity {}
-
-				.map_layer_label {}
+	.map_layer_label {}
 
 	.leaflet-popup-pane {
 		display: none;
@@ -98,24 +98,24 @@
 
 .map_groups {}
 
-	.map_group {}
+.map_group {}
 
-		.map_group_switch {
-			cursor: pointer;
-		}
+.map_group_switch {
+	cursor: pointer;
+}
 
-		.map_places {
-			display: none;
+.map_places {
+	display: none;
 
-			&.fs-swap-active {
-				display: block;
-			}
-		}
+	&.fs-swap-active {
+		display: block;
+	}
+}
 
-			.map_place {
-				cursor: pointer;
-				display: block;
-			}
+.map_place {
+	cursor: pointer;
+	display: block;
+}
 
 
 // Filters
@@ -131,46 +131,46 @@
 	}
 }
 
-	.map_filter {
-		position: relative;
+.map_filter {
+	position: relative;
 
-		display: inline-block;
-		vertical-align: middle;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.map_filter_switch {
+	width: 100%;
+
+	background: #fff;
+	cursor: pointer;
+	text-align: left;
+}
+
+.map_filter_options {
+	position: absolute;
+	top: 100%;
+	left: 0;
+
+	background: #fff;
+	display: none;
+
+	&.fs-swap-active {
+		display: block;
 	}
+}
 
-		.map_filter_switch {
-			width: 100%;
+.map_filter_option {
+	display: block;
+}
 
-			background: #fff;
-			cursor: pointer;
-			text-align: left;
-		}
+.map_filter_option_button {
+	width: 100%;
 
-		.map_filter_options {
-			position: absolute;
-			top: 100%;
-			left: 0;
+	cursor: pointer;
+	text-align: left;
+}
 
-			background: #fff;
-			display: none;
-
-			&.fs-swap-active {
-				display: block;
-			}
-		}
-
-			.map_filter_option {
-				display: block;
-			}
-
-			.map_filter_option_button {
-				width: 100%;
-
-				cursor: pointer;
-				text-align: left;
-			}
-
-		.map_filter_option_input {}
+.map_filter_option_input {}
 
 
 // Lightbox
@@ -184,8 +184,8 @@
 
 	opacity: 0;
 	transition:
-		opacity .25s,
-		visibility .25s;
+		opacity 0.25s,
+		visibility 0.25s;
 	visibility: hidden;
 
 	.lightbox-open & {
@@ -194,8 +194,8 @@
 	}
 }
 
-	.map_lightbox_close {
-		cursor: pointer;
-	}
+.map_lightbox_close {
+	cursor: pointer;
+}
 
-	.map_lightbox_body {}
+.map_lightbox_body {}

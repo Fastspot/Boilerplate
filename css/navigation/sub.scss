@@ -4,11 +4,11 @@
 
 .sub_nav {}
 
-	.sub_nav_header {}
+.sub_nav_header {}
 
-		.sub_nav_title {
-			@include visually_hide;
-		}
+.sub_nav_title {
+	@include visually_hide;
+}
 
 
 // Sub Nav Handle
@@ -22,31 +22,31 @@
 	}
 }
 
-	.sub_nav_handle {
-		@include button_block;
+.sub_nav_handle {
+	@include button_block;
 
-		position: relative;
+	position: relative;
 
-		padding-right: 40px;
-		text-align: left;
+	padding-right: 40px;
+	text-align: left;
 
-		@media #{$min_lg} {
-			display: none;
-		}
-
-		&.fs-navigation-open {}
+	@media #{$min_lg} {
+		display: none;
 	}
 
-	.sub_nav_handle_icon {
-		position: absolute;
-		top: 50%;
-		right: 20px;
+	&.fs-navigation-open {}
+}
 
-		pointer-events: none;
-		transform: translate(0, -50%);
+.sub_nav_handle_icon {
+	position: absolute;
+	top: 50%;
+	right: 20px;
 
-		.fs-navigation-open + & {}
-	}
+	pointer-events: none;
+	transform: translate(0, -50%);
+
+	.fs-navigation-open + & {}
+}
 
 
 // Sub Nav Links
@@ -56,11 +56,11 @@
 	@include focus_outline_none();
 }
 
-	.sub_nav_item {}
+.sub_nav_item {}
 
-		.sub_nav_link {
-			display: block;
+.sub_nav_link {
+	display: block;
 
-			&:focus,
-			&:hover {}
-		}
+	&:focus,
+	&:hover {}
+}
