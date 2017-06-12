@@ -121,8 +121,8 @@ strong {
 
 	a {
 		transition:
-			color 0.25s,
-			background 0.25s;
+			color $base_speed,
+			background $base_speed;
 	}
 
 	p {}

@@ -6,7 +6,7 @@
 	display: block;
 	stroke: inherit;
 	fill: currentColor;
-	transition: fill 0.25s;
+	transition: fill $base_speed;
 
 	@media print {
 		display: none;
