@@ -25,26 +25,28 @@
 			image: background
 		} %}
 	{% endif %}
-	<div class="row">
-		<div class="flex_callout_wrapper">
-			<header class="flex_callout_header">
-				<h2 class="flex_callout_label">{{label}}</h2>
-				<h3 class="flex_callout_title">{{title}}</h3>
-			</header>
-			<div class="flex_callout_body">
-				<div class="flex_callout_description">
-					<p>{{description}}</p>
+	<div class="fs-row">
+		<div class="fs-cell">
+			<div class="flex_callout_wrapper">
+				<header class="flex_callout_header">
+					<h2 class="flex_callout_label">{{label}}</h2>
+					<h3 class="flex_callout_title">{{title}}</h3>
+				</header>
+				<div class="flex_callout_body">
+					<div class="flex_callout_description">
+						<p>{{description}}</p>
+					</div>
 				</div>
+				{% if links %}
+					<footer class="flex_callout_links">
+						{% for link in links %}
+							<a class="flex_callout_link" href="{{link.href}}">
+								<span>{{link.name}}</span>
+							</a>
+						{% endfor %}
+					</footer>
+				{% endif %}
 			</div>
-			{% if links %}
-				<footer class="flex_callout_links">
-					{% for link in links %}
-						<a class="flex_callout_link" href="{{link.href}}">
-							<span>{{link.name}}</span>
-						</a>
-					{% endfor %}
-				</footer>
-			{% endif %}
 		</div>
 	</div>
 </section>

@@ -13,36 +13,16 @@
 .aside_cell {
 
 	@media #{$min_md} {
-		width: 40%;
-
 		float: right;
-	}
-
-	@media #{$min_lg} {
-		width: percentage(4 / 12);
 	}
 }
 
 .subnav_cell {}
 
-.content_cell {
-
-	@media #{$min_md} {
-		width: 60%;
-
-		float: left;
-		padding-right: 20px;
-	}
-
-	@media #{$min_lg} {
-		width: percentage(8 / 12);
-
-		padding-right: 40px;
-	}
-}
+.content_cell {}
 
 .main_content {
-@include focus_outline_none;
+	@include focus_outline_none;
 }
 
 .page_header {}
@@ -52,7 +32,7 @@
 .in_content_callouts {}
 
 .sidebar_cell {
-clear: right;
+	clear: right;
 }
 
 .sidebar {}

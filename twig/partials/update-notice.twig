@@ -1,45 +1,48 @@
 {% if name == "site-title" or description == "Site description." or repository.url == "url" or vars.namespace == "namespace" or vars.name == "Client Name" or vars.domain == "www.example.com" %}
 	<div class="fs-notifications">
-		<div class="row">
-			{% if name == "site-title" %}
-				<h2>
-					<span class="fs-notification-label">Update</span>
-					<span class="fs-notification-key">name</span>
-				</h2>
-			{% endif %}
-			{% if description == "Site description." %}
-				<h2>
-					<span class="fs-notification-label">Update</span>
-					<span class="fs-notification-key">description</span>
-				</h2>
-			{% endif %}
-			{% if repository.url == "url" %}
-				<h2>
-					<span class="fs-notification-label">Update</span>
-					<span class="fs-notification-key">repository.url</span>
-				</h2>
-			{% endif %}
-			{% if vars.namespace == "generic" %}
-				<h2>
-					<span class="fs-notification-label">Update</span>
-					<span class="fs-notification-key">vars.namespace</span>
-				</h2>
-			{% endif %}
-			{% if vars.name == "Client Name" %}
-				<h2>
-					<span class="fs-notification-label">Update</span>
-					<span class="fs-notification-key">vars.name</span>
-				</h2>
-			{% endif %}
-			{% if vars.domain == "www.example.com" %}
-				<h2>
-					<span class="fs-notification-label">Update</span>
-					<span class="fs-notification-key">vars.domain</span>
-				</h2>
-			{% endif %}
+		<div class="fs-row">
+			<div class="fs-cell">
+				{% if name == "site-title" %}
+					<h2>
+						<span class="fs-notification-label">Update</span>
+						<span class="fs-notification-key">name</span>
+					</h2>
+				{% endif %}
+				{% if description == "Site description." %}
+					<h2>
+						<span class="fs-notification-label">Update</span>
+						<span class="fs-notification-key">description</span>
+					</h2>
+				{% endif %}
+				{% if repository.url == "url" %}
+					<h2>
+						<span class="fs-notification-label">Update</span>
+						<span class="fs-notification-key">repository.url</span>
+					</h2>
+				{% endif %}
+				{% if vars.namespace == "generic" %}
+					<h2>
+						<span class="fs-notification-label">Update</span>
+						<span class="fs-notification-key">vars.namespace</span>
+					</h2>
+				{% endif %}
+				{% if vars.name == "Client Name" %}
+					<h2>
+						<span class="fs-notification-label">Update</span>
+						<span class="fs-notification-key">vars.name</span>
+					</h2>
+				{% endif %}
+				{% if vars.domain == "www.example.com" %}
+					<h2>
+						<span class="fs-notification-label">Update</span>
+						<span class="fs-notification-key">vars.domain</span>
+					</h2>
+				{% endif %}
+			</div>
 		</div>
 	</div>
 
+	{% if 1 == 0 %}
 	<style>
 		.fs-notifications {
 			background: #f8f8f8;
@@ -54,4 +57,5 @@
 				font-weight: normal;
 			}
 	</style>
+	{% endif %}
 {% endif %}

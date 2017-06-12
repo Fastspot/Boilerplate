@@ -100,12 +100,15 @@
 
 
 {#
-	{{site.dropdown("component", ["Choices"], "lg")}}
+	{{site.dropdown("component", "id", "label", ["Choices"], "lg")}}
 #}
 
-{% macro dropdown(class, choices, modifier) %}
+{% macro dropdown(class, id, label, choices, modifier) %}
 	<div class="fs-dropdown-wrapper {{class}}_dropdown_wrapper{% if modifier %} {{class}}_dropdown_wrapper_{{modifier}}{% endif %}">
-		<select class="js-dropdown {{class}}_dropdown">
+		{% if label %}
+		<label class="{{class}}_label" for="{{id}}_dropdown">{{label}}</label>
+		{% endif %}
+		<select class="js-dropdown {{class}}_dropdown" id="{{id}}_dropdown" name="{{id}}_dropdown">
 			{% for choice in choices %}
 				<option value="{{choice}}">{{choice}}</option>
 			{% endfor %}
@@ -155,8 +158,8 @@
 {% macro choices(type, items) %}
 	<div class="form_element">
 		{% for item in items %}
-			<label>
-				<input type="{{type}}" name="{{item.name}}" value="{{item.value}}">
+			<label for="{{item.name}}">
+				<input type="{{type}}" name="{{item.name}}" id="{{item.name}}" value="{{item.value}}">
 				<span class="{{type}}_label">{{item.value}}</span>
 			</label>
 		{% endfor %}

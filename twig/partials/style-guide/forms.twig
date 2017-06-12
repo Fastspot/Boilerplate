@@ -1,6 +1,6 @@
 <div class="crl_forms typography">
 	<h2>Forms</h2>
-	
+
 	<form action="#" class="crl_form">
 		<fieldset class="input_set">
 			<h5>Text Field</h5>
@@ -14,29 +14,29 @@
 			<div class="form_column_2">
 				{{site.choices("checkbox", [
 					{
-						name: "option-one",
+						name: "checkbox-one",
 						value: "Option One"
 					},
 					{
-						name: "option-two",
+						name: "checkbox-two",
 						value: "Option Two"
 					},
 					{
-						name: "option-Three",
+						name: "checkbox-three",
 						value: "Option Three"
 					}
 				])}}
 				{{site.choices("radio", [
 					{
-						name: "option-one",
+						name: "radio-one",
 						value: "Option One"
 					},
 					{
-						name: "option-two",
+						name: "radio-two",
 						value: "Option Two"
 					},
 					{
-						name: "option-Three",
+						name: "radio-three",
 						value: "Option Three"
 					}
 				])}}
@@ -44,6 +44,7 @@
 		</fieldset>
 		<fieldset class="form_dropdown required">
 			<div class="form_element">
+				<label for="dropdown">Select</label>
 				<select id="dropdown">
 					<option value="1">Pharetra Quam</option>
 					<option value="2">Magna Vulputate</option>
@@ -89,7 +90,7 @@
 			</div>
 		</fieldset>
 		<fieldset class="input_set">
-			{{site.dropdown("base", [
+			{{site.dropdown("base", "select", "Label", [
 				"Choice One",
 				"Choice Two"
 			])}}
