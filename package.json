@@ -69,7 +69,7 @@
     "css/site.css": "css/site.scss"
   },
   "js": {
-    "js/site.js": [
+    "site.js": [
       "components/jquery/dist/jquery.min.js",
       "components/formstone/dist/js/core.js",
       "components/formstone/dist/js/mediaquery.js",
@@ -89,13 +89,12 @@
       "components/formstone/dist/js/viewer.js",
       "components/picturefill/dist/picturefill.min.js",
       "components/what-input/dist/what-input.js",
-      "js/site.js",
-      "js/modules/page.js",
-      "js/modules/map.js"
+      "src/js/site.js",
+      "src/js/modules/page.js",
+      "src/js/modules/map.js"
     ]
   },
   "js_ignores": [
-    "js/ie/*/",
     "js/lib/*/"
   ],
   "img": {

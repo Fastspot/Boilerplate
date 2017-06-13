@@ -38,7 +38,7 @@
 		<meta name="twitter:description" content="">
 		<meta name="twitter:image" content="//{{vars.domain}}/images/social-rectangle.png">
 
-		<script src="../js/modernizr.js"></script>
+		<script src="../../js/modernizr.js"></script>
 
 		{% if page.stylesheets %}
 			{% for script in page.stylesheets %}
@@ -46,13 +46,13 @@
 			{% endfor %}
 		{% endif %}
 
-		<link rel="stylesheet" href="../css/site.css">
+		<link rel="stylesheet" href="../../css/site.css">
 	</head>
 
 	<body class="fs-grid layout_{{page.layout}} grid+{{page.grid}}{% if page.theme %} theme_{{page.theme}}{% endif %}">
 
 		<figure style="display: none;">
-			{% include '../../static/svg/sprite.symbol.svg' %}
+			{% include '../../../images/icons.svg' %}
 		</figure>
 
 		{% block activePage %}
@@ -282,7 +282,7 @@
 			} %}
 		</div>
 
-		<script src="../js/site.js"></script>
+		<script src="../../js/site.js"></script>
 
 		{% if page.javascripts %}
 			{% for script in page.javascripts %}

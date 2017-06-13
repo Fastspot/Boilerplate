@@ -6,7 +6,7 @@
 #}
 
 <h1 class="logo{% if modifier %} logo_{{modifier}}{% endif %}{% if symbol %} logo_symbol{% endif %}" itemscope itemtype="http://schema.org/{{vars.schemaType}}">
-	<a class="logo_link" itemprop="url" href="00-1-home.html">
+	<a class="logo_link" itemprop="url" href="page-home.html">
 		<span class="logo_link_label">{{vars.name}}</span>
 		{% if symbol %}
 			<span class="logo_link_symbol">{{site.symbol(logo|default("logo"))}}</span>
