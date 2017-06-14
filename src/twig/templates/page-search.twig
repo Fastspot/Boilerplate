@@ -9,4 +9,8 @@
 
 {% block full_width_callouts %}
 	{% include "../partials/google-cse.twig" %}
+
+	{% include "../partials/pagination.twig" with {
+		pages: 5
+	} %}
 {% endblock %}
