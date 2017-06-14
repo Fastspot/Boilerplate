@@ -4,7 +4,6 @@
 ## Quickstart
 
 ```sh
-bower install
 npm install gulp-cli -g
 npm install
 gulp
