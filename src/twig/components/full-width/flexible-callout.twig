@@ -1,5 +1,5 @@
 {#
-	{% include "../partials/components/full-width/flexible-callout.twig" with {
+	{% include "../components/full-width/flexible-callout.twig" with {
 		theme: "",
 		background: 1,
 		label: "Label",
@@ -16,7 +16,7 @@
 
 <section class="flex_callout{% if theme %} theme_{{theme}}{% endif %}">
 	{% if background %}
-		{% include "../shared/background.twig" with {
+		{% include "../../partials/background.twig" with {
 			class: "flex_callout",
 			sources: {
 				"0px": img.wide.md,
