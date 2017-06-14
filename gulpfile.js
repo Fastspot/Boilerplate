@@ -21,7 +21,9 @@ var gulp = require('gulp'),
 		uglify = require('gulp-uglify'),
 		modernizr = require('gulp-modernizr'),
 		imagemin = require('gulp-imagemin'),
-		svgSprite = require('gulp-svg-sprite');
+		svgSprite = require('gulp-svg-sprite'),
+		realFavicon = require ('gulp-real-favicon'),
+		fs = require('fs');
 
 
 gulp.task('readme', function() {
@@ -192,10 +194,88 @@ gulp.task('imagemin', function() {
 
 });
 
+var FAVICON_DATA_FILE = 'favicons/markup.json';
+gulp.task('generate-favicon', function(done) {
+	realFavicon.generateFavicon({
+		masterPicture: 'src/images/favicon.png',
+		dest: 'favicons',
+		iconsPath: '../../favicons/',
+		design: {
+			ios: {
+				pictureAspect: 'noChange',
+				assets: {
+					ios6AndPriorIcons: false,
+					ios7AndLaterIcons: false,
+					precomposedIcons: false,
+					declareOnlyDefaultIcon: true
+				}
+			},
+			desktopBrowser: {},
+			windows: {
+				pictureAspect: 'noChange',
+				backgroundColor: packageJSON.vars.color,
+				onConflict: 'override',
+				assets: {
+					windows80Ie10Tile: false,
+					windows10Ie11EdgeTiles: {
+						small: false,
+						medium: true,
+						big: false,
+						rectangle: false
+					}
+				}
+			},
+			androidChrome: {
+				pictureAspect: 'noChange',
+				themeColor: packageJSON.vars.color,
+				manifest: {
+					display: 'standalone',
+					orientation: 'notSet',
+					onConflict: 'override',
+					declared: true
+				},
+				assets: {
+					legacyIcon: false,
+					lowResolutionIcons: false
+				}
+			},
+			safariPinnedTab: {
+				pictureAspect: 'silhouette',
+				themeColor: packageJSON.vars.color
+			}
+		},
+		settings: {
+			scalingAlgorithm: 'Mitchell',
+			errorOnImageTooSmall: false
+		},
+		markupFile: FAVICON_DATA_FILE
+	}, function() {
+		done();
+	});
+});
+
+
+gulp.task('inject-favicon-markups', function() {
+	return gulp.src(['src/twig/partials/favicons.html' ])
+		.pipe(realFavicon.injectFaviconMarkups(JSON.parse(fs.readFileSync(FAVICON_DATA_FILE)).favicon.html_code))
+		.pipe(gulp.dest('src/twig/partials/'));
+});
+
+
+gulp.task('check-for-favicon-update', function(done) {
+	var currentVersion = JSON.parse(fs.readFileSync(FAVICON_DATA_FILE)).version;
+	realFavicon.checkForUpdates(currentVersion, function(err) {
+		if (err) {
+			throw err;
+		}
+	});
+});
+
 
 gulp.task('clean', function(done) {
 
 	del('css');
+	del('favicons');
 	del('images');
 	del('js');
 	del('static');
@@ -208,6 +288,7 @@ gulp.task('clean', function(done) {
 gulp.task('nuke', function(done) {
 
 	del('css');
+	del('favicons');
 	del('images');
 	del('js');
 	del('static');
