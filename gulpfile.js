@@ -285,20 +285,6 @@ gulp.task('clean', function(done) {
 });
 
 
-gulp.task('nuke', function(done) {
-
-	del('css');
-	del('favicons');
-	del('images');
-	del('js');
-	del('static');
-	del('components');
-
-	done();
-
-});
-
-
 gulp.task('browser-sync', function(done) {
 
 	browserSync.init({
