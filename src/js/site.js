@@ -176,6 +176,6 @@
 	})(jQuery, window);
 
 	// !Ready
-	$(document).ready(function() {
+	jQuery(document).ready(function() {
 		Site.init("@namespace");
 	});
