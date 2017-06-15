@@ -1,15 +1,15 @@
 // Imports
 // =============================================================================
 
-@import "../../components/normalize-css/normalize";
-@import "../../components/formstone/dist/css/background";
-@import "../../components/formstone/dist/css/carousel";
-@import "../../components/formstone/dist/css/checkbox";
-@import "../../components/formstone/dist/css/dropdown";
-@import "../../components/formstone/dist/css/lightbox";
-@import "../../components/formstone/dist/css/navigation";
-@import "../../components/formstone/dist/css/pagination";
-@import "../../components/formstone/dist/css/grid";
+@import "../../node_modules/normalize.css/normalize";
+@import "../../node_modules/formstone/dist/css/background";
+@import "../../node_modules/formstone/dist/css/carousel";
+@import "../../node_modules/formstone/dist/css/checkbox";
+@import "../../node_modules/formstone/dist/css/dropdown";
+@import "../../node_modules/formstone/dist/css/lightbox";
+@import "../../node_modules/formstone/dist/css/navigation";
+@import "../../node_modules/formstone/dist/css/pagination";
+@import "../../node_modules/formstone/dist/css/grid";
 
 @import "base/fonts.scss";
 @import "base/setup.scss";

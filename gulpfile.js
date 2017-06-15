@@ -322,7 +322,7 @@ gulp.task('watch', function() {
 	gulp.watch('src/twig/**/*.twig', gulp.series('twig', 'reload'));
 	gulp.watch('src/css/**/**', gulp.series('sass'));
 	gulp.watch('src/js/**/**.js', gulp.series(gulp.parallel('scripts', 'jshint'), 'reload'));
-	gulp.watch('components/formstone/src/js/*.js', gulp.series('scripts', 'reload'));
+	gulp.watch('node_modules/formstone/src/js/*.js', gulp.series('scripts', 'reload'));
 	gulp.watch('src/icons/*', gulp.series('sprite', 'twig', 'reload'));
 	gulp.watch('src/images/*', gulp.series('imagemin', 'reload'));
 
