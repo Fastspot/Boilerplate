@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+		fs = require('fs'),
 		shell = require('gulp-shell'),
 		packageJSON = require('./package.json'),
 		browserSync = require('browser-sync').create(),
@@ -22,30 +23,62 @@ var gulp = require('gulp'),
 		modernizr = require('gulp-modernizr'),
 		imagemin = require('gulp-imagemin'),
 		svgSprite = require('gulp-svg-sprite'),
-		realFavicon = require ('gulp-real-favicon'),
-		fs = require('fs');
+		realFavicon = require ('gulp-real-favicon');
 
 
-gulp.task('readme', function() {
+var source = {
+	readme: 'src/twig/README.twig',
+	twig: [
+		'src/twig/templates/*.twig',
+		'!src/twig/templates/_*.twig'
+	],
+	templates: 'static/templates/*.html',
+	sitemap: 'src/twig/index.twig',
+	sass: 'src/css/site.scss',
+	jshint: 'src/js/modules/*.js',
+	modernizr: [
+		'js/modules/*.js',
+		'css/site.css'
+	],
+	sprite: 'src/icons/*',
+	images: 'src/images/*'
+};
 
-	return gulp.src('src/twig/README.twig')
-		.pipe(twig({
-			data: packageJSON
-		}))
-		.pipe(rename({
-			extname: '.md'
-		}))
-		.pipe(gulp.dest('./'));
+var watch = {
+	twig: 'src/twig/**/*.twig',
+	sass: 'src/css/**/**',
+	js: 'src/js/**/**.js',
+	formstone: 'node_modules/formstone/src/js/*.js',
+	sprite: 'src/icons/*',
+	images: 'src/images/*'
+};
+
+
+gulp.task('readme', function(done) {
+
+	fs.stat(source.readme, function(err, data) {
+		if (err) {
+			console.log(err);
+		} else {
+			gulp.src(source.readme)
+				.pipe(twig({
+					data: packageJSON
+				}))
+				.pipe(rename({
+					extname: '.md'
+				}))
+				.pipe(gulp.dest('./'));
+		}
+	});
+
+	done();
 
 });
 
 
 gulp.task('twig', function() {
 
-	return gulp.src([
-		'src/twig/templates/*.twig',
-		'!src/twig/templates/_*.twig'
-	])
+	return gulp.src(source.twig)
 		.pipe(twig({
 			data: packageJSON,
 			cache: true
@@ -60,7 +93,7 @@ gulp.task('twig', function() {
 
 gulp.task('create-sitemap', function() {
 
-	return gulp.src('static/templates/*.html')
+	return gulp.src(source.templates)
 		.pipe(directoryMap({
 			filename: 'sitemap.json',
 			prefix: 'templates'
@@ -70,9 +103,9 @@ gulp.task('create-sitemap', function() {
 });
 
 
-gulp.task('sitemap', function(done) {
+gulp.task('sitemap', function() {
 
-	gulp.src('src/twig/index.twig')
+	return gulp.src(source.sitemap)
 		.pipe(twig({
 			data: {
 				name: packageJSON.name,
@@ -84,6 +117,19 @@ gulp.task('sitemap', function(done) {
 		}))
 		.pipe(gulp.dest('static/'));
 
+});
+
+
+gulp.task('generate-index', function(done) {
+
+	fs.stat(source.sitemap, function(err, data) {
+		if (err) {
+			console.log(err);
+		} else {
+			gulp.series('create-sitemap', 'sitemap');
+		}
+	});
+
 	done();
 
 });
@@ -91,7 +137,7 @@ gulp.task('sitemap', function(done) {
 
 gulp.task('sass', function() {
 
-	return gulp.src('src/css/site.scss')
+	return gulp.src(source.sass)
 		.pipe(sassGlob())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(postcss([
@@ -133,7 +179,7 @@ gulp.task('scripts', function() {
 
 gulp.task('jshint', function() {
 
-	return gulp.src('src/js/modules/*.js', {
+	return gulp.src(source.jshint, {
 		since: gulp.lastRun('jshint')
 	})
 		.pipe(jshint())
@@ -144,10 +190,7 @@ gulp.task('jshint', function() {
 
 gulp.task('modernizr', function() {
 
-	return gulp.src([
-		'js/modules/*.js',
-		'css/site.css'
-	])
+	return gulp.src(source.modernizr)
 		.pipe(modernizr({
 			options: [
 				'load',
@@ -164,7 +207,7 @@ gulp.task('modernizr', function() {
 
 gulp.task('sprite', function() {
 
-	return gulp.src('src/icons/*')
+	return gulp.src(source.sprite)
 		.pipe(svgSprite({
 			svg: {
 				xmlDeclaration: false,
@@ -187,7 +230,7 @@ gulp.task('sprite', function() {
 
 gulp.task('imagemin', function() {
 
-	return gulp.src('src/images/*')
+	return gulp.src(source.images)
 		.pipe(newer('images'))
 		.pipe(imagemin())
 		.pipe(gulp.dest('images'));
@@ -319,12 +362,12 @@ gulp.task('reload', function(done) {
 
 gulp.task('watch', function() {
 
-	gulp.watch('src/twig/**/*.twig', gulp.series('twig', 'reload'));
-	gulp.watch('src/css/**/**', gulp.series('sass'));
-	gulp.watch('src/js/**/**.js', gulp.series(gulp.parallel('scripts', 'jshint'), 'reload'));
-	gulp.watch('node_modules/formstone/src/js/*.js', gulp.series('scripts', 'reload'));
-	gulp.watch('src/icons/*', gulp.series('sprite', 'twig', 'reload'));
-	gulp.watch('src/images/*', gulp.series('imagemin', 'reload'));
+	gulp.watch(watch.twig, gulp.series('twig', 'reload'));
+	gulp.watch(watch.sass, gulp.series('sass'));
+	gulp.watch(watch.js, gulp.series(gulp.parallel('scripts', 'jshint'), 'reload'));
+	gulp.watch(watch.formstone, gulp.series('scripts', 'reload'));
+	gulp.watch(watch.sprite, gulp.series('sprite', 'twig', 'reload'));
+	gulp.watch(watch.images, gulp.series('imagemin', 'reload'));
 
 });
 
@@ -334,8 +377,7 @@ gulp.task('build', gulp.parallel(
 	gulp.series(
 		'sprite',
 		'twig',
-		'create-sitemap',
-		'sitemap'
+		'generate-index'
 	),
 	gulp.series(
 		'sass',
