@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+		reload = require('require-reload')(require),
 		fs = require('fs'),
 		shell = require('gulp-shell'),
 		packageJSON = require('./package.json'),
@@ -116,21 +117,6 @@ gulp.task('sitemap', function() {
 			extname: '.html'
 		}))
 		.pipe(gulp.dest('static/'));
-
-});
-
-
-gulp.task('generate-index', function(done) {
-
-	fs.stat(source.sitemap, function(err, data) {
-		if (err) {
-			console.log(err);
-		} else {
-			gulp.series('create-sitemap', 'sitemap');
-		}
-	});
-
-	done();
 
 });
 
@@ -360,8 +346,22 @@ gulp.task('reload', function(done) {
 });
 
 
+gulp.task('reset', function(done) {
+
+	try {
+		packageJSON = reload('./package.json');
+	} catch (e) {
+		console.error("Failed to reload package.json! Error: ", e);
+	}
+
+	done();
+
+});
+
+
 gulp.task('watch', function() {
 
+	gulp.watch('package.json', gulp.series('reset', 'build', 'reload'));
 	gulp.watch(watch.twig, gulp.series('twig', 'reload'));
 	gulp.watch(watch.sass, gulp.series('sass'));
 	gulp.watch(watch.js, gulp.series(gulp.parallel('scripts', 'jshint'), 'reload'));
@@ -377,7 +377,8 @@ gulp.task('build', gulp.parallel(
 	gulp.series(
 		'sprite',
 		'twig',
-		'generate-index'
+		'create-sitemap',
+		'sitemap'
 	),
 	gulp.series(
 		'sass',

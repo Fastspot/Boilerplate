@@ -36,9 +36,9 @@
     "mq_min_xl": "1220"
   },
   "devDependencies": {
-    "autoprefixer": "^7.1.1",
+    "autoprefixer": "^7.1.2",
     "browser-sync": "^2.18.12",
-    "del": "^2.2.2",
+    "del": "^3.0.0",
     "formstone": "^1.3.3",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-bless": "^4.0.0",
@@ -62,13 +62,14 @@
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
     "jquery": "^3.2.1",
-    "jshint": "^2.9.4",
+    "jshint": "^2.9.5",
     "jshint-stylish": "^2.2.1",
     "normalize.css": "^7.0.0",
     "picturefill": "^3.0.2",
     "postcss-pxtorem": "^4.0.1",
     "postcss-unmq": "^1.0.2",
-    "what-input": "^4.2.0"
+    "require-reload": "^0.2.2",
+    "what-input": "^4.3.0"
   },
   "css": {
     "css/site.css": "css/site.scss"
