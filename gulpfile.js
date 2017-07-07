@@ -24,7 +24,8 @@ var gulp = require('gulp'),
 		modernizr = require('gulp-modernizr'),
 		imagemin = require('gulp-imagemin'),
 		svgSprite = require('gulp-svg-sprite'),
-		realFavicon = require ('gulp-real-favicon');
+		realFavicon = require ('gulp-real-favicon'),
+		access = require('gulp-accessibility');
 
 
 var source = {
@@ -301,12 +302,29 @@ gulp.task('check-for-favicon-update', function(done) {
 });
 
 
+gulp.task('test', function() {
+	return gulp.src(source.templates)
+		.pipe(access({
+			force: true
+		}))
+		.on('error', console.log)
+		.pipe(access.report({
+			reportType: 'txt'
+		}))
+		.pipe(rename({
+			extname: '.txt'
+		}))
+		.pipe(gulp.dest('reports'));
+});
+
+
 gulp.task('clean', function(done) {
 
 	del('css');
 	del('favicons');
 	del('images');
 	del('js');
+	del('reports');
 	del('static');
 
 	done();
