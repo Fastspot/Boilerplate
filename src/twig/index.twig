@@ -1,17 +1,36 @@
 {% extends "templates/_ref.twig" %}
 
 {% block data %}
-	{% set page = {
-		tabTitle: "Sitemap",
-		title: name
-	} %}
+	{% if sitemap.templates %}
+		{% set page = {
+			tabTitle: "Sitemap",
+			title: name
+		} %}
+		{% set map = sitemap.templates %}
+	{% elseif sitemap.accessibility %}
+		{% set page = {
+			tabTitle: "Accessibility Sitemap",
+			title: name
+		} %}
+		{% set map = sitemap.accessibility %}
+	{% endif %}
 {% endblock %}
 
 {% block main %}
+	{% if sitemap.accessibility %}
+		<style>
+			.sitemap_group:first-child {
+				display: none;
+			}
+				.sitemap_link {
+					font-size: 150%;
+				}
+		</style>
+	{% endif %}
 	<ul class="sitemap">
-		{% for key, link in sitemap.templates %}
-			<li class="sitemap_item {% if 'fs-style' in key %}fs-style-guide{% elseif 'page' in key %}fs-page{% elseif 'ref' in key %}fs-ref{% elseif 'test' in key %}fs-test{% endif %}">
-				<a class="sitemap_link" href="{{link}}">{{key|replace({
+		{% for key, link in map %}
+			<li class="sitemap_item {% if 'fs-style' in key %}fs-style-guide{% elseif 'page' in key %}fs-page{% elseif 'ref' in key %}fs-ref{% elseif 'test' in key %}fs-test{% elseif 'accessibility' in key %}fs-access{% endif %}">
+				<a class="sitemap_link" href="{% if sitemap.accessibility %}../{% endif %}{{link}}">{{key|replace({
 					".html": "",
 					"-": " "
 				})|replace({
@@ -25,11 +44,13 @@
 	</ul>
 	<script>
 		var sitemap = document.querySelector('.sitemap');
+		var fsAccess = document.querySelectorAll('.fs-access');
 		var fsGuide = document.querySelectorAll('.fs-style-guide');
 		var fsPage = document.querySelectorAll('.fs-page');
 		var fsRef = document.querySelectorAll('.fs-ref');
 		var fsTest = document.querySelectorAll('.fs-test');
 
+		wrap(fsAccess);
 		wrap(fsGuide);
 		wrap(fsPage);
 		wrap(fsRef);

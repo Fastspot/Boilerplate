@@ -1,6 +1,9 @@
 var gulp = require('gulp'),
 		reload = require('require-reload')(require),
+		async = require('async'),
 		fs = require('fs'),
+		path = require('path'),
+		glob = require('glob'),
 		shell = require('gulp-shell'),
 		packageJSON = require('./package.json'),
 		browserSync = require('browser-sync').create(),
@@ -25,7 +28,10 @@ var gulp = require('gulp'),
 		imagemin = require('gulp-imagemin'),
 		svgSprite = require('gulp-svg-sprite'),
 		realFavicon = require ('gulp-real-favicon'),
-		access = require('gulp-accessibility');
+		access = require('gulp-accessibility'),
+		pa11y = require('pa11y'),
+ 		htmlReporter = require('pa11y/reporter/html'),
+ 		test = pa11y();
 
 
 var source = {
@@ -35,6 +41,7 @@ var source = {
 		'!src/twig/templates/_*.twig'
 	],
 	templates: 'static/templates/*.html',
+	accessibility: 'static/accessibility/*.html',
 	sitemap: 'src/twig/index.twig',
 	sass: 'src/css/site.scss',
 	jshint: 'src/js/modules/*.js',
@@ -105,6 +112,18 @@ gulp.task('create-sitemap', function() {
 });
 
 
+gulp.task('create-accessibility-sitemap', function() {
+
+	return gulp.src(source.templates)
+		.pipe(directoryMap({
+			filename: 'accessibility-sitemap.json',
+			prefix: 'accessibility'
+		}))
+		.pipe(gulp.dest('static/'));
+
+});
+
+
 gulp.task('sitemap', function() {
 
 	return gulp.src(source.sitemap)
@@ -118,6 +137,24 @@ gulp.task('sitemap', function() {
 			extname: '.html'
 		}))
 		.pipe(gulp.dest('static/'));
+
+});
+
+
+gulp.task('accessibility-sitemap', function() {
+
+	return gulp.src(source.sitemap)
+		.pipe(twig({
+			data: {
+				name: packageJSON.name,
+				sitemap: require('./static/accessibility-sitemap.json')
+			}
+		}))
+		.pipe(rename({
+			basename: 'accessibility',
+			extname: '.html'
+		}))
+		.pipe(gulp.dest('static/templates'));
 
 });
 
@@ -302,19 +339,38 @@ gulp.task('check-for-favicon-update', function(done) {
 });
 
 
-gulp.task('test', function() {
-	return gulp.src(source.templates)
-		.pipe(access({
-			force: true
-		}))
-		.on('error', console.log)
-		.pipe(access.report({
-			reportType: 'txt'
-		}))
-		.pipe(rename({
-			extname: '.txt'
-		}))
-		.pipe(gulp.dest('reports'));
+gulp.task('test', function(done) {
+
+	if (!fs.existsSync('static/accessibility')) {
+		fs.mkdirSync('static/accessibility');
+	}
+
+	var urls = glob.sync(source.templates);
+
+	var queue = async.queue(function(url, complete) {
+		var absolutePath = path.resolve(url);
+		test.run('file://' + absolutePath, function(error, results) {
+			if (error) return console.error(error.message);
+
+			var html = htmlReporter.process(results);
+
+			fs.writeFile('static/accessibility/' + path.basename(url), html, function(err) {
+				if (err) console.log(err);
+			});
+
+			complete();
+		});
+
+	}, 3);
+
+	queue.drain = function() {
+		console.log('All done! Run gulp access.');
+	};
+
+	queue.push(urls);
+
+	done();
+
 });
 
 
@@ -409,6 +465,20 @@ gulp.task('build', gulp.parallel(
 
 gulp.task('default', gulp.series(
 	'build',
+	gulp.parallel(
+		'watch',
+		'browser-sync'
+	)
+));
+
+
+gulp.task('access', gulp.series(
+	'create-accessibility-sitemap',
+	'accessibility-sitemap',
+	gulp.series(
+		'create-sitemap',
+		'sitemap'
+	),
 	gulp.parallel(
 		'watch',
 		'browser-sync'
