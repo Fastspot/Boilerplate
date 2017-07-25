@@ -1,0 +1,410 @@
+{
+    "D5": {
+        "coordinates": [
+            793.684204101562,
+            337.38818359375
+        ]
+    },
+    "D4": {
+        "coordinates": [
+            820.2105407714839,
+            413.177642822266
+        ]
+    },
+    "D3": {
+        "coordinates": [
+            680.866760253906,
+            366.631195068359
+        ]
+    },
+    "D2": {
+        "coordinates": [
+            774.478332519531,
+            456.775665283203
+        ]
+    },
+    "D1": {
+        "coordinates": [
+            606.32421875,
+            364.897644042969
+        ]
+    },
+    "A1": {
+        "coordinates": [
+            662,
+            943
+        ]
+    },
+    "A10": {
+        "coordinates": [
+            229,
+            955
+        ]
+    },
+    "A11": {
+        "coordinates": [
+            231,
+            1012
+        ]
+    },
+    "A2": {
+        "coordinates": [
+            620,
+            953
+        ]
+    },
+    "A3": {
+        "coordinates": [
+            556,
+            955
+        ]
+    },
+    "A4": {
+        "coordinates": [
+            525,
+            949
+        ]
+    },
+    "A5": {
+        "coordinates": [
+            489,
+            933
+        ]
+    },
+    "A6": {
+        "coordinates": [
+            414,
+            955
+        ]
+    },
+    "A7": {
+        "coordinates": [
+            396,
+            1012
+        ]
+    },
+    "A8": {
+        "coordinates": [
+            327,
+            955
+        ]
+    },
+    "A9": {
+        "coordinates": [
+            308,
+            1014
+        ]
+    },
+    "B10": {
+        "coordinates": [
+            935,
+            1010
+        ]
+    },
+    "B11": {
+        "coordinates": [
+            1051,
+            955
+        ]
+    },
+    "B12": {
+        "coordinates": [
+            984,
+            1012
+        ]
+    },
+    "B13": {
+        "coordinates": [
+            1080,
+            956
+        ]
+    },
+    "B14": {
+        "coordinates": [
+            1043,
+            1014
+        ]
+    },
+    "B15": {
+        "coordinates": [
+            1082,
+            999
+        ]
+    },
+    "B2": {
+        "coordinates": [
+            733,
+            1012
+        ]
+    },
+    "B3": {
+        "coordinates": [
+            887,
+            962
+        ]
+    },
+    "B4": {
+        "coordinates": [
+            783,
+            1010
+        ]
+    },
+    "B5": {
+        "coordinates": [
+            926,
+            962
+        ]
+    },
+    "B6": {
+        "coordinates": [
+            845,
+            1008
+        ]
+    },
+    "B7": {
+        "coordinates": [
+            987,
+            958
+        ]
+    },
+    "B8": {
+        "coordinates": [
+            882,
+            1010
+        ]
+    },
+    "B9": {
+        "coordinates": [
+            1014,
+            956
+        ]
+    },
+    "C1": {
+        "coordinates": [
+            839,
+            658
+        ]
+    },
+    "C10": {
+        "coordinates": [
+            1080,
+            702
+        ]
+    },
+    "C11": {
+        "coordinates": [
+            1132,
+            650
+        ]
+    },
+    "C12": {
+        "coordinates": [
+            1130,
+            706
+        ]
+    },
+    "C13": {
+        "coordinates": [
+            1167,
+            654
+        ]
+    },
+    "C14": {
+        "coordinates": [
+            1167,
+            700
+        ]
+    },
+    "C2": {
+        "coordinates": [
+            891,
+            704
+        ]
+    },
+    "C3": {
+        "coordinates": [
+            880,
+            656
+        ]
+    },
+    "C4": {
+        "coordinates": [
+            922,
+            704
+        ]
+    },
+    "C5": {
+        "coordinates": [
+            920,
+            656
+        ]
+    },
+    "C6": {
+        "coordinates": [
+            980,
+            702
+        ]
+    },
+    "C7": {
+        "coordinates": [
+            982,
+            656
+        ]
+    },
+    "C8": {
+        "coordinates": [
+            1014,
+            700
+        ]
+    },
+    "C9": {
+        "coordinates": [
+            1066,
+            654
+        ]
+    },
+    "D10": {
+        "coordinates": [
+            946,
+            376
+        ]
+    },
+    "D11": {
+        "coordinates": [
+            993,
+            315
+        ]
+    },
+    "D12": {
+        "coordinates": [
+            984,
+            379
+        ]
+    },
+    "D13": {
+        "coordinates": [
+            1043,
+            317
+        ]
+    },
+    "D14": {
+        "coordinates": [
+            1055,
+            375
+        ]
+    },
+    "D15": {
+        "coordinates": [
+            1084,
+            325
+        ]
+    },
+    "D16": {
+        "coordinates": [
+            1084,
+            373
+        ]
+    },
+    "D20": {
+        "coordinates": [
+            864,
+            269
+        ]
+    },
+    "D21": {
+        "coordinates": [
+            816,
+            298
+        ]
+    },
+    "D22": {
+        "coordinates": [
+            864,
+            231
+        ]
+    },
+    "D23": {
+        "coordinates": [
+            816,
+            221
+        ]
+    },
+    "D24": {
+        "coordinates": [
+            864,
+            190
+        ]
+    },
+    "D25": {
+        "coordinates": [
+            816,
+            184
+        ]
+    },
+    "D26": {
+        "coordinates": [
+            868,
+            117
+        ]
+    },
+    "D27": {
+        "coordinates": [
+            814,
+            136
+        ]
+    },
+    "D29": {
+        "coordinates": [
+            814,
+            90
+        ]
+    },
+    "D7": {
+        "coordinates": [
+            916,
+            313
+        ]
+    },
+    "D8": {
+        "coordinates": [
+            912,
+            375
+        ]
+    },
+    "E1": {
+        "coordinates": [
+            377,
+            300
+        ]
+    },
+    "E3": {
+        "coordinates": [
+            377,
+            229
+        ]
+    },
+    "E4": {
+        "coordinates": [
+            442,
+            381
+        ]
+    },
+    "E6": {
+        "coordinates": [
+            444,
+            302
+        ]
+    },
+    "E8": {
+        "coordinates": [
+            442,
+            227
+        ]
+    },
+    "INT": {
+        "coordinates": [
+            412,
+            386
+        ]
+    }
+};

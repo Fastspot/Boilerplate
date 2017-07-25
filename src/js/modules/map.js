@@ -24,7 +24,7 @@ Site.modules.Map = (function($, Site) {
 		},
 		{
 			label: 'lower',
-			image: '../../images/map-hue.jpg'
+			image: '../../images/map_hue.jpg'
 		}
 	];
 
