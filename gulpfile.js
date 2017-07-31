@@ -43,7 +43,10 @@ var source = {
 	templates: 'static/templates/*.html',
 	accessibility: 'static/accessibility/*.html',
 	sitemap: 'src/twig/index.twig',
-	sass: 'src/css/site.scss',
+	sass: [
+		'src/css/site.scss',
+		'src/css/guidebook.scss'
+	],
 	jshint: 'src/js/modules/*.js',
 	modernizr: [
 		'js/modules/*.js',

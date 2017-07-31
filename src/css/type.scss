@@ -131,6 +131,10 @@ strong {
 		@include intro_text;
 	}
 
+	.copy {
+		@include body_text;
+	}
+
 	.label {
 		@include label_text;
 	}

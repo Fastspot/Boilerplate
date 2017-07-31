@@ -107,7 +107,6 @@
 		<!-- Page Wrapper -->
 		<div class="js-navigation_push page_wrapper">
 			<!-- Header -->
-			{% if page.layout != "style-guide" %}
 			<header class="header" id="header" itemscope itemtype="http://schema.org/WPHeader">
 				<div class="header_ribbon">
 					<div class="fs-row">
@@ -149,7 +148,6 @@
 					</div>
 				</div>
 			</header>
-			{% endif %}
 			<!-- END: Header -->
 
 			<!-- Page -->
@@ -163,7 +161,7 @@
 				<!-- Page Content -->
 				<div class="page_content">
 					<div class="fs-row">
-						{% if page.layout == "default" or page.layout == "style-guide" %}
+						{% if page.layout == "default" %}
 						<!-- Sub Nav -->
 						<div class="fs-cell-right fs-lg-4 aside_cell subnav_cell">
 							{% include "../partials/navigation/sub.twig" with {
@@ -177,15 +175,13 @@
 						<!-- Main Content -->
 						<div class="fs-cell{% if page.layout == "default" %} fs-lg-8{% elseif page.layout == "full" %} fs-lg-10 fs-centered{% endif %} content_cell">
 							<main class="main_content" id="main_content" itemprop="mainContentOfPage">
-								{% if layout != "home" %}
+								{% if page.layout != "home" %}
 								<!-- Page Header -->
 								{% block page_header %}
 									<div class="page_header">
-										{% if page.layout != "style-guide" %}
-											{% include "../partials/navigation/breadcrumb.twig" with {
-												links: breadcrumbNav
-											} %}
-										{% endif %}
+										{% include "../partials/navigation/breadcrumb.twig" with {
+											links: breadcrumbNav
+										} %}
 
 										{% if page.title %}
 											<div class="typography">
@@ -195,7 +191,7 @@
 									</div>
 								{% endblock %}
 								<!-- END: Page Header -->
-							{% endif %}
+								{% endif %}
 
 								<!-- WYSIWYG - wrap all WYSIWYG text areas in `.typography` -->
 								<div class="typography">
@@ -212,7 +208,7 @@
 						</div>
 						<!-- END: Main Content -->
 
-						{% if page.layout == "default" or page.layout == "style-guide" %}
+						{% if page.layout == "default" %}
 						<!-- Sidebar Callouts -->
 						<div class="fs-cell-right fs-lg-4 aside_cell sidebar_cell">
 							<div class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
@@ -234,7 +230,6 @@
 			<!-- END: Page -->
 
 			<!-- Footer -->
-			{% if page.layout != "style-guide" %}
 			<footer class="footer" id="footer" itemscope itemtype="http://schema.org/WPFooter">
 				<div class="footer_ribbon">
 					<div class="fs-row">
@@ -262,7 +257,6 @@
 					</div>
 				</div>
 			</footer>
-			{% endif %}
 			<!-- END: Footer -->
 		</div>
 		<!-- END: page_wrapper -->
@@ -290,7 +284,7 @@
 			{% endfor %}
 		{% endif %}
 
-		{% if grid == true %}
+		{% if page.grid %}
 		<!-- Grid Bookmarklet -->
 		<script>
 			(function(){if(typeof FSGridBookmarklet==='undefined'){document.body.appendChild(document.createElement('script')).src='//formstone.it/js/bookmarklet/grid.js';}else{FSGridBookmarklet();}} )();

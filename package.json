@@ -164,6 +164,24 @@
     }
   },
   "links": {
+    "guidebook": [
+      {
+        "name": "Getting Started",
+        "href": "fs-guidebook.html"
+      },
+      {
+        "name": "Colors",
+        "href": "fs-colors.html"
+      },
+      {
+        "name": "Typography",
+        "href": "fs-typography.html"
+      },
+      {
+        "name": "Components",
+        "href": "fs-components.html"
+      }
+    ],
     "mainNav": [
       {
         "name": "Main Link",
@@ -269,18 +287,46 @@
       }
     ]
   },
-  "colorGroups": [
-    [
-      {
-        "text": "#fff",
-        "hex": "#000"
-      }
-    ]
-  ],
+  "colors": {
+    "primary": {
+      "black": "#000",
+      "white": "#fff",
+      "jade": "#187B79"
+    },
+    "secondary": {
+      "blue": "#006bc0",
+      "green": "#D31243"
+    }
+  },
+  "fontsService": "fonts.com",
   "fonts": [
     {
-      "family": "family",
-      "weight": "400"
+      "name": "Futura",
+      "reference": "Futura",
+      "weights": [
+        {
+          "value": "bold"
+        },
+        {
+          "value": "normal"
+        }
+      ]
+    },
+    {
+      "name": "Avenir",
+      "reference": "Avenir",
+      "weights": [
+        {
+          "value": "bold"
+        },
+        {
+          "value": "normal"
+        },
+        {
+          "value": "normal",
+          "style": "italic"
+        }
+      ]
     }
   ],
   "dependencies": {

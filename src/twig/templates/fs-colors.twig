@@ -1,0 +1,13 @@
+{% extends "_guidebook.twig" %}
+
+{% block page %}
+	{% set page = {
+    layout: "full",
+		title: "Colors",
+    caption: "Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod."
+	} %}
+{% endblock %}
+
+{% block content %}
+	{% include '../partials/guidebook/colors.twig' %}
+{% endblock %}
