@@ -1,92 +1,92 @@
 <div class="typography">
-  <div class="gb_section">
-    <div class="gb_typography">
-      <h2 id="headings">Headings</h2>
-    </div>
-    <div class="gb_text">
-      <span class="gb_label" data-label="H1"></span>
-      <h1>Heading Level One</h1>
-    </div>
-    <div class="gb_text">
-      <span class="gb_label" data-label="H2"></span>
-      <h2>Heading Level Two</h2>
-    </div>
-    <div class="gb_text">
-      <span class="gb_label" data-label="H3"></span>
-      <h3>Heading Level Three</h3>
-    </div>
-    <div class="gb_text">
-      <span class="gb_label" data-label="H4"></span>
-      <h4>Heading Level Four</h4>
-    </div>
-    <div class="gb_text">
-      <span class="gb_label" data-label="H5"></span>
-      <h5>Heading Level Five</h5>
-    </div>
-    <div class="gb_text">
-      <span class="gb_label" data-label="H6"></span>
-      <h6>Heading Level Six</h6>
-    </div>
-  </div>
+	<div class="gb_section">
+		<div class="gb_typography">
+			<h2 id="headings">Headings</h2>
+		</div>
+		<div class="gb_text">
+			<span class="gb_label" data-label="H1"></span>
+			<h1>Heading Level One</h1>
+		</div>
+		<div class="gb_text">
+			<span class="gb_label" data-label="H2"></span>
+			<h2>Heading Level Two</h2>
+		</div>
+		<div class="gb_text">
+			<span class="gb_label" data-label="H3"></span>
+			<h3>Heading Level Three</h3>
+		</div>
+		<div class="gb_text">
+			<span class="gb_label" data-label="H4"></span>
+			<h4>Heading Level Four</h4>
+		</div>
+		<div class="gb_text">
+			<span class="gb_label" data-label="H5"></span>
+			<h5>Heading Level Five</h5>
+		</div>
+		<div class="gb_text">
+			<span class="gb_label" data-label="H6"></span>
+			<h6>Heading Level Six</h6>
+		</div>
+	</div>
 
-  <div class="gb_section">
-    <div class="gb_typography">
-      <h2 id="paragraphs">Paragraphs</h2>
-    </div>
-    <div class="gb_text">
-      <span class="gb_label" data-label="Body Large"></span>
-      <p class="intro">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod.</p>
-    </div>
-    <div class="gb_text">
-      <span class="gb_label" data-label="Body"></span>
-      <p class="copy">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod.</p>
-    </div>
-    <div class="gb_text">
-      <span class="gb_label" data-label="Body Small"></span>
-      <p class="label">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod.</p>
-    </div>
-  </div>
+	<div class="gb_section">
+		<div class="gb_typography">
+			<h2 id="paragraphs">Paragraphs</h2>
+		</div>
+		<div class="gb_text">
+			<span class="gb_label" data-label="Body Large"></span>
+			<p class="intro">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod.</p>
+		</div>
+		<div class="gb_text">
+			<span class="gb_label" data-label="Body"></span>
+			<p class="copy">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod.</p>
+		</div>
+		<div class="gb_text">
+			<span class="gb_label" data-label="Body Small"></span>
+			<p class="label">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod.</p>
+		</div>
+	</div>
 
-  <div class="gb_section">
-    <div class="gb_typography">
-      <h2 id="lists">Lists</h2>
-    </div>
-  </div>
+	<div class="gb_section">
+		<div class="gb_typography">
+			<h2 id="lists">Lists</h2>
+		</div>
+	</div>
 
-  <div class="gb_section">
-    <div class="gb_typography">
-      <h2 id="tables">Tables</h2>
-    </div>
-  </div>
+	<div class="gb_section">
+		<div class="gb_typography">
+			<h2 id="tables">Tables</h2>
+		</div>
+	</div>
 
-  <div class="gb_section">
-    <div class="gb_typography">
-      <h2 id="blockquote">Blockquote</h2>
-    </div>
-  </div>
+	<div class="gb_section">
+		<div class="gb_typography">
+			<h2 id="blockquote">Blockquote</h2>
+		</div>
+	</div>
 </div>
 
 <script>
-  var labels = document.querySelectorAll('.gb_label');
+	var labels = document.querySelectorAll('.gb_label');
 
-  window.addEventListener("resize", updateSizes);
+	window.addEventListener("resize", updateSizes);
 
-  updateSizes();
+	updateSizes();
 
-  function updateSizes() {
-    for(var i = 0; i < labels.length; i++) {
-      var styles = window.getComputedStyle(labels[i].nextElementSibling);
-      var labelString = labels[i].getAttribute('data-label') + ' - ' + parseStyle(styles.getPropertyValue('font-size')) + ' / ' + parseStyle(styles.getPropertyValue('line-height')) + ' - ' + styles.getPropertyValue('font-family');
+	function updateSizes() {
+		for(var i = 0; i < labels.length; i++) {
+			var styles = window.getComputedStyle(labels[i].nextElementSibling);
+			var labelString = labels[i].getAttribute('data-label') + ' - ' + parseStyle(styles.getPropertyValue('font-size')) + ' / ' + parseStyle(styles.getPropertyValue('line-height')) + ' - ' + styles.getPropertyValue('font-family');
 
-      labels[i].innerHTML = labelString;
-    }
-  }
+			labels[i].innerHTML = labelString;
+		}
+	}
 
-  function parseStyle(type) {
-    var value = type;
-    value = value.replace('px', '');
-    value = Math.round(parseFloat(value)) + 'px';
+	function parseStyle(type) {
+		var value = type;
+		value = value.replace('px', '');
+		value = Math.round(parseFloat(value)) + 'px';
 
-    return value;
-  }
+		return value;
+	}
 </script>

@@ -1,19 +1,19 @@
 <div class="gb_topics">
-  {% for topic in topics %}
-    <article class="gb_topic">
-      <header class="gb_topic_header">
-        {% if topic.image %}
-          <figure class="gb_topic_figure">
-            <img class="gb_topic_image gb_topic_image_juxtaposed" src="../../images/{{topic.image}}" />
-          </figure>
-        {% else %}
-          <div class="gb_topic_placeholder"></div>
-        {% endif %}
-        <h3 class="gb_topic_title">
-          <a class="gb_topic_link" href="{{topic.link}}">{{topic.title}}</a>
-        </h3>
-        <p class="gb_topic_caption">{{topic.caption}}</p>
-      </header>
-    </article>
-  {% endfor %}
+	{% for topic in topics %}
+		<article class="gb_topic">
+			<header class="gb_topic_header">
+				{% if topic.image %}
+					<figure class="gb_topic_figure">
+						<img class="gb_topic_image gb_topic_image_juxtaposed" src="../../images/{{topic.image}}" />
+					</figure>
+				{% else %}
+					<div class="gb_topic_placeholder"></div>
+				{% endif %}
+				<h3 class="gb_topic_title">
+					<a class="gb_topic_link" href="{{topic.link}}">{{topic.title}}</a>
+				</h3>
+				<p class="gb_topic_caption">{{topic.caption}}</p>
+			</header>
+		</article>
+	{% endfor %}
 </div>
