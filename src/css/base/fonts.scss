@@ -3,8 +3,9 @@
 
 @mixin family($weight: null) {
 	font-family: "font_family_name", sans-serif;
+	font-weight: 400;
 
 	@if $weight != null {
-		font-weight: $weight;
+		font-family: "font_family_name", sans-serif;
 	}
 }

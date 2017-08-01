@@ -11,27 +11,26 @@
 @import "../../node_modules/formstone/dist/css/pagination";
 @import "../../node_modules/formstone/dist/css/grid";
 
-@import "base/fonts.scss";
-@import "base/setup.scss";
-@import "colors.scss";
-@import "base/base.scss";
+@import "base/fonts";
+@import "base/setup";
+@import "colors";
+@import "base/base";
 
-@import "symbols.scss";
-@import "helpers.scss";
-@import "type.scss";
-@import "buttons.scss";
-@import "forms.scss";
-@import "logo.scss";
-@import "search.scss";
-@import "google-cse.scss";
-@import "style-guide.scss";
+@import "symbols";
+@import "helpers";
+@import "type";
+@import "buttons";
+@import "forms";
+@import "logo";
+@import "search";
+@import "google-cse";
 
-@import "structure/*.scss";
+@import "structure/*";
 
-@import "navigation/*.scss";
+@import "navigation/*";
 
-@import "components/**/*.scss";
+@import "components/**/*";
 
-@import "plugins/*.scss";
+@import "plugins/*";
 
-@import "print.scss";
+@import "print";

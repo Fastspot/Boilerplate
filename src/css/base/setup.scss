@@ -35,6 +35,23 @@ $margin_xl: 80px;
 // Mixins
 // =============================================================================
 
+@mixin mq_switch() {
+
+	&_sm {
+
+		@media #{$min_lg} {
+			display: none;
+		}
+	}
+
+	&_lg {
+
+		@media #{$max_lg} {
+			display: none;
+		}
+	}
+}
+
 // 1. IE 10/11 uses a non-standard
 
 @mixin columns($count, $gap: 0) {

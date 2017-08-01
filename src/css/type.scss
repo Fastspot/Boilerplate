@@ -125,7 +125,9 @@ strong {
 			background $base_speed;
 	}
 
-	p {}
+	p {
+		margin: 20px 0;
+	}
 
 	.intro {
 		@include intro_text;
