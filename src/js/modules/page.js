@@ -83,13 +83,13 @@ Site.modules.Page = (function($, Site) {
 
 		Site.$body.find(".js-toggle")
 			.not(".js-bound")
-			.on("click", ".js-toggle_handle", onToggleClick)
+			.on("click", ".js-toggle-handle", onToggleClick)
 			.addClass("js-bound");
 
 
 		// Scroll Nav
 
-		Site.$body.find(".js-scroll_to")
+		Site.$body.find(".js-scroll-to")
 			.not(".js-bound")
 			.on("click", onScrollTo)
 			.addClass("js-bound");
@@ -155,7 +155,7 @@ Site.modules.Page = (function($, Site) {
 		Site.killEvent(e);
 
 		var $target = $(e.delegateTarget),
-				activeClass = "js-toggle_active";
+				activeClass = "js-toggle-active";
 
 		if ($target.hasClass(activeClass)) {
 			$target.removeClass(activeClass);
