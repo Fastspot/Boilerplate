@@ -79,6 +79,22 @@ Site.modules.Page = (function($, Site) {
 		});
 
 
+		// Generic Toggles
+
+		Site.$body.find(".js-toggle")
+			.not(".js-bound")
+			.on("click", ".js-toggle_handle", onToggleClick)
+			.addClass("js-bound");
+
+
+		// Scroll Nav
+
+		Site.$body.find(".js-scroll_to")
+			.not(".js-bound")
+			.on("click", onScrollTo)
+			.addClass("js-bound");
+
+
 		// Wrapper for Tables
 
 		Site.$body.find(".typography table")
