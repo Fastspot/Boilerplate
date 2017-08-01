@@ -105,13 +105,10 @@ Site.modules.Page = (function($, Site) {
 	function scroll() {}
 
 	function resize() {
-		scroll();
 		tableOverflow();
 	}
 
-	function respond() {
-		scroll();
-	}
+	function respond() {}
 
 	function onScrollTo(e) {
 		Site.killEvent(e);

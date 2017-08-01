@@ -7,6 +7,11 @@ $true_white: #fff;
 $black: #000;
 $white: #fff;
 
+$theme_colors: (
+	(black, $black),
+	(white, $white)
+);
+
 $gray_10: #EAEAEA;
 $gray_20: #CCCCCC;
 $gray_30: #B2B2B2;
@@ -20,11 +25,6 @@ $gray_90: #222222;
 
 // Themes
 // =============================================================================
-
-$theme_colors: (
-	(black, $black),
-	(white, $white)
-);
 
 @mixin theme($list: $theme_colors, $style: "color") {
 

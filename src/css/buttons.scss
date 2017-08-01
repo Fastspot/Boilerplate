@@ -9,7 +9,6 @@ button {
 }
 
 @mixin button() {
-	background: $gray_10;
 	padding: 10px;
 	transition:
 		background $base_speed,
@@ -19,8 +18,12 @@ button {
 		transform $base_speed;
 }
 
-@mixin button_color($color: $gray_10) {
+@mixin button_color($color: $gray_10, $hover: $gray_20) {
 	background: $color;
+
+	&:hover {
+		background: $hover;
+	}
 }
 
 @mixin button_inline() {

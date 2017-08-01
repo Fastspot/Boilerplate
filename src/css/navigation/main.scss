@@ -3,20 +3,7 @@
 ============================================================================= */
 
 .main_nav {
-
-	&_sm {
-
-		@media #{$min_lg} {
-			display: none;
-		}
-	}
-
-	&_lg {
-
-		@media #{$max_lg} {
-			display: none;
-		}
-	}
+	@include mq_switch;
 }
 
 .main_nav_header {}
@@ -69,7 +56,8 @@
 }
 
 .main_nav_link {
-	display: block;
+	display: inline-block;
+	vertical-align: top;
 
 	.main_nav_item.focused &,
 	.main_nav_item:focus &,
