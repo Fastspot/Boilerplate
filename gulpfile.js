@@ -342,7 +342,7 @@ gulp.task('check-for-favicon-update', function(done) {
 });
 
 
-gulp.task('test', function(done) {
+gulp.task('accessibility-test', function(done) {
 
 	if (!fs.existsSync('static/accessibility')) {
 		fs.mkdirSync('static/accessibility');
@@ -476,6 +476,7 @@ gulp.task('default', gulp.series(
 
 
 gulp.task('access', gulp.series(
+	'accessibility-test',
 	'create-accessibility-sitemap',
 	'accessibility-sitemap',
 	gulp.series(

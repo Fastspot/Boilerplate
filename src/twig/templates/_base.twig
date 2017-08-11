@@ -140,7 +140,7 @@
 							</a>
 
 							{% include "../partials/search.twig" with {
-								modifier: "",
+								modifier: "lg",
 								placeholder: "Search",
 								buttonText: "submit"
 							} %}
@@ -262,8 +262,15 @@
 		<!-- END: page_wrapper -->
 
 		<div class="js-navigation mobile_sidebar" id="mobile_sidebar" hidden data-navigation-handle=".js-nav_handle" data-navigation-content=".js-navigation_push" data-navigation-options='{"type": "overlay", "gravity": "right"}'>
+			{% include "../partials/search.twig" with {
+				modifier: "sm",
+				placeholder: "Search",
+				buttonText: "submit"
+			} %}
+
 			{% include "../partials/navigation/main.twig" with {
 				modifier: "sm",
+				title: "Mobile Site Navigation",
 				links: mainNavAlias,
 				active: activePage
 			} %}
@@ -271,7 +278,7 @@
 			{% include "../partials/navigation/basic.twig" with {
 				class: "secondary_nav",
 				modifier: "sm",
-				title: "Secondary Navigation",
+				title: "Mobile Secondary Navigation",
 				links: secondaryNavAlias
 			} %}
 		</div>

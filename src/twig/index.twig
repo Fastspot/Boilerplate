@@ -23,14 +23,22 @@
 				display: none;
 			}
 
-				.sitemap_link {
-					font-size: 150%;
-				}
+			.sitemap_link {
+				font-size: 150%;
+			}
+
+			.sitemap_item {
+				display: none;
+			}
+
+			.sitemap_item[class*="page-"] {
+				display: block;
+			}
 		</style>
 	{% endif %}
 	<ul class="sitemap">
 		{% for key, link in map %}
-			<li class="sitemap_item {% if 'fs-style' in key %}fs-style-guide{% elseif 'page' in key %}fs-page{% elseif 'ref' in key %}fs-ref{% elseif 'test' in key %}fs-test{% elseif 'accessibility' in key %}fs-access{% endif %}">
+			<li class="sitemap_item {{key|replace({".html": ""})}}{% if 'fs-style' in key %} fs-style-guide{% elseif 'page' in key %} fs-page{% elseif 'ref' in key %} fs-ref{% elseif 'test' in key %} fs-test{% elseif 'accessibility' in key %} fs-access{% endif %}">
 				<a class="sitemap_link" href="{% if sitemap.accessibility %}../{% endif %}{{link}}">{{key|replace({
 					".html": "",
 					"-": " "
