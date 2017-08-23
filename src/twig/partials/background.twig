@@ -1,5 +1,6 @@
 {#
 	{% include "../../partials/background.twig" with {
+    jsClass: "",
 		class: "flex_callout",
 		image: image,
 		lazy: "true",
@@ -13,6 +14,6 @@
 	} %}
 #}
 
-<div class="js-background {{class}}_background" data-background-options='{"source": {
-{% for key, source in sources %}"{{key}}": "//images.fastspot.com/{{vars.namespace}}/{{source}}/{{image}}"{% if not loop.last %}, {% endif %}{% endfor %}
+<div class="{% if jsClass %}js-{{jsClass}}{% else %}js-background{% endif %} {{class}}_background" data-background-options='{"source": {
+{% for key, source in sources %}"{{key}}": "{% if source == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{vars.images}}/{{source}}/{{image}}{% endif %}"{% if not loop.last %}, {% endif %}{% endfor %}
 }{% if lazy == "true" %}, "lazy": true{% endif %}{% if lazyEdge %}, "lazyEdge": "{{lazyEdge}}"{% endif %}}'></div>
