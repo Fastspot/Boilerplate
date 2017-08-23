@@ -3346,17 +3346,42 @@ select {
 /* ==========================================================================
 	Carousel
 ============================================================================= */
-.fs-carousel-pagination {
-  text-align: center; }
+@media print {
+  .fs-carousel-canister {
+    width: 100% !important;
+    -webkit-transform: none !important;
+            transform: none !important; } }
 
-.fs-carousel-page {
-  height: 8px;
-  width: 8px;
-  position: relative;
-  border-radius: 50%;
-  color: transparent;
-  overflow: hidden; }
+@media print {
+  .fs-carousel-item {
+    height: auto !important;
+    width: 100% !important; } }
 
+/* ==========================================================================
+	 Controls
+============================================================================= */
+@media print {
+  .fs-carousel-controls {
+    display: none; } }
+
+.fs-carousel-control {
+  cursor: default;
+  pointer-events: none; }
+  .fs-carousel-control.fs-carousel-visible {
+    cursor: pointer;
+    pointer-events: auto; }
+
+/* Control Themes
+============================================================================= */
+/* ==========================================================================
+	 Pagination
+============================================================================= */
+@media print {
+  .fs-carousel-pagination {
+    display: none; } }
+
+/* Pagination Themes
+============================================================================= */
 /* ==========================================================================
 	Dropdowns
 ============================================================================= */
