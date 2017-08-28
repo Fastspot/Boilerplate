@@ -45,6 +45,24 @@
 
 
 {#
+	{{site.button("class", "Apply", "arrow_right")}}
+#}
+
+{% macro button(class, label, symbol) %}
+	<a class="{{class}}_link" href="#">
+		<span class="{{class}}_link_label">{{label}}</span>
+		{% if symbol %}
+			<span class="{{class}}_link_icon">
+				<svg class="symbol symbol_{{symbol}}">
+					<use xlink:href="#{{symbol}}"></use>
+				</svg>
+			</span>
+		{% endif %}
+	</a>
+{% endmacro %}
+
+
+{#
 	{{site.table({
 		headers: [
 			"Header",
@@ -78,24 +96,6 @@
 			{% endfor %}
 		</tbody>
 	</table>
-{% endmacro %}
-
-
-{#
-	{{site.button("class", "Apply", "arrow_right")}}
-#}
-
-{% macro button(class, label, symbol) %}
-	<a class="{{class}}_link" href="#">
-		<span class="{{class}}_link_label">{{label}}</span>
-		{% if symbol %}
-			<span class="{{class}}_link_icon">
-				<svg class="symbol symbol_{{symbol}}">
-					<use xlink:href="#{{symbol}}"></use>
-				</svg>
-			</span>
-		{% endif %}
-	</a>
 {% endmacro %}
 
 
