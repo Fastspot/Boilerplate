@@ -22,12 +22,13 @@
     }
   ],
   "vars": {
-    "namespace": "generic",
+    "namespace": "fs",
     "name": "Client Name",
     "domain": "www.example.com",
     "schemaType": "Organization",
     "twitter": "TwitterName",
     "color": "",
+    "images": "clientname",
     "mq_min_ht": "800",
     "mq_min_xs": "320",
     "mq_min_sm": "500",
