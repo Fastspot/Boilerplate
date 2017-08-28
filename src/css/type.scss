@@ -81,42 +81,47 @@ strong {
 .typography {
 	@include body_text;
 
-	h1, h2, h3, h4, h5, h6 {}
+	h1, h2, h3, h4, h5, h6 {
+
+		+ * {
+			margin-top: 0;
+		}
+	}
 
 	h1 {
 		@include h1;
 
-		margin: 20px 0;
+		margin: 40px 0 20px;
 	}
 
 	h2 {
 		@include h2;
 
-		margin: 20px 0;
+		margin: 40px 0 20px;
 	}
 
 	h3 {
 		@include h3;
 
-		margin: 20px 0;
+		margin: 40px 0 20px;
 	}
 
 	h4 {
 		@include h4;
 
-		margin: 20px 0;
+		margin: 40px 0 20px;
 	}
 
 	h5 {
 		@include h5;
 
-		margin: 20px 0;
+		margin: 40px 0 20px;
 	}
 
 	h6 {
 		@include h6;
 
-		margin: 20px 0;
+		margin: 40px 0 20px;
 	}
 
 	a {
@@ -320,19 +325,20 @@ strong {
 		}
 
 		th,
-		td {
-			padding: 10px 20px;
-		}
+		td {}
 
 		th {
 			@include h6;
 
 			background: $gray_60;
 			color: #fff;
+			padding: 10px 20px;
 			text-align: left;
 		}
 
-		td {}
+		td {
+			padding: 10px 20px;
+		}
 	}
 }
 
@@ -342,28 +348,28 @@ strong {
 	@include margined;
 
 	min-height: 0.01%; // 1
+}
 
-	&.table_wrapper_overflow {
-		position: relative;
+.table_wrapper_overflow {
+	position: relative;
 
-		border: 1px solid #ccc;
+	border: 1px solid #ccc;
 
-		&:after {
-			@include gradient_horizontal(rgba(#000, 0), rgba(#000, 0.1));
+	&:after {
+		@include gradient_horizontal(rgba(#000, 0), rgba(#000, 0.1));
 
-			width: 20px;
-			height: 100%;
+		width: 20px;
+		height: 100%;
 
-			position: absolute;
-			top: 0;
-			right: 0;
+		position: absolute;
+		top: 0;
+		right: 0;
 
-			content: "";
-		}
-
-		.table_wrapper_inner {
-			overflow-y: hidden;
-			-ms-overflow-style: -ms-autohiding-scrollbar;
-		}
+		content: "";
 	}
+}
+
+.table_wrapper_inner {
+	overflow-y: hidden;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
 }
