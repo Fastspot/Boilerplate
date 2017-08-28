@@ -25,7 +25,12 @@
 <div class="linked_list{% if theme %} theme_{{theme}}{% endif %}">
 	{% if title %}
 		<header class="linked_list_header">
-			<h2 class="linked_list_title"><span>{{title}}</span></h2>
+			<h2 class="linked_list_title">
+				{% if icon %}
+					<span class="linked_list_title_icon">{{site.symbol(icon)}}</span>
+				{% endif %}
+				<span class="linked_list_title_label">{{title}}</span>
+			</h2>
 		</header>
 	{% endif %}
 	<div class="linked_list_body">

@@ -35,6 +35,8 @@ $gray_90: #222222;
 				color: $color;
 			} @else if($style == "background") {
 				background: $color;
+			} @else if($style == "border") {
+				border-color: $color;
 			}
 		}
 	}
@@ -49,6 +51,8 @@ $gray_90: #222222;
 				color: $color;
 			} @else if($style == "background") {
 				background: $color;
+			} @else if($style == "border") {
+				border-color: $color;
 			}
 		}
 	}

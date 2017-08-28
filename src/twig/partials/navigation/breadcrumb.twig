@@ -8,6 +8,9 @@
 		<div class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
 			<a class="breadcrumb_link" href="page-home.html" itemprop="item">
 				<span class="breadcrumb_name" itemprop="name">
+					{% if icon %}
+						<span class="breadcrumb_name_icon">{{site.symbol("home")}}</span>
+					{% endif %}
 					<span class="breadcrumb_name_label">Home</span>
 				</span>
 			</a>

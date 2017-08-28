@@ -4,5 +4,13 @@
 	<span class="footer_address_city" itemprop="addressLocality">{{city}}</span>
 	<span class="footer_address_state" itemprop="addressRegion">{{state}}</span>
 	<span class="footer_address_zip" itemprop="postalCode">{{zip}}</span>
-	<a class="footer_address_phone" itemprop="telephone" href="tel:">{{tel}}</a>
+	{% if email %}
+		<a class="footer_address_email" itemprop="email" href="mailto:">{{email}}</a>
+	{% endif %}
+	{% if tel %}
+		<a class="footer_address_phone" itemprop="telephone" href="tel:">{{tel}}</a>
+	{% endif %}
+	{% if fax %}
+		<a class="footer_address_phone" itemprop="telephone" href="tel:">{{fax}}</a>
+	{% endif %}
 </div>

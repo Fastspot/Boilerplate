@@ -9,10 +9,10 @@
 		</div>
 		<div class="contact_card_types">
 			{% if phone %}
-				<span class="contact_card_type contact_card_phone">{{phone}}</span>
+				<a href="#" class="contact_card_type contact_card_phone">{{phone}}</a>
 			{% endif %}
 			{% if fax %}
-				<span class="contact_card_type contact_card_phone">{{fax}}</span>
+				<a href="#" class="contact_card_type contact_card_phone">{{fax}}</a>
 			{% endif %}
 			{% if email %}
 				<a class="contact_card_type contact_card_email" href="mailto:{{email}}">{{email}}</a>

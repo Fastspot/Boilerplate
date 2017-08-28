@@ -2,45 +2,96 @@
 	Carousel
 ============================================================================= */
 
+.fs-carousel-canister {
+
+	@media print {
+		width: 100% !important;
+
+		transform: none !important;
+	}
+}
+
 .fs-carousel-item {
 
+	@media print {
+		height: auto !important;
+		width: 100% !important;
+	}
+
 	&.fs-carousel-visible {}
 }
 
 
-// Controls
-// =============================================================================
+/* ==========================================================================
+	 Controls
+============================================================================= */
 
-.fs-carousel-controls {}
+.fs-carousel-controls {
+
+	@media print {
+		display: none;
+	}
+}
 
 .fs-carousel-control {
+	cursor: default;
+	pointer-events: none;
 
-	&:focus,
-	&:hover {}
+	&.fs-carousel-visible {
+		cursor: pointer;
+		pointer-events: auto;
+	}
 
-	&.fs-carousel-visible {}
+	&.fs-carousel-control_previous {}
+
+	&.fs-carousel-control_next {}
 }
 
 
-// Pagination
-// =============================================================================
+/* Control Themes
+============================================================================= */
+
+.theme {
+
+	.fs-carousel-controls {}
+
+	.fs-carousel-control {
+
+		&.fs-carousel-visible {}
+
+		&.fs-carousel-control_previous {}
+
+		&.fs-carousel-control_next {}
+	}
+}
+
+
+/* ==========================================================================
+	 Pagination
+============================================================================= */
 
 .fs-carousel-pagination {
-	text-align: center;
+
+	@media print {
+		display: none;
+	}
 }
 
 .fs-carousel-page {
-	height: 8px;
-	width: 8px;
-
-	position: relative;
-
-	border-radius: 50%;
-	color: transparent;
-	overflow: hidden;
-
-	&:focus,
-	&:hover {}
 
 	&.fs-carousel-active {}
+}
+
+
+/* Pagination Themes
+============================================================================= */
+
+.theme {
+
+	.fs-carousel-pagination {}
+
+	.fs-carousel-page {
+
+		&.fs-carousel-active {}
+	}
 }

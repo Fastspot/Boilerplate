@@ -111,39 +111,41 @@
 				<div class="header_ribbon">
 					<div class="fs-row">
 						<div class="fs-cell">
-							{% include "../partials/logo.twig" with {
-								modifier: "header",
-								symbol: true
-							} %}
+							<div class="header_ribbon_inner">
+								{% include "../partials/logo.twig" with {
+									modifier: "header",
+									symbol: true
+								} %}
 
-							{% include "../partials/navigation/main.twig" with {
-								modifier: "lg",
-								title: "Site Navigation",
-								links: mainNavAlias,
-								active: activePage
-							} %}
+								{% include "../partials/navigation/main.twig" with {
+									modifier: "lg",
+									title: "Site Navigation",
+									links: mainNavAlias,
+									active: activePage
+								} %}
 
-							{% include "../partials/navigation/basic.twig" with {
-								class: "secondary_nav",
-								modifier: "lg",
-								title: "Secondary Navigation",
-								links: secondaryNavAlias
-							} %}
+								{% include "../partials/navigation/basic.twig" with {
+									class: "secondary_nav",
+									modifier: "lg",
+									title: "Secondary Navigation",
+									links: secondaryNavAlias
+								} %}
 
-							<a class="mobile_sidebar_handle_wrapper" href="#mobile_sidebar">
-								<span class="js-nav_handle mobile_sidebar_handle">Menu</span>
-							</a>
+								<a class="mobile_sidebar_handle_wrapper" href="#mobile_sidebar">
+									<span class="js-nav_handle mobile_sidebar_handle">Menu</span>
+								</a>
 
-							<a class="site_search_handle" href="#site_search_lg">
-								<span class="site_search_handle_label">Search</span>
-								<span class="site_search_handle_icon">{{site.symbol("search")}}</span>
-							</a>
+								<a class="site_search_handle" href="#site_search_lg">
+									<span class="site_search_handle_label">Search</span>
+									<span class="site_search_handle_icon">{{site.symbol("search")}}</span>
+								</a>
 
-							{% include "../partials/search.twig" with {
-								modifier: "lg",
-								placeholder: "Search",
-								buttonText: "submit"
-							} %}
+								{% include "../partials/search.twig" with {
+									modifier: "lg",
+									placeholder: "Search",
+									buttonText: "submit"
+								} %}
+							</div>
 						</div>
 					</div>
 				</div>
@@ -184,9 +186,7 @@
 										} %}
 
 										{% if page.title %}
-											<div class="typography">
-												<h1 class="page_title" id="page_title">{{page.title}}</h1>
-											</div>
+											<h1 class="page_title" id="page_title">{{page.title}}</h1>
 										{% endif %}
 									</div>
 								{% endblock %}
@@ -209,14 +209,14 @@
 						<!-- END: Main Content -->
 
 						{% if page.layout == "default" %}
-						<!-- Sidebar Callouts -->
-						<div class="fs-cell-right fs-lg-4 aside_cell sidebar_cell">
-							<div class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
-								{% block sidebar %}{% endblock %}
+							<!-- Sidebar Callouts -->
+							<div class="fs-cell-right fs-lg-4 aside_cell sidebar_cell">
+								<div class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+									{% block sidebar %}{% endblock %}
+								</div>
 							</div>
-						</div>
-						<!-- END: Sidebar Callouts -->
-					{% endif %}
+							<!-- END: Sidebar Callouts -->
+						{% endif %}
 					</div>
 
 					<!-- Full Width Callouts -->
@@ -234,25 +234,27 @@
 				<div class="footer_ribbon">
 					<div class="fs-row">
 						<div class="fs-cell">
-							{% include "../partials/address.twig" with {
-								name: "Fastspot",
-								street: "2980 Falls Road",
-								city: "Baltimore",
-								state: "MD",
-								zip: "21211",
-								tel: "202-432-1200"
-							} %}
+							<div class="footer_ribbon_inner">
+								{% include "../partials/address.twig" with {
+									name: "Fastspot",
+									street: "2980 Falls Road",
+									city: "Baltimore",
+									state: "MD",
+									zip: "21211",
+									tel: "202-432-1200"
+								} %}
 
-							{% include "../partials/navigation/basic.twig" with {
-								class: "footer_nav",
-								title: "Footer Navigation",
-								links: footerNavAlias
-							} %}
+								{% include "../partials/navigation/basic.twig" with {
+									class: "footer_nav",
+									title: "Footer Navigation",
+									links: footerNavAlias
+								} %}
 
-							{% include "../partials/navigation/social.twig" with {
-								title: "Social Navigation",
-								links: socialNavAlias
-							} %}
+								{% include "../partials/navigation/social.twig" with {
+									title: "Social Navigation",
+									links: socialNavAlias
+								} %}
+							</div>
 						</div>
 					</div>
 				</div>
@@ -292,10 +294,10 @@
 		{% endif %}
 
 		{% if grid %}
-		<!-- Grid Bookmarklet -->
-		<script>
-			(function(){if(typeof FSGridBookmarklet==='undefined'){document.body.appendChild(document.createElement('script')).src='//formstone.it/js/bookmarklet/grid.js';}else{FSGridBookmarklet();}} )();
-		</script>
+			<!-- Grid Bookmarklet -->
+			<script>
+				(function(){if(typeof FSGridBookmarklet==='undefined'){document.body.appendChild(document.createElement('script')).src='//formstone.it/js/bookmarklet/grid.js';}else{FSGridBookmarklet();}} )();
+			</script>
 		{% endif %}
 	</body>
 </html>

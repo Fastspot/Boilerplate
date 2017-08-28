@@ -38,6 +38,7 @@ button {
 	@include button;
 
 	display: block;
+	margin-bottom: 8px;
 	text-align: center;
 }
 
@@ -47,7 +48,6 @@ button {
 	@media #{$min_xs} {
 		display: inline-block;
 		margin-right: 8px;
-		margin-bottom: 8px;
 		text-align: left;
 	}
 }
@@ -69,13 +69,12 @@ button {
 	text-align: center;
 	transform: translate(-50%, -200%);
 	transition:
-		top 0.35s,
-		transform 0.35s;
+		top .35s,
+		transform .35s;
 
 	&:focus,
 	&:active {
-		outline: 2px solid #000;
-		transform: translate(-50%, 20px);
+		transform: translate(-50%, 40px);
 	}
 
 	.no-csstransforms & {
@@ -83,7 +82,7 @@ button {
 
 		&:focus,
 		&:active {
-			top: 20px;
+			top: 40px;
 		}
 	}
 }
