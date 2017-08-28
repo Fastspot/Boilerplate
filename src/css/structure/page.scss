@@ -27,7 +27,9 @@
 
 .page_header {}
 
-.page_title {}
+.page_title {
+	@include h1;
+}
 
 .in_content_callouts {}
 
