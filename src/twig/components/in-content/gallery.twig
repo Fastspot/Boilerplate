@@ -31,14 +31,7 @@
 				<div class="media_gallery_item{% if item.caption is empty %} no_caption{% endif %}{% if item.video %} video{% endif %}">
 					<figure class="media_gallery_figure" role="group"{% if item.caption %} aria-label="{{item.caption|striptags}}"{% endif %}>
 						{% if item.video %}<a class="js-lightbox media_item_link" href="{{item.video}}" title="{{item.caption|striptags}}">{% endif %}
-							{% include "../partials/picture.twig" with {
-								class: "media_gallery",
-								sources: {
-									"1220px": img.wide.med
-								},
-								fallback: img.wide.med,
-								image: item.image
-							} %}
+							{{site.image("media_gallery", img.wide.med, item.image)}}
 							<span class="media_gallery_symbol">{{site.symbol(symbol)}}</span>
 						{% if item.video %}</a>{% endif %}
 						{% if item.caption %}
