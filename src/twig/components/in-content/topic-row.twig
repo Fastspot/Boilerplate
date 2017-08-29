@@ -1,5 +1,5 @@
 {#
-	{% include "../components/in-content/topics.twig" with {
+	{% include "../components/in-content/topic-row.twig" with {
 		title: "",
 		topics: [
 			{
@@ -40,14 +40,7 @@
 				<div class="topic_row_inner">
 					{% if topic.image %}
 						<figure class="topic_figure">
-							{% include "../partials/picture.twig" with {
-								class: "topic",
-								fallback: img.square.xxsml,
-								image: topic.image,
-								sources: {
-									"500px": img.classic.xxsml,
-								}
-							} %}
+							{{site.image("topic", img.square.xsml, topic.image)}}
 						</figure>
 					{% endif %}
 					<div class="topic_wrapper">
