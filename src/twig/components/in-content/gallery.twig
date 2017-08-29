@@ -28,14 +28,14 @@
 	<div class="media_gallery_body">
 		<div class="js-carousel media_gallery_items" data-carousel-options='{"theme": "base_pagination", "contained": false, "matchHeight": true}'>
 			{% for item in items %}
-				<div class="media_gallery_item{% if item.caption is empty %} no_caption{% endif %}{% if item.video %} video{% endif %}">
-					<figure class="media_gallery_figure" role="group"{% if item.caption %} aria-label="{{item.caption|striptags}}"{% endif %}>
-						{% if item.video %}<a class="js-lightbox media_item_link" href="{{item.video}}" title="{{item.caption|striptags}}">{% endif %}
-							{{site.image("media_gallery", img.wide.med, item.image)}}
-							<span class="media_gallery_symbol">{{site.symbol(symbol)}}</span>
+				<div class="media_gallery_item{% if item.caption is empty %} media_gallery_item_no_caption{% endif %}{% if item.video %} media_gallery_item_video{% endif %}">
+					<figure class="media_gallery_item_figure" role="group"{% if item.caption %} aria-label="{{item.caption|striptags}}"{% endif %}>
+						{% if item.video %}<a class="js-lightbox media_gallery_item_link" href="{{item.video}}" title="{{item.caption|striptags}}">{% endif %}
+							{{site.image("media_gallery_item", img.wide.med, item.image)}}
+							<span class="media_gallery_item_symbol">{{site.symbol(symbol)}}</span>
 						{% if item.video %}</a>{% endif %}
 						{% if item.caption %}
-							<figcaption class="media_gallery_figcaption">
+							<figcaption class="media_gallery_item_figcaption">
 								<p>{{item.caption}}</p>
 							</figcaption>
 						{% endif %}
