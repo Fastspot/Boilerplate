@@ -66,7 +66,7 @@
     @include h3;
   }
 
-  p {
+  > p {
     @include body_text;
 
     margin: 10px 0 30px;
