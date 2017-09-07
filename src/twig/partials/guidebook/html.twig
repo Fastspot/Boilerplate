@@ -50,18 +50,102 @@
 	<div class="gb_section">
 		<div class="gb_typography">
 			<h2 id="lists">Lists</h2>
+			<ul>
+				<li>List Item</li>
+				<li>List Item</li>
+				<li>List Item</li>
+				<li>
+					List Item
+					<ul>
+						<li>List Item</li>
+						<li>
+							List Item
+							<ul>
+								<li>List Item</li>
+								<li>List Item</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<ol>
+				<li>List Item</li>
+				<li>List Item</li>
+				<li>List Item</li>
+				<li>
+					List Item
+					<ul>
+						<li>List Item</li>
+						<li>
+							List Item
+							<ul>
+								<li>List Item</li>
+								<li>List Item</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ol>
 		</div>
 	</div>
 
 	<div class="gb_section">
 		<div class="gb_typography">
 			<h2 id="tables">Tables</h2>
+			{{site.table({
+				headers: [
+					"Colors",
+					"Shapes",
+					"Numbers",
+					"Percentages"
+				],
+				rows: [
+					[
+						"Black",
+						"Circle",
+						"One",
+						"10% of Lorem ipsum dolor sit amet, consectetur."
+					],
+					[
+						"Blue",
+						"Square",
+						"Two",
+						"33% of Donec ullamcorper nulla non metus auctor."
+					],
+					[
+						"Green",
+						"Triangle",
+						"Three",
+						"5% of Integer posuere erat a ante venenatis."
+					],
+					[
+						"Red",
+						"Rectangle",
+						"Four",
+						"90% of Aenean eu leo quam vestibulum."
+					],
+					[
+						"White",
+						"Oval",
+						"Five",
+						"100% of Cum sociis natoque penatibus et mus."
+					]
+				]
+			})}}
 		</div>
 	</div>
 
 	<div class="gb_section">
 		<div class="gb_typography">
 			<h2 id="blockquote">Blockquote</h2>
+			<figure class="quote">
+				<blockquote class="quote_content">
+					<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean lacinia bibendum nulla sed consectetur. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum id ligula porta felis euismod semper.</p>
+				</blockquote>
+				<figcaption class="quote_caption">
+					<span class="quote_caption_name">Aenean massa - </span><span class="quote_caption_title">Nullam dictum felis</span>
+				</figcaption>
+			</figure>
 		</div>
 	</div>
 </div>
