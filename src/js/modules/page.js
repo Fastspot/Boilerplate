@@ -29,7 +29,6 @@ Site.modules.Page = (function($, Site) {
 		Site.$body.find(".js-lightbox").lightbox({
 			mobile: true,
 			theme: "fs-light",
-			viewer: false,
 			labels: {
 				close: "<span class='fs-lightbox-icon-close'><svg class='symbol symbol_close'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#close'></use></svg></span>",
 				previous: "<span class='fs-lightbox-icon-previous'><svg class='symbol symbol_" + prev + "'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#" + prev + "'></use></svg></span>",
