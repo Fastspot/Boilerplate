@@ -23,7 +23,7 @@
 	<picture class="{{parameters.class}}_picture">
 		<!--[if IE 9]><video style="display: none;"><![endif]-->
 		{% for key, source in parameters.sources %}
-		<source media="(min-width: {{key}})" srcset="{% if source == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{vars.namespace}}/{{source}}/{{image}}{% endif %}">
+		<source media="(min-width: {{key}})" srcset="{% if source == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{vars.namespace}}/{{source}}/{{parameters.image}}{% endif %}">
 		{% endfor %}
 		<!--[if IE 9]></video><![endif]-->
 		<img class="{{parameters.class}}_image" src="{% if parameters.fallback == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{vars.namespace}}/{{parameters.fallback}}/{{parameters.image}}{% endif %}" alt="">
