@@ -59,3 +59,62 @@
 		margin: 0;
 	}
 }
+
+
+// Mobile
+// =============================================================================
+
+// content
+
+.fs-lightbox-mobile .fs-lightbox-content {
+	background-color: none;
+}
+
+// tools
+
+.fs-lightbox-mobile .fs-lightbox-tools {
+	background-color: none;
+}
+
+// controls
+
+.fs-lightbox-mobile .fs-lightbox-controls {
+	text-align: center;
+}
+
+// position
+
+.fs-lightbox-mobile .fs-lightbox-position,
+.fs-lightbox-mobile .fs-lightbox-caption {
+
+	p {
+		color: #000;
+	}
+}
+
+// touch captions
+
+.fs-lightbox-mobile.fs-lightbox-touch .fs-lightbox-tools {}
+
+.fs-lightbox-mobile.fs-lightbox-touch .fs-lightbox-controls {}
+
+.fs-lightbox-mobile.fs-lightbox-touch .fs-lightbox-toggle {
+	display: none;
+}
+
+.fs-lightbox-mobile.fs-lightbox-touch .fs-lightbox-meta {
+	height: auto !important;
+
+	background: #fff;
+	color: #000;
+	padding: 20px;
+}
+
+// viewer
+
+.fs-viewer {
+
+	.fs-viewer-controls {
+		display: none;
+	}
+}
