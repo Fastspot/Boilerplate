@@ -17,7 +17,7 @@
 		<meta name="mobile-web-app-capable" content="yes">
 
 		<title>{{page.title}} | {{vars.name}}</title>
-		<meta name="description" content="">
+		<meta name="description" content="{{vars.description}}">
 
 		{% include "../partials/favicons.html" %}
 
@@ -26,17 +26,19 @@
 		<meta property="og:url" content="//{{vars.domain}}/">
 		<meta property="og:type" content="website">
 		<meta property="og:image" content="//{{vars.domain}}/images/social-rectangle.png">
-		<meta property="og:description" content="">
+		<meta property="og:description" content="{{vars.description}}">
 		<meta property="og:site_name" content="{{vars.name}}">
 
-		<!-- Twitter -->
-		<meta name="twitter:card" content="summary">
-		<meta name="twitter:site" content="@{{vars.twitter}}">
-		<meta name="twitter:creator" content="@{{vars.twitter}}">
-		<meta name="twitter:url" content="//twitter.com/{{vars.twitter}}">
-		<meta name="twitter:title" content="{{vars.name}}">
-		<meta name="twitter:description" content="">
-		<meta name="twitter:image" content="//{{vars.domain}}/images/social-rectangle.png">
+		{% if vars.twitter != "TwitterName" %}
+			<!-- Twitter -->
+			<meta name="twitter:card" content="summary">
+			<meta name="twitter:site" content="@{{vars.twitter}}">
+			<meta name="twitter:creator" content="@{{vars.twitter}}">
+			<meta name="twitter:url" content="//twitter.com/{{vars.twitter}}">
+			<meta name="twitter:title" content="{{vars.name}}">
+			<meta name="twitter:description" content="">
+			<meta name="twitter:image" content="//{{vars.domain}}/images/social-rectangle.png">
+		{% endif %}
 
 		<script src="../../js/modernizr.js"></script>
 
@@ -135,10 +137,7 @@
 									<span class="js-nav_handle mobile_sidebar_handle">Menu</span>
 								</a>
 
-								<a class="site_search_handle" href="#site_search_lg">
-									<span class="site_search_handle_label">Search</span>
-									<span class="site_search_handle_icon">{{site.symbol("search")}}</span>
-								</a>
+								{% include "../partials/search-handle.twig" %}
 
 								{% include "../partials/search.twig" with {
 									modifier: "lg",
@@ -164,33 +163,35 @@
 				<div class="page_content">
 					<div class="fs-row">
 						{% if page.layout == "default" %}
-						<!-- Sub Nav -->
-						<div class="fs-cell-right fs-lg-4 aside_cell subnav_cell">
-							{% include "../partials/navigation/sub.twig" with {
-								title: sectiontitle,
-								links: subNavAlias
-							} %}
-						</div>
-						<!-- END: Sub Nav -->
+							<!-- Sub Nav -->
+							<div class="fs-cell-right fs-lg-4 aside_cell subnav_cell">
+								{% include "../partials/navigation/sub.twig" with {
+									title: sectiontitle,
+									links: subNavAlias
+								} %}
+							</div>
+							<!-- END: Sub Nav -->
 						{% endif %}
 
 						<!-- Main Content -->
 						<div class="fs-cell{% if page.layout == "default" %} fs-lg-8{% elseif page.layout == "full" %} fs-lg-10 fs-centered{% endif %} content_cell">
 							<main class="main_content" id="main_content" itemprop="mainContentOfPage">
 								{% if page.layout != "home" %}
-								<!-- Page Header -->
-								{% block page_header %}
-									<div class="page_header">
-										{% include "../partials/navigation/breadcrumb.twig" with {
-											links: breadcrumbNav
-										} %}
+									<!-- Page Header -->
+									{% block above_page_header %}{% endblock %}
+									{% block page_header %}
+										<div class="page_header">
+											{% include "../partials/navigation/breadcrumb.twig" with {
+												links: breadcrumbNav
+											} %}
 
-										{% if page.title %}
-											<h1 class="page_title" id="page_title">{{page.title}}</h1>
-										{% endif %}
-									</div>
-								{% endblock %}
-								<!-- END: Page Header -->
+											{% if page.title %}
+												<h1 class="page_title" id="page_title">{{page.title}}</h1>
+											{% endif %}
+										</div>
+									{% endblock %}
+									{% block below_page_header %}{% endblock %}
+									<!-- END: Page Header -->
 								{% endif %}
 
 								<!-- WYSIWYG - wrap all WYSIWYG text areas in `.typography` -->
@@ -204,6 +205,12 @@
 									{% block in_content_callouts %}{% endblock %}
 								</div>
 								<!-- END: In Content Callouts -->
+
+								<!-- WYSIWYG - wrap all WYSIWYG text areas in `.typography` -->
+								<div class="typography">
+									{% block typography_below %}{% endblock %}
+								</div>
+								<!-- END: WYSIWYG -->
 							</main>
 						</div>
 						<!-- END: Main Content -->
@@ -263,7 +270,13 @@
 		</div>
 		<!-- END: page_wrapper -->
 
-		<div class="js-navigation mobile_sidebar" id="mobile_sidebar" hidden data-navigation-handle=".js-nav_handle" data-navigation-content=".js-navigation_push" data-navigation-options='{"type": "overlay", "gravity": "right"}'>
+		<div class="js-navigation mobile_sidebar" id="mobile_sidebar" hidden data-navigation-handle=".js-nav_handle" data-navigation-content=".js-navigation_push" data-navigation-options='{
+			"type": "overlay",
+			"gravity": "right",
+			"labels": {
+				"open": "Close Menu"
+			}
+		}'>
 			{% include "../partials/search.twig" with {
 				modifier: "sm",
 				placeholder: "Search",

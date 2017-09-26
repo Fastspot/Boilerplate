@@ -2,7 +2,13 @@
 	Breadcrumb Navigation
 ============================================================================= */
 
-.breadcrumb_nav {}
+.breadcrumb_nav {
+	display: none;
+
+	@media #{$min_lg} {
+		display: block;
+	}
+}
 
 
 // Breadcrumb Links

@@ -1,12 +1,9 @@
-{# TODO: #}
-{% set cseKey = "011737558837375720776:mbfrjmyam1g" %}
-
 <div class="site_search_results{% if theme %} theme_{{theme}}{% endif %}">
 	<div class="fs-row">
 		<div class="fs-cell">
 			<script>
 				(function() {
-					var cx = '{{cseKey}}';
+					var cx = '{{vars.cseKey}}';
 					var gcse = document.createElement('script');
 					gcse.type = 'text/javascript';
 					gcse.async = true;
