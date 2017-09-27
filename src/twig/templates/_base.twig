@@ -62,7 +62,7 @@
 		{% endblock %}
 
 		{% block sectionTitle %}
-			{% set sectionTitle = "" %}
+			{% set sectionTitle = page.title %}
 		{% endblock %}
 
 		{% block mainNav %}
@@ -166,7 +166,7 @@
 							<!-- Sub Nav -->
 							<div class="fs-cell-right fs-lg-4 aside_cell subnav_cell">
 								{% include "../partials/navigation/sub.twig" with {
-									title: sectiontitle,
+									title: sectionTitle,
 									links: subNavAlias
 								} %}
 							</div>
