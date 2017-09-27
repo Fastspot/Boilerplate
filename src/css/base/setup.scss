@@ -198,80 +198,80 @@ $margin_xl: 80px;
 // Margins
 // =============================================================================
 
-@mixin margined_top() {
-	margin-top: $margin_sm;
+@mixin margined_top($m: 1) {
+	margin-top: $margin_sm * $m;
 }
 
-@mixin margined_bottom() {
-	margin-bottom: $margin_sm;
+@mixin margined_bottom($m: 1) {
+	margin-bottom: $margin_sm * $m;
 }
 
-@mixin margined() {
-	@include margined_top;
-	@include margined_bottom;
+@mixin margined($m: 1) {
+	@include margined_top($m);
+	@include margined_bottom($m);
 }
 
-@mixin margined_md_top() {
-	@include margined_top;
+@mixin margined_md_top($m: 1) {
+	@include margined_top($m);
 
 	@media #{$min_md} {
-		margin-top: $margin_md;
+		margin-top: $margin_md * $m;
 	}
 }
 
-@mixin margined_md_bottom() {
-	@include margined_bottom;
+@mixin margined_md_bottom($m: 1) {
+	@include margined_bottom($m);
 
 	@media #{$min_md} {
-		margin-bottom: $margin_md;
+		margin-bottom: $margin_md * $m;
 	}
 }
 
-@mixin margined_md() {
-	@include margined_md_top;
-	@include margined_md_bottom;
+@mixin margined_md($m: 1) {
+	@include margined_md_top($m);
+	@include margined_md_bottom($m);
 }
 
-@mixin margined_lg_top() {
-	@include margined_md_top;
+@mixin margined_lg_top($m: 1) {
+	@include margined_md_top($m);
 
 	@media #{$min_lg} {
-		margin-top: $margin_lg;
+		margin-top: $margin_lg * $m;
 	}
 }
 
-@mixin margined_lg_bottom() {
-	@include margined_md_bottom;
+@mixin margined_lg_bottom($m: 1) {
+	@include margined_md_bottom($m);
 
 	@media #{$min_lg} {
-		margin-bottom: $margin_lg;
+		margin-bottom: $margin_lg * $m;
 	}
 }
 
-@mixin margined_lg() {
-	@include margined_lg_top;
-	@include margined_lg_bottom;
+@mixin margined_lg($m: 1) {
+	@include margined_lg_top($m);
+	@include margined_lg_bottom($m);
 }
 
-@mixin margined_xl_top() {
-	@include margined_lg_top;
+@mixin margined_xl_top($m: 1) {
+	@include margined_lg_top($m);
 
 	@media #{$min_xl} {
-		margin-top: $margin_xl;
+		margin-top: $margin_xl * $m;
 	}
 }
 
-@mixin margined_xl_bottom() {
-	@include margined_lg_bottom;
+@mixin margined_xl_bottom($m: 1) {
+	@include margined_lg_bottom($m);
 
 	@media #{$min_xl} {
-		margin-bottom: $margin_xl;
+		margin-bottom: $margin_xl * $m;
 	}
 }
 
-@mixin margined_xl() {
-	@include margined_xl_top;
-	@include margined_xl_bottom;
+@mixin margined_xl($m: 1) {
+	@include margined_xl_top($m);
+	@include margined_xl_bottom($m);
 }
 
 @mixin margined_top_none() {
