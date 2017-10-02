@@ -8,7 +8,14 @@
 
 .page_feature {}
 
-.page_content {}
+.page_content {
+
+	> .fs-row {
+		@include clearfix;
+
+		display: block;
+	}
+}
 
 .aside_cell {
 
@@ -19,7 +26,12 @@
 
 .subnav_cell {}
 
-.content_cell {}
+.content_cell {
+
+	@media #{$min_lg} {
+		float: left;
+	}
+}
 
 .main_content {
 	@include focus_outline_none;
