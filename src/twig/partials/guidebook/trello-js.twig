@@ -29,7 +29,7 @@
 	}
 
 	function grabCards() {
-		Trello.get('lists/58dd17083dd24d4a901ef934/cards', function(data) {
+		Trello.get('lists/{{vars.trelloList}}/cards', function(data) {
 			var getImages = function(i) {
 				Trello.get('cards/' + data[card].id + '/attachments', function(images) {
 					createCard(data[i], images, i);
