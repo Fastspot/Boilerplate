@@ -14,46 +14,6 @@
 {% endblock %}
 
 {% block in_content_callouts %}
-	{% include "../partials/title.twig" with {
-		title: "image"
-	} %}
-
-	{{site.image("test", img.wide.med, 1)}}
-
-	{% include "../partials/title.twig" with {
-		title: "picture"
-	} %}
-
-	{{site.picture({
-		class: "media",
-		fallback: "placeholder",
-		image: 2,
-		sources: {
-			"1220px": img.wide.med,
-			"500px": img.wide.sml
-		}
-	})}}
-
-	{% include "../partials/title.twig" with {
-		title: "background"
-	} %}
-
-	<style>
-		.test_background {
-			height: 400px;
-		}
-	</style>
-
-	{% include "../partials/background.twig" with {
-		class: "test",
-		image: 3,
-		sources: {
-			"0px": img.square.sml,
-			"740px": img.ultrawide.med,
-			"980px": img.ultrawide.lrg,
-			"1220px": img.ultrawide.xlrg
-		}
-	} %}
 {% endblock %}
 
 {% block sidebar %}
