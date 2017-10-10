@@ -2,84 +2,84 @@
 // =============================================================================
 
 .photo_prop {
-  max-width: 240px;
-  width: 100%;
+	max-width: 240px;
+	width: 100%;
 
-  position: absolute;
-  top: 0;
-  left: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
 
-  background: #fff;
-  border-radius: .15em;
-  display: none;
-  font-family: sans-serif;
-  line-height: 1.35;
+	background: #fff;
+	border-radius: .15em;
+	display: none;
+	font-family: sans-serif;
+	line-height: 1.35;
 
-  &.visible {
-    display: block;
-  }
+	&.visible {
+		display: block;
+	}
 
-  &.lower-region {
-    clip-path:
-      polygon(
-        0 0,
-        100% 0,
-        100% calc(100% - 50px),
-        50% 100%,
-        0 calc(100% - 50px)
-      );
-    padding: 10px 10px 60px;
-    transform: translate(-50%, -100%);
-  }
+	&.lower-region {
+		clip-path:
+			polygon(
+				0 0,
+				100% 0,
+				100% calc(100% - 50px),
+				50% 100%,
+				0 calc(100% - 50px)
+			);
+		padding: 10px 10px 60px;
+		transform: translate(-50%, -100%);
+	}
 
-  &.upper-region {
-    clip-path:
-      polygon(
-        0 100%,
-        0 50px,
-        50% 0,
-        100% 50px,
-        100% 100%
-      );
-    padding: 60px 10px 10px;
-    transform: translate(-50%, 0);
-  }
+	&.upper-region {
+		clip-path:
+			polygon(
+				0 100%,
+				0 50px,
+				50% 0,
+				100% 50px,
+				100% 100%
+			);
+		padding: 60px 10px 10px;
+		transform: translate(-50%, 0);
+	}
 }
 
 .photo_prop_close {
-  height: 30px;
-  width: 30px;
+	height: 30px;
+	width: 30px;
 
-  position: absolute;
-  top: 50%;
-  right: 0;
+	position: absolute;
+	top: 50%;
+	right: 0;
 
-  background: #fff;
-  border-radius: 1em 0 0 1em;
-  box-shadow: -2px 0 2px 0 rgba(#000, .15);
-  cursor: pointer;
-  transition:
-    background .25s,
-    color .25s;
+	background: #fff;
+	border-radius: 1em 0 0 1em;
+	box-shadow: -2px 0 2px 0 rgba(#000, .15);
+	cursor: pointer;
+	transition:
+		background .25s,
+		color .25s;
 
-  &:focus,
-  &:hover {
-    background: #333;
-    color: #fff;
-  }
+	&:focus,
+	&:hover {
+		background: #333;
+		color: #fff;
+	}
 
-  .lower-region & {
-    transform: translate(0, calc(-50% - 25px));
-  }
+	.lower-region & {
+		transform: translate(0, calc(-50% - 25px));
+	}
 
-  .upper-region & {
-    transform: translate(0, calc(-50% + 25px));
-  }
+	.upper-region & {
+		transform: translate(0, calc(-50% + 25px));
+	}
 }
 
 .photo_prop_detail {
-  background: #f0f0f0;
-  border-radius: .15em;
-  display: flex;
-  padding: 15% 20px;
+	background: #f0f0f0;
+	border-radius: .15em;
+	display: flex;
+	padding: 15% 20px;
 }
