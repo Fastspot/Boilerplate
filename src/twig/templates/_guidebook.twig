@@ -49,7 +49,8 @@
 					<header class="fs-cell fs-lg-10 fs-xl-8 gb_page_details">
 						{% if page.intro %}
 							<h2 class="gb_page_intro">{{page.intro}}{{vars.name}}.</h2>
-						{% elseif page.caption %}
+						{% endif %}
+						{% if page.caption %}
 							<h4 class="gb_page_title">{{page.title}}</h4>
 							<p class="gb_page_caption">{{page.caption}}</p>
 						{% endif %}

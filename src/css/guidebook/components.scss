@@ -220,6 +220,14 @@
 // Trello
 // =============================================================================
 
+.gb_trello_notification {
+  color: #DA2315;
+
+  .gb_typography & {
+    margin: 40px 0 80px;
+  }
+}
+
 .gb_trello_detail {
   @include clearfix;
 

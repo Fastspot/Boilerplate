@@ -1,0 +1,15 @@
+{% extends "_base.twig" %}
+
+{% block page %}
+	{% set page = {
+		title: "Full Width Components",
+		layout: "style-guide"
+	} %}
+{% endblock %}
+
+{% block full_width_callouts %}
+	{% include "../partials/title.twig" with {
+		full: true,
+		title: "Component"
+	} %}
+{% endblock %}

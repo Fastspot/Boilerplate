@@ -31,7 +31,7 @@
     "color": "",
     "images": "clientname",
     "cseKey": "011737558837375720776:mbfrjmyam1g",
-    "trelloList": "58dd17083dd24d4a901ef9",
+    "trelloList": "",
     "mq_min_ht": "800",
     "mq_min_xs": "320",
     "mq_min_sm": "500",
@@ -223,38 +223,38 @@
     "subNav": [
       {
         "modifier": "",
-        "href": "fs-style-guide.html",
-        "name": "Style Guide",
+        "href": "../",
+        "name": "Sitemap",
         "children": ""
       },
       {
         "modifier": "",
-        "href": "fs-style-guide-feature.html",
+        "href": "dev-feature.html",
         "name": "Page Feature Components",
         "children": ""
       },
       {
         "modifier": "",
-        "href": "fs-style-guide-full-width.html",
+        "href": "dev-full-width.html",
         "name": "Full Width Components",
         "children": ""
       },
       {
         "modifier": "",
-        "href": "fs-style-guide-in-content.html",
+        "href": "dev-in-content.html",
         "name": "In Content Components",
         "children": ""
       },
       {
         "modifier": "",
-        "href": "fs-style-guide-sidebar.html",
+        "href": "dev-sidebar.html",
         "name": "Sidebar Components",
         "children": ""
       },
       {
         "modifier": "",
-        "href": "../",
-        "name": "Sitemap",
+        "href": "dev-html.html",
+        "name": "HTML Elements",
         "children": ""
       }
     ],

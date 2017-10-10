@@ -108,6 +108,7 @@
 
 		<!-- Page Wrapper -->
 		<div class="js-navigation_push page_wrapper">
+			{% if page.layout != "style-guide" %}
 			<!-- Header -->
 			<header class="header" id="header" itemscope itemtype="http://schema.org/WPHeader">
 				<div class="header_ribbon">
@@ -150,6 +151,7 @@
 				</div>
 			</header>
 			<!-- END: Header -->
+			{% endif %}
 
 			<!-- Page -->
 			<div class="page">
@@ -162,7 +164,7 @@
 				<!-- Page Content -->
 				<div class="page_content">
 					<div class="fs-row">
-						{% if page.layout == "default" %}
+						{% if page.layout == "default" or page.layout == "style-guide" %}
 							<!-- Sub Nav -->
 							<div class="fs-cell-right fs-lg-4 aside_cell subnav_cell">
 								{% include "../partials/navigation/sub.twig" with {
@@ -174,7 +176,7 @@
 						{% endif %}
 
 						<!-- Main Content -->
-						<div class="fs-cell{% if page.layout == "default" %} fs-lg-8{% elseif page.layout == "full" %} fs-lg-10 fs-centered{% endif %} content_cell">
+						<div class="fs-cell{% if page.layout == "default" or page.layout == "style-guide" %} fs-lg-8{% elseif page.layout == "full" %} fs-lg-10 fs-centered{% endif %} content_cell">
 							<main class="main_content" id="main_content" itemprop="mainContentOfPage">
 								{% if page.layout != "home" %}
 									<!-- Page Header -->
@@ -236,6 +238,7 @@
 			</div>
 			<!-- END: Page -->
 
+			{% if page.layout != "style-guide" %}
 			<!-- Footer -->
 			<footer class="footer" id="footer" itemscope itemtype="http://schema.org/WPFooter">
 				<div class="footer_ribbon">
@@ -267,9 +270,11 @@
 				</div>
 			</footer>
 			<!-- END: Footer -->
+			{% endif %}
 		</div>
 		<!-- END: page_wrapper -->
 
+		{% if page.layout != "style-guide" %}
 		<div class="js-navigation mobile_sidebar" id="mobile_sidebar" hidden data-navigation-handle=".js-nav_handle" data-navigation-content=".js-navigation_push" data-navigation-options='{
 			"type": "overlay",
 			"gravity": "right",
@@ -297,6 +302,7 @@
 				links: secondaryNavAlias
 			} %}
 		</div>
+		{% endif %}
 
 		<script src="../../js/site.js"></script>
 

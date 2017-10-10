@@ -133,6 +133,7 @@ gulp.task('sitemap', function() {
 		.pipe(twig({
 			data: {
 				name: packageJSON.name,
+				trello: packageJSON.vars.trelloList,
 				sitemap: require('./static/sitemap.json')
 			}
 		}))

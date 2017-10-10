@@ -1,4 +1,9 @@
 <div class="gb_trello_wrapper">
+	{% if vars.trelloList == "" %}
+		<div class="fs-lg-10 fs-xl-8 gb_typography">
+			<h1 class="gb_trello_notification">Coming Soon!</h1>
+		</div>
+	{% endif %}
 	<div class="gb_trello_detail">
 		<div class="fs-lg-10 fs-xl-8 gb_typography">
 			<h1 class="gb_trello_detail_title"></h1>
