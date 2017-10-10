@@ -9,6 +9,7 @@
 		mute: "false",
 		poster: img.wide.lrg,
 		image: image,
+    reference: true,
 		sources: {
 			video: "https://www.youtube.com/watch?v=XPjQhvjQbSM",
 			webm: "http://example.com/video.webm",
@@ -18,6 +19,7 @@
 	} %}
 #}
 
-<div class="js-background {{class}}_background" data-background-options='{"source": {
+{% set reference = reference|default(true) %}
+<div class="js-background {{class}}_background" {% if reference %}data-reference="{% for key, source in sources %}{{key}}: {{source}}{% if not loop.last %}, {% endif %}{% endfor %}"{% endif %} data-background-options='{"source": {
 {% if poster %}"poster": "//images.fastspot.com/{{vars.namespace}}/{{poster}}/{{image}}", {% endif %}{% for key, source in sources %}"{{key}}": "{{source}}"{% if not loop.last %}, {% endif %}{% endfor %}
 }{% if autoPlay == "false" %}, "autoPlay": false{% endif %}{% if embedRatio %}, "embedRatio": {{embedRatio}}{% endif %}{% if loop == "false" %}, "loop": false{% endif %}{% if mute == "false" %}, "mute": false{% endif %}{% if lazy == "true" %}, "lazy": true{% endif %}{% if lazyEdge %}, "lazyEdge": "{{lazyEdge}}"{% endif %}}'></div>

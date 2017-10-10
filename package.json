@@ -108,7 +108,7 @@
       "node_modules/what-input/dist/what-input.js",
       "src/js/site.js",
       "src/js/modules/page.js",
-      "src/js/modules/map.js"
+      "src/js/modules/images.js"
     ]
   },
   "js_ignores": [
