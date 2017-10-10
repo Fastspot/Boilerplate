@@ -42,8 +42,6 @@ Site.modules.Images = (function($, Site) {
     $(".photo_prop").css("top", e.pageY);
     $(".photo_prop").css("left", e.pageX);
 
-    console.log($(window).height());
-
     if(e.clientY < $(window).height() / 2) {
       $(".photo_prop").addClass("upper-region");
     } else {
