@@ -8,6 +8,8 @@ Site.modules.Module = (function($, Site) {
 
 	}
 
+	function bindUI() {}
+
 	Site.onInit.push(init);
 
 	return {};
