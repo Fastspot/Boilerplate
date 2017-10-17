@@ -265,31 +265,31 @@
     "socialNav": [
       {
         "modifier": "",
-        "symbol": "",
+        "symbol": "facebook",
         "name": "Facebook",
         "href": "//www.facebook.com"
       },
       {
         "modifier": "",
-        "symbol": "",
+        "symbol": "twitter",
         "name": "Twitter",
         "href": "//www.twitter.com"
       },
       {
         "modifier": "",
-        "symbol": "",
+        "symbol": "instagram",
         "name": "Instagram",
         "href": "//www.instagram.com"
       },
       {
         "modifier": "",
-        "symbol": "",
+        "symbol": "youtube",
         "name": "Youtube",
         "href": "//www.youtube.com"
       },
       {
         "modifier": "",
-        "symbol": "",
+        "symbol": "linkedin",
         "name": "Linkedin",
         "href": "//www.linkedin.com"
       }
