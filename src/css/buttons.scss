@@ -5,10 +5,12 @@
 button {
 	background: none;
 	border: none;
+	cursor: pointer;
 	padding: 0;
 }
 
 @mixin button() {
+	cursor: pointer;
 	padding: 10px;
 	transition:
 		background $base_speed,
