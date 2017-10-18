@@ -41,6 +41,8 @@
 			value: "Option One"
 		}
 	])}}
+
+	{{site.title("Title", "full")}}
 #}
 
 
@@ -151,5 +153,20 @@
 				<span class="{{type}}_label">{{item.value}}</span>
 			</label>
 		{% endfor %}
+	</div>
+{% endmacro %}
+
+
+{% macro title(title, type) %}
+	<div class="typography">
+		{% if type == "full" %}
+		<div class="fs-row">
+			<div class="fs-cell">
+		{% endif %}
+				<h4>{{title}}</h4>
+		{% if type == "full" %}
+			</div>
+		</div>
+		{% endif %}
 	</div>
 {% endmacro %}

@@ -4,7 +4,7 @@
 	</div>
 	<div class="sub_nav_handle_wrapper">
 		<button class="js-sub_nav_handle sub_nav_handle">{% if title %}{{title}}{% else %}In This Section{% endif %}</button>
-		<span class="sub_nav_handle_icon">{{site.symbol()}}</span>
+		<span class="sub_nav_handle_icon">{{site.symbol("")}}</span>
 	</div>
 	<div class="js-navigation js-sub-nav	sub_nav_list" data-navigation-handle=".js-sub_nav_handle" data-navigation-options='{"theme": "sub_nav_base", "labels": {"closed": "{% if title %}{{title}}{% else %}In This Section{% endif %}", "Open": "Close"}}'>
 		{% for link in links %}
