@@ -1,3 +1,6 @@
+/* ==========================================================================
+	Imports
+============================================================================= */
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -3203,12 +3206,21 @@ template {
     margin-left: 0;
     margin-right: 0; } }
 
+/* ==========================================================================
+	Fonts
+============================================================================= */
+/* ==========================================================================
+	Setup
+============================================================================= */
 [data-whatinput="mouse"] a:focus,
 [data-whatinput="mouse"] button:focus,
 [data-whatinput="touch"] a:focus,
 [data-whatinput="touch"] button:focus {
   outline: none; }
 
+/* ==========================================================================
+	Colors
+============================================================================= */
 /* ==========================================================================
 	Base Elements
 ============================================================================= */
@@ -3286,6 +3298,88 @@ hr {
   .symbol_search {
     height: 20px;
     width: 20px; }
+
+/* ==========================================================================
+	Helper Mixins
+============================================================================= */
+.cover {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; }
+
+.cover_image {
+  position: relative;
+  z-index: 2; }
+  .cover_image img {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100% !important;
+    min-height: 100% !important;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    z-index: 0; }
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%); }
+
+.center_vertical {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%); }
+
+.absolute_center {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto; }
+
+.hide {
+  display: none !important;
+  visibility: hidden; }
+
+.visually_hide {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  border: 0;
+  clip: rect(0 0 0 0);
+  margin: -1px;
+  overflow: hidden;
+  padding: 0; }
+  .visually_hide.focusable:active, .visually_hide.focusable:focus {
+    width: auto;
+    height: auto;
+    position: static;
+    clip: auto;
+    margin: 0;
+    overflow: visible; }
+
+.offscreen {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  left: -999px;
+  overflow: hidden;
+  z-index: -999; }
+
+.clearfix:after {
+  clear: both;
+  content: "";
+  display: table; }
 
 /* ==========================================================================
 	Type Base
@@ -3370,19 +3464,31 @@ strong {
 
 .typography .block_left,
 .typography .block_right,
-.typography .block_center {
+.typography .block_center,
+.typography .alignleft,
+.typography .alignright,
+.typography .aligncenter,
+.typography .alignnone {
   width: auto;
   display: table;
   margin-bottom: 20px;
   table-layout: fixed; }
   .typography .block_left img,
   .typography .block_right img,
-  .typography .block_center img {
+  .typography .block_center img,
+  .typography .alignleft img,
+  .typography .alignright img,
+  .typography .aligncenter img,
+  .typography .alignnone img {
     display: block;
     max-width: 100%; }
   .typography .block_left figcaption,
   .typography .block_right figcaption,
-  .typography .block_center figcaption {
+  .typography .block_center figcaption,
+  .typography .alignleft figcaption,
+  .typography .alignright figcaption,
+  .typography .aligncenter figcaption,
+  .typography .alignnone figcaption {
     font-size: 14px;
     font-size: 0.875rem;
     line-height: 1.57143;
@@ -3391,29 +3497,37 @@ strong {
     margin-top: 10px; }
 
 .typography .block_left,
-.typography .block_right {
+.typography .block_right,
+.typography .alignleft,
+.typography .alignright {
   max-width: 50%; }
   @media screen and (max-width: 499px) {
     .typography .block_left,
-    .typography .block_right {
+    .typography .block_right,
+    .typography .alignleft,
+    .typography .alignright {
       max-width: 100%;
       float: none;
       margin-right: 0;
       margin-left: 0; } }
 
 @media screen and (min-width: 500px) {
-  .typography .block_left {
+  .typography .block_left,
+  .typography .alignleft {
     float: left;
     margin-right: 20px; } }
 
 @media screen and (min-width: 500px) {
-  .typography .block_right {
+  .typography .block_right,
+  .typography .alignright {
     float: right;
     margin-left: 20px; } }
 
-.typography .block_center {
+.typography .block_center,
+.typography .aligncenter {
   text-align: center; }
-  .typography .block_center img {
+  .typography .block_center img,
+  .typography .aligncenter img {
     margin-right: auto;
     margin-left: auto; }
 
@@ -3495,11 +3609,13 @@ strong {
 button {
   background: none;
   border: none;
+  cursor: pointer;
   padding: 0; }
 
 /* Skip Link
 ============================================================================= */
 .skip_link {
+  cursor: pointer;
   padding: 10px;
   -webkit-transition: background 0.25s, border 0.25s, color 0.25s, -webkit-box-shadow 0.25s, -webkit-transform 0.25s;
   transition: background 0.25s, border 0.25s, color 0.25s, -webkit-box-shadow 0.25s, -webkit-transform 0.25s;
@@ -3521,6 +3637,12 @@ button {
   transition: top .35s, -webkit-transform .35s;
   transition: top .35s, transform .35s;
   transition: top .35s, transform .35s, -webkit-transform .35s; }
+  .skip_link_label {
+    display: inline-block;
+    vertical-align: middle; }
+  .skip_link_icon {
+    display: inline-block;
+    vertical-align: middle; }
   .skip_link:focus, .skip_link:active {
     -webkit-transform: translate(-50%, 40px);
             transform: translate(-50%, 40px); }
@@ -3709,6 +3831,9 @@ select {
   text-overflow: ellipsis; }
 
 .site_search_input:-ms-input-placeholder {
+  text-overflow: ellipsis; }
+
+.site_search_input::-ms-input-placeholder {
   text-overflow: ellipsis; }
 
 .site_search_input::placeholder {
@@ -3911,6 +4036,9 @@ select {
   padding-bottom: 20px;
   pointer-events: none; }
 
+/* ==========================================================================
+	Photo Size Helper
+============================================================================= */
 .photo_prop {
   max-width: 240px;
   width: 100%;
@@ -4273,6 +4401,7 @@ select {
       display: none; } }
 
 .sub_nav_handle {
+  cursor: pointer;
   padding: 10px;
   -webkit-transition: background 0.25s, border 0.25s, color 0.25s, -webkit-box-shadow 0.25s, -webkit-transform 0.25s;
   transition: background 0.25s, border 0.25s, color 0.25s, -webkit-box-shadow 0.25s, -webkit-transform 0.25s;
@@ -4284,6 +4413,12 @@ select {
   position: relative;
   padding-right: 40px;
   text-align: left; }
+  .sub_nav_handle_label {
+    display: inline-block;
+    vertical-align: middle; }
+  .sub_nav_handle_icon {
+    display: inline-block;
+    vertical-align: middle; }
   @media screen and (min-width: 980px) {
     .sub_nav_handle {
       display: none; } }

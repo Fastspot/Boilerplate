@@ -1,4 +1,110 @@
-// Helper Mixins
-// =============================================================================
+/* ==========================================================================
+	Helper Mixins
+============================================================================= */
 
-@mixin helper() {}
+@mixin helper {}
+
+.cover {
+	height: 100%;
+	width: 100%;
+
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.cover_image {
+	position: relative;
+	z-index: 2;
+
+	img {
+		width: auto;
+		height: auto;
+
+		position: absolute;
+		top: 50%;
+		left: 50%;
+
+		min-width: 100% !important;
+		min-height: 100% !important;
+		transform: translate(-50%, -50%);
+		z-index: 0;
+	}
+}
+
+.center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	transform: translate(-50%, -50%);
+}
+
+.center_vertical {
+	position: absolute;
+	top: 50%;
+
+	transform: translateY(-50%);
+}
+
+.absolute_center {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	margin: auto;
+}
+
+.hide {
+	display: none !important;
+	visibility: hidden;
+}
+
+.visually_hide {
+	width: 1px;
+	height: 1px;
+
+	position: absolute;
+
+	border: 0;
+	clip: rect(0 0 0 0);
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+
+	&.focusable:active,
+	&.focusable:focus {
+		width: auto;
+		height: auto;
+
+		position: static;
+
+		clip: auto;
+		margin: 0;
+		overflow: visible;
+	}
+}
+
+.offscreen {
+	width: 1px;
+	height: 1px;
+
+	position: absolute;
+	left: -999px;
+
+	overflow: hidden;
+	z-index: -999;
+}
+
+.clearfix {
+
+	&:after {
+		clear: both;
+		content: "";
+		display: table;
+	}
+}

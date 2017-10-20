@@ -75,7 +75,7 @@ strong {
 }
 
 
-// typography
+// Typography
 // =============================================================================
 
 .typography {
@@ -164,7 +164,11 @@ strong {
 
 	.block_left,
 	.block_right,
-	.block_center {
+	.block_center,
+	.alignleft,
+	.alignright,
+	.aligncenter,
+	.alignnone {
 		width: auto;
 
 		display: table;
@@ -186,7 +190,9 @@ strong {
 	}
 
 	.block_left,
-	.block_right {
+	.block_right,
+	.alignleft,
+	.alignright  {
 		max-width: 50%;
 
 		@media #{$max_sm} {
@@ -198,7 +204,8 @@ strong {
 		}
 	}
 
-	.block_left {
+	.block_left,
+	.alignleft {
 
 		@media #{$min_sm} {
 			float: left;
@@ -206,7 +213,8 @@ strong {
 		}
 	}
 
-	.block_right {
+	.block_right,
+	.alignright {
 
 		@media #{$min_sm} {
 			float: right;
@@ -214,7 +222,8 @@ strong {
 		}
 	}
 
-	.block_center {
+	.block_center,
+	.aligncenter {
 		text-align: center;
 
 		img {
