@@ -12413,6 +12413,7 @@ Site.modules.Page = (function($, Site) {
 	var $subNav = $(".js-sub-nav");
 	var prev = "caret_left";
 	var next = "caret_right";
+	var navMaxMQ = Site.maxLG + "px";
 
 	function init() {
 
@@ -12441,7 +12442,7 @@ Site.modules.Page = (function($, Site) {
 		});
 		Site.$body.find(".js-navigation")
 			.navigation({
-				maxWidth: Site.maxLG + "px"
+				maxWidth: navMaxMQ
 			})
 			.on("open.navigation", function() {
 				trackEvent($(this).data("analytics-open"));

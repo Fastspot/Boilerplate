@@ -4,403 +4,318 @@
 
 Site.modules.Map = (function($, Site) {
 
-	var map;
-	var bounds;
-	var groups;
-	var filtersGroup;
-	var lightbox;
-	var lightboxClose;
-	var lightboxBody;
+  var app,
+      data,
+      map,
+      bounds,
+      inactiveMarker,
+      activeMarker,
+      layers,
+      layersControl,
+      currentLayer,
+      categories,
+      categoriesHTML,
+      places,
+      filters,
+      filtersData,
+      filtersHTML,
+      lightbox,
+      lightboxData,
+      lightboxHTML;
 
-	var state = {
-		layer: '',
-		filter: ''
-	};
+  function init() {
+    if ($("#map").length) {
+      bindData();
+      setupMap();
+      setupMarkers();
+      setupLayers();
+      setupCategories();
+      setupFilters();
+      bindUI();
+      updatePlaces();
+      console.log(data);
+      console.log(layers);
+    }
+  }
 
-	var layers = [
-		{
-			label: 'upper',
-			image: '../../images/map.jpg'
-		},
-		{
-			label: 'lower',
-			image: '../../images/map_hue.jpg'
-		}
-	];
+  function bindData() {
+    app = $('html');
 
-	var layersControl = {
-		'<span class="map_layer_quantity_wrapper"><span class="map_layer_quantity"></span></span><span class="map_layer_label">upper level</span>': '',
-		'<span class="map_layer_quantity_wrapper"><span class="map_layer_quantity"></span></span><span class="map_layer_label">lower level</span>': ''
-	};
+    data = mapData;
 
-	var data = [
-		{
-			category: 'Transportation',
-			points: [
-				{
-					coordinates: [800, 800],
-					attr: {
-						layer: 'upper',
-						title: 'Shuttle',
-						airline: 'American'
-					}
-				},
-				{
-					coordinates: [1000, 1000],
-					attr: {
-						layer: 'lower',
-						title: 'Train',
-						airline: 'Spirit'
-					}
-				}
-			]
-		},
-		{
-			category: 'Food',
-			points: [
-				{
-					coordinates: [1200, 1200],
-					attr: {
-						layer: 'lower',
-						title: 'Dunkin Donuts',
-						airline: 'American'
-					}
-				}
-			]
-		}
-	];
+    layers = [
+      {
+        label: 'upper',
+        image: '../../images/map.jpg',
+        group: []
+      },
+      {
+        label: 'lower',
+        image: '../../images/map_hue.jpg',
+        group: []
+      }
+    ];
 
-	var filters = [
-		{
-			label: 'Airline',
-			options: [
-				'Airline',
-				'American',
-				'Spirit'
-			]
-		},
-		{
-			label: 'Gate'
-		}
-	];
+    layersControl = {
+      '<span data-label="upper" class="map_layer_quantity_wrapper"><span class="map_layer_quantity"></span></span><span class="map_layer_label">upper level</span>': '',
+  		'<span data-label="lower" class="map_layer_quantity_wrapper"><span class="map_layer_quantity"></span></span><span class="map_layer_label">lower level</span>': ''
+    };
 
-	function init() {
-		if($('#map').length) {
-			setupMap();
-			setupMarkers();
-			setupLayers();
-			setupGroups();
-			setupFilters();
-			setupLightbox();
-			bindUI();
-			updateMap();
-		}
-	}
+    filtersData = [
+  		{
+        type: 'dropdown',
+  			label: 'Airline',
+  			options: [
+  				'Airline',
+  				'American',
+  				'Spirit'
+  			]
+  		},
+  		{
+        type: 'input',
+  			label: 'Gate'
+  		}
+  	];
 
-	function setupMap() {
-		map = L.map('map', {
+    lightbox = $('.map_lightbox_body');
+  }
+
+  function setupMap() {
+    map = L.map('map', {
 			crs: L.CRS.Simple,
 			zoomControl: false,
 			minZoom: 0,
 			attributionControl: false
 		});
 
-		L.control.zoom({
-			position:'bottomright'
+    L.control.zoom({
+			position: 'bottomright'
 		}).addTo(map);
 
 		bounds = [[0, 0], [2000, 2000]];
 
 		map.fitBounds(bounds);
-	}
+  }
 
-	function setupMarkers() {
-		for(var key in data) {
-			var points = data[key].points;
+  function setupMarkers() {
+    inactiveMarker = L.icon({
+			iconUrl: '../../images/map_marker_red.svg',
+			iconSize: [26, 35],
+			iconAnchor: [13, 35]
+		});
 
-			for(var point in points) {
-				var latlng = L.latLng(points[point].coordinates);
+    activeMarker = L.icon({
+			iconUrl: '../../images/map_marker_black.svg',
+			iconSize: [40, 56],
+			iconAnchor: [20, 56]
+		});
 
-				points[point].marker = L.marker(latlng, {
-					data: points[point].attr
-				}).bindPopup('', {
-					autoPan: false
-				})
-					.on('click', flyToMarker)
-					.on('popupopen', openLightbox)
-					.on('popupclose', closeLightbox);
-			}
-		}
-	}
+    for (var key in data) {
+      if (data.hasOwnProperty(key)) {
+        data[key].markers = [];
 
-	function setupLayers() {
-		for(var key in layers) {
-			layers[key].group = [];
-			layers[key].quantity = 0;
+        for(var point in data[key].points) {
+          data[key].points[point].attr.id = key + ' ' + point;
 
-			for(var group in data) {
-				var points = data[group].points;
+          data[key].markers.push(L.marker(data[key].points[point].coordinates, {
+            data: data[key].points[point].attr,
+            icon: inactiveMarker
+          })
+            .bindPopup('', {
+              autoPan: false
+            })
+    					.on('click', flyToMarker)
+    					.on('popupopen', openLightbox)
+    					.on('popupclose', closeLightbox));
 
-				for(var point in points) {
-					if(points[point].attr.layer === layers[key].label) {
-						layers[key].group.push(points[point].marker);
-					}
-				}
-			}
+          for (var layer in layers) {
+            if (layers.hasOwnProperty(layer)) {
+              if (data[key].points[point].attr.layer === layers[layer].label) {
+                layers[layer].group.push(data[key].markers[point]);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 
-			layers[key].control = L.layerGroup(layers[key].group);
-			layers[key].control.addLayer(L.imageOverlay(layers[key].image, bounds));
-		}
+  function setupLayers() {
+    for (var key in layers) {
+      if (layers.hasOwnProperty(key)) {
+        layers[key].control = L.layerGroup(layers[key].group);
+  			layers[key].control.addLayer(L.imageOverlay(layers[key].image, bounds));
+      }
+    }
 
-		layers[0].control.addTo(map);
-		state.layer = layers[0].control._leaflet_id;
+    var controlKey = 0;
 
-		var controlKey = 0;
+    for (var key in layersControl) {
+      if (layersControl.hasOwnProperty(key)) {
+        layersControl[key] = layers[controlKey].control;
+        controlKey += 1;
+      }
+    }
 
-		for(var key in layersControl) {
-			layersControl[key] = layers[controlKey].control;
-			controlKey += 1;
-		}
+    layers[0].control.addTo(map);
+    currentLayer = layers[0].label;
 
-		L.control.layers(layersControl, null, {
+    L.control.layers(layersControl, null, {
 			position: 'bottomleft'
 		}).addTo(map);
+  }
 
-		for(var key in layers) {
-			for(var group in data) {
-				var points = data[group].points;
+  function setupCategories() {
+    categories = $('.map_categories');
+    categoriesHTML = '';
 
-				for(var point in points) {
-					if(points[point].attr.layer === layers[key].label) {
-						points[point].attr['layer-id'] = layers[key].control._leaflet_id;
-					}
-				}
-			}
-		}
-	}
+    for (var key in data) {
+      if (data.hasOwnProperty(key)) {
+        categoriesHTML += '<div class="map_category">' +
+          '<button class="map_category_switch" data-category="' + data[key].category + '">' + data[key].category + '</button>' +
+          '<div class="map_sorter">' +
+            '<button class="map_sorter_switch map_sorter_switch_name">Name</button>' +
+          '</div>' +
+          '<div class="map_places">';
 
-	function setupGroups() {
-		groups = $('.map_groups');
+        for (var point in data[key].points) {
+          categoriesHTML += '<div class="map_place" data-id="' + key + ' ' + point + '" data-layer="' + data[key].points[point].attr.layer + '">' + data[key].points[point].attr.title + '</div>';
+        }
 
-		for(var key in data) {
-			var group = el({
-				type: 'div',
-				class: 'map_group'
-			});
+        categoriesHTML += '<p class="map_places_empty">Sorry, no results here. Try broadening your filters.</p>';
+        categoriesHTML += '</div></div>';
+      }
+    }
 
-			var groupSwitch = el({
-				type: 'button',
-				class: 'map_group_switch',
-				html: '<span class="map_group_switch_label">' + data[key].category + '</span>',
-				attr: {
-					'data-swap-group': 'map_group_switch',
-					'data-swap-target': '[data-swap-id="' + data[key].category + '"]'
-				}
-			});
+    $(categories).html(categoriesHTML);
+    places = $('.map_place');
+  }
 
-			group.append(groupSwitch);
+  function setupFilters() {
+    filters = $('.map_filters');
+    filtersHTML = '';
 
-			var places = el({
-				type: 'div',
-				class: 'map_places',
-				attr: {
-					'data-swap-id': data[key].category
-				}
-			});
+    for (var key in filtersData) {
+      if (filtersData.hasOwnProperty(key)) {
+        filtersHTML += '<div class="map_filter">';
 
-			group.append(places);
+        if (filtersData[key].type === 'dropdown') {
+          filtersHTML += '<button class="map_filter_switch">' + filtersData[key].label + '</button>' +
+          '<div class="map_filter_options">';
 
-			var points = data[key].points;
+          for (var option in filtersData[key].options) {
+            if (filtersData[key].options.hasOwnProperty(option)) {
+              filtersHTML += '<button class="map_filter_option">' + filtersData[key].options[option] + '</button>';
+            }
+          }
 
-			for(var point in points) {
-				points[point].place = el({
-					type: 'button',
-					class: 'map_place',
-					html: '<span class="map_place_label">' + points[point].attr.title + '</span>',
-					loopAttr: points[point].attr
-				});
+          filtersHTML += '</div>';
+        } else {
+          filtersHTML += '<input class="map_filter_input" placeholder="' + filtersData[key].label + '" />';
+        }
 
-				places.append(points[point].place);
-			}
+        filtersHTML += '</div>';
+      }
+    }
 
-			groups.append(group);
-		}
-	}
+    $(filters).html(filtersHTML);
+  }
 
-	function setupFilters() {
-		filtersGroup = $('.map_filters');
+  function bindUI() {
+    $('.map_lightbox_switch').on('click', function() {
+      expandMap();
+    });
 
-		for(var key in filters) {
-			var filter = el({
-				type: 'div',
-				class: 'map_filter'
-			});
+    $('.map_lightbox_close').on('click', function() {
+      map.closePopup();
+    });
 
-			if(filters[key].options) {
-				var filterSwitch = el({
-					type: 'button',
-					class: 'map_filter_switch',
-					html: filters[key].label,
-					attr: {
-						'data-swap-group': 'map_filter_switch',
-						'data-swap-target': '[data-swap-id="' + filters[key].label + '"]'
-					}
-				});
+    $('.map_category_switch').on('click', function() {
+      togglePlaces($(this));
+      filterMapCategory($(this));
+    });
 
-				filter.append(filterSwitch);
+    $('.map_sorter_switch').on('click', function() {});
 
-				var options = el({
-					type: 'div',
-					class: 'map_filter_options',
-					attr: {
-						'data-swap-id': filters[key].label
-					}
-				});
+    $('.map_place').on('click', function() {
+      filterPlaces($(this));
+    });
 
-				filter.append(options);
+    $('.map_filter_switch').on('click', function() {
+      toggleFilterSwitch($(this));
+    });
 
-				for(var option in filters[key].options) {
-					var option = el({
-						type: 'button',
-						class: 'map_filter_option map_filter_option_button',
-						html: filters[key].options[option]
-					});
+    $('.map_filter_option').on('click', function() {});
 
-					options.append(option);
-				}
-			} else {
-				var option = el({
-					type: 'input',
-					class: 'map_filter_option map_filter_option_input',
-					attr: {
-						'placeholder': filters[key].label
-					}
-				});
+    $('.map_filter_input').on('keyup', function() {});
 
-				filter.append(option);
-			}
+    map.on('baselayerchange', function(e) {
+      changeLayer(e);
+      updatePlaces();
+    });
+  }
 
-			filtersGroup.append(filter);
-		}
-	}
+  function togglePlaces(e) {
+    var closestCategory = $(e).closest('.map_category');
 
-	function setupLightbox() {
-		lightbox = $('.map_lightbox');
+    $('.map_category').not(closestCategory).removeClass('map_places_open');
+    $(closestCategory).toggleClass('map_places_open');
+  }
 
-		lightboxClose = el({
-			type: 'button',
-			class: 'map_lightbox_close',
-			html: 'Close'
-		});
+  function filterPlaces(e) {
+    for (var key in data) {
+      if (data.hasOwnProperty(key)) {
+        for (var point in data[key].points) {
+          if ($(e).data('id') === data[key].points[point].attr.id) {
+            data[key].markers[point].openPopup();
+            flyToMarker(data[key].markers[point]);
+          }
+        }
+      }
+    }
+  }
 
-		lightbox.append(lightboxClose);
+  function updatePlaces() {
+    $(places).each(function() {
+      if(currentLayer == $(this).data('layer')) {
+        $(this).addClass('visible');
+      } else {
+        $(this).removeClass('visible');
+      }
+    });
+  }
 
-		lightboxBody = el({
-			type: 'div',
-			class: 'map_lightbox_body'
-		});
+  function filterMapCategory(e) {
+    var filterKey = $(e).data('category');
 
-		lightbox.append(lightboxBody);
-	}
+    for (var key in data) {
+      if (data.hasOwnProperty(key)) {
+        for (var point in data[key].points) {
+          if ($(e).closest('.map_category').hasClass('map_places_open')) {
+            if (filterKey == key) {
+              data[key].markers[point].setOpacity(1);
+            } else {
+              data[key].markers[point].setOpacity(0);
+            }
+          } else {
+            data[key].markers[point].setOpacity(1);
+          }
+        }
+      }
+    }
+  }
 
-	function bindUI() {
-		$('.map_group_switch').swap();
-		$('.map_filter_switch').swap();
+  function toggleFilterSwitch(e) {
+    var closestFilter = $(e).closest('.map_filter');
 
-		$('.map_place').on('click', function() {
-			var data = $(this).data();
+    $('.map_filter').not(closestFilter).removeClass('map_filter_open');
+    $(closestFilter).toggleClass('map_filter_open');
+  }
 
-			filterPlace(data);
-		});
+  function flyToMarker(e) {
+    var center;
 
-		$('.map_filter_option_button').on('click', function() {
-			var data = $(this).text();
-
-			updateMap(data, $(this).index());
-		});
-
-		$('.map_filter_option_input').on('change', function() {
-			var data = $(this).val();
-
-			updateMap(data);
-		});
-
-		$('.map_lightbox_close').on('click', function() {
-			map.closePopup();
-		});
-
-		map.on('baselayerchange', function(e) {
-			state.layer = e.layer._leaflet_id;
-
-			updateMap(state.filter);
-		});
-	}
-
-	function filterPlace(place) {
-		for(var key in data) {
-			var points = data[key].points;
-
-			for(var point in points) {
-				if(points[point].attr.title === place.title) {
-					points[point].marker.openPopup();
-					flyToMarker(points[point].marker);
-				}
-			}
-		}
-	}
-
-	function updateMap(filterData, filterIndex) {
-		if(filterData) state.filter = filterData;
-
-		for(var layer in layers) {
-			layers[layer].quantity = 0;
-		}
-
-		for(var key in data) {
-			var points = data[key].points;
-
-			for(var point in points) {
-				points[point].visible = false;
-				$(points[point].place).hide();
-				points[point].marker.setOpacity(0);
-
-				if(filterData && filterIndex != 0) {
-					for(var attr in points[point].attr) {
-						if(points[point].attr[attr] === filterData) {
-							points[point].visible = true;
-						}
-					}
-
-					if(points[point].visible && points[point].attr['layer-id'] === state.layer) {
-						$(points[point].place).show();
-						points[point].marker.setOpacity(1);
-					}
-				} else {
-					points[point].visible = true;
-
-					if(points[point].attr['layer-id'] === state.layer) {
-						$(points[point].place).show();
-						points[point].marker.setOpacity(1);
-					}
-				}
-
-				for(var layer in layers) {
-					if(points[point].visible && points[point].attr['layer-id'] == layers[layer].control._leaflet_id) {
-						layers[layer].quantity += 1;
-					}
-				}
-			}
-		}
-
-		for(var layer in layers) {
-			$('.leaflet-control-layers-base').find('label').eq(layer).find('.map_layer_quantity').html(layers[layer].quantity);
-		}
-	}
-
-	function flyToMarker(e) {
-		var center;
-
-		if(e._latlng) {
+		if (e._latlng) {
 			center = e._latlng;
 		} else {
 			center = e.target.getLatLng();
@@ -411,48 +326,43 @@ Site.modules.Map = (function($, Site) {
 		var point = map.containerPointToLatLng([x, y]);
 
 		map.flyTo(point);
-	}
+  }
 
-	function openLightbox(e) {
-		$('html').addClass('lightbox-open');
+  function openLightbox(e) {
+    $(app).addClass('map_lightbox_open');
 
-		var pointData = e.target.options.data;
+    setActiveIcon(e);
+    populateLightbox(e);
+  }
 
-		$(lightboxBody).html(
-			'<div class="map_lightbox_content">' +
-				'<div class="map_lightbox_title">' + pointData.title + '</div>' +
-			'</div>'
-		);
-	}
+  function closeLightbox(e) {
+    $(app).removeClass('map_lightbox_open');
 
-	function closeLightbox() {
-		$('html').removeClass('lightbox-open');
+    setInactiveIcon(e);
+  }
 
-		$(lightboxBody).html('');
-	}
+  function setInactiveIcon(e) {
+    e.target.setIcon(inactiveMarker);
+  }
 
-	function el(options) {
-		var domEl = document.createElement(options.type);
-		$(domEl).addClass(options.class);
+  function setActiveIcon(e) {
+    e.target.setIcon(activeMarker);
+  }
 
-		if(options.html) {
-			$(domEl).html(options.html);
-		}
+  function populateLightbox(e) {
+    lightboxData = e.target.options.data;
+    lightboxHTML = '';
 
-		if(options.attr) {
-			for(var key in options.attr) {
-				$(domEl).attr(key, options.attr[key]);
-			}
-		}
+    if (lightboxData.title) {
+      lightboxHTML += '<h2 class="map_lightbox_title">' + lightboxData.title +  '</h2>';
+    }
 
-		if(options.loopAttr) {
-			for(var key in options.loopAttr) {
-				$(domEl).attr('data-' + key, options.loopAttr[key]);
-			}
-		}
+    $(lightbox).html(lightboxHTML);
+  }
 
-		return domEl;
-	}
+  function changeLayer(e) {
+    currentLayer = $(e.name).data("label");
+  }
 
 	Site.onInit.push(init);
 
