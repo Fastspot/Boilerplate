@@ -11910,9 +11910,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  // last used input intent
 	  var currentIntent = currentInput;
 
-	  // event buffer timer
-	  var eventTimer = null;
-
 	  // form input types
 	  var formInputs = ['input', 'select', 'textarea'];
 
@@ -11995,20 +11992,20 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    // pointer events (mouse, pen, touch)
 	    if (window.PointerEvent) {
-	      window.addEventListener('pointerdown', setInput);
+	      window.addEventListener('pointerdown', updateInput);
 	      window.addEventListener('pointermove', setIntent);
 	    } else if (window.MSPointerEvent) {
-	      window.addEventListener('MSPointerDown', setInput);
+	      window.addEventListener('MSPointerDown', updateInput);
 	      window.addEventListener('MSPointerMove', setIntent);
 	    } else {
 	      // mouse events
-	      window.addEventListener('mousedown', setInput);
+	      window.addEventListener('mousedown', updateInput);
 	      window.addEventListener('mousemove', setIntent);
 
 	      // touch events
 	      if ('ontouchstart' in window) {
-	        window.addEventListener('touchstart', eventBuffer, options);
-	        window.addEventListener('touchend', setInput);
+	        window.addEventListener('touchstart', touchBuffer, options);
+	        window.addEventListener('touchend', touchBuffer);
 	      }
 	    }
 
@@ -12016,8 +12013,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    window.addEventListener(detectWheel(), setIntent, options);
 
 	    // keyboard events
-	    window.addEventListener('keydown', eventBuffer);
-	    window.addEventListener('keyup', eventBuffer);
+	    window.addEventListener('keydown', updateInput);
+	    window.addEventListener('keyup', updateInput);
 
 	    // focus events
 	    window.addEventListener('focusin', setElement);
@@ -12025,8 +12022,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 
 	  // checks conditions before updating new input
-	  var setInput = function setInput(event) {
-	    // only execute if the event buffer timer isn't running
+	  var updateInput = function updateInput(event) {
+	    // only execute if the touch buffer timer isn't running
 	    if (!isBuffering) {
 	      var eventKey = event.which;
 	      var value = inputMap[event.type];
@@ -12067,7 +12064,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // test to see if `mousemove` happened relative to the screen to detect scrolling versus mousemove
 	    detectScrolling(event);
 
-	    // only execute if the event buffer timer isn't running
+	    // only execute if the touch buffer timer isn't running
 	    // or scrolling isn't happening
 	    if (!isBuffering && !isScrolling) {
 	      var value = inputMap[event.type];
@@ -12098,22 +12095,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    docElem.removeAttribute('data-whatclasses');
 	  };
 
-	  // buffers events that frequently also fire mouse events
-	  var eventBuffer = function eventBuffer(event) {
-	    // set the current input
-	    setInput(event);
-
-	    // clear the timer if it happens to be running
-	    window.clearTimeout(eventTimer);
-
-	    // set the isBuffering to `true`
-	    isBuffering = true;
-
-	    // run the timer
-	    eventTimer = window.setTimeout(function () {
-	      // if the timer runs out, set isBuffering back to `false`
+	  // buffers touch events because they frequently also fire mouse events
+	  var touchBuffer = function touchBuffer(event) {
+	    if (event.type === 'touchstart') {
 	      isBuffering = false;
-	    }, 100);
+
+	      // set the current input
+	      updateInput(event);
+	    } else {
+	      isBuffering = true;
+	    }
 	  };
 
 	  /*
