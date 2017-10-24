@@ -38,7 +38,7 @@
 	{% endif %}
 	<ul class="sitemap">
 		{% for key, link in map %}
-			<li class="sitemap_item {{key|replace({".html": ""})}}{% if 'fs' in key %} fs-style-guide{% elseif 'dev' in key %} fs-dev{% elseif 'page' in key %} fs-page{% elseif 'ref' in key %} fs-ref{% elseif 'test' in key %} fs-test{% elseif 'accessibility' in key %} fs-access{% endif %}">
+			<li class="sitemap_item {{key|replace({".html": ""})}}{% if 'fs' in key %} fs-style-guide{% elseif 'dev' in key %} fs-dev{% elseif 'page' in key %} fs-page{% elseif 'ref' in key %} fs-ref{% elseif 'accessibility' in key %} fs-access{% endif %}">
 				<a class="sitemap_link" href="{% if sitemap.accessibility %}../{% endif %}{{link}}">{{key|replace({
 					".html": "",
 					"-": " "
@@ -46,8 +46,7 @@
 					"fs": "",
 					"page": "",
 					"dev": "",
-					"ref": "",
-					"test": ""
+					"ref": ""
 				})}}</a>
 			</li>
 		{% endfor %}
@@ -66,7 +65,6 @@
 		var fsGuide = document.querySelectorAll('.fs-style-guide');
 		var fsPage = document.querySelectorAll('.fs-page');
 		var fsRef = document.querySelectorAll('.fs-ref');
-		var fsTest = document.querySelectorAll('.fs-test');
 
 		wrap(fsAccess);
 		wrap(fsDev);
