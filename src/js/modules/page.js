@@ -28,7 +28,6 @@ Site.modules.Page = (function($, Site) {
 		Site.$body.find(".js-dropdown").dropdown();
 		Site.$body.find(".js-equalize").equalize();
 		Site.$body.find(".js-lightbox").lightbox({
-			mobile: true,
 			theme: "fs-light",
 			labels: {
 				close: "<span class='fs-lightbox-icon-close'><svg class='symbol symbol_close'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#close'></use></svg></span>",
