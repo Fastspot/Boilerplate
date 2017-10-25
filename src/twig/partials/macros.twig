@@ -29,17 +29,15 @@
 		]
 	})}}
 
-	{{site.dropdown("component", "id", "label", ["Choices"], "lg")}}
+	{{site.dropdown("component", "label", ["Choices"], "lg")}}
 
-	{{site.input("text", "first_name", "First Name", "component")}}
+	{{site.input("text", "First Name", "component")}}
 
-	{{site.textarea("text", "first_name", "First Name")}}
+	{{site.textarea("Comments")}}
 
 	{{site.choices("checkbox", [
-		{
-			name: "option-one",
-			value: "Option One"
-		}
+		"Option One",
+		"Option Two"
 	])}}
 
 	{{site.title("Title", "full")}}
@@ -110,7 +108,8 @@
 {% endmacro %}
 
 
-{% macro dropdown(class, id, label, choices, modifier) %}
+{% macro dropdown(class, label, choices, modifier) %}
+	{% set id = label|lower|replace({" ": "_"}) %}
 	<div class="fs-dropdown-wrapper {{class}}_dropdown_wrapper{% if modifier %} {{class}}_dropdown_wrapper_{{modifier}}{% endif %}">
 		{% if label %}
 		<label class="{{class}}_label" for="{{id}}_dropdown">{{label}}</label>
@@ -129,7 +128,8 @@
 {% endmacro %}
 
 
-{% macro input(type, id, label, class) %}
+{% macro input(type, label, class) %}
+	{% set id = label|lower|replace({" ": "_"}) %}
 	<div class="{% if class %}{{class}}_form_element {% endif %}form_element">
 		<input type="{{type}}" id="{{id}}" />
 		<label for="{{id}}">{{label}}</label>
@@ -137,7 +137,8 @@
 {% endmacro %}
 
 
-{% macro textarea(id, label) %}
+{% macro textarea(label) %}
+	{% set id = label|lower|replace({" ": "_"}) %}
 	<div class="form_element">
 		<textarea id="{{id}}"></textarea>
 		<label for="{{id}}">{{label}}</label>
@@ -148,9 +149,10 @@
 {% macro choices(type, items) %}
 	<div class="form_element">
 		{% for item in items %}
-			<label for="{{item.name}}">
-				<input type="{{type}}" name="{{item.name}}" id="{{item.name}}" value="{{item.value}}">
-				<span class="{{type}}_label">{{item.value}}</span>
+			{% set id = item|lower|replace({" ": "_"}) %}
+			<label for="{{id}}">
+				<input type="{{type}}" name="{{id}}" id="{{id}}" value="{{item}}">
+				<span class="{{type}}_label">{{item}}</span>
 			</label>
 		{% endfor %}
 	</div>

@@ -4643,8 +4643,6 @@ select {
 ============================================================================= */
 .fs-lightbox {
   background: rgba(255, 255, 255, 0.75); }
-  .fs-lightbox .fs-lightbox-content {
-    padding: 20px; }
   .fs-lightbox .fs-lightbox-video_wrapper {
     margin-right: auto !important;
     margin-left: auto !important; }

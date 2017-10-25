@@ -8,37 +8,19 @@
 		</fieldset>
 		<fieldset class="textarea_set">
 			<h5>Comment</h5>
-			{{site.textarea("comments", "Comments")}}
+			{{site.textarea("Comments")}}
 		</fieldset>
 		<fieldset class="checkbox_radio_set">
 			<div class="form_column_2">
 				{{site.choices("checkbox", [
-					{
-						name: "checkbox-one",
-						value: "Option One"
-					},
-					{
-						name: "checkbox-two",
-						value: "Option Two"
-					},
-					{
-						name: "checkbox-three",
-						value: "Option Three"
-					}
+					"Option One",
+					"Option Two",
+					"Option Three"
 				])}}
 				{{site.choices("radio", [
-					{
-						name: "radio-one",
-						value: "Option One"
-					},
-					{
-						name: "radio-two",
-						value: "Option Two"
-					},
-					{
-						name: "radio-three",
-						value: "Option Three"
-					}
+					"Option One",
+					"Option Two",
+					"Option Three"
 				])}}
 			</div>
 		</fieldset>
@@ -90,7 +72,7 @@
 			</div>
 		</fieldset>
 		<fieldset class="input_set">
-			{{site.dropdown("base", "select", "Label", [
+			{{site.dropdown("base", "Label", [
 				"Choice One",
 				"Choice Two"
 			])}}
