@@ -22,7 +22,7 @@ legend {}
 
 @mixin label($theme: null) {}
 
-label {
+label:not(.fs-checkbox-label) {
 	@include label;
 
 	display: block;
