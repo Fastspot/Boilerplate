@@ -172,24 +172,6 @@
     }
   },
   "links": {
-    "guidebook": [
-      {
-        "name": "Getting Started",
-        "href": "fs-guidebook.html"
-      },
-      {
-        "name": "Colors",
-        "href": "fs-colors.html"
-      },
-      {
-        "name": "Typography",
-        "href": "fs-typography.html"
-      },
-      {
-        "name": "Components",
-        "href": "fs-components.html"
-      }
-    ],
     "mainNav": [
       {
         "name": "Main Link",
@@ -220,6 +202,42 @@
     ],
     "utilityNav": [],
     "quickNav": [],
+    "footerNav": [
+      "Footer Link",
+      "Footer Link"
+    ],
+    "socialNav": [
+      {
+        "modifier": "",
+        "symbol": "facebook",
+        "name": "Facebook",
+        "href": "//www.facebook.com"
+      },
+      {
+        "modifier": "",
+        "symbol": "twitter",
+        "name": "Twitter",
+        "href": "//www.twitter.com"
+      },
+      {
+        "modifier": "",
+        "symbol": "instagram",
+        "name": "Instagram",
+        "href": "//www.instagram.com"
+      },
+      {
+        "modifier": "",
+        "symbol": "youtube",
+        "name": "Youtube",
+        "href": "//www.youtube.com"
+      },
+      {
+        "modifier": "",
+        "symbol": "linkedin",
+        "name": "Linkedin",
+        "href": "//www.linkedin.com"
+      }
+    ],
     "subNav": [
       {
         "modifier": "",
@@ -258,40 +276,22 @@
         "children": ""
       }
     ],
-    "footerNav": [
-      "Footer Link",
-      "Footer Link"
-    ],
-    "socialNav": [
+    "guidebook": [
       {
-        "modifier": "",
-        "symbol": "facebook",
-        "name": "Facebook",
-        "href": "//www.facebook.com"
+        "name": "Getting Started",
+        "href": "fs-guidebook.html"
       },
       {
-        "modifier": "",
-        "symbol": "twitter",
-        "name": "Twitter",
-        "href": "//www.twitter.com"
+        "name": "Colors",
+        "href": "fs-colors.html"
       },
       {
-        "modifier": "",
-        "symbol": "instagram",
-        "name": "Instagram",
-        "href": "//www.instagram.com"
+        "name": "Typography",
+        "href": "fs-typography.html"
       },
       {
-        "modifier": "",
-        "symbol": "youtube",
-        "name": "Youtube",
-        "href": "//www.youtube.com"
-      },
-      {
-        "modifier": "",
-        "symbol": "linkedin",
-        "name": "Linkedin",
-        "href": "//www.linkedin.com"
+        "name": "Components",
+        "href": "fs-components.html"
       }
     ]
   },
