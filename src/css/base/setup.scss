@@ -562,7 +562,7 @@ $margin_xl: 80px;
 
 @mixin fake_scroll() {
 	overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
+	-webkit-overflow-scrolling: touch;
 }
 
 
