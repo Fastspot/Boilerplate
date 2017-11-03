@@ -225,7 +225,8 @@ gulp.task('modernizr', function() {
 				'setClasses',
 				'testProp',
 				'fnBind'
-			]
+			],
+			excludeTests: ['hidden']
 		}))
 		.pipe(gulpif(util.env.production, uglify()))
 		.pipe(gulp.dest('js'));
