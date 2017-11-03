@@ -20,7 +20,7 @@ button {
 		transform $base_speed;
 }
 
-@mixin button_layout() {
+@mixin button_layout($l: true) {
 
 	&_label {
 		display: inline-block;
@@ -44,27 +44,27 @@ button {
 	}
 }
 
-@mixin button_inline() {
+@mixin button_inline($l: true) {
 	@include button;
-	@include button_layout;
+	@include button_layout($l);
 
 	display: inline-block;
 	margin-right: 8px;
 	margin-bottom: 8px;
 }
 
-@mixin button_block() {
+@mixin button_block($l: true) {
 	@include button;
-	@include button_layout;
+	@include button_layout($l);
 
 	display: block;
 	margin-bottom: 8px;
 	text-align: center;
 }
 
-@mixin button_mixed_block() {
+@mixin button_mixed_block($l: true) {
 	@include button_block;
-	@include button_layout;
+	@include button_layout($l);
 
 	@media #{$min_xs} {
 		display: inline-block;
