@@ -49,7 +49,7 @@
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-accessibility": "^3.0.1",
     "gulp-bless": "^4.0.0",
-    "gulp-changed": "^3.1.0",
+    "gulp-changed": "^3.1.1",
     "gulp-concat-multi": "^1.0.1",
     "gulp-cssnano": "^2.1.2",
     "gulp-directory-map": "^0.1.3",

@@ -12,7 +12,7 @@
 		}
 	})}}
 
-	{{site.button("class", "Apply", "arrow_right")}}
+	{{site.button("class", "Apply", "#", "arrow_right")}}
 
 	{{site.symbol("chevron")}}
 
@@ -72,8 +72,8 @@
 {% endmacro %}
 
 
-{% macro button(class, label, symbol) %}
-	<a class="{{class}}_link" href="#">
+{% macro button(class, label, href, symbol) %}
+	<a class="{{class}}_link theme_{{symbol}}" href="{{href}}">
 		<span class="{{class}}_link_label">{{label}}</span>
 		{% if symbol %}
 			<span class="{{class}}_link_icon">
