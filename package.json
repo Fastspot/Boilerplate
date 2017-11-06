@@ -7,13 +7,31 @@
     "type": "git",
     "url": "url"
   },
+  "urls": [
+    {
+      "name": "trello",
+      "url": "#"
+    },
+    {
+      "name": "invision",
+      "url": "#"
+    },
+    {
+      "name": "dev",
+      "url": "#"
+    }
+  ],
   "vars": {
-    "namespace": "namespace",
+    "namespace": "fs",
     "name": "Client Name",
     "domain": "www.example.com",
+    "description": "",
     "schemaType": "Organization",
     "twitter": "TwitterName",
     "color": "",
+    "images": "clientname",
+    "cseKey": "011737558837375720776:mbfrjmyam1g",
+    "trelloList": "",
     "mq_min_ht": "800",
     "mq_min_xs": "320",
     "mq_min_sm": "500",
@@ -22,98 +40,79 @@
     "mq_min_xl": "1220"
   },
   "devDependencies": {
-    "autoprefixer": "^6.7.3",
-    "del": "^2.2.2",
-    "grunt": "^1.0.1",
-    "grunt-bless": "^1.0.2",
-    "grunt-browser-sync": "^2.2.0",
-    "grunt-contrib-clean": "^1.0.0",
-    "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-imagemin": "^1.0.1",
-    "grunt-contrib-jshint": "^1.1.0",
-    "grunt-contrib-less": "^1.4.0",
-    "grunt-contrib-uglify": "^2.1.0",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-include-replace": "^5.0.0",
-    "grunt-include-source": "^1.0.0",
-    "grunt-modernizr": "^1.0.2",
-    "grunt-newer": "^1.2.0",
-    "grunt-postcss": "^0.8.0",
-    "grunt-real-favicon": "^0.2.0",
-    "grunt-stripmq": "0.0.6",
-    "grunt-svg-sprite": "^1.3.6",
-    "grunt-twig-render": "^1.8.0",
-    "gulp": "^3.9.1",
-    "gulp-bless": "^3.2.1",
-    "gulp-changed": "^1.3.2",
+    "async": "^2.5.0",
+    "autoprefixer": "^7.1.6",
+    "browser-sync": "^2.18.13",
+    "del": "^3.0.0",
+    "formstone": "1.4.1",
+    "glob": "^7.1.2",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-accessibility": "^3.0.1",
+    "gulp-bless": "^4.0.0",
+    "gulp-changed": "^3.1.1",
     "gulp-concat-multi": "^1.0.1",
     "gulp-cssnano": "^2.1.2",
     "gulp-directory-map": "^0.1.3",
     "gulp-if": "^2.0.2",
-    "gulp-imagemin": "^3.1.1",
+    "gulp-imagemin": "^3.4.0",
     "gulp-jshint": "^2.0.4",
-    "gulp-less": "^3.3.0",
     "gulp-modernizr": "^1.0.0-alpha",
-    "gulp-postcss": "^6.3.0",
+    "gulp-newer": "^1.3.0",
+    "gulp-postcss": "^7.0.0",
+    "gulp-real-favicon": "^0.2.2",
     "gulp-rename": "^1.2.2",
-    "gulp-svg-sprite": "^1.3.6",
+    "gulp-sass": "^3.1.0",
+    "gulp-sass-glob": "^1.0.8",
+    "gulp-shell": "^0.6.3",
+    "gulp-svg-sprite": "^1.3.7",
     "gulp-twig": "^0.7.0",
-    "gulp-uglify": "^2.0.1",
+    "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
+    "install": "^0.10.1",
+    "jquery": "^3.2.1",
+    "jshint": "^2.9.5",
     "jshint-stylish": "^2.2.1",
-    "less-plugin-clean-css": "^1.5.1",
-    "less-plugin-glob": "^2.0.0",
-    "postcss-assets": "^4.1.0",
-    "postcss-discard-empty": "^2.1.0",
+    "normalize.css": "^7.0.0",
+    "npm": "^5.5.1",
+    "pa11y": "^4.13.1",
+    "path": "^0.12.7",
+    "picturefill": "^3.0.3",
+    "postcss-pxtorem": "^4.0.1",
     "postcss-unmq": "^1.0.2",
-    "time-grunt": "^1.4.0"
+    "require-reload": "^0.2.2",
+    "what-input": "^5.0.3"
   },
   "css": {
-    "css/site.css": "css/src/site.less",
-    "css/site-ie8.css": "css/src/ie/site-ie8.less",
-    "css/site-ie9.css": "css/src/ie/site-ie9.less"
+    "css/site.css": "css/site.scss"
   },
   "js": {
-    "js/site.js": [
-      "js/src/lib/utils.js",
-      "components/jquery/dist/jquery.min.js",
-      "components/formstone/dist/js/core.js",
-      "components/formstone/dist/js/mediaquery.js",
-      "components/formstone/dist/js/analytics.js",
-      "components/formstone/dist/js/background.js",
-      "components/formstone/dist/js/carousel.js",
-      "components/formstone/dist/js/checkbox.js",
-      "components/formstone/dist/js/cookie.js",
-      "components/formstone/dist/js/dropdown.js",
-      "components/formstone/dist/js/equalize.js",
-      "components/formstone/dist/js/lightbox.js",
-      "components/formstone/dist/js/navigation.js",
-      "components/formstone/dist/js/pagination.js",
-      "components/formstone/dist/js/range.js",
-      "components/formstone/dist/js/scrollbar.js",
-      "components/formstone/dist/js/swap.js",
-      "components/formstone/dist/js/tabs.js",
-      "components/formstone/dist/js/touch.js",
-      "components/formstone/dist/js/transition.js",
-      "components/formstone/dist/js/viewer.js",
-      "components/picturefill/dist/picturefill.min.js",
-      "components/svg4everybody/dist/svg4everybody.js",
-      "components/what-input/dist/what-input.js",
-      "js/src/site.js",
-      "js/src/modules/page.js"
-    ],
-    "js/site-ie8.js": [
-      "components/html5shiv/dist/html5shiv.min.js",
-      "components/html5shiv/dist/html5shiv-printshiv.min.js",
-      "js/src/ie/matchMedia.ie8.js"
-    ],
-    "js/site-ie9.js": [
-      "js/src/ie/matchMedia.ie9.js"
+    "site.js": [
+      "node_modules/jquery/dist/jquery.js",
+      "node_modules/formstone/dist/js/core.js",
+      "node_modules/formstone/dist/js/mediaquery.js",
+      "node_modules/formstone/dist/js/analytics.js",
+      "node_modules/formstone/dist/js/background.js",
+      "node_modules/formstone/dist/js/carousel.js",
+      "node_modules/formstone/dist/js/checkbox.js",
+      "node_modules/formstone/dist/js/cookie.js",
+      "node_modules/formstone/dist/js/dropdown.js",
+      "node_modules/formstone/dist/js/equalize.js",
+      "node_modules/formstone/dist/js/lightbox.js",
+      "node_modules/formstone/dist/js/navigation.js",
+      "node_modules/formstone/dist/js/pagination.js",
+      "node_modules/formstone/dist/js/swap.js",
+      "node_modules/formstone/dist/js/touch.js",
+      "node_modules/formstone/dist/js/transition.js",
+      "node_modules/formstone/dist/js/viewer.js",
+      "node_modules/picturefill/dist/picturefill.js",
+      "node_modules/what-input/dist/what-input.js",
+      "src/js/site.js",
+      "src/js/modules/page.js",
+      "src/js/modules/images.js"
     ]
   },
   "js_ignores": [
-    "js/src/ie/*/",
-    "js/src/lib/*/"
+    "js/lib/*/"
   ],
   "img": {
     "ultrawide": {
@@ -172,87 +171,170 @@
       "xlrg": "960x1440"
     }
   },
-  "mainNavLinks": [
+  "links": {
+    "mainNav": [
+      {
+        "name": "Main Link",
+        "children": [
+          "One Child",
+          "Two Child"
+        ]
+      },
+      {
+        "name": "Main Link",
+        "children": [
+          "One Child",
+          "Two Child"
+        ]
+      }
+    ],
+    "secondaryNav": [
+      {
+        "modifier": "",
+        "name": "Secondary Link",
+        "children": ""
+      },
+      {
+        "modifier": "",
+        "name": "Secondary Link",
+        "children": ""
+      }
+    ],
+    "utilityNav": [],
+    "quickNav": [],
+    "footerNav": [
+      "Footer Link",
+      "Footer Link"
+    ],
+    "socialNav": [
+      {
+        "modifier": "",
+        "symbol": "facebook",
+        "name": "Facebook",
+        "href": "//www.facebook.com"
+      },
+      {
+        "modifier": "",
+        "symbol": "twitter",
+        "name": "Twitter",
+        "href": "//www.twitter.com"
+      },
+      {
+        "modifier": "",
+        "symbol": "instagram",
+        "name": "Instagram",
+        "href": "//www.instagram.com"
+      },
+      {
+        "modifier": "",
+        "symbol": "youtube",
+        "name": "Youtube",
+        "href": "//www.youtube.com"
+      },
+      {
+        "modifier": "",
+        "symbol": "linkedin",
+        "name": "Linkedin",
+        "href": "//www.linkedin.com"
+      }
+    ],
+    "subNav": [
+      {
+        "modifier": "",
+        "href": "../",
+        "name": "Sitemap",
+        "children": ""
+      },
+      {
+        "modifier": "",
+        "href": "dev-feature.html",
+        "name": "Page Feature Components",
+        "children": ""
+      },
+      {
+        "modifier": "",
+        "href": "dev-full-width.html",
+        "name": "Full Width Components",
+        "children": ""
+      },
+      {
+        "modifier": "",
+        "href": "dev-in-content.html",
+        "name": "In Content Components",
+        "children": ""
+      },
+      {
+        "modifier": "",
+        "href": "dev-sidebar.html",
+        "name": "Sidebar Components",
+        "children": ""
+      },
+      {
+        "modifier": "",
+        "href": "dev-html.html",
+        "name": "HTML Elements",
+        "children": ""
+      }
+    ],
+    "guidebook": [
+      {
+        "name": "Getting Started",
+        "href": "fs-guidebook.html"
+      },
+      {
+        "name": "Colors",
+        "href": "fs-colors.html"
+      },
+      {
+        "name": "Typography",
+        "href": "fs-typography.html"
+      },
+      {
+        "name": "Components",
+        "href": "fs-components.html"
+      }
+    ]
+  },
+  "colors": {
+    "primary": {
+      "black": "#000",
+      "white": "#fff",
+      "jade": "#187B79"
+    },
+    "secondary": {
+      "blue": "#006bc0",
+      "green": "#D31243"
+    }
+  },
+  "fontsService": "fonts.com",
+  "fonts": [
     {
-      "name": "Main Link",
-      "children": [
-        "One Child",
-        "Two Child"
+      "name": "Futura",
+      "reference": "Futura",
+      "weights": [
+        {
+          "value": "bold"
+        },
+        {
+          "value": "normal"
+        }
+      ]
+    },
+    {
+      "name": "Avenir",
+      "reference": "Avenir",
+      "weights": [
+        {
+          "value": "bold"
+        },
+        {
+          "value": "normal"
+        },
+        {
+          "value": "normal",
+          "style": "italic"
+        }
       ]
     }
-  ],
-  "secondaryNavLinks": [
-    {
-      "modifier": "",
-      "href": "#",
-      "name": "Secondary Link",
-      "children": ""
-    }
-  ],
-  "subNavLinks": [
-    {
-      "modifier": "",
-      "href": "1-2-style-guide-feature.html",
-      "name": "Page Feature Components",
-      "children": ""
-    },
-    {
-      "modifier": "",
-      "href": "1-3-style-guide-in-content.html",
-      "name": "In Content Components",
-      "children": ""
-    },
-    {
-      "modifier": "",
-      "href": "1-4-style-guide-sidebar.html",
-      "name": "Sidebar Components",
-      "children": ""
-    },
-    {
-      "modifier": "",
-      "href": "1-5-style-guide-full-width.html",
-      "name": "Full Width Components",
-      "children": ""
-    }
-  ],
-  "footerNavLinks": [
-    "Footer Link"
-  ],
-  "socialNavLinks": [
-    {
-      "modifier": "",
-      "symbol": "",
-      "name": "Facebook",
-      "href": "//www.facebook.com"
-    },
-    {
-      "modifier": "",
-      "symbol": "",
-      "name": "Twitter",
-      "href": "//www.twitter.com"
-    },
-    {
-      "modifier": "",
-      "symbol": "",
-      "name": "Instagram",
-      "href": "//www.instagram.com"
-    },
-    {
-      "modifier": "",
-      "symbol": "",
-      "name": "Youtube",
-      "href": "//www.youtube.com"
-    },
-    {
-      "modifier": "",
-      "symbol": "",
-      "name": "Linkedin",
-      "href": "//www.linkedin.com"
-    }
-  ],
-  "dependencies": {
-    "browser-sync": "^2.18.8",
-    "gulp-jshint": "^2.0.4",
-    "jshint": "^2.9.4"
-  }
+  ]
 }

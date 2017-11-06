@@ -1,0 +1,60 @@
+/* ==========================================================================
+	Colors
+============================================================================= */
+
+$true_black: #000;
+$true_white: #fff;
+
+$black: #000;
+$white: #fff;
+
+$theme_colors: (
+	(black, $black),
+	(white, $white)
+);
+
+$gray_10: #EAEAEA;
+$gray_20: #CCCCCC;
+$gray_30: #B2B2B2;
+$gray_40: #999999;
+$gray_50: #808080;
+$gray_60: #666666;
+$gray_70: #4D4D4D;
+$gray_80: #333333;
+$gray_90: #222222;
+
+
+// Themes
+// =============================================================================
+
+@mixin theme($list: $theme_colors, $style: "color") {
+
+	@each $label, $color in $list {
+
+		.theme_#{$label} & {
+			@if($style == "color") {
+				color: $color;
+			} @else if($style == "background") {
+				background: $color;
+			} @else if($style == "border") {
+				border-color: $color;
+			}
+		}
+	}
+}
+
+@mixin theme_direct($list: $theme_colors, $style: "color") {
+
+	@each $label, $color in $list {
+
+		&.theme_#{$label} {
+			@if($style == "color") {
+				color: $color;
+			} @else if($style == "background") {
+				background: $color;
+			} @else if($style == "border") {
+				border-color: $color;
+			}
+		}
+	}
+}

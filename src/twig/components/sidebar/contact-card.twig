@@ -1,0 +1,25 @@
+<div class="contact_card{% if theme %} theme_{{theme}}{% endif %}">
+	<header class="contact_card_header">
+		<h2 class="contact_card_title">{{title}}</h2>
+	</header>
+	<div class="contact_card_body">
+		<h3 class="contact_card_name">{{name}}</h3>
+		<div class="contact_card_info">
+			<div class="contact_card_caption">{{caption}}</div>
+		</div>
+		<div class="contact_card_types">
+			{% if phone %}
+				<a href="#" class="contact_card_type contact_card_phone">{{phone}}</a>
+			{% endif %}
+			{% if fax %}
+				<a href="#" class="contact_card_type contact_card_phone">{{fax}}</a>
+			{% endif %}
+			{% if email %}
+				<a class="contact_card_type contact_card_email" href="mailto:{{email}}">{{email}}</a>
+			{% endif %}
+			{% if external %}
+				<a class="contact_card_type contact_card_external" href="#">{{external}}</a>
+			{% endif %}
+		</div>
+	</div>
+</div>

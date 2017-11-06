@@ -1,0 +1,82 @@
+/* ==========================================================================
+	Dropdowns
+============================================================================= */
+
+.fs-dropdown {}
+
+.fs-dropdown-selected {
+
+	.fs-dropdown:focus &,
+	.fs-dropdown:hover & {}
+
+	.fs-dropdown-open & {}
+}
+
+.fs-dropdown-options {}
+
+.fs-dropdown-item {
+
+	&:focus,
+	&:hover {}
+
+	&.fs-dropdown-item_selected {}
+}
+
+.fs-dropdown-icon {
+
+	.fs-dropdown:focus + &,
+	.fs-dropdown:hover + & {}
+
+	.fs-dropdown-open + & {}
+}
+
+
+// Checkboxes & Radios
+// =============================================================================
+
+.fs-checkbox {
+	display: block;
+	margin-bottom: 10px;
+}
+
+.fs-checkbox-marker {
+	float: none;
+
+	display: inline-block;
+	margin-right: 10px;
+	vertical-align: middle;
+
+	.fs-checkbox-checked & {}
+}
+
+.fs-checkbox-flag {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	&:before {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+
+		margin: 0;
+		transform:
+			translate(-50%, -50%)
+			rotate(45deg)
+			scale(0);
+
+		.fs-checkbox-checked & {
+			transform:
+				translate(-50%, -50%)
+				rotate(45deg)
+				scale(1);
+		}
+	}
+
+	.fs-checkbox-radio & {}
+}
+
+.fs-checkbox-label {
+	display: inline-block;
+	vertical-align: middle;
+}

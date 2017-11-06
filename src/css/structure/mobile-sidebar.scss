@@ -1,0 +1,29 @@
+/* ==========================================================================
+	Mobile Sidebar
+============================================================================= */
+
+.mobile_sidebar_handle_wrapper {
+	position: relative;
+
+	@media print {
+		display: none;
+	}
+
+	@media #{$min_lg} {
+		display: none;
+	}
+}
+
+.mobile_sidebar_handle {}
+
+
+// Sidebar
+// =============================================================================
+
+.mobile_sidebar {
+	@include focus_outline_none;
+
+	@media print {
+		display: none;
+	}
+}

@@ -1,0 +1,12 @@
+{% extends "_base.twig" %}
+
+{% block page %}
+	{% set page = {
+		title: "Feature Components",
+		layout: "style-guide"
+	} %}
+{% endblock %}
+
+{% block page_feature %}
+	{{site.title("Component", "full")}}
+{% endblock %}

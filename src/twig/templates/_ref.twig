@@ -1,0 +1,159 @@
+{% import '../partials/macros.twig' as site %}
+
+{% block data %}
+	{% set page = {
+		tabTitle: "",
+		title: ""
+	} %}
+{% endblock %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>{{name}} | {{page.tabTitle}}</title>
+		<style>
+			html {
+				font-family: "Neue Haas Grotesk Text Std", Helvetica, Arial, sans-serif;
+			}
+
+				body {
+					max-width: 740px;
+
+					margin: 0 auto;
+					padding: 0 20px;
+				}
+
+					h1, h2, h3, h4, h5, h6 {
+						font-family: "Neue Haas Grotesk Display Std", Helvetica, Arial, sans-serif;
+					}
+
+					h1 {
+						font-size: 8vmin;
+					}
+
+					.title_logo {
+						background: #000;
+						color: #fff;
+						display: inline-block;
+						margin-right: 10px;
+						padding: 12px 8px 12px 6px;
+						vertical-align: middle;
+					}
+
+					.title_label {
+						display: inline-block;
+						vertical-align: middle;
+					}
+
+					ul {
+						list-style: none;
+						padding-left: 0;
+					}
+
+
+			/* Ref Group */
+
+			.ref_group > ul {
+				border-left: 8px solid #ddd;
+				margin-bottom: 40px;
+			}
+
+				.ref_group li {
+					padding: 13px 20px 12px;
+					transition:
+						background 0.25s,
+						color 0.25s;
+				}
+
+					.ref_group span {
+						display: block;
+						font-weight: 700;
+						margin: 0 0 14px;
+					}
+
+
+			/* Sitemap */
+
+			.sitemap {
+				margin-bottom: 80px;
+			}
+
+				.sitemap_group {
+					margin-bottom: 40px;
+				}
+
+					.sitemap_item {
+						border-left: 8px solid;
+					}
+
+					.fs-access {
+						border-left-color: #b30bea;
+					}
+
+					.fs-dev {
+						border-left-color: #0BEAC5;
+					}
+
+					.fs-style-guide {
+						border-left-color: #0B35EA;
+					}
+
+					.fs-page {
+						border-left-color: #6DCF48;
+					}
+
+					.fs-ref {
+						border-left-color: #FD9A02;
+					}
+
+					.fs-test {
+						border-left-color: #21D2AA;
+					}
+
+						.sitemap_link {
+							color: inherit;
+							display: block;
+							font-size: 18px;
+							font-weight: 700;
+							padding: 15px 20px;
+							text-decoration: none;
+							transition:
+								background 0.25s,
+								color 0.25s;
+						}
+
+						.sitemap_link:hover,
+						.sitemap_link:focus {
+							background: #f2f2f2;
+						}
+
+						.sitemap_link:visited {
+							color: inherit;
+						}
+
+						@media print {
+
+							.sitemap_link {
+								padding: 2px 0;
+							}
+						}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>
+				<span class="title_label">{{page.title|replace({
+					"Site": name
+				})}}</span>
+			</h1>
+			{% if sitemap.accessibility %}
+			<h2>Accessibility</h2>
+			{% endif %}
+		</header>
+		<main>
+			{% block main %}
+			{% endblock %}
+		</main>
+	</body>
+</html>

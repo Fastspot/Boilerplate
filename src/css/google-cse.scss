@@ -1,0 +1,283 @@
+/* ==========================================================================
+	Google CSE
+============================================================================= */
+
+.site_search_results {
+
+	// Entire Search Module
+	// ===========================================================================
+
+	.gsc-control-cse {
+		background: none;
+		border: 0;
+		font-family: inherit;
+		font-size: inherit;
+		padding: 0;
+	}
+
+
+	// Search Box Area
+	// ===========================================================================
+
+	.gsc-search-box {
+		position: relative;
+
+		font-size: inherit;
+		margin-bottom: 20px;
+
+		td.gsc-input {
+			width: 100%;
+
+			padding-right: 0;
+		}
+
+		.gsc-input-box {
+			height: auto;
+		}
+
+			input.gsc-input {
+				height: auto !important;
+				width: 100%;
+
+				background-color: transparent !important;
+				background-position: 20px 50% !important;
+				border: 1px solid #000;
+				font-size: inherit;
+				margin: 0 !important;
+				padding: 20px !important;
+			}
+
+		td.gsc-search-button {
+			height: 100%;
+			width: auto;
+
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+
+			input.gsc-search-button {
+				height: 100%;
+				min-width: 100%;
+				width: auto;
+
+				background: url() no-repeat 50% 50%;
+				border: 0;
+				border-radius: 0;
+				color: transparent;
+				cursor: pointer;
+				font-size: inherit;
+				font-weight: normal;
+				margin-top: 0;
+				margin-left: 0;
+				padding: 10px;
+			}
+
+		td.gsc-clear-button {
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+
+			div.gsc-clear-button {
+				background: none;
+				display: block;
+				margin: 0;
+				padding-left: 0;
+				text-align: center;
+			}
+	}
+
+
+	// Tabs
+	// ===========================================================================
+
+	.gsc-tabsArea {
+		border-bottom: 0;
+		display: none;
+		margin: 0;
+
+		.gsc-tabHeader {
+			border: 0;
+			color: inherit;
+			margin: 0;
+			padding: 4px;
+		}
+
+		.gsc-tabhInactive {}
+
+		.gsc-tabhActive {}
+	}
+
+
+	// Refinements
+	// ===========================================================================
+
+	.gsc-refinementsArea {
+		border-bottom: 0;
+		display: none;
+		margin-bottom: 0;
+		padding: 0;
+
+		.gsc-refinementHeader {
+			margin: 0;
+			padding: 4px;
+		}
+
+		.gsc-refinementhInactive {}
+
+		.gsc-refinementhActive {}
+	}
+
+
+	// Above Wrapper Area
+	// ===========================================================================
+
+	.gsc-above-wrapper-area {
+		border-bottom: 1px solid #000;
+		padding: 0 0 20px;
+
+		.gsc-result-info {
+			color: inherit;
+			font-size: inherit;
+			margin: 0;
+			padding-left: 0;
+		}
+
+		.gsc-orderby-container {
+			display: none;
+		}
+	}
+
+
+	// Results
+	// ===========================================================================
+
+	.gsc-results {
+		width: 100%;
+
+		padding-bottom: 0;
+
+		.gsc-result {
+
+			&:not(.gsc-imageResult) {
+				border: 0;
+				border-bottom: 1px solid #000;
+				margin-bottom: 0;
+				padding: 20px 0;
+			}
+		}
+
+			.gsc-table-result {
+				font-family: inherit;
+				font-size: inherit;
+			}
+
+				.gsc-thumbnail {
+					padding: 0 20px 0 0;
+
+					.gs-image-box {
+						height: auto;
+						width: 80px;
+
+						padding: 0;
+					}
+
+					img.gs-image {
+						max-height: 100% !important;
+						max-width: 100%;
+						width: 100%;
+
+						border: 0;
+					}
+				}
+
+				.gsc-table-cell-snippet-close {
+					padding: 0;
+				}
+
+				div.gs-title {
+					height: auto;
+
+					color: inherit;
+					font-size: inherit;
+					margin-bottom: 10px;
+					text-decoration: none;
+				}
+
+					a.gs-title {
+						@include h5;
+
+						height: inherit;
+
+						color: inherit !important;
+						text-decoration: inherit;
+
+						&:focus,
+						&:hover {}
+
+						b {
+							color: inherit !important;
+							font-size: inherit;
+							text-decoration: inherit;
+						}
+					}
+
+				.gs-snippet {
+					@include body_text;
+
+					margin-bottom: 10px;
+				}
+
+				.gsc-url-top {
+					display: none;
+				}
+
+				.gs-visibleUrl {
+					color: #22f;
+
+					b {
+						font-weight: inherit;
+					}
+				}
+	}
+
+
+	// Cursor Box
+	// ===========================================================================
+
+	.gsc-expansionArea {
+
+		.gsc-cursor-box {
+			margin-bottom: 0;
+			overflow-x: auto;
+			padding: 20px 0;
+			text-align: center;
+			white-space: nowrap;
+
+			.gsc-cursor-page {
+				background: none;
+				display: inline-block;
+				margin-right: 5px;
+				padding: 0 5px;
+				text-decoration: none;
+
+				&:focus,
+				&:hover {}
+			}
+
+			.gsc-cursor-current-page {
+				color: #22f;
+			}
+		}
+	}
+
+
+	// Branding
+	// ===========================================================================
+
+	div.gcsc-branding {
+		padding-bottom: 20px;
+		pointer-events: none;
+	}
+}

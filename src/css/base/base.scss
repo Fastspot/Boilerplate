@@ -1,0 +1,55 @@
+/* ==========================================================================
+	Base Elements
+============================================================================= */
+
+html {
+	background: #fff;
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+body {
+	min-width: 300px;
+
+	overflow-x: hidden;
+}
+
+::selection {
+	background: #ddd;
+	text-shadow: none;
+}
+
+iframe {
+	border: none;
+}
+
+menu {
+	margin: 0;
+	padding: 0;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+	vertical-align: middle;
+}
+
+figure {
+	margin: 0;
+}
+
+hr {
+	height: 1px;
+
+	background: #ddd;
+	border: none;
+	margin: 0;
+}

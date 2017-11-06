@@ -1,0 +1,81 @@
+<div class="crl_forms typography">
+	<h2>Forms</h2>
+
+	<form action="#" class="crl_form">
+		<fieldset class="input_set">
+			<h5>Text Field</h5>
+			{{site.input("email", "email_address", "Email Address")}}
+		</fieldset>
+		<fieldset class="textarea_set">
+			<h5>Comment</h5>
+			{{site.textarea("Comments")}}
+		</fieldset>
+		<fieldset class="checkbox_radio_set">
+			<div class="form_column_2">
+				{{site.choices("checkbox", [
+					"Option One",
+					"Option Two",
+					"Option Three"
+				])}}
+				{{site.choices("radio", [
+					"Option One",
+					"Option Two",
+					"Option Three"
+				])}}
+			</div>
+		</fieldset>
+		<fieldset class="form_dropdown required">
+			<div class="form_element">
+				<label for="dropdown">Select</label>
+				<select id="dropdown">
+					<option value="1">Pharetra Quam</option>
+					<option value="2">Magna Vulputate</option>
+					<option value="3">Condimentum</option>
+					<option value="4">Magna Tellus Cras</option>
+					<option value="5">Sit Ridiculus</option>
+				</select>
+			</div>
+		</fieldset>
+		<fieldset class="input_set">
+			<h5>Name</h5>
+			<div class="form_column_2">
+				{{site.input("text", "first_name", "First Name")}}
+				{{site.input("text", "last_name", "Last Name")}}
+			</div>
+		</fieldset>
+		<fieldset class="input_set">
+			<h5>Date</h5>
+			<div class="form_column_flex">
+				{{site.input("number", "month", "MM")}}
+				{{site.input("number", "day", "DD")}}
+				{{site.input("number", "year", "YYYY")}}
+			</div>
+		</fieldset>
+		<fieldset class="input_set">
+			<h5>Address</h5>
+			{{site.input("text", "street_address", "Street Address")}}
+			<div class="form_column_2">
+				{{site.input("text", "street_address_1", "Street Address Line 1")}}
+				{{site.input("text", "city", "City")}}
+			</div>
+			<div class="form_column_2">
+				{{site.input("text", "state", "State / Province / Region")}}
+				{{site.input("text", "postal_zip", "Postal / Zip Code")}}
+			</div>
+		</fieldset>
+		<fieldset class="input_set">
+			<h5>Phone Number</h5>
+			<div class="form_column_flex">
+				{{site.input("number", "area_code", "###")}}
+				{{site.input("number", "phone_1", "###")}}
+				{{site.input("number", "phone_2", "####")}}
+			</div>
+		</fieldset>
+		<fieldset class="input_set">
+			{{site.dropdown("base", "Label", [
+				"Choice One",
+				"Choice Two"
+			])}}
+		</fieldset>
+	</form>
+</div>

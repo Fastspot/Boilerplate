@@ -1,0 +1,109 @@
+/* ==========================================================================
+	Buttons
+============================================================================= */
+
+button {
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+}
+
+@mixin button() {
+	cursor: pointer;
+	padding: 10px;
+	transition:
+		background $base_speed,
+		border $base_speed,
+		box-shadow $base_speed,
+		color $base_speed,
+		transform $base_speed;
+}
+
+@mixin button_layout($l: true) {
+
+	&_label {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	&_icon {
+		display: inline-block;
+		vertical-align: middle;
+	}
+}
+
+@mixin button_color(
+	$b: $gray_10,
+	$hb: $gray_20
+) {
+	background: $b;
+
+	&:hover {
+		background: $hb;
+	}
+}
+
+@mixin button_inline($l: true) {
+	@include button;
+	@include button_layout($l);
+
+	display: inline-block;
+	margin-right: 8px;
+	margin-bottom: 8px;
+}
+
+@mixin button_block($l: true) {
+	@include button;
+	@include button_layout($l);
+
+	display: block;
+	margin-bottom: 8px;
+	text-align: center;
+}
+
+@mixin button_mixed_block($l: true) {
+	@include button_block;
+	@include button_layout($l);
+
+	@media #{$min_xs} {
+		display: inline-block;
+		margin-right: 8px;
+		text-align: left;
+	}
+}
+
+
+/* Skip Link
+============================================================================= */
+
+.skip_link {
+	@include button_inline;
+
+	position: absolute;
+	top: 0;
+	left: 50%;
+	z-index: 100;
+
+	display: block;
+	padding: 10px 20px;
+	text-align: center;
+	transform: translate(-50%, -200%);
+	transition:
+		top .35s,
+		transform .35s;
+
+	&:focus,
+	&:active {
+		transform: translate(-50%, 40px);
+	}
+
+	.no-csstransforms & {
+		top: -100%;
+
+		&:focus,
+		&:active {
+			top: 40px;
+		}
+	}
+}

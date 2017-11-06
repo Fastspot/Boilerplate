@@ -1,0 +1,93 @@
+// Common Type
+// =============================================================================
+
+@mixin h1() {
+  @include nd(500);
+
+  font-size: 40px;
+  line-height: (48 / 40);
+
+  @media #{$min_lg} {
+    font-size: 50px;
+    line-height: (60 / 50);
+  }
+}
+
+@mixin h2() {
+  @include nd(500);
+
+  font-size: 34px;
+  line-height: (50 / 34);
+
+  @media #{$min_lg} {
+    font-size: 40px;
+    line-height: (48 / 40);
+  }
+}
+
+@mixin h3() {
+  @include nd(500);
+
+  font-size: 34px;
+  line-height: (44 / 34);
+}
+
+@mixin body_text() {
+  @include nt(400);
+
+  font-size: 17px;
+  line-height: (30 / 17);
+
+  @media #{$min_lg} {
+    font-size: 21px;
+    line-height: (34 / 21);
+  }
+}
+
+
+// Typography
+// =============================================================================
+
+.gb_typography {
+
+  h1, h2, h3 {
+    margin: 20px 0 10px;
+  }
+
+  h1 {
+    @include h1;
+  }
+
+  h2 {
+    @include h2;
+  }
+
+  h3 {
+    @include h3;
+  }
+
+  > p {
+    @include body_text;
+
+    margin: 10px 0 30px;
+  }
+}
+
+
+// Tools
+// =============================================================================
+
+.gb_text {
+
+  *:last-child {
+    margin-top: 0;
+  }
+}
+
+  .gb_label {
+    @include body_text;
+
+    color: #868686;
+    display: block;
+    margin-top: 35px;
+  }

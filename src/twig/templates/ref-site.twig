@@ -1,0 +1,66 @@
+{% extends "_ref.twig" %}
+
+{% block data %}
+	{% set page = {
+		tabTitle: "Site Reference",
+		title: "Site Reference"
+	} %}
+{% endblock %}
+
+{% block main %}
+	<div class="ref_group">
+		<h3>General Details</h3>
+		<ul>
+			<li><strong>Name: </strong>{{name}}</li>
+			<li><strong>Version: </strong>{{version}}</li>
+			<li><strong>Description: </strong>{{description}}</li>
+			<li><strong>Repository: </strong><a href="{{repository.url}}">{{repository.type}}</a></li>
+		</ul>
+	</div>
+	<div class="ref_group">
+		<h3>Project Links</h3>
+		<ul>
+			{% for link in urls %}
+				<li><a href="{{link.url}}">{{link.name}}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="ref_group">
+		<h3>Variables</h3>
+		<ul>
+			{% for key, value in vars %}
+				{% if value %}
+					<li><strong>{{key}}: </strong> {% if key == "domain" %}<a href="{{value}}">{% endif %}{{value}}{% if key == "domain" %}</a>{% endif %}</li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="ref_group">
+		<h3>Links</h3>
+		<ul>
+			{% for key, value in links %}
+				{% if value %}
+					<li>
+						<strong>
+							<span>{{key}}</span>
+						</strong>
+						<ul>
+							{% for link in value %}
+								<li>
+									{% if link.name %}{% if link.href %}<a href="{{link.href}}">{% endif %}{% if link.children %}<span>{% endif %}{{link.name}}{% if link.children %}</span>{% endif %}{% if link.href %}</a>{% endif %}{% elseif link %}{{link}}{% endif %}
+									{% if link.children %}
+										<ul>
+											{% for link in link.children %}
+												<li>{{link}}</li>
+											{% endfor %}
+										</ul>
+									{% endif %}
+								</li>
+							{% endfor %}
+						</ul>
+					</li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+	</div>
+{% endblock %}

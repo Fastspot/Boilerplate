@@ -1,0 +1,587 @@
+/* ==========================================================================
+	Setup
+============================================================================= */
+
+// Variables
+// =============================================================================
+
+$root_font_size: 16;
+
+$base_speed: .25s;
+$base_timing: ease;
+$base_delay: .05s;
+
+$mq_min_ht: 800;
+$mq_min_xs: 320;
+$mq_min_sm: 500;
+$mq_min_md: 740;
+$mq_min_lg: 980;
+$mq_min_xl: 1220;
+
+$min_xs: "screen and (min-width:" + ($mq_min_xs * 1px) + ")";
+$min_sm: "screen and (min-width:" + ($mq_min_sm * 1px) + ")";
+$min_md: "screen and (min-width:" + ($mq_min_md * 1px) + ")";
+$min_lg: "screen and (min-width:" + ($mq_min_lg * 1px) + ")";
+$min_xl: "screen and (min-width:" + ($mq_min_xl * 1px) + ")";
+
+$max_xs: "screen and (max-width:" + ($mq_min_xs - 1px) + ")";
+$max_sm: "screen and (max-width:" + ($mq_min_sm - 1px) + ")";
+$max_md: "screen and (max-width:" + ($mq_min_md - 1px) + ")";
+$max_lg: "screen and (max-width:" + ($mq_min_lg - 1px) + ")";
+$max_xl: "screen and (max-width:" + ($mq_min_xl - 1px) + ")";
+
+$and_max_sm: "and (max-width:" + ($mq_min_sm - 1px) + ")";
+$and_max_md: "and (max-width:" + ($mq_min_md - 1px) + ")";
+$and_max_lg: "and (max-width:" + ($mq_min_lg - 1px) + ")";
+$and_max_xl: "and (max-width:" + ($mq_min_xl - 1px) + ")";
+
+$margin_sm: 40px;
+$margin_md: 50px;
+$margin_lg: 60px;
+$margin_xl: 80px;
+
+
+// Mixins
+// =============================================================================
+
+@mixin mq_switch() {
+
+	&_sm {
+
+		@media #{$min_lg} {
+			display: none;
+		}
+	}
+
+	&_lg {
+
+		@media #{$max_lg} {
+			display: none;
+		}
+	}
+}
+
+// 1. IE 10/11 uses a non-standard
+
+@mixin columns($count, $gap: 0) {
+	column-count: $count;
+	column-gap: $gap;
+
+	& > * {
+		column-break-inside: avoid;
+		break-inside: avoid; // 1
+	}
+}
+
+@mixin cover() {
+	height: 100%;
+	width: 100%;
+
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+// Cover Image:
+// Use on wrapping element of img (<figure>, <picture>)
+// Will work like background-size: cover; but with static images
+// Won't scale it down though, so good to use with picturefill
+
+@mixin cover_image() {
+	position: relative;
+	z-index: 2;
+
+	img {
+		width: auto;
+		height: auto;
+
+		position: absolute;
+		top: 50%;
+		left: 50%;
+
+		min-width: 100% !important;
+		min-height: 100% !important;
+		transform: translate(-50%, -50%);
+		z-index: 0;
+	}
+}
+
+@mixin center() {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	transform: translate(-50%, -50%);
+}
+
+@mixin center_vertical() {
+	position: absolute;
+	top: 50%;
+
+	transform: translateY(-50%);
+}
+
+@mixin absolute_center() {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	margin: auto;
+}
+
+@mixin text_indent($height: 0) {
+	display: block;
+	line-height: $height;
+	overflow: hidden;
+	text-indent: 100%;
+}
+
+@mixin ellipsis() {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+// 1. Filter for <= IE 9, does not work on pseudo elements
+
+@mixin gradient_horizontal($startColor: black, $endColor: white) {
+	background-color: $startColor;
+	background:
+		linear-gradient(
+			to right,
+				$startColor,
+				$endColor
+		);
+
+	$ieStartColor: argb($startColor);
+	$ieEndColor: argb($endColor);
+
+	filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ieStartColor}', endColorstr='#{ieEndColor}', GradientType=1)"; // 1
+}
+
+// 1. Filter for <= IE 9, does not work on pseudo elements
+
+@mixin gradient_vertical($startColor: black, $endColor: white) {
+	background-color: $startColor;
+	background:
+		linear-gradient(
+			to bottom,
+				$startColor,
+				$endColor
+		);
+
+	$ieStartColor: argb($startColor);
+	$ieEndColor: argb($endColor);
+
+	filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ieStartColor}', endColorstr='#{ieEndColor}', GradientType=0)"; // 1
+}
+
+@mixin font_smoothing() {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+@mixin killFlicker() {
+	-webkit-font-smoothing: auto;
+	transform: translateZ(0);
+}
+
+@mixin word_break() {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	word-break: break-all;
+	word-break: break-word;
+	hyphens: auto;
+}
+
+
+// Margins
+// =============================================================================
+
+@mixin margined_top($m: 1) {
+	margin-top: $margin_sm * $m;
+}
+
+@mixin margined_bottom($m: 1) {
+	margin-bottom: $margin_sm * $m;
+}
+
+@mixin margined($m: 1) {
+	@include margined_top($m);
+	@include margined_bottom($m);
+}
+
+@mixin margined_md_top($m: 1) {
+	@include margined_top($m);
+
+	@media #{$min_md} {
+		margin-top: $margin_md * $m;
+	}
+}
+
+@mixin margined_md_bottom($m: 1) {
+	@include margined_bottom($m);
+
+	@media #{$min_md} {
+		margin-bottom: $margin_md * $m;
+	}
+}
+
+@mixin margined_md($m: 1) {
+	@include margined_md_top($m);
+	@include margined_md_bottom($m);
+}
+
+@mixin margined_lg_top($m: 1) {
+	@include margined_md_top($m);
+
+	@media #{$min_lg} {
+		margin-top: $margin_lg * $m;
+	}
+}
+
+@mixin margined_lg_bottom($m: 1) {
+	@include margined_md_bottom($m);
+
+	@media #{$min_lg} {
+		margin-bottom: $margin_lg * $m;
+	}
+}
+
+@mixin margined_lg($m: 1) {
+	@include margined_lg_top($m);
+	@include margined_lg_bottom($m);
+}
+
+@mixin margined_xl_top($m: 1) {
+	@include margined_lg_top($m);
+
+	@media #{$min_xl} {
+		margin-top: $margin_xl * $m;
+	}
+}
+
+@mixin margined_xl_bottom($m: 1) {
+	@include margined_lg_bottom($m);
+
+	@media #{$min_xl} {
+		margin-bottom: $margin_xl * $m;
+	}
+}
+
+@mixin margined_xl($m: 1) {
+	@include margined_xl_top($m);
+	@include margined_xl_bottom($m);
+}
+
+@mixin margined_top_none() {
+	margin-top: 0 !important;
+}
+
+@mixin margined_bottom_none() {
+	margin-bottom: 0 !important;
+}
+
+@mixin margined_none() {
+	@include margined_top_none;
+	@include margined_bottom_none;
+}
+
+
+// Padding
+// =============================================================================
+
+@mixin padded_top() {
+	padding-top: $margin_sm;
+}
+
+@mixin padded_bottom() {
+	padding-bottom: $margin_sm;
+}
+
+@mixin padded() {
+	@include padded_top;
+	@include padded_bottom;
+}
+
+@mixin padded_md_top() {
+	@include padded_top;
+
+	@media #{$min_md} {
+		padding-top: $margin_md;
+	}
+}
+
+@mixin padded_md_bottom() {
+	@include padded_bottom;
+
+	@media #{$min_md} {
+		padding-bottom: $margin_md;
+	}
+}
+
+@mixin padded_md() {
+	@include padded_md_top;
+	@include padded_md_bottom;
+}
+
+@mixin padded_lg_top() {
+	@include padded_md_top;
+
+	@media #{$min_lg} {
+		padding-top: $margin_lg;
+	}
+}
+
+@mixin padded_lg_bottom() {
+	@include padded_md_bottom;
+
+	@media #{$min_lg} {
+		padding-bottom: $margin_lg;
+	}
+}
+
+@mixin padded_lg() {
+	@include padded_lg_top;
+	@include padded_lg_bottom;
+}
+
+@mixin padded_xl_top() {
+	@include padded_lg_top;
+
+	@media #{$min_xl} {
+		padding-top: $margin_xl;
+	}
+}
+
+@mixin padded_xl_bottom() {
+	@include padded_lg_bottom;
+
+	@media #{$min_xl} {
+		padding-bottom: $margin_xl;
+	}
+}
+
+@mixin padded_xl() {
+	@include padded_xl_top;
+	@include padded_xl_bottom;
+}
+
+@mixin padded_top_none() {
+	padding-top: 0;
+}
+
+@mixin padded_bottom_none() {
+	padding-bottom: 0;
+}
+
+@mixin padded_none() {
+	@include padded_top_none;
+	@include padded_bottom_none;
+}
+
+
+// Helpers
+// =============================================================================
+
+@mixin block_left() {
+	float: left;
+
+	margin: 0 20px 20px 0;
+}
+
+@mixin block_right() {
+	float: right;
+
+	margin: 0 0 20px 20px;
+}
+
+@mixin block_center() {
+	margin: 20px auto;
+	text-align: center;
+}
+
+@mixin clearfix() {
+
+	&:after {
+		clear: both;
+		content: "";
+		display: table;
+	}
+}
+
+@mixin no_select() {
+
+	&,
+	& * {
+		user-select: none;
+	}
+}
+
+@mixin hide() {
+	display: none !important;
+	visibility: hidden;
+}
+
+@mixin visually_hide() {
+	width: 1px;
+	height: 1px;
+
+	position: absolute;
+
+	border: 0;
+	clip: rect(0 0 0 0);
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+
+	&.focusable:active,
+	&.focusable:focus {
+		width: auto;
+		height: auto;
+
+		position: static;
+
+		clip: auto;
+		margin: 0;
+		overflow: visible;
+	}
+}
+
+@mixin offscreen() {
+	width: 1px;
+	height: 1px;
+
+	position: absolute;
+	left: -999px;
+
+	overflow: hidden;
+	z-index: -999;
+}
+
+@mixin video_frame() {
+	width: 100%;
+
+	position: relative;
+
+	padding-bottom: 56.25%;
+
+	iframe {
+		width: 100%;
+		height: 100%;
+
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
+
+
+// Transitions
+// =============================================================================
+
+@mixin transition_hide() {
+	opacity: 0;
+	pointer-events: none;
+	transition:
+		opacity $base_speed,
+		visibility $base_speed;
+	visibility: hidden;
+}
+
+@mixin transition_show() {
+	opacity: 1;
+	pointer-events: auto;
+	visibility: visible;
+}
+
+
+// Images
+// =============================================================================
+
+@mixin image_1_1() {
+	padding-top: 100%;
+}
+
+@mixin image_16_9() {
+	padding-top: (9 / 16) * 100%;
+}
+
+@mixin image_3_2() {
+	padding-top: (2 / 3) * 100%;
+}
+
+@mixin responsive_image() {
+	display: block;
+
+	picture {
+		display: block;
+	}
+
+	img {
+		display: block;
+
+		width: 100%;
+	}
+}
+
+
+// Modifier Conditions
+// =============================================================================
+
+@mixin sm_lg_display() {
+
+	&_sm {
+
+		@media #{$min_lg} {
+			display: none;
+		}
+	}
+
+	&_lg {
+
+		@media #{$max_lg} {
+			display: none;
+		}
+	}
+}
+
+
+// Layout
+// =============================================================================
+
+@mixin space_out() {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+}
+
+@mixin fake_scroll() {
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+
+
+// Input Focus
+// =============================================================================
+
+// Uses 'What input ?' detection - https://github.com/ten1seven/what-input
+
+[data-whatinput="mouse"] a:focus,
+[data-whatinput="mouse"] button:focus,
+[data-whatinput="touch"] a:focus,
+[data-whatinput="touch"] button:focus {
+	outline: none;
+}
+
+@mixin focus_outline_none() {
+
+	[data-whatinput="mouse"] &:focus,
+	[data-whatinput="touch"] &:focus {
+		outline: none;
+	}
+}

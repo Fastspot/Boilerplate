@@ -1,0 +1,52 @@
+{#
+	{% include "../components/full-width/flexible-callout.twig" with {
+		theme: "",
+		background: 1,
+		label: "Label",
+		title: "Lorem ipsum dolor sit amet",
+		description: "Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.",
+		links: [
+			{
+				href: "#",
+				name: "Learn More"
+			}
+		]
+	} %}
+#}
+
+<section class="flex_callout{% if theme %} theme_{{theme}}{% endif %}">
+	{% if background %}
+		{% include "../../partials/background.twig" with {
+			class: "flex_callout",
+			sources: {
+				"0px": img.wide.med,
+				"980px": img.wide.lrg
+			},
+			image: background
+		} %}
+	{% endif %}
+	<div class="fs-row">
+		<div class="fs-cell">
+			<div class="flex_callout_wrapper">
+				<header class="flex_callout_header">
+					<h2 class="flex_callout_label">{{label}}</h2>
+					<h3 class="flex_callout_title">{{title}}</h3>
+				</header>
+				<div class="flex_callout_body">
+					<div class="flex_callout_description">
+						<p>{{description}}</p>
+					</div>
+				</div>
+				{% if links %}
+					<footer class="flex_callout_links">
+						{% for link in links %}
+							<a class="flex_callout_link" href="{{link.href}}">
+								<span class="flex_callout_link_label">{{link.name}}</span>
+							</a>
+						{% endfor %}
+					</footer>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</section>

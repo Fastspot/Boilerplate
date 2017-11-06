@@ -1,0 +1,28 @@
+/* ==========================================================================
+	Footer Navigation
+============================================================================= */
+
+.footer_nav {}
+
+.footer_nav_header {}
+
+.footer_nav_title {
+	@include visually_hide;
+}
+
+
+// Footer Links
+// =============================================================================
+
+.footer_nav_list {}
+
+.footer_nav_item {}
+
+.footer_nav_link {
+	display: block;
+
+	&:focus,
+	&:hover {}
+}
+
+.footer_nav_link_label {}

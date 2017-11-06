@@ -1,0 +1,384 @@
+/* ==========================================================================
+	Type Base
+============================================================================= */
+
+@mixin h1() {
+	font-size: 30px;
+	line-height: (70 / 60);
+
+	@media #{$min_sm} {
+		font-size: 60px;
+	}
+}
+
+@mixin h2() {
+	font-size: 26px;
+	line-height: (60 / 50);
+
+	@media #{$min_sm} {
+		font-size: 50px;
+	}
+}
+
+@mixin h3() {
+	font-size: 24px;
+	line-height: (50 / 40);
+
+	@media #{$min_sm} {
+		font-size: 40px;
+	}
+}
+
+@mixin h4() {
+	font-size: 22px;
+	line-height: (40 / 30);
+
+	@media #{$min_sm} {
+		font-size: 30px;
+	}
+}
+
+@mixin h5() {
+	font-size: 20px;
+	line-height: (30 / 20);
+}
+
+@mixin h6() {
+	font-size: 16px;
+	line-height: (24 / 16);
+}
+
+@mixin intro_text() {}
+
+@mixin body_text() {
+	font-size: 16px;
+	line-height: (24 / 16);
+}
+
+@mixin label_text() {}
+
+@mixin caption_text() {
+	font-size: 14px;
+	line-height: (22 / 14);
+}
+
+a {
+	text-decoration: none;
+
+	&[href^=tel] {
+		color: inherit;
+	}
+}
+
+strong {
+	font-weight: 700;
+}
+
+
+// Typography
+// =============================================================================
+
+.typography {
+	@include body_text;
+
+	h1, h2, h3, h4, h5, h6 {
+
+		+ * {
+			margin-top: 0;
+		}
+	}
+
+	h1 {
+		@include h1;
+
+		margin: 40px 0 20px;
+	}
+
+	h2 {
+		@include h2;
+
+		margin: 40px 0 20px;
+	}
+
+	h3 {
+		@include h3;
+
+		margin: 40px 0 20px;
+	}
+
+	h4 {
+		@include h4;
+
+		margin: 40px 0 20px;
+	}
+
+	h5 {
+		@include h5;
+
+		margin: 40px 0 20px;
+	}
+
+	h6 {
+		@include h6;
+
+		margin: 40px 0 20px;
+	}
+
+	a {
+		transition:
+			color $base_speed,
+			background $base_speed;
+	}
+
+	p {
+		margin: 20px 0;
+	}
+
+	.intro {
+		@include intro_text;
+	}
+
+	.copy {
+		@include body_text;
+	}
+
+	.label {
+		@include label_text;
+	}
+
+	.caption {
+		@include caption_text;
+	}
+}
+
+
+// WYSIWYG Images
+// =============================================================================
+
+.typography {
+
+	img {
+		height: auto;
+		max-width: 100%;
+	}
+
+	.block_left,
+	.block_right,
+	.block_center,
+	.alignleft,
+	.alignright,
+	.aligncenter,
+	.alignnone {
+		width: auto;
+
+		display: table;
+		margin-bottom: 20px;
+		table-layout: fixed;
+
+		img {
+			display: block;
+			max-width: 100%;
+		}
+
+		figcaption {
+			@include caption_text;
+
+			caption-side: bottom;
+			display: table-caption;
+			margin-top: 10px;
+		}
+	}
+
+	.block_left,
+	.block_right,
+	.alignleft,
+	.alignright  {
+		max-width: 50%;
+
+		@media #{$max_sm} {
+			max-width: 100%;
+
+			float: none;
+			margin-right: 0;
+			margin-left: 0;
+		}
+	}
+
+	.block_left,
+	.alignleft {
+
+		@media #{$min_sm} {
+			float: left;
+			margin-right: 20px;
+		}
+	}
+
+	.block_right,
+	.alignright {
+
+		@media #{$min_sm} {
+			float: right;
+			margin-left: 20px;
+		}
+	}
+
+	.block_center,
+	.aligncenter {
+		text-align: center;
+
+		img {
+			margin-right: auto;
+			margin-left: auto;
+		}
+	}
+}
+
+
+// Blockquote
+// =============================================================================
+
+.typography {
+
+	blockquote {
+		margin: 20px 0;
+
+		p {
+			margin: 0;
+		}
+	}
+
+	.quote {}
+
+	.quote_content {
+
+		p {}
+	}
+
+	.quote_caption {}
+
+	.quote_caption_name {}
+
+	.quote_caption_title {}
+}
+
+
+// Lists
+// =============================================================================
+
+.typography {
+
+	ol,
+	ul {
+		list-style: none;
+
+		li {
+			margin: 10px 0;
+		}
+	}
+
+	ol {
+		counter-reset: li;
+
+		> li {
+
+			&:before {
+				content: counter(li) ". ";
+				counter-increment: li;
+
+				@at-root ol[type="A"] li:before {
+					content: counter(li, upper-latin) ". ";
+				}
+
+				@at-root ol[type="a"] li:before {
+					content: counter(li, lower-latin) ". ";
+				}
+			}
+		}
+	}
+
+	ul {
+
+		li {
+
+			&:before {
+				width: 5px;
+				height: 5px;
+
+				background: #444;
+				border-radius: 50%;
+				content: "";
+				display: block;
+				float: left;
+				margin: 10px 0 0 -15px;
+			}
+		}
+	}
+}
+
+
+// Tables
+// =============================================================================
+
+.typography {
+
+	table {
+		width: 100%;
+
+		border-collapse: collapse;
+
+		tr {
+
+			&:nth-child(odd) {
+				background: $gray_10;
+			}
+		}
+
+		th,
+		td {}
+
+		th {
+			@include h6;
+
+			background: $gray_60;
+			color: #fff;
+			padding: 10px 20px;
+			text-align: left;
+		}
+
+		td {
+			padding: 10px 20px;
+		}
+	}
+}
+
+// 1. Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
+
+.table_wrapper {
+	@include margined;
+
+	min-height: 0.01%; // 1
+}
+
+.table_wrapper_overflow {
+	position: relative;
+
+	border: 1px solid #ccc;
+
+	&:after {
+		@include gradient_horizontal(rgba(#000, 0), rgba(#000, 0.1));
+
+		width: 20px;
+		height: 100%;
+
+		position: absolute;
+		top: 0;
+		right: 0;
+
+		content: "";
+	}
+}
+
+.table_wrapper_inner {
+	overflow-y: hidden;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+}

@@ -1,0 +1,37 @@
+/* ==========================================================================
+	Logo
+============================================================================= */
+
+.logo {
+	margin: 0;
+}
+
+.logo_link {
+	background-position: 0 50%;
+	background-repeat: no-repeat;
+	background-size: contain;
+	color: transparent;
+	display: block;
+	overflow: hidden;
+	user-select: none;
+	white-space: nowrap;
+}
+
+.logo_link_label {
+
+	.logo_symbol & {
+		@include visually_hide;
+	}
+}
+
+.logo_link_symbol {
+	color: #000;
+}
+
+.logo_print {
+	display: none;
+
+	@media print {
+		display: block;
+	}
+}

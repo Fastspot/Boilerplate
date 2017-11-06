@@ -1,0 +1,227 @@
+/* ==========================================================================
+	Gravity Forms
+============================================================================= */
+
+.page {
+
+	.page_content {
+
+		.gform_wrapper {
+
+			// Progress Bar
+			// =======================================================================
+
+			.gf_progressbar_wrapper {
+				margin-bottom: 20px;
+				padding: 0;
+
+				.gf_progressbar_title {
+					line-height: 1.25 !important;
+					margin: 0 0 10px !important;
+					opacity: 1;
+				}
+
+				.gf_progressbar {
+					box-shadow: none;
+
+					&:after {
+						box-shadow: none;
+					}
+				}
+
+				.gf_progressbar_percentage {
+					background: $gray_50;
+					box-shadow: none;
+					font-size: 14px !important;
+					text-shadow: none;
+					z-index: initial;
+
+					span {
+						@include h6;
+					}
+				}
+			}
+
+
+			// Validation Error
+			// =======================================================================
+
+			.validation_error {
+				border-top: 0;
+				border-bottom: 0;
+				margin: 20px 0;
+				padding: 0;
+			}
+
+
+			// Form Body
+			// =======================================================================
+
+			.gform_body {
+				width: 100% !important;
+
+
+				// Fields & Errors
+				// =====================================================================
+
+				.gfield {
+					margin: 20px 0 !important;
+
+					&.gfield_error {
+						padding: 10px;
+
+						.gfield_label {}
+
+					}
+
+					.validation_message {}
+				}
+
+
+				// Section Title
+				// =====================================================================
+
+				.gsection {
+					border-bottom: 0;
+					margin: 30px 0 !important;
+					padding: 0;
+				}
+
+
+				// Label
+				// =====================================================================
+
+				.gfield_label {
+					@include label;
+
+					font-weight: 700;
+				}
+
+				label:not(.gfield_label) {
+					@include label;
+				}
+
+				.ginput_container_time {
+
+					label {
+						width: 100%;
+					}
+
+					i {
+						line-height: 1;
+						margin-top: 0;
+					}
+				}
+
+
+				// Input & Textarea
+				// =====================================================================
+
+				.ginput_container {
+
+					input,
+					textarea {
+						@include input;
+
+						padding: 10px 20px !important;
+					}
+
+					.address_country {
+						margin-top: 0;
+					}
+				}
+
+
+				// Select
+				// =====================================================================
+
+				.gfield_select {
+					margin-left: 0;
+
+					&[multiple] {
+						padding: 0;
+
+						option {
+							padding: 2px 4px;
+						}
+					}
+				}
+
+				.ginput_container_time {
+
+					.fs-dropdown {
+						min-width: 100px;
+					}
+				}
+
+
+				// Select
+				// =====================================================================
+
+				.ginput_container_list.gfield_list {
+					background: $gray_10;
+
+					.gfield_list_cell {
+						padding: 4px;
+					}
+
+					.gfield_list_icons {
+						padding: 4px !important;
+					}
+				}
+
+
+				// Credit Card Section
+				// =====================================================================
+
+				.ginput_cardextras {
+					@include clearfix;
+
+					margin: 20px 0 10px;
+					overflow: visible;
+
+					.ginput_cardinfo_left {
+						width: 100%;
+
+						$media screen and (min-width: 700px) {
+							width: 50%;
+
+							padding-right: 10px;
+						}
+
+						.fs-dropdown {
+
+							&:first-child {
+								margin-bottom: 10px;
+							}
+						}
+					}
+
+					.ginput_cardinfo_right {}
+				}
+
+
+				// Footer
+				// =====================================================================
+
+				.gform_page_footer {
+					border-top: 0;
+					margin: 20px 0;
+					padding: 20px 0;
+
+					.button {
+						.button_inline;
+
+						&[type="submit"] {}
+					}
+				}
+
+
+				// Thank You Message
+				// =====================================================================
+
+				.gform_confirmation_message {}
+			}
+		}
+	}
+}

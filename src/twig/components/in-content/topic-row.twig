@@ -1,0 +1,69 @@
+{#
+	{% include "../components/in-content/topic-row.twig" with {
+		title: "",
+		topics: [
+			{
+				title: "Financial Aid",
+				image: 1,
+				description: "Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.",
+				links: [
+					{
+						href: "#",
+						name: "Learn More"
+					}
+				]
+			},
+			{
+				title: "Virtual Tour",
+				image: 2,
+				description: " Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.",
+				links: [
+					{
+						href: "#",
+						name: "Explore Now"
+					}
+				]
+			}
+		]
+	} %}
+#}
+
+<div class="topic_block{% if theme %} theme_{{theme}}{% endif %}">
+	{% if title %}
+		<header class="topic_block_header">
+			<h2 class="topic_block_title">{{title}}</h2>
+		</header>
+	{% endif %}
+	<div class="topic_items">
+		{% for topic in topics %}
+			<article class="topic_row">
+				<div class="topic_row_inner">
+					{% if topic.image %}
+						<figure class="topic_figure">
+							{{site.image("topic", img.square.xsml, topic.image)}}
+						</figure>
+					{% endif %}
+					<div class="topic_wrapper">
+						<header class="topic_header">
+							<h3 class="topic_title">{{topic.title}}</h3>
+						</header>
+						<div class="topic_body">
+							<div class="topic_description">
+								<p>{{topic.description}}</p>
+							</div>
+						</div>
+						{% if topic.links %}
+							<footer class="topic_links">
+								{% for link in topic.links %}
+									<a class="topic_link" href="{{link.href}}">
+										<span class="topic_link_label">{{link.name}}</span>
+									</a>
+								{% endfor %}
+							</footer>
+						{% endif %}
+					</div>
+				</div>
+			</article>
+		{% endfor %}
+	</div>
+</div>

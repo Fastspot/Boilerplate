@@ -1,0 +1,84 @@
+{% import '../partials/macros.twig' as site %}
+{% import '../partials/guidebook/macros.twig' as gb %}
+
+{% block page %}
+{% endblock %}
+
+<!DOCTYPE html>
+<html lang="en" class="guidebook">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>{{page.title}} | {{vars.name}}</title>
+		<meta name="description" content="">
+		<link rel="stylesheet" href="../../css/site.css">
+		<link rel="stylesheet" href="../../css/guidebook.css">
+	</head>
+	<body class="fs-grid">
+		<figure style="display: none;">
+			{% include '../../../images/icons.svg' %}
+		</figure>
+		<header class="gb_page_header">
+			<div class="gb_page_ribbon">
+				<div class="fs-row">
+					<div class="fs-cell">
+						<div class="gb_ribbon_group">
+							<a class="gb_ribbon_link" href="./fs-guidebook.html">Guidebook</a>
+							<div class="gb_ribbon_aside">
+								{% include "../partials/navigation/basic.twig" with {
+									class: "gb_main_nav",
+									links: links.guidebook
+								} %}
+								<a class="gb_ribbon_logo" href="https://www.fastspot.com/">{{site.symbol("fs_logo")}}</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="gb_jump_ribbon">
+				<div class="fs-row">
+					<div class="fs-cell">
+						<nav class="gb_jump_nav"></nav>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="gb_page_content">
+			<div class="fs-row">
+				{% if page.intro or page.caption %}
+					<header class="fs-cell fs-lg-10 fs-xl-8 gb_page_details">
+						{% if page.intro %}
+							<h2 class="gb_page_intro">{{page.intro}}{{vars.name}}.</h2>
+						{% endif %}
+						{% if page.caption %}
+							<h4 class="gb_page_title">{{page.title}}</h4>
+							<p class="gb_page_caption">{{page.caption}}</p>
+						{% endif %}
+					</header>
+				{% endif %}
+				<div class="fs-cell{% if page.layout == "default" %} fs-lg-10 fs-xl-8{% elseif page.layout == "full" %} fs-lg-12 fs-xl-12{% endif %} content_cell">
+					{% block content %}
+					{% endblock %}
+				</div>
+				{% if page.layout == "default" %}
+					<div class="fs-cell-right fs-lg-4 aside_cell sidebar_cell">
+						{% block sidebar %}
+						{% endblock %}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+		<script src="../../js/site.js"></script>
+		{% if page.trello %}
+			{% include '../partials/guidebook/trello-js.twig' %}
+		{% endif %}
+		<script>
+			var jumps = document.querySelectorAll('h2[id]');
+			var jumpNav = document.querySelector('.gb_jump_nav');
+
+			for(var i = 0; i < jumps.length; i++) {
+				jumpNav.innerHTML += '<a class="gb_jump_nav_link" href="#' + jumps[i].getAttribute('id') + '">' + jumps[i].innerHTML + '</a>';
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,268 @@
+// GB Topics
+// =============================================================================
+
+.gb_topics {
+  margin-top: 30px;
+
+  @media #{$min_sm} {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+  .gb_topic {
+    max-width: 400px;
+
+    margin-bottom: 8%;
+
+    @media screen and (min-width: 600px) {
+      width: 42%;
+      margin-right: 8%;
+      margin-bottom: 4%;
+    }
+
+    @media #{$min_lg} {
+      width: 25.33%;
+    }
+
+    &_trello {
+      cursor: pointer;
+    }
+  }
+
+    .gb_topic_header {}
+
+      .gb_topic_figure {
+
+        @media screen and (min-width: 600px) {
+          height: 165px;
+
+          position: relative;
+        }
+      }
+
+        .gb_topic_image {
+          max-height: 340px;
+          max-width: 100%;
+
+          margin-bottom: 24px;
+
+          &_juxtaposed {
+
+            @media screen and (min-width: 600px) {
+              position: absolute;
+              bottom: 0;
+              left: 0;
+            }
+          }
+        }
+
+      .gb_topic_placeholder {
+        height: 165px;
+        width: 100%;
+
+        border: 1px solid rgba(#979797, .2);
+        margin-bottom: 20px;
+      }
+
+      .gb_topic_title {
+        @include h2;
+
+        color: #000;
+        margin: 0 0 10px;
+      }
+
+        .gb_topic_link {
+          box-shadow:
+            inset 0 -2px 0 0 #fff,
+            inset 0 -4px 0 0 #000;
+          color: inherit;
+          display: inline;
+          text-shadow:
+            -2px -2px white,
+            -2px 2px white,
+            2px -2px white,
+            2px 2px white;
+
+          @media #{$min_lg} {
+            box-shadow:
+              inset 0 -6px 0 0 #fff,
+              inset 0 -8px 0 0 #000;
+          }
+        }
+
+      .gb_topic_caption {
+        @include body_text;
+
+        margin: 0;
+      }
+
+
+// Types
+// =============================================================================
+
+.gb_types {}
+
+  .gb_type {
+    margin-bottom: 40px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+    .gb_type_title {}
+
+    .gb_type_item {
+      max-width: 170px;
+      width: 100%;
+
+      border: 1px solid #979797;
+      display: inline-block;
+      margin-right: 20px;
+      margin-bottom: 20px;
+      padding: 25px 20px 16px;
+    }
+
+      .gb_type_test {
+        display: block;
+        font-size: 58px;
+      }
+
+      .gb_type_weight {
+        display: block;
+        font-size: 18px;
+      }
+
+
+// Colors
+// =============================================================================
+
+.gb_colors {
+
+  @media #{$min_sm} {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+  .gb_color {
+    max-width: 260px;
+
+    margin-bottom: 8%;
+
+    @media #{$min_sm} {
+      width: 42%;
+      margin-right: 4%;
+      margin-bottom: 4%;
+    }
+
+    @media #{$min_lg} {
+      width: 25.33%;
+    }
+  }
+
+    .gb_color_block {
+      height: 100px;
+
+      box-shadow: inset 0 0 0 1px rgba(#000, .1);
+      margin-bottom: 5px;
+    }
+
+    .gb_color_details {}
+
+      .gb_color_label {
+        @include body_text;
+
+        display: block;
+        line-height: 1.25;
+      }
+
+      .gb_color_copy {
+        @include nt(700);
+
+        border-bottom: 1px solid;
+        cursor: pointer;
+        display: block;
+        font-size: 12px;
+        margin: 2px 0;
+        opacity: 0;
+        text-transform: uppercase;
+        transition: opacity .25s;
+
+        .gb_color:focus &,
+        .gb_color:hover & {
+          opacity: 1;
+        }
+      }
+
+
+// Component Section
+// =============================================================================
+
+.gb_component_section {
+  margin-bottom: 16%;
+
+  @media screen and (min-width: 600px) {
+    margin-bottom: 0;
+  }
+}
+
+  .gb_component_section_header {}
+
+    .gb_component_section_title {
+      @include h2;
+    }
+
+  .gb_component_section_body {}
+
+
+// Trello
+// =============================================================================
+
+.gb_trello_notification {
+  color: #DA2315;
+
+  .gb_typography & {
+    margin: 40px 0 80px;
+  }
+}
+
+.gb_trello_detail {
+  @include clearfix;
+
+  display: none;
+
+  .gb_trello_detail_lock & {
+    display: block;
+  }
+}
+
+  .gb_trello_detail_title {}
+
+  .gb_trello_detail_image {
+    width: 100%;
+
+    margin: 30px 0;
+  }
+
+  .gb_trello_detail_content {}
+
+.gb_trello_list {
+
+  .gb_trello_detail_lock & {
+    display: none;
+  }
+}
+
+
+// Section
+// =============================================================================
+
+.gb_section {
+  padding: 25px 0;
+
+  @media #{$min_md} {
+    padding: 50px 0;
+  }
+}

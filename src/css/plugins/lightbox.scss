@@ -1,0 +1,118 @@
+/* ==========================================================================
+	Lightbox
+============================================================================= */
+
+.fs-lightbox {
+	background: rgba(#fff, 0.75);
+
+	.fs-lightbox-close {}
+
+	.fs-lightbox-container {}
+
+	.fs-lightbox-content {}
+
+	.fs-lightbox-video_wrapper {
+		margin-right: auto !important;
+		margin-left: auto !important;
+	}
+}
+
+
+// Tools & Controls
+// =============================================================================
+
+.fs-lightbox-tools {
+	width: 100% !important;
+
+	background: #333;
+}
+
+.fs-lightbox-controls {
+	width: 100%;
+}
+
+.fs-lightbox-control {
+
+	&:focus,
+	&:hover {}
+}
+
+.fs-lightbox-meta {}
+
+.fs-lightbox-meta_content {}
+
+.fs-lightbox-position {
+	margin: 0;
+}
+
+.fs-lightbox-position_current,
+.fs-lightbox-position_total {}
+
+.fs-lightbox-meta-divider {}
+
+.fs-lightbox-caption {
+	text-align: center;
+
+	.caption {
+		margin: 0;
+	}
+}
+
+
+// Mobile
+// =============================================================================
+
+// content
+
+.fs-lightbox-mobile .fs-lightbox-content {
+	background-color: none;
+}
+
+// tools
+
+.fs-lightbox-mobile .fs-lightbox-tools {
+	background-color: none;
+}
+
+// controls
+
+.fs-lightbox-mobile .fs-lightbox-controls {
+	text-align: center;
+}
+
+// position
+
+.fs-lightbox-mobile .fs-lightbox-position,
+.fs-lightbox-mobile .fs-lightbox-caption {
+
+	p {
+		color: #000;
+	}
+}
+
+// touch captions
+
+.fs-lightbox-mobile.fs-lightbox-touch .fs-lightbox-tools {}
+
+.fs-lightbox-mobile.fs-lightbox-touch .fs-lightbox-controls {}
+
+.fs-lightbox-mobile.fs-lightbox-touch .fs-lightbox-toggle {
+	display: none;
+}
+
+.fs-lightbox-mobile.fs-lightbox-touch .fs-lightbox-meta {
+	height: auto !important;
+
+	background: #fff;
+	color: #000;
+	padding: 20px;
+}
+
+// viewer
+
+.fs-viewer {
+
+	.fs-viewer-controls {
+		display: none;
+	}
+}

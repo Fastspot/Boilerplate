@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" itemscope="" itemtype="http://schema.org/WebPage">
+
+	{% set grid = true %}
+
+	{% block page %}
+		{% set page = {
+			title: "Page",
+			layout: "default"
+		} %}
+	{% endblock %}
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="mobile-web-app-capable" content="yes">
+
+		<title>{{page.title}} | {{vars.name}}</title>
+		<meta name="description" content="{{vars.description}}">
+
+		{% include "../partials/favicons.html" %}
+
+		<!-- G+ & Facebook -->
+		<meta property="og:title" content="{{vars.name}}">
+		<meta property="og:url" content="//{{vars.domain}}/">
+		<meta property="og:type" content="website">
+		<meta property="og:image" content="//{{vars.domain}}/images/social-rectangle.png">
+		<meta property="og:description" content="{{vars.description}}">
+		<meta property="og:site_name" content="{{vars.name}}">
+
+		{% if vars.twitter != "TwitterName" %}
+			<!-- Twitter -->
+			<meta name="twitter:card" content="summary">
+			<meta name="twitter:site" content="@{{vars.twitter}}">
+			<meta name="twitter:creator" content="@{{vars.twitter}}">
+			<meta name="twitter:url" content="//twitter.com/{{vars.twitter}}">
+			<meta name="twitter:title" content="{{vars.name}}">
+			<meta name="twitter:description" content="">
+			<meta name="twitter:image" content="//{{vars.domain}}/images/social-rectangle.png">
+		{% endif %}
+
+		<script src="../../js/modernizr.js"></script>
+
+		{% if page.stylesheets %}
+			{% for script in page.stylesheets %}
+				<link rel="stylesheet" href="{{script}}">
+			{% endfor %}
+		{% endif %}
+
+		<link rel="stylesheet" href="../../css/site.css">
+	</head>
+
+	<body class="fs-grid layout_{{page.layout}}{% if page.theme %} theme_{{page.theme}}{% endif %}">
+
+		<figure style="display: none;">
+			{% include '../../../images/icons.svg' %}
+		</figure>
+
+		{% block activePage %}
+			{% set activePage = 0 %}
+		{% endblock %}
+
+		{% block sectionTitle %}
+			{% set sectionTitle = page.title %}
+		{% endblock %}
+
+		{% block mainNav %}
+			{% set mainNavAlias = links.mainNav %}
+		{% endblock %}
+
+		{% block breadcrumbNav %}
+			{% set breadcrumbNav = [
+				page.title
+			] %}
+		{% endblock %}
+
+		{% block subNav %}
+			{% set subNavAlias = links.subNav %}
+		{% endblock %}
+
+		{% block secondaryNav %}
+			{% set secondaryNavAlias = links.secondaryNav %}
+		{% endblock %}
+
+		{% block utilityNav %}
+			{% set utilityNavAlias = links.utilityNav %}
+		{% endblock %}
+
+		{% block quickNav %}
+			{% set quickNavAlias = links.quickNav %}
+		{% endblock %}
+
+		{% block footerNav %}
+			{% set footerNavAlias = links.footerNav %}
+		{% endblock %}
+
+		{% block socialNav %}
+			{% set socialNavAlias = links.socialNav %}
+		{% endblock %}
+
+		{% include '../partials/update-notice.twig' %}
+
+		{% import '../partials/macros.twig' as site %}
+
+		<!-- Skip-to-Content Link -->
+		<a class="skip_link" id="skip_to_content" href="#main_content">Skip to Main Content</a>
+
+		<!-- Page Wrapper -->
+		<div class="js-navigation_push page_wrapper">
+			{% if page.layout != "style-guide" %}
+			<!-- Header -->
+			<header class="header" id="header" itemscope itemtype="http://schema.org/WPHeader">
+				<div class="header_ribbon">
+					<div class="fs-row">
+						<div class="fs-cell">
+							<div class="header_ribbon_inner">
+								{% include "../partials/logo.twig" with {
+									modifier: "header",
+									symbol: true
+								} %}
+
+								{% include "../partials/navigation/main.twig" with {
+									modifier: "lg",
+									title: "Site Navigation",
+									links: mainNavAlias,
+									active: activePage
+								} %}
+
+								{% include "../partials/navigation/basic.twig" with {
+									class: "secondary_nav",
+									modifier: "lg",
+									title: "Secondary Navigation",
+									links: secondaryNavAlias
+								} %}
+
+								<a class="mobile_sidebar_handle_wrapper" href="#mobile_sidebar">
+									<span class="js-nav_handle mobile_sidebar_handle">Menu</span>
+								</a>
+
+								{% include "../partials/search-handle.twig" %}
+
+								{% include "../partials/search.twig" with {
+									modifier: "lg",
+									placeholder: "Search",
+									buttonText: "submit"
+								} %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+			<!-- END: Header -->
+			{% endif %}
+
+			<!-- Page -->
+			<div class="page">
+				<!-- Page Feature -->
+				<div class="page_feature">
+					{% block page_feature %}{% endblock %}
+				</div>
+				<!-- END: Page Feature -->
+
+				<!-- Page Content -->
+				<div class="page_content">
+					<div class="fs-row">
+						{% if page.layout == "default" or page.layout == "style-guide" %}
+							<!-- Sub Nav -->
+							<div class="fs-cell-right fs-lg-4 aside_cell subnav_cell">
+								{% include "../partials/navigation/sub.twig" with {
+									title: sectionTitle,
+									links: subNavAlias
+								} %}
+							</div>
+							<!-- END: Sub Nav -->
+						{% endif %}
+
+						<!-- Main Content -->
+						<div class="fs-cell{% if page.layout == "default" or page.layout == "style-guide" %} fs-lg-8{% elseif page.layout == "full" %} fs-lg-10 fs-centered{% endif %} content_cell">
+							<main class="main_content" id="main_content" itemprop="mainContentOfPage">
+								{% if page.layout != "home" %}
+									<!-- Page Header -->
+									{% block above_page_header %}{% endblock %}
+									{% block page_header %}
+										<div class="page_header">
+											{% include "../partials/navigation/breadcrumb.twig" with {
+												links: breadcrumbNav
+											} %}
+
+											{% if page.title %}
+												<h1 class="page_title" id="page_title">{{page.title}}</h1>
+											{% endif %}
+										</div>
+									{% endblock %}
+									{% block below_page_header %}{% endblock %}
+									<!-- END: Page Header -->
+								{% endif %}
+
+								<!-- WYSIWYG - wrap all WYSIWYG text areas in `.typography` -->
+								<div class="typography">
+									{% block typography %}{% endblock %}
+								</div>
+								<!-- END: WYSIWYG -->
+
+								<!-- In Content Callouts -->
+								<div class="in_content_callouts">
+									{% block in_content_callouts %}{% endblock %}
+								</div>
+								<!-- END: In Content Callouts -->
+
+								<!-- WYSIWYG - wrap all WYSIWYG text areas in `.typography` -->
+								<div class="typography">
+									{% block typography_below %}{% endblock %}
+								</div>
+								<!-- END: WYSIWYG -->
+							</main>
+						</div>
+						<!-- END: Main Content -->
+
+						{% if page.layout == "default" or page.layout == "style-guide" %}
+							<!-- Sidebar Callouts -->
+							<div class="fs-cell-right fs-lg-4 aside_cell sidebar_cell">
+								<div class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+									{% block sidebar %}{% endblock %}
+								</div>
+							</div>
+							<!-- END: Sidebar Callouts -->
+						{% endif %}
+					</div>
+
+					<!-- Full Width Callouts -->
+					<div class="full_width_callouts">
+						{% block full_width_callouts %}{% endblock %}
+					</div>
+					<!-- END: Full Width Callouts -->
+				</div>
+				<!-- END: Page Content -->
+			</div>
+			<!-- END: Page -->
+
+			{% if page.layout != "style-guide" %}
+			<!-- Footer -->
+			<footer class="footer" id="footer" itemscope itemtype="http://schema.org/WPFooter">
+				<div class="footer_ribbon">
+					<div class="fs-row">
+						<div class="fs-cell">
+							<div class="footer_ribbon_inner">
+								{% include "../partials/address.twig" with {
+									name: "Fastspot",
+									street: "2980 Falls Road",
+									city: "Baltimore",
+									state: "MD",
+									zip: "21211",
+									tel: "202-432-1200"
+								} %}
+
+								{% include "../partials/navigation/basic.twig" with {
+									class: "footer_nav",
+									title: "Footer Navigation",
+									links: footerNavAlias
+								} %}
+
+								{% include "../partials/navigation/social.twig" with {
+									title: "Social Navigation",
+									links: socialNavAlias
+								} %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!-- END: Footer -->
+			{% endif %}
+		</div>
+		<!-- END: page_wrapper -->
+
+		{% if page.layout != "style-guide" %}
+		<div class="js-navigation mobile_sidebar" id="mobile_sidebar" hidden data-navigation-handle=".js-nav_handle" data-navigation-content=".js-navigation_push" data-navigation-options='{
+			"type": "overlay",
+			"gravity": "right",
+			"labels": {
+				"open": "Close Menu"
+			}
+		}'>
+			{% include "../partials/search.twig" with {
+				modifier: "sm",
+				placeholder: "Search",
+				buttonText: "submit"
+			} %}
+
+			{% include "../partials/navigation/main.twig" with {
+				modifier: "sm",
+				title: "Mobile Site Navigation",
+				links: mainNavAlias,
+				active: activePage
+			} %}
+
+			{% include "../partials/navigation/basic.twig" with {
+				class: "secondary_nav",
+				modifier: "sm",
+				title: "Mobile Secondary Navigation",
+				links: secondaryNavAlias
+			} %}
+		</div>
+		{% endif %}
+
+		<script src="../../js/site.js"></script>
+
+		{% if page.javascripts %}
+			{% for script in page.javascripts %}
+				<script src="{{script}}"></script>
+			{% endfor %}
+		{% endif %}
+
+		{% if grid %}
+			<!-- Grid Bookmarklet -->
+			<script>
+				(function(){if(typeof FSGridBookmarklet==='undefined'){document.body.appendChild(document.createElement('script')).src='//formstone.it/js/bookmarklet/grid.js';}else{FSGridBookmarklet();}} )();
+			</script>
+		{% endif %}
+	</body>
+</html>

@@ -1,0 +1,14 @@
+{% extends "_base.twig" %}
+
+{% block page %}
+	{% set page = {
+		title: "HTML Elements",
+		layout: "style-guide"
+	} %}
+{% endblock %}
+
+{% block typography %}
+  {% include '../partials/style-guide/type.twig' %}
+
+  {% include '../partials/style-guide/forms.twig' %}
+{% endblock %}

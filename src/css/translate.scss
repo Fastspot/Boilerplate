@@ -1,0 +1,67 @@
+/* ==========================================================================
+	Google Translate
+============================================================================= */
+
+#google_translate_element {
+	clear: both;
+
+	.goog-te-gadget {
+		font-size: 12px;
+	}
+
+	.goog-te-gadget-simple {
+		background: #fff;
+		border: 0;
+		border-radius: 4px;
+		padding: 10px;
+		transition: background $base_speed;
+
+		&:focus,
+		&:hover {
+			background: rgba(#fff, 0.85);
+		}
+	}
+
+	.goog-te-gadget-icon {}
+
+	.goog-te-gadget-icon + span {}
+
+	.goog-te-menu-value {
+
+		[style*="border-left"] {
+			display: none;
+		}
+
+		span:last-child {
+			position: relative;
+
+			color: transparent !important;
+
+			&:before {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+
+				border: 6px solid transparent;
+				border-top-color: black;
+				content: "";
+				margin-top: 3px;
+				transform:
+					translate(-50%, -50%)
+					scaleX(0.75)
+					rotate(0);
+			}
+
+			&[style*="213"] {
+
+				&:before {
+					margin-top: -2px;
+					transform:
+						translate(-50%, -50%)
+						scaleX(0.75)
+						rotateX(180deg);
+				}
+			}
+		}
+	}
+}

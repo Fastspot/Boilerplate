@@ -1,0 +1,12 @@
+{% extends "_base.twig" %}
+
+{% block page %}
+	{% set page = {
+		title: "Sidebar Components",
+		layout: "style-guide"
+	} %}
+{% endblock %}
+
+{% block sidebar %}
+	{{site.title("Component", "full")}}
+{% endblock %}

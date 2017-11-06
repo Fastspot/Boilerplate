@@ -1,0 +1,16 @@
+<ul id="menu-main-navigation" class="menu main_nav{% if modifier %} main_nav_{{modifier}}{% endif %}">
+	{% for link in links %}
+		<li id="menu-item-{{loop.index}}" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-{{loop.index}}{% if loop.index == active %} current-page-ancestor current-menu-ancestor current-menu-parent current-page-parent current_page_parent current_page_ancestor{% endif %}">
+			<a rel="page" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</a>
+			{% if link.children %}
+				<ul class="sub-menu">
+					{% for child in link.children %}
+						<li id="menu-item-{{loop.index}}" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-{{loop.parent.index}} current_page_item menu-item-{{loop.index}}">
+							<a rel="page" href="{% if child.href %}{{child.href}}{% else %}#{% endif %}">{% if child.name %}{{child.name}}{% elseif child %}{{child}}{% endif %}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		</li>
+	{% endfor %}
+</ul>

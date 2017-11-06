@@ -1,0 +1,15 @@
+<h2>Colors</h2>
+
+{% for group in colorGroups %}
+	<div class="cr_color_blocks">
+		<div class="cr_color_block_row">
+			{% for color in group %}
+				<div class="cr_color_block_cell">
+					<div class="cr_color_block" style="background: {{color.hex}}; color: {{color.text}}">
+						<div class="cr_color_block_content">{{color.hex}}</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endfor %}

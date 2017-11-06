@@ -1,0 +1,174 @@
+{#
+	{{site.image("component", img.wide.sml, 2)}}
+
+	{{site.picture({
+		class: "media",
+		fallback: "placeholder",
+		image: item.image,
+		reference: true,
+		sources: {
+			"1220px": img.wide.med,
+			"500px": img.wide.sml
+		}
+	})}}
+
+	{{site.button("class", "Apply", "#", "arrow_right")}}
+
+	{{site.symbol("chevron")}}
+
+	{{site.table({
+		headers: [
+			"Header",
+			"Header"
+		],
+		rows: [
+			[
+				"Item",
+				"Item"
+			]
+		]
+	})}}
+
+	{{site.dropdown("component", "label", ["Choices"], "lg")}}
+
+	{{site.input("text", "First Name", "component")}}
+
+	{{site.textarea("Comments")}}
+
+	{{site.choices("checkbox", [
+		"Option One",
+		"Option Two"
+	])}}
+
+	{{site.title("Title", "full")}}
+#}
+
+
+{% macro image(class, dimension, image, reference) %}
+	{% set reference = reference|default(true) %}
+	<img class="{{class}}_image" src="//images.fastspot.com/{{vars.namespace}}/{{dimension}}/{{image}}" alt="" {% if reference %}data-reference="{{dimension}}"{% endif %}>
+{% endmacro %}
+
+
+{% macro picture(parameters) %}
+	{% set reference = parameters.reference|default(true) %}
+	<picture class="{{parameters.class}}_picture" {% if reference %}data-reference="{% for key, source in parameters.sources %}{{key}}: {{source}}{% if not loop.last %}, {% endif %}{% endfor %}"{% endif %}>
+		<!--[if IE 9]><video style="display: none;"><![endif]-->
+		{% for key, source in parameters.sources %}
+		<source media="(min-width: {{key}})" srcset="{% if source == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{vars.namespace}}/{{source}}/{{parameters.image}}{% endif %}">
+		{% endfor %}
+		<!--[if IE 9]></video><![endif]-->
+		<img class="{{parameters.class}}_image" src="{% if parameters.fallback == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{vars.namespace}}/{{parameters.fallback}}/{{parameters.image}}{% endif %}" alt="">
+	</picture>
+{% endmacro %}
+
+
+{% macro symbol(name) %}
+	{% if name %}
+		<svg class="symbol symbol_{{name}}">
+			<use xlink:href="#{{name}}"></use>
+		</svg>
+	{% endif %}
+{% endmacro %}
+
+
+{% macro button(class, label, href, symbol) %}
+	<a class="{{class}}_link theme_{{symbol}}" href="{{href}}">
+		<span class="{{class}}_link_label">{{label}}</span>
+		{% if symbol %}
+			<span class="{{class}}_link_icon">
+				<svg class="symbol symbol_{{symbol}}">
+					<use xlink:href="#{{symbol}}"></use>
+				</svg>
+			</span>
+		{% endif %}
+	</a>
+{% endmacro %}
+
+
+{% macro table(data) %}
+	<table class="{{data.class}}">
+		<thead>
+			<tr>
+				{% for header in data.headers %}
+					<th>{{header}}</td>
+				{% endfor %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for row in data.rows %}
+				<tr>
+					{% for item in row %}
+						<td>{{item}}</td>
+					{% endfor %}
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endmacro %}
+
+
+{% macro dropdown(class, label, choices, modifier) %}
+	{% set id = label|lower|replace({" ": "_"}) %}
+	<div class="fs-dropdown-wrapper {{class}}_dropdown_wrapper{% if modifier %} {{class}}_dropdown_wrapper_{{modifier}}{% endif %}">
+		{% if label %}
+		<label class="{{class}}_label" for="{{id}}_dropdown">{{label}}</label>
+		{% endif %}
+		<select class="js-dropdown {{class}}_dropdown" id="{{id}}_dropdown" name="{{id}}_dropdown">
+			{% for choice in choices %}
+				<option value="{{choice}}">{{choice}}</option>
+			{% endfor %}
+		</select>
+		<span class="fs-dropdown-icon {{class}}_dropdown_icon">
+			<svg class="symbol symbol_caret_down">
+				<use xlink:href="#caret_down"></use>
+			</svg>
+		</span>
+	</div>
+{% endmacro %}
+
+
+{% macro input(type, label, class) %}
+	{% set id = label|lower|replace({" ": "_"}) %}
+	<div class="{% if class %}{{class}}_form_element {% endif %}form_element">
+		<input type="{{type}}" id="{{id}}" />
+		<label for="{{id}}">{{label}}</label>
+	</div>
+{% endmacro %}
+
+
+{% macro textarea(label) %}
+	{% set id = label|lower|replace({" ": "_"}) %}
+	<div class="form_element">
+		<textarea id="{{id}}"></textarea>
+		<label for="{{id}}">{{label}}</label>
+	</div>
+{% endmacro %}
+
+
+{% macro choices(type, items) %}
+	<div class="form_element">
+		{% for item in items %}
+			{% set id = item|lower|replace({" ": "_"}) %}
+			<label for="{{id}}">
+				<input type="{{type}}" name="{{id}}" id="{{id}}" value="{{item}}">
+				<span class="{{type}}_label">{{item}}</span>
+			</label>
+		{% endfor %}
+	</div>
+{% endmacro %}
+
+
+{% macro title(title, type) %}
+	<div class="typography">
+		{% if type == "full" %}
+		<div class="fs-row">
+			<div class="fs-cell">
+		{% endif %}
+				<h4>{{title}}</h4>
+		{% if type == "full" %}
+			</div>
+		</div>
+		{% endif %}
+	</div>
+{% endmacro %}

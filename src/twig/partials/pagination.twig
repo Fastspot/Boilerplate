@@ -1,0 +1,22 @@
+{#
+	{% include "../../partials/pagination.twig" with {
+		pages: 8
+	} %}
+#}
+
+<div class="pagination">
+	<a class="pagination_arrow pagination_arrow_left pagination_arrow_disabled" href="#previous">
+		<span class="pagination_arrow_label">Previous</span>
+		<span class="pagination_arrow_icon">{{site.symbol("")}}</span>
+	</a>
+	<nav class="pagination_nav">
+		{% for i in 1..pages %}
+			<a href="#{{i}}" class="pagination_link{% if loop.first %} active{% endif %}">{{i}}</a>
+		{% endfor %}
+		<span class="pagination_link pagination_more">…</span>
+	</nav>
+	<a class="pagination_arrow pagination_arrow_right" href="#next">
+		<span class="pagination_arrow_label">Next</span>
+		<span class="pagination_arrow_icon">{{site.symbol("")}}</span>
+	</a>
+</div>
