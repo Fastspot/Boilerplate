@@ -76,7 +76,7 @@
     "npm": "^5.5.1",
     "pa11y": "^4.13.1",
     "path": "^0.12.7",
-    "picturefill": "^3.0.3",
+    "picturefill": "^3.0.2",
     "postcss-pxtorem": "^4.0.1",
     "postcss-unmq": "^1.0.2",
     "require-reload": "^0.2.2",
