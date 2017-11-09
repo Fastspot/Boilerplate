@@ -47,6 +47,9 @@
 	&.fs-carousel-control_previous {}
 
 	&.fs-carousel-control_next {}
+
+	&:focus,
+	&:hover {}
 }
 
 .fs-carousel-control-icon {

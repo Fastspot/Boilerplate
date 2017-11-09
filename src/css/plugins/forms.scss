@@ -2,9 +2,14 @@
 	Dropdowns
 ============================================================================= */
 
+.fs-dropdown-wrapper {
+	position: relative;
+}
+
 .fs-dropdown {}
 
 .fs-dropdown-selected {
+	padding: 20px;
 
 	.fs-dropdown:focus &,
 	.fs-dropdown:hover & {}
@@ -12,22 +17,19 @@
 	.fs-dropdown-open & {}
 }
 
-.fs-dropdown-options {}
+.fs-dropdown-options {
+	background: none;
+	border: 0;
+}
 
 .fs-dropdown-item {
+	background: #eee;
+	padding: 20px;
 
 	&:focus,
 	&:hover {}
 
 	&.fs-dropdown-item_selected {}
-}
-
-.fs-dropdown-icon {
-
-	.fs-dropdown:focus + &,
-	.fs-dropdown:hover + & {}
-
-	.fs-dropdown-open + & {}
 }
 
 
