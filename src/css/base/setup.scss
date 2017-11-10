@@ -601,9 +601,16 @@ $margin_xl: 80px;
 	justify-content: space-between;
 }
 
-@mixin fake_scroll() {
+/* Not to be used with a form container */
+/* Use -webkit-overflow-scrolling: auto instead */
+@mixin fake_scroll($touch: true) {
 	overflow-y: scroll;
-	-webkit-overflow-scrolling: touch;
+
+	@if $touch {
+		-webkit-overflow-scrolling: touch;
+	} @else {
+		-webkit-overflow-scrolling: auto;
+	}
 }
 
 
