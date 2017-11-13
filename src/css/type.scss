@@ -6,7 +6,7 @@
 	font-size: 30px;
 	line-height: (70 / 60);
 
-	@media #{$min_lg} {
+	@media #{$min_md} {
 		font-size: 60px;
 	}
 }
@@ -15,7 +15,7 @@
 	font-size: 26px;
 	line-height: (60 / 50);
 
-	@media #{$min_lg} {
+	@media #{$min_md} {
 		font-size: 50px;
 	}
 }
@@ -24,7 +24,7 @@
 	font-size: 24px;
 	line-height: (50 / 40);
 
-	@media #{$min_lg} {
+	@media #{$min_md} {
 		font-size: 40px;
 	}
 }
@@ -33,7 +33,7 @@
 	font-size: 22px;
 	line-height: (40 / 30);
 
-	@media #{$min_lg} {
+	@media #{$min_md} {
 		font-size: 30px;
 	}
 }
