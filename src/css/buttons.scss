@@ -22,14 +22,17 @@ button {
 
 @mixin button_layout($l: true) {
 
-	&_label {
-		display: inline-block;
-		vertical-align: middle;
-	}
+	@if $l {
 
-	&_icon {
-		display: inline-block;
-		vertical-align: middle;
+		&_label {
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		&_icon {
+			display: inline-block;
+			vertical-align: middle;
+		}
 	}
 }
 
