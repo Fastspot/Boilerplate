@@ -6,7 +6,7 @@
 	font-family: "font_family_name", sans-serif;
 	font-weight: 400;
 
-	@if $weight != null {
+	@if $weight == 300 {
 		font-family: "font_family_name", sans-serif;
-	}
+	} @else if $weight == 500 {}
 }
