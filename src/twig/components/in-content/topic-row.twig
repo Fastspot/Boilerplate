@@ -55,9 +55,7 @@
 						{% if item.links %}
 							<footer class="topic_links">
 								{% for link in item.links %}
-									<a class="topic_link" href="{{link.href}}">
-										<span class="topic_link_label">{{link.name}}</span>
-									</a>
+									{{site.button("topic", link.name, link.href, "arrow_right")}}
 								{% endfor %}
 							</footer>
 						{% endif %}
