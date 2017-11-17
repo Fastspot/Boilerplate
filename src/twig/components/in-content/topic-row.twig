@@ -35,26 +35,26 @@
 		</header>
 	{% endif %}
 	<div class="topic_items">
-		{% for topic in topics %}
+		{% for item in items %}
 			<article class="topic_row">
 				<div class="topic_row_inner">
-					{% if topic.image %}
+					{% if item.image %}
 						<figure class="topic_figure">
-							{{site.image("topic", img.square.xsml, topic.image)}}
+							{{site.image("topic", img.square.xsml, item.image)}}
 						</figure>
 					{% endif %}
 					<div class="topic_wrapper">
 						<header class="topic_header">
-							<h3 class="topic_title">{{topic.title}}</h3>
+							<h3 class="topic_title">{{item.title}}</h3>
 						</header>
 						<div class="topic_body">
 							<div class="topic_description">
-								<p>{{topic.description}}</p>
+								<p>{{item.description}}</p>
 							</div>
 						</div>
-						{% if topic.links %}
+						{% if item.links %}
 							<footer class="topic_links">
-								{% for link in topic.links %}
+								{% for link in item.links %}
 									<a class="topic_link" href="{{link.href}}">
 										<span class="topic_link_label">{{link.name}}</span>
 									</a>

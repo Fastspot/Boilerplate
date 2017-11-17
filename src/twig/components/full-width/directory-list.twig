@@ -24,7 +24,7 @@
 				</header>
 			{% endif %}
 			<div class="directory_items" role="list" itemscope itemtype="http://schema.org/ItemList"{% if title %} aria-label="{{title}}"{% endif %}>
-				{% for item in directories %}
+				{% for item in items %}
 					<div class="directory_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
 						<meta itemprop="position" content="{{loop.index}}">
 						<div class="directory_item_inner" itemscope itemtype="http://schema.org/Person">
