@@ -389,18 +389,18 @@ $margin_xl: 80px;
 // =============================================================================
 
 @mixin fake_padded_right() {
-	padding-left: calc(20px + 1.04166667%);
+	padding-right: calc(20px + 1.04166667%);
 
 	@media #{$min_md} {
-		padding-left: calc((100% - 720px) / 2 + 1.04166667%);
+		padding-right: calc((100% - 720px) / 2 + 1.04166667%);
 	}
 
 	@media #{$min_lg} {
-		padding-left: calc((100% - 960px) / 2 + 1.04166667%);
+		padding-right: calc((100% - 960px) / 2 + 1.04166667%);
 	}
 
 	@media #{$min_xl} {
-		padding-left: calc((100% - 1200px) / 2 + 1.04166667%);
+		padding-right: calc((100% - 1200px) / 2 + 1.04166667%);
 	}
 }
 
