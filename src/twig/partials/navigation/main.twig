@@ -6,7 +6,7 @@
 	{% endif %}
 	<div class="main_nav_list" role="navigation">
 		{% for link in links %}
-			<div class="js-main-nav-item-{{loop.index}} main_nav_item{% if loop.index == active %} active{% endif %}{% if link.modifier %} {{link.modifier}}{% endif %}" itemprop="url">
+			<div class="js-main-nav-item-{{loop.index}} main_nav_item{% if link.children %} main_nav_has_children{% endif %}{% if loop.index == active %} active{% endif %}{% if link.modifier %} {{link.modifier}}{% endif %}" itemprop="url">
 				<div class="main_nav_item_wrapper">
 					<a class="main_nav_link" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="name">
 						<span class="main_nav_link_label">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
