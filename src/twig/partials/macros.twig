@@ -123,11 +123,11 @@
 {% endmacro %}
 
 
-{% macro input(class, label, type) %}
+{% macro input(type, label, class) %}
 	{% set id = label|lower|replace({" ": "_"}) %}
 	<div class="{{class}}_form_element {{class}}_form_element_{{type}}">
-		<label for="{{id}}">{{label}}</label>
-		<input type="{{type}}" id="{{id}}" {% if type == "text" %} placeholder="{{label}}"{% endif %} />
+		<label class="{{class}}_label" for="{{id}}">{{label}}</label>
+		<input class="{{class}}_input" type="{{type}}" id="{{id}}" {% if type == "text" %} placeholder="{{label}}"{% endif %} />
 	</div>
 {% endmacro %}
 
