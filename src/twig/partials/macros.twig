@@ -31,7 +31,7 @@
 
 	{{site.dropdown("component", "label", ["Choices"], "lg")}}
 
-	{{site.input("text", "First Name", "component")}}
+	{{site.input("component", "First Name", "text")}}
 
 	{{site.textarea("Comments")}}
 
@@ -123,11 +123,11 @@
 {% endmacro %}
 
 
-{% macro input(type, label, class) %}
+{% macro input(class, label, type) %}
 	{% set id = label|lower|replace({" ": "_"}) %}
-	<div class="{% if class %}{{class}}_form_element {% endif %}form_element">
-		<input type="{{type}}" id="{{id}}" />
+	<div class="{{class}}_form_element {{class}}_form_element_{{type}}">
 		<label for="{{id}}">{{label}}</label>
+		<input type="{{type}}" id="{{id}}" {% if type == "text" %} placeholder="{{label}}"{% endif %} />
 	</div>
 {% endmacro %}
 
