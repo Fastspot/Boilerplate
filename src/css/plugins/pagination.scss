@@ -5,16 +5,23 @@
 .pagination {}
 
 .pagination_arrow {
+	position: relative;
 
-	&:focus,
-	&:hover {}
+	&:focus:not(.pagination_arrow_disabled),
+	&:hover:not(.pagination_arrow_disabled) {}
 
 	&_disabled {}
+
+	&_label {}
+
+	&_icon {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+
+		transform: translate(-50%, -50%);
+	}
 }
-
-.pagination_arrow_label {}
-
-.pagination_arrow_icon {}
 
 .pagination_nav {}
 
@@ -25,6 +32,8 @@
 
 	&:focus,
 	&:hover {}
+
+	&.active {}
 }
 
 .pagination_more {}
