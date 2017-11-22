@@ -2,7 +2,12 @@
 	Pagination
 ============================================================================= */
 
-.pagination {}
+.pagination {
+
+	@media print {
+		display: none;
+	}
+}
 
 .pagination_arrow {
 	position: relative;
