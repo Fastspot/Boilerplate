@@ -4,7 +4,7 @@
 	<form action="#" class="crl_form">
 		<fieldset class="input_set">
 			<h5>Text Field</h5>
-			{{site.input("email", "email_address", "Email Address")}}
+			{{site.input("email", "Email Address")}}
 		</fieldset>
 		<fieldset class="textarea_set">
 			<h5>Comment</h5>
@@ -39,40 +39,40 @@
 		<fieldset class="input_set">
 			<h5>Name</h5>
 			<div class="form_column_2">
-				{{site.input("text", "first_name", "First Name")}}
-				{{site.input("text", "last_name", "Last Name")}}
+				{{site.input("text", "First Name")}}
+				{{site.input("text", "Last Name")}}
 			</div>
 		</fieldset>
 		<fieldset class="input_set">
 			<h5>Date</h5>
 			<div class="form_column_flex">
-				{{site.input("number", "month", "MM")}}
-				{{site.input("number", "day", "DD")}}
-				{{site.input("number", "year", "YYYY")}}
+				{{site.input("number", "MM")}}
+				{{site.input("number", "DD")}}
+				{{site.input("number", "YYYY")}}
 			</div>
 		</fieldset>
 		<fieldset class="input_set">
 			<h5>Address</h5>
-			{{site.input("text", "street_address", "Street Address")}}
+			{{site.input("text", "Street Address")}}
 			<div class="form_column_2">
-				{{site.input("text", "street_address_1", "Street Address Line 1")}}
-				{{site.input("text", "city", "City")}}
+				{{site.input("text", "Street Address Line 1")}}
+				{{site.input("text", "City")}}
 			</div>
 			<div class="form_column_2">
-				{{site.input("text", "state", "State / Province / Region")}}
-				{{site.input("text", "postal_zip", "Postal / Zip Code")}}
+				{{site.input("text", "State / Province / Region")}}
+				{{site.input("text", "Postal / Zip Code")}}
 			</div>
 		</fieldset>
 		<fieldset class="input_set">
 			<h5>Phone Number</h5>
 			<div class="form_column_flex">
-				{{site.input("number", "area_code", "###")}}
-				{{site.input("number", "phone_1", "###")}}
-				{{site.input("number", "phone_2", "####")}}
+				{{site.input("number", "###")}}
+				{{site.input("number", "###")}}
+				{{site.input("number", "####")}}
 			</div>
 		</fieldset>
 		<fieldset class="input_set">
-			{{site.dropdown("base", "Label", [
+			{{site.dropdown("Label", [
 				"Choice One",
 				"Choice Two"
 			])}}

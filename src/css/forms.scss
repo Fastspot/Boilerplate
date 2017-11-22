@@ -105,6 +105,6 @@ select {
 	}
 }
 
-.form_element {
+form [class*="wrapper"] {
 	margin-bottom: 20px;
 }

@@ -1,5 +1,5 @@
 {#
-	{{site.image("component", img.wide.sml, 2)}}
+	{{site.image("class", img.wide.sml, 2)}}
 
 	{{site.picture({
 		class: "media",
@@ -29,18 +29,17 @@
 		]
 	})}}
 
-	{{site.dropdown("component", "label", ["Choices"], "lg")}}
+	{{site.dropdown("label", ["items"], "class")}}
 
-	{{site.input("component", "First Name", "text")}}
+	{{site.input("type", "label", "class")}}
 
-	{{site.textarea("Comments")}}
+	{{site.textarea("label", "class")}}
 
-	{{site.choices("checkbox", [
-		"Option One",
-		"Option Two"
-	])}}
+	{{site.choices("type", ["items"], "class")}}
 
-	{{site.title("Title", "full")}}
+	{{site.title("title", "full")}}
+
+	{{site.content("<p>Copy</p>")}}
 #}
 
 
@@ -108,15 +107,15 @@
 {% endmacro %}
 
 
-{% macro dropdown(class, label, choices, modifier) %}
+{% macro dropdown(label, items, class) %}
 	{% set id = label|lower|replace({" ": "_"}) %}
-	<div class="fs-dropdown-wrapper {{class}}_dropdown_wrapper{% if modifier %} {{class}}_dropdown_wrapper_{{modifier}}{% endif %}">
+	<div class="fs-dropdown-wrapper{% if class %} {{class}}_dropdown_wrapper{% endif %}">
 		{% if label %}
-		<label class="{{class}}_label" for="{{id}}_dropdown">{{label}}</label>
+			<label class="dropdown_label{% if class %} {{class}}_dropdown_label{% endif %}" for="{{id}}_dropdown">{{label}}</label>
 		{% endif %}
-		<select class="js-dropdown {{class}}_dropdown" id="{{id}}_dropdown" name="{{id}}_dropdown">
-			{% for choice in choices %}
-				<option value="{{choice}}">{{choice}}</option>
+		<select class="js-dropdown dropdown_field{% if class %} {{class}}_dropdown_select{% endif %}" id="{{id}}_dropdown" name="{{id}}_dropdown">
+			{% for item in items %}
+				<option value="{{item}}">{{item}}</option>
 			{% endfor %}
 		</select>
 	</div>
@@ -124,30 +123,36 @@
 
 
 {% macro input(type, label, class) %}
-	{% set id = label|lower|replace({" ": "_"}) %}
-	<div class="{{class}}_form_element {{class}}_form_element_{{type}}">
-		<label class="{{class}}_label" for="{{id}}">{{label}}</label>
-		<input class="{{class}}_input" type="{{type}}" id="{{id}}" {% if type == "text" %} placeholder="{{label}}"{% endif %} />
+	{% set id = label|lower|replace({
+		" ": "_"
+	}) %}
+	<div class="input_wrapper{% if class %} {{class}}_input_wrapper{% endif %}">
+		<label class="input_label{% if class %} {{class}}_input_label{% endif %}">{{label}}</label>
+		<input class="input_field{% if class %} {{class}}_input_field{% endif %}" type="{{type}}" id="{{id}}" {% if type == "text" %} placeholder="{{label}}"{% endif %} />
 	</div>
 {% endmacro %}
 
 
-{% macro textarea(label) %}
-	{% set id = label|lower|replace({" ": "_"}) %}
-	<div class="form_element">
-		<textarea id="{{id}}"></textarea>
-		<label for="{{id}}">{{label}}</label>
+{% macro textarea(label, class) %}
+	{% set id = label|lower|replace({
+		" ": "_"
+	}) %}
+	<div class="textarea_wrapper{% if class %} {{class}}_textarea_wrapper{% endif %}">
+		<label class="textarea_label{% if class %} {{class}}_textarea_label{% endif %}" for="{{id}}">{{label}}</label>
+		<textarea class="textarea_field{% if class %} {{class}}_textarea_field{% endif %}" id="{{id}}"></textarea>
 	</div>
 {% endmacro %}
 
 
-{% macro choices(type, items) %}
-	<div class="form_element">
+{% macro choices(type, items, class) %}
+	<div class="choices_wrapper{% if class %} {{class}}_choices_wrapper{% endif %}">
 		{% for item in items %}
-			{% set id = item|lower|replace({" ": "_"}) %}
-			<label for="{{id}}">
-				<input type="{{type}}" name="{{id}}" id="{{id}}" value="{{item}}">
-				<span class="{{type}}_label">{{item}}</span>
+			{% set id = item|lower|replace({
+				" ": "_"
+			}) %}
+		<label class="choices_label{% if class %} {{class}}_choices_label{% endif %}" for="{{id}}">
+			<input class="choices_field{% if class %} {{class}}_choices_field{% endif %}" type="{{type}}" name="{{id}}" id="{{id}}" value="{{item}}">
+			<span class="choices_name{% if class %} {{class}}_choices_name{% endif %}">{{item}}</span>
 			</label>
 		{% endfor %}
 	</div>
@@ -165,5 +170,14 @@
 			</div>
 		</div>
 		{% endif %}
+	</div>
+{% endmacro %}
+
+
+{% macro content(copy) %}
+	<div class="wysiwyg_block">
+		<div class="typography">
+			{{copy}}
+		</div>
 	</div>
 {% endmacro %}
