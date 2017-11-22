@@ -2,7 +2,12 @@
 	Sub Navigation
 ============================================================================= */
 
-.sub_nav {}
+.sub_nav {
+
+	@media print {
+		display: none;
+	}
+}
 
 .sub_nav_header {}
 
