@@ -32,6 +32,10 @@ button {
 		&_icon {
 			display: inline-block;
 			vertical-align: middle;
+
+			@media print {
+				display: none;
+			}
 		}
 	}
 }
