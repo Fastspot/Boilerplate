@@ -17,7 +17,9 @@ Site.modules.Page = (function($, Site) {
 		// Plugins
 		picturefill();
 
-		Site.$body.find(".js-background").background();
+		Site.$body.find(".js-background").on("loaded.background", function() {
+			$(this).addClass("fs-background-loaded");
+		}).background();
 		Site.$body.find(".js-carousel").carousel({
 			labels: {
 				previous: "<span class='fs-carousel-control-icon'><svg class='symbol symbol_" + prev + "'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#" + prev + "'></use></svg></span>",
