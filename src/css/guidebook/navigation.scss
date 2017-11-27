@@ -2,45 +2,45 @@
 // =============================================================================
 
 .gb_ribbon_link {
-  @include nd(500);
+	@include nd(500);
 
-  color: inherit;
-  display: block;
-  font-size: 24px;
-  padding: 31px 0 10px;
+	color: inherit;
+	display: block;
+	font-size: 24px;
+	padding: 31px 0 10px;
 
-  @media #{$min_md} {
-    padding-bottom: 30px;
-  }
+	@media #{$min_md} {
+		padding-bottom: 30px;
+	}
 }
 
 .gb_ribbon_logo {
-  position: absolute;
-  top: 27px;
-  right: 20px;
-  z-index: 2;
+	position: absolute;
+	top: 27px;
+	right: 20px;
+	z-index: 2;
 
-  color: inherit;
-  transform-origin: right center;
-  transform: scale(.75);
+	color: inherit;
+	transform-origin: right center;
+	transform: scale(.75);
 
-  @media #{$min_md} {
-    top: 50%;
-    right: 0;
+	@media #{$min_md} {
+		top: 50%;
+		right: 0;
 
-    transform:
-      translate(0, -50%)
-      scale(.85);
-  }
+		transform:
+			translate(0, -50%)
+			scale(.85);
+	}
 
-  @media #{$min_lg} {
-    transform: translate(0, -50%);
-  }
+	@media #{$min_lg} {
+		transform: translate(0, -50%);
+	}
 
-  svg {
-    height: 33px;
-    width: 50px;
-  }
+	svg {
+		height: 33px;
+		width: 50px;
+	}
 }
 
 
@@ -48,138 +48,138 @@
 // =============================================================================
 
 .gb_main_nav {
-  padding-bottom: 22px;
+	padding-bottom: 22px;
 
-  @media #{$min_md} {
-    padding-top: 22px;
-    padding-right: 70px;
-  }
+	@media #{$min_md} {
+		padding-top: 22px;
+		padding-right: 70px;
+	}
 
-  @media #{$min_lg} {
-    padding-right: 95px;
-  }
+	@media #{$min_lg} {
+		padding-right: 95px;
+	}
 }
 
-  .gb_main_nav_list {}
+	.gb_main_nav_list {}
 
-    .gb_main_nav_item {
+		.gb_main_nav_item {
 
-      @media screen and (min-width: 540px) {
-        display: inline-block;
-        margin-right: 20px;
-      }
+			@media screen and (min-width: 540px) {
+				display: inline-block;
+				margin-right: 20px;
+			}
 
-      @media #{$min_lg} {
-        margin-right: 45px;
-      }
+			@media #{$min_lg} {
+				margin-right: 45px;
+			}
 
-      &:last-child {
+			&:last-child {
 
-        @media screen and (min-width: 540px) {
-          margin-right: 0;
-        }
-      }
-    }
+				@media screen and (min-width: 540px) {
+					margin-right: 0;
+				}
+			}
+		}
 
-      .gb_main_nav_link {
-        @include nt(700);
+			.gb_main_nav_link {
+				@include nt(700);
 
-        color: inherit;
-        display: block;
-        font-size: 13px;
-        padding: 15px 0;
-        text-transform: uppercase;
-      }
+				color: inherit;
+				display: block;
+				font-size: 13px;
+				padding: 15px 0;
+				text-transform: uppercase;
+			}
 
-        .gb_main_nav_link_label {
-          position: relative;
+				.gb_main_nav_link_label {
+					position: relative;
 
-          &:after {
-            height: 1px;
-            width: 100%;
+					&:after {
+						height: 1px;
+						width: 100%;
 
-            position: absolute;
-            top: 100%;
-            left: 0;
+						position: absolute;
+						top: 100%;
+						left: 0;
 
-            background: #fff;
-            content: '';
-            margin-top: 4px;
-            transform: scaleX(0);
-            transition: transform .25s;
-            transform-origin: left center;
+						background: #fff;
+						content: '';
+						margin-top: 4px;
+						transform: scaleX(0);
+						transition: transform .25s;
+						transform-origin: left center;
 
-            @media screen and (min-width: 540px) {
-              transform-origin: center center;
-            }
-          }
+						@media screen and (min-width: 540px) {
+							transform-origin: center center;
+						}
+					}
 
-          .gb_main_nav_link:focus &,
-          .gb_main_nav_link:hover & {
+					.gb_main_nav_link:focus &,
+					.gb_main_nav_link:hover & {
 
-            &:after {
-              transform: scaleX(1);
-            }
-          }
-        }
+						&:after {
+							transform: scaleX(1);
+						}
+					}
+				}
 
 
 // Jump Nav
 // =============================================================================
 
 .gb_jump_nav {
-  overflow-x: auto;
-  white-space: nowrap;
+	overflow-x: auto;
+	white-space: nowrap;
 
-  .gb_trello_detail_lock & {
-    display: none;
-  }
+	.gb_trello_detail_lock & {
+		display: none;
+	}
 }
 
-  .gb_jump_nav_link {
-    @include nt(700);
+	.gb_jump_nav_link {
+		@include nt(700);
 
-    position: relative;
-    z-index: 2;
+		position: relative;
+		z-index: 2;
 
-    color: #fff;
-    display: inline-block;
-    vertical-align: top;
-    font-size: 13px;
-    line-height: (16 / 13);
-    margin-right: 40px;
-    overflow: hidden;
-    padding: 25px 0 24px;
-    text-shadow: 0 0 2px #333;
-    text-transform: uppercase;
+		color: #fff;
+		display: inline-block;
+		vertical-align: top;
+		font-size: 13px;
+		line-height: (16 / 13);
+		margin-right: 40px;
+		overflow: hidden;
+		padding: 25px 0 24px;
+		text-shadow: 0 0 2px #333;
+		text-transform: uppercase;
 
-    &:before {
-      height: 100%;
-      width: 1px;
+		&:before {
+			height: 100%;
+			width: 1px;
 
-      position: absolute;
-      bottom: 100%;
-      left: 50%;
-      z-index: -2;
+			position: absolute;
+			bottom: 100%;
+			left: 50%;
+			z-index: -2;
 
-      background: #fff;
-      content: "";
-      transform-origin: center bottom;
-      transform: translate(-50%, 0);
-    }
+			background: #fff;
+			content: "";
+			transform-origin: center bottom;
+			transform: translate(-50%, 0);
+		}
 
-    &:focus,
-    &:hover {
+		&:focus,
+		&:hover {
 
-      &:before {
-        animation: jump-down .5s forwards;
-      }
-    }
-  }
+			&:before {
+				animation: jump-down .5s forwards;
+			}
+		}
+	}
 
-  @keyframes jump-down {
+	@keyframes jump-down {
 
-    100% {
-      transform: translate(-50%, 200%);
-    }
-  }
+		100% {
+			transform: translate(-50%, 200%);
+		}
+	}

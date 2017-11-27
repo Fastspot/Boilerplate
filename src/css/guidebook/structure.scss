@@ -2,79 +2,79 @@
 // =============================================================================
 
 .gb_page_header {
-  color: #fff;
+	color: #fff;
 }
 
-  .gb_page_ribbon {
-    background: #000;
-  }
+	.gb_page_ribbon {
+		background: #000;
+	}
 
-    .gb_ribbon_group {
+		.gb_ribbon_group {
 
-      @media #{$min_md} {
-        position: relative;
+			@media #{$min_md} {
+				position: relative;
 
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-      }
-    }
+				align-items: center;
+				display: flex;
+				justify-content: space-between;
+			}
+		}
 
-  .gb_jump_ribbon {
-    background: #333;
-  }
+	.gb_jump_ribbon {
+		background: #333;
+	}
 
 
 // Content
 // =============================================================================
 
 .gb_page_content {
-  padding: calc(60px + 2vh) 0 200px;
+	padding: calc(60px + 2vh) 0 200px;
 }
 
-  .gb_page_details {
-    margin-bottom: 33px;
+	.gb_page_details {
+		margin-bottom: 33px;
 
-    .gb_trello_detail_lock & {
-      display: none;
-    }
-  }
+		.gb_trello_detail_lock & {
+			display: none;
+		}
+	}
 
-    .gb_page_intro {
-      @include h1;
+		.gb_page_intro {
+			@include h1;
 
-      u {
-        color: #DA2315;
-        text-decoration: none;
-      }
+			u {
+				color: #DA2315;
+				text-decoration: none;
+			}
 
-      a {
-        box-shadow:
-          inset 0 -4px 0 0 #fff,
-          inset 0 -6px 0 0 #000;
-        color: #000;
-        text-shadow:
-          -2px -2px white,
-          -2px 2px white,
-          2px -2px white,
-          2px 2px white;
+			a {
+				box-shadow:
+					inset 0 -4px 0 0 #fff,
+					inset 0 -6px 0 0 #000;
+				color: #000;
+				text-shadow:
+					-2px -2px white,
+					-2px 2px white,
+					2px -2px white,
+					2px 2px white;
 
-        @media #{$min_lg} {
-          box-shadow:
-            inset 0 -5px 0 0 #fff,
-            inset 0 -7px 0 0 #000;
-        }
-      }
-    }
+				@media #{$min_lg} {
+					box-shadow:
+						inset 0 -5px 0 0 #fff,
+						inset 0 -7px 0 0 #000;
+				}
+			}
+		}
 
-    .gb_page_title {
-      @include h1;
+		.gb_page_title {
+			@include h1;
 
-      margin: 0;
-    }
+			margin: 0;
+		}
 
-    .gb_page_caption {
-      @include body_text;
+		.gb_page_caption {
+			@include body_text;
 
-      margin: 12px 0 0;
-    }
+			margin: 12px 0 0;
+		}
