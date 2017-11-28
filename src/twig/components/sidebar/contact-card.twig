@@ -1,3 +1,16 @@
+{#
+	{% include "../components/sidebar/contact-card.twig" with {
+		theme: "",
+		title: "",
+		name: "",
+		caption: "",
+		phone: "",
+		fax: "",
+		email: "",
+		external: ""
+	} %}
+#}
+
 <div class="contact_card{% if theme %} theme_{{theme}}{% endif %}">
 	<header class="contact_card_header">
 		<h2 class="contact_card_title">{{title}}</h2>

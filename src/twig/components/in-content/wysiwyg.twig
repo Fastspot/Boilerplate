@@ -1,0 +1,11 @@
+{#
+	{% include "../components/in-content/wysiwyg.twig" with {
+		content: "Lorem ipsum"
+	} %}
+#}
+
+<div class="wysiwyg_block">
+	<div class="typography">
+		{{content}}
+	</div>
+</div>
