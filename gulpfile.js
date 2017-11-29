@@ -30,23 +30,24 @@ var gulp = require('gulp'),
 		realFavicon = require ('gulp-real-favicon'),
 		access = require('gulp-accessibility'),
 		pa11y = require('pa11y'),
- 		htmlReporter = require('pa11y/reporter/html'),
- 		test = pa11y();
+		htmlReporter = require('pa11y/reporter/html'),
+		test = pa11y(),
+		Trello = require("node-trello"),
+		trello = new Trello("15f2313fdce31e297fe5562dee0e0de6", "f336172a3620ee59e2e069eedfac385df959a39772d08eac0cc67d3e725fc6fd"),
+		markdown = require("markdown").markdown;
 
 
 var source = {
 	readme: 'src/twig/README.twig',
+	trello: 'src/twig/templates/fs-components.twig',
 	twig: [
 		'src/twig/templates/*.twig',
-		'!src/twig/templates/_*.twig'
+		'!src/twig/templates/_*.twig',
+		'!src/twig/templates/fs-components.twig'
 	],
 	templates: 'static/templates/*.html',
 	accessibility: 'static/accessibility/*.html',
 	sitemap: 'src/twig/index.twig',
-	sass: [
-		'src/css/site.scss',
-		'src/css/guidebook.scss'
-	],
 	jshint: 'src/js/modules/*.js',
 	modernizr: [
 		'js/modules/*.js',
@@ -57,13 +58,94 @@ var source = {
 };
 
 var watch = {
-	twig: 'src/twig/**/*.twig',
+	trello: [
+		'src/twig/templates/fs-components.twig',
+		'src/twig/partials/guidebook/trello.twig',
+		'src/twig/partials/guidebook/trello-js.twig'
+	],
+	twig: [
+		'src/twig/**/*.twig',
+		'!src/twig/templates/fs-components.twig',
+		'!src/twig/partials/guidebook/trello.twig',
+		'!src/twig/partials/guidebook/trello-js.twig'
+	],
 	sass: 'src/css/**/**',
 	js: 'src/js/**/**.js',
 	formstone: 'node_modules/formstone/src/js/*.js',
 	sprite: 'src/icons/*',
 	images: 'src/images/*'
 };
+
+
+gulp.task('trello', function(done) {
+	var cards = [];
+	var x = 1;
+
+	trello.get('/1/list/' + packageJSON.vars.trelloList + '/cards', function(err, data) {
+		getAttachments(data);
+	});
+
+	function getAttachments(data) {
+		var getImages = function(i) {
+			trello.get('/1/cards/' + data[card].id + '/attachments', function(err, images) {
+				createCard(data[i], images);
+
+				if(x >= data.length) {
+					outputData();
+				}
+			});
+		}
+
+		for(var card in data) {
+			getImages(card);
+		}
+	}
+
+	function createCard(data, images) {
+		var card = {};
+
+		card.id = data.id;
+		card.name = data.name;
+		card.desc = markdown.toHTML(data.desc);
+
+		for(var image in images) {
+			if(images[image].url.indexOf('https://trello-attachments') > -1) {
+				card.image = images[image].url;
+				break;
+			}
+		}
+
+		if(data.labels[data.labels.length - 1] !== undefined) {
+			card.label = data.labels[data.labels.length - 1].name;
+		}
+
+		pushCard(card);
+	}
+
+	function pushCard(card, outputData) {
+		cards.push(card);
+
+		x++;
+	}
+
+	function outputData() {
+		gulp.src(source.trello)
+			.pipe(twig({
+				data: {
+					vars: packageJSON,
+					links: packageJSON.links,
+					cards: cards
+				}
+			}))
+			.pipe(rename({
+				extname: '.html'
+			}))
+			.pipe(gulp.dest('static/templates'));
+	}
+
+	done();
+
+});
 
 
 gulp.task('readme', function(done) {
@@ -165,7 +247,7 @@ gulp.task('accessibility-sitemap', function() {
 
 gulp.task('sass', function() {
 
-	return gulp.src(source.sass)
+	return gulp.src(packageJSON.css)
 		.pipe(sassGlob())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(postcss([
@@ -441,6 +523,7 @@ gulp.task('reset', function(done) {
 gulp.task('watch', function() {
 
 	gulp.watch('package.json', gulp.series('reset', 'build', 'reload'));
+	gulp.watch(watch.trello, gulp.series('trello', 'reload'));
 	gulp.watch(watch.twig, gulp.series('twig', 'reload'));
 	gulp.watch(watch.sass, gulp.series('sass'));
 	gulp.watch(watch.js, gulp.series(gulp.parallel('scripts', 'jshint'), 'reload'));

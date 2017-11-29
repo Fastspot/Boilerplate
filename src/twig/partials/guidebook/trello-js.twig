@@ -1,135 +1,55 @@
-{% set key = "15f2313fdce31e297fe5562dee0e0de6" %}
-{% set token = "f336172a3620ee59e2e069eedfac385df959a39772d08eac0cc67d3e725fc6fd" %}
-
-<script src="https://api.trello.com/1/client.js?key={{key}}&token={{token}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.7.1/showdown.min.js"></script>
-
 <script>
-	var trelloWrapper;
-	var trelloDetailTitle;
-	var trelloDetailImage;
-	var trelloDetailContent;
-	var trelloList;
+	var trelloTriggers;
+	var trelloHash;
 
-	init();
+	trelloInit();
 
-	function init() {
-		trelloWrapper = document.querySelector('.gb_trello_list');
-		trelloDetailTitle = document.querySelector('.gb_trello_detail_title');
-		trelloDetailImage = document.querySelector('.gb_trello_detail_image');
-		trelloDetailContent = document.querySelector('.gb_trello_detail_content');
-		trelloList = [
-			"Feature",
-			"In-Content",
-			"Full-Width",
-			"Sidebar"
-		];
-
-		queryString();
+	function trelloInit() {
+		bindTrelloVars();
+		bindTrelloUI();
+		queryTrelloHash();
 	}
 
-	function grabCards() {
-		Trello.get('lists/{{vars.trelloList}}/cards', function(data) {
-			var getImages = function(i) {
-				Trello.get('cards/' + data[card].id + '/attachments', function(images) {
-					createCard(data[i], images, i);
-				});
-			}
-
-			for(var card in data) {
-				getImages(card);
-			}
-		});
+	function bindTrelloVars() {
+		trelloTriggers = document.querySelectorAll(".gb_trello_detail_close");
 	}
 
-	function createCard(data, images, index) {
-		var cover;
-		var label;
-		var target;
+	function bindTrelloUI() {
+		window.addEventListener("hashchange", queryTrelloHash, false);
 
-		for(var image in images) {
-			if(images[image].url.indexOf('https://trello-attachments') > -1) {
-				cover = images[image].url;
-				break;
-			}
-		}
-
-		if(data.labels[data.labels.length - 1] !== undefined) {
-			label = data.labels[data.labels.length - 1].name;
-		}
-
-		var card = document.createElement('a');
-		card.setAttribute('href', '?id=' + data.id);
-		card.classList.add('gb_topic', 'gb_topic_trello');
-		card.innerHTML = '<header class="gb_topic_header">' +
-			'<img class="gb_topic_image" src="' + cover + '" />' +
-			'<h3 class="gb_topic_title">' +
-				'<span class="gb_topic_link">' + data.name + '</span>' +
-			'</h3>' +
-		'</header>';
-
-		card.addEventListener('click', function() {
-			displayCard(data.id);
-		});
-
-		target = document.querySelector('[data-section="' + label + '"]');
-
-		if(target !== null) {
-			target.appendChild(card);
+		for(var i = 0; i < trelloTriggers.length; i++) {
+			trelloTriggers[i].addEventListener("click", removeTrelloHash, false);
 		}
 	}
 
-	function generateMarkup() {
-		var section = '';
-
-		for(var category in trelloList) {
-			section += '<div class="gb_component_section">' +
-				'<header class="gb_component_section_header">' +
-					'<h2 class="gb_component_section_title" id="' + trelloList[category] + '">' + trelloList[category] + '</h2>' +
-				'</header>' +
-				'<div class="gb_component_section_body">' +
-					'<div class="gb_topics" data-section="' + trelloList[category] + '"></div>' +
-				'</div>' +
-			'</div>';
+	function queryTrelloHash() {
+		if(window.location.hash) {
+			trelloHash = window.location.hash
+			openTrelloDetail();
+			openTrelloDetailHash(trelloHash);
+		} else if(trelloHash !== undefined) {
+			closeTrelloDetail();
+			closeTrelloDetailHash(trelloHash);
 		}
-
-		trelloWrapper.innerHTML = section;
 	}
 
-	function displayCard(id) {
-		document.body.classList.add('gb_trello_detail_lock');
-
-		Trello.get('cards/' + id, function(data) {
-			var converter = new showdown.Converter(),
-			text = data.desc,
-			html = converter.makeHtml(text);
-
-			trelloDetailTitle.innerHTML = data.name;
-			trelloDetailContent.innerHTML = html;
-
-			Trello.get('cards/' + data.id + '/attachments', function(images) {
-				for(var image in images) {
-					if(images[image].url.indexOf('https://trello-attachments') > -1) {
-						trelloDetailImage.setAttribute('src', images[image].url);
-						break;
-					}
-				}
-			});
-		});
+	function openTrelloDetail() {
+		document.body.classList.add('fs-navigation-lock');
 	}
 
-	function queryString() {
-		var decode = function (s) {
-			return decodeURIComponent(s.replace(/\+/g, " "));
-		};
-		var queryString = location.search.substring(1);
-		var keyValues = queryString.split('=');
+	function openTrelloDetailHash(hash) {
+		document.querySelector(hash).classList.add('fs-swap-active');
+	}
 
-		if(keyValues[1]) {
-			displayCard(keyValues[1]);
-		} else {
-			generateMarkup();
-			grabCards();
-		}
+	function closeTrelloDetail() {
+		document.body.classList.remove('fs-navigation-lock');
+	}
+
+	function closeTrelloDetailHash(hash) {
+		document.querySelector(hash).classList.remove('fs-swap-active');
+	}
+
+	function removeTrelloHash() {
+		window.location.href = window.location.href.split('#')[0];
 	}
 </script>
