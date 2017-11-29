@@ -24,9 +24,11 @@
 
 	function queryTrelloHash() {
 		if(window.location.hash) {
-			trelloHash = window.location.hash
-			openTrelloDetail();
-			openTrelloDetailHash(trelloHash);
+			trelloHash = window.location.hash;
+			if(trelloHash.indexOf("trelloList") !== 1) {
+				openTrelloDetail();
+				openTrelloDetailHash(trelloHash);
+			}
 		} else if(trelloHash !== undefined) {
 			closeTrelloDetail();
 			closeTrelloDetailHash(trelloHash);
