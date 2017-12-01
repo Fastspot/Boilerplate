@@ -1,9 +1,4 @@
 <div class="gb_trello_wrapper">
-	{% if vars.trelloList == "" %}
-		<div class="fs-lg-10 fs-xl-8 gb_typography">
-			<h1 class="gb_trello_notification">Coming Soon!</h1>
-		</div>
-	{% endif %}
 	{% set trelloList = [
 		"Feature",
 		"In-Content",
@@ -32,8 +27,22 @@
 									<button class="gb_trello_detail_close">Components</button>
 									<div class="gb_trello_detail_inner fs-lg-10 fs-xl-8 gb_typography">
 										<h1 class="gb_trello_detail_title">{{item.name}}</h1>
-										<img class="gb_trello_detail_image" src="{{item.image}}" />
+									</div>
+									<div class="gb_trello_detail_component">
+										{% set component = "../../components/" ~ item.label|lower ~ "/" ~ item.name|lower|replace({
+											" ": "-"
+										}) ~ ".twig" %}
+										{% include component %}
+									</div>
+									<div class="gb_trello_detail_inner fs-lg-10 fs-xl-8 gb_typography">
 										<div class="gb_trello_detail_content gb_typography">{{item.desc}}</div>
+										<h2 class="gb_trello_detail_label">Markup</h2>
+<pre class="gb_trello_detail_markup_wrapper">
+<code class="gb_trello_detail_markup html">
+{% include component %}
+</code>
+</pre>
+									</div>
 									</div>
 								</div>
 							{% endif %}

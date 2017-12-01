@@ -1,33 +1,3 @@
-{#
-	{% include "../components/in-content/topic-row.twig" with {
-		title: "",
-		topics: [
-			{
-				title: "Financial Aid",
-				image: 1,
-				description: "Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.",
-				links: [
-					{
-						href: "#",
-						name: "Learn More"
-					}
-				]
-			},
-			{
-				title: "Virtual Tour",
-				image: 2,
-				description: " Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.",
-				links: [
-					{
-						href: "#",
-						name: "Explore Now"
-					}
-				]
-			}
-		]
-	} %}
-#}
-
 <div class="topic_block{% if theme %} theme_{{theme}}{% endif %}">
 	{% if title %}
 		<header class="topic_block_header">

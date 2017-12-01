@@ -78,69 +78,75 @@ var watch = {
 
 
 gulp.task('trello', function(done) {
-	var cards = [];
-	var x = 1;
 
-	trello.get('/1/list/' + packageJSON.vars.trelloList + '/cards', function(err, data) {
-		getAttachments(data);
-	});
+	if (packageJSON.vars.trelloList !== "") {
+		var cards = [];
+		var x = 1;
 
-	function getAttachments(data) {
-		var getImages = function(i) {
-			trello.get('/1/cards/' + data[card].id + '/attachments', function(err, images) {
-				createCard(data[i], images);
+		trello.get('/1/list/' + packageJSON.vars.trelloList + '/cards', function(err, data) {
+			getAttachments(data);
+		});
 
-				if(x >= data.length) {
-					outputData();
-				}
-			});
-		}
+		function getAttachments(data) {
+			var getImages = function(i) {
+				trello.get('/1/cards/' + data[card].id + '/attachments', function(err, images) {
+					createCard(data[i], images);
 
-		for(var card in data) {
-			getImages(card);
-		}
-	}
+					if(x >= data.length) {
+						outputData();
+					}
+				});
+			}
 
-	function createCard(data, images) {
-		var card = {};
-
-		card.id = data.id;
-		card.name = data.name;
-		card.desc = markdown.toHTML(data.desc);
-
-		for(var image in images) {
-			if(images[image].url.indexOf('https://trello-attachments') > -1) {
-				card.image = images[image].url;
-				break;
+			for(var card in data) {
+				getImages(card);
 			}
 		}
 
-		if(data.labels[data.labels.length - 1] !== undefined) {
-			card.label = data.labels[data.labels.length - 1].name;
+		function createCard(data, images) {
+			var card = {};
+
+			card.id = data.id;
+			card.name = data.name;
+			card.desc = markdown.toHTML(data.desc);
+
+			for(var image in images) {
+				if(images[image].url.indexOf('https://trello-attachments') > -1) {
+					card.image = images[image].url;
+					break;
+				}
+			}
+
+			if(data.labels[data.labels.length - 1] !== undefined) {
+				card.label = data.labels[data.labels.length - 1].name;
+			}
+
+			pushCard(card);
 		}
 
-		pushCard(card);
-	}
+		function pushCard(card, outputData) {
+			cards.push(card);
 
-	function pushCard(card, outputData) {
-		cards.push(card);
+			x++;
+		}
 
-		x++;
-	}
-
-	function outputData() {
-		gulp.src(source.trello)
-			.pipe(twig({
-				data: {
-					vars: packageJSON,
-					links: packageJSON.links,
-					cards: cards
-				}
-			}))
-			.pipe(rename({
-				extname: '.html'
-			}))
-			.pipe(gulp.dest('static/templates'));
+		function outputData() {
+			gulp.src(source.trello)
+				.pipe(twig({
+					data: {
+						vars: packageJSON.vars,
+						img: packageJSON.img,
+						links: packageJSON.links,
+						cards: cards
+					}
+				}))
+				.pipe(rename({
+					extname: '.html'
+				}))
+				.pipe(gulp.dest('static/templates'));
+		}
+	} else {
+		console.log("Add your Trello List ID into package.json before running `gulp trello`");
 	}
 
 	done();

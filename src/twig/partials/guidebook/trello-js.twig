@@ -9,6 +9,9 @@
 		bindTrelloUI();
 		queryTrelloHash();
 		checkEmptySections();
+		beautifyMarkup();
+		parseMarkup();
+		highlightMarkup();
 	}
 
 	function bindTrelloVars() {
@@ -65,5 +68,35 @@
 				topicGroups[i].parentElement.parentElement.innerHTML = "";
 			}
 		}
+	}
+
+	function beautifyMarkup() {
+		var trelloComponents = document.querySelectorAll('.gb_trello_detail_markup');
+
+		for(var i = 0; i < trelloComponents.length; i++) {
+			trelloComponents[i].innerHTML = html_beautify(trelloComponents[i].innerHTML, {
+				'indent_inner_html': false,
+				'indent_size': 2,
+				'indent_char': ' ',
+				'wrap_line_length': 75,
+				'brace_style': 'expand',
+				'preserve_newlines': true,
+				'max_preserve_newlines': 5,
+				'indent_handlebars': false,
+				'extra_liners': ['/html']
+			});
+		}
+	}
+
+	function parseMarkup() {
+		var trelloComponents = document.querySelectorAll('.gb_trello_detail_markup');
+
+		for(var i = 0; i < trelloComponents.length; i++) {
+			trelloComponents[i].innerHTML = he.encode(trelloComponents[i].innerHTML);
+		}
+	}
+
+	function highlightMarkup() {
+		hljs.initHighlightingOnLoad();
 	}
 </script>

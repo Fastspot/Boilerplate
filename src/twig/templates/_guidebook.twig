@@ -4,6 +4,23 @@
 {% block page %}
 {% endblock %}
 
+{% set label = "Label" %}
+{% set title = "Title" %}
+{% set caption = "Caption content will go here" %}
+{% set items = [
+	{
+		image: 1,
+		title: "Item Title One",
+		caption: "Item caption one will go here"
+	}
+] %}
+{% set links = [
+	{
+		href: "#",
+		name: ""
+	}
+] %}
+
 <!DOCTYPE html>
 <html lang="en" class="guidebook">
 	<head>
@@ -13,6 +30,9 @@
 		<meta name="description" content="">
 		<link rel="stylesheet" href="../../css/site.css">
 		<link rel="stylesheet" href="../../css/guidebook.css">
+		{% if page.title == "Components" %}
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/{{page.code}}.min.css">
+		{% endif %}
 	</head>
 	<body class="fs-grid">
 		<figure style="display: none;">
@@ -71,6 +91,11 @@
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 		<script src="../../js/site.js"></script>
 		{% if page.title == "Components" %}
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/he/1.1.1/he.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.4/beautify.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.4/beautify-html.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/twig.min.js"></script>
 			{% include '../partials/guidebook/trello-js.twig' %}
 		{% endif %}
 		<script>

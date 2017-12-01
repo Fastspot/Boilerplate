@@ -267,6 +267,7 @@
 		cursor: pointer;
 		border: 0;
 		border-radius: 4px;
+		margin-bottom: 2em;
 		padding: 10px 20px;
 
 		&:before {
@@ -329,6 +330,10 @@
 
 		.gb_trello_detail_title {}
 
+		.gb_trello_detail_component {
+			margin: 0 -20px;
+		}
+
 		.gb_trello_detail_image {
 			width: 100%;
 
@@ -336,6 +341,15 @@
 		}
 
 		.gb_trello_detail_content {}
+
+		.gb_trello_detail_markup_wrapper {
+
+			.gb_trello_detail_markup {
+				background: none;
+				border: 1px solid #D3D3D3;
+				padding: 20px;
+			}
+		}
 
 
 // Section
