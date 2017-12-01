@@ -66,7 +66,7 @@
 			}
 
 			.gb_topic_title {
-				@include h2;
+				@include h4;
 
 				color: #000;
 				margin: 0 0 10px;
@@ -74,7 +74,7 @@
 
 				.gb_topic_link {
 					box-shadow:
-						inset 0 -2px 0 0 #fff,
+						inset 0 -1px 0 0 #fff,
 						inset 0 -4px 0 0 #000;
 					color: inherit;
 					display: inline;
@@ -83,12 +83,6 @@
 						-2px 2px white,
 						2px -2px white,
 						2px 2px white;
-
-					@media #{$min_lg} {
-						box-shadow:
-							inset 0 -6px 0 0 #fff,
-							inset 0 -8px 0 0 #000;
-					}
 				}
 
 			.gb_topic_caption {
@@ -206,12 +200,21 @@
 	@media screen and (min-width: 600px) {
 		margin-bottom: 0;
 	}
+
+	&.empty {
+		display: none;
+	}
 }
 
 	.gb_component_section_header {}
 
 		.gb_component_section_title {
 			@include h2;
+
+			background: #000;
+			color: #fff;
+			display: inline-block;
+			padding: 4px 10px;
 		}
 
 	.gb_component_section_body {}

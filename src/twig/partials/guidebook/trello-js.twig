@@ -8,6 +8,7 @@
 		bindTrelloVars();
 		bindTrelloUI();
 		queryTrelloHash();
+		checkEmptySections();
 	}
 
 	function bindTrelloVars() {
@@ -53,5 +54,16 @@
 
 	function removeTrelloHash() {
 		window.location.href = window.location.href.split('#')[0];
+	}
+
+	function checkEmptySections() {
+		var topicGroups = document.querySelectorAll('.gb_topics');
+
+		for(var i = 0; i < topicGroups.length; i++) {
+			if(topicGroups[i].firstElementChild === null) {
+				topicGroups[i].parentElement.parentElement.classList.add('empty');
+				topicGroups[i].parentElement.parentElement.innerHTML = "";
+			}
+		}
 	}
 </script>

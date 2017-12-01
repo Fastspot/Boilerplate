@@ -32,6 +32,13 @@
 	line-height: (44 / 34);
 }
 
+@mixin h4() {
+	@include nd(500);
+
+	font-size: 28px;
+	line-height: (38 / 28);
+}
+
 @mixin body_text() {
 	@include nt(400);
 
