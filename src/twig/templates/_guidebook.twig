@@ -4,23 +4,6 @@
 {% block page %}
 {% endblock %}
 
-{% set label = "Label" %}
-{% set title = "Title" %}
-{% set caption = "Caption content will go here" %}
-{% set items = [
-	{
-		image: 1,
-		title: "Item Title One",
-		caption: "Item caption one will go here"
-	}
-] %}
-{% set links = [
-	{
-		href: "#",
-		name: ""
-	}
-] %}
-
 <!DOCTYPE html>
 <html lang="en" class="guidebook">
 	<head>
@@ -46,6 +29,7 @@
 							<a class="gb_ribbon_link" href="./fs-guidebook.html">Guidebook</a>
 							<div class="gb_ribbon_aside">
 								{% include "../partials/navigation/basic.twig" with {
+									title: "",
 									class: "gb_main_nav",
 									links: links.guidebook
 								} %}
