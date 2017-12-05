@@ -32,7 +32,9 @@
 												{% set component = "../../components/" ~ type.name|lower ~ "/" ~ item.name|lower|replace({
 													" ": "-"
 												}) ~ ".twig" %}
-												{% include component %}
+												{% include component with {
+													edit: true
+												} %}
 											{% elseif item.strategy %}
 												<img class="gb_trello_detail_image" src="{{item.attachments[0].url}}" />
 											{% endif %}
