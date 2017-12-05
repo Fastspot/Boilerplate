@@ -7,45 +7,50 @@
 	] %}
 	<div class="gb_trello_list">
 		{% for label in trelloList %}
-			<div class="gb_component_section" id="{{label}}">
-				<header class="gb_component_section_header">
-					<h2 class="gb_component_section_title" id="trelloList[{{label}}]">{{label}}</h2>
-				</header>
-				<div class="gb_component_section_body">
+			<div class="gb_section gb_trello_section" id="{{label}}">
+				<h2 class="gb_trello_section_title" id="trelloList[{{label}}]">{{label}}</h2>
+				<div class="gb_trello_section_body">
 					<div class="gb_topics" data-section="trelloList[{{label}}]">
 						{% for item in cards %}
-							{% if item.label == label %}
-								<a class="gb_topic gb_topic_trello trello_{{item.id}}" href="#trello_{{item.id}}">
-									<header class="gb_topic_header">
-										<img class="gb_topic_image" src="{{item.image}}" />
-										<h3 class="gb_topic_title">
-											<span class="gb_topic_link">{{item.name}}</span>
-										</h3>
-									</header>
-								</a>
-								<div class="gb_trello_detail" id="trello_{{item.id}}">
-									<button class="gb_trello_detail_close">Components</button>
-									<div class="gb_trello_detail_inner fs-lg-10 fs-xl-8 gb_typography">
-										<h1 class="gb_trello_detail_title">{{item.name}}</h1>
+							{% for type in item.labels %}
+								{% if type.name == label %}
+									<a class="gb_topic gb_topic_trello trello_{{item.id}}" href="#trello_{{item.id}}" style="color: {{item.attachments[0].edgeColor}};">
+										<header class="gb_topic_header">
+											<img class="gb_topic_image" src="{{item.attachments[0].previews[4].url}}" />
+											<h3 class="gb_topic_title">
+												<span class="gb_topic_link">{{item.name}}</span>
+											</h3>
+										</header>
+									</a>
+									<div class="gb_trello_detail" id="trello_{{item.id}}">
+										<button class="gb_trello_detail_close">Components</button>
+										<div class="gb_trello_detail_inner fs-lg-10 fs-xl-8 gb_typography">
+											<h1 class="gb_trello_detail_title">{{item.name}}</h1>
+										</div>
+										<div class="gb_trello_detail_component">
+											{% if item.build %}
+												{% set component = "../../components/" ~ type.name|lower ~ "/" ~ item.name|lower|replace({
+													" ": "-"
+												}) ~ ".twig" %}
+												{% include component %}
+											{% elseif item.strategy %}
+												<img class="gb_trello_detail_image" src="{{item.attachments[0].url}}" />
+											{% endif %}
+										</div>
+										<div class="gb_trello_detail_inner fs-lg-10 fs-xl-8 gb_typography">
+											<div class="gb_trello_detail_content gb_typography">{{item.desc}}</div>
+											{% if item.build %}
+												<h2 class="gb_trello_detail_label">Markup</h2>
+	<pre class="gb_trello_detail_markup_wrapper">
+	<code class="gb_trello_detail_markup html">
+	{% include component %}
+	</code>
+	</pre>
+											{% endif %}
+										</div>
 									</div>
-									<div class="gb_trello_detail_component">
-										{% set component = "../../components/" ~ item.label|lower ~ "/" ~ item.name|lower|replace({
-											" ": "-"
-										}) ~ ".twig" %}
-										{% include component %}
-									</div>
-									<div class="gb_trello_detail_inner fs-lg-10 fs-xl-8 gb_typography">
-										<div class="gb_trello_detail_content gb_typography">{{item.desc}}</div>
-										<h2 class="gb_trello_detail_label">Markup</h2>
-<pre class="gb_trello_detail_markup_wrapper">
-<code class="gb_trello_detail_markup html">
-{% include component %}
-</code>
-</pre>
-									</div>
-									</div>
-								</div>
-							{% endif %}
+								{% endif %}
+							{% endfor %}
 						{% endfor %}
 					</div>
 				</div>

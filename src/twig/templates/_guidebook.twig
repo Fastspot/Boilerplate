@@ -1,5 +1,4 @@
 {% import '../partials/macros.twig' as site %}
-{% import '../partials/guidebook/macros.twig' as gb %}
 
 {% block page %}
 {% endblock %}
@@ -64,12 +63,6 @@
 					{% block content %}
 					{% endblock %}
 				</div>
-				{% if page.layout == "default" %}
-					<div class="fs-cell-right fs-lg-4 aside_cell sidebar_cell">
-						{% block sidebar %}
-						{% endblock %}
-					</div>
-				{% endif %}
 			</div>
 		</div>
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>

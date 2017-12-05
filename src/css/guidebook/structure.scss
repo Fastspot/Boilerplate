@@ -33,7 +33,6 @@
 }
 
 	.gb_page_details {
-		margin-bottom: 33px;
 
 		.gb_trello_detail_lock & {
 			display: none;
@@ -42,6 +41,8 @@
 
 		.gb_page_intro {
 			@include h1;
+
+			margin: 0 0 60px;
 
 			u {
 				color: #DA2315;

@@ -31,7 +31,7 @@
     "color": "",
     "images": "clientname",
     "cseKey": "011737558837375720776:mbfrjmyam1g",
-    "trelloList": "59918e10a8c7276a1754a910",
+    "trelloList": "",
     "mq_min_ht": "800",
     "mq_min_xs": "320",
     "mq_min_sm": "500",
@@ -82,7 +82,6 @@
     "postcss-pxtorem": "^4.0.1",
     "postcss-unmq": "^1.0.2",
     "require-reload": "^0.2.2",
-    "trello": "^0.8.0",
     "what-input": "^5.0.3"
   },
   "css": [

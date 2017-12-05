@@ -1,6 +1,6 @@
-<div class="gb_typography">
-	{% for key, group in colors %}
-		<h2 id="{{key}}">{{key}}</h2>
+{% for key, group in colors %}
+	<div class="gb_section" id="{{key}}">
+		<h2 class="gb_section_title">{{key}}</h2>
 		<div class="gb_colors">
 			{% for name, color in group %}
 				<div class="gb_color">
@@ -12,8 +12,8 @@
 				</div>
 			{% endfor %}
 		</div>
-	{% endfor %}
-</div>
+	</div>
+{% endfor %}
 
 <script>
 	var clippy = document.querySelectorAll('.gb_color_copy');

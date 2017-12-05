@@ -9,33 +9,34 @@
 {% endblock %}
 
 {% block content %}
-	{% include '../partials/guidebook/topics.twig' with {
-		topics: [
-			{
-				image: "colors.png",
-				title: "Colors",
-				link: "fs-colors.html",
-				caption: "Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo."
-			},
-			{
-				image: "typography.svg",
-				title: "Typography",
-				link: "fs-typography.html",
-				caption: "Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo."
-			},
-			{
-				image: "component.svg",
-				title: "Components",
-				link: "fs-components.html",
-				caption: "Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo."
-			}
-		]
-	} %}
+	<div class="gb_section">
+		{% include '../partials/guidebook/topics.twig' with {
+			topics: [
+				{
+					image: "colors.png",
+					title: "Colors",
+					link: "fs-colors.html",
+					caption: "Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo."
+				},
+				{
+					image: "typography.svg",
+					title: "Typography",
+					link: "fs-typography.html",
+					caption: "Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo."
+				},
+				{
+					image: "component.svg",
+					title: "Components",
+					link: "fs-components.html",
+					caption: "Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo."
+				}
+			]
+		} %}
+	</div>
 
 	<div class="gb_section">
-		{{gb.title("Helpful Resources & Tips")}}
-
 		{% include '../partials/guidebook/topics.twig' with {
+			title: "Helpful Resources & Tips",
 			topics: [
 				{
 					title: "White Space",
