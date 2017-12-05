@@ -10,7 +10,7 @@
 			<div class="gb_section gb_trello_section" id="{{label}}">
 				<h2 class="gb_trello_section_title" id="trelloList[{{label}}]">{{label}}</h2>
 				<div class="gb_trello_section_body">
-					<div class="gb_topics" data-section="trelloList[{{label}}]">
+					<div class="gb_topics" data-section="{{label}}">
 						{% for item in cards %}
 							{% for type in item.labels %}
 								{% if type.name == label %}

@@ -1,37 +1,28 @@
 {% for key, group in colors %}
-	<div class="gb_section" id="{{key}}">
-		<h2 class="gb_section_title">{{key}}</h2>
+	<div class="gb_section">
+		<h2 class="gb_section_title" id="{{key}}">{{key}}</h2>
 		<div class="gb_colors">
 			{% for name, color in group %}
-				<div class="gb_color">
+				<button class="gb_color">
 					<div class="gb_color_block" style="background: {{color}};"></div>
 					<div class="gb_color_details">
-						<span class="gb_color_label">{{color}}</span>
-						<button class="gb_color_copy">Copy Hex to Clipboard</button>
+						<input class="gb_color_label" type="text" value="{{color}}">
+						<span class="gb_color_copy">Copy {{name}} to Clipboard</span>
 					</div>
-				</div>
+				</button>
 			{% endfor %}
 		</div>
 	</div>
 {% endfor %}
 
 <script>
-	var clippy = document.querySelectorAll('.gb_color_copy');
+	var clippy = document.querySelectorAll('.gb_color');
 
 	for(var i = 0; i < clippy.length; i++) {
 		clippy[i].addEventListener('click', function() {
-			var item = this.previousElementSibling;
-			var range = document.createRange();
-			range.selectNode(item);
-
-			window.getSelection().addRange(range);
-
-			try {
-				var successful = document.execCommand('copy');
-				var msg = successful ? 'successful' : 'unsuccessful';
-			} catch(err) {}
-
-			window.getSelection().removeAllRanges();
+			var item = this.children[1].children[0];
+			item.select();
+			document.execCommand("Copy");
 		});
 	}
 </script>

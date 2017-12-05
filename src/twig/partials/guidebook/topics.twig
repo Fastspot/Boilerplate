@@ -12,9 +12,7 @@
 				{% else %}
 					<div class="gb_topic_placeholder"></div>
 				{% endif %}
-				<h3 class="gb_topic_title">
-					<a class="gb_topic_link" href="{{topic.link}}">{{topic.title}}</a>
-				</h3>
+				<h3 class="gb_topic_title">{% if topic.link %}<a class="gb_topic_link" href="{{topic.link}}">{% endif %}{{topic.title}}{% if topic.link %}</a>{% endif %}</h3>
 				<p class="gb_topic_caption">{{topic.caption}}</p>
 			</header>
 		</article>

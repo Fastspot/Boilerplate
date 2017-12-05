@@ -46,8 +46,8 @@
 	line-height: (30 / 17);
 
 	@media #{$min_lg} {
-		font-size: 21px;
-		line-height: (34 / 21);
+		font-size: 20px;
+		line-height: (34 / 20);
 	}
 }
 
@@ -94,7 +94,11 @@
 	.gb_label {
 		@include body_text;
 
-		color: #868686;
+		color: #a6a6a6;
 		display: block;
 		margin-top: 35px;
+
+		strong {
+			color: #868686;
+		}
 	}

@@ -1,6 +1,6 @@
-<div class="gb_section" id="headings">
+<div class="gb_section">
+	<h2 class="gb_section_title" id="headings">Headings</h2>
 	<div class="typography">
-		<h2 class="gb_section_title">Headings</h2>
 		<div class="gb_text">
 			<span class="gb_label" data-label="H1"></span>
 			<h1>Heading Level One</h1>
@@ -28,8 +28,8 @@
 	</div>
 </div>
 
-<div class="gb_section" id="paragraphs">
-	<h2 class="gb_section_title">Paragraphs</h2>
+<div class="gb_section">
+	<h2 class="gb_section_title" id="paragraphs">Paragraphs</h2>
 	<div class="typography">
 		<div class="gb_text">
 			<span class="gb_label" data-label="Body Large"></span>
@@ -46,8 +46,8 @@
 	</div>
 </div>
 
-<div class="gb_section" id="lists">
-	<h2 class="gb_section_title">Lists</h2>
+<div class="gb_section">
+	<h2 class="gb_section_title" id="lists">Lists</h2>
 	<div class="typography">
 		<ul>
 			<li>List Item</li>
@@ -88,8 +88,8 @@
 	</div>
 </div>
 
-<div class="gb_section" id="tables">
-	<h2 class="gb_section_title">Tables</h2>
+<div class="gb_section">
+	<h2 class="gb_section_title" id="tables">Tables</h2>
 	<div class="typography">
 		{{site.table({
 			headers: [
@@ -134,8 +134,8 @@
 	</div>
 </div>
 
-<div class="gb_section" id="blockquote">
-	<h2 class="gb_section_title">Blockquote</h2>
+<div class="gb_section">
+	<h2 class="gb_section_title" id="blockquote">Blockquote</h2>
 	<div class="typography">
 		<figure class="quote">
 			<blockquote class="quote_content">
@@ -158,7 +158,7 @@
 	function updateSizes() {
 		for(var i = 0; i < labels.length; i++) {
 			var styles = window.getComputedStyle(labels[i].nextElementSibling);
-			var labelString = labels[i].getAttribute('data-label') + ' - ' + parseStyle(styles.getPropertyValue('font-size')) + ' / ' + parseStyle(styles.getPropertyValue('line-height')) + ' - ' + styles.getPropertyValue('font-family');
+			var labelString = '<strong>' + labels[i].getAttribute('data-label') + '</strong>: ' + parseStyle(styles.getPropertyValue('font-size')) + ' / ' + parseStyle(styles.getPropertyValue('line-height')) + ' ~ ' + styles.getPropertyValue('font-family');
 
 			labels[i].innerHTML = labelString;
 		}

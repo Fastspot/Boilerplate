@@ -305,7 +305,7 @@
     },
     "secondary": {
       "blue": "#006bc0",
-      "green": "#D31243"
+      "red": "#D31243"
     }
   },
   "fontsService": "fonts.com",

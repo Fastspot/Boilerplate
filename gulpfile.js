@@ -78,6 +78,7 @@ var watch = {
 
 
 gulp.task('trello', function(done) {
+
 	if (packageJSON.vars.trelloList !== "") {
 		var cards = [];
 
@@ -532,6 +533,7 @@ gulp.task('build', gulp.parallel(
 	gulp.series(
 		'sprite',
 		'twig',
+		'trello',
 		'create-sitemap',
 		'sitemap'
 	),

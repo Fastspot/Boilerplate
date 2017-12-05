@@ -48,17 +48,17 @@
 		</header>
 		<div class="gb_page_content">
 			<div class="fs-row">
-				{% if page.intro or page.caption %}
-					<header class="fs-cell fs-lg-10 fs-xl-8 gb_page_details">
-						{% if page.intro %}
-							<h2 class="gb_page_intro">{{page.intro}}{{vars.name}}.</h2>
-						{% endif %}
-						{% if page.caption %}
-							<h4 class="gb_page_title">{{page.title}}</h4>
-							<p class="gb_page_caption">{{page.caption}}</p>
-						{% endif %}
-					</header>
-				{% endif %}
+				<header class="fs-cell fs-lg-10 fs-xl-8 gb_page_details">
+					{% if page.intro %}
+						<h2 class="gb_page_intro">{{page.intro}}{{vars.name}}.</h2>
+					{% endif %}
+					{% if page.title %}
+						<h4 class="gb_page_title">{{page.title}}</h4>
+					{% endif %}
+					{% if page.caption %}
+						<p class="gb_page_caption">{{page.caption}}</p>
+					{% endif %}
+				</header>
 				<div class="fs-cell{% if page.layout == "default" %} fs-lg-10 fs-xl-8{% elseif page.layout == "full" %} fs-lg-12 fs-xl-12{% endif %} content_cell">
 					{% block content %}
 					{% endblock %}

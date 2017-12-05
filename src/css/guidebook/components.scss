@@ -200,6 +200,7 @@
 		max-width: 260px;
 
 		margin-bottom: 8%;
+		text-align: left;
 
 		@media #{$min_sm} {
 			width: 42%;
@@ -224,16 +225,20 @@
 			.gb_color_label {
 				@include body_text;
 
+				border: 0;
 				display: block;
 				line-height: 1.25;
+				outline: 0;
+				padding: 0;
 			}
 
 			.gb_color_copy {
 				@include nt(700);
 
 				border-bottom: 1px solid;
+				border-radius: 0;
 				cursor: pointer;
-				display: block;
+				display: inline-block;
 				font-size: 12px;
 				margin: 2px 0;
 				opacity: 0;
