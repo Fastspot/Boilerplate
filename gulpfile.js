@@ -117,6 +117,19 @@ gulp.task('trello', function(done) {
 					}
 				}
 
+				cards.sort(function(a, b) {
+					var nameA = a.name.toUpperCase();
+					var nameB = b.name.toUpperCase();
+					if (nameA < nameB) {
+						return -1;
+					}
+					if (nameA > nameB) {
+						return 1;
+					}
+
+					return 0;
+				});
+
 				gulp.src(source.trello)
 					.pipe(twig({
 						data: {
