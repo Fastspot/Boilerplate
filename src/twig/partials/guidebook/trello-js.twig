@@ -1,5 +1,6 @@
 <script>
 	var trelloTriggers;
+	var trelloFormatters;
 	var trelloHash;
 
 	trelloInit();
@@ -15,21 +16,28 @@
 	}
 
 	function bindTrelloVars() {
-		trelloTriggers = document.querySelectorAll(".gb_trello_detail_close");
+		trelloTriggers = document.querySelectorAll('.gb_trello_detail_close');
+		trelloFormatters = document.querySelectorAll('.gb_trello_section_formatter');
 	}
 
 	function bindTrelloUI() {
-		window.addEventListener("hashchange", queryTrelloHash, false);
+		window.addEventListener('hashchange', queryTrelloHash, false);
 
 		for(var i = 0; i < trelloTriggers.length; i++) {
-			trelloTriggers[i].addEventListener("click", removeTrelloHash, false);
+			trelloTriggers[i].addEventListener('click', removeTrelloHash, false);
+		}
+
+		for(var i = 0; i < trelloFormatters.length; i++) {
+			trelloFormatters[i].addEventListener('click', function(e) {
+				toggleTrelloFormat(e);
+			}, false);
 		}
 	}
 
 	function queryTrelloHash() {
 		if(window.location.hash) {
 			trelloHash = window.location.hash;
-			if(trelloHash.indexOf("trelloList") !== 1) {
+			if(trelloHash.indexOf('trelloList') !== 1) {
 				openTrelloDetail();
 				openTrelloDetailHash(trelloHash);
 			}
@@ -59,13 +67,23 @@
 		window.location.href = window.location.href.split('#')[0];
 	}
 
+	function toggleTrelloFormat(e) {
+		var list = e.currentTarget.parentElement.parentElement;
+
+		if(list.classList.contains('trello_format_list')) {
+			list.classList.remove('trello_format_list');
+		} else {
+			list.classList.add('trello_format_list');
+		}
+	}
+
 	function checkEmptySections() {
 		var topicGroups = document.querySelectorAll('.gb_topics');
 
 		for(var i = 0; i < topicGroups.length; i++) {
 			if(topicGroups[i].firstElementChild === null) {
 				topicGroups[i].parentElement.parentElement.classList.add('empty');
-				topicGroups[i].parentElement.parentElement.innerHTML = "";
+				topicGroups[i].parentElement.parentElement.innerHTML = '';
 			}
 		}
 	}

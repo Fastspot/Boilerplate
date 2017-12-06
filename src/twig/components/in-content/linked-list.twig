@@ -1,7 +1,7 @@
 {#
 	{% include inc ~ "linked-list.twig" with {
 		title: "Related Links",
-		links: [
+		items: [
 			{
 				href: "#",
 				name: "Undergraduate"
@@ -22,7 +22,7 @@
 	} %}
 #}
 
-<div class="linked_list{% if theme %} theme_{{theme}}{% endif %}">
+<div class="linked_list{% if theme %} theme_{{theme}}{% endif %}" {{site.ce(edit)}}>
 	{% if title %}
 		<header class="linked_list_header">
 			<h2 class="linked_list_title">
@@ -35,9 +35,9 @@
 	{% endif %}
 	<div class="linked_list_body">
 		<ul class="linked_list_group">
-			{% for link in links %}
+			{% for item in items %}
 				<li class="linked_list_item">
-					<a class="linked_list_link" href="{{link.href}}">{{link.name}}</a>
+					<a class="linked_list_link" href="{{item.href}}">{{item.name}}</a>
 				</li>
 			{% endfor %}
 		</ul>

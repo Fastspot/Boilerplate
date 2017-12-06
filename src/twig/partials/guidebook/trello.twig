@@ -8,7 +8,14 @@
 	<div class="gb_trello_list">
 		{% for label in trelloList %}
 			<div class="gb_section gb_trello_section" id="{{label}}">
-				<h2 class="gb_trello_section_title" id="trelloList[{{label}}]">{{label}}</h2>
+				<h2 class="gb_trello_section_title" id="trelloList[{{label}}]">
+					<span class="gb_trello_section_label">{{label}}</span>
+					<button class="gb_trello_section_formatter">
+						<span class="gb_trello_section_format gb_trello_section_format_indicator"></span>
+						<span class="gb_trello_section_format gb_trello_section_format_grid"></span>
+						<span class="gb_trello_section_format gb_trello_section_format_list"></span>
+					</button>
+				</h2>
 				<div class="gb_trello_section_body">
 					<div class="gb_topics" data-section="{{label}}">
 						{% for item in cards %}

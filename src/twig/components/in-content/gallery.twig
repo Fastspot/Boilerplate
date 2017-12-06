@@ -19,7 +19,7 @@
 	} %}
 #}
 
-<div class="media_gallery{% if theme %} theme_{{theme}}{% endif %}">
+<div class="media_gallery{% if theme %} theme_{{theme}}{% endif %}" {{site.ce(edit)}}>
 	{% if title %}
 		<header class="media_gallery_header">
 			<h2 class="media_gallery_title">{{title}}</h2>

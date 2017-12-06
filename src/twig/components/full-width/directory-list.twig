@@ -15,7 +15,7 @@
 	} %}
 #}
 
-<div class="directory{% if theme %} theme_{{theme}}{% endif %}">
+<div class="directory{% if theme %} theme_{{theme}}{% endif %}" {{site.ce(edit)}}>
 	<div class="fs-row">
 		<div class="fs-cell">
 			{% if title %}
