@@ -337,8 +337,17 @@
 					left: 0;
 
 					background: #000;
+					border-radius: 0;
 					transform: translate(0, 0);
-					transition: transform .25s;
+					transform-origin: right center;
+					transition:
+						border-radius .25s,
+						transform .25s;
+
+					.gb_trello_section_formatter:focus &,
+					.gb_trello_section_formatter:hover & {
+						border-radius: 50%;
+					}
 
 					.trello_format_list & {
 						transform: translate(100%, 0);
@@ -489,7 +498,7 @@
 					.gb_trello_detail_title {}
 
 					.gb_trello_detail_component {
-						margin: 0 -20px;
+						margin: 0 auto;
 					}
 
 					.gb_trello_detail_image {

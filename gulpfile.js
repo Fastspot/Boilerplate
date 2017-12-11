@@ -80,10 +80,10 @@ var watch = {
 
 gulp.task('trello', function(done) {
 
-	if (packageJSON.vars.trelloList !== "") {
+	if (packageJSON.vars.idBoardTrello !== "") {
 		var cards = [];
 
-		trello.get('/1/boards/' + packageJSON.vars.trelloList + '/cards', {
+		trello.get('/1/boards/' + packageJSON.vars.idBoardTrello + '/cards', {
 			attachments: "cover",
 			attachment_fields: [
 				"edgeColor",
@@ -103,10 +103,13 @@ gulp.task('trello', function(done) {
 					if(data[card].attachments.length > 0) {
 						if(data[card].labels.find(findCompletion)) {
 							for(label in data[card].labels) {
+								data[card].type = data[card].labels.find(findType).name;
+
 								if(data[card].labels[label].name === "Strategy-Done") {
 									data[card].strategy = true;
 								} else if(data[card].labels[label].name === "Build-Done") {
 									data[card].build = true;
+									data[card].reference = checkReference(data[card]);
 								}
 							}
 
@@ -148,6 +151,18 @@ gulp.task('trello', function(done) {
 
 		function findCompletion(label) {
 			return label.name === "Strategy-Done" || label.name === "Build-Done";
+		}
+
+		function findType(label) {
+			return label.name === "Feature" || label.name === "In-Content" || label.name === "Full-Width" || label.name === "Sidebar";
+		}
+
+		function checkReference(card) {
+			if (fs.existsSync('src/twig/components/' + card.type.toLowerCase() + '/' + card.name.toLowerCase().replace(/\s/g, '-') + '.twig')) {
+				return true;
+			}
+
+			return false;
 		}
 	}
 
