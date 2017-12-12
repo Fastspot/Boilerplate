@@ -27,7 +27,10 @@ $gray_90: #222222;
 // Themes
 // =============================================================================
 
-@mixin theme($list: $theme_colors, $style: "color") {
+@mixin theme(
+	$list: $theme_colors,
+	$style: "color"
+) {
 
 	@each $label, $color in $list {
 
@@ -43,7 +46,10 @@ $gray_90: #222222;
 	}
 }
 
-@mixin theme_direct($list: $theme_colors, $style: "color") {
+@mixin theme_direct(
+	$list: $theme_colors,
+	$style: "color"
+) {
 
 	@each $label, $color in $list {
 

@@ -40,7 +40,7 @@ button {
 	}
 }
 
-@mixin button_color(
+@mixin button_fill(
 	$b: $gray_10,
 	$hb: $gray_20
 ) {

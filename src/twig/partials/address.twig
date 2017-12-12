@@ -5,12 +5,18 @@
 	<span class="footer_address_state" itemprop="addressRegion">{{state}}</span>
 	<span class="footer_address_zip" itemprop="postalCode">{{zip}}</span>
 	{% if email %}
-		<a class="footer_address_email" itemprop="email" href="mailto:">{{email}}</a>
+		<a class="footer_address_email" itemprop="email" href="mailto:">
+			<span class="footer_address_label">{{email}}</span>
+		</a>
 	{% endif %}
 	{% if tel %}
-		<a class="footer_address_phone" itemprop="telephone" href="tel:">{{tel}}</a>
+		<a class="footer_address_phone" itemprop="telephone" href="tel:">
+			<span class="footer_address_label">{{tel}}</span>
+		</a>
 	{% endif %}
 	{% if fax %}
-		<a class="footer_address_phone" itemprop="telephone" href="tel:">{{fax}}</a>
+		<a class="footer_address_phone" itemprop="telephone" href="tel:">
+			<span class="footer_address_label">{{fax}}</span>
+		</a>
 	{% endif %}
 </div>

@@ -206,7 +206,7 @@
 				}
 
 					a.gs-title {
-						@include h5;
+						@include h4;
 
 						height: inherit;
 
@@ -250,10 +250,8 @@
 
 		.gsc-cursor-box {
 			margin-bottom: 0;
-			overflow-x: auto;
 			padding: 20px 0;
 			text-align: center;
-			white-space: nowrap;
 
 			.gsc-cursor-page {
 				background: none;

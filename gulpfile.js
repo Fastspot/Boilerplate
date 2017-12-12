@@ -14,6 +14,7 @@ var gulp = require('gulp'),
 		changed = require('gulp-changed'),
 		newer = require('gulp-newer'),
 		twig = require('gulp-twig'),
+		htmlbeautify = require('gulp-html-beautify'),
 		directoryMap = require('gulp-directory-map'),
 		sassGlob = require('gulp-sass-glob'),
 		sass = require('gulp-sass'),
@@ -208,6 +209,19 @@ gulp.task('twig', function() {
 });
 
 
+gulp.task('pretty-html', function() {
+
+	return gulp.src('static/templates/*.html')
+		.pipe(htmlbeautify({
+			"indent_size": 1,
+			"indent_char": "	",
+			"preserve_newlines": false
+		}))
+		.pipe(gulp.dest('static/templates'));
+
+});
+
+
 gulp.task('create-sitemap', function() {
 
 	return gulp.src(source.templates)
@@ -370,6 +384,7 @@ gulp.task('imagemin', function() {
 		.pipe(gulp.dest('images'));
 
 });
+
 
 var FAVICON_DATA_FILE = 'favicons/markup.json';
 gulp.task('generate-favicon', function(done) {
@@ -564,7 +579,8 @@ gulp.task('build', gulp.parallel(
 		'twig',
 		'trello',
 		'create-sitemap',
-		'sitemap'
+		'sitemap',
+		'pretty-html'
 	),
 	gulp.series(
 		'sass',

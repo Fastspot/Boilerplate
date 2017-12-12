@@ -2,11 +2,7 @@
 	Fonts
 ============================================================================= */
 
-@mixin family($weight: null) {
+@mixin family($weight: 400) {
 	font-family: "font_family_name", sans-serif;
-	font-weight: 400;
-
-	@if $weight == 300 {
-		font-family: "font_family_name", sans-serif;
-	} @else if $weight == 500 {}
+	font-weight: $weight;
 }

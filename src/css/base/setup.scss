@@ -44,6 +44,36 @@ $margin_xl: 80px;
 // Mixins
 // =============================================================================
 
+@mixin type_spread(
+	$min: (30, 40),
+	$max: (70, 60),
+	$mqs: (#{$min_sm}, #{$min_md}, #{$min_lg}, #{$min_xl})
+) {
+	$dFS: (nth($max, 1) - nth($min, 1)) / length($mqs);
+	$dLH: (nth($max, 2) - nth($min, 2)) / length($mqs);
+
+	@if ($dFS < 1) {
+		@warn "The font-size spread is too thin for the type_spread mixin";
+	}
+
+	@if ($dLH < 1) {
+		@warn "The line-height spread is too thin for the type_spread mixin";
+	}
+
+	font-size: nth($min, 1) * 1px;
+	line-height: (nth($min, 2) / nth($min, 1));
+
+	@for $i from 1 through length($mqs) {
+
+		@media #{nth($mqs, $i)} {
+			$nFS: floor(nth($min, 1) + ($dFS * $i));
+			font-size: $nFS * 1px;
+			$nLH: floor(nth($min, 2) + ($dLH * $i));
+			line-height: ($nLH / $nFS);
+		}
+	}
+}
+
 @mixin mq_switch() {
 
 	&_sm {

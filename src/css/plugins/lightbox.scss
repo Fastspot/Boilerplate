@@ -3,9 +3,13 @@
 ============================================================================= */
 
 .fs-lightbox {
-	background: rgba(#fff, 0.75);
+	background: rgba(#000, .75);
 
-	.fs-lightbox-close {}
+	.fs-lightbox-close {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
 
 	.fs-lightbox-container {}
 
