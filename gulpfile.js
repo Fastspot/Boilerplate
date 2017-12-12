@@ -106,10 +106,8 @@ gulp.task('trello', function(done) {
 							for(label in data[card].labels) {
 								data[card].type = data[card].labels.find(findType).name;
 
-								if(data[card].labels[label].name === "Strategy-Done") {
-									data[card].strategy = true;
-								} else if(data[card].labels[label].name === "Build-Done") {
-									data[card].build = true;
+								if(data[card].labels[label].name === "Done") {
+									data[card].done = true;
 									data[card].reference = checkReference(data[card]);
 								}
 							}
@@ -151,7 +149,7 @@ gulp.task('trello', function(done) {
 		});
 
 		function findCompletion(label) {
-			return label.name === "Strategy-Done" || label.name === "Build-Done";
+			return label.name === "Done";
 		}
 
 		function findType(label) {
