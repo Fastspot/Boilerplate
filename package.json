@@ -46,7 +46,7 @@
     "browser-sync": "^2.18.13",
     "del": "^3.0.0",
     "formstone": "1.4.2",
-    "glob": "^7.1.2",
+    "globby": "^7.1.1",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-accessibility": "^3.0.1",
     "gulp-bless": "^4.0.0",
@@ -282,19 +282,15 @@
     ],
     "guidebook": [
       {
-        "name": "Getting Started",
-        "href": "fs-guidebook.html"
+        "name": "content strategy",
+        "href": "fs-style-guide.html"
       },
       {
-        "name": "Colors",
-        "href": "fs-colors.html"
+        "name": "visual styles",
+        "href": "fs-visual-styles.html"
       },
       {
-        "name": "Typography",
-        "href": "fs-typography.html"
-      },
-      {
-        "name": "Components",
+        "name": "components",
         "href": "fs-components.html"
       }
     ]
@@ -340,5 +336,6 @@
         }
       ]
     }
-  ]
+  ],
+  "dependencies": {}
 }

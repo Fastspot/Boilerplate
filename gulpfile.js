@@ -3,7 +3,7 @@ var gulp = require('gulp'),
 		async = require('async'),
 		fs = require('fs'),
 		path = require('path'),
-		glob = require('glob'),
+		globby = require('globby'),
 		shell = require('gulp-shell'),
 		packageJSON = require('./package.json'),
 		trelloKeyToken = require('./trello.json'),
@@ -33,7 +33,17 @@ var gulp = require('gulp'),
 		access = require('gulp-accessibility'),
 		pa11y = require('pa11y'),
 		htmlReporter = require('pa11y/reporter/html'),
-		test = pa11y(),
+		test = pa11y({
+			ignore: [
+				'notice',
+				'WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.Abs',
+				'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Abs',
+				'WCAG2AA.Principle1.Guideline1_1.1_1_1.H67.2',
+				'WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.BgImage',
+				'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.BgImage',
+				'WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.A.Placeholder'
+			]
+		}),
 		Trello = require("node-trello"),
 		trello = new Trello(trelloKeyToken.key, trelloKeyToken.token),
 		markdown = require("markdown").markdown;
@@ -48,7 +58,13 @@ var source = {
 		'!src/twig/templates/fs-components.twig'
 	],
 	templates: 'static/templates/*.html',
-	accessibility: 'static/accessibility/*.html',
+	accessibility: [
+		'static/templates/*.html',
+		'!static/templates/accessibility.html',
+		'!static/templates/dev*.html',
+		'!static/templates/fs*.html',
+		'!static/templates/ref*.html'
+	],
 	sitemap: 'src/twig/index.twig',
 	jshint: 'src/js/modules/*.js',
 	modernizr: [
@@ -468,26 +484,51 @@ gulp.task('accessibility-test', function(done) {
 		fs.mkdirSync('static/accessibility');
 	}
 
-	var urls = glob.sync(source.templates);
+	var urls = globby.sync(source.accessibility);
 
 	var queue = async.queue(function(url, complete) {
 		var absolutePath = path.resolve(url);
+		var base = path.basename(url, '.html');
+
 		test.run('file://' + absolutePath, function(error, results) {
 			if (error) return console.error(error.message);
 
-			var html = htmlReporter.process(results);
+			var errors = 0;
+			var warnings = 0;
 
-			fs.writeFile('static/accessibility/' + path.basename(url), html, function(err) {
-				if (err) console.log(err);
-			});
+			for(result in results) {
+				if(results[result].type == "error") {
+					errors++;
+				} else if(results[result].type == "warning") {
+					warnings++;
+				}
+
+				results[result].context = results[result].context.replace(/(\s\s+)/g, '');
+			}
+
+			gulp.src('src/twig/templates/_accessibility.twig')
+				.pipe(twig({
+					data: {
+						vars: packageJSON.vars,
+						page: base,
+						errors: errors,
+						warnings: warnings,
+						results: results
+					}
+				}))
+				.pipe(rename({
+					basename: base,
+					extname: '.html'
+				}))
+				.pipe(gulp.dest('static/accessibility'));
 
 			complete();
 		});
 
-	}, 3);
+	}, 2);
 
 	queue.drain = function() {
-		console.log('All done! Run gulp access.');
+		console.log('All done running gulp access!');
 	};
 
 	queue.push(urls);

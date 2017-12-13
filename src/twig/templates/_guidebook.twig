@@ -25,7 +25,7 @@
 				<div class="fs-row">
 					<div class="fs-cell">
 						<div class="gb_ribbon_group">
-							<a class="gb_ribbon_link" href="./fs-guidebook.html">Style Guide</a>
+							<a class="gb_ribbon_link" href="./fs-guidebook.html">{{vars.name}} Style Guide</a>
 							<div class="gb_ribbon_aside">
 								{% include "../partials/navigation/basic.twig" with {
 									title: "",
@@ -50,7 +50,7 @@
 			<div class="fs-row">
 				<header class="fs-cell fs-lg-10 fs-xl-8 gb_page_details">
 					{% if page.intro %}
-						<h2 class="gb_page_intro">{{page.intro}}{{vars.name}}.</h2>
+						<h2 class="gb_page_intro">{{page.intro}}</h2>
 					{% endif %}
 					{% if page.title %}
 						<h4 class="gb_page_title">{{page.title}}</h4>

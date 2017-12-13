@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>Accessibility Report</title>
+		<style>
+			html {
+				font-family: "Neue Haas Grotesk Text Std", Helvetica, Arial, sans-serif;
+			}
+
+				body {
+					max-width: 740px;
+
+					margin: 0 auto;
+					padding: 0 20px;
+				}
+
+					h1, h2, h3, h4, h5, h6 {
+						font-family: "Neue Haas Grotesk Display Std", Helvetica, Arial, sans-serif;
+					}
+
+					h4, h5, h6 {
+						font-weight: 400;
+					}
+
+					.results {}
+
+						.result_type {
+							color: inherit;
+							display: inline-block;
+							margin-right: 10px;
+							padding: 6px 10px;
+							text-decoration: none;
+						}
+
+						.error {
+							background: #ffcaca;
+						}
+
+						.warning {
+							background: #fffaca;
+						}
+
+					.report_item {
+						margin: 20px 0;
+						padding: 20px;
+					}
+
+						.report_item_title {
+							margin: 0 0 20px;
+						}
+
+						.report_item_code {
+							margin: 0 0 20px;
+						}
+
+						.report_item_context {
+							max-width: 100%;
+
+							border: 1px solid;
+							border-left-width: 3px;
+							display: inline-block;
+							margin: 0;
+							overflow-x: auto;
+							padding: 20px;
+						}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>{{page|replace({
+				"-": " "
+			})|title}} Report</h1>
+			<div class="results">
+				<a class="result_type error" href="#errors">{{errors}} errors</a>
+				<a class="result_type warning" href="#warnings">{{warnings}} warnings</a>
+			</div>
+		</header>
+		<main>
+			{% set accessList = [
+				"error",
+				"warning"
+			] %}
+			{% for type in accessList %}
+				<div id="{{type}}s">
+					{% for result in results %}
+						{% if type == result.type %}
+							<div class="report_item {{result.type}}">
+								<h3 class="report_item_title">{{result.message}}</h3>
+								<h5 class="report_item_code">{{result.code}}</h5>
+								<pre class="report_item_context">{{result.context|e}}</pre>
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+			{% endfor %}
+		</main>
+		<script></script>
+	</body>
+</html>
