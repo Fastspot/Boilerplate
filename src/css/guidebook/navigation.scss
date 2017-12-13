@@ -9,7 +9,7 @@
 	font-size: 24px;
 	padding: 31px 0 10px;
 
-	@media #{$min_md} {
+	@media #{$min_lg} {
 		padding-bottom: 30px;
 	}
 }
@@ -24,16 +24,10 @@
 	transform-origin: right center;
 	transform: scale(.75);
 
-	@media #{$min_md} {
+	@media #{$min_lg} {
 		top: 50%;
 		right: 0;
 
-		transform:
-			translate(0, -50%)
-			scale(.85);
-	}
-
-	@media #{$min_lg} {
 		transform: translate(0, -50%);
 	}
 
@@ -50,12 +44,8 @@
 .gb_main_nav {
 	padding-bottom: 22px;
 
-	@media #{$min_md} {
-		padding-top: 22px;
-		padding-right: 70px;
-	}
-
 	@media #{$min_lg} {
+		padding-top: 22px;
 		padding-right: 95px;
 	}
 }

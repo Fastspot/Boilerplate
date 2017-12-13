@@ -1,69 +1,82 @@
 <div class="gb_trello_wrapper">
-	{% set trelloList = [
-		"Feature",
-		"In-Content",
-		"Sidebar",
-		"Full-Width"
-	] %}
-	<div class="gb_trello_list">
-		{% for label in trelloList %}
-			<div class="gb_section gb_trello_section" id="{{label}}">
-				<h2 class="gb_trello_section_title" id="trelloList[{{label}}]">
-					<span class="gb_trello_section_label">{{label}}</span>
-					<button class="gb_trello_section_formatter">
-						<span class="gb_trello_section_format gb_trello_section_format_indicator"></span>
-						<span class="gb_trello_section_format gb_trello_section_format_grid"></span>
-						<span class="gb_trello_section_format gb_trello_section_format_list"></span>
-					</button>
-				</h2>
-				<div class="gb_trello_section_body">
-					<div class="gb_topics" data-section="{{label}}">
-						{% for item in cards %}
-							{% if item.type == label %}
-								<a class="gb_topic gb_topic_trello trello_{{item.id}}" href="#trello_{{item.id}}" style="color: {{item.attachments[0].edgeColor}};">
-									<header class="gb_topic_header">
-										<img class="gb_topic_image" src="{{item.attachments[0].previews[3].url}}" />
-										<h3 class="gb_topic_title">
-											<span class="gb_topic_link">{{item.name}}</span>
-										</h3>
-									</header>
-								</a>
-								<div class="gb_trello_detail" id="trello_{{item.id}}">
-									<a href="#" class="gb_trello_detail_close">Components</a>
-									<div class="gb_trello_detail_inner fs-lg-10 fs-xl-8 gb_typography">
-										<h1 class="gb_trello_detail_title">{{item.name}}</h1>
-									</div>
-									{% if item.done and item.reference %}
-										<div class="gb_trello_detail_component{% if item.type == "In-Content" %} fs-lg-8{% elseif item.type == "Sidebar" %} fs-lg-4{% endif %}">
-											{% set component = "../../components/" ~ item.type|lower ~ "/" ~ item.name|lower|replace({
-												" ": "-"
-											}) ~ ".twig" %}
-											{% include component with {
-												edit: true
-											} %}
+	{% if trelloCards %}
+		{% set trelloList = [
+			"Feature",
+			"In-Content",
+			"Sidebar",
+			"Full-Width"
+		] %}
+		{% set trelloCaptions = [
+			"Feature Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.",
+			"In-Content Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.",
+			"Sidebar Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.",
+			"Full-Width Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit."
+		] %}
+		<div class="gb_trello_list">
+			{% for label in trelloList %}
+				<div class="gb_trello_section gb_section" id="{{label}}">
+					<h2 class="gb_trello_section_title" id="trelloList[{{label}}]">
+						<span class="gb_trello_section_label">{{label}}</span>
+						<button class="gb_trello_section_formatter">
+							<span class="gb_trello_section_format gb_trello_section_format_indicator"></span>
+							<span class="gb_trello_section_format gb_trello_section_format_grid"></span>
+							<span class="gb_trello_section_format gb_trello_section_format_list"></span>
+						</button>
+					</h2>
+					<p class="gb_trello_section_caption">{{trelloCaptions[loop.index - 1]}}</p>
+					<div class="gb_trello_section_body">
+						<div class="gb_topics" data-section="{{label}}">
+							{% for item in cards %}
+								{% if item.type == label %}
+									<a class="gb_topic gb_topic_trello trello_{{item.id}}" href="#trello_{{item.id}}" style="color: {{item.attachments[0].edgeColor}};">
+										<header class="gb_topic_header">
+											<img class="gb_topic_image" src="{{item.attachments[0].previews[3].url}}" />
+											<h3 class="gb_topic_title">
+												<span class="gb_topic_link">{{item.name}}</span>
+											</h3>
+										</header>
+									</a>
+									<div class="gb_trello_detail" id="trello_{{item.id}}">
+										<a href="#" class="gb_trello_detail_close">Components</a>
+										<div class="gb_trello_detail_inner fs-lg-10 fs-xl-8 gb_typography">
+											<h1 class="gb_trello_detail_title">{{item.name}}</h1>
 										</div>
-									{% endif %}
-									<div class="gb_trello_detail_inner fs-lg-10 fs-xl-8 gb_typography">
-										{% if item.done and not item.reference %}
-											<div class="gb_trello_detail_cover" data-image="{% if item.attachments[0].previews[5].url %}{{item.attachments[0].previews[5].url}}{% else %}{{item.attachments[0].url}}{% endif %}">
+										{% if item.done and item.reference %}
+											<div class="gb_trello_detail_component{% if item.type == "In-Content" %} fs-lg-8{% elseif item.type == "Sidebar" %} fs-lg-4{% endif %}">
+												{% set component = "../../components/" ~ item.type|lower ~ "/" ~ item.name|lower|replace({
+													" ": "-"
+												}) ~ ".twig" %}
+												{% include component with {
+													edit: true
+												} %}
 											</div>
 										{% endif %}
-										<div class="gb_trello_detail_content gb_typography">{{item.desc}}</div>
-										{% if item.done and item.reference and vars.handoff %}
-											<h2 class="gb_trello_detail_label">Markup</h2>
+										<div class="gb_trello_detail_inner fs-lg-10 fs-xl-8 gb_typography">
+											{% if item.done and not item.reference %}
+												<div class="gb_trello_detail_cover" data-image="{% if item.attachments[0].previews[5].url %}{{item.attachments[0].previews[5].url}}{% else %}{{item.attachments[0].url}}{% endif %}">
+												</div>
+											{% endif %}
+											<div class="gb_trello_detail_content gb_typography">{{item.desc}}</div>
+											{% if item.done and item.reference and vars.handoff %}
+												<h2 class="gb_trello_detail_label">Markup</h2>
 <pre class="gb_trello_detail_markup_wrapper">
 <code class="gb_trello_detail_markup html">
 {% include component ignore missing %}
 </code>
 </pre>
-										{% endif %}
+											{% endif %}
+										</div>
 									</div>
-								</div>
-							{% endif %}
-						{% endfor %}
+								{% endif %}
+							{% endfor %}
+						</div>
 					</div>
 				</div>
-			</div>
-		{% endfor %}
-	</div>
+			{% endfor %}
+		</div>
+	{% else %}
+		<div class="gb_section">
+			<div class="gb_trello_detail_content gb_typography">{{contentStrategy.desc}}</div>
+		</div>
+	{% endif %}
 </div>

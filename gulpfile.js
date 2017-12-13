@@ -51,11 +51,15 @@ var gulp = require('gulp'),
 
 var source = {
 	readme: 'src/twig/README.twig',
-	trello: 'src/twig/templates/fs-components.twig',
+	trello: [
+		'src/twig/templates/fs-components.twig',
+		'src/twig/templates/fs-content-strategy.twig'
+	],
 	twig: [
 		'src/twig/templates/*.twig',
 		'!src/twig/templates/_*.twig',
-		'!src/twig/templates/fs-components.twig'
+		'!src/twig/templates/fs-components.twig',
+		'!src/twig/templates/fs-content-strategy.twig'
 	],
 	templates: 'static/templates/*.html',
 	accessibility: [
@@ -78,12 +82,14 @@ var source = {
 var watch = {
 	trello: [
 		'src/twig/templates/fs-components.twig',
+		'src/twig/templates/fs-content-strategy.twig',
 		'src/twig/partials/guidebook/trello.twig',
 		'src/twig/partials/guidebook/trello-js.twig'
 	],
 	twig: [
 		'src/twig/**/*.twig',
 		'!src/twig/templates/fs-components.twig',
+		'!src/twig/templates/fs-content-strategy.twig',
 		'!src/twig/partials/guidebook/trello.twig',
 		'!src/twig/partials/guidebook/trello-js.twig'
 	],
@@ -99,6 +105,7 @@ gulp.task('trello', function(done) {
 
 	if (packageJSON.vars.idBoardTrello !== "") {
 		var cards = [];
+		var contentStrategy;
 
 		trello.get('/1/boards/' + packageJSON.vars.idBoardTrello + '/cards', {
 			attachments: "cover",
@@ -132,6 +139,10 @@ gulp.task('trello', function(done) {
 
 							cards.push(data[card]);
 						}
+					} else if(data[card].labels.find(findContent)) {
+						data[card].desc = markdown.toHTML(data[card].desc);
+
+						contentStrategy = data[card];
 					}
 				}
 
@@ -154,7 +165,8 @@ gulp.task('trello', function(done) {
 							vars: packageJSON.vars,
 							img: packageJSON.img,
 							links: packageJSON.links,
-							cards: cards
+							cards: cards,
+							contentStrategy: contentStrategy
 						}
 					}))
 					.pipe(rename({
@@ -166,6 +178,10 @@ gulp.task('trello', function(done) {
 
 		function findCompletion(label) {
 			return label.name === "Done";
+		}
+
+		function findContent(label) {
+			return label.name === "Content";
 		}
 
 		function findType(label) {

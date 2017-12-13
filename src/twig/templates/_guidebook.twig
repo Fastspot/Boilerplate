@@ -8,7 +8,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>{{page.title}} | {{vars.name}}</title>
+		<title>{% if page.title %}{{page.title}} | {% endif %}{{vars.name}}</title>
 		<meta name="description" content="">
 		<link rel="stylesheet" href="../../css/site.css">
 		<link rel="stylesheet" href="../../css/guidebook.css">
@@ -25,7 +25,7 @@
 				<div class="fs-row">
 					<div class="fs-cell">
 						<div class="gb_ribbon_group">
-							<a class="gb_ribbon_link" href="./fs-guidebook.html">{{vars.name}} Style Guide</a>
+							<a class="gb_ribbon_link" href="./fs-style-guide.html">{{vars.name}} Style Guide</a>
 							<div class="gb_ribbon_aside">
 								{% include "../partials/navigation/basic.twig" with {
 									title: "",
@@ -48,15 +48,18 @@
 		</header>
 		<div class="gb_page_content">
 			<div class="fs-row">
-				<header class="fs-cell fs-lg-10 fs-xl-8 gb_page_details">
+				<header class="fs-cell gb_page_details">
 					{% if page.intro %}
-						<h2 class="gb_page_intro">{{page.intro}}</h2>
+						<h2 class="gb_page_intro fs-lg-10 fs-xl-8">{{page.intro}}</h2>
 					{% endif %}
 					{% if page.title %}
-						<h4 class="gb_page_title">{{page.title}}</h4>
+						<h4 class="gb_page_title fs-lg-10 fs-xl-8">{{page.title}}</h4>
 					{% endif %}
 					{% if page.caption %}
-						<p class="gb_page_caption">{{page.caption}}</p>
+						<p class="gb_page_caption fs-lg-10 fs-xl-8">{{page.caption}}</p>
+					{% endif %}
+					{% if page.image %}
+						<img class="gb_page_image" src="../../images/{{page.image}}" />
 					{% endif %}
 				</header>
 				<div class="fs-cell{% if page.layout == "default" %} fs-lg-10 fs-xl-8{% elseif page.layout == "full" %} fs-lg-12 fs-xl-12{% endif %} content_cell">

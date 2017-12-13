@@ -51,14 +51,22 @@
 	}
 }
 
+@mixin label_text() {
+	@include nt(400);
+
+	font-size: 14px;
+	line-height: (22 / 14);
+}
+
 
 // Typography
 // =============================================================================
 
 .gb_typography {
+	@include body_text;
 
 	h1, h2, h3 {
-		margin: 20px 0 10px;
+		margin: 60px 0 20px;
 	}
 
 	h1 {
@@ -73,10 +81,37 @@
 		@include h3;
 	}
 
-	> p {
-		@include body_text;
+	a {
+		border-bottom: 1px solid;
+		color: inherit;
+	}
 
-		margin: 10px 0 30px;
+	> p {
+		margin: 30px 0;
+	}
+
+	blockquote {
+		@include nd(700);
+
+		background: rgba(#D8D8D8, .2);
+		border-left: 6px solid #DA2315;
+		font-size: 16px;
+		line-height: (29 / 16);
+		margin: 30px 0;
+		padding: 20px;
+
+		@media #{$min_lg} {
+			padding: 35px;
+		}
+
+		p {
+			margin: 0;
+		}
+	}
+
+	ol,
+	ul {
+		margin: 30px 0;
 	}
 }
 

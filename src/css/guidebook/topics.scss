@@ -1,0 +1,131 @@
+// Topics
+// =============================================================================
+
+.gb_topics {
+
+	@media #{$min_sm} {
+		display: flex;
+		flex-wrap: wrap;
+	}
+}
+
+	.gb_topic {
+		max-width: 400px;
+
+		display: block;
+		margin-bottom: 8%;
+
+		@media screen and (min-width: 600px) {
+			width: 42%;
+			margin-right: 8%;
+			margin-bottom: 4%;
+		}
+
+		@media #{$min_lg} {
+			width: 25.33%;
+		}
+
+		&_trello {
+			position: relative;
+
+			cursor: pointer;
+
+			&:before {
+				height: 40px;
+				width: 40px;
+
+				position: absolute;
+				top: 0;
+				left: 50%;
+
+				background: currentColor;
+				border-radius: 50%;
+				content: "";
+				transform:
+					translate(-50%, -50%)
+					scale(0);
+
+				.trello_format_list & {
+					height: 20px;
+					width: 20px;
+
+					top: 5px;
+					left: 0;
+				}
+			}
+
+			&:focus,
+			&:hover {
+
+				&:before {
+					animation: trello-topic-burst .5s forwards;
+				}
+			}
+
+			.trello_format_list & {
+				max-width: 100%;
+				width: 100%;
+
+				margin-bottom: 10px;
+			}
+		}
+	}
+
+	@keyframes trello-topic-burst {
+
+		100% {
+			opacity: 0;
+			transform:
+				translate(-50%, -50%)
+				scale(1);
+		}
+	}
+
+		.gb_topic_header {}
+
+			.gb_topic_figure {}
+
+				.gb_topic_image {
+					max-height: 340px;
+					max-width: 100%;
+
+					margin-bottom: 24px;
+
+					.trello_format_list & {
+						display: none;
+					}
+				}
+
+			.gb_topic_placeholder {
+				height: 165px;
+				width: 100%;
+
+				border: 1px solid rgba(#979797, .2);
+				margin-bottom: 20px;
+			}
+
+			.gb_topic_title {
+				@include h4;
+
+				color: #000;
+				margin: 0 0 10px;
+			}
+
+				.gb_topic_link {
+					box-shadow:
+						inset 0 -1px 0 0 #fff,
+						inset 0 -4px 0 0 #000;
+					color: inherit;
+					display: inline;
+					text-shadow:
+						-2px -2px white,
+						-2px 2px white,
+						2px -2px white,
+						2px 2px white;
+				}
+
+			.gb_topic_caption {
+				@include body_text;
+
+				margin: 0;
+			}

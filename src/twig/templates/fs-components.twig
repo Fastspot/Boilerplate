@@ -148,10 +148,13 @@
 		layout: "full",
 		title: "Components",
 		caption: "Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod.",
+		image: "components.svg",
 		code: "atom-one-light"
 	} %}
 {% endblock %}
 
 {% block content %}
-	{% include '../partials/guidebook/trello.twig' %}
+	{% include '../partials/guidebook/trello.twig' with {
+		trelloCards: true
+	} %}
 {% endblock %}

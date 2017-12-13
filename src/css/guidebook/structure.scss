@@ -11,7 +11,7 @@
 
 		.gb_ribbon_group {
 
-			@media #{$min_md} {
+			@media #{$min_lg} {
 				position: relative;
 
 				align-items: center;
@@ -34,6 +34,7 @@
 }
 
 	.gb_page_details {
+		position: relative;
 
 		.gb_trello_detail_lock & {
 			display: none;
@@ -79,4 +80,41 @@
 			@include body_text;
 
 			margin: 12px 0 0;
+
+			a {
+				border-bottom: 1px solid;
+				color: inherit;
+			}
 		}
+
+		.gb_page_image {
+			display: none;
+
+			@media #{$min_lg} {
+				position: absolute;
+				top: 10px;
+				right: 0;
+
+				display: block;
+			}
+		}
+
+
+// Section
+// =============================================================================
+
+.gb_section {
+	margin: 80px 0;
+}
+
+	.gb_section_title {
+		@include h2;
+
+		margin: 0 0 20px;
+	}
+
+	.gb_section_caption {
+		@include body_text;
+
+		margin: -20px 0 20px;
+	}
