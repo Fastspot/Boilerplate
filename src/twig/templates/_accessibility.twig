@@ -27,23 +27,31 @@
 						font-weight: 400;
 					}
 
-					.results {}
+					.results_header {
+						padding: 40px 0;
+					}
 
-						.result_type {
-							color: inherit;
-							display: inline-block;
-							margin-right: 10px;
-							padding: 6px 10px;
-							text-decoration: none;
-						}
+						.results_title {}
 
-						.error {
-							background: #ffcaca;
-						}
+						.results {}
 
-						.warning {
-							background: #fffaca;
-						}
+							.result_type {
+								color: inherit;
+								display: inline-block;
+								margin-right: 10px;
+								padding: 6px 10px;
+								text-decoration: none;
+							}
+
+							.error {
+								background: #ffcaca;
+								border: 1px solid #faabab;
+							}
+
+							.warning {
+								background: #fffaca;
+								border: 1px solid #f0e8a0;
+							}
 
 					.report_item {
 						margin: 20px 0;
@@ -61,9 +69,10 @@
 						.report_item_context {
 							max-width: 100%;
 
-							border: 1px solid;
-							border-left-width: 3px;
+							background: rgba(0, 0, 0, .05);
+							border-left: 3px solid;
 							display: inline-block;
+							font-size: 16px;
 							margin: 0;
 							overflow-x: auto;
 							padding: 20px;
@@ -71,13 +80,13 @@
 		</style>
 	</head>
 	<body>
-		<header>
-			<h1>{{page|replace({
+		<header class="results_header">
+			<h1 class="results_title">{{page|replace({
 				"-": " "
 			})|title}} Report</h1>
 			<div class="results">
-				<a class="result_type error" href="#errors">{{errors}} errors</a>
-				<a class="result_type warning" href="#warnings">{{warnings}} warnings</a>
+				<a class="result_type error" href="#errors"><strong>{{errors}}</strong> errors</a>
+				<a class="result_type warning" href="#warnings"><strong>{{warnings}}</strong> warnings</a>
 			</div>
 		</header>
 		<main>
@@ -91,7 +100,7 @@
 						{% if type == result.type %}
 							<div class="report_item {{result.type}}">
 								<h3 class="report_item_title">{{result.message}}</h3>
-								<h5 class="report_item_code">{{result.code}}</h5>
+								<p class="report_item_code">{{result.code}}</p>
 								<pre class="report_item_context">{{result.context|e}}</pre>
 							</div>
 						{% endif %}

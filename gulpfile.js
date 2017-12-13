@@ -493,6 +493,8 @@ gulp.task('accessibility-test', function(done) {
 		test.run('file://' + absolutePath, function(error, results) {
 			if (error) return console.error(error.message);
 
+			console.log("scanning " + base + ".html");
+
 			var errors = 0;
 			var warnings = 0;
 
