@@ -82,8 +82,15 @@
 	}
 
 	a {
-		border-bottom: 1px solid;
 		color: inherit;
+		text-decoration-skip: ink;
+		text-decoration: underline;
+		transition: color .25s;
+
+		&:focus,
+		&:hover {
+			color: #DA2315;
+		}
 	}
 
 	> p {

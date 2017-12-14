@@ -112,20 +112,39 @@
 			}
 
 				.gb_topic_link {
-					box-shadow:
-						inset 0 -1px 0 0 #fff,
-						inset 0 -4px 0 0 #000;
 					color: inherit;
 					display: inline;
-					text-shadow:
-						-2px -2px white,
-						-2px 2px white,
-						2px -2px white,
-						2px 2px white;
+					text-decoration-skip: ink;
+					text-decoration: underline;
+					transition: color .25s;
+
+					&:focus,
+					&:hover {
+						color: #DA2315;
+					}
 				}
 
 			.gb_topic_caption {
 				@include body_text;
 
 				margin: 0;
+			}
+
+			.gb_topic_subcaption {
+				@include label_text;
+
+				color: rgba(#000, .7);
+				margin: 8px 0 0;
+
+				a {
+					color: inherit;
+					text-decoration-skip: ink;
+					text-decoration: underline;
+					transition: color .25s;
+
+					&:focus,
+					&:hover {
+						color: #DA2315;
+					}
+				}
 			}
