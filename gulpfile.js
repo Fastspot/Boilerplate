@@ -657,6 +657,14 @@ gulp.task('default', gulp.series(
 ));
 
 
+gulp.task('dev',
+	gulp.parallel(
+		'watch',
+		'browser-sync'
+	)
+);
+
+
 gulp.task('access', gulp.series(
 	'accessibility-test',
 	'create-accessibility-sitemap',
