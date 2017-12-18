@@ -1,6 +1,99 @@
 // Trello
 // =============================================================================
 
+.gb_trello_formatter {
+	height: 50px;
+	width: 100px;
+
+	position: relative;
+
+	background: #fff;
+	border: 1px solid #000;
+	border-radius: 0;
+	display: inline-block;
+	margin-left: 20px;
+	vertical-align: middle;
+
+	@media #{$max_sm} {
+		display: none;
+	}
+}
+
+	.gb_trello_format {
+		height: 100%;
+		width: 50%;
+
+		position: absolute;
+		top: 0;
+
+		&_indicator {
+			left: 0;
+
+			background: #000;
+			border-radius: 0;
+			transform: translate(0, 0);
+			transform-origin: right center;
+			transition:
+				border-radius .25s,
+				transform .25s;
+
+			.gb_trello_section_formatter:focus &,
+			.gb_trello_section_formatter:hover & {
+				border-radius: 50%;
+			}
+
+			.trello_format_list & {
+				transform: translate(100%, 0);
+			}
+		}
+
+		&_grid {
+			left: 0;
+
+			&:before {
+				height: 4px;
+				width: 4px;
+
+				position: absolute;
+				top: 50%;
+				left: 50%;
+
+				background: #fff;
+				box-shadow:
+					-6px 0 0 0 #fff,
+					-6px -6px 0 0 #fff,
+					0 -6px 0 0 #fff,
+					6px -6px 0 0 #fff,
+					6px 0 0 0 #fff,
+					6px 6px 0 0 #fff,
+					0 6px 0 0 #fff,
+					-6px 6px 0 0 #fff;
+				content: "";
+				transform: translate(-50%, -50%);
+			}
+		}
+
+		&_list {
+			right: 0;
+
+			&:before {
+				height: 3px;
+				width: 16px;
+
+				position: absolute;
+				top: 50%;
+				left: 50%;
+
+				background: #fff;
+				box-shadow:
+					0 -6px 0 0 #fff,
+					0 6px 0 0 #fff;
+				content: "";
+				transform: translate(-50%, -50%);
+			}
+		}
+	}
+
 .gb_trello_list {
 
 	.gb_trello_detail_lock & {
@@ -23,8 +116,6 @@
 				@include h2;
 
 				position: relative;
-				position: sticky;
-				top: 10px;
 				z-index: 4;
 
 				background: #000;
@@ -36,107 +127,13 @@
 
 				.gb_trello_section_label {}
 
-				.gb_trello_section_formatter {
-					height: 50px;
-					width: 100px;
-
-					position: absolute;
-					top: 50%;
-					left: 100%;
-
-					background: #fff;
-					border: 1px solid #000;
-					border-radius: 0;
-					margin-left: 20px;
-					transform: translate(0, -50%);
-
-					@media #{$max_sm} {
-						display: none;
-					}
-				}
-
-				.gb_trello_section_format {
-					height: 100%;
-					width: 50%;
-
-					position: absolute;
-					top: 0;
-
-					&_indicator {
-						left: 0;
-
-						background: #000;
-						border-radius: 0;
-						transform: translate(0, 0);
-						transform-origin: right center;
-						transition:
-							border-radius .25s,
-							transform .25s;
-
-						.gb_trello_section_formatter:focus &,
-						.gb_trello_section_formatter:hover & {
-							border-radius: 50%;
-						}
-
-						.trello_format_list & {
-							transform: translate(100%, 0);
-						}
-					}
-
-					&_grid {
-						left: 0;
-
-						&:before {
-							height: 4px;
-							width: 4px;
-
-							position: absolute;
-							top: 50%;
-							left: 50%;
-
-							background: #fff;
-							box-shadow:
-								-6px 0 0 0 #fff,
-								-6px -6px 0 0 #fff,
-								0 -6px 0 0 #fff,
-								6px -6px 0 0 #fff,
-								6px 0 0 0 #fff,
-								6px 6px 0 0 #fff,
-								0 6px 0 0 #fff,
-								-6px 6px 0 0 #fff;
-							content: "";
-							transform: translate(-50%, -50%);
-						}
-					}
-
-					&_list {
-						right: 0;
-
-						&:before {
-							height: 3px;
-							width: 16px;
-
-							position: absolute;
-							top: 50%;
-							left: 50%;
-
-							background: #fff;
-							box-shadow:
-								0 -6px 0 0 #fff,
-								0 6px 0 0 #fff;
-							content: "";
-							transform: translate(-50%, -50%);
-						}
-					}
-				}
-
 			.gb_trello_section_caption {
 				@include body_text;
+
+				margin-bottom: 50px;
 			}
 
-		.gb_trello_section_body {
-			padding-bottom: 40px;
-		}
+		.gb_trello_section_body {}
 
 			.gb_trello_detail {
 				@include clearfix;

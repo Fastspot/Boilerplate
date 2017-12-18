@@ -22,6 +22,15 @@
 
 	.gb_jump_ribbon {
 		background: #333;
+
+		.pinned & {
+			width: 100%;
+
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 8;
+		}
 	}
 
 
@@ -69,6 +78,11 @@
 
 			margin: 0;
 		}
+
+			.gb_page_title_label {
+				display: inline-block;
+				vertical-align: middle;
+			}
 
 		.gb_page_caption {
 			@include body_text;

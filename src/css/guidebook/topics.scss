@@ -16,19 +16,43 @@
 		margin-bottom: 8%;
 
 		@media screen and (min-width: 600px) {
-			width: 42%;
-			margin-right: 8%;
+			width: 50%;
 			margin-bottom: 4%;
+			padding-right: 8%;
 		}
 
 		@media #{$min_lg} {
-			width: 25.33%;
+			width: 33.33%;
 		}
 
 		&_trello {
 			position: relative;
 
+			border-bottom: 1px solid #000;
 			cursor: pointer;
+			padding-bottom: 8%;
+
+			@media screen and (min-width: 600px) {
+				padding-bottom: 4%;
+			}
+
+			&:nth-last-child(2) {
+				border-bottom: 0;
+			}
+
+			&:nth-last-child(4) {
+
+				@media screen and (min-width: 600px) {
+					border-bottom: 0;
+				}
+			}
+
+			&:nth-last-child(6) {
+
+				@media #{$min_lg} {
+					border-bottom: 0;
+				}
+			}
 
 			&:before {
 				height: 40px;
@@ -66,7 +90,9 @@
 				max-width: 100%;
 				width: 100%;
 
+				border-bottom: 0;
 				margin-bottom: 10px;
+				padding-bottom: 0;
 			}
 		}
 	}
@@ -83,45 +109,37 @@
 
 		.gb_topic_header {}
 
-			.gb_topic_figure {}
-
-				.gb_topic_image {
-					max-height: 340px;
-					max-width: 100%;
-
-					margin-bottom: 24px;
-
-					.trello_format_list & {
-						display: none;
-					}
-				}
-
-			.gb_topic_placeholder {
-				height: 165px;
-				width: 100%;
-
-				border: 1px solid rgba(#979797, .2);
-				margin-bottom: 20px;
-			}
-
-			.gb_topic_title {
-				@include h4;
-
+			.gb_topic_link {
 				color: #000;
-				margin: 0 0 10px;
+				display: inline;
+				text-decoration-skip: ink;
+				text-decoration: underline;
+				transition: color .25s;
+
+				&:focus,
+				&:hover {
+					color: #DA2315;
+				}
 			}
 
-				.gb_topic_link {
-					color: inherit;
-					display: inline;
-					text-decoration-skip: ink;
-					text-decoration: underline;
-					transition: color .25s;
+				.gb_topic_figure {}
 
-					&:focus,
-					&:hover {
-						color: #DA2315;
+					.gb_topic_image {
+						max-height: 340px;
+						max-width: 100%;
+
+						margin-bottom: 24px;
+
+						.trello_format_list & {
+							display: none;
+						}
 					}
+
+				.gb_topic_title {
+					@include h4;
+
+					color: inherit;
+					margin: 0 0 10px;
 				}
 
 			.gb_topic_caption {

@@ -30,7 +30,8 @@
 								{% include "../partials/navigation/basic.twig" with {
 									title: "",
 									class: "gb_main_nav",
-									links: links.guidebook
+									links: links.guidebook,
+									active: page.active
 								} %}
 								<a class="gb_ribbon_logo" href="https://www.fastspot.com/">{{site.symbol("fs_logo")}}</a>
 							</div>
@@ -53,7 +54,16 @@
 						<h2 class="gb_page_intro fs-lg-10 fs-xl-8">{{page.intro}}</h2>
 					{% endif %}
 					{% if page.title %}
-						<h4 class="gb_page_title fs-lg-10 fs-xl-8">{{page.title}}</h4>
+						<h4 class="gb_page_title fs-lg-10 fs-xl-8">
+							<span class="gb_page_title_label">{{page.title}}</span>
+							{% if page.trello %}
+								<button class="gb_trello_formatter">
+									<span class="gb_trello_format gb_trello_format_indicator"></span>
+									<span class="gb_trello_format gb_trello_format_grid"></span>
+									<span class="gb_trello_format gb_trello_format_list"></span>
+								</button>
+							{% endif %}
+						</h4>
 					{% endif %}
 					{% if page.caption %}
 						<p class="gb_page_caption fs-lg-10 fs-xl-8">{{page.caption}}</p>
@@ -62,7 +72,7 @@
 						<img class="gb_page_image" src="../../images/{{page.image}}" />
 					{% endif %}
 				</header>
-				<div class="fs-cell{% if page.layout == "default" %} fs-lg-10 fs-xl-8{% elseif page.layout == "full" %} fs-lg-12 fs-xl-12{% endif %} content_cell">
+				<div class="fs-cell{% if page.layout == "default" %} fs-lg-10 fs-xl-8{% endif %} content_cell">
 					{% block content %}
 					{% endblock %}
 				</div>
@@ -85,6 +95,20 @@
 			for(var i = 0; i < jumps.length; i++) {
 				jumpNav.innerHTML += '<a class="gb_jump_nav_link" href="#' + jumps[i].getAttribute('id') + '">' + jumps[i].innerHTML + '</a>';
 			}
+
+			var header = document.querySelector('.gb_page_header');
+			var pageRibbon = document.querySelector('.gb_page_ribbon');
+			var jumpRibbon = document.querySelector('.gb_jump_ribbon');
+
+			window.addEventListener('scroll', function() {
+				if(window.pageYOffset >= pageRibbon.clientHeight) {
+					header.classList.add('pinned');
+					header.style.paddingBottom = jumpRibbon.clientHeight + 'px';
+				} else {
+					header.classList.remove('pinned');
+					header.style.paddingBottom = 0;
+				}
+			});
 		</script>
 	</body>
 </html>

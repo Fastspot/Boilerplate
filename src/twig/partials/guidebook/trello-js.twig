@@ -1,5 +1,5 @@
 <script>
-	var trelloFormatters;
+	var trelloFormatter;
 	var trelloHash;
 
 	trelloInit();
@@ -15,17 +15,13 @@
 	}
 
 	function bindTrelloVars() {
-		trelloFormatters = document.querySelectorAll('.gb_trello_section_formatter');
+		trelloFormatter = document.querySelector('.gb_trello_formatter');
 	}
 
 	function bindTrelloUI() {
 		window.addEventListener('hashchange', queryTrelloHash, false);
 
-		for(var i = 0; i < trelloFormatters.length; i++) {
-			trelloFormatters[i].addEventListener('click', function(e) {
-				toggleTrelloFormat(e);
-			}, false);
-		}
+		trelloFormatter.addEventListener('click', toggleTrelloFormat, false);
 	}
 
 	function queryTrelloHash() {
@@ -72,7 +68,7 @@
 	}
 
 	function toggleTrelloFormat(e) {
-		var list = e.currentTarget.parentElement.parentElement;
+		var list = e.currentTarget.parentElement.parentElement.parentElement.parentElement;
 
 		if(list.classList.contains('trello_format_list')) {
 			list.classList.remove('trello_format_list');

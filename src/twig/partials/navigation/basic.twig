@@ -7,7 +7,7 @@
 	<div class="{{class}}_list" role="navigation">
 		{% for link in links %}
 			<div class="{{class}}_item{% if link.modifier %} {{link.modifier}}{% endif %}{% if link.children %} {{class}}_item_has_children{% endif %}" itemprop="url">
-				<a class="{{class}}_link{% if link.icon %} {{link.icon}}{% endif %}" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="name">
+				<a class="{{class}}_link{% if link.icon %} {{link.icon}}{% endif %}{% if loop.index == active %} active{% endif %}" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="name">
 					{% if link.icon %}
 						<span class="{{class}}_link_icon">{{site.symbol(link.icon)}}</span>
 					{% endif %}

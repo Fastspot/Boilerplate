@@ -17,23 +17,18 @@
 				<div class="gb_trello_section gb_section" id="{{label}}">
 					<h2 class="gb_trello_section_title" id="trelloList[{{label}}]">
 						<span class="gb_trello_section_label">{{label}}</span>
-						<button class="gb_trello_section_formatter">
-							<span class="gb_trello_section_format gb_trello_section_format_indicator"></span>
-							<span class="gb_trello_section_format gb_trello_section_format_grid"></span>
-							<span class="gb_trello_section_format gb_trello_section_format_list"></span>
-						</button>
 					</h2>
-					<p class="gb_trello_section_caption">{{trelloCaptions[loop.index - 1]}}</p>
+					<p class="gb_trello_section_caption fs-lg-10 fs-xl-8">{{trelloCaptions[loop.index - 1]}}</p>
 					<div class="gb_trello_section_body">
 						<div class="gb_topics" data-section="{{label}}">
 							{% for item in cards %}
 								{% if item.type == label %}
 									<a class="gb_topic gb_topic_trello trello_{{item.id}}" href="#trello_{{item.id}}" style="color: {{item.attachments[0].edgeColor}};">
 										<header class="gb_topic_header">
-											<img class="gb_topic_image" src="{{item.attachments[0].previews[3].url}}" />
 											<h3 class="gb_topic_title">
 												<span class="gb_topic_link">{{item.name}}</span>
 											</h3>
+											<img class="gb_topic_image" src="{{item.attachments[0].previews[3].url}}" />
 										</header>
 									</a>
 									<div class="gb_trello_detail" id="trello_{{item.id}}">

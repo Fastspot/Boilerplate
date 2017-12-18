@@ -102,6 +102,10 @@
 						@media screen and (min-width: 540px) {
 							transform-origin: center center;
 						}
+
+						.active & {
+							transform: scaleX(1);
+						}
 					}
 
 					.gb_main_nav_link:focus &,
