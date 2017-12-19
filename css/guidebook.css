@@ -484,7 +484,7 @@
       width: 33.33%; } }
   .gb_topic_trello {
     position: relative;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #ccc;
     cursor: pointer;
     padding-bottom: 8%; }
     @media screen and (min-width: 600px) {
