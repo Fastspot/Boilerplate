@@ -104,6 +104,13 @@ var watch = {
 gulp.task('trello', function(done) {
 
 	if (packageJSON.vars.idBoardTrello !== "") {
+		var types = [
+			"Feature",
+			"Full-Width",
+			"In-Content",
+			"Sidebar"
+		];
+		var deck = [];
 		var cards = [];
 		var contentStrategy;
 
@@ -147,8 +154,8 @@ gulp.task('trello', function(done) {
 				}
 
 				cards.sort(function(a, b) {
-					var nameA = a.name.toUpperCase();
-					var nameB = b.name.toUpperCase();
+					var nameA = a.type.toUpperCase();
+					var nameB = b.type.toUpperCase();
 					if (nameA < nameB) {
 						return -1;
 					}
@@ -159,13 +166,26 @@ gulp.task('trello', function(done) {
 					return 0;
 				});
 
+				for (type in types) {
+					deck.push({
+						type: types[type],
+						cards: []
+					});
+
+					for (card in cards) {
+						if (cards[card].type == types[type]) {
+							deck[type].cards.push(cards[card]);
+						}
+					}
+				}
+
 				gulp.src(source.trello)
 					.pipe(twig({
 						data: {
 							vars: packageJSON.vars,
 							img: packageJSON.img,
 							links: packageJSON.links,
-							cards: cards,
+							deck: deck,
 							contentStrategy: contentStrategy
 						}
 					}))

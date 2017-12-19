@@ -38,12 +38,16 @@
 
 			&:nth-last-child(2) {
 				border-bottom: 0;
+				margin-bottom: 0;
+				padding-bottom: 0;
 			}
 
 			&:nth-last-child(4) {
 
 				@media screen and (min-width: 600px) {
 					border-bottom: 0;
+					margin-bottom: 0;
+					padding-bottom: 0;
 				}
 			}
 
@@ -51,38 +55,8 @@
 
 				@media #{$min_lg} {
 					border-bottom: 0;
-				}
-			}
-
-			&:before {
-				height: 40px;
-				width: 40px;
-
-				position: absolute;
-				top: 0;
-				left: 50%;
-
-				background: currentColor;
-				border-radius: 50%;
-				content: "";
-				transform:
-					translate(-50%, -50%)
-					scale(0);
-
-				.trello_format_list & {
-					height: 20px;
-					width: 20px;
-
-					top: 5px;
-					left: 0;
-				}
-			}
-
-			&:focus,
-			&:hover {
-
-				&:before {
-					animation: trello-topic-burst .5s forwards;
+					margin-bottom: 0;
+					padding-bottom: 0;
 				}
 			}
 

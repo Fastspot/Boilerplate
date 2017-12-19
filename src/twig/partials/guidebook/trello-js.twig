@@ -1,6 +1,7 @@
 <script>
 	var trelloFormatter;
 	var trelloHash;
+	var trelloDetails;
 
 	trelloInit();
 
@@ -16,6 +17,7 @@
 
 	function bindTrelloVars() {
 		trelloFormatter = document.querySelector('.gb_trello_formatter');
+		trelloDetails = document.querySelectorAll('.gb_trello_detail');
 	}
 
 	function bindTrelloUI() {
@@ -25,6 +27,8 @@
 	}
 
 	function queryTrelloHash() {
+		closeTrelloDetails();
+
 		if(window.location.hash) {
 			trelloHash = window.location.hash;
 			if(trelloHash.indexOf('trelloList') !== 1) {
@@ -61,6 +65,12 @@
 
 	function closeTrelloDetail() {
 		document.body.classList.remove('fs-navigation-lock');
+	}
+
+	function closeTrelloDetails() {
+		for(var i = 0; i < trelloDetails.length; i++) {
+			trelloDetails[i].classList.remove('fs-swap-active');
+		}
 	}
 
 	function closeTrelloDetailHash(hash) {
