@@ -79,7 +79,10 @@
 		</div>
 	{% else %}
 		<div class="gb_section">
-			<div class="gb_trello_detail_content gb_typography">{{contentStrategy.desc}}</div>
+			{% for item in contentStrategy %}
+				<h2 class="gb_section_title" id="{{item.id}}">{{item.name}}</h2>
+				<div class="gb_detail_content gb_typography">{{item.desc}}</div>
+			{% endfor %}
 		</div>
 	{% endif %}
 </div>

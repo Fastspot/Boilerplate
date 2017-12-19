@@ -91,10 +91,17 @@
 		<script>
 			var jumps = document.querySelectorAll('h2[id]');
 			var jumpNav = document.querySelector('.gb_jump_nav');
+			var rocket = document.createElement('a');
 
 			for(var i = 0; i < jumps.length; i++) {
 				jumpNav.innerHTML += '<a class="gb_jump_nav_link" href="#' + jumps[i].getAttribute('id') + '">' + jumps[i].innerHTML + '</a>';
 			}
+
+			rocket.setAttribute('href', '#');
+			rocket.classList.add('gb_jump_nav_rocket');
+			rocket.innerHTML = 'Back to Top';
+
+			jumpNav.appendChild(rocket);
 
 			var header = document.querySelector('.gb_page_header');
 			var pageRibbon = document.querySelector('.gb_page_ribbon');

@@ -70,6 +70,22 @@
 					-6px 6px 0 0 #fff;
 				content: "";
 				transform: translate(-50%, -50%);
+				transition:
+					background .25s,
+					box-shadow .25s;
+
+				.trello_format_list & {
+					background: #000;
+					box-shadow:
+						-6px 0 0 0 #000,
+						-6px -6px 0 0 #000,
+						0 -6px 0 0 #000,
+						6px -6px 0 0 #000,
+						6px 0 0 0 #000,
+						6px 6px 0 0 #000,
+						0 6px 0 0 #000,
+						-6px 6px 0 0 #000;
+				}
 			}
 		}
 
@@ -84,12 +100,22 @@
 				top: 50%;
 				left: 50%;
 
-				background: #fff;
+				background: #000;
 				box-shadow:
-					0 -6px 0 0 #fff,
-					0 6px 0 0 #fff;
+					0 -6px 0 0 #000,
+					0 6px 0 0 #000;
 				content: "";
 				transform: translate(-50%, -50%);
+				transition:
+					background .25s,
+					box-shadow .25s;
+
+				.trello_format_list & {
+					background: #fff;
+					box-shadow:
+						0 -6px 0 0 #fff,
+						0 6px 0 0 #fff;
+				}
 			}
 		}
 	}

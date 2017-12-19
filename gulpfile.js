@@ -112,7 +112,7 @@ gulp.task('trello', function(done) {
 		];
 		var deck = [];
 		var cards = [];
-		var contentStrategy;
+		var contentStrategy = [];
 
 		trello.get('/1/boards/' + packageJSON.vars.idBoardTrello + '/cards', {
 			attachments: "cover",
@@ -149,7 +149,7 @@ gulp.task('trello', function(done) {
 					} else if(data[card].labels.find(findContent)) {
 						data[card].desc = markdown.toHTML(data[card].desc);
 
-						contentStrategy = data[card];
+						contentStrategy.push(data[card]);
 					}
 				}
 
