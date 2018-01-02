@@ -184,7 +184,7 @@ gulp.task('trello', function(done) {
 						data: {
 							vars: packageJSON.vars,
 							img: packageJSON.img,
-							links: packageJSON.links,
+							nav: packageJSON.links,
 							deck: deck,
 							contentStrategy: contentStrategy
 						}
