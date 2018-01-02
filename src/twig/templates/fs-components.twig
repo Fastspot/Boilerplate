@@ -155,7 +155,13 @@
 {% endblock %}
 
 {% block content %}
-	{% include '../partials/guidebook/trello.twig' with {
+	{% include '../partials/guidebook/trello-sections.twig' with {
+		trelloCards: true
+	} %}
+{% endblock %}
+
+{% block trelloDetails %}
+	{% include '../partials/guidebook/trello-details.twig' with {
 		trelloCards: true
 	} %}
 {% endblock %}

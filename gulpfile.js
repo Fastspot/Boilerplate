@@ -57,9 +57,7 @@ var source = {
 	],
 	twig: [
 		'src/twig/templates/*.twig',
-		'!src/twig/templates/_*.twig',
-		'!src/twig/templates/fs-components.twig',
-		'!src/twig/templates/fs-content-strategy.twig'
+		'!src/twig/templates/_*.twig'
 	],
 	templates: 'static/templates/*.html',
 	accessibility: [
@@ -83,14 +81,16 @@ var watch = {
 	trello: [
 		'src/twig/templates/fs-components.twig',
 		'src/twig/templates/fs-content-strategy.twig',
-		'src/twig/partials/guidebook/trello.twig',
+		'src/twig/partials/guidebook/trello-details.twig',
+		'src/twig/partials/guidebook/trello-sections.twig',
 		'src/twig/partials/guidebook/trello-js.twig'
 	],
 	twig: [
 		'src/twig/**/*.twig',
 		'!src/twig/templates/fs-components.twig',
 		'!src/twig/templates/fs-content-strategy.twig',
-		'!src/twig/partials/guidebook/trello.twig',
+		'src/twig/partials/guidebook/trello-details.twig',
+		'src/twig/partials/guidebook/trello-sections.twig',
 		'!src/twig/partials/guidebook/trello-js.twig'
 	],
 	sass: 'src/css/**/**',

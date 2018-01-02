@@ -11,7 +11,7 @@ Site.modules.Page = (function($, Site) {
 	var prev = "caret_left";
 	var next = "caret_right";
 	var navMaxMQ = Site.maxLG + "px";
-
+	
 	function init() {
 
 		// Plugins

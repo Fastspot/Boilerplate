@@ -36,13 +36,13 @@
 				padding-bottom: 4%;
 			}
 
-			&:nth-last-child(2) {
+			&:last-child {
 				border-bottom: 0;
 				margin-bottom: 0;
 				padding-bottom: 0;
 			}
 
-			&:nth-last-child(4) {
+			&:nth-last-child(2) {
 
 				@media screen and (min-width: 600px) {
 					border-bottom: 0;
@@ -51,7 +51,7 @@
 				}
 			}
 
-			&:nth-last-child(6) {
+			&:nth-last-child(3) {
 
 				@media #{$min_lg} {
 					border-bottom: 0;
