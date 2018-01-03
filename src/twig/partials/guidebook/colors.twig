@@ -1,6 +1,6 @@
 {% for key, group in colors %}
 	<div class="gb_section">
-		<h2 class="gb_section_title" id="{{key}}">{{key}}</h2>
+		<h2 class="gb_section_title" id="{{key|title}}">{{key|title}} Colors</h2>
 		<div class="gb_colors">
 			{% for name, color in group %}
 				<button class="gb_color">

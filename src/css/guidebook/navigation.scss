@@ -103,15 +103,9 @@
 							transform-origin: center center;
 						}
 
+						.gb_main_nav_link:focus &,
+						.gb_main_nav_link:hover &,
 						.active & {
-							transform: scaleX(1);
-						}
-					}
-
-					.gb_main_nav_link:focus &,
-					.gb_main_nav_link:hover & {
-
-						&:after {
 							transform: scaleX(1);
 						}
 					}

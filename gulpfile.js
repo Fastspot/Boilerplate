@@ -30,6 +30,7 @@ var gulp = require('gulp'),
 		imagemin = require('gulp-imagemin'),
 		svgSprite = require('gulp-svg-sprite'),
 		realFavicon = require ('gulp-real-favicon'),
+		FAVICON_DATA_FILE = 'favicons/markup.json',
 		access = require('gulp-accessibility'),
 		pa11y = require('pa11y'),
 		htmlReporter = require('pa11y/reporter/html'),
@@ -89,8 +90,8 @@ var watch = {
 		'src/twig/**/*.twig',
 		'!src/twig/templates/fs-components.twig',
 		'!src/twig/templates/fs-content-strategy.twig',
-		'src/twig/partials/guidebook/trello-details.twig',
-		'src/twig/partials/guidebook/trello-sections.twig',
+		'!src/twig/partials/guidebook/trello-details.twig',
+		'!src/twig/partials/guidebook/trello-sections.twig',
 		'!src/twig/partials/guidebook/trello-js.twig'
 	],
 	sass: 'src/css/**/**',
@@ -184,7 +185,7 @@ gulp.task('trello', function(done) {
 						data: {
 							vars: packageJSON.vars,
 							img: packageJSON.img,
-							nav: packageJSON.links,
+							links: packageJSON.links,
 							deck: deck,
 							contentStrategy: contentStrategy
 						}
@@ -261,7 +262,7 @@ gulp.task('twig', function() {
 
 gulp.task('pretty-html', function() {
 
-	return gulp.src('static/templates/*.html')
+	return gulp.src(source.templates)
 		.pipe(htmlbeautify({
 			"indent_size": 1,
 			"indent_char": "	",
@@ -302,7 +303,7 @@ gulp.task('sitemap', function() {
 		.pipe(twig({
 			data: {
 				name: packageJSON.name,
-				trello: packageJSON.vars.trelloList,
+				trello: packageJSON.vars.idBoardTrello,
 				sitemap: require('./static/sitemap.json')
 			}
 		}))
@@ -436,7 +437,6 @@ gulp.task('imagemin', function() {
 });
 
 
-var FAVICON_DATA_FILE = 'favicons/markup.json';
 gulp.task('generate-favicon', function(done) {
 	realFavicon.generateFavicon({
 		masterPicture: 'src/images/favicon.png',

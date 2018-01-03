@@ -30,7 +30,7 @@
 								{% include "../partials/navigation/basic.twig" with {
 									title: "",
 									class: "gb_main_nav",
-									links: nav.guidebook,
+									links: links.guidebook,
 									active: page.active
 								} %}
 								<a class="gb_ribbon_logo" href="https://www.fastspot.com/">{{site.symbol("fs_logo")}}</a>
@@ -96,7 +96,7 @@
 			var rocket = document.createElement('a');
 
 			for(var i = 0; i < jumps.length; i++) {
-				jumpNav.innerHTML += '<a class="gb_jump_nav_link" href="#' + jumps[i].getAttribute('id') + '">' + jumps[i].innerHTML + '</a>';
+				jumpNav.innerHTML += '<a class="gb_jump_nav_link" href="#' + jumps[i].getAttribute('id') + '"><span class="gb_jump_nav_link_label">' + jumps[i].textContent + '</span></a>';
 			}
 
 			rocket.setAttribute('href', '#');
