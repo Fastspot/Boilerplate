@@ -15,7 +15,7 @@ var gulp = require('gulp'),
 		newer = require('gulp-newer'),
 		twig = require('gulp-twig'),
 		htmlbeautify = require('gulp-html-beautify'),
-		directoryMap = require('gulp-directory-map'),
+		directoryMap = require('gulp-folder-index'),
 		sassGlob = require('gulp-sass-glob'),
 		sass = require('gulp-sass'),
 		postcss = require('gulp-postcss'),
@@ -26,7 +26,6 @@ var gulp = require('gulp'),
 		jshint = require('gulp-jshint'),
 		stylish = require('jshint-stylish'),
 		uglify = require('gulp-uglify'),
-		modernizr = require('gulp-modernizr'),
 		imagemin = require('gulp-imagemin'),
 		svgSprite = require('gulp-svg-sprite'),
 		realFavicon = require ('gulp-real-favicon'),
@@ -277,8 +276,8 @@ gulp.task('create-sitemap', function() {
 
 	return gulp.src(source.templates)
 		.pipe(directoryMap({
+			extension: '.html',
 			filename: 'sitemap.json',
-			prefix: 'templates'
 		}))
 		.pipe(gulp.dest('static/'));
 
@@ -289,8 +288,8 @@ gulp.task('create-accessibility-sitemap', function() {
 
 	return gulp.src(source.templates)
 		.pipe(directoryMap({
+			extension: '.html',
 			filename: 'accessibility-sitemap.json',
-			prefix: 'accessibility'
 		}))
 		.pipe(gulp.dest('static/'));
 
@@ -302,7 +301,7 @@ gulp.task('sitemap', function() {
 	return gulp.src(source.sitemap)
 		.pipe(twig({
 			data: {
-				name: packageJSON.name,
+				name: packageJSON.vars.name,
 				trello: packageJSON.vars.idBoardTrello,
 				sitemap: require('./static/sitemap.json')
 			}
@@ -320,8 +319,9 @@ gulp.task('accessibility-sitemap', function() {
 	return gulp.src(source.sitemap)
 		.pipe(twig({
 			data: {
-				name: packageJSON.name,
-				sitemap: require('./static/accessibility-sitemap.json')
+				name: packageJSON.vars.name,
+				sitemap: require('./static/accessibility-sitemap.json'),
+				accessibility: true
 			}
 		}))
 		.pipe(rename({
@@ -382,24 +382,6 @@ gulp.task('jshint', function() {
 	})
 		.pipe(jshint())
 		.pipe(jshint.reporter(stylish));
-
-});
-
-
-gulp.task('modernizr', function() {
-
-	return gulp.src(source.modernizr)
-		.pipe(modernizr({
-			options: [
-				'load',
-				'setClasses',
-				'testProp',
-				'fnBind'
-			],
-			excludeTests: ['hidden']
-		}))
-		.pipe(gulpif(util.env.production, uglify()))
-		.pipe(gulp.dest('js'));
 
 });
 
@@ -661,8 +643,7 @@ gulp.task('build', gulp.parallel(
 	),
 	gulp.series(
 		'sass',
-		'scripts',
-		'modernizr'
+		'scripts'
 	),
 	'imagemin'
 ));

@@ -2,8 +2,7 @@
 
 {% block data %}
 	{% set page = {
-		tabTitle: "",
-		title: ""
+		tabTitle: ""
 	} %}
 {% endblock %}
 
@@ -143,12 +142,10 @@
 	<body>
 		<header>
 			<h1>
-				<span class="title_label">{{page.title|replace({
-					"Site": name
-				})}}</span>
+				<span class="title_label">{{name}}</span>
 			</h1>
-			{% if sitemap.accessibility %}
-			<h2>Accessibility</h2>
+			{% if accessibility %}
+				<h2>Accessibility Results</h2>
 			{% endif %}
 		</header>
 		<main>

@@ -1,23 +1,19 @@
 {% extends "templates/_ref.twig" %}
 
 {% block data %}
-	{% if sitemap.templates %}
+	{% if accessibility %}
 		{% set page = {
-			tabTitle: "Sitemap",
-			title: name
+			tabTitle: "Accessibility Report"
 		} %}
-		{% set map = sitemap.templates %}
-	{% elseif sitemap.accessibility %}
+	{% else %}
 		{% set page = {
-			tabTitle: "Accessibility Sitemap",
-			title: name
+			tabTitle: "Sitemap"
 		} %}
-		{% set map = sitemap.accessibility %}
 	{% endif %}
 {% endblock %}
 
 {% block main %}
-	{% if sitemap.accessibility %}
+	{% if accessibility %}
 		<style>
 			.sitemap_group:first-child {
 				display: none;
@@ -37,11 +33,12 @@
 		</style>
 	{% endif %}
 	<ul class="sitemap">
-		{% for key, link in map %}
-			<li class="sitemap_item {{key|replace({".html": ""})}}{% if 'fs' in key %} fs-style-guide{% elseif 'dev' in key %} fs-dev{% elseif 'page' in key %} fs-page{% elseif 'ref' in key %} fs-ref{% elseif 'accessibility' in key %} fs-access{% endif %}">
-				<a class="sitemap_link" href="{% if sitemap.accessibility %}../{% endif %}{{link}}">{{key|replace({
+		{% for link in sitemap %}
+			<li class="sitemap_item {{link|replace({".html": ""})}}{% if 'fs' in link %} fs-style-guide{% elseif 'dev' in link %} fs-dev{% elseif 'page' in link %} fs-page{% elseif 'ref' in link %} fs-ref{% elseif 'accessibility' in link %} fs-access{% endif %}">
+				<a class="sitemap_link" href="{% if accessibility %}../accessibility{% else %}templates{% endif %}{{link}}">{{link|replace({
 					".html": "",
-					"-": " "
+					"-": " ",
+					"/": ""
 				})|replace({
 					"fs": "",
 					"page": "",
