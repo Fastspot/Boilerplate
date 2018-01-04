@@ -4,6 +4,7 @@
 .gb_colors {
 
 	@media #{$min_sm} {
+		align-items: flex-start;
 		display: flex;
 		flex-wrap: wrap;
 	}
