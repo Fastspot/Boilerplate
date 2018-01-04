@@ -27,13 +27,13 @@
 			{% endfor %}
 		</div>
 	{% else %}
-		<div class="gb_section">
-			{% for item in contentStrategy %}
+		{% for item in contentStrategy %}
+			<div class="gb_section">
 				<h2 class="gb_section_title" id="{{item.id}}">{{item.name}}</h2>
 				<div class="gb_typography">
 					<div class="gb_detail_content">{{item.desc}}</div>
 				</div>
-			{% endfor %}
-		</div>
+			</div>
+		{% endfor %}
 	{% endif %}
 </div>
