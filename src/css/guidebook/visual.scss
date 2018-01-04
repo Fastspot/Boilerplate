@@ -49,13 +49,15 @@
 			.gb_color_copy {
 				@include nt(700);
 
-				border-bottom: 1px solid;
 				border-radius: 0;
 				cursor: pointer;
 				display: inline-block;
 				font-size: 12px;
+				line-height: 1.25;
 				margin: 2px 0;
 				opacity: 0;
+				text-decoration: underline;
+				text-decoration-skip: ink;
 				text-transform: uppercase;
 				transition: opacity .25s;
 

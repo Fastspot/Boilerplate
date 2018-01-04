@@ -83,6 +83,12 @@
 		@include h3;
 	}
 
+	h4 {
+		@include h4;
+
+		margin: 40px 0 20px;
+	}
+
 	a {
 		color: inherit;
 		text-decoration-skip: ink;
