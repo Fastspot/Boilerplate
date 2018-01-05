@@ -94,7 +94,7 @@ var watch = {
 		'!src/twig/partials/guidebook/trello-js.twig'
 	],
 	sass: 'src/css/**/**',
-	js: 'src/js/**/**.js',
+	js: 'src/js/**/*.js',
 	formstone: 'node_modules/formstone/src/js/*.js',
 	sprite: 'src/icons/*',
 	images: 'src/images/*'
