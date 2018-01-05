@@ -620,7 +620,7 @@ gulp.task('reset', function(done) {
 gulp.task('watch', function() {
 
 	gulp.watch('package.json', gulp.series('reset', 'build', 'reload'));
-	gulp.watch(watch.trello, gulp.series('trello', 'reload'));
+	gulp.watch(watch.trello, gulp.series('trello', 'twig', 'reload'));
 	gulp.watch(watch.twig, gulp.series('twig', 'reload'));
 	gulp.watch(watch.sass, gulp.series('sass'));
 	gulp.watch(watch.js, gulp.series(gulp.parallel('scripts', 'jshint'), 'reload'));
