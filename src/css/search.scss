@@ -31,6 +31,9 @@
 .site_search_input {
 	@include focus_outline_none;
 
+	appearance: none;
+	border-radius: 0;
+
 	&::placeholder {
 		text-overflow: ellipsis;
 	}
