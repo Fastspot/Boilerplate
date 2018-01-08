@@ -24,12 +24,12 @@ button {
 
 	@if $l {
 
-		&_label {
+		[class*="label"] {
 			display: inline-block;
 			vertical-align: middle;
 		}
 
-		&_icon {
+		[class*="icon"] {
 			display: inline-block;
 			vertical-align: middle;
 
