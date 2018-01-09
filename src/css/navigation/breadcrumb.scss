@@ -30,19 +30,14 @@
 	}
 }
 
-.breadcrumb_name_icon {}
-
-.breadcrumb_name_label {}
-
-.breadcrumb_link,
-.breadcrumb_label {
-	display: inline-block;
-}
-
 .breadcrumb_link {
 
 	&:focus,
 	&:hover {}
 }
 
-.breadcrumb_label {}
+.breadcrumb_name {}
+
+.breadcrumb_name_icon {}
+
+.breadcrumb_name_label {}
