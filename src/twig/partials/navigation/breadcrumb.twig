@@ -19,12 +19,14 @@
 		{% for link in links %}
 			<div class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
 				{% if loop.last %}
-					<span class="breadcrumb_label" itemprop="item">
-						<span class="breadcrumb_name" itemprop="name">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
+					<span class="breadcrumb_name" itemprop="item">
+						<span class="breadcrumb_name_label" itemprop="name">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
 					</span>
 				{% else %}
 					<a class="breadcrumb_link" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="item">
-						<span class="breadcrumb_name" itemprop="name">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
+						<span class="breadcrumb_name" itemprop="name">
+							<span class="breadcrumb_name_label">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
+						</span>
 					</a>
 				{% endif %}
 				<meta itemprop="position" content="{{loop.index + 1}}">
