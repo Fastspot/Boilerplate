@@ -88,7 +88,7 @@
 .fs-carousel-pagination {
 
 	@media print {
-		display: none;
+		display: none !important;
 	}
 }
 
