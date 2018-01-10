@@ -1,4 +1,5 @@
 {#
+	{{site.anchor("Gallery")}}
 	{% include inc ~ "gallery.twig" with {
 		theme: "",
 		title: "Media Gallery",
@@ -19,7 +20,7 @@
 	} %}
 #}
 
-<div class="media_gallery{% if theme %} theme_{{theme}}{% endif %}" {{site.ce(edit)}}>
+<div class="media_gallery{% if theme %} theme_{{theme}}{% endif %}">
 	{% if title %}
 		<header class="media_gallery_header">
 			<h2 class="media_gallery_title">{{title}}</h2>

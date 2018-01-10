@@ -1,4 +1,5 @@
 {#
+	{{site.anchor("Accordion")}}
 	{% include inc ~ "accordion.twig" with {
 		theme: "",
 		collapse: false,
@@ -19,7 +20,7 @@
 	} %}
 #}
 
-<div class="accordion{% if theme %} theme_{{theme}}{% endif %}" {{site.ce(edit)}}>
+<div class="accordion{% if theme %} theme_{{theme}}{% endif %}">
 	{% if title %}
 		<header class="accordion_header">
 			<h2 class="accordion_title">{{title}}</h2>

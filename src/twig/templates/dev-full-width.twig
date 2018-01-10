@@ -1,12 +1,37 @@
-{% extends "_base.twig" %}
-
-{% block page %}
-	{% set page = {
-		title: "Full Width Components",
-		layout: "style-guide"
+{% extends "_base.twig" %}{% block page %}{% set page = {title: "full-width",layout: "style-guide"} %}{% endblock %}{% block full_width_callouts %}
+	{{site.anchor("Directory List")}}
+	{% include full ~ "directory-list.twig" with {
+		theme: "",
+		title: "Directory List",
+		items: [
+			{
+				image: "1",
+				name: "Lorem Ipsum",
+				title: "Aenean commodo ligula eget",
+				email: "email@example.com",
+				description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.",
+				href: "#"
+			}
+		]
 	} %}
-{% endblock %}
 
-{% block full_width_callouts %}
-	{{site.title("Component", "full")}}
+	{{site.anchor("Flexible Callout")}}
+	{% include full ~ "flexible-callout.twig" with {
+		theme: "",
+		background: 1,
+		label: "Label",
+		title: "Lorem ipsum dolor sit amet",
+		description: "Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.",
+		links: [
+			{
+				href: "#",
+				name: "Learn More"
+			}
+		]
+	} %}
+
+	{{site.anchor("Full Width WYSIWYG")}}
+	{% include full ~ "/wysiwyg.twig" with {
+		content: "Lorem ipsum"
+	} %}
 {% endblock %}

@@ -1,12 +1,11 @@
-{% extends "_base.twig" %}
-
-{% block page %}
-	{% set page = {
-		title: "Feature Components",
-		layout: "style-guide"
+{% extends "_base.twig" %}{% block page %}{% set page = {title: "feature",layout: "style-guide"} %}{% endblock %}{% block page_feature %}
+	{{site.anchor("Alert")}}
+	{% include feat ~ "alert.twig" with {
+		theme: "",
+		time: "12:30:45",
+		date: "2016-10-27 1:21:4",
+		href: "#",
+		title: "Alert",
+		description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
 	} %}
-{% endblock %}
-
-{% block page_feature %}
-	{{site.title("Component", "full")}}
 {% endblock %}

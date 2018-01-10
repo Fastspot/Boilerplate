@@ -182,4 +182,13 @@
 	</div>
 {% endmacro %}
 
-{% macro ce(edit) %}{% if edit %}contenteditable="true"{% endif %}{% endmacro %}
+
+{% macro anchor(label) %}
+	<h2 class="guidebook_component_title" id="{{label|replace({
+		" ": "-",
+		"&": "and",
+		"/": "-"
+	})|lower}}">
+		<span class="guidebook_component_title_label">{{label}}</span>
+	</h2>
+{% endmacro %}

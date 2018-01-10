@@ -1,4 +1,5 @@
 {#
+	{{site.anchor("Flexible Callout")}}
 	{% include full ~ "flexible-callout.twig" with {
 		theme: "",
 		background: 1,
@@ -14,7 +15,7 @@
 	} %}
 #}
 
-<section class="flex_callout{% if theme %} theme_{{theme}}{% endif %}" {{site.ce(edit)}}>
+<section class="flex_callout{% if theme %} theme_{{theme}}{% endif %}">
 	{% if background %}
 		{% include "../../partials/background.twig" with {
 			class: "flex_callout",

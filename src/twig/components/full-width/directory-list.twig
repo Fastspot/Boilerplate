@@ -1,5 +1,6 @@
 {#
-	{% include full ~ "directory.twig" with {
+	{{site.anchor("Directory List")}}
+	{% include full ~ "directory-list.twig" with {
 		theme: "",
 		title: "Directory List",
 		items: [
@@ -15,7 +16,7 @@
 	} %}
 #}
 
-<div class="directory{% if theme %} theme_{{theme}}{% endif %}" {{site.ce(edit)}}>
+<div class="directory{% if theme %} theme_{{theme}}{% endif %}">
 	<div class="fs-row">
 		<div class="fs-cell">
 			{% if title %}

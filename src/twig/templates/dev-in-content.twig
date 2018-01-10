@@ -1,12 +1,69 @@
-{% extends "_base.twig" %}
-
-{% block page %}
-	{% set page = {
-		title: "In Content Components",
-		layout: "style-guide"
+{% extends "_base.twig" %}{% block page %}{% set page = {title: "in-content",layout: "style-guide"} %}{% endblock %}{% block in_content_callouts %}
+	{{site.anchor("Accordion")}}
+	{% include inc ~ "accordion.twig" with {
+		theme: "",
+		collapse: false,
+		grouped: "",
+		title: "Lorem ipsum dolor sit amet",
+		items: [
+			{
+				active: false,
+				label: "Aenean vulputate eleifend tellus",
+				description: "<p>Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.</p>"
+			},
+			{
+				active: false,
+				label: "Curabitur ullamcorper ultricies nisi",
+				description: "<p>Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p><p>Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.</p>"
+			}
+		]
 	} %}
-{% endblock %}
 
-{% block in_content_callouts %}
-	{{site.title("Component", "full")}}
+	{{site.anchor("Gallery")}}
+	{% include inc ~ "gallery.twig" with {
+		theme: "",
+		title: "Media Gallery",
+		items: [
+			{
+				video: "//www.youtube.com/watch?v=XPjQhvjQbSM",
+				symbol: "",
+				image: 1,
+				caption: "Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. <a href='#'>Phasellus viverra</a> nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui."
+			},
+			{
+				video: "",
+				symbol: "",
+				image: 2,
+				caption: ""
+			}
+		]
+	} %}
+
+	{{site.anchor("Linked List")}}
+	{% include inc ~ "linked-list.twig" with {
+		title: "Related Links",
+		items: [
+			{
+				href: "#",
+				name: "Undergraduate"
+			},
+			{
+				href: "#",
+				name: "Degree Completion"
+			},
+			{
+				href: "#",
+				name: "Graduate"
+			},
+			{
+				href: "#",
+				name: "Visit"
+			}
+		]
+	} %}
+
+	{{site.anchor("In Content WYSIWYG")}}
+	{% include inc ~ "wysiwyg.twig" with {
+		content: "Lorem ipsum"
+	} %}
 {% endblock %}

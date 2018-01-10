@@ -1,4 +1,5 @@
 {#
+	{{site.anchor("Contact Card")}}
 	{% include side ~ "contact-card.twig" with {
 		theme: "",
 		title: "",
@@ -11,7 +12,7 @@
 	} %}
 #}
 
-<div class="contact_card{% if theme %} theme_{{theme}}{% endif %}" {{site.ce(edit)}}>
+<div class="contact_card{% if theme %} theme_{{theme}}{% endif %}">
 	<header class="contact_card_header">
 		<h2 class="contact_card_title">{{title}}</h2>
 	</header>

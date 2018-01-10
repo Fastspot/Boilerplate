@@ -1,12 +1,13 @@
-{% extends "_base.twig" %}
-
-{% block page %}
-	{% set page = {
-		title: "Sidebar Components",
-		layout: "style-guide"
+{% extends "_base.twig" %}{% block page %}{% set page = {title: "sidebar",layout: "style-guide"} %}{% endblock %}{% block sidebar %}
+	{{site.anchor("Contact Card")}}
+	{% include side ~ "contact-card.twig" with {
+		theme: "",
+		title: "",
+		name: "",
+		caption: "",
+		phone: "",
+		fax: "",
+		email: "",
+		external: ""
 	} %}
-{% endblock %}
-
-{% block sidebar %}
-	{{site.title("Component", "full")}}
 {% endblock %}

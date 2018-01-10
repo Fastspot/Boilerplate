@@ -1,4 +1,5 @@
 {#
+	{{site.anchor("Linked List")}}
 	{% include inc ~ "linked-list.twig" with {
 		title: "Related Links",
 		items: [
@@ -22,7 +23,7 @@
 	} %}
 #}
 
-<div class="linked_list{% if theme %} theme_{{theme}}{% endif %}" {{site.ce(edit)}}>
+<div class="linked_list{% if theme %} theme_{{theme}}{% endif %}">
 	{% if title %}
 		<header class="linked_list_header">
 			<h2 class="linked_list_title">

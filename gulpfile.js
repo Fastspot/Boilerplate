@@ -222,6 +222,54 @@ gulp.task('trello', function(done) {
 });
 
 
+gulp.task('components', function(done) {
+
+	var base = 'src/twig/components';
+
+	fs.readdir(base, function(err, folders) {
+		folders.forEach(function(folder) {
+			fs.readdir(base + '/' + folder, function(err, mods) {
+				var result = '{% extends "_base.twig" %}' +
+					'{% block page %}' +
+						'{% set page = {' +
+							'title: "' + folder + '",' +
+							'layout: "style-guide"' + 
+						'} %}' + 
+					'{% endblock %}';
+				
+				if (folder === 'feature') {
+					result += '{% block page_feature %}';
+				} else if (folder === 'full-width') {
+					result += '{% block full_width_callouts %}';
+				} else if (folder === 'in-content') {
+					result += '{% block in_content_callouts %}';
+				} else if (folder === 'sidebar') {
+					result += '{% block sidebar %}';
+				}
+
+				mods.forEach(function(mod) {
+					var content = fs.readFileSync(base + '/' + folder + '/' + mod, 'utf8');
+					var str = content.match(/({#)+[^]+(#})+/);
+
+					if(str) {
+						str[0] = str[0].replace('{#', '');
+						str[0] = str[0].replace('#}', '');
+						result += str[0];
+					}
+				});
+
+				result += '{% endblock %}';
+
+				fs.writeFileSync('src/twig/templates/dev-' + folder + '.twig', result);
+			});
+		});
+	});
+
+	done();
+
+});
+
+
 gulp.task('readme', function(done) {
 
 	fs.stat(source.readme, function(err, data) {
@@ -620,7 +668,7 @@ gulp.task('reset', function(done) {
 gulp.task('watch', function() {
 
 	gulp.watch('package.json', gulp.series('reset', 'build', 'reload'));
-	gulp.watch(watch.trello, gulp.series('trello', 'twig', 'reload'));
+	gulp.watch(watch.trello, gulp.series('trello', 'components', 'twig', 'reload'));
 	gulp.watch(watch.twig, gulp.series('twig', 'reload'));
 	gulp.watch(watch.sass, gulp.series('sass'));
 	gulp.watch(watch.js, gulp.series(gulp.parallel('scripts', 'jshint'), 'reload'));
