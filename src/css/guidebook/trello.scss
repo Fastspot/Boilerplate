@@ -341,14 +341,37 @@
 						margin: 30px auto;
 					}
 
-					.gb_trello_detail_content {}
+					.gb_trello_detail_live {
 
-					.gb_trello_detail_markup_wrapper {
+						&:after {
+							height: 12px;
+							width: 12px;
 
-						.gb_trello_detail_markup {
-							background: none;
-							border: 1px solid #D3D3D3;
-							font-size: 14px;
-							padding: 20px;
+							background: #000;
+							border-radius: 50%;
+							box-shadow: 0 0 0 0 #DA2315;
+							content: "";
+							display: inline-block;
+							margin-left: 10px;
+							vertical-align: middle;
+							transition: background .25s;
+						}
+
+						&:focus,
+						&:hover {
+							
+							&:after {
+								animation: live 1s infinite;
+								background: #DA2315;
+							}
 						}
 					}
+
+					@keyframes live {
+
+						100% {
+							box-shadow: 0 0 0 4px transparent;
+						}
+					}
+
+					.gb_trello_detail_content {}
