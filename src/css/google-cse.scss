@@ -257,13 +257,19 @@
 
 			.gsc-cursor-page {
 				background: none;
+				color: #000;
 				display: inline-block;
 				margin-right: 5px;
 				padding: 0 5px;
 				text-decoration: none;
+				transition: 
+					background .25s,	
+					color .25s;
 
 				&:focus,
-				&:hover {}
+				&:hover {
+					text-decoration: none;
+				}
 			}
 
 			.gsc-cursor-current-page {
