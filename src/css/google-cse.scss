@@ -54,6 +54,8 @@
 			position: absolute;
 			top: 0;
 			right: 0;
+
+			background: url() no-repeat 50% 50% / 20px 20px;
 		}
 
 			input.gsc-search-button {
@@ -61,7 +63,6 @@
 				min-width: 100%;
 				width: auto;
 
-				background: url() no-repeat 50% 50%;
 				border: 0;
 				border-radius: 0;
 				color: transparent;
@@ -70,6 +71,7 @@
 				font-weight: normal;
 				margin-top: 0;
 				margin-left: 0;
+				opacity: 0;
 				padding: 10px;
 			}
 
