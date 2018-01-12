@@ -691,12 +691,16 @@ gulp.task('default', gulp.series(
 ));
 
 
-gulp.task('dev',
-	gulp.parallel(
-		'watch',
-		'browser-sync'
-	)
-);
+gulp.task('dev', gulp.parallel(
+	'watch',
+	'browser-sync'
+));
+
+
+gulp.task('style-guide', gulp.series(
+	'components',
+	'trello'
+));
 
 
 gulp.task('access', gulp.series(
