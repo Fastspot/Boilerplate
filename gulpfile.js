@@ -57,7 +57,9 @@ var source = {
 	],
 	twig: [
 		'src/twig/templates/*.twig',
-		'!src/twig/templates/_*.twig'
+		'!src/twig/templates/_*.twig',
+		'!src/twig/templates/fs-components.twig',
+		'!src/twig/templates/fs-content-strategy.twig'
 	],
 	templates: 'static/templates/*.html',
 	accessibility: [
@@ -132,14 +134,9 @@ gulp.task('trello', function(done) {
 			} else {
 				for(card in data) {
 					if(data[card].attachments.length > 0) {
-						if(data[card].labels.find(findCompletion)) {
+						if(data[card].labels.find(findType)) {
 							for(label in data[card].labels) {
 								data[card].type = data[card].labels.find(findType).name;
-
-								if(data[card].labels[label].name === "Done") {
-									data[card].done = true;
-									data[card].reference = checkReference(data[card]);
-								}
 							}
 
 							data[card].desc = markdown.toHTML(data[card].desc);
@@ -196,24 +193,12 @@ gulp.task('trello', function(done) {
 			}
 		});
 
-		function findCompletion(label) {
-			return label.name === "Done";
-		}
-
 		function findContent(label) {
 			return label.name === "Content";
 		}
 
 		function findType(label) {
 			return label.name === "Feature" || label.name === "In-Content" || label.name === "Full-Width" || label.name === "Sidebar";
-		}
-
-		function checkReference(card) {
-			if (fs.existsSync('src/twig/components/' + card.type.toLowerCase() + '/' + card.name.toLowerCase().replace(/\s/g, '-') + '.twig')) {
-				return true;
-			}
-
-			return false;
 		}
 	}
 
