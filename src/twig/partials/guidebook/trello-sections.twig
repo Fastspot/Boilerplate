@@ -1,18 +1,12 @@
 <div class="gb_trello_wrapper">
 	{% if trelloCards %}
-		{% set trelloCaptions = [
-			"These components are your strongest and boldest, often used in specific circumstances such as your homepage or on landing pages.",
-			"These components are paired with your sub-navigation and can be used alongside WYSIWYG content.",
-			"These components are paired with WYSIWYG content and provide emphasis higher up on the page.",
-			"These components use 100% of your grid horizontally and should be used primarily to make a strong impression in cases you don’t need sub-navigation."
-		] %}
 		<div class="gb_trello_list">
 			{% for group in deck %}
 				<div class="gb_trello_section gb_section" id="{{group.type}}">
 					<h2 class="gb_trello_section_title" id="trelloList[{{group.type}}]">
 						<span class="gb_trello_section_label">{{group.type}}</span>
 					</h2>
-					<p class="gb_trello_section_caption fs-lg-10 fs-xl-8">{{trelloCaptions[loop.index - 1]}}</p>
+					<p class="gb_trello_section_caption fs-lg-10 fs-xl-8">{{types[loop.index - 1].caption}}</p>
 					<div class="gb_trello_section_body">
 						<div class="gb_topics" data-section="{{label}}">
 							{% for item in group.cards %}

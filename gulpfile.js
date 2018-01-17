@@ -107,10 +107,22 @@ gulp.task('trello', function(done) {
 
 	if (packageJSON.vars.idBoardTrello !== "") {
 		var types = [
-			"Feature",
-			"Full-Width",
-			"In-Content",
-			"Sidebar"
+			{
+				name: "Feature",
+				caption: "These components are your strongest and boldest, often used in specific circumstances such as your homepage or on landing pages."
+			},
+			{
+				name: "Full-Width",
+				caption: "These components use 100% of your grid horizontally and should be used primarily to make a strong impression in cases you don’t need sub-navigation."
+			},
+			{
+				name: "In-Content",
+				caption: "These components are paired with WYSIWYG content and provide emphasis higher up on the page."
+			},
+			{
+				name: "Sidebar",
+				caption: "These components are paired with your sub-navigation and can be used alongside WYSIWYG content."
+			}
 		];
 		var deck = [];
 		var cards = [];
@@ -165,12 +177,12 @@ gulp.task('trello', function(done) {
 
 				for (type in types) {
 					deck.push({
-						type: types[type],
+						type: types[type].name,
 						cards: []
 					});
 
 					for (card in cards) {
-						if (cards[card].type == types[type]) {
+						if (cards[card].type == types[type].name) {
 							deck[type].cards.push(cards[card]);
 						}
 					}
@@ -183,6 +195,7 @@ gulp.task('trello', function(done) {
 							img: packageJSON.img,
 							links: packageJSON.links,
 							deck: deck,
+							types: types,
 							contentStrategy: contentStrategy
 						}
 					}))
