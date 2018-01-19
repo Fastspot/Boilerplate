@@ -207,7 +207,7 @@ gulp.task('trello', function(done) {
 		});
 
 		function findContent(label) {
-			return label.name === "Content";
+			return label.name === "Strategy";
 		}
 
 		function findType(label) {
