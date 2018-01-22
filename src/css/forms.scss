@@ -2,15 +2,16 @@
 	Forms
 ============================================================================= */
 
-form {}
+.form-builder {
 
-fieldset {
-	border: 0;
-	margin: 0;
-	padding: 0;
+	fieldset {
+		border: 0;
+		margin: 0;
+		padding: 0;
+	}
+	
+	legend {}
 }
-
-legend {}
 
 
 // Elements
@@ -22,12 +23,6 @@ legend {}
 
 @mixin label($theme: null) {}
 
-label:not(.fs-checkbox-label) {
-	@include label;
-
-	display: block;
-}
-
 @mixin input($theme: null) {
 	appearance: none;
 	border: 1px solid #000;
@@ -35,38 +30,47 @@ label:not(.fs-checkbox-label) {
 	padding: 10px;
 }
 
-input,
-textarea {
-	@include input;
+.form-builder {
+		
+	label:not(.fs-checkbox-label) {
+		@include label;
 
-	width: 100%;
-}
+		display: block;
+	}
 
-input {
+	input,
+	textarea {
+		@include input;
 
-	&[type="submit"] {}
-}
+		width: 100%;
+	}
 
-input::-ms-clear {
-	width: 0;
-	height: 0;
-}
+	input {
 
-textarea {
-	display: block;
-	min-height: 220px;
-	resize: vertical;
-}
+		&[type="submit"] {}
+	}
 
-select {
-	height: 40px;
-	width: 100%;
+	input::-ms-clear {
+		width: 0;
+		height: 0;
+	}
 
-	appearance: none;
-	border: 1px solid #000;
-	border-radius: 0;
-	cursor: pointer;
-	padding: 10px 40px 10px 20px;
+	textarea {
+		display: block;
+		min-height: 220px;
+		resize: vertical;
+	}
+
+	select {
+		height: 40px;
+		width: 100%;
+
+		appearance: none;
+		border: 1px solid #000;
+		border-radius: 0;
+		cursor: pointer;
+		padding: 10px 40px 10px 20px;
+	}
 }
 
 .typography {
@@ -82,6 +86,10 @@ select {
 
 // Custom Elements
 // =============================================================================
+
+[class*="form_column"] {
+	margin-bottom: 20px;
+}
 
 .form_column_flex {
 	display: flex;
@@ -108,8 +116,4 @@ select {
 	@media #{$min_md} {
 		@include columns(2, 20px);
 	}
-}
-
-form [class*="wrapper"] {
-	margin-bottom: 20px;
 }

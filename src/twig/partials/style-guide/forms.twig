@@ -1,16 +1,19 @@
-<div class="crl_forms typography">
+<div class="typography">
 	<h2>Forms</h2>
-
-	<form action="#" class="crl_form">
-		<fieldset class="input_set">
+	<form action="#" class="form-builder">
+		<fieldset>
 			<h5>Text Field</h5>
-			{{site.input("email", "Email Address")}}
+			<div class="form_column">
+				{{site.input("email", "Email Address")}}
+			</div>
 		</fieldset>
-		<fieldset class="textarea_set">
+		<fieldset>
 			<h5>Comment</h5>
-			{{site.textarea("Comments")}}
+			<div class="form_column">
+				{{site.textarea("Comments")}}
+			</div>
 		</fieldset>
-		<fieldset class="checkbox_radio_set">
+		<fieldset>
 			<div class="form_column_2">
 				{{site.choices("checkbox", [
 					"Option One",
@@ -24,8 +27,8 @@
 				])}}
 			</div>
 		</fieldset>
-		<fieldset class="form_dropdown required">
-			<div class="form_element">
+		<fieldset>
+			<div class="form_column">
 				<label for="dropdown">Select</label>
 				<select id="dropdown">
 					<option value="1">Pharetra Quam</option>
@@ -36,14 +39,14 @@
 				</select>
 			</div>
 		</fieldset>
-		<fieldset class="input_set">
+		<fieldset>
 			<h5>Name</h5>
 			<div class="form_column_2">
 				{{site.input("text", "First Name")}}
 				{{site.input("text", "Last Name")}}
 			</div>
 		</fieldset>
-		<fieldset class="input_set">
+		<fieldset>
 			<h5>Date</h5>
 			<div class="form_column_flex">
 				{{site.input("number", "MM")}}
@@ -51,9 +54,11 @@
 				{{site.input("number", "YYYY")}}
 			</div>
 		</fieldset>
-		<fieldset class="input_set">
+		<fieldset>
 			<h5>Address</h5>
-			{{site.input("text", "Street Address")}}
+			<div class="form_column">
+				{{site.input("text", "Street Address")}}
+			</div>
 			<div class="form_column_2">
 				{{site.input("text", "Street Address Line 1")}}
 				{{site.input("text", "City")}}
@@ -63,19 +68,13 @@
 				{{site.input("text", "Postal / Zip Code")}}
 			</div>
 		</fieldset>
-		<fieldset class="input_set">
+		<fieldset>
 			<h5>Phone Number</h5>
 			<div class="form_column_flex">
 				{{site.input("number", "###")}}
 				{{site.input("number", "###")}}
 				{{site.input("number", "####")}}
 			</div>
-		</fieldset>
-		<fieldset class="input_set">
-			{{site.dropdown("Label", [
-				"Choice One",
-				"Choice Two"
-			])}}
 		</fieldset>
 	</form>
 </div>
