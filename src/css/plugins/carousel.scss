@@ -8,6 +8,7 @@
 		width: 100% !important;
 
 		display: block !important;
+		flex-wrap: wrap;
 		transform: none !important;
 	}
 }
@@ -30,7 +31,7 @@
 .fs-carousel-controls {
 
 	@media print {
-		display: none;
+		display: none !important;
 	}
 }
 
