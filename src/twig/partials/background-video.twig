@@ -2,14 +2,10 @@
 	{% include par ~ "background-video.twig" with {
 		class: "background",
 		autoPlay: "false",
-		embedRatio: "1.777777",
-		lazy: "true",
+		lazy: true,
 		lazyEdge: "100",
-		loop: "false",
-		mute: "false",
 		poster: img.wide.lrg,
 		image: image,
-		reference: true,
 		sources: {
 			video: "https://www.youtube.com/watch?v=XPjQhvjQbSM",
 			webm: "http://example.com/video.webm",
@@ -22,4 +18,4 @@
 {% set reference = reference|default(true) %}
 <div class="js-background {{class}}_background" {% if reference %}data-reference="{% for key, source in sources %}{{key}}: {{source}}{% if not loop.last %}, {% endif %}{% endfor %}"{% endif %} data-background-options='{"source": {
 {% if poster %}"poster": "//images.fastspot.com/{{vars.namespace}}/{{poster}}/{{image}}", {% endif %}{% for key, source in sources %}"{{key}}": "{{source}}"{% if not loop.last %}, {% endif %}{% endfor %}
-}{% if autoPlay == "false" %}, "autoPlay": false{% endif %}{% if embedRatio %}, "embedRatio": {{embedRatio}}{% endif %}{% if loop == "false" %}, "loop": false{% endif %}{% if mute == "false" %}, "mute": false{% endif %}{% if lazy == "true" %}, "lazy": true{% endif %}{% if lazyEdge %}, "lazyEdge": "{{lazyEdge}}"{% endif %}}'></div>
+}{% if autoPlay == "false" %}, "autoPlay": false{% endif %}{% if embedRatio %}, "embedRatio": {{embedRatio}}{% endif %}{% if loop == "false" %}, "loop": false{% endif %}{% if mute == "false" %}, "mute": false{% endif %}{% if lazy %}, "lazy": true{% endif %}{% if lazyEdge %}, "lazyEdge": "{{lazyEdge}}"{% endif %}}'></div>

@@ -17,6 +17,33 @@ body {
 	min-width: 300px;
 
 	overflow-x: hidden;
+
+	&:before {
+		height: 100%;
+		width: 100%;
+
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 200;
+
+		background: rgba($black, .75);
+		content: "";
+		opacity: 0;
+		pointer-events: none;
+		visibility: hidden;
+		transition: 
+			opacity .35s,
+			visibility .35s;
+	}
+
+	&.fs-mobile-lock {
+
+		&:before {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
 }
 
 ::selection {

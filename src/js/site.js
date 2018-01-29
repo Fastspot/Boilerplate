@@ -10,10 +10,6 @@
 			this.namespace = "";
 
 			this.minWidth = 320;
-			this.maxWidth = Infinity;
-			this.scrollTop = 0;
-			this.windowHeight = 0;
-			this.windowWidth = 0;
 
 			this.window = null;
 			this.doc = null;
@@ -21,6 +17,8 @@
 			this.$window = null;
 			this.$doc = null;
 			this.$body = null;
+
+			this.touch = false;
 
 			// Public modules
 			this.modules = [];
@@ -35,20 +33,6 @@
 			this.minMD = "740";
 			this.minLG = "980";
 			this.minXL = "1220";
-
-			this.maxXS = this.minXS - 1;
-			this.maxSM = this.minSM - 1;
-			this.maxMD = this.minMD - 1;
-			this.maxLG = this.minLG - 1;
-			this.maxXL = this.minXL - 1;
-
-			this.minHTsm = parseInt("800", 10);
-			this.minHT = parseInt("800", 10);
-
-			this.maxHTsm = this.minHTsm - 1;
-			this.maxHT = this.minHT - 1;
-
-			this.touch = false;
 		};
 
 		$.extend(BaseController.prototype, {
@@ -71,17 +55,6 @@
 							this.minMD,
 							this.minLG,
 							this.minXL
-						],
-						maxWidth: [
-							this.maxXL,
-							this.maxLG,
-							this.maxMD,
-							this.maxSM,
-							this.maxXS
-						],
-						minHeight: [
-							this.minHTsm,
-							this.minHT
 						]
 					});
 				}

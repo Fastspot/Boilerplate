@@ -23,12 +23,7 @@ button {
 @mixin button_layout($l: true) {
 
 	@if $l {
-
-		[class*="label"] {
-			display: inline-block;
-			vertical-align: middle;
-		}
-
+		
 		[class*="icon"] {
 			display: inline-block;
 			vertical-align: middle;
@@ -37,18 +32,32 @@ button {
 				display: none;
 			}
 		}
+
+		[class*="label"] {
+			display: inline-block;
+			vertical-align: middle;
+		}
 	}
 }
 
 @mixin button_fill(
 	$b: $gray_10,
-	$hb: $gray_20
+	$hb: $gray_20,
+	$c: $gray_60,
+	$hc: $gray_80
 ) {
 	background: $b;
+	color: $c;
 
+	&:focus,
 	&:hover {
 		background: $hb;
+		color: $hc;
 	}
+
+	[class*="icon"] {}
+
+	[class*="label"] {}
 }
 
 @mixin button_inline($l: true) {

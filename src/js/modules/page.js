@@ -38,19 +38,11 @@ Site.modules.Page = (function($, Site) {
 				next: "<span class='fs-lightbox-icon-next'><svg class='symbol symbol_" + next + "'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#" + next + "'></use></svg></span>"
 			}
 		});
-		Site.$body.find(".js-navigation")
-			.navigation({
-				maxWidth: navMaxMQ
-			})
-			.on("open.navigation", function() {
-				trackEvent($(this).data("analytics-open"));
-				Site.$body.find(".js-navigation").attr("aria-hidden", "false").removeAttr("hidden");
-			})
-			.on("close.navigation", function() {
-				trackEvent($(this).data("analytics-close"));
-				Site.$body.find(".js-navigation").attr("aria-hidden", "true").attr("hidden", "");
-			});
 		Site.$body.find(".js-swap").swap();
+
+		$(".mobile_sidebar_handle").on("click", function() {
+			$("body").toggleClass("fs-navigation-lock fs-mobile-lock");
+		});
 
 		$.mediaquery("bind", "mq-key", "(min-width: " + Site.minLG + "px)", {
 			enter: function() {
@@ -100,6 +92,7 @@ Site.modules.Page = (function($, Site) {
 
 		Site.$body.find(".typography table")
 			.wrap('<div class="table_wrapper"><div class="table_wrapper_inner"></div></div>');
+
 		tableOverflow();
 
 
@@ -115,8 +108,6 @@ Site.modules.Page = (function($, Site) {
 		Site.onScroll.push(scroll);
 		Site.onResize.push(resize);
 		Site.onRespond.push(respond);
-
-		Site.scroll();
 	}
 
 	function scroll() {}

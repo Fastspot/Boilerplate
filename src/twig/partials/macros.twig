@@ -1,17 +1,6 @@
 {#
 	{{site.image("class", img.wide.sml, 2)}}
 
-	{{site.picture({
-		class: "media",
-		fallback: "placeholder",
-		image: item.image,
-		reference: true,
-		sources: {
-			"1220px": img.wide.med,
-			"500px": img.wide.sml
-		}
-	})}}
-
 	{{site.button("class", "Apply", "#", "arrow_right")}}
 
 	{{site.symbol("chevron")}}
@@ -49,30 +38,15 @@
 {% endmacro %}
 
 
-{% macro picture(parameters) %}
-	{% set reference = parameters.reference|default(true) %}
-	<picture class="{{parameters.class}}_picture" {% if reference %}data-reference="{% for key, source in parameters.sources %}{{key}}: {{source}}{% if not loop.last %}, {% endif %}{% endfor %}"{% endif %}>
-		<!--[if IE 9]><video style="display: none;"><![endif]-->
-		{% for key, source in parameters.sources %}
-		<source media="(min-width: {{key}})" srcset="{% if source == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{vars.namespace}}/{{source}}/{{parameters.image}}{% endif %}">
-		{% endfor %}
-		<!--[if IE 9]></video><![endif]-->
-		<img class="{{parameters.class}}_image" src="{% if parameters.fallback == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{vars.namespace}}/{{parameters.fallback}}/{{parameters.image}}{% endif %}" alt="">
-	</picture>
-{% endmacro %}
-
-
 {% macro symbol(name) %}
-	{% if name %}
-		<svg class="symbol symbol_{{name}}">
-			<use xlink:href="#{{name}}"></use>
-		</svg>
-	{% endif %}
+	<svg class="symbol symbol_{{name}}">
+		<use xlink:href="#{{name}}"></use>
+	</svg>
 {% endmacro %}
 
 
 {% macro button(class, label, href, symbol) %}
-	<a class="{{class}}_link theme_{{symbol}}" href="{{href}}">
+	<a class="{{class}}_link{% if symbol %} theme_{{symbol}}{% endif %}" href="{{href}}">
 		<span class="{{class}}_link_label">{{label}}</span>
 		{% if symbol %}
 			<span class="{{class}}_link_icon">

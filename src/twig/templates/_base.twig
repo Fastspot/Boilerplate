@@ -116,48 +116,50 @@
 		<!-- Page Wrapper -->
 		<div class="js-navigation_push page_wrapper">
 			{% if page.layout != "style-guide" %}
-			<!-- Header -->
-			<header class="header" id="header" itemscope itemtype="http://schema.org/WPHeader">
-				<div class="header_ribbon">
-					<div class="fs-row">
-						<div class="fs-cell">
-							<div class="header_ribbon_inner">
-								{% include "../partials/logo.twig" with {
-									modifier: "header",
-									symbol: "logo"
-								} %}
+				<!-- Header -->
+				<header class="header" id="header" itemscope itemtype="http://schema.org/WPHeader">
+					<div class="header_ribbon">
+						<div class="fs-row">
+							<div class="fs-cell">
+								<div class="header_ribbon_inner">
+									{% include "../partials/logo.twig" with {
+										modifier: "header",
+										symbol: "logo"
+									} %}
 
-								{% include "../partials/navigation/main.twig" with {
-									modifier: "lg",
-									title: "Site Navigation",
-									links: mainNavAlias,
-									active: activePage
-								} %}
+									{% include "../partials/navigation/main.twig" with {
+										modifier: "lg",
+										title: "Site Navigation",
+										links: mainNavAlias,
+										active: activePage
+									} %}
 
-								{% include "../partials/navigation/basic.twig" with {
-									class: "secondary_nav",
-									modifier: "lg",
-									title: "Secondary Navigation",
-									links: secondaryNavAlias
-								} %}
+									{% include "../partials/navigation/basic.twig" with {
+										class: "secondary_nav",
+										modifier: "lg",
+										title: "Secondary Navigation",
+										links: secondaryNavAlias
+									} %}
 
-								<a class="mobile_sidebar_handle_wrapper" href="#mobile_sidebar">
-									<span class="js-nav_handle mobile_sidebar_handle">Menu</span>
-								</a>
+									<div class="header_group">
+										<a class="mobile_sidebar_handle_wrapper mobile_sidebar_handle_wrapper_primary" href="#mobile_sidebar">
+											<span class="js-swap mobile_sidebar_handle mobile_sidebar_handle_primary" data-swap-target=".mobile_sidebar" data-swap-linked="mobile_sidebar">Menu</span>
+										</a>
 
-								{% include "../partials/search-handle.twig" %}
+										{% include "../partials/search-handle.twig" %}
 
-								{% include "../partials/search.twig" with {
-									modifier: "lg",
-									placeholder: "Search",
-									buttonText: "submit"
-								} %}
+										{% include "../partials/search.twig" with {
+											modifier: "lg",
+											placeholder: "Search",
+											buttonText: "submit"
+										} %}
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</header>
-			<!-- END: Header -->
+				</header>
+				<!-- END: Header -->
 			{% endif %}
 
 			<!-- Page -->
@@ -187,7 +189,6 @@
 							<main class="main_content" id="main_content" itemprop="mainContentOfPage">
 								{% if page.layout != "home" %}
 									<!-- Page Header -->
-									{% block above_page_header %}{% endblock %}
 									{% block page_header %}
 										<div class="page_header">
 											{% include "../partials/navigation/breadcrumb.twig" with {
@@ -199,7 +200,6 @@
 											{% endif %}
 										</div>
 									{% endblock %}
-									{% block below_page_header %}{% endblock %}
 									<!-- END: Page Header -->
 								{% endif %}
 
@@ -240,49 +240,46 @@
 			<!-- END: Page -->
 
 			{% if page.layout != "style-guide" %}
-			<!-- Footer -->
-			<footer class="footer" id="footer" itemscope itemtype="http://schema.org/WPFooter">
-				<div class="footer_ribbon">
-					<div class="fs-row">
-						<div class="fs-cell">
-							<div class="footer_ribbon_inner">
-								{% include "../partials/address.twig" with {
-									name: "Fastspot",
-									street: "2980 Falls Road",
-									city: "Baltimore",
-									state: "MD",
-									zip: "21211",
-									tel: "202-432-1200"
-								} %}
+				<!-- Footer -->
+				<footer class="footer" id="footer" itemscope itemtype="http://schema.org/WPFooter">
+					<div class="footer_ribbon">
+						<div class="fs-row">
+							<div class="fs-cell">
+								<div class="footer_ribbon_inner">
+									{% include "../partials/address.twig" with {
+										name: "Fastspot",
+										street: "2980 Falls Road",
+										city: "Baltimore",
+										state: "MD",
+										zip: "21211",
+										tel: "202-432-1200"
+									} %}
 
-								{% include "../partials/navigation/basic.twig" with {
-									class: "footer_nav",
-									title: "Footer Navigation",
-									links: footerNavAlias
-								} %}
+									{% include "../partials/navigation/basic.twig" with {
+										class: "footer_nav",
+										title: "Footer Navigation",
+										links: footerNavAlias
+									} %}
 
-								{% include "../partials/navigation/social.twig" with {
-									title: "Social Navigation",
-									links: socialNavAlias
-								} %}
+									{% include "../partials/navigation/social.twig" with {
+										title: "Social Navigation",
+										links: socialNavAlias
+									} %}
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</footer>
-			<!-- END: Footer -->
+				</footer>
+				<!-- END: Footer -->
 			{% endif %}
 		</div>
 		<!-- END: page_wrapper -->
 
-		{% if page.layout != "style-guide" %}
-		<div class="js-navigation mobile_sidebar" id="mobile_sidebar" hidden data-navigation-handle=".js-nav_handle" data-navigation-content=".js-navigation_push" data-navigation-options='{
-			"type": "overlay",
-			"gravity": "right",
-			"labels": {
-				"open": "Close Menu"
-			}
-		}'>
+		<div class="mobile_sidebar" id="mobile_sidebar" aria-hidden="true">
+			<a class="mobile_sidebar_handle_wrapper mobile_sidebar_handle_wrapper_inline" href="#mobile_sidebar">
+				<span class="js-swap mobile_sidebar_handle mobile_sidebar_handle_inline" data-swap-target=".mobile_sidebar" data-swap-linked="mobile_sidebar">Close</span>
+			</a>
+
 			{% include "../partials/search.twig" with {
 				modifier: "sm",
 				placeholder: "Search",
@@ -303,13 +300,12 @@
 				links: secondaryNavAlias
 			} %}
 		</div>
-		{% endif %}
 
 		<script src="../../js/site.js"></script>
 
 		{% if page.scripts %}
 			{% for script in page.scripts %}
-				<script src="{{script}}"></script>
+				{{script}}
 			{% endfor %}
 		{% endif %}
 

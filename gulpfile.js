@@ -97,7 +97,6 @@ var watch = {
 	],
 	sass: 'src/css/**/**',
 	js: 'src/js/**/*.js',
-	formstone: 'node_modules/formstone/src/js/*.js',
 	sprite: 'src/icons/*',
 	images: 'src/images/*'
 };
@@ -300,7 +299,8 @@ gulp.task('twig', function() {
 		.pipe(rename({
 			extname: '.html'
 		}))
-		.pipe(gulp.dest('static/templates'));
+		.pipe(gulp.dest('static/templates'))
+		.pipe(browserSync.stream());
 
 });
 
@@ -416,7 +416,8 @@ gulp.task('scripts', function() {
 
 	return concat(packageJSON.js)
 		.pipe(gulpif(util.env.production, uglify()))
-		.pipe(gulp.dest('js'));
+		.pipe(gulp.dest('js'))
+		.pipe(browserSync.stream());
 
 });
 
@@ -613,6 +614,11 @@ gulp.task('clean', function(done) {
 	del('reports');
 	del('static');
 
+	del('src/twig/templates/dev-feature.twig');
+	del('src/twig/templates/dev-full-width.twig');
+	del('src/twig/templates/dev-in-content.twig');
+	del('src/twig/templates/dev-sidebar.twig');
+
 	done();
 
 });
@@ -666,11 +672,10 @@ gulp.task('reset', function(done) {
 gulp.task('watch', function() {
 
 	gulp.watch('package.json', gulp.series('reset', 'build', 'reload'));
-	gulp.watch(watch.trello, gulp.series('trello', 'components', 'twig', 'reload'));
-	gulp.watch(watch.twig, gulp.series('twig', 'reload'));
+	gulp.watch(watch.trello, gulp.series('twig', gulp.parallel('trello', 'components'), 'reload'));
+	gulp.watch(watch.twig, gulp.series('twig'));
 	gulp.watch(watch.sass, gulp.series('sass'));
-	gulp.watch(watch.js, gulp.series(gulp.parallel('scripts', 'jshint'), 'reload'));
-	gulp.watch(watch.formstone, gulp.series('scripts', 'reload'));
+	gulp.watch(watch.js, gulp.series(gulp.parallel('scripts', 'jshint')));
 	gulp.watch(watch.sprite, gulp.series('sprite', 'twig', 'reload'));
 	gulp.watch(watch.images, gulp.series('imagemin', 'reload'));
 
