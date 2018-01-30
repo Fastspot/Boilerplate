@@ -17,16 +17,14 @@
 	}
 }
 
-.aside_cell {
+.aside_wrapper {
 
 	@media #{$min_lg} {
 		float: right;
 	}
 }
 
-.subnav_cell {}
-
-.content_cell {
+.content_wrapper {
 
 	@media #{$min_lg} {
 		float: left;
@@ -43,12 +41,6 @@
 	@include h1;
 }
 
-.in_content_callouts {}
-
-.sidebar_cell {
+.sidebar_wrapper {
 	clear: right;
 }
-
-.sidebar {}
-
-.full_width_callouts {}

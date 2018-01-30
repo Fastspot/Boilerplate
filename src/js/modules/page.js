@@ -44,6 +44,14 @@ Site.modules.Page = (function($, Site) {
 			$("body").toggleClass("fs-navigation-lock fs-mobile-lock");
 		});
 
+		$(".sub_nav_handle").on("click", function() {
+			if($(this).hasClass("fs-swap-active")) {
+				$(this).find(".sub_nav_handle_label").text("Close");
+			} else {
+				$(this).find(".sub_nav_handle_label").text($(this).data("swap-title"));
+			}
+		});
+
 		$.mediaquery("bind", "mq-key", "(min-width: " + Site.minLG + "px)", {
 			enter: function() {
 				$subNav.attr("aria-hidden", "false").removeAttr("hidden");

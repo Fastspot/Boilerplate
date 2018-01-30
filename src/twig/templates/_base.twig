@@ -114,7 +114,7 @@
 		<a class="skip_link" id="skip_to_content" href="#main_content">Skip to Main Content</a>
 
 		<!-- Page Wrapper -->
-		<div class="js-navigation_push page_wrapper">
+		<div class="page_wrapper">
 			{% if page.layout != "style-guide" %}
 				<!-- Header -->
 				<header class="header" id="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -175,7 +175,7 @@
 					<div class="fs-row">
 						{% if page.layout == "default" or page.layout == "style-guide" %}
 							<!-- Sub Nav -->
-							<div class="fs-cell-right fs-lg-4 aside_cell subnav_cell">
+							<div class="fs-cell-right fs-lg-4 aside_wrapper subnav_wrapper">
 								{% include "../partials/navigation/sub.twig" with {
 									title: sectionTitle,
 									links: subNavAlias
@@ -185,7 +185,7 @@
 						{% endif %}
 
 						<!-- Main Content -->
-						<div class="fs-cell{% if page.layout == "default" or page.layout == "style-guide" %} fs-lg-8{% elseif page.layout == "full" %} fs-lg-10 fs-centered{% endif %} content_cell">
+						<div class="fs-cell{% if page.layout == "default" or page.layout == "style-guide" %} fs-lg-8{% elseif page.layout == "full" %} fs-lg-10 fs-centered{% endif %} content_wrapper">
 							<main class="main_content" id="main_content" itemprop="mainContentOfPage">
 								{% if page.layout != "home" %}
 									<!-- Page Header -->
@@ -220,7 +220,7 @@
 
 						{% if page.layout == "default" or page.layout == "style-guide" %}
 							<!-- Sidebar Callouts -->
-							<div class="fs-cell-right fs-lg-4 aside_cell sidebar_cell">
+							<div class="fs-cell-right fs-lg-4 aside_wrapper sidebar_wrapper">
 								<div class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
 									{% block sidebar %}{% endblock %}
 								</div>
@@ -246,6 +246,11 @@
 						<div class="fs-row">
 							<div class="fs-cell">
 								<div class="footer_ribbon_inner">
+									{% include "../partials/logo.twig" with {
+										modifier: "footer",
+										symbol: "logo"
+									} %}
+
 									{% include "../partials/address.twig" with {
 										name: "Fastspot",
 										street: "2980 Falls Road",

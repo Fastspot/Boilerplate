@@ -128,6 +128,7 @@
 }
 
 	.gb_trello_section {
+		margin: 0;
 
 		&.empty {
 			display: none;
@@ -144,14 +145,17 @@
 				position: relative;
 				z-index: 4;
 
-				background: #000;
 				color: #fff;
 				display: inline-block;
 				margin: 0;
-				padding: 1px 10px;
+				padding-top: 80px;
 			}
 
-				.gb_trello_section_label {}
+				.gb_trello_section_label {
+					background: #000;
+					display: block;
+					padding: 1px 10px;
+				}
 
 			.gb_trello_section_caption {
 				@include body_text;

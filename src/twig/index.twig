@@ -13,28 +13,9 @@
 {% endblock %}
 
 {% block main %}
-	{% if accessibility %}
-		<style>
-			.sitemap_group:first-child {
-				display: none;
-			}
-
-			.sitemap_link {
-				font-size: 150%;
-			}
-
-			.sitemap_item {
-				display: none;
-			}
-
-			.sitemap_item[class*="page-"] {
-				display: block;
-			}
-		</style>
-	{% endif %}
 	<ul class="sitemap">
 		{% for link in sitemap %}
-			<li class="sitemap_item {{link|replace({".html": ""})}}{% if 'fs' in link %} fs-style-guide{% elseif 'dev' in link %} fs-dev{% elseif 'page' in link %} fs-page{% elseif 'accessibility' in link %} fs-access{% endif %}">
+			<li class="sitemap_item {% if 'fs' in link %} fs-style-guide{% elseif 'dev' in link %} fs-dev{% elseif 'page' in link %} fs-page{% elseif 'accessibility' in link %} fs-access{% endif %}">
 				<a class="sitemap_link" href="{% if accessibility %}../accessibility{% else %}templates{% endif %}{{link}}">{{link|replace({
 					".html": "",
 					"-": " ",
@@ -65,7 +46,6 @@
 		wrap(fsDev);
 		wrap(fsGuide);
 		wrap(fsPage);
-		wrap(fsTest);
 
 		function wrap(element) {
 			var group = document.createElement('div');

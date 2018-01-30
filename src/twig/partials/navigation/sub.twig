@@ -2,11 +2,11 @@
 	<div class="sub_nav_header">
 		<h2 class="sub_nav_title">{% if title %}{{title}}{% else %}In This Section{% endif %}</h2>
 	</div>
-	<div class="sub_nav_handle_wrapper">
-		<button class="js-sub_nav_handle sub_nav_handle">{% if title %}{{title}}{% else %}In This Section{% endif %}</button>
+	<button class="js-swap sub_nav_handle" data-swap-target=".sub_nav_list" data-swap-title="{% if title %}{{title}}{% else %}In This Section{% endif %}">
+		<span class="sub_nav_handle_label">{% if title %}{{title}}{% else %}In This Section{% endif %}</span>
 		<span class="sub_nav_handle_icon">{{site.symbol("")}}</span>
-	</div>
-	<div class="js-navigation js-sub-nav sub_nav_list" data-navigation-handle=".js-sub_nav_handle" data-navigation-options='{"theme": "sub_nav_base", "labels": {"closed": "{% if title %}{{title}}{% else %}In This Section{% endif %}", "Open": "Close"}}'>
+	</button>
+	<div class="sub_nav_list">
 		{% for link in links %}
 			<div class="sub_nav_item{% if link.modifier %} {{link.modifier}}{% endif %}" itemprop="url">
 				<a class="sub_nav_link" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="name">

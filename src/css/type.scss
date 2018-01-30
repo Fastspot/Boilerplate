@@ -81,6 +81,16 @@ strong {
 .typography {
 	@include body_text;
 
+	a {
+		transition:
+			color $base_speed,
+			background $base_speed;
+	}
+
+	p {
+		margin: 20px 0;
+	}
+
 	h1, h2, h3, h4, h5, h6 {
 
 		+ * {
@@ -122,16 +132,6 @@ strong {
 		@include h6;
 
 		margin: 40px 0 20px;
-	}
-
-	a {
-		transition:
-			color $base_speed,
-			background $base_speed;
-	}
-
-	p {
-		margin: 20px 0;
 	}
 
 	.intro {

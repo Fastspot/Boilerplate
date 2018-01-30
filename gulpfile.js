@@ -9,8 +9,8 @@ var gulp = require('gulp'),
 		trelloKeyToken = require('./trello.json'),
 		browserSync = require('browser-sync').create(),
 		del = require('del'),
-		util = require('gulp-util'),
 		gulpif = require('gulp-if'),
+		argv = require('yargs').argv,
 		changed = require('gulp-changed'),
 		newer = require('gulp-newer'),
 		twig = require('gulp-twig'),
@@ -20,7 +20,6 @@ var gulp = require('gulp'),
 		sass = require('gulp-sass'),
 		postcss = require('gulp-postcss'),
 		cssnano = require('gulp-cssnano'),
-		bless = require('gulp-bless'),
 		rename = require('gulp-rename'),
 		concat = require('gulp-concat-multi'),
 		jshint = require('gulp-jshint'),
@@ -62,13 +61,7 @@ var source = {
 		'!src/twig/templates/fs-content-strategy.twig'
 	],
 	templates: 'static/templates/*.html',
-	accessibility: [
-		'static/templates/*.html',
-		'!static/templates/accessibility.html',
-		'!static/templates/dev*.html',
-		'!static/templates/fs*.html',
-		'!static/templates/ref*.html'
-	],
+	accessibility: 'static/templates/page*.html',
 	sitemap: 'src/twig/index.twig',
 	jshint: 'src/js/modules/*.js',
 	modernizr: [
@@ -332,7 +325,7 @@ gulp.task('create-sitemap', function() {
 
 gulp.task('create-accessibility-sitemap', function() {
 
-	return gulp.src(source.templates)
+	return gulp.src(source.accessibility)
 		.pipe(directoryMap({
 			extension: '.html',
 			filename: 'accessibility-sitemap.json',
@@ -400,14 +393,9 @@ gulp.task('sass', function() {
 				]
 			})
 		]))
-		.pipe(gulpif(util.env.production, cssnano()))
+		.pipe(gulpif(argv.production, cssnano()))
 		.pipe(gulp.dest('css'))
-		.pipe(browserSync.stream())
-		.pipe(gulpif(util.env.production, bless({
-			cacheBuster: false,
-			log: true
-		})))
-		.pipe(gulpif(util.env.production, gulp.dest('css')));
+		.pipe(browserSync.stream());
 
 });
 
@@ -415,7 +403,7 @@ gulp.task('sass', function() {
 gulp.task('scripts', function() {
 
 	return concat(packageJSON.js)
-		.pipe(gulpif(util.env.production, uglify()))
+		.pipe(gulpif(argv.production, uglify()))
 		.pipe(gulp.dest('js'))
 		.pipe(browserSync.stream());
 
