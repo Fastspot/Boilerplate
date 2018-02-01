@@ -51,7 +51,7 @@ $margin_xl: 80px;
 @mixin type_spread(
 	$min: (30, 40),
 	$max: (70, 60),
-	$mqs: (#{$min_sm}, #{$min_md}, #{$min_lg}, #{$min_xl})
+	$mqs: (#{$min_sm}, #{$min_md}, #{$min_lg})
 ) {
 	$dFS: (nth($max, 1) - nth($min, 1)) / length($mqs);
 	$dLH: (nth($max, 2) - nth($min, 2)) / length($mqs);
