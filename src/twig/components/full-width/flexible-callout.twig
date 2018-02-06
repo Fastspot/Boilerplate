@@ -41,9 +41,7 @@
 				{% if links %}
 					<footer class="flex_callout_links">
 						{% for link in links %}
-							<a class="flex_callout_link" href="{{link.href}}">
-								<span class="flex_callout_link_label">{{link.name}}</span>
-							</a>
+							{{site.button("flex_callout", link.name, link.href)}}
 						{% endfor %}
 					</footer>
 				{% endif %}
