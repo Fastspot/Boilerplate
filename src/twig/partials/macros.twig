@@ -3,7 +3,7 @@
 
 	{{site.button("class", "Apply", "#", "arrow_right")}}
 
-	{{site.symbol("chevron")}}
+	{{site.icon("chevron")}}
 
 	{{site.table({
 		headers: [
@@ -38,7 +38,7 @@
 {% endmacro %}
 
 
-{% macro symbol(name) %}
+{% macro icon(name) %}
 	<svg class="symbol symbol_{{name}}">
 		<use xlink:href="#{{name}}"></use>
 	</svg>
