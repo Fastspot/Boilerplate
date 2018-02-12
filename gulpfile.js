@@ -123,7 +123,6 @@ gulp.task('trello', function(done) {
 		trello.get('/1/boards/' + packageJSON.vars.idBoardTrello + '/cards', {
 			attachments: "cover",
 			attachment_fields: [
-				"edgeColor",
 				"url",
 				"previews"
 			],
