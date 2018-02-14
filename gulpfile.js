@@ -43,9 +43,9 @@ var gulp = require('gulp'),
 				'WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.A.Placeholder'
 			]
 		}),
-		Trello = require("node-trello"),
+		Trello = require('node-trello'),
 		trello = new Trello(trelloKeyToken.key, trelloKeyToken.token),
-		markdown = require("markdown").markdown;
+		markdown = require('markdown').markdown;
 
 
 var source = {
