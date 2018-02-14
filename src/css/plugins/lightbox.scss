@@ -8,8 +8,9 @@
 	
 	.fs-lightbox-close {
 		position: absolute;
-		top: 0;
+		top: auto;
 		right: 0;
+		bottom: 100%;
 	}
 
 	.fs-lightbox-container {}
