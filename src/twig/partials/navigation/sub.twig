@@ -1,10 +1,17 @@
-<nav class="sub_nav {% if modifier %} sub_nav_{{modifier}}{% endif %}" aria-label="{% if title %}{{title}}{% else %}In This Section{% endif %}" itemscope itemtype="http://schema.org/SiteNavigationElement">
+{% if title %}
+	{% set navTitle = title %}
+{% else %}
+	{% set navTitle = "In This Section" %}
+{% endif %}
+
+<nav class="sub_nav {% if modifier %} sub_nav_{{modifier}}{% endif %}" aria-label="{{navTitle}}" itemscope itemtype="http://schema.org/SiteNavigationElement">
 	<div class="sub_nav_header">
-		<h2 class="sub_nav_title">{% if title %}{{title}}{% else %}In This Section{% endif %}</h2>
+		<h2 class="sub_nav_title">{{navTitle}}</h2>
 	</div>
-	<button class="js-swap sub_nav_handle" data-swap-target=".sub_nav_list" data-swap-title="{% if title %}{{title}}{% else %}In This Section{% endif %}">
-		<span class="sub_nav_handle_label">{% if title %}{{title}}{% else %}In This Section{% endif %}</span>
-		<span class="sub_nav_handle_icon">{{site.icon("")}}</span>
+	<button class="js-swap sub_nav_handle" data-swap-target=".sub_nav_list" data-swap-title="{{navTitle}}">
+		<span class="sub_nav_handle_label">{{navTitle}}</span>
+		<span class="sub_nav_handle_icon sub_nav_handle_icon_open">{{site.icon("caret_down")}}</span>
+		<span class="sub_nav_handle_icon sub_nav_handle_icon_close">{{site.icon("close")}}</span>
 	</button>
 	<div class="sub_nav_list">
 		{% for link in links %}

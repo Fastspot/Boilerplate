@@ -48,8 +48,22 @@
 
 	pointer-events: none;
 	transform: translate(0, -50%);
+	transition: opacity .25s;
 
-	.fs-swap-active & {}
+	&_open {
+
+		.fs-swap-active & {
+			opacity: 0;
+		}
+	}
+
+	&_close {
+		opacity: 0;
+		
+		.fs-swap-active & {
+			opacity: 1;
+		}
+	}
 }
 
 

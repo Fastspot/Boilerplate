@@ -1,13 +1,7 @@
-{% if name == "site-title" or repository.url == "url" or vars.name == "Client Name" or vars.domain == "www.example.com" %}
+{% if repository.url == "url" or vars.name == "Client Name" %}
 	<div class="fs-notifications">
 		<div class="fs-row">
 			<div class="fs-cell">
-				{% if name == "site-title" %}
-					<h2>
-						<span class="fs-notification-label">Update</span>
-						<span class="fs-notification-key">name</span>
-					</h2>
-				{% endif %}
 				{% if repository.url == "url" %}
 					<h2>
 						<span class="fs-notification-label">Update</span>
@@ -18,12 +12,6 @@
 					<h2>
 						<span class="fs-notification-label">Update</span>
 						<span class="fs-notification-key">vars.name</span>
-					</h2>
-				{% endif %}
-				{% if vars.domain == "www.example.com" %}
-					<h2>
-						<span class="fs-notification-label">Update</span>
-						<span class="fs-notification-key">vars.domain</span>
 					</h2>
 				{% endif %}
 			</div>
