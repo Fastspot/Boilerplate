@@ -17,19 +17,19 @@ Site.modules.Page = (function($, Site) {
 		// Plugins
 		picturefill();
 
-		Site.$body.find(".js-background").on("loaded.background", function() {
+		$(".js-background").on("loaded.background", function() {
 			$(this).addClass("fs-background-loaded");
 		}).background();
-		Site.$body.find(".js-carousel").carousel({
+		$(".js-carousel").carousel({
 			labels: {
 				previous: "<span class='fs-carousel-control-icon'><svg class='symbol symbol_" + prev + "'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#" + prev + "'></use></svg></span>",
 				next: "<span class='fs-carousel-control-icon'><svg class='symbol symbol_" + next + "'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#" + next + "'></use></svg></span>"
 			}
 		});
-		Site.$body.find(".js-checkbox, .js-radio, input[type=checkbox], input[type=radio]").checkbox();
-		Site.$body.find(".js-dropdown").dropdown();
-		Site.$body.find(".js-equalize").equalize();
-		Site.$body.find(".js-lightbox").lightbox({
+		$(".js-checkbox, .js-radio, input[type=checkbox], input[type=radio]").checkbox();
+		$(".js-dropdown").dropdown();
+		$(".js-equalize").equalize();
+		$(".js-lightbox").lightbox({
 			theme: "fs-light",
 			videoWidth: 1000,
 			labels: {
@@ -39,7 +39,7 @@ Site.modules.Page = (function($, Site) {
 				next: "<span class='fs-lightbox-icon-next'><svg class='symbol symbol_" + next + "'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#" + next + "'></use></svg></span>"
 			}
 		});
-		Site.$body.find(".js-swap").swap();
+		$(".js-swap").swap();
 
 		$(".mobile_sidebar_handle").on("click", function() {
 			$("body").toggleClass("fs-navigation-lock fs-mobile-lock");
@@ -83,7 +83,7 @@ Site.modules.Page = (function($, Site) {
 
 		// Generic Toggles
 
-		Site.$body.find(".js-toggle")
+		$(".js-toggle")
 			.not(".js-bound")
 			.on("click", ".js-toggle-handle", onToggleClick)
 			.addClass("js-bound");
@@ -91,7 +91,7 @@ Site.modules.Page = (function($, Site) {
 
 		// Scroll Nav
 
-		Site.$body.find(".js-scroll-to")
+		$(".js-scroll-to")
 			.not(".js-bound")
 			.on("click", onScrollTo)
 			.addClass("js-bound");
@@ -99,7 +99,7 @@ Site.modules.Page = (function($, Site) {
 
 		// Wrapper for Tables
 
-		Site.$body.find(".typography table")
+		$(".typography table")
 			.wrap('<div class="table_wrapper"><div class="table_wrapper_inner"></div></div>');
 
 		tableOverflow();
