@@ -458,6 +458,47 @@ $margin_xl: 80px;
 }
 
 
+// Fake Margin
+// =============================================================================
+
+@mixin fake_margined_right($m: 1) {
+	margin-right: calc((20px + 1.04166667%) * $m);
+
+	@media #{$min_md} {
+		margin-right: calc(((100% - 720px) / 2 + 1.04166667%) * $m);
+	}
+
+	@media #{$min_lg} {
+		margin-right: calc(((100% - 960px) / 2 + 1.04166667%) * $m);
+	}
+
+	@media #{$min_xl} {
+		margin-right: calc(((100% - 1200px) / 2 + 1.04166667%) * $m);
+	}
+}
+
+@mixin fake_margined_left() {
+	margin-left: calc((20px + 1.04166667%) * $m);
+
+	@media #{$min_md} {
+		margin-left: calc(((100% - 720px) / 2 + 1.04166667%) * $m);
+	}
+
+	@media #{$min_lg} {
+		margin-left: calc(((100% - 960px) / 2 + 1.04166667%) * $m);
+	}
+
+	@media #{$min_xl} {
+		margin-left: calc(((100% - 1200px) / 2 + 1.04166667%) * $m);
+	}
+}
+
+@mixin fake_margined() {
+	@include fake_margined_right;
+	@include fake_margined_left;
+}
+
+
 // Helpers
 // =============================================================================
 

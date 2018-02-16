@@ -4,11 +4,15 @@
 
 Site.modules.Module = (function($, Site) {
 
-	function init() {
+	var module;
 
+	function init() {
+		if($(".module").length) {}
 	}
 
 	function bindUI() {}
+
+	function doSomething() {}
 
 	Site.onInit.push(init);
 
