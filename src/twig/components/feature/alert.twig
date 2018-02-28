@@ -10,13 +10,13 @@
 	} %}
 #}
 
-<section class="js-toggle js-alert alert{% if theme %} theme_{{theme}}{% endif %}" role="alert" data-time="{{time}}">
+<section class="js-alert alert{% if theme %} theme_{{theme}}{% endif %}" role="alert" data-time="{{time}}">
 	<div class="fs-row">
 		<div class="fs-cell">
-			<div class="alert_body">
-				<button class="js-toggle_handle js-alert-close alert_close">
-					<span class="alert_close_label">Close Alert</span>
+			<div class="alert_inner">
+				<button class="alert_close">
 					<span class="alert_close_icon">{{site.icon("close")}}</span>
+					<span class="alert_close_label">Close Alert</span>
 				</button>
 				<div class="alert_content">
 					<header class="alert_header">
@@ -29,8 +29,8 @@
 							{% if href %}</a>{% endif %}
 						</h2>
 					</header>
-					<div class="alert_description">
-						<p>{{description}}</p>
+					<div class="alert_caption">
+						<p>{{caption}}</p>
 					</div>
 				</div>
 			</div>
