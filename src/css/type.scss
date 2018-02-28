@@ -365,7 +365,7 @@ strong {
 	border: 1px solid #ccc;
 
 	&:after {
-		@include gradient_horizontal(rgba(#000, 0), rgba(#000, 0.1));
+		@include gradient_right(rgba(#000, 0), rgba(#000, 0.1));
 
 		width: 20px;
 		height: 100%;

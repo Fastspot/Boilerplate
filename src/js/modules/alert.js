@@ -7,24 +7,29 @@ Site.modules.Alert = (function($, Site) {
 	var $alert = $(".alert");
 	var $alertClose = $(".alert_close");
 	var $alertTime = $alert.data("time");
-	var cookieName = "alert";
+	var cookieName = "alert-cookie";
 
 	function init() {
-		showAlert();
-
 		if($alert.length) {
+
 			if ($.cookie(cookieName) === $alertTime) {
 				hideAlert();
+			} else {
+				showAlert();
 			}
 
-			$alertClose.on("click", function() {
-				$.cookie(cookieName, $alertTime);
-
-				console.log($.cookie(cookieName));
-
-				hideAlert();
-			});
+			bindUI();
 		}
+	}
+
+	function bindUI() {
+		$alertClose.on("click", function() {
+			$.cookie(cookieName, $alertTime);
+
+			console.log($.cookie(cookieName));
+
+			hideAlert();
+		});
 	}
 
 	function showAlert() {

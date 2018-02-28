@@ -95,6 +95,7 @@ button {
 
 .skip_link {
 	@include button_inline;
+	@include button_fill;
 
 	position: absolute;
 	top: 0;

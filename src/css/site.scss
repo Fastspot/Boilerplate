@@ -14,8 +14,8 @@
 @import "../../node_modules/formstone/dist/css/grid";
 
 @import "base/fonts";
+@import "base/colors";
 @import "base/setup";
-@import "colors";
 @import "base/base";
 
 @import "symbols";
@@ -32,8 +32,8 @@
 
 @import "navigation/*";
 
-@import "components/**/*";
-
 @import "plugins/*";
+
+@import "components/**/*";
 
 @import "print";

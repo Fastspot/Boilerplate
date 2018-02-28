@@ -5,6 +5,10 @@
 .header {
 	background: #eee;
 	padding: 20px 0;
+
+	@media print {
+		display: none;
+	}
 }
 
 .header_ribbon {}

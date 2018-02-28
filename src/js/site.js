@@ -33,6 +33,7 @@
 			this.minMD = "740";
 			this.minLG = "980";
 			this.minXL = "1220";
+			this.minXXL = "1270";
 		};
 
 		$.extend(BaseController.prototype, {

@@ -4,10 +4,12 @@
 
 Site.modules.Module = (function($, Site) {
 
-	var module;
+	var item;
 
 	function init() {
-		if($(".module").length) {}
+		if($(".module").length) {
+			bindUI();
+		}
 	}
 
 	function bindUI() {}

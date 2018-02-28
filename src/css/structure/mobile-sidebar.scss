@@ -22,7 +22,6 @@
 
 .mobile_sidebar {
 	@include focus_outline_none;
-	@include fake_scroll;
 
 	height: 100%;
 	max-width: 320px;
@@ -35,6 +34,7 @@
 
 	background: #fff;
 	opacity: 0;
+	overflow-y: auto;
 	visibility: hidden;
 	transition: 
 		opacity .35s,

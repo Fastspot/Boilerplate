@@ -18,7 +18,7 @@ Site.modules.Images = (function($, Site) {
 	}
 
 	function bindUI() {
-		$("img, picture, .js-background").on("click", function(e) {
+		$("img, picture, .js-background").on("dblclick", function(e) {
 			if($(this).data("reference") != undefined) {
 				grabSize($(this));
 				showPhoto(e);

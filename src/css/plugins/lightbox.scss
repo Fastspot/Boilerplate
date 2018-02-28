@@ -11,6 +11,20 @@
 		top: auto;
 		right: 0;
 		bottom: 100%;
+
+		margin-bottom: 10px;
+
+		@media #{$min_xl} {
+			top: 0;
+			bottom: auto;
+			left: 100%;
+
+			margin-bottom: 0;
+			margin-left: 10px;
+		}
+
+		&:focus,
+		&:hover {}
 	}
 
 	.fs-lightbox-container {}
@@ -68,53 +82,56 @@
 // Mobile
 // =============================================================================
 
-// content
+.fs-lightbox-mobile {
 
-.fs-lightbox-mobile .fs-lightbox-content {
-	background-color: none;
-}
+	.fs-lightbox-close {
+		top: 20px;
+		right: 20px;
+		bottom: auto;
+	}
+	
+	.fs-lightbox-video_wrapper {
+		position: absolute;
+		top: 50%;
 
-// tools
+		transform: translate(0, -50%);
+	}
 
-.fs-lightbox-mobile .fs-lightbox-tools {
-	background-color: none;
-}
+	.fs-lightbox-content {
+		background-color: none;
+	}
 
-// controls
+	.fs-lightbox-tools {
+		background-color: none;
+	}
 
-.fs-lightbox-mobile .fs-lightbox-controls {
-	text-align: center;
-}
+	.fs-lightbox-controls {
+		text-align: center;
+	}
 
-// position
+	.fs-lightbox-position,
+	.fs-lightbox-caption {
 
-.fs-lightbox-mobile .fs-lightbox-position,
-.fs-lightbox-mobile .fs-lightbox-caption {
+		p {
+			color: #000;
+		}
+	}
 
-	p {
-		color: #000;
+	&.fs-lightbox-touch {
+
+		.fs-lightbox-toggle {
+			display: none;
+		}
+
+		.fs-lightbox-meta {
+			height: auto !important;
+		
+			background: #fff;
+			color: #000;
+			padding: 20px;
+		}
 	}
 }
-
-// touch captions
-
-.fs-lightbox-mobile.fs-lightbox-touch .fs-lightbox-tools {}
-
-.fs-lightbox-mobile.fs-lightbox-touch .fs-lightbox-controls {}
-
-.fs-lightbox-mobile.fs-lightbox-touch .fs-lightbox-toggle {
-	display: none;
-}
-
-.fs-lightbox-mobile.fs-lightbox-touch .fs-lightbox-meta {
-	height: auto !important;
-
-	background: #fff;
-	color: #000;
-	padding: 20px;
-}
-
-// viewer
 
 .fs-viewer {
 
@@ -122,3 +139,7 @@
 		display: none;
 	}
 }
+
+
+// Viewer
+// =============================================================================

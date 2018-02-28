@@ -180,7 +180,7 @@ $margin_xl: 80px;
 
 // 1. Filter for <= IE 9, does not work on pseudo elements
 
-@mixin gradient_horizontal($startColor: black, $endColor: white) {
+@mixin gradient_right($startColor: black, $endColor: white) {
 	background-color: $startColor;
 	background:
 		linear-gradient(
@@ -197,7 +197,7 @@ $margin_xl: 80px;
 
 // 1. Filter for <= IE 9, does not work on pseudo elements
 
-@mixin gradient_vertical($startColor: black, $endColor: white) {
+@mixin gradient_down($startColor: black, $endColor: white) {
 	background-color: $startColor;
 	background:
 		linear-gradient(
@@ -217,7 +217,7 @@ $margin_xl: 80px;
 	-moz-osx-font-smoothing: grayscale;
 }
 
-@mixin killFlicker() {
+@mixin kill_flicker() {
 	-webkit-font-smoothing: auto;
 	transform: translateZ(0);
 }
