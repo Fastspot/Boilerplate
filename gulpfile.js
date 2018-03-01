@@ -392,7 +392,7 @@ gulp.task('sass', function() {
 				]
 			})
 		]))
-		.pipe(gulpif(argv.nickhalldonotforgetthisimadeiteasierforyoutoremembersoyoucaneasilyminifythefilesfromproduction, cssnano()))
+		.pipe(gulpif(argv.production, cssnano()))
 		.pipe(gulp.dest('css'))
 		.pipe(browserSync.stream());
 
@@ -402,7 +402,7 @@ gulp.task('sass', function() {
 gulp.task('js', function() {
 
 	return concat(packageJSON.js)
-		.pipe(gulpif(argv.nickhalldonotforgetthisimadeiteasierforyoutoremembersoyoucaneasilyminifythefilesfromproduction, uglify()))
+		.pipe(gulpif(argv.production, uglify()))
 		.pipe(gulp.dest('js'))
 		.pipe(browserSync.stream());
 
