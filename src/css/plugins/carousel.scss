@@ -3,12 +3,12 @@
 ============================================================================= */
 
 .fs-carousel-canister {
+	flex-wrap: wrap;
 
 	@media print {
 		width: 100% !important;
 
 		display: block !important;
-		flex-wrap: wrap;
 		transform: none !important;
 	}
 }
