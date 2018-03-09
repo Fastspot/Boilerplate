@@ -10,8 +10,11 @@ Site.modules.Alert = (function($, Site) {
 	var cookieName;
 
 	function init() {
-		if($(".alert").length) {
-			assignVars();
+		if ($(".alert").length) {
+			$alert = $(".alert");
+			$alertClose = $(".alert_close");
+			$alertTime = $alert.data("time");
+			cookieName = "alert-cookie";
 
 			if ($.cookie(cookieName) === $alertTime) {
 				hideAlert();
@@ -21,13 +24,6 @@ Site.modules.Alert = (function($, Site) {
 
 			bindUI();
 		}
-	}
-
-	function assignVars() {
-		var $alert = $(".alert");
-		var $alertClose = $(".alert_close");
-		var $alertTime = $alert.data("time");
-		var cookieName = "alert-cookie";
 	}
 
 	function bindUI() {

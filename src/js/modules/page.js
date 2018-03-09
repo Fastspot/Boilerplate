@@ -47,7 +47,7 @@ Site.modules.Page = (function($, Site) {
 		// Change handle text
 
 		$(".sub_nav_handle").on("click", function() {
-			if($(this).hasClass("fs-swap-active")) {
+			if ($(this).hasClass("fs-swap-active")) {
 				$(this).find(".sub_nav_handle_label").text("Close");
 			} else {
 				$(this).find(".sub_nav_handle_label").text($(this).data("swap-title"));

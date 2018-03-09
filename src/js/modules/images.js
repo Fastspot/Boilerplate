@@ -7,7 +7,7 @@ Site.modules.Images = (function($, Site) {
 	var url = document.location.href;
 
 	function init() {
-		if(url.indexOf("dev.") > 0 || url.indexOf(".dev") > 0) {
+		if (url.indexOf("dev.") > 0 || url.indexOf(".dev") > 0) {
 			setupPhotoProp();
 			bindUI();
 		}
@@ -19,7 +19,7 @@ Site.modules.Images = (function($, Site) {
 
 	function bindUI() {
 		$("img, picture, .js-background").on("dblclick", function(e) {
-			if($(this).data("reference") != undefined) {
+			if ($(this).data("reference") != undefined) {
 				grabSize($(this));
 				showPhoto(e);
 			}
@@ -42,7 +42,7 @@ Site.modules.Images = (function($, Site) {
 		$(".photo_prop").css("top", e.pageY);
 		$(".photo_prop").css("left", e.pageX);
 
-		if(e.clientY < $(window).height() / 2) {
+		if (e.clientY < $(window).height() / 2) {
 			$(".photo_prop").addClass("upper-region");
 		} else {
 			$(".photo_prop").addClass("lower-region");
