@@ -97,6 +97,7 @@
       "node_modules/picturefill/dist/picturefill.js",
       "node_modules/what-input/dist/what-input.js",
       "src/js/site.js",
+      "src/js/vendor/modernizr-custom.js",
       "src/js/modules/page.js",
       "src/js/modules/images.js"
     ]
