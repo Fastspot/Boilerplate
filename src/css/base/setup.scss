@@ -528,6 +528,10 @@ $margin_xl: 80px;
 	}
 }
 
+.clearfix {
+	@include clearfix;
+}
+
 @mixin no_select() {
 
 	&,
@@ -564,6 +568,10 @@ $margin_xl: 80px;
 		margin: 0;
 		overflow: visible;
 	}
+}
+
+.visually_hide {
+	@include visually_hide;
 }
 
 @mixin offscreen() {
