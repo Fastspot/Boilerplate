@@ -82,7 +82,7 @@ button {
 	@include button_block;
 	@include button_layout($layout);
 
-	@media #{$min_xs} {
+	@media #{$min_sm} {
 		display: inline-block;
 		margin-right: 8px;
 		text-align: left;
