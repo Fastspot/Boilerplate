@@ -49,7 +49,7 @@
 	<a class="{{class}}_link{% if symbol %} theme_{{symbol}}{% endif %}" href="{{href}}">
 		<span class="{{class}}_link_label">{{label}}</span>
 		{% if symbol %}
-			<span class="{{class}}_link_icon">
+			<span class="{{class}}_link_icon" aria-hidden="true">
 				<svg class="symbol symbol_{{symbol}}">
 					<use xlink:href="#{{symbol}}"></use>
 				</svg>
