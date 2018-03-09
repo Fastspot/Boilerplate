@@ -14,8 +14,6 @@ Site.modules.Module = (function($, Site) {
 		}
 	}
 
-	function assignVars() {}
-
 	function bindUI() {}
 
 	function doSomething() {}
