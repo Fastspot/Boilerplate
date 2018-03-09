@@ -26,9 +26,6 @@ Site.modules.Page = (function($, Site) {
 	};
 	
 	function init() {
-
-		picturefill();
-
 		$(".js-background").on("loaded.background", function() {
 			$(this).addClass("fs-background-loaded");
 		}).background();
@@ -57,7 +54,7 @@ Site.modules.Page = (function($, Site) {
 			}
 		});
 
-
+		picturefill();
 		bindGenericUI();
 		responsiveVideo();
 		tableOverflow();
