@@ -8,12 +8,12 @@ Site.modules.Images = (function($, Site) {
 
 	function init() {
 		if(url.indexOf("dev.") > 0 || url.indexOf(".dev") > 0) {
-			setupPhoto();
+			setupPhotoProp();
 			bindUI();
 		}
 	}
 
-	function setupPhoto() {
+	function setupPhotoProp() {
 		$("body").append("<div class='photo_prop'><button class='photo_prop_close'>x</button><div class='photo_prop_detail'></div></div>");
 	}
 

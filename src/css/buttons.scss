@@ -13,11 +13,11 @@ button {
 	cursor: pointer;
 	padding: 10px;
 	transition:
-		background $base_speed,
-		border $base_speed,
-		box-shadow $base_speed,
-		color $base_speed,
-		transform $base_speed;
+		background .25s,
+		border .25s,
+		box-shadow .25s,
+		color .25s,
+		transform .25s;
 }
 
 @mixin button_layout($l: true) {

@@ -4,13 +4,14 @@
 
 Site.modules.Alert = (function($, Site) {
 
-	var $alert = $(".alert");
-	var $alertClose = $(".alert_close");
-	var $alertTime = $alert.data("time");
-	var cookieName = "alert-cookie";
+	var $alert;
+	var $alertClose;
+	var $alertTime;
+	var cookieName;
 
 	function init() {
-		if($alert.length) {
+		if($(".alert").length) {
+			assignVars();
 
 			if ($.cookie(cookieName) === $alertTime) {
 				hideAlert();
@@ -22,14 +23,22 @@ Site.modules.Alert = (function($, Site) {
 		}
 	}
 
+	function assignVars() {
+		var $alert = $(".alert");
+		var $alertClose = $(".alert_close");
+		var $alertTime = $alert.data("time");
+		var cookieName = "alert-cookie";
+	}
+
 	function bindUI() {
 		$alertClose.on("click", function() {
-			$.cookie(cookieName, $alertTime);
-
-			console.log($.cookie(cookieName));
-
+			setCookie();
 			hideAlert();
 		});
+	}
+
+	function setCookie() {
+		$.cookie(cookieName, $alertTime);
 	}
 
 	function showAlert() {

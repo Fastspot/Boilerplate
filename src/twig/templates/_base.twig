@@ -47,11 +47,11 @@
 			<meta name="twitter:image" content="//{{vars.domain}}/images/social-rectangle.png">
 		{% endif %}
 
-		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
 		{% if page.stylesheets %}
-			{% for script in page.stylesheets %}
-				<link rel="stylesheet" href="{{script}}">
+			{% for styles in page.stylesheets %}
+				<link rel="stylesheet" href="{{styles}}">
 			{% endfor %}
 		{% endif %}
 
@@ -142,9 +142,11 @@
 									} %}
 
 									<div class="header_group">
-										<a class="mobile_sidebar_handle_wrapper mobile_sidebar_handle_wrapper_primary" href="#mobile_sidebar">
-											<span class="js-swap mobile_sidebar_handle mobile_sidebar_handle_primary" data-swap-target=".mobile_sidebar" data-swap-linked="mobile_sidebar">Menu</span>
-										</a>
+										{% include "../partials/handle.twig" with {
+											class: "mobile_sidebar",
+											modifier: "primary",
+											label: "Menu"
+										} %}
 
 										{% include "../partials/search-handle.twig" %}
 
@@ -197,7 +199,7 @@
 											} %}
 
 											{% if page.title %}
-												<h1 class="page_title" id="page_title">{{page.title}}</h1>
+												<h1 class="page_title">{{page.title}}</h1>
 											{% endif %}
 										</div>
 									{% endblock %}
@@ -286,9 +288,11 @@
 		<!-- END: page_wrapper -->
 
 		<div class="mobile_sidebar" id="mobile_sidebar" aria-hidden="true">
-			<a class="mobile_sidebar_handle_wrapper mobile_sidebar_handle_wrapper_inline" href="#mobile_sidebar">
-				<span class="js-swap mobile_sidebar_handle mobile_sidebar_handle_inline" data-swap-target=".mobile_sidebar" data-swap-linked="mobile_sidebar">Close</span>
-			</a>
+			{% include "../partials/handle.twig" with {
+				class: "mobile_sidebar",
+				modifier: "inline",
+				label: "Close"
+			} %}
 
 			{% include "../partials/search.twig" with {
 				modifier: "sm",

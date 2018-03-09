@@ -8,9 +8,12 @@ Site.modules.Module = (function($, Site) {
 
 	function init() {
 		if($(".module").length) {
+			assignVars();
 			bindUI();
 		}
 	}
+
+	function assignVars() {}
 
 	function bindUI() {}
 
