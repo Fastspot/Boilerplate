@@ -40,7 +40,7 @@
 
 {% macro icon(name) %}
 	<svg class="symbol symbol_{{name}}">
-		<use xlink:href="#{{name}}"></use>
+		<use xlink:href="../../../images/icons.svg#{{name}}"></use>
 	</svg>
 {% endmacro %}
 
@@ -51,7 +51,7 @@
 		{% if symbol %}
 			<span class="{{class}}_link_icon" aria-hidden="true">
 				<svg class="symbol symbol_{{symbol}}">
-					<use xlink:href="#{{symbol}}"></use>
+					<use xlink:href="../../../images/icons.svg#{{symbol}}"></use>
 				</svg>
 			</span>
 		{% endif %}
