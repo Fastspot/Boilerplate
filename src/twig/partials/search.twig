@@ -1,6 +1,12 @@
 {#
 	Search markup as defined by Google structured data
 	https://developers.google.com/search/docs/data-types/sitelinks-searchbox
+
+	{% include "../partials/search.twig" with {
+		modifier: "lg",
+		placeholder: "Search",
+		buttonText: "submit"
+	} %}
 #}
 
 <div class="site_search{% if modifier %} site_search_{{modifier}}{% endif %}" id="site_search{% if modifier %}_{{modifier}}{% endif %}" itemscope itemtype="http://schema.org/WebSite" role="search">
