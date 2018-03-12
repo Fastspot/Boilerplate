@@ -84,6 +84,7 @@
     "site.js": [
       "node_modules/formstone/dist/js/core.js",
       "node_modules/formstone/dist/js/mediaquery.js",
+      "node_modules/formstone/dist/js/analytics.js",
       "node_modules/formstone/dist/js/background.js",
       "node_modules/formstone/dist/js/carousel.js",
       "node_modules/formstone/dist/js/checkbox.js",
