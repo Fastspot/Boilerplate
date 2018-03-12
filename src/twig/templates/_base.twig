@@ -29,22 +29,23 @@
 		{% include "../partials/favicons.html" %}
 
 		<!-- G+ & Facebook -->
-		<meta property="og:title" content="{{vars.name}}">
-		<meta property="og:url" content="//{{vars.domain}}/">
+		<meta property="og:title" content="{% if page.title %}{{page.title}}{% else %}{{vars.name}}{% endif %}">
 		<meta property="og:type" content="website">
-		<meta property="og:image" content="//{{vars.domain}}/images/social-rectangle.png">
-		<meta property="og:description" content="{{vars.description}}">
+		<meta property="og:image" content="{% if page.metaImage %}{{page.metaImage}}{% else %}//{{vars.domain}}/images/social-sq.png{% endif %}">
+		<meta property="og:image:width" content="{% if page.metaImageWidth %}{{page.metaImageWidth}}{% else %}800{% endif %}">
+		<meta property="og:image:height" content="{% if page.metaImageHeight %}{{page.metaImageHeight}}{% else %}800{% endif %}">
+		<meta property="og:description" content="{% if page.intro %}{{page.intro}}{% else %}{{vars.description}}{% endif %}">
 		<meta property="og:site_name" content="{{vars.name}}">
 
 		{% if vars.twitter != "TwitterName" %}
 		<!-- Twitter -->
-		<meta name="twitter:card" content="summary">
+		<meta name="twitter:card" content="{% if page.metaCard %}{{page.metaCard}}{% else %}summary{% endif %}">
 		<meta name="twitter:site" content="@{{vars.twitter}}">
 		<meta name="twitter:creator" content="@{{vars.twitter}}">
 		<meta name="twitter:url" content="//twitter.com/{{vars.twitter}}">
-		<meta name="twitter:title" content="{{vars.name}}">
-		<meta name="twitter:description" content="">
-		<meta name="twitter:image" content="//{{vars.domain}}/images/social-rectangle.png">
+		<meta name="twitter:title" content="{% if page.title %}{{page.title}}{% else %}{{vars.name}}{% endif %}">
+		<meta name="twitter:description" content="{% if page.intro %}{{page.intro}}{% else %}{{vars.description}}{% endif %}">
+		<meta name="twitter:image" content="{% if page.metaImage %}{{page.metaImage}}{% else %}//{{vars.domain}}/images/social-sq.png{% endif %}">
 		{% endif %}
 
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
