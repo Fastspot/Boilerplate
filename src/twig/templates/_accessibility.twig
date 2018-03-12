@@ -95,17 +95,17 @@
 				"warning"
 			] %}
 			{% for type in accessList %}
-				<div id="{{type}}s">
-					{% for result in results %}
-						{% if type == result.type %}
-							<div class="report_item {{result.type}}">
-								<h3 class="report_item_title">{{result.message}}</h3>
-								<p class="report_item_code">{{result.code}}</p>
-								<pre class="report_item_context">{{result.context|e}}</pre>
-							</div>
-						{% endif %}
-					{% endfor %}
+			<div id="{{type}}s">
+				{% for result in results %}
+				{% if type == result.type %}
+				<div class="report_item {{result.type}}">
+					<h3 class="report_item_title">{{result.message}}</h3>
+					<p class="report_item_code">{{result.code}}</p>
+					<pre class="report_item_context">{{result.context|e}}</pre>
 				</div>
+				{% endif %}
+				{% endfor %}
+			</div>
 			{% endfor %}
 		</main>
 		<script></script>

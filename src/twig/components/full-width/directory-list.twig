@@ -20,45 +20,45 @@
 	<div class="fs-row">
 		<div class="fs-cell">
 			{% if title %}
-				<header class="directory_header">
-					<h2 class="directory_heading">{{title}}</h2>
-				</header>
+			<header class="directory_header">
+				<h2 class="directory_heading">{{title}}</h2>
+			</header>
 			{% endif %}
 			<div class="directory_items" role="list" itemscope itemtype="http://schema.org/ItemList"{% if title %} aria-label="{{title}}"{% endif %}>
 				{% for item in items %}
-					<div class="directory_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-						<meta itemprop="position" content="{{loop.index}}">
-						<div class="directory_item_inner" itemscope itemtype="http://schema.org/Person">
-							{% if item.image %}
-								<figure class="directory_item_figure">
-									<img class="directory_item_image" src="https://spacehold.it/{{img.portraitFull.xsml}}/{{item.image}}.jpg" alt="" itemprop="image">
-								</figure>
-							{% endif %}
-							<div class="directory_item_wrapper">
-								<header class="directory_item_header">
-									<h3 class="directory_item_name" itemprop="name">{{item.name}}</h3>
-									{% if item.title %}
-										<div class="directory_item_title">{{item.title}}</div>
-									{% endif %}
-								</header>
-								<div class="directory_item_body">
-									{% if item.email %}
-										<a class="directory_item_email" href="mailto:{{item.email}}" itemprop="email">{{item.email}}</a>
-										{% endif %}
-									{% if item.description %}
-										<div class="directory_item_description" itemprop="description">
-											<p>{{item.description}}</p>
-										</div>
-									{% endif %}
+				<div class="directory_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+					<meta itemprop="position" content="{{loop.index}}">
+					<div class="directory_item_inner" itemscope itemtype="http://schema.org/Person">
+						{% if item.image %}
+						<figure class="directory_item_figure">
+							<img class="directory_item_image" src="https://spacehold.it/{{img.portraitFull.xsml}}/{{item.image}}.jpg" alt="" itemprop="image">
+						</figure>
+						{% endif %}
+						<div class="directory_item_wrapper">
+							<header class="directory_item_header">
+								<h3 class="directory_item_name" itemprop="name">{{item.name}}</h3>
+								{% if item.title %}
+								<div class="directory_item_title">{{item.title}}</div>
+								{% endif %}
+							</header>
+							<div class="directory_item_body">
+								{% if item.email %}
+								<a class="directory_item_email" href="mailto:{{item.email}}" itemprop="email">{{item.email}}</a>
+								{% endif %}
+								{% if item.description %}
+								<div class="directory_item_description" itemprop="description">
+									<p>{{item.description}}</p>
 								</div>
-								{% if item.href %}
-									<footer class="directory_item_links">
-										<a class="directory_item_link" href="{{item.href}}" itemprop="url">More Info</a>
-									</footer>
 								{% endif %}
 							</div>
+							{% if item.href %}
+							<footer class="directory_item_links">
+								<a class="directory_item_link" href="{{item.href}}" itemprop="url">More Info</a>
+							</footer>
+							{% endif %}
 						</div>
 					</div>
+				</div>
 				{% endfor %}
 			</div>
 		</div>

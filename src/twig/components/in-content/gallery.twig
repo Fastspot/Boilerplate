@@ -22,9 +22,9 @@
 
 <div class="media_gallery{% if theme %} theme_{{theme}}{% endif %}">
 	{% if title %}
-		<header class="media_gallery_header">
-			<h2 class="media_gallery_title">{{title}}</h2>
-		</header>
+	<header class="media_gallery_header">
+		<h2 class="media_gallery_title">{{title}}</h2>
+	</header>
 	{% endif %}
 	<div class="media_gallery_body">
 		<div class="js-carousel media_gallery_items" data-carousel-options='{
@@ -32,24 +32,24 @@
 			"contained": false
 		}'>
 			{% for item in items %}
-				<div class="media_gallery_item{% if item.caption is empty %} media_gallery_item_no_caption{% endif %}{% if item.video %} media_gallery_item_video{% endif %}">
-					<div class="media_gallery_count">
-						<span class="media_count_number">{{"%02d"|format(loop.index)}}</span>
-						<span class="media_count_label">of</span>
-						<span class="media_count_number">{{"%02d"|format(loop.length)}}</span>
-					</div>
-					<figure class="media_gallery_item_figure" role="group"{% if item.caption %} aria-label="{{item.caption|striptags}}"{% endif %}>
-						{% if item.video %}<a class="js-lightbox media_gallery_item_link" href="{{item.video}}" title="{{item.caption|striptags}}">{% endif %}
-							{{site.image("media_gallery_item", img.wide.med, item.image)}}
-							<span class="media_gallery_item_icon">{{site.icon(symbol)}}</span>
-						{% if item.video %}</a>{% endif %}
-						{% if item.caption %}
-							<figcaption class="media_gallery_item_figcaption">
-								<p>{{item.caption}}</p>
-							</figcaption>
-						{% endif %}
-					</figure>
+			<div class="media_gallery_item{% if item.caption is empty %} media_gallery_item_no_caption{% endif %}{% if item.video %} media_gallery_item_video{% endif %}">
+				<div class="media_gallery_count">
+					<span class="media_count_number">{{"%02d"|format(loop.index)}}</span>
+					<span class="media_count_label">of</span>
+					<span class="media_count_number">{{"%02d"|format(loop.length)}}</span>
 				</div>
+				<figure class="media_gallery_item_figure" role="group"{% if item.caption %} aria-label="{{item.caption|striptags}}"{% endif %}>
+					{% if item.video %}<a class="js-lightbox media_gallery_item_link" href="{{item.video}}" title="{{item.caption|striptags}}">{% endif %}
+					{{site.image("media_gallery_item", img.wide.med, item.image)}}
+					<span class="media_gallery_item_icon">{{site.icon(symbol)}}</span>
+					{% if item.video %}</a>{% endif %}
+					{% if item.caption %}
+					<figcaption class="media_gallery_item_figcaption">
+						<p>{{item.caption}}</p>
+					</figcaption>
+					{% endif %}
+				</figure>
+			</div>
 			{% endfor %}
 		</div>
 	</div>
