@@ -2,9 +2,17 @@
 	Page
 ============================================================================= */
 
-.page_wrapper {}
+.page_wrapper {
+	width: 100%;
+	min-height: 100vh;
 
-.page {}
+	display: flex;
+	flex-direction: column;
+}
+
+.page {
+	flex-grow: 1;
+}
 
 .page_feature {}
 
