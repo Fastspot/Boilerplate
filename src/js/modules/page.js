@@ -24,7 +24,7 @@ Site.modules.Page = (function($, Site) {
 			next: "<span class='fs-lightbox-icon-next'><svg class='symbol symbol_" + next + "'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#" + next + "'></use></svg></span>"
 		}
 	};
-	
+
 	function init() {
 		$(".js-background").on("loaded.background", function() {
 			$(this).addClass("fs-background-loaded");
@@ -128,6 +128,9 @@ Site.modules.Page = (function($, Site) {
 			.not(".js-bound")
 			.on("click", onScrollTo)
 			.addClass("js-bound");
+
+		$(".typography table")
+			.wrap('<div class="table_wrapper"><div class="table_wrapper_inner"></div></div>');
 	}
 
 	function responsiveVideo() {
@@ -137,12 +140,8 @@ Site.modules.Page = (function($, Site) {
 	}
 
 	function tableOverflow() {
-		$(".typography table")
-			.wrap('<div class="table_wrapper"><div class="table_wrapper_inner"></div></div>');
-
 		$(".table_wrapper").each(function() {
-			$(this).removeClass("table_wrapper_overflow");
-			if ($(this).prop("scrollWidth") > $(this).width() + 1) {
+			if ($(this).find("table").outerWidth() > $(this).width() + 1) {
 				$(this).addClass("table_wrapper_overflow");
 			} else {
 				$(this).removeClass("table_wrapper_overflow");
