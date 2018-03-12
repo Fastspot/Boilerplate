@@ -110,7 +110,20 @@ Site.modules.Page = (function($, Site) {
 		}
 	}
 
+	function trackEvent(data) {
+		if ($.type(data) === "string") {
+			data = data.split(",");
+
+			$.analytics.apply(this, data);
+		}
+	}
+
 	function bindGenericUI() {
+
+		$.analytics({
+			scrollDepth: true
+		});
+
 		$(".js-main-nav").find("a")
 			.focus(function() {
 				$(this).closest(".main_nav_item").addClass("focused");
