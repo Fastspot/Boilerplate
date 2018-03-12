@@ -37,6 +37,13 @@
 	@media #{$min_lg} {
 		float: left;
 	}
+
+	.layout_full & {
+
+		@media #{$min_lg} {
+			float: none;
+		}
+	}
 }
 
 .main_content {
