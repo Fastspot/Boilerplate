@@ -222,10 +222,10 @@ gulp.task('components', function(done) {
 					'{% block page %}' +
 						'{% set page = {' +
 							'title: "' + folder + '",' +
-							'layout: "style-guide"' + 
-						'} %}' + 
+							'layout: "style-guide"' +
+						'} %}' +
 					'{% endblock %}';
-				
+
 				if (folder === 'feature') {
 					result += '{% block page_feature %}';
 				} else if (folder === 'full-width') {
@@ -614,6 +614,7 @@ gulp.task('clean', function(done) {
 gulp.task('browser-sync', function(done) {
 
 	browserSync.init({
+		open: false,
 		logPrefix: packageJSON.vars.name,
 		ui: false,
 		server: './',
