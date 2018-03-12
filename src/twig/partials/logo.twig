@@ -4,6 +4,13 @@
 
 	1. Create a logo image file.
 	2. Create a black and white print logo image file.
+
+	{% include "../partials/logo.twig" with {
+		heading: true,
+		modifier: "header",
+		symbol: "logo",
+		print: true
+	} %}
 #}
 
 {% if heading == true %}
@@ -11,21 +18,25 @@
 	<a class="logo_link" itemprop="url" href="page-home.html">
 		<span class="logo_link_label">{{vars.name}}</span>
 		{% if symbol %}
-			<span class="logo_link_symbol">{{site.icon(symbol)}}</span>
+		<span class="logo_link_symbol">{{site.icon(symbol)}}</span>
 		{% endif %}
 	</a>
 	<meta content="../../images/logo-schema.png" itemprop="logo"> {# 1 #}
+	{% if print %}
 	<img class="logo_print" src="../../images/logo-print.png" alt=""> {# 2 #}
+	{% endif %}
 </h1>
 {% else %}
 <div class="logo{% if modifier %} logo_{{modifier}}{% endif %}{% if symbol %} logo_symbol{% endif %}" itemscope itemtype="http://schema.org/{{vars.schemaType}}">
 	<a class="logo_link" itemprop="url" href="page-home.html">
 		<span class="logo_link_label">{{vars.name}}</span>
 		{% if symbol %}
-			<span class="logo_link_symbol">{{site.icon(symbol)}}</span>
+		<span class="logo_link_symbol">{{site.icon(symbol)}}</span>
 		{% endif %}
 	</a>
 	<meta content="../../images/logo-schema.png" itemprop="logo"> {# 1 #}
+	{% if print %}
 	<img class="logo_print" src="../../images/logo-print.png" alt=""> {# 2 #}
+	{% endif %}
 </div>
 {% endif %}

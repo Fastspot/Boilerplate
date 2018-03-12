@@ -1,30 +1,41 @@
+{#
+
+	{% include "../partials/navigation/main.twig" with {
+		modifier: "lg",
+		title: "Site Navigation",
+		links: mainNavAlias,
+		active: activePage
+	} %}
+
+#}
+
 <nav class="js-main-nav main_nav{% if modifier %} main_nav_{{modifier}}{% endif %}" aria-label="{{title}}" itemscope itemtype="http://schema.org/SiteNavigationElement">
 	<div class="main_nav_list" role="navigation">
 		{% for link in links %}
-			<div class="js-main-nav-item-{{loop.index}} main_nav_item{% if link.children %} main_nav_has_children{% endif %}{% if loop.index == active %} active{% endif %}{% if link.modifier %} {{link.modifier}}{% endif %}" itemprop="url">
-				<div class="main_nav_item_wrapper">
-					<a class="main_nav_link" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="name">
-						<span class="main_nav_link_label">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
-					</a>
-					{% if link.children %}
-						<button class="js-swap main_nav_toggle" data-swap-target=".js-main-nav-item-{{loop.index}}" data-swap-group="main_nav">
-							<span class="main_nav_toggle_label">Expand Navigation</span>
-							<span class="main_nav_toggle_icon">{{site.icon("caret_down")}}</span>
-						</button>
-					{% endif %}
-				</div>
+		<div class="js-main-nav-item-{{loop.index}} main_nav_item{% if link.children %} main_nav_has_children{% endif %}{% if loop.index == active %} active{% endif %}{% if link.modifier %} {{link.modifier}}{% endif %}" itemprop="url">
+			<div class="main_nav_item_wrapper">
+				<a class="main_nav_link" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="name">
+					<span class="main_nav_link_label">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
+				</a>
 				{% if link.children %}
-					<div class="main_nav_children">
-						{% for child in link.children %}
-							<div class="main_nav_child_item{% if child.modifier %} {{child.modifier}}{% endif %}" itemprop="url">
-								<a class="main_nav_child_link" href="{% if child.href %}{{child.href}}{% else %}#{% endif %}" itemprop="name">
-									<span class="main_nav_child_link_label">{% if child.name %}{{child.name}}{% elseif child %}{{child}}{% endif %}</span>
-								</a>
-							</div>
-						{% endfor %}
-					</div>
+				<button class="js-swap main_nav_toggle" data-swap-target=".js-main-nav-item-{{loop.index}}" data-swap-group="main_nav">
+					<span class="main_nav_toggle_label">Expand Navigation</span>
+					<span class="main_nav_toggle_icon">{{site.icon("caret_down")}}</span>
+				</button>
 				{% endif %}
 			</div>
+			{% if link.children %}
+			<div class="main_nav_children">
+				{% for child in link.children %}
+				<div class="main_nav_child_item{% if child.modifier %} {{child.modifier}}{% endif %}" itemprop="url">
+					<a class="main_nav_child_link" href="{% if child.href %}{{child.href}}{% else %}#{% endif %}" itemprop="name">
+						<span class="main_nav_child_link_label">{% if child.name %}{{child.name}}{% elseif child %}{{child}}{% endif %}</span>
+					</a>
+				</div>
+				{% endfor %}
+			</div>
+			{% endif %}
+		</div>
 		{% endfor %}
 	</div>
 </nav>

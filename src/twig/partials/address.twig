@@ -1,3 +1,14 @@
+{#
+	{% include "../partials/address.twig" with {
+		name: "Fastspot",
+		street: "2980 Falls Road",
+		city: "Baltimore",
+		state: "MD",
+		zip: "21211",
+		tel: "202-432-1200"
+	} %}
+#}
+
 <div class="footer_address" itemscope itemtype="http://schema.org/PostalAddress">
 	<span class="footer_address_name" itemprop="name">{{name}}</span>
 	<span class="footer_address_street" itemprop="streetAddress">{{street}}</span>
@@ -5,18 +16,18 @@
 	<span class="footer_address_state" itemprop="addressRegion">{{state}}</span>
 	<span class="footer_address_zip" itemprop="postalCode">{{zip}}</span>
 	{% if email %}
-		<a class="footer_address_email" itemprop="email" href="mailto:{{email}}">
-			<span class="footer_address_label">{{email}}</span>
-		</a>
+	<a class="footer_address_email" itemprop="email" href="mailto:{{email}}">
+		<span class="footer_address_label">{{email}}</span>
+	</a>
 	{% endif %}
 	{% if tel %}
-		<a class="footer_address_phone" itemprop="telephone" href="tel:{{tel}}">
-			<span class="footer_address_label">{{tel}}</span>
-		</a>
+	<a class="footer_address_phone" itemprop="telephone" href="tel:{{tel}}">
+		<span class="footer_address_label">{{tel}}</span>
+	</a>
 	{% endif %}
 	{% if fax %}
-		<a class="footer_address_phone" itemprop="telephone" href="tel:{{fax}}">
-			<span class="footer_address_label">{{fax}}</span>
-		</a>
+	<a class="footer_address_phone" itemprop="telephone" href="tel:{{fax}}">
+		<span class="footer_address_label">{{fax}}</span>
+	</a>
 	{% endif %}
 </div>
