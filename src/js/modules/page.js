@@ -2,8 +2,6 @@
 	Page
 -------------------------------------------*/
 
-/* global picturefill */
-
 Site.modules.Page = (function($, Site) {
 
 	var prev = "caret_left";
@@ -54,7 +52,6 @@ Site.modules.Page = (function($, Site) {
 			}
 		});
 
-		picturefill();
 		bindGenericUI();
 		responsiveVideo();
 		tableOverflow();
