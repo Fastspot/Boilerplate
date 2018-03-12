@@ -141,6 +141,8 @@ Site.modules.Page = (function($, Site) {
 
 		$(".typography table")
 			.wrap('<div class="table_wrapper"><div class="table_wrapper_inner"></div></div>');
+
+		$(window).on("load", onPageLoad);
 	}
 
 	function responsiveVideo() {
@@ -159,6 +161,10 @@ Site.modules.Page = (function($, Site) {
 		});
 	}
 
+	function onPageLoad() {
+		$("body").removeClass("preload");
+		$(window).trigger("resize");
+	}
 
 	// Hook Into Main init Routine
 
