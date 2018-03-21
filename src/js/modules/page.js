@@ -36,13 +36,14 @@ Site.modules.Page = (function($, Site) {
 
 		$(window).on("load", onPageLoad);
 
+		$(document).on("click", onDocumentClick);
+
 		$(".js-mobile-sidebar-handle").on("click", onSidebarHandleClick);
 
 		$(".js-mobile-sidebar-close").on("click", onSidebarCloseClick);
 
-		$(document).on("click", onDocumentClick);
-
-		$(".js-sub-nav-handle").on("click", onSubNavHandleClick);
+		$(".js-sub-nav-handle").on("activate.swap", onSubSwapActivate);
+		$(".js-sub-nav-handle").on("deactivate.swap", onSubSwapDeactivate);
 
 		bindGenericUI();
 		responsiveVideo();
@@ -168,12 +169,14 @@ Site.modules.Page = (function($, Site) {
 		}
 	}
 
-	function onSubNavHandleClick() {
-		if ($(this).hasClass("fs-swap-active")) {
-			$(this).find(".sub_nav_handle_label").text("Close");
-		} else {
-			$(this).find(".sub_nav_handle_label").text($(this).data("swap-title"));
-		}
+	function onSubSwapActivate() {
+		$(this).find(".sub_nav_handle_label").text("Close");
+		$(this).attr("aria-expanded", "true");
+	}
+
+	function onSubSwapDeactivate() {
+		$(this).find(".sub_nav_handle_label").text($(this).data("swap-title"));
+		$(this).attr("aria-expanded", "false");
 	}
 
 	function onPageLoad() {

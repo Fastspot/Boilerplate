@@ -35,13 +35,13 @@
 		margin-bottom: 0;
 		padding-right: 40px;
 		text-align: left;
+
+		@media #{$min_lg} {
+			display: none;
+		}
 	}
 
 	@media print {
-		display: none;
-	}
-
-	@media #{$min_lg} {
 		display: none;
 	}
 
@@ -80,12 +80,8 @@
 .sub_nav_list {
 	@include focus_outline_none();
 
-	.js & {
+	&.fs-swap-enabled {
 		display: none;
-	}
-
-	@media #{$min_lg} {
-		display: block;
 	}
 
 	&.fs-swap-active {

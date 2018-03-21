@@ -48,10 +48,6 @@
 		display: none;
 	}
 
-	@media #{$min_lg} {
-		display: none;
-	}
-
 	&.fs-swap-active {
 		opacity: 1;
 		visibility: visible;
