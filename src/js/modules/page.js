@@ -41,9 +41,8 @@ Site.modules.Page = (function($, Site) {
 		$(".js-mobile-sidebar-handle").on("click", onSidebarHandleClick);
 
 		$(".js-mobile-sidebar-close").on("click", onSidebarCloseClick);
-
-		$(".js-sub-nav-handle").on("activate.swap", onSubSwapActivate);
-		$(".js-sub-nav-handle").on("deactivate.swap", onSubSwapDeactivate);
+		$(".js-main-nav .js-swap").on("activate.swap", onMainSwapActivate).on("deactivate.swap", onMainSwapDeactivate);
+		$(".js-sub-nav-handle").on("activate.swap", onSubSwapActivate).on("deactivate.swap", onSubSwapDeactivate);
 
 		bindGenericUI();
 		responsiveVideo();
@@ -103,13 +102,30 @@ Site.modules.Page = (function($, Site) {
 
 	function bindGenericUI() {
 
-		$(".js-main-nav").find("a")
+		$(".js-main-nav-lg").find("a")
 			.focus(function() {
-				$(this).closest(".main_nav_item").addClass("focused");
+				var $item = $(this).closest(".main_nav_item");
+
+				$item.addClass("focused").attr("aria-expanded", "true");
+				ariaShow($item.find(".js-main-nav-children"));
 			})
 			.blur(function() {
-				$(this).closest(".main_nav_item").removeClass("focused");
-			});
+				var $item = $(this).closest(".main_nav_item");
+
+				$item.removeClass("focused").attr("aria-expanded", "false");
+				ariaHide($item.find(".js-main-nav-children"));
+			})
+			.hover(function() {
+				var $item = $(this).closest(".main_nav_item");
+
+				$item.attr("aria-expanded", "true");
+				ariaShow($item.find(".js-main-nav-children"));
+			}, function() {
+				var $item = $(this).closest(".main_nav_item");
+
+				$item.attr("aria-expanded", "false");
+				ariaHide($item.find(".js-main-nav-children"));
+		});
 
 		$(".js-toggle")
 			.not(".js-bound")
@@ -169,14 +185,28 @@ Site.modules.Page = (function($, Site) {
 		}
 	}
 
+	function onMainSwapActivate() {
+		var $item = $(this).closest(".main_nav_item");
+
+		$item.attr("aria-expanded", "true");
+		ariaShow($item.find(".js-main-nav-children"));
+	}
+
+	function onMainSwapDeactivate() {
+		var $item = $(this).closest(".main_nav_item");
+
+		$item.attr("aria-expanded", "false");
+		ariaHide($item.find(".js-main-nav-children"));
+	}
+
 	function onSubSwapActivate() {
-		$(this).find(".sub_nav_handle_label").text("Close");
-		$(this).attr("aria-expanded", "true");
+		$(this).attr("aria-expanded", "true")
+		.find(".sub_nav_handle_label").text("Close");
 	}
 
 	function onSubSwapDeactivate() {
-		$(this).find(".sub_nav_handle_label").text($(this).data("swap-title"));
-		$(this).attr("aria-expanded", "false");
+		$(this).attr("aria-expanded", "false")
+		.find(".sub_nav_handle_label").text($(this).data("swap-title"));
 	}
 
 	function onPageLoad() {

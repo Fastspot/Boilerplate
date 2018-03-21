@@ -8,6 +8,10 @@
 
 	display: flex;
 	flex-direction: column;
+
+	.fs-mobile-lock & {
+		pointer-events: none;
+	}
 }
 
 .page {
