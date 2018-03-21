@@ -59,14 +59,21 @@
 }
 
 .main_nav_toggle {
-	height: 100%;
-	width: 50px;
 
-	position: absolute;
-	top: 0;
-	right: 0;
+	.no-js & {
+		display: none;
+	}
 
-	cursor: pointer;
+	.js & {
+		width: 50px;
+		height: 100%;
+
+		position: absolute;
+		top: 0;
+		right: 0;
+
+		cursor: pointer;
+	}
 
 	.main_nav_lg & {
 		display: none;

@@ -81,6 +81,7 @@
   ],
   "js": {
     "site.js": [
+      "src/js/vendor/modernizr-custom.js",
       "node_modules/formstone/dist/js/core.js",
       "node_modules/formstone/dist/js/mediaquery.js",
       "node_modules/formstone/dist/js/analytics.js",

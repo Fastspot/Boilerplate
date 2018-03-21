@@ -23,23 +23,26 @@
 .mobile_sidebar {
 	@include focus_outline_none;
 
-	height: 100%;
-	max-width: 320px;
-	width: 100%;
-
-	position: fixed;
-	top: 0;
-	right: 0;
-	z-index: 400;
-
 	background: #fff;
-	opacity: 0;
-	overflow-y: auto;
-	visibility: hidden;
-	transition: 
-		opacity .35s,
-		transform .35s,
-		visibility .35s;
+
+	.js & {
+		width: 100%;
+		max-width: 320px;
+		height: 100%;
+
+		position: fixed;
+		top: 0;
+		right: 0;
+		z-index: 400;
+
+		opacity: 0;
+		overflow-y: auto;
+		visibility: hidden;
+		transition:
+			opacity .35s,
+			transform .35s,
+			visibility .35s;
+	}
 
 	@media print {
 		display: none;

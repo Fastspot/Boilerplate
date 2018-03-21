@@ -49,7 +49,6 @@
 		{% endif %}
 
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-		<script src="../../js/modernizr-custom.js"></script>
 
 		{% if page.stylesheets %}
 		{% for styles in page.stylesheets %}
@@ -285,12 +284,11 @@
 		</div>
 		<!-- END: page_wrapper -->
 
-		<div class="mobile_sidebar" id="mobile_sidebar" aria-hidden="true">
-			{% include "../partials/handle.twig" with {
-				class: "mobile_sidebar",
-				modifier: "inline",
-				label: "Close"
-			} %}
+		<div class="js-mobile-sidebar mobile_sidebar" id="mobile_sidebar" tabindex="-1">
+			<button class="js-swap js-mobile-sidebar-close mobile_sidebar_close" data-swap-target=".mobile_sidebar" data-swap-linked="mobile_sidebar">
+				<span class="mobile_sidebar_close_label">Close</span>
+				<span class="mobile_sidebar_close_icon">{{site.icon("close")}}</span>
+			</button>
 
 			{% include "../partials/search.twig" with {
 				modifier: "sm",
