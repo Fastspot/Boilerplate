@@ -2,7 +2,15 @@
 	Secondary Navigation Common
 ============================================================================= */
 
-.secondary_nav {}
+.secondary_nav {
+
+	&.secondary_nav_lg {
+
+		@media #{$max_lg} {
+			display: none;
+		}
+	}
+}
 
 .secondary_nav_header {}
 

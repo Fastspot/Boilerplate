@@ -3,7 +3,13 @@
 ============================================================================= */
 
 .main_nav {
-	@include mq_switch;
+
+	&.main_nav_lg {
+
+		@media #{$max_lg} {
+			display: none;
+		}
+	}
 }
 
 
@@ -41,10 +47,6 @@
 				opacity: 1;
 				visibility: visible;
 			}
-		}
-
-		.main_nav_children {
-			display: block;
 		}
 	}
 }
@@ -108,6 +110,7 @@
 	.main_nav_lg & {
 		position: absolute;
 
+		display: block;
 		opacity: 0;
 		transition:
 			opacity $base_speed,
