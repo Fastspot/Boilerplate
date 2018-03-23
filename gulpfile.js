@@ -614,7 +614,6 @@ gulp.task('clean', function(done) {
 gulp.task('browser-sync', function(done) {
 
 	browserSync.init({
-		open: false,
 		logPrefix: packageJSON.vars.name,
 		ui: false,
 		server: './',
