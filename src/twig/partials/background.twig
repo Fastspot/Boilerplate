@@ -1,5 +1,6 @@
 {#
 	{% include par ~ "background.twig" with {
+		customClass: "js-class",
 		class: "flex_callout",
 		image: image,
 		lazy: true,
@@ -14,6 +15,6 @@
 #}
 
 {% set reference = reference|default(true) %}
-<div class="{% if jsClass %}{{jsClass}}{% else %}js-background{% endif %} {{class}}_background" {% if reference %}data-reference="{% for key, source in sources %}{{key}}: {{source}}{% if not loop.last %}, {% endif %}{% endfor %}"{% endif %} data-background-options='{"source": {
+<div class="{% if customClass %}{{customClass}}{% else %}js-background{% endif %} {{class}}_background" {% if reference %}data-reference="{% for key, source in sources %}{{key}}: {{source}}{% if not loop.last %}, {% endif %}{% endfor %}"{% endif %} data-background-options='{"source": {
 {% for key, source in sources %}"{{key}}": "{% if source == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{vars.images}}/{{source}}/{{image}}{% endif %}"{% if not loop.last %}, {% endif %}{% endfor %}
 }{% if lazy %}, "lazy": true{% endif %}{% if lazyEdge %}, "lazyEdge": "{{lazyEdge}}"{% endif %}}'></div>

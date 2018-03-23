@@ -11,7 +11,7 @@
 	</a>
 	<nav class="pagination_nav">
 		{% for i in 1..pages %}
-			<a href="#{{i}}" class="pagination_link{% if loop.first %} active{% endif %}">{{i}}</a>
+		<a href="#{{i}}" class="pagination_link{% if loop.first %} active{% endif %}">{{i}}</a>
 		{% endfor %}
 		<span class="pagination_link pagination_more">…</span>
 	</nav>

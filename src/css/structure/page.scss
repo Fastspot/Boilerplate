@@ -2,9 +2,21 @@
 	Page
 ============================================================================= */
 
-.page_wrapper {}
+.page_wrapper {
+	width: 100%;
+	min-height: 100vh;
 
-.page {}
+	display: flex;
+	flex-direction: column;
+
+	.fs-mobile-lock & {
+		pointer-events: none;
+	}
+}
+
+.page {
+	flex-grow: 1;
+}
 
 .page_feature {}
 
@@ -28,6 +40,13 @@
 
 	@media #{$min_lg} {
 		float: left;
+	}
+
+	.layout_full & {
+
+		@media #{$min_lg} {
+			float: none;
+		}
 	}
 }
 

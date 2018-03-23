@@ -17,14 +17,14 @@
 
 <section class="flex_callout{% if theme %} theme_{{theme}}{% endif %}">
 	{% if background %}
-		{% include "../../partials/background.twig" with {
-			class: "flex_callout",
-			sources: {
-				"0px": img.wide.med,
-				"980px": img.wide.lrg
-			},
-			image: background
-		} %}
+	{% include "../../partials/background.twig" with {
+		class: "flex_callout",
+		sources: {
+			"0px": img.wide.med,
+			"980px": img.wide.lrg
+		},
+		image: background
+	} %}
 	{% endif %}
 	<div class="fs-row">
 		<div class="fs-cell">
@@ -39,11 +39,11 @@
 					</div>
 				</div>
 				{% if links %}
-					<footer class="flex_callout_links">
-						{% for link in links %}
-							{{site.button("flex_callout", link.name, link.href)}}
-						{% endfor %}
-					</footer>
+				<footer class="flex_callout_links">
+					{% for link in links %}
+					{{site.button("flex_callout", link.name, link.href)}}
+					{% endfor %}
+				</footer>
 				{% endif %}
 			</div>
 		</div>

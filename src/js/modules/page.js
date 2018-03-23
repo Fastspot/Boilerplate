@@ -2,8 +2,6 @@
 	Page
 -------------------------------------------*/
 
-/* global picturefill */
-
 Site.modules.Page = (function($, Site) {
 
 	var prev = "caret_left";
@@ -24,7 +22,7 @@ Site.modules.Page = (function($, Site) {
 			next: "<span class='fs-lightbox-icon-next'><svg class='symbol symbol_" + next + "'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#" + next + "'></use></svg></span>"
 		}
 	};
-	
+
 	function init() {
 		$(".js-background").on("loaded.background", function() {
 			$(this).addClass("fs-background-loaded");
@@ -36,28 +34,22 @@ Site.modules.Page = (function($, Site) {
 		$(".js-lightbox").lightbox(lightboxOptions);
 		$(".js-swap").swap();
 
+		$(window).on("load", onPageLoad);
 
-		// Bind mobile sidebar handle behavior
+		$(document).on("click", onDocumentClick);
 
-		$(".mobile_sidebar_handle").on("click", function() {
-			$("body").toggleClass("fs-navigation-lock fs-mobile-lock");
-		});
+		$(".js-mobile-sidebar-handle").on("activate.swap", onSidebarSwapActivate).on("deactivate.swap", onSidebarSwapDeactivate);
+		$(".js-main-nav-toggle").on("activate.swap", onMainSwapActivate).on("deactivate.swap", onMainSwapDeactivate);
+		$(".js-sub-nav-handle")
+		.on("activate.swap", onSubSwapActivate)
+		.on("deactivate.swap", onSubSwapDeactivate)
+		.on("enable.swap", onSubSwapEnable)
+		.on("disable.swap", onSubSwapDisable);
 
-
-		// Change handle text
-
-		$(".sub_nav_handle").on("click", function() {
-			if ($(this).hasClass("fs-swap-active")) {
-				$(this).find(".sub_nav_handle_label").text("Close");
-			} else {
-				$(this).find(".sub_nav_handle_label").text($(this).data("swap-title"));
-			}
-		});
-
-		picturefill();
 		bindGenericUI();
 		responsiveVideo();
 		tableOverflow();
+		ariaHide($(".js-mobile-sidebar, .js-main-nav-children, .js-sub-nav-list"));
 
 		Site.onScroll.push(scroll);
 		Site.onResize.push(resize);
@@ -111,13 +103,31 @@ Site.modules.Page = (function($, Site) {
 	}
 
 	function bindGenericUI() {
-		$(".js-main-nav").find("a")
+
+		$(".js-main-nav-lg").find("a")
 			.focus(function() {
-				$(this).closest(".main_nav_item").addClass("focused");
+				var $item = $(this).closest(".main_nav_item");
+
+				$item.addClass("focused").attr("aria-expanded", "true");
+				ariaShow($item.find(".js-main-nav-children"));
 			})
 			.blur(function() {
-				$(this).closest(".main_nav_item").removeClass("focused");
-			});
+				var $item = $(this).closest(".main_nav_item");
+
+				$item.removeClass("focused").attr("aria-expanded", "false");
+				ariaHide($item.find(".js-main-nav-children"));
+			})
+			.hover(function() {
+				var $item = $(this).closest(".main_nav_item");
+
+				$item.attr("aria-expanded", "true");
+				ariaShow($item.find(".js-main-nav-children"));
+			}, function() {
+				var $item = $(this).closest(".main_nav_item");
+
+				$item.attr("aria-expanded", "false");
+				ariaHide($item.find(".js-main-nav-children"));
+		});
 
 		$(".js-toggle")
 			.not(".js-bound")
@@ -128,6 +138,9 @@ Site.modules.Page = (function($, Site) {
 			.not(".js-bound")
 			.on("click", onScrollTo)
 			.addClass("js-bound");
+
+		$(".typography table")
+			.wrap('<div class="table_wrapper"><div class="table_wrapper_inner"></div></div>');
 	}
 
 	function responsiveVideo() {
@@ -137,12 +150,8 @@ Site.modules.Page = (function($, Site) {
 	}
 
 	function tableOverflow() {
-		$(".typography table")
-			.wrap('<div class="table_wrapper"><div class="table_wrapper_inner"></div></div>');
-
 		$(".table_wrapper").each(function() {
-			$(this).removeClass("table_wrapper_overflow");
-			if ($(this).prop("scrollWidth") > $(this).width() + 1) {
+			if ($(this).find("table").outerWidth() > $(this).width() + 1) {
 				$(this).addClass("table_wrapper_overflow");
 			} else {
 				$(this).removeClass("table_wrapper_overflow");
@@ -150,11 +159,80 @@ Site.modules.Page = (function($, Site) {
 		});
 	}
 
+	function onSidebarSwapActivate() {
+		$("body").addClass("fs-navigation-lock fs-mobile-lock");
+		ariaShow($(".js-mobile-sidebar"));
+		$(".js-mobile-sidebar").focus();
+	}
+
+	function onSidebarSwapDeactivate() {
+		$("body").removeClass("fs-navigation-lock fs-mobile-lock");
+		ariaHide($(".js-mobile-sidebar"));
+		$(".js-mobile-sidebar-handle").focus();
+	}
+
+	function onDocumentClick() {
+		if ($("body").hasClass("fs-mobile-lock")) {
+			if (!$(event.target).closest(".js-mobile-sidebar").length) {
+				$(".js-mobile-sidebar-handle").swap("deactivate");
+			}
+		}
+	}
+
+	function onMainSwapActivate() {
+		var $item = $(this).closest(".main_nav_item");
+
+		$item.attr("aria-expanded", "true");
+		ariaShow($item.find(".js-main-nav-children"));
+	}
+
+	function onMainSwapDeactivate() {
+		var $item = $(this).closest(".main_nav_item");
+
+		$item.attr("aria-expanded", "false");
+		ariaHide($item.find(".js-main-nav-children"));
+	}
+
+	function onSubSwapActivate() {
+		$(this).attr("aria-expanded", "true")
+		.find(".sub_nav_handle_label").text("Close");
+		ariaShow($(".js-sub-nav-list"));
+	}
+
+	function onSubSwapDeactivate() {
+		$(this).attr("aria-expanded", "false")
+		.find(".sub_nav_handle_label").text($(this).data("swap-title"));
+		ariaHide($(".js-sub-nav-list"));
+	}
+
+	function onSubSwapEnable() {
+		ariaHide($(".js-sub-nav-list"));
+	}
+
+	function onSubSwapDisable() {
+		ariaShow($(".js-sub-nav-list"));
+	}
+
+	function onPageLoad() {
+		$("body").removeClass("preload");
+		$(window).trigger("resize");
+	}
+
+	function ariaHide($element) {
+		$element.attr("aria-hidden", "true").attr("hidden", "");
+	}
+
+	function ariaShow($element) {
+		$element.attr("aria-hidden", "false").removeAttr("hidden");
+	}
 
 	// Hook Into Main init Routine
 
 	Site.onInit.push(init);
 
-	return {};
+	return {
+		ariaHide:ariaHide,
+		ariaShow:ariaShow
+	};
 
 })(jQuery, Site);

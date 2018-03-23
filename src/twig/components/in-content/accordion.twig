@@ -22,21 +22,21 @@
 
 <div class="accordion{% if theme %} theme_{{theme}}{% endif %}">
 	{% if title %}
-		<header class="accordion_header">
-			<h2 class="accordion_title">{{title}}</h2>
-		</header>
+	<header class="accordion_header">
+		<h2 class="accordion_title">{{title}}</h2>
+	</header>
 	{% endif %}
 	<div class="accordion_body">
 		{% for item in items %}
-			<div class="js-accordion-item-{{loop.index}} accordion_item">
-				<h3 class="js-swap accordion_item_title" data-swap-target=".js-accordion-item-{{loop.index}}"{% if grouped == "" or grouped == null or grouped == true %} data-swap-group="accordion_group"{% endif %}{% if collapse == false %} data-swap-options='{"collapse": false}'{% endif %}{% if item.active == true %} data-swap-active="true"{% endif %}>
-					{{item.label}}
-					<span class="accordion_item_icon">{{site.icon("")}}</span>
-				</h3>
-				<div class="accordion_item_description">
-					{{item.description}}
-				</div>
+		<div class="js-accordion-item-{{loop.index}} accordion_item">
+			<h3 class="js-swap accordion_item_title" data-swap-target=".js-accordion-item-{{loop.index}}"{% if grouped == "" or grouped == null or grouped == true %} data-swap-group="accordion_group"{% endif %}{% if collapse == false %} data-swap-options='{"collapse": false}'{% endif %}{% if item.active == true %} data-swap-active="true"{% endif %}>
+				{{item.label}}
+				<span class="accordion_item_icon">{{site.icon("")}}</span>
+			</h3>
+			<div class="accordion_item_description">
+				{{item.description}}
 			</div>
+		</div>
 		{% endfor %}
 	</div>
 </div>

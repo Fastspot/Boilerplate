@@ -3,3 +3,6 @@ node_cache/
 node_modules/
 package-lock.json
 trello.json
+cache/
+custom/environment.php
+site/files/

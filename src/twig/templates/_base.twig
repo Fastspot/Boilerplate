@@ -29,40 +29,37 @@
 		{% include "../partials/favicons.html" %}
 
 		<!-- G+ & Facebook -->
-		<meta property="og:title" content="{{vars.name}}">
-		<meta property="og:url" content="//{{vars.domain}}/">
+		<meta property="og:title" content="{% if page.title %}{{page.title}}{% else %}{{vars.name}}{% endif %}">
 		<meta property="og:type" content="website">
-		<meta property="og:image" content="//{{vars.domain}}/images/social-rectangle.png">
-		<meta property="og:description" content="{{vars.description}}">
+		<meta property="og:image" content="{% if page.metaImage %}{{page.metaImage}}{% else %}//{{vars.domain}}/images/social-sq.png{% endif %}">
+		<meta property="og:image:width" content="{% if page.metaImageWidth %}{{page.metaImageWidth}}{% else %}800{% endif %}">
+		<meta property="og:image:height" content="{% if page.metaImageHeight %}{{page.metaImageHeight}}{% else %}800{% endif %}">
+		<meta property="og:description" content="{% if page.intro %}{{page.intro}}{% else %}{{vars.description}}{% endif %}">
 		<meta property="og:site_name" content="{{vars.name}}">
 
 		{% if vars.twitter != "TwitterName" %}
-			<!-- Twitter -->
-			<meta name="twitter:card" content="summary">
-			<meta name="twitter:site" content="@{{vars.twitter}}">
-			<meta name="twitter:creator" content="@{{vars.twitter}}">
-			<meta name="twitter:url" content="//twitter.com/{{vars.twitter}}">
-			<meta name="twitter:title" content="{{vars.name}}">
-			<meta name="twitter:description" content="">
-			<meta name="twitter:image" content="//{{vars.domain}}/images/social-rectangle.png">
+		<!-- Twitter -->
+		<meta name="twitter:card" content="{% if page.metaCard %}{{page.metaCard}}{% else %}summary{% endif %}">
+		<meta name="twitter:site" content="@{{vars.twitter}}">
+		<meta name="twitter:creator" content="@{{vars.twitter}}">
+		<meta name="twitter:url" content="//twitter.com/{{vars.twitter}}">
+		<meta name="twitter:title" content="{% if page.title %}{{page.title}}{% else %}{{vars.name}}{% endif %}">
+		<meta name="twitter:description" content="{% if page.intro %}{{page.intro}}{% else %}{{vars.description}}{% endif %}">
+		<meta name="twitter:image" content="{% if page.metaImage %}{{page.metaImage}}{% else %}//{{vars.domain}}/images/social-sq.png{% endif %}">
 		{% endif %}
 
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
 		{% if page.stylesheets %}
-			{% for styles in page.stylesheets %}
-				<link rel="stylesheet" href="{{styles}}">
-			{% endfor %}
+		{% for styles in page.stylesheets %}
+		<link rel="stylesheet" href="{{styles}}">
+		{% endfor %}
 		{% endif %}
 
 		<link rel="stylesheet" href="../../css/site.css">
 	</head>
 
-	<body class="fs-grid layout_{{page.layout}}{% if page.theme %} theme_{{page.theme}}{% endif %}">
-
-		<figure style="display: none;">
-			{% include '../../../images/icons.svg' %}
-		</figure>
+	<body class="preload fs-grid layout_{{page.layout}}{% if page.theme %} theme_{{page.theme}}{% endif %}">
 
 		{% block activePage %}
 			{% set activePage = 0 %}
@@ -153,7 +150,7 @@
 										{% include "../partials/search.twig" with {
 											modifier: "lg",
 											placeholder: "Search",
-											buttonText: "submit"
+											buttonText: "Submit Search Query"
 										} %}
 									</div>
 								</div>
@@ -177,33 +174,33 @@
 				<div class="page_content">
 					<div class="fs-row">
 						{% if page.layout == "default" or page.layout == "style-guide" %}
-							<!-- Sub Nav -->
-							<div class="fs-cell-right fs-lg-4 aside_wrapper subnav_wrapper">
-								{% include "../partials/navigation/sub.twig" with {
-									title: sectionTitle,
-									links: subNavAlias
-								} %}
-							</div>
-							<!-- END: Sub Nav -->
+						<!-- Sub Nav -->
+						<div class="fs-cell-right fs-lg-4 aside_wrapper subnav_wrapper">
+							{% include "../partials/navigation/sub.twig" with {
+								title: sectionTitle,
+								links: subNavAlias
+							} %}
+						</div>
+						<!-- END: Sub Nav -->
 						{% endif %}
 
 						<!-- Main Content -->
 						<div class="fs-cell{% if page.layout == "default" or page.layout == "style-guide" %} fs-lg-8{% elseif page.layout == "full" %} fs-lg-10 fs-all-justify-center{% endif %} content_wrapper">
 							<main class="main_content" id="main_content" itemprop="mainContentOfPage">
 								{% if page.layout != "home" %}
-									<!-- Page Header -->
-									{% block page_header %}
-										<div class="page_header">
-											{% include "../partials/navigation/breadcrumb.twig" with {
-												links: breadcrumbNav
-											} %}
+								<!-- Page Header -->
+								{% block page_header %}
+								<div class="page_header">
+									{% include "../partials/navigation/breadcrumb.twig" with {
+										links: breadcrumbNav
+									} %}
 
-											{% if page.title %}
-												<h1 class="page_title">{{page.title}}</h1>
-											{% endif %}
-										</div>
-									{% endblock %}
-									<!-- END: Page Header -->
+									{% if page.title %}
+									<h1 class="page_title">{{page.title}}</h1>
+									{% endif %}
+								</div>
+								{% endblock %}
+								<!-- END: Page Header -->
 								{% endif %}
 
 								<!-- WYSIWYG - wrap all WYSIWYG text areas in `.typography` -->
@@ -224,14 +221,14 @@
 						<!-- END: Main Content -->
 
 						{% if page.layout == "default" or page.layout == "style-guide" %}
-							<!-- Sidebar Callouts -->
-							<div class="fs-cell-right fs-lg-4 aside_wrapper sidebar_wrapper">
-								<div class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
-									{% block sidebar %}
-									{% endblock %}
-								</div>
+						<!-- Sidebar Callouts -->
+						<div class="fs-cell-right fs-lg-4 aside_wrapper sidebar_wrapper">
+							<div class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+								{% block sidebar %}
+								{% endblock %}
 							</div>
-							<!-- END: Sidebar Callouts -->
+						</div>
+						<!-- END: Sidebar Callouts -->
 						{% endif %}
 					</div>
 
@@ -247,57 +244,56 @@
 			<!-- END: Page -->
 
 			{% if page.layout != "style-guide" %}
-				<!-- Footer -->
-				<footer class="footer" id="footer" itemscope itemtype="http://schema.org/WPFooter">
-					<div class="footer_ribbon">
-						<div class="fs-row">
-							<div class="fs-cell">
-								<div class="footer_ribbon_inner">
-									{% include "../partials/logo.twig" with {
-										modifier: "footer",
-										symbol: "logo"
-									} %}
+			<!-- Footer -->
+			<footer class="footer" id="footer" itemscope itemtype="http://schema.org/WPFooter">
+				<div class="footer_ribbon">
+					<div class="fs-row">
+						<div class="fs-cell">
+							<div class="footer_ribbon_inner">
+								{% include "../partials/logo.twig" with {
+									modifier: "footer",
+									symbol: "logo"
+								} %}
 
-									{% include "../partials/address.twig" with {
-										name: "Fastspot",
-										street: "2980 Falls Road",
-										city: "Baltimore",
-										state: "MD",
-										zip: "21211",
-										tel: "202-432-1200"
-									} %}
+								{% include "../partials/address.twig" with {
+									name: "Fastspot",
+									street: "2980 Falls Road",
+									city: "Baltimore",
+									state: "MD",
+									zip: "21211",
+									tel: "202-432-1200"
+								} %}
 
-									{% include "../partials/navigation/basic.twig" with {
-										class: "footer_nav",
-										title: "Footer Navigation",
-										links: footerNavAlias
-									} %}
+								{% include "../partials/navigation/basic.twig" with {
+									class: "footer_nav",
+									title: "Footer Navigation",
+									links: footerNavAlias
+								} %}
 
-									{% include "../partials/navigation/social.twig" with {
-										title: "Social Navigation",
-										links: socialNavAlias
-									} %}
-								</div>
+								{% include "../partials/navigation/social.twig" with {
+									title: "Social Navigation",
+									links: socialNavAlias
+								} %}
 							</div>
 						</div>
 					</div>
-				</footer>
-				<!-- END: Footer -->
+				</div>
+			</footer>
+			<!-- END: Footer -->
 			{% endif %}
 		</div>
 		<!-- END: page_wrapper -->
 
-		<div class="mobile_sidebar" id="mobile_sidebar" aria-hidden="true">
-			{% include "../partials/handle.twig" with {
-				class: "mobile_sidebar",
-				modifier: "inline",
-				label: "Close"
-			} %}
+		<div class="js-mobile-sidebar mobile_sidebar" id="mobile_sidebar" tabindex="-1">
+			<button class="js-swap js-mobile-sidebar-close mobile_sidebar_close" data-swap-target=".mobile_sidebar" data-swap-linked="mobile_sidebar">
+				<span class="mobile_sidebar_close_label">Close</span>
+				<span class="mobile_sidebar_close_icon">{{site.icon("close")}}</span>
+			</button>
 
 			{% include "../partials/search.twig" with {
 				modifier: "sm",
 				placeholder: "Search",
-				buttonText: "submit"
+				buttonText: "Submit Search Query"
 			} %}
 
 			{% include "../partials/navigation/main.twig" with {
@@ -318,16 +314,16 @@
 		<script src="../../js/site.js"></script>
 
 		{% if page.scripts %}
-			{% for script in page.scripts %}
-				{{script}}
-			{% endfor %}
+		{% for script in page.scripts %}
+		{{script}}
+		{% endfor %}
 		{% endif %}
 
 		{% if grid %}
-			<!-- Grid Bookmarklet -->
-			<script>
-				(function(){if(typeof FSGridBookmarklet==='undefined'){document.body.appendChild(document.createElement('script')).src='//formstone.it/js/bookmarklet/grid.js';}else{FSGridBookmarklet();}} )();
-			</script>
+		<!-- Grid Bookmarklet -->
+		<script>
+			(function(){if(typeof FSGridBookmarklet==='undefined'){document.body.appendChild(document.createElement('script')).src='//formstone.it/js/bookmarklet/grid.js';}else{FSGridBookmarklet();}} )();
+		</script>
 		{% endif %}
 	</body>
 </html>

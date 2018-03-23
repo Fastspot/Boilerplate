@@ -2,11 +2,44 @@
 
 {% block page %}
 	{% set page = {
+		metaCard: "summary",
 		title: "Search",
+		intro: "",
 		layout: "full"
 	} %}
 {% endblock %}
 
-{% block full_width_callouts %}
-	{% include "../partials/google-cse.twig" %}
+{% block in_content_callouts %}
+
+	{% include "../partials/google-search.twig" with {
+		results: [
+			{
+				title: "<strong>The Beatles</strong>",
+				description: "Detailed history with information on their music, movies, news, and latest projects. Images, related links, and a showcase for their albums.ails",
+				url: "www.thebeatles.com/"
+			},
+			{
+				title: "<strong>The Beatles</strong> - Wikipedia",
+				description: "The Beatles were an English rock band, formed in Liverpool in 1960. With members John Lennon, Paul McCartney, George Harrison and Ringo Starr, they...",
+				url: "https://en.wikipedia.org/wiki/The_Beatles"
+			},
+			{
+				title: "(US) <strong>The Beatles</strong> – Eight Days A Week",
+				description: "The Beatles were an English rock band, formed in Liverpool in 1960. With members John Lennon, Paul McCartney, George Harrison and Ringo Starr, they...",
+				url: "thebeatleseightdaysaweek.com/"
+			},
+			{
+				title: "<strong>The Beatles</strong> | Biography, Albums, Streaming Links | AllMusic",
+				description: "Find The Beatles bio, music, credits, awards, & streaming links on AllMusic - The most popular and influential rock act of all…",
+				url: "www.allmusic.com/artist/the-beatles-mn0000754032"
+			},
+			{
+				title: "<strong>The Beatles</strong> | Rolling Stone",
+				description: "'Blindman': The Story Behind a Drunk Beatle's Spaghetti Western. 'Blindman': The...Watch the Rolling Stones Cover Beatles' 'Come Together' at Desert Trip.",
+				url: "www.rollingstone.com/music/artists/the-beatles"
+			}
+		],
+		pagination: true
+	} %}
+
 {% endblock %}

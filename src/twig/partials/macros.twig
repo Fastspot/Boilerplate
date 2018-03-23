@@ -33,136 +33,136 @@
 
 
 {% macro image(class, dimension, image, reference) %}
-	{% set reference = reference|default(true) %}
-	<img class="{{class}}_image" src="//images.fastspot.com/{{vars.namespace}}/{{dimension}}/{{image}}" alt="" {% if reference %}data-reference="{{dimension}}"{% endif %}>
+{% set reference = reference|default(true) %}
+<img class="{{class}}_image" src="//images.fastspot.com/{{vars.namespace}}/{{dimension}}/{{image}}" alt="" {% if reference %}data-reference="{{dimension}}"{% endif %}>
 {% endmacro %}
 
 
 {% macro icon(name) %}
-	<svg class="symbol symbol_{{name}}">
-		<use xlink:href="#{{name}}"></use>
-	</svg>
+<svg class="symbol symbol_{{name}}">
+	<use xlink:href="../../../images/icons.svg#{{name}}"></use>
+</svg>
 {% endmacro %}
 
 
 {% macro button(class, label, href, symbol) %}
-	<a class="{{class}}_link{% if symbol %} theme_{{symbol}}{% endif %}" href="{{href}}">
-		<span class="{{class}}_link_label">{{label}}</span>
-		{% if symbol %}
-			<span class="{{class}}_link_icon" aria-hidden="true">
-				<svg class="symbol symbol_{{symbol}}">
-					<use xlink:href="#{{symbol}}"></use>
-				</svg>
-			</span>
-		{% endif %}
-	</a>
+<a class="{{class}}_link{% if symbol %} theme_{{symbol}}{% endif %}" href="{{href}}">
+	<span class="{{class}}_link_label">{{label}}</span>
+	{% if symbol %}
+	<span class="{{class}}_link_icon" aria-hidden="true">
+		<svg class="symbol symbol_{{symbol}}">
+			<use xlink:href="../../../images/icons.svg#{{symbol}}"></use>
+		</svg>
+	</span>
+	{% endif %}
+</a>
 {% endmacro %}
 
 
 {% macro table(data) %}
-	<table class="{{data.class}}">
-		<thead>
-			<tr>
-				{% for header in data.headers %}
-					<th>{{header}}</td>
-				{% endfor %}
-			</tr>
-		</thead>
-		<tbody>
-			{% for row in data.rows %}
-				<tr>
-					{% for item in row %}
-						<td>{{item}}</td>
-					{% endfor %}
-				</tr>
+<table class="{{data.class}}">
+	<thead>
+		<tr>
+			{% for header in data.headers %}
+			<th>{{header}}</td>
 			{% endfor %}
-		</tbody>
-	</table>
+		</tr>
+	</thead>
+	<tbody>
+		{% for row in data.rows %}
+		<tr>
+			{% for item in row %}
+			<td>{{item}}</td>
+			{% endfor %}
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
 {% endmacro %}
 
 
 {% macro dropdown(label, items, class) %}
-	{% set id = label|lower|replace({" ": "_"}) %}
-	<div class="fs-dropdown-wrapper{% if class %} {{class}}_dropdown_wrapper{% endif %}">
-		{% if label %}
-			<label class="dropdown_label{% if class %} {{class}}_dropdown_label{% endif %}" for="{{id}}_dropdown">{{label}}</label>
-		{% endif %}
-		<select class="js-dropdown dropdown_field{% if class %} {{class}}_dropdown_select{% endif %}" id="{{id}}_dropdown" name="{{id}}_dropdown">
-			{% for item in items %}
-				<option value="{{item}}">{{item}}</option>
-			{% endfor %}
-		</select>
-	</div>
+{% set id = label|lower|replace({" ": "_"}) %}
+<div class="fs-dropdown-wrapper{% if class %} {{class}}_dropdown_wrapper{% endif %}">
+	{% if label %}
+	<label class="dropdown_label{% if class %} {{class}}_dropdown_label{% endif %}" for="{{id}}_dropdown">{{label}}</label>
+	{% endif %}
+	<select class="js-dropdown dropdown_field{% if class %} {{class}}_dropdown_select{% endif %}" id="{{id}}_dropdown" name="{{id}}_dropdown">
+		{% for item in items %}
+		<option value="{{item}}">{{item}}</option>
+		{% endfor %}
+	</select>
+</div>
 {% endmacro %}
 
 
 {% macro input(type, label, class) %}
-	{% set id = label|lower|replace({
-		" ": "_"
-	}) %}
-	<div class="input_wrapper{% if class %} {{class}}_input_wrapper{% endif %}">
-		<label class="input_label{% if class %} {{class}}_input_label{% endif %}">{{label}}</label>
-		<input class="input_field{% if class %} {{class}}_input_field{% endif %}" type="{{type}}" id="{{id}}" {% if type == "text" %} placeholder="{{label}}"{% endif %} />
-	</div>
+{% set id = label|lower|replace({
+	" ": "_"
+}) %}
+<div class="input_wrapper{% if class %} {{class}}_input_wrapper{% endif %}">
+	<label class="input_label{% if class %} {{class}}_input_label{% endif %}">{{label}}</label>
+	<input class="input_field{% if class %} {{class}}_input_field{% endif %}" type="{{type}}" id="{{id}}" {% if type == "text" %} placeholder="{{label}}"{% endif %} />
+</div>
 {% endmacro %}
 
 
 {% macro textarea(label, class) %}
-	{% set id = label|lower|replace({
-		" ": "_"
-	}) %}
-	<div class="textarea_wrapper{% if class %} {{class}}_textarea_wrapper{% endif %}">
-		<label class="textarea_label{% if class %} {{class}}_textarea_label{% endif %}" for="{{id}}">{{label}}</label>
-		<textarea class="textarea_field{% if class %} {{class}}_textarea_field{% endif %}" id="{{id}}"></textarea>
-	</div>
+{% set id = label|lower|replace({
+	" ": "_"
+}) %}
+<div class="textarea_wrapper{% if class %} {{class}}_textarea_wrapper{% endif %}">
+	<label class="textarea_label{% if class %} {{class}}_textarea_label{% endif %}" for="{{id}}">{{label}}</label>
+	<textarea class="textarea_field{% if class %} {{class}}_textarea_field{% endif %}" id="{{id}}"></textarea>
+</div>
 {% endmacro %}
 
 
 {% macro choices(type, items, class) %}
-	<div class="choices_wrapper{% if class %} {{class}}_choices_wrapper{% endif %}">
-		{% for item in items %}
-			{% set id = item|lower|replace({
-				" ": "_"
-			}) %}
-		<label class="choices_label{% if class %} {{class}}_choices_label{% endif %}" for="{{id}}">
-			<input class="choices_field{% if class %} {{class}}_choices_field{% endif %}" type="{{type}}" name="{{id}}" id="{{id}}" value="{{item}}">
-			<span class="choices_name{% if class %} {{class}}_choices_name{% endif %}">{{item}}</span>
-			</label>
-		{% endfor %}
-	</div>
+<div class="choices_wrapper{% if class %} {{class}}_choices_wrapper{% endif %}">
+	{% for item in items %}
+		{% set id = item|lower|replace({
+			" ": "_"
+		}) %}
+	<label class="choices_label{% if class %} {{class}}_choices_label{% endif %}" for="{{id}}">
+		<input class="choices_field{% if class %} {{class}}_choices_field{% endif %}" type="{{type}}" name="{{id}}" id="{{id}}" value="{{item}}">
+		<span class="choices_name{% if class %} {{class}}_choices_name{% endif %}">{{item}}</span>
+		</label>
+	{% endfor %}
+</div>
 {% endmacro %}
 
 
 {% macro title(title, type) %}
-	<div class="typography">
-		{% if type == "full" %}
-		<div class="fs-row">
-			<div class="fs-cell">
-		{% endif %}
-				<h4>{{title}}</h4>
-		{% if type == "full" %}
-			</div>
+<div class="typography">
+	{% if type == "full" %}
+	<div class="fs-row">
+		<div class="fs-cell">
+	{% endif %}
+			<h4>{{title}}</h4>
+	{% if type == "full" %}
 		</div>
-		{% endif %}
 	</div>
+	{% endif %}
+</div>
 {% endmacro %}
 
 
 {% macro content(copy) %}
-	<div class="wysiwyg_block">
-		<div class="typography">
-			{{copy}}
-		</div>
+<div class="wysiwyg_block">
+	<div class="typography">
+		{{copy}}
 	</div>
+</div>
 {% endmacro %}
 
 
 {% macro anchor(label) %}
-	<h2 class="guidebook_component_title" id="{{label|replace({
-		" ": "-",
-		"&": "and",
-		"/": "-"
-	})|lower}}">
-		<span class="guidebook_component_title_label">{{label}}</span>
-	</h2>
+<h2 class="guidebook_component_title" id="{{label|replace({
+	" ": "-",
+	"&": "and",
+	"/": "-"
+})|lower}}">
+	<span class="guidebook_component_title_label">{{label}}</span>
+</h2>
 {% endmacro %}

@@ -1,11 +1,22 @@
+{#
+	Search markup as defined by Google structured data
+	https://developers.google.com/search/docs/data-types/sitelinks-searchbox
+
+	{% include "../partials/search.twig" with {
+		modifier: "lg",
+		placeholder: "Search",
+		buttonText: "submit"
+	} %}
+#}
+
 <div class="site_search{% if modifier %} site_search_{{modifier}}{% endif %}" id="site_search{% if modifier %}_{{modifier}}{% endif %}" itemscope itemtype="http://schema.org/WebSite" role="search">
-	<meta itemprop="url" content="//{{vars.domain}}">
+	<meta itemprop="url" content="http://{{vars.domain}}">
 	<form class="site_search_form" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
-		<meta itemprop="target" content="//{{vars.domain}}/search?q={search_term_string}">
+		<meta itemprop="target" content="http://{{vars.domain}}/static/templates/page-search.html?q={search_term_string{% if modifier %}_{{modifier}}{% endif %}}">
 		<label class="site_search_label" for="search_term_string{% if modifier %}_{{modifier}}{% endif %}">Search</label>
 		<input aria-live="polite" class="site_search_input" itemprop="query-input" type="search" id="search_term_string{% if modifier %}_{{modifier}}{% endif %}" name="search_term_string{% if modifier %}_{{modifier}}{% endif %}" placeholder="{% if placeholder %}{{placeholder}}{% else %}Search{% endif %}">
 		<button class="site_search_button" type="submit" title="submit" aria-label="submit">
-			<span class="site_search_button_label">{% if buttonText %}{{buttonText}}{% else %}Submit{% endif %}</span>
+			<span class="site_search_button_label">{% if buttonText %}{{buttonText}}{% else %}Submit Search Query{% endif %}</span>
 			<span class="site_search_button_icon">{{site.icon("search")}}</span>
 		</button>
 	</form>

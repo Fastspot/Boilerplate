@@ -222,10 +222,10 @@ gulp.task('components', function(done) {
 					'{% block page %}' +
 						'{% set page = {' +
 							'title: "' + folder + '",' +
-							'layout: "style-guide"' + 
-						'} %}' + 
+							'layout: "style-guide"' +
+						'} %}' +
 					'{% endblock %}';
-				
+
 				if (folder === 'feature') {
 					result += '{% block page_feature %}';
 				} else if (folder === 'full-width') {

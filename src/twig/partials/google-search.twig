@@ -1,0 +1,60 @@
+{#
+	{% include "../partials/google-search.twig" with {
+		results: [
+			{
+				title: "<strong>The Beatles</strong>",
+				description: "Detailed history with information on their music, movies, news, and latest projects. Images, related links, and a showcase for their albums.ails",
+				url: "www.thebeatles.com/"
+			},
+			{
+				title: "<strong>The Beatles</strong> - Wikipedia",
+				description: "The Beatles were an English rock band, formed in Liverpool in 1960. With members John Lennon, Paul McCartney, George Harrison and Ringo Starr, they...",
+				url: "https://en.wikipedia.org/wiki/The_Beatles"
+			}
+		],
+		pagination: true
+	} %}
+#}
+
+<!-- Site Map Search -->
+<section class="search_results_block">
+	<div class="search_results_inner">
+		<div class="fs-row">
+			<div class="fs-cell">
+				<div class="search_results_wrapper">
+					{% include "../partials/search.twig" with {
+						modifier: "results",
+						placeholder: "Search",
+						buttonText: "submit"
+					} %}
+					{% if results %}
+					<div class="search_results">
+						<div class="search_results_count">About 73,400,000 results (0.60 seconds)</div>
+						<div class="search_results_list">
+							{% for result in results %}
+							<div class="search_result_item">
+								<h2 class="search_result_title"><a class="search_result_title_link" href="{{result.url}}">{{result.title}}</a></h2>
+								<div class="search_result_url">
+									<a class="search_result_url_link" href="{{result.url}}">{{result.url}}</a>
+								</div>
+								<div class="search_result_description">
+									<p>{{result.description}}</p>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+						{% if pagination %}
+						<div class="search_results_footer">
+							{% include "pagination.twig" with {
+								pages: 10
+							} %}
+						</div>
+						{% endif %}
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- END: Site Map Search -->
