@@ -36,7 +36,7 @@ Site.modules.Page = (function($, Site) {
 
 		$(window).on("load", onPageLoad);
 
-		$(document).on("click", onDocumentClick);
+		$(document).on("click touchstart", onDocumentClick);
 
 		$(".js-mobile-sidebar-handle").on("activate.swap", onSidebarSwapActivate).on("deactivate.swap", onSidebarSwapDeactivate);
 		$(".js-main-nav-toggle").on("activate.swap", onMainSwapActivate).on("deactivate.swap", onMainSwapDeactivate);
