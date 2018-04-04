@@ -47,7 +47,9 @@
 				<a class="linked_list_link" href="{{item.href}}" itemprop="url">
 					<span class="linked_list_link_inner">
 						<span class="linked_list_label" itemprop="name">{{item.name}}</span>
-						<span class="linked_list_icon">{{site.icon(icon)}}</span>
+						{% if item.icon %}
+						<span class="linked_list_icon">{{site.icon(item.icon)}}</span>
+						{% endif %}
 					</span>
 				</a>
 			</li>
