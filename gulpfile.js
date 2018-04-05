@@ -681,7 +681,8 @@ gulp.task('build', gulp.parallel(
 	),
 	gulp.series(
 		'sass',
-		'js'
+		'js',
+		'jshint'
 	),
 	'imagemin'
 ));
