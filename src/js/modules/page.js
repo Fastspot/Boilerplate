@@ -106,27 +106,19 @@ Site.modules.Page = (function($, Site) {
 
 		$(".js-main-nav-lg").find("a")
 			.focus(function() {
-				var $item = $(this).closest(".main_nav_item");
-
-				$item.addClass("focused").attr("aria-expanded", "true");
-				ariaShow($item.find(".js-main-nav-children"));
+				$(this).addClass("focused").attr("aria-expanded", "true");
+				ariaShow($(this).closest(".main_nav_item").find(".js-main-nav-children"));
 			})
 			.blur(function() {
-				var $item = $(this).closest(".main_nav_item");
-
-				$item.removeClass("focused").attr("aria-expanded", "false");
-				ariaHide($item.find(".js-main-nav-children"));
+				$(this).removeClass("focused").attr("aria-expanded", "false");
+				ariaHide($(this).closest(".main_nav_item").find(".js-main-nav-children"));
 			})
 			.hover(function() {
-				var $item = $(this).closest(".main_nav_item");
-
-				$item.attr("aria-expanded", "true");
-				ariaShow($item.find(".js-main-nav-children"));
+				$(this).attr("aria-expanded", "true");
+				ariaShow($(this).closest(".main_nav_item").find(".js-main-nav-children"));
 			}, function() {
-				var $item = $(this).closest(".main_nav_item");
-
-				$item.attr("aria-expanded", "false");
-				ariaHide($item.find(".js-main-nav-children"));
+				$(this).attr("aria-expanded", "false");
+				ariaHide($(this).closest(".main_nav_item").find(".js-main-nav-children"));
 		});
 
 		$(".js-toggle")
@@ -180,17 +172,13 @@ Site.modules.Page = (function($, Site) {
 	}
 
 	function onMainSwapActivate() {
-		var $item = $(this).closest(".main_nav_item");
-
-		$item.attr("aria-expanded", "true");
-		ariaShow($item.find(".js-main-nav-children"));
+		$(this).closest(".main_nav_item").find(".main_nav_link").attr("aria-expanded", "true");
+		ariaShow($(this).closest(".main_nav_item").find(".js-main-nav-children"));
 	}
 
 	function onMainSwapDeactivate() {
-		var $item = $(this).closest(".main_nav_item");
-
-		$item.attr("aria-expanded", "false");
-		ariaHide($item.find(".js-main-nav-children"));
+		$(this).closest(".main_nav_item").find(".main_nav_link").attr("aria-expanded", "false");
+		ariaHide($(this).closest(".main_nav_item").find(".js-main-nav-children"));
 	}
 
 	function onSubSwapActivate() {

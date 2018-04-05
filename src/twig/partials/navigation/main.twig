@@ -12,12 +12,12 @@
 <nav class="js-main-nav {% if modifier %}js-main-nav-{{modifier}} {% endif %}main_nav{% if modifier %} main_nav_{{modifier}}{% endif %}" aria-label="{{title}}" itemscope itemtype="http://schema.org/SiteNavigationElement">
 	<div class="main_nav_list" role="navigation">
 		{% for link in links %}
-		<div class="js-main-nav-item-{{loop.index}} main_nav_item{% if link.children %} main_nav_has_children{% endif %}{% if loop.index == active %} active{% endif %}{% if link.modifier %} {{link.modifier}}{% endif %}" {% if link.children %}aria-haspopup="true" aria-expanded="false" {% endif %} itemprop="url">
+		<div class="js-main-nav-item-{{loop.index}} main_nav_item{% if link.children %} main_nav_has_children{% endif %}{% if loop.index == active %} active{% endif %}{% if link.modifier %} {{link.modifier}}{% endif %}" itemprop="url">
 			<div class="main_nav_item_wrapper">
-				<a class="main_nav_link" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="name">
+				<a class="main_nav_link" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="name" {% if link.children %}aria-haspopup="true" aria-expanded="false" {% endif %}>
 					<span class="main_nav_link_label">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
 				</a>
-				{% if link.children %}
+				{% if (link.children) and (modifier != "lg") %}
 				<button class="js-swap js-main-nav-toggle main_nav_toggle" data-swap-target=".js-main-nav-item-{{loop.index}}" data-swap-group="main_nav">
 					<span class="main_nav_toggle_label">Expand Navigation</span>
 					<span class="main_nav_toggle_icon">{{site.icon("caret_down")}}</span>
