@@ -4,7 +4,8 @@
 		modifier: "lg",
 		title: "Site Navigation",
 		links: mainNavAlias,
-		active: activePage
+		active: activePage,
+		icon: "caret_down"
 	} %}
 
 #}
@@ -17,10 +18,10 @@
 				<a class="main_nav_link" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="url" {% if link.children %}aria-haspopup="true" aria-expanded="false" {% endif %}>
 					<span class="main_nav_link_label" itemprop="name">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
 				</a>
-				{% if (link.children) and (modifier != "lg") %}
+				{% if (link.children) and (icon) %}
 				<button class="js-swap js-main-nav-toggle main_nav_toggle" data-swap-target=".js-main-nav-item-{{loop.index}}" data-swap-group="main_nav">
 					<span class="main_nav_toggle_label">Expand Navigation</span>
-					<span class="main_nav_toggle_icon">{{site.icon("caret_down")}}</span>
+					<span class="main_nav_toggle_icon">{{site.icon(icon)}}</span>
 				</button>
 				{% endif %}
 			</div>
