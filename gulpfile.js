@@ -6,7 +6,7 @@ var gulp = require('gulp'),
 		globby = require('globby'),
 		shell = require('gulp-shell'),
 		packageJSON = require('./package.json'),
-		trelloKeyToken = require('./trello.json'),
+		trelloKeyToken = require('trello-module')
 		browserSync = require('browser-sync').create(),
 		del = require('del'),
 		gulpif = require('gulp-if'),
@@ -44,7 +44,7 @@ var gulp = require('gulp'),
 			]
 		}),
 		Trello = require('node-trello'),
-		trello = new Trello(trelloKeyToken.key, trelloKeyToken.token),
+		trello = new Trello(trelloKeyToken.key(), trelloKeyToken.token()),
 		markdown = require('markdown').markdown;
 
 
