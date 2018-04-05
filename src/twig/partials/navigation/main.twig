@@ -12,10 +12,10 @@
 <nav class="js-main-nav {% if modifier %}js-main-nav-{{modifier}} {% endif %}main_nav{% if modifier %} main_nav_{{modifier}}{% endif %}" aria-label="{{title}}" itemscope itemtype="http://schema.org/SiteNavigationElement">
 	<div class="main_nav_list" role="navigation">
 		{% for link in links %}
-		<div class="js-main-nav-item-{{loop.index}} main_nav_item{% if link.children %} main_nav_has_children{% endif %}{% if loop.index == active %} active{% endif %}{% if link.modifier %} {{link.modifier}}{% endif %}" itemprop="url">
+		<div class="js-main-nav-item-{{loop.index}} main_nav_item{% if link.children %} main_nav_has_children{% endif %}{% if loop.index == active %} active{% endif %}{% if link.modifier %} {{link.modifier}}{% endif %}">
 			<div class="main_nav_item_wrapper">
-				<a class="main_nav_link" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="name" {% if link.children %}aria-haspopup="true" aria-expanded="false" {% endif %}>
-					<span class="main_nav_link_label">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
+				<a class="main_nav_link" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="url" {% if link.children %}aria-haspopup="true" aria-expanded="false" {% endif %}>
+					<span class="main_nav_link_label" itemprop="name">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
 				</a>
 				{% if (link.children) and (modifier != "lg") %}
 				<button class="js-swap js-main-nav-toggle main_nav_toggle" data-swap-target=".js-main-nav-item-{{loop.index}}" data-swap-group="main_nav">
@@ -27,9 +27,9 @@
 			{% if link.children %}
 			<div class="js-main-nav-children main_nav_children">
 				{% for child in link.children %}
-				<div class="main_nav_child_item{% if child.modifier %} {{child.modifier}}{% endif %}" itemprop="url">
-					<a class="main_nav_child_link" href="{% if child.href %}{{child.href}}{% else %}#{% endif %}" itemprop="name">
-						<span class="main_nav_child_link_label">{% if child.name %}{{child.name}}{% elseif child %}{{child}}{% endif %}</span>
+				<div class="main_nav_child_item{% if child.modifier %} {{child.modifier}}{% endif %}">
+					<a class="main_nav_child_link" href="{% if child.href %}{{child.href}}{% else %}#{% endif %}" itemprop="url">
+						<span class="main_nav_child_link_label" itemprop="name">{% if child.name %}{{child.name}}{% elseif child %}{{child}}{% endif %}</span>
 					</a>
 				</div>
 				{% endfor %}
