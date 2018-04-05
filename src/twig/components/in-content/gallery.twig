@@ -27,10 +27,7 @@
 	</header>
 	{% endif %}
 	<div class="media_gallery_body">
-		<div class="js-carousel media_gallery_items" data-carousel-options='{
-			"theme": "base_pagination",
-			"contained": false
-		}'>
+		<div class="js-carousel media_gallery_items" data-carousel-options='{"theme": "base_pagination", "contained": false}' itemscope itemtype="http://schema.org/ImageGallery">
 			{% for item in items %}
 			<div class="media_gallery_item{% if item.caption is empty %} media_gallery_item_no_caption{% endif %}{% if item.video %} media_gallery_item_video{% endif %}">
 				<div class="media_gallery_count">
@@ -38,13 +35,13 @@
 					<span class="media_count_label">of</span>
 					<span class="media_count_number">{{"%02d"|format(loop.length)}}</span>
 				</div>
-				<figure class="media_gallery_item_figure" role="group"{% if item.caption %} aria-label="{{item.caption|striptags}}"{% endif %}>
-					{% if item.video %}<a class="js-lightbox media_gallery_item_link" href="{{item.video}}" title="{{item.caption|striptags}}">{% endif %}
+				<figure class="media_gallery_item_figure" role="group"{% if item.caption %} aria-label="{{item.caption|striptags}}"{% endif %} itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+					{% if item.video %}<a class="js-lightbox media_gallery_item_link" href="{{item.video}}" title="{{item.caption|striptags}}" itemprop="contentUrl">{% endif %}
 					{{site.image("media_gallery_item", img.wide.med, item.image)}}
 					<span class="media_gallery_item_icon">{{site.icon(symbol)}}</span>
 					{% if item.video %}</a>{% endif %}
 					{% if item.caption %}
-					<figcaption class="media_gallery_item_figcaption">
+					<figcaption class="media_gallery_item_figcaption" itemprop="caption description">
 						<p>{{item.caption}}</p>
 					</figcaption>
 					{% endif %}
