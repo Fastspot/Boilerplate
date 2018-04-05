@@ -6,12 +6,6 @@ Site.modules.Page = (function($, Site) {
 
 	var prev = "caret_left";
 	var next = "caret_right";
-	var carouselOptions = {
-		labels: {
-			previous: "<span class='fs-carousel-control-icon'><svg class='symbol symbol_" + prev + "'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='../../../images/icons.svg#" + prev + "'></use></svg></span>",
-			next: "<span class='fs-carousel-control-icon'><svg class='symbol symbol_" + next + "'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='../../../images/icons.svg#" + next + "'></use></svg></span>"
-		}
-	};
 	var lightboxOptions = {
 		theme: "fs-light",
 		videoWidth: 1000,
@@ -27,7 +21,8 @@ Site.modules.Page = (function($, Site) {
 		$(".js-background").on("loaded.background", function() {
 			$(this).addClass("fs-background-loaded");
 		}).background();
-		$(".js-carousel").carousel(carouselOptions);
+		$(".js-carousel").carousel();
+		$(".js-carousel.base_pagination").carousel(carouselPagination($(".js-carousel.base_pagination")));
 		$(".js-checkbox, .js-radio, input[type=checkbox], input[type=radio]").checkbox();
 		$(".js-dropdown").dropdown();
 		$(".js-equalize").equalize();
@@ -212,6 +207,16 @@ Site.modules.Page = (function($, Site) {
 
 	function ariaShow($element) {
 		$element.attr("aria-hidden", "false").removeAttr("hidden");
+	}
+
+	function carouselPagination($element) {
+		$element.each(function() {
+			var $previous = $(this).find(".fs-carousel-control_previous");
+			var $next = $(this).find(".fs-carousel-control_next");
+
+			$previous.html("<span class='fs-carousel-control-icon'><svg class='symbol symbol_" + prev + "'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='../../../images/icons.svg#" + prev + "'></use></svg></span><span class='fs-carousel-control-label'>Previous</span>");
+			$next.html("<span class='fs-carousel-control-icon'><svg class='symbol symbol_" + next + "'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='../../../images/icons.svg#" + next + "'></use></svg></span><span class='fs-carousel-control-label'>Next</span>");
+		});
 	}
 
 	// Hook Into Main init Routine
