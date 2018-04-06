@@ -36,11 +36,18 @@ Site.modules.Images = (function($, Site) {
 
 	function showPhoto(e) {
 		removeClasses();
+		addClasses(e);
+		positionProp(e);
+	}
 
+	function removeClasses() {
+		$(".photo_prop").removeClass("visible");
+		$(".photo_prop").removeClass("upper-region");
+		$(".photo_prop").removeClass("lower-region");
+	}
+
+	function addClasses(e) {
 		$(".photo_prop").addClass("visible");
-
-		$(".photo_prop").css("top", e.pageY);
-		$(".photo_prop").css("left", e.pageX);
 
 		if (e.clientY < $(window).height() / 2) {
 			$(".photo_prop").addClass("upper-region");
@@ -49,10 +56,9 @@ Site.modules.Images = (function($, Site) {
 		}
 	}
 
-	function removeClasses() {
-		$(".photo_prop").removeClass("visible");
-		$(".photo_prop").removeClass("upper-region");
-		$(".photo_prop").removeClass("lower-region");
+	function positionProp(e) {
+		$(".photo_prop").css("top", e.pageY);
+		$(".photo_prop").css("left", e.pageX);
 	}
 
 	Site.onInit.push(init);
