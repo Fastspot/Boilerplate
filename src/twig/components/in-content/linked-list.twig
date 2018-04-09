@@ -2,31 +2,37 @@
 	{{site.anchor("Linked List")}}
 	{% include inc ~ "linked-list.twig" with {
 		title: "Related Links",
+		icon: "chevron",
 		items: [
 			{
 				href: "#",
-				name: "Undergraduate"
+				name: "Undergraduate",
+				icon: "arrow"
 			},
 			{
 				href: "#",
-				name: "Degree Completion"
+				name: "Degree Completion",
+				icon: "arrow"
 			},
 			{
 				href: "#",
-				name: "Graduate"
+				name: "Graduate",
+				icon: "arrow"
 			},
 			{
 				href: "#",
-				name: "Visit"
+				name: "Visit",
+				icon: "arrow"
 			}
 		]
 	} %}
 #}
 
-<div class="linked_list{% if theme %} theme_{{theme}}{% endif %}">
+<!-- Linked List -->
+<div class="linked_list{% if theme %} theme_{{theme}}{% endif %}" itemscope itemtype="http://schema.org/ItemList">
 	{% if title %}
 	<header class="linked_list_header">
-		<h2 class="linked_list_title">
+		<h2 class="linked_list_title" itemprop="name">
 			{% if icon %}
 			<span class="linked_list_title_icon">{{site.icon(icon)}}</span>
 			{% endif %}
@@ -37,10 +43,18 @@
 	<div class="linked_list_body">
 		<ul class="linked_list_group">
 			{% for item in items %}
-			<li class="linked_list_item">
-				<a class="linked_list_link" href="{{item.href}}">{{item.name}}</a>
+			<li class="linked_list_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+				<a class="linked_list_link" href="{{item.href}}" itemprop="url">
+					<span class="linked_list_link_inner">
+						<span class="linked_list_label" itemprop="name">{{item.name}}</span>
+						{% if item.icon %}
+						<span class="linked_list_icon">{{site.icon(item.icon)}}</span>
+						{% endif %}
+					</span>
+				</a>
 			</li>
 			{% endfor %}
 		</ul>
 	</div>
 </div>
+<!-- END: Linked List -->

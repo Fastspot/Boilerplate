@@ -52,6 +52,8 @@
 
 .main_content {
 	@include focus_outline_none;
+
+	display: block;
 }
 
 .page_header {}

@@ -380,5 +380,6 @@ strong {
 
 .table_wrapper_inner {
 	overflow-y: hidden;
+	-webkit-overflow-scrolling: touch;
 	-ms-overflow-style: -ms-autohiding-scrollbar;
 }

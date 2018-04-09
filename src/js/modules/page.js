@@ -6,12 +6,6 @@ Site.modules.Page = (function($, Site) {
 
 	var prev_symbol = "caret_left";
 	var next_symbol = "caret_right";
-	var carouselOptions = {
-		labels: {
-			previous: "<span class='fs-carousel-control-icon'>" + Site.symbol(prev_symbol) + "</span>",
-			next: "<span class='fs-carousel-control-icon'>" + Site.symbol(next_symbol) + "</span>"
-		}
-	};
 	var lightboxOptions = {
 		theme: "fs-light",
 		videoWidth: 1000,
@@ -27,7 +21,7 @@ Site.modules.Page = (function($, Site) {
 		$(".js-background").on("loaded.background", function() {
 			$(this).addClass("fs-background-loaded");
 		}).background();
-		$(".js-carousel").carousel(carouselOptions);
+		$(".js-carousel").carousel(carouselPagination($(".js-carousel.base_pagination")));
 		$(".js-checkbox, .js-radio, input[type=checkbox], input[type=radio]").checkbox();
 		$(".js-dropdown").dropdown();
 		$(".js-equalize").equalize();
@@ -36,7 +30,7 @@ Site.modules.Page = (function($, Site) {
 
 		$(window).on("load", onPageLoad);
 
-		$(document).on("click", onDocumentClick);
+		$(document).on("click touchstart", onDocumentClick);
 
 		$(".js-mobile-sidebar-handle").on("activate.swap", onSidebarSwapActivate).on("deactivate.swap", onSidebarSwapDeactivate);
 		$(".js-main-nav-toggle").on("activate.swap", onMainSwapActivate).on("deactivate.swap", onMainSwapDeactivate);
@@ -127,27 +121,19 @@ Site.modules.Page = (function($, Site) {
 
 		$(".js-main-nav-lg").find("a")
 			.focus(function() {
-				var $item = $(this).closest(".main_nav_item");
-
-				$item.addClass("focused").attr("aria-expanded", "true");
-				ariaShow($item.find(".js-main-nav-children"));
+				$(this).addClass("focused").attr("aria-expanded", "true");
+				ariaShow($(this).closest(".main_nav_item").find(".js-main-nav-children"));
 			})
 			.blur(function() {
-				var $item = $(this).closest(".main_nav_item");
-
-				$item.removeClass("focused").attr("aria-expanded", "false");
-				ariaHide($item.find(".js-main-nav-children"));
+				$(this).removeClass("focused").attr("aria-expanded", "false");
+				ariaHide($(this).closest(".main_nav_item").find(".js-main-nav-children"));
 			})
 			.hover(function() {
-				var $item = $(this).closest(".main_nav_item");
-
-				$item.attr("aria-expanded", "true");
-				ariaShow($item.find(".js-main-nav-children"));
+				$(this).attr("aria-expanded", "true");
+				ariaShow($(this).closest(".main_nav_item").find(".js-main-nav-children"));
 			}, function() {
-				var $item = $(this).closest(".main_nav_item");
-
-				$item.attr("aria-expanded", "false");
-				ariaHide($item.find(".js-main-nav-children"));
+				$(this).attr("aria-expanded", "false");
+				ariaHide($(this).closest(".main_nav_item").find(".js-main-nav-children"));
 		});
 
 		$(".js-toggle")
@@ -201,17 +187,13 @@ Site.modules.Page = (function($, Site) {
 	}
 
 	function onMainSwapActivate() {
-		var $item = $(this).closest(".main_nav_item");
-
-		$item.attr("aria-expanded", "true");
-		ariaShow($item.find(".js-main-nav-children"));
+		$(this).closest(".main_nav_item").find(".main_nav_link").attr("aria-expanded", "true");
+		ariaShow($(this).closest(".main_nav_item").find(".js-main-nav-children"));
 	}
 
 	function onMainSwapDeactivate() {
-		var $item = $(this).closest(".main_nav_item");
-
-		$item.attr("aria-expanded", "false");
-		ariaHide($item.find(".js-main-nav-children"));
+		$(this).closest(".main_nav_item").find(".main_nav_link").attr("aria-expanded", "false");
+		ariaHide($(this).closest(".main_nav_item").find(".js-main-nav-children"));
 	}
 
 	function onSubSwapActivate() {
@@ -245,6 +227,18 @@ Site.modules.Page = (function($, Site) {
 
 	function ariaShow($element) {
 		$element.attr("aria-hidden", "false").removeAttr("hidden");
+	}
+
+	function carouselPagination($element) {
+		$element.each(function() {
+			var $previous_button = $(this).find(".fs-carousel-control_previous");
+			var previous_text = $previous_button.text();
+			var $next_button = $(this).find(".fs-carousel-control_next");
+			var next_text = $next_button.text();
+
+			$previous_button.html("<span class='fs-carousel-control-icon'>" + Site.symbol(prev_symbol) + "</span><span class='fs-carousel-control-label'>" + previous_text + "</span>");
+			$next_button.html("<span class='fs-carousel-control-icon'>" + Site.symbol(next_symbol) + "</span><span class='fs-carousel-control-label'>" + next_text + "</span>");
+		});
 	}
 
 	// Hook Into Main init Routine
