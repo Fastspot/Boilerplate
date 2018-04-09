@@ -4,16 +4,16 @@
 
 Site.modules.Page = (function($, Site) {
 
-	var prev = "caret_left";
-	var next = "caret_right";
+	var prev_symbol = "caret_left";
+	var next_symbol = "caret_right";
 	var lightboxOptions = {
 		theme: "fs-light",
 		videoWidth: 1000,
 		labels: {
-			close: "<span class='fs-lightbox-icon-close'><svg class='symbol symbol_close'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='../../../images/icons.svg#close'></use></svg></span>",
-			previous: "<span class='fs-lightbox-icon-previous'><svg class='symbol symbol_" + prev + "'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='../../../images/icons.svg#" + prev + "'></use></svg></span>",
+			close: "<span class='fs-lightbox-icon-close'>" + Site.symbol("close") + "</span>",
+			previous: "<span class='fs-lightbox-icon-previous'>" + Site.symbol(prev_symbol) + "</span>",
 			count: "<span class='fs-lightbox-meta-divider'></span>",
-			next: "<span class='fs-lightbox-icon-next'><svg class='symbol symbol_" + next + "'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='../../../images/icons.svg#" + next + "'></use></svg></span>"
+			next: "<span class='fs-lightbox-icon-next'>" + Site.symbol(next_symbol) + "</span>"
 		}
 	};
 
@@ -41,6 +41,7 @@ Site.modules.Page = (function($, Site) {
 		.on("enable.swap", onSubSwapEnable)
 		.on("disable.swap", onSubSwapDisable);
 
+		fixIEsvg();
 		bindGenericUI();
 		responsiveVideo();
 		tableOverflow();
@@ -49,6 +50,26 @@ Site.modules.Page = (function($, Site) {
 		Site.onScroll.push(scroll);
 		Site.onResize.push(resize);
 		Site.onRespond.push(respond);
+	}
+
+	function fixIEsvg() {
+		// IE SVG fix
+		var ua = window.navigator.userAgent;
+		var msie = ua.indexOf("MSIE ");
+
+		if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+			$.get(STATIC_ROOT + "images/icons.svg", function(data) {
+				var div = document.createElement("div");
+				$(div).hide();
+				div.innerHTML = new XMLSerializer().serializeToString(data.documentElement);
+				document.body.insertBefore(div, document.body.childNodes[0]);
+
+				$("svg use").each(function() {
+					var parts = $(this).attr("xlink:href").split("#");
+					$(this).attr("xlink:href", "#" + parts[1]);
+				});
+			});
+		}
 	}
 
 	function scroll() {}

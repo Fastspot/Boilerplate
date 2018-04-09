@@ -210,6 +210,9 @@
 								</div>
 								<!-- END: WYSIWYG -->
 
+								{% block after_typography %}
+								{% endblock %}
+
 								<!-- In Content Callouts -->
 								<div class="in_content_callouts">
 									{% block in_content_callouts %}
@@ -312,6 +315,10 @@
 			} %}
 		</div>
 
+		<script>
+			var WWW_ROOT = "";
+			var STATIC_ROOT = "../../";
+		</script>
 		<script src="../../js/site.js"></script>
 
 		{% if page.scripts %}
