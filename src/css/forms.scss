@@ -2,14 +2,14 @@
 	Forms
 ============================================================================= */
 
-.form-builder {
+.form_builder {
 
 	fieldset {
 		border: 0;
 		margin: 0;
 		padding: 0;
 	}
-	
+
 	legend {}
 }
 
@@ -30,8 +30,8 @@
 	padding: 10px 20px;
 }
 
-.form-builder {
-		
+.form_builder {
+
 	label:not(.fs-checkbox-label) {
 		@include label;
 
