@@ -229,8 +229,6 @@ Site.modules.Page = (function($, Site) {
 			var $next_button = $(this).find(".fs-carousel-control_next");
 			var next_text = $next_button.text();
 
-			console.log($previous_button.length);
-
 			$previous_button.html("<span class='fs-carousel-control-icon'>" + Site.symbol(prev_symbol) + "</span><span class='fs-carousel-control-label'>" + previous_text + "</span>");
 			$next_button.html("<span class='fs-carousel-control-icon'>" + Site.symbol(next_symbol) + "</span><span class='fs-carousel-control-label'>" + next_text + "</span>");
 		});
