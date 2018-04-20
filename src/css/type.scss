@@ -242,6 +242,8 @@ strong {
 	blockquote {
 		margin: 20px 0;
 
+		&:not(.quote_content) {}
+
 		p {
 			margin: 0;
 		}
