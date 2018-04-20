@@ -133,7 +133,6 @@ Site.modules.Page = (function($, Site) {
 	}
 
 	function bindGenericUI() {
-
 		$(".js-main-nav-lg").find("a")
 			.focus(function() {
 				$(this).addClass("focused").attr("aria-expanded", "true");
