@@ -116,15 +116,15 @@
 			icon: function(icon) {
 				var markup = '<svg class="icon icon_' + icon + '">';
 				var ua = window.navigator.userAgent;
-    			var msie = ua.indexOf("MSIE ");
+    		var msie = ua.indexOf("MSIE ");
 	
-    			if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
-    				markup += '<use xlink:href="#' + icon + '">';
-    			} else {
-    				markup += '<use xlink:href="' + STATIC_ROOT + 'images/icons.svg#' + icon + '">';
-    			}
-	
-    			return markup + '</use></svg>';
+				if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+					markup += '<use xlink:href="#' + icon + '">';
+				} else {
+					markup += '<use xlink:href="' + STATIC_ROOT + 'images/icons.svg#' + icon + '">';
+				}
+
+				return markup + '</use></svg>';
 			}
 		});
 
