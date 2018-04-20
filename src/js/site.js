@@ -112,16 +112,16 @@
 					timer = null;
 				}
 			},
-			// Returns symbol markup
-			symbol: function(symbol) {
-				var markup = '<svg class="symbol symbol_' + symbol + '">';
+			// Returns icon markup
+			icon: function(icon) {
+				var markup = '<svg class="icon icon_' + icon + '">';
 				var ua = window.navigator.userAgent;
     			var msie = ua.indexOf("MSIE ");
 	
     			if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
-    				markup += '<use xlink:href="#' + symbol + '">';
+    				markup += '<use xlink:href="#' + icon + '">';
     			} else {
-    				markup += '<use xlink:href="' + STATIC_ROOT + 'images/icons.svg#' + symbol + '">';
+    				markup += '<use xlink:href="' + STATIC_ROOT + 'images/icons.svg#' + icon + '">';
     			}
 	
     			return markup + '</use></svg>';

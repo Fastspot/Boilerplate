@@ -2,7 +2,7 @@
 	Symbols
 ============================================================================= */
 
-.symbol {
+.icon {
 	display: block;
 	stroke: inherit;
 	fill: currentColor;
@@ -12,7 +12,7 @@
 		display: none;
 	}
 
-	$symbols: (
+	$icons: (
 		(caret_down, 20, 10),
 		(chevron_left, 20, 20),
 		(chevron_right, 20, 20),
@@ -21,7 +21,7 @@
 		(search, 20, 20)
 	);
 
-	@each $label, $w, $h in $symbols {
+	@each $label, $w, $h in $icons {
 
 		&_#{$label} {
 			height: $h#{px};

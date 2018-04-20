@@ -39,19 +39,19 @@
 
 
 {% macro icon(name) %}
-<svg class="symbol symbol_{{name}}">
+<svg class="icon icon_{{name}}">
 	<use xlink:href="../../../images/icons.svg#{{name}}"></use>
 </svg>
 {% endmacro %}
 
 
-{% macro button(class, label, href, symbol) %}
-<a class="{{class}}_link{% if symbol %} theme_{{symbol}}{% endif %}" href="{{href}}">
+{% macro button(class, label, href, icon) %}
+<a class="{{class}}_link{% if icon %} theme_{{icon}}{% endif %}" href="{{href}}">
 	<span class="{{class}}_link_label">{{label}}</span>
-	{% if symbol %}
+	{% if icon %}
 	<span class="{{class}}_link_icon" aria-hidden="true">
-		<svg class="symbol symbol_{{symbol}}">
-			<use xlink:href="../../../images/icons.svg#{{symbol}}"></use>
+		<svg class="icon icon_{{icon}}">
+			<use xlink:href="../../../images/icons.svg#{{icon}}"></use>
 		</svg>
 	</span>
 	{% endif %}
