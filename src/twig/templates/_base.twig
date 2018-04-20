@@ -163,15 +163,18 @@
 
 			<!-- Page -->
 			<div class="page">
+				{% if page.layout != "home" %}
 				<!-- Page Feature -->
 				<div class="page_feature">
 					{% block page_feature %}
 					{% endblock %}
 				</div>
 				<!-- END: Page Feature -->
+				{% endif %}
 
 				<!-- Page Content -->
 				<div class="page_content">
+					{% if page.layout != "home" %}
 					<div class="fs-row">
 						{% if page.layout == "default" or page.layout == "style-guide" %}
 						<!-- Sub Nav -->
@@ -187,7 +190,6 @@
 						<!-- Main Content -->
 						<div class="fs-cell{% if page.layout == "default" or page.layout == "style-guide" %} fs-lg-8{% elseif page.layout == "full" %} fs-lg-10 fs-all-justify-center{% endif %} content_wrapper">
 							<main class="main_content" id="main_content" itemprop="mainContentOfPage">
-								{% if page.layout != "home" %}
 								<!-- Page Header -->
 								{% block page_header %}
 								<div class="page_header">
@@ -201,7 +203,6 @@
 								</div>
 								{% endblock %}
 								<!-- END: Page Header -->
-								{% endif %}
 
 								<!-- WYSIWYG - wrap all WYSIWYG text areas in `.typography` -->
 								<div class="typography">
@@ -234,12 +235,21 @@
 						<!-- END: Sidebar Callouts -->
 						{% endif %}
 					</div>
+					{% endif %}
 
 					<!-- Full Width Callouts -->
+					{% if page.layout == "home" %}
+					<main class="full_width_callouts" id="main_content" itemprop="mainContentOfPage">
+					{% else %}
 					<div class="full_width_callouts">
+					{% endif %}
 						{% block full_width_callouts %}
 						{% endblock %}
+					{% if page.layout == "home" %}
+					</main>
+					{% else %}
 					</div>
+					{% endif %}
 					<!-- END: Full Width Callouts -->
 				</div>
 				<!-- END: Page Content -->
