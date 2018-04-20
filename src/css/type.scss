@@ -172,7 +172,7 @@ strong {
 		width: auto;
 
 		display: table;
-		margin-bottom: 20px;
+		margin-bottom: 30px;
 		table-layout: fixed;
 
 		img {
@@ -209,7 +209,7 @@ strong {
 
 		@media #{$min_sm} {
 			float: left;
-			margin-right: 20px;
+			margin-right: 30px;
 		}
 	}
 
@@ -218,7 +218,7 @@ strong {
 
 		@media #{$min_sm} {
 			float: right;
-			margin-left: 20px;
+			margin-left: 30px;
 		}
 	}
 
