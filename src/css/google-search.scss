@@ -6,76 +6,24 @@
 
 .search_results_inner {}
 
-.search_results_wrapper {}
-
-
-/* Search Form
-============================================================================= */
-
-.site_search {}
-
-.site_search_results {}
-
-.site_search_form {}
-
-.site_search_label {}
-
-.site_search_input {}
-
-.site_search_button {}
-
-.site_search_button_label {}
-
-.site_search_button_icon {}
+.search_results_body {}
 
 
 /* Results
 ============================================================================= */
 
-.search_results {}
-
 .search_results_count {}
 
-.search_results_list {}
+.search_results {}
 
-.search_result_item {}
+.search_result {}
 
 .search_result_title {}
 
 .search_result_title_link {}
 
-.search_result_url {}
+.search_result_link {}
 
-.search_result_url_link {}
+.search_result_caption {}
 
-.search_result_description {}
-
-.search_results_footer {
-
-	.pagination {}
-
-	.pagination_arrow {}
-
-	.pagination_arrow_left {}
-
-	.pagination_arrow_disabled {}
-
-	.pagination_arrow_label {}
-
-	.pagination_arrow_icon {}
-
-	.icon_arrow_left {}
-
-	.pagination_nav {}
-
-	.pagination_link {
-
-		&.active {}
-	}
-
-	.pagination_more {}
-
-	.pagination_arrow_right {}
-
-	.icon_arrow_right {}
-}
+.search_results_footer {}
