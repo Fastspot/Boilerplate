@@ -83,24 +83,10 @@ Site.modules.Page = (function($, Site) {
 		Site.killEvent(e);
 
 		var $target = $(e.delegateTarget),
-				id = $target.attr("href");
+			id = $target.attr("href");
 
-		scrollToElement(id);
-	}
-
-	function scrollToElement(id) {
-		var $to = $(id);
-
-		if ($to.length) {
-			var offset = $to.offset();
-
-			scrollToPosition(offset.top);
-		}
-	}
-
-	function scrollToPosition(top) {
-		$("html, body").animate({
-			scrollTop: top
+		document.querySelector(id).scrollIntoView({
+			behavior: 'smooth'
 		});
 	}
 
@@ -108,7 +94,7 @@ Site.modules.Page = (function($, Site) {
 		Site.killEvent(e);
 
 		var $target = $(e.delegateTarget),
-				activeClass = "js-toggle-active";
+			activeClass = "js-toggle-active";
 
 		if ($target.hasClass(activeClass)) {
 			$target.removeClass(activeClass);
@@ -118,7 +104,6 @@ Site.modules.Page = (function($, Site) {
 	}
 
 	function bindGenericUI() {
-
 		$(".js-main-nav-lg").find("a")
 			.focus(function() {
 				$(this).addClass("focused").attr("aria-expanded", "true");
@@ -219,6 +204,12 @@ Site.modules.Page = (function($, Site) {
 	function onPageLoad() {
 		$("body").removeClass("preload");
 		$(window).trigger("resize");
+		if(window.location.hash) {
+			var hash = window.location.hash;
+			document.querySelector(hash).scrollIntoView({
+				behavior: 'instant'
+			});
+		}
 	}
 
 	function ariaHide($element) {
