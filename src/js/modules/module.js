@@ -8,7 +8,7 @@ Site.modules.Module = (function($, Site) {
 
 	function init() {
 		if ($(".module").length) {
-			item = "";
+			item = $("");
 
 			bindUI();
 		}
