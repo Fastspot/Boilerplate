@@ -21,7 +21,7 @@ Site.modules.Page = (function($, Site) {
 		$(".js-background").on("loaded.background", function() {
 			$(this).addClass("fs-background-loaded");
 		}).background();
-		$(".js-carousel").carousel(carouselPagination($(".js-carousel.base_pagination")));
+		$(".js-carousel").carousel();
 		$(".js-checkbox, .js-radio, input[type=checkbox], input[type=radio]").checkbox();
 		$(".js-dropdown").dropdown();
 		$(".js-equalize").equalize();
@@ -120,6 +120,8 @@ Site.modules.Page = (function($, Site) {
 				$(this).attr("aria-expanded", "false");
 				ariaHide($(this).closest(".main_nav_item").find(".js-main-nav-children"));
 		});
+
+		carouselPagination($(".js-carousel"));
 
 		$(".js-toggle")
 			.not(".js-bound")
@@ -226,6 +228,8 @@ Site.modules.Page = (function($, Site) {
 			var previous_text = $previous_button.text();
 			var $next_button = $(this).find(".fs-carousel-control_next");
 			var next_text = $next_button.text();
+
+			console.log($previous_button.length);
 
 			$previous_button.html("<span class='fs-carousel-control-icon'>" + Site.symbol(prev_symbol) + "</span><span class='fs-carousel-control-label'>" + previous_text + "</span>");
 			$next_button.html("<span class='fs-carousel-control-icon'>" + Site.symbol(next_symbol) + "</span><span class='fs-carousel-control-label'>" + next_text + "</span>");
