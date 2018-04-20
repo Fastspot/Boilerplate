@@ -55,7 +55,8 @@
 							this.minSM,
 							this.minMD,
 							this.minLG,
-							this.minXL
+							this.minXL,
+							this.minXXL
 						]
 					});
 				}
