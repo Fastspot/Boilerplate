@@ -28,17 +28,17 @@ Site.modules.Page = (function($, Site) {
 		$(".js-lightbox").lightbox(lightboxOptions);
 		$(".js-swap").swap();
 
-		$(window).on("load", onPageLoad);
-
-		$(document).on("click touchstart", onDocumentClick);
-
-		$(".js-mobile-sidebar-handle").on("activate.swap", onSidebarSwapActivate).on("deactivate.swap", onSidebarSwapDeactivate);
-		$(".js-main-nav-toggle").on("activate.swap", onMainSwapActivate).on("deactivate.swap", onMainSwapDeactivate);
+		$(".js-mobile-sidebar-handle")
+			.on("activate.swap", onSidebarSwapActivate)
+			.on("deactivate.swap", onSidebarSwapDeactivate);
+		$(".js-main-nav-toggle")
+			.on("activate.swap", onMainSwapActivate)
+			.on("deactivate.swap", onMainSwapDeactivate);
 		$(".js-sub-nav-handle")
-		.on("activate.swap", onSubSwapActivate)
-		.on("deactivate.swap", onSubSwapDeactivate)
-		.on("enable.swap", onSubSwapEnable)
-		.on("disable.swap", onSubSwapDisable);
+			.on("activate.swap", onSubSwapActivate)
+			.on("deactivate.swap", onSubSwapDeactivate)
+			.on("enable.swap", onSubSwapEnable)
+			.on("disable.swap", onSubSwapDisable);
 
 		fixIEsvg();
 		bindGenericUI();
@@ -46,13 +46,15 @@ Site.modules.Page = (function($, Site) {
 		tableOverflow();
 		ariaHide($(".js-mobile-sidebar, .js-main-nav-children, .js-sub-nav-list"));
 
+		$(window).on("load", onPageLoad);
+		$(document).on("click touchstart", onDocumentClick);
+
 		Site.onScroll.push(scroll);
 		Site.onResize.push(resize);
 		Site.onRespond.push(respond);
 	}
 
 	function fixIEsvg() {
-		// IE SVG fix
 		var ua = window.navigator.userAgent;
 		var msie = ua.indexOf("MSIE ");
 
@@ -78,6 +80,19 @@ Site.modules.Page = (function($, Site) {
 	}
 
 	function respond() {}
+
+	function onPageLoad() {
+		$("body").removeClass("preload");
+		$(window).trigger("resize");
+	}
+
+	function onDocumentClick() {
+		if ($("body").hasClass("fs-mobile-lock")) {
+			if (!$(event.target).closest(".js-mobile-sidebar").length) {
+				$(".js-mobile-sidebar-handle").swap("deactivate");
+			}
+		}
+	}
 
 	function onScrollTo(e) {
 		Site.killEvent(e);
@@ -178,33 +193,27 @@ Site.modules.Page = (function($, Site) {
 		$(".js-mobile-sidebar-handle").focus();
 	}
 
-	function onDocumentClick() {
-		if ($("body").hasClass("fs-mobile-lock")) {
-			if (!$(event.target).closest(".js-mobile-sidebar").length) {
-				$(".js-mobile-sidebar-handle").swap("deactivate");
-			}
-		}
-	}
-
 	function onMainSwapActivate() {
-		$(this).closest(".main_nav_item").find(".main_nav_link").attr("aria-expanded", "true");
+		$(this).closest(".main_nav_item")
+			.find(".main_nav_link").attr("aria-expanded", "true");
 		ariaShow($(this).closest(".main_nav_item").find(".js-main-nav-children"));
 	}
 
 	function onMainSwapDeactivate() {
-		$(this).closest(".main_nav_item").find(".main_nav_link").attr("aria-expanded", "false");
+		$(this).closest(".main_nav_item")
+			.find(".main_nav_link").attr("aria-expanded", "false");
 		ariaHide($(this).closest(".main_nav_item").find(".js-main-nav-children"));
 	}
 
 	function onSubSwapActivate() {
 		$(this).attr("aria-expanded", "true")
-		.find(".sub_nav_handle_label").text("Close");
+			.find(".sub_nav_handle_label").text("Close");
 		ariaShow($(".js-sub-nav-list"));
 	}
 
 	function onSubSwapDeactivate() {
 		$(this).attr("aria-expanded", "false")
-		.find(".sub_nav_handle_label").text($(this).data("swap-title"));
+			.find(".sub_nav_handle_label").text($(this).data("swap-title"));
 		ariaHide($(".js-sub-nav-list"));
 	}
 
@@ -214,11 +223,6 @@ Site.modules.Page = (function($, Site) {
 
 	function onSubSwapDisable() {
 		ariaShow($(".js-sub-nav-list"));
-	}
-
-	function onPageLoad() {
-		$("body").removeClass("preload");
-		$(window).trigger("resize");
 	}
 
 	function ariaHide($element) {
@@ -241,13 +245,11 @@ Site.modules.Page = (function($, Site) {
 		});
 	}
 
-	// Hook Into Main init Routine
-
 	Site.onInit.push(init);
 
 	return {
-		ariaHide:ariaHide,
-		ariaShow:ariaShow
+		ariaHide: ariaHide,
+		ariaShow: ariaShow
 	};
 
 })(jQuery, Site);
