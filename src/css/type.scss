@@ -383,3 +383,19 @@ strong {
 	-webkit-overflow-scrolling: touch;
 	-ms-overflow-style: -ms-autohiding-scrollbar;
 }
+
+
+/* ==========================================================================
+   iframe
+============================================================================= */
+
+.typography {
+
+	.video_frame {
+		@include video_frame();
+
+		@media print {
+			display: none;
+		}
+	}
+}
