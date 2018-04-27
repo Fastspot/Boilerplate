@@ -22,7 +22,7 @@ Site.modules.Page = (function($, Site) {
 			$(this).addClass("fs-background-loaded");
 		}).background();
 		$(".js-carousel").carousel();
-		$(".js-checkbox, .js-radio, input[type=checkbox], input[type=radio]").checkbox();
+		$(".js-checkbox, .js-radio").checkbox();
 		$(".js-dropdown").dropdown();
 		$(".js-equalize").equalize();
 		$(".js-lightbox").lightbox(lightboxOptions);
