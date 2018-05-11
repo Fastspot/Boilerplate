@@ -15,7 +15,7 @@
 		{% for link in links %}
 		<div class="js-main-nav-item-{{loop.index}} main_nav_item{% if link.children %} main_nav_has_children{% endif %}{% if loop.index == active %} active{% endif %}{% if link.modifier %} {{link.modifier}}{% endif %}">
 			<div class="main_nav_item_wrapper">
-				<a class="main_nav_link" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="url" {% if link.children %}aria-haspopup="true" aria-expanded="false" {% endif %}>
+				<a class="main_nav_link" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="url" {% if link.children %}aria-haspopup="true" aria-expanded="false" {% endif %}{% if loop.index == active %} aria-current="page"{% endif %}>
 					<span class="main_nav_link_label" itemprop="name">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
 				</a>
 				{% if link.children and icon %}
