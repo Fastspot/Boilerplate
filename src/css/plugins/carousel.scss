@@ -99,7 +99,9 @@
 
 	position: relative;
 
+	color: transparent;
 	display: inline-block;
+	overflow: hidden;
 
 	&:before {
 		height: 10px;
