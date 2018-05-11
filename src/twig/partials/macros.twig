@@ -45,7 +45,7 @@
 
 
 {% macro button(class, label, href, icon) %}
-<a class="{{class}}_link{% if icon %} theme_{{icon}}{% endif %}" href="{{href}}">
+<a class="{{class}}_link" href="{{href}}">
 	<span class="{{class}}_link_label">{{label}}</span>
 	{% if icon %}
 	<span class="{{class}}_link_icon" aria-hidden="true">
