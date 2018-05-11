@@ -45,6 +45,10 @@ Site.modules.Page = (function($, Site) {
 		responsiveVideo();
 		tableOverflow();
 		ariaHide($(".js-mobile-sidebar, .js-main-nav-children, .js-sub-nav-list"));
+		$(".main_nav_link").attr("aria-expanded", "false");
+		$(".js-sub-nav-handle")
+			.attr("aria-expanded", "false")
+			.attr("aria-haspopup", "true");
 
 		$(window).on("load", onPageLoad);
 		$(document).on("click touchstart", onDocumentClick);
@@ -137,23 +141,8 @@ Site.modules.Page = (function($, Site) {
 	}
 
 	function bindGenericUI() {
-		$(".js-main-nav-lg").find("a")
-			.focus(function() {
-				$(this).addClass("focused")
-					.attr("aria-expanded", "true");
-				ariaShow(
-					$(this).closest(".main_nav_item")
-					.find(".js-main-nav-children")
-				);
-			})
-			.blur(function() {
-				$(this).removeClass("focused")
-					.attr("aria-expanded", "false");
-				ariaHide(
-					$(this).closest(".main_nav_item")
-						.find(".js-main-nav-children")
-				);
-			})
+		$(".js-main-nav-lg")
+			.find("a")
 			.hover(function() {
 				$(this).attr("aria-expanded", "true");
 				ariaShow(

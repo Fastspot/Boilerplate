@@ -18,38 +18,7 @@
 
 .main_nav_list {}
 
-.main_nav_item {
-
-	.main_nav_sm & {
-
-		&.fs-swap-enabled {
-
-			.main_nav_children {
-				display: none;
-			}
-		}
-
-		&.fs-swap-active {
-
-			.main_nav_children {
-				display: block;
-			}
-		}
-	}
-
-	.main_nav_lg & {
-
-		&.focused,
-		&:focus,
-		&:hover {
-
-			.main_nav_children {
-				opacity: 1;
-				visibility: visible;
-			}
-		}
-	}
-}
+.main_nav_item {}
 
 .main_nav_item_wrapper {
 	position: relative;
@@ -65,10 +34,7 @@
 }
 
 .main_nav_toggle {
-
-	.no-js & {
-		display: none;
-	}
+	display: none;
 
 	.js & {
 		width: 50px;
@@ -79,10 +45,25 @@
 		right: 0;
 
 		cursor: pointer;
+		display: block;
 	}
 
 	.main_nav_lg & {
-		display: none;
+
+		@media #{$min_lg} {
+			position: absolute;
+
+			opacity: 0;
+			pointer-events: none;
+		}
+	}
+
+	&:focus {
+
+		@media #{$min_lg} {
+			opacity: 1;
+			pointer-events: auto;
+		}
 	}
 }
 
@@ -106,6 +87,7 @@
 // =============================================================================
 
 .main_nav_children {
+	display: block;
 
 	.main_nav_lg & {
 		position: absolute;
@@ -119,6 +101,34 @@
 	}
 
 	.main_nav_item:last-child & {}
+
+	.main_nav_item.fs-swap-enabled & {
+
+		.main_nav_sm & {
+			display: none;
+		}
+	}
+
+	.main_nav_item.fs-swap-active & {
+
+		.main_nav_sm & {
+			display: block;
+		}
+
+		.main_nav_lg & {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	.main_nav_item:focus &,
+	.main_nav_item:hover & {
+
+		.main_nav_lg & {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
 }
 
 .main_nav_child_item {}

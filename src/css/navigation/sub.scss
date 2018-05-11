@@ -20,10 +20,7 @@
 // =============================================================================
 
 .sub_nav_handle {
-
-	.no-js & {
-		display: none;
-	}
+	display: none;
 
 	.js & {
 		@include button_block;
@@ -32,6 +29,7 @@
 
 		position: relative;
 
+		display: block;
 		margin-bottom: 0;
 		padding-right: 40px;
 		text-align: left;
