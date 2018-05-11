@@ -16,6 +16,8 @@ Site.modules.Page = (function($, Site) {
 			next: "<span class='fs-lightbox-icon-next'>" + Site.icon(next_icon) + "</span>"
 		}
 	};
+	var $fixed_header;
+	var fixed_header_height = 0;
 
 	function init() {
 		$(".js-background").on("loaded.background", function() {
@@ -81,6 +83,9 @@ Site.modules.Page = (function($, Site) {
 
 	function resize() {
 		tableOverflow();
+		if (typeof $fixed_header !== "undefined") {
+			fixed_header_height = $fixed_header.outerHeight();
+		}
 	}
 
 	function respond() {}
@@ -123,7 +128,7 @@ Site.modules.Page = (function($, Site) {
 
 	function scrollToPosition(top) {
 		$("html, body").animate({
-			scrollTop: top
+			scrollTop: top - fixed_header_height
 		});
 	}
 
