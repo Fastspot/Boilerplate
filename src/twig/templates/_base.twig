@@ -59,7 +59,7 @@
 		<link rel="stylesheet" href="../../css/site.css?{{ 'now'|date('U') }}">
 	</head>
 
-	<body class="preload fs-grid layout_{{page.layout}}{% if page.theme %} theme_{{page.theme}}{% endif %}">
+	<body class="preload fs-grid page_layout_{{page.layout}}{% if page.theme %} page_theme_{{page.theme}}{% endif %}">
 
 		{% block activePage %}
 			{% set activePage = 0 %}
@@ -121,7 +121,7 @@
 								<div class="header_ribbon_inner">
 									{% include "../partials/logo.twig" with {
 										modifier: "header",
-										symbol: "logo"
+										icon: "logo"
 									} %}
 
 									{% include "../partials/navigation/main.twig" with {
@@ -266,7 +266,7 @@
 							<div class="footer_ribbon_inner">
 								{% include "../partials/logo.twig" with {
 									modifier: "footer",
-									symbol: "logo"
+									icon: "logo"
 								} %}
 
 								{% include "../partials/address.twig" with {
@@ -299,11 +299,10 @@
 		<!-- END: page_wrapper -->
 
 		<div class="js-mobile-sidebar mobile_sidebar" id="mobile_sidebar" tabindex="-1">
-			<button class="js-swap js-mobile-sidebar-close mobile_sidebar_close" data-swap-target=".mobile_sidebar" data-swap-linked="mobile_sidebar">
-				<span class="mobile_sidebar_close_label">Close</span>
+			<button class="js-swap js-mobile-sidebar-close mobile_sidebar_close" data-swap-target=".mobile_sidebar" data-swap-linked="mobile_sidebar" title="Close this mobile sidebar and return to the site's content">
+				<span class="mobile_sidebar_close_label">Close Mobile Sidebar</span>
 				<span class="mobile_sidebar_close_icon">{{site.icon("close")}}</span>
 			</button>
-
 			{% include "../partials/search.twig" with {
 				modifier: "sm",
 				placeholder: "Search",

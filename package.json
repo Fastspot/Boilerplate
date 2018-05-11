@@ -102,8 +102,7 @@
       "node_modules/formstone/dist/js/viewer.js",
       "node_modules/what-input/dist/what-input.js",
       "src/js/site.js",
-      "src/js/modules/page.js",
-      "src/js/modules/images.js"
+      "src/js/modules/page.js"
     ]
   },
   "img": {
@@ -201,31 +200,31 @@
     "socialNav": [
       {
         "modifier": "",
-        "symbol": "facebook",
+        "icon": "facebook",
         "name": "Facebook",
         "href": "//www.facebook.com"
       },
       {
         "modifier": "",
-        "symbol": "twitter",
+        "icon": "twitter",
         "name": "Twitter",
         "href": "//www.twitter.com"
       },
       {
         "modifier": "",
-        "symbol": "instagram",
+        "icon": "instagram",
         "name": "Instagram",
         "href": "//www.instagram.com"
       },
       {
         "modifier": "",
-        "symbol": "youtube",
+        "icon": "youtube",
         "name": "Youtube",
         "href": "//www.youtube.com"
       },
       {
         "modifier": "",
-        "symbol": "linkedin",
+        "icon": "linkedin",
         "name": "Linkedin",
         "href": "//www.linkedin.com"
       }

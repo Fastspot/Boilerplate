@@ -4,16 +4,16 @@
 
 Site.modules.Page = (function($, Site) {
 
-	var prev_symbol = "caret_left";
-	var next_symbol = "caret_right";
+	var prev_icon = "caret_left";
+	var next_icon = "caret_right";
 	var lightboxOptions = {
 		theme: "fs-light",
 		videoWidth: 1000,
 		labels: {
-			close: "<span class='fs-lightbox-icon-close'>" + Site.symbol("close") + "</span>",
-			previous: "<span class='fs-lightbox-icon-previous'>" + Site.symbol(prev_symbol) + "</span>",
+			close: "<span class='fs-lightbox-icon-close'>" + Site.icon("close") + "</span>",
+			previous: "<span class='fs-lightbox-icon-previous'>" + Site.icon(prev_icon) + "</span>",
 			count: "<span class='fs-lightbox-meta-divider'></span>",
-			next: "<span class='fs-lightbox-icon-next'>" + Site.symbol(next_symbol) + "</span>"
+			next: "<span class='fs-lightbox-icon-next'>" + Site.icon(next_icon) + "</span>"
 		}
 	};
 
@@ -271,8 +271,8 @@ Site.modules.Page = (function($, Site) {
 			var $next_button = $(this).find(".fs-carousel-control_next");
 			var next_text = $next_button.text();
 
-			$previous_button.html("<span class='fs-carousel-control-icon'>" + Site.symbol(prev_symbol) + "</span><span class='fs-carousel-control-label'>" + previous_text + "</span>");
-			$next_button.html("<span class='fs-carousel-control-icon'>" + Site.symbol(next_symbol) + "</span><span class='fs-carousel-control-label'>" + next_text + "</span>");
+			$previous_button.html("<span class='fs-carousel-control-icon'>" + Site.icon(prev_icon) + "</span><span class='fs-carousel-control-label'>" + previous_text + "</span>");
+			$next_button.html("<span class='fs-carousel-control-icon'>" + Site.icon(next_icon) + "</span><span class='fs-carousel-control-label'>" + next_text + "</span>");
 		});
 	}
 

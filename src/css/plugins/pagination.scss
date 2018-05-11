@@ -9,6 +9,12 @@
 	}
 }
 
+.pagination_inner {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+}
+
 .pagination_arrow {
 	position: relative;
 
@@ -17,15 +23,17 @@
 
 	&_disabled {}
 
-	&_label {}
+	
+}
 
-	&_icon {
-		position: absolute;
-		top: 50%;
-		left: 50%;
+.pagination_arrow_label {}
 
-		transform: translate(-50%, -50%);
-	}
+.pagination_arrow_icon {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	transform: translate(-50%, -50%);
 }
 
 .pagination_nav {}

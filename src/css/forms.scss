@@ -4,6 +4,14 @@
 
 .form_builder {
 
+	h2 {
+		@include h2;
+	}
+
+	p {
+		@include body_text;
+	}
+
 	fieldset {
 		border: 0;
 		margin: 0;
@@ -30,12 +38,16 @@
 	padding: 10px 20px;
 }
 
-.form_builder {
+.form-builder {
 
-	label:not(.fs-checkbox-label) {
+	label:not(.fs-checkbox-label):not(.form_builder_sublabel) {
 		@include label;
 
 		display: block;
+	}
+
+	.form_builder_sublabel {
+		@include h6;
 	}
 
 	input,
@@ -87,8 +99,13 @@
 // Custom Elements
 // =============================================================================
 
-[class*="form_column"] {
-	margin-bottom: 20px;
+.form-builder {
+
+	.input_wrapper,
+	.textarea_wrapper,
+	.choices_wrapper {
+		margin-bottom: 30px;
+	}
 }
 
 .form_column_flex {

@@ -19,12 +19,12 @@
 
 .logo_link_label {
 
-	.logo_symbol & {
+	.logo_icon & {
 		@include visually_hide;
 	}
 }
 
-.logo_link_symbol {
+.logo_link_icon {
 	color: #000;
 	display: inline-block;
 	vertical-align: top;
