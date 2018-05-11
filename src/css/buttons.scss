@@ -23,7 +23,7 @@ button {
 @mixin button_layout($layout: true) {
 
 	@if $layout {
-		
+
 		[class*="icon"] {
 			display: inline-block;
 			vertical-align: middle;
@@ -118,7 +118,7 @@ button {
 	}
 
 	.no-csstransforms & {
-		top: -100%;
+		top: -300%;
 
 		&:focus,
 		&:active {
