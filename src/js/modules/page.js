@@ -84,6 +84,10 @@ Site.modules.Page = (function($, Site) {
 	function onPageLoad() {
 		$("body").removeClass("preload");
 		$(window).trigger("resize");
+		if(window.location.hash) {
+			var id = window.location.hash;
+			scrollToElement(id);
+		}
 	}
 
 	function onDocumentClick() {
@@ -98,7 +102,7 @@ Site.modules.Page = (function($, Site) {
 		Site.killEvent(e);
 
 		var $target = $(e.delegateTarget),
-				id = $target.attr("href");
+		id = $target.attr("href");
 
 		scrollToElement(id);
 	}
@@ -135,19 +139,33 @@ Site.modules.Page = (function($, Site) {
 	function bindGenericUI() {
 		$(".js-main-nav-lg").find("a")
 			.focus(function() {
-				$(this).addClass("focused").attr("aria-expanded", "true");
-				ariaShow($(this).closest(".main_nav_item").find(".js-main-nav-children"));
+				$(this).addClass("focused")
+					.attr("aria-expanded", "true");
+				ariaShow(
+					$(this).closest(".main_nav_item")
+					.find(".js-main-nav-children")
+				);
 			})
 			.blur(function() {
-				$(this).removeClass("focused").attr("aria-expanded", "false");
-				ariaHide($(this).closest(".main_nav_item").find(".js-main-nav-children"));
+				$(this).removeClass("focused")
+					.attr("aria-expanded", "false");
+				ariaHide(
+					$(this).closest(".main_nav_item")
+						.find(".js-main-nav-children")
+				);
 			})
 			.hover(function() {
 				$(this).attr("aria-expanded", "true");
-				ariaShow($(this).closest(".main_nav_item").find(".js-main-nav-children"));
+				ariaShow(
+					$(this).closest(".main_nav_item")
+						.find(".js-main-nav-children")
+				);
 			}, function() {
 				$(this).attr("aria-expanded", "false");
-				ariaHide($(this).closest(".main_nav_item").find(".js-main-nav-children"));
+				ariaHide(
+					$(this).closest(".main_nav_item")
+						.find(".js-main-nav-children")
+				);
 		});
 
 		carouselPagination($(".js-carousel"));
@@ -196,25 +214,35 @@ Site.modules.Page = (function($, Site) {
 
 	function onMainSwapActivate() {
 		$(this).closest(".main_nav_item")
-			.find(".main_nav_link").attr("aria-expanded", "true");
-		ariaShow($(this).closest(".main_nav_item").find(".js-main-nav-children"));
+			.find(".main_nav_link")
+			.attr("aria-expanded", "true");
+		ariaShow(
+			$(this).closest(".main_nav_item")
+				.find(".js-main-nav-children")
+			);
 	}
 
 	function onMainSwapDeactivate() {
 		$(this).closest(".main_nav_item")
-			.find(".main_nav_link").attr("aria-expanded", "false");
-		ariaHide($(this).closest(".main_nav_item").find(".js-main-nav-children"));
+			.find(".main_nav_link")
+			.attr("aria-expanded", "false");
+		ariaHide(
+			$(this).closest(".main_nav_item")
+				.find(".js-main-nav-children")
+		);
 	}
 
 	function onSubSwapActivate() {
 		$(this).attr("aria-expanded", "true")
-			.find(".sub_nav_handle_label").text("Close");
+			.find(".sub_nav_handle_label")
+			.text("Close");
 		ariaShow($(".js-sub-nav-list"));
 	}
 
 	function onSubSwapDeactivate() {
 		$(this).attr("aria-expanded", "false")
-			.find(".sub_nav_handle_label").text($(this).data("swap-title"));
+			.find(".sub_nav_handle_label")
+			.text($(this).data("swap-title"));
 		ariaHide($(".js-sub-nav-list"));
 	}
 
@@ -226,21 +254,14 @@ Site.modules.Page = (function($, Site) {
 		ariaShow($(".js-sub-nav-list"));
 	}
 
-	function onPageLoad() {
-		$("body").removeClass("preload");
-		$(window).trigger("resize");
-		if(window.location.hash) {
-			var hash = window.location.hash;
-			scrollToElement(hash);
-		}
-	}
-
 	function ariaHide($element) {
-		$element.attr("aria-hidden", "true").attr("hidden", "");
+		$element.attr("aria-hidden", "true")
+			.attr("hidden", "");
 	}
 
 	function ariaShow($element) {
-		$element.attr("aria-hidden", "false").removeAttr("hidden");
+		$element.attr("aria-hidden", "false")
+			.removeAttr("hidden");
 	}
 
 	function carouselPagination($element) {
