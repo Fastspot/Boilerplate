@@ -98,10 +98,24 @@ Site.modules.Page = (function($, Site) {
 		Site.killEvent(e);
 
 		var $target = $(e.delegateTarget),
-			id = $target.attr("href");
+				id = $target.attr("href");
 
-		document.querySelector(id).scrollIntoView({
-			behavior: 'smooth'
+		scrollToElement(id);
+	}
+
+	function scrollToElement(id) {
+		var $to = $(id);
+
+		if ($to.length) {
+			var offset = $to.offset();
+
+			scrollToPosition(offset.top);
+		}
+	}
+
+	function scrollToPosition(top) {
+		$("html, body").animate({
+			scrollTop: top
 		});
 	}
 
@@ -217,9 +231,7 @@ Site.modules.Page = (function($, Site) {
 		$(window).trigger("resize");
 		if(window.location.hash) {
 			var hash = window.location.hash;
-			document.querySelector(hash).scrollIntoView({
-				behavior: 'instant'
-			});
+			scrollToElement(hash);
 		}
 	}
 
