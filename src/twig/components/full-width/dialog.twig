@@ -1,0 +1,33 @@
+{#
+	{{site.anchor("Dialog")}}
+	{% include full ~ "dialog.twig" with {
+		trigger: "Open Dialog",
+		title: "Dialog Title",
+		description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+	} %}
+#}
+
+<!-- Simple Dialog -->
+<section class="dialog_block">
+	<a class="js-dialog-trigger dialog_trigger" href="#js-dialog-wrapper">{{trigger}}</a>
+
+	<div class="js-dialog-wrapper dialog_wrapper" id="js-dialog-wrapper">
+		<div class="js-dialog-document dialog_document">
+			<header class="dialog_header">
+				<h2 class="dialog_title" id="js-dialog-label">{{title}}</h2>
+			</header>
+			<div class="dialog_body">
+				<div class="dialog_description">
+					<p>{{description}}</p>
+				</div>
+			</div>
+			<footer class="dialog_footer">
+				<button class="js-dialog-close dialog_close">
+					<span class="dialog_close_label">Close</span>
+					<span class="dialog_close_icon" aria-hidden="true">{{site.icon("close")}}</span>
+				</button>
+			</footer>
+		</div>
+	</div>
+</section>
+<!-- END: Simple Dialog -->
