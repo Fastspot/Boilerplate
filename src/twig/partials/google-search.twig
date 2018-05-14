@@ -3,12 +3,12 @@
 		items: [
 			{
 				title: "<strong>The Beatles</strong>",
-				caption: "Detailed history with information on their music, movies, news, and latest projects. Images, related links, and a showcase for their albums.ails",
+				description: "Detailed history with information on their music, movies, news, and latest projects. Images, related links, and a showcase for their albums.ails",
 				link: "www.thebeatles.com/"
 			},
 			{
 				title: "<strong>The Beatles</strong> - Wikipedia",
-				caption: "The Beatles were an English rock band, formed in Liverpool in 1960. With members John Lennon, Paul McCartney, George Harrison and Ringo Starr, they...",
+				description: "The Beatles were an English rock band, formed in Liverpool in 1960. With members John Lennon, Paul McCartney, George Harrison and Ringo Starr, they...",
 				link: "https://en.wikipedia.org/wiki/The_Beatles"
 			}
 		],
@@ -36,8 +36,8 @@
 								<a class="search_result_title_link" href="{{item.link}}">{{item.title}}</a>
 							</h2>
 							<a class="search_result_link" href="{{item.link}}">{{item.link}}</a>
-							<div class="search_result_caption">
-								<p>{{item.caption}}</p>
+							<div class="search_result_description">
+								<p>{{item.description}}</p>
 							</div>
 						</div>
 						{% endfor %}
