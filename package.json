@@ -102,10 +102,11 @@
       "node_modules/formstone/dist/js/viewer.js",
       "node_modules/what-input/dist/what-input.js",
       "src/js/site.js",
+      "src/js/basic/accordion.js",
+      "src/js/basic/dialog.js",
+      "src/js/basic/tabs.js",
       "src/js/modules/page.js",
-	  "src/js/modules/accordion.js",
-      "src/js/modules/dialog.js",
-      "src/js/modules/tabs.js"
+	  "src/js/modules/alert.js"
     ]
   },
   "img": {

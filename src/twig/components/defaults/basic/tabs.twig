@@ -1,5 +1,5 @@
 {#
-	{{site.anchor("Tabs")}}
+	{{site.anchor("Simple Tabs")}}
 	{% include full ~ "tabs.twig" with {
 		items: [
 			{
@@ -20,20 +20,18 @@
 
 {% set guid = random() %}
 <!-- Simple Tabs -->
-<section class="js-tabs tabs" id="tabs_{{guid}}">
-	<div class="js-tab-list tab_list">
+<div class="js-tabs" id="tabs_{{guid}}">
+	<div class="js-tab-list">
 		{% for item in items %}
-		<div class="js-tab tab">
-			<a class="js-tab-trigger js-swap tab_trigger" href="#js-tab-panel-{{guid}}-{{loop.index}}" id="js-tab-trigger-{{guid}}-{{loop.index}}" data-swap-options='{"collapse": false}' data-swap-target=".js-tab-panel-{{guid}}-{{loop.index}}" data-swap-group="tabs_group_{{guid}}">
-				<span class="tab_trigger_label">{{item.title}}</span>
-			</a>
+		<div class="js-tab">
+			<a class="js-tab-trigger js-swap" href="#js-tab-panel-{{guid}}-{{loop.index}}" id="js-tab-trigger-{{guid}}-{{loop.index}}" data-swap-options='{"collapse": false}' data-swap-target=".js-tab-panel-{{guid}}-{{loop.index}}" data-swap-group="tabs_group_{{guid}}">{{item.title}}</a>
 		</div>
 		{% endfor %}
 	</div>
 	{% for item in items %}
-	<div class="js-tab-panel js-tab-panel-{{guid}}-{{loop.index}} tab_panel" id="js-tab-panel-{{guid}}-{{loop.index}}">
+	<div class="js-tab-panel js-tab-panel-{{guid}}-{{loop.index}}" id="js-tab-panel-{{guid}}-{{loop.index}}">
 		{{item.description}}
 	</div>
 	{% endfor %}
-</section>
+</div>
 <!-- END: Simple Tabs -->
