@@ -7,14 +7,14 @@
 	} %}
 #}
 
+{% set guid = random() %}
 <!-- Simple Dialog -->
 <section class="dialog_block">
-	<a class="js-dialog-trigger dialog_trigger" href="#js-dialog-wrapper">{{trigger}}</a>
-
-	<div class="js-dialog-wrapper dialog_wrapper" id="js-dialog-wrapper">
+	<a class="js-dialog-trigger dialog_trigger" href="#dialog_{{guid}}" data-target="dialog_{{guid}}">{{trigger}}</a>
+	<div class="js-dialog-wrapper dialog_wrapper" id="dialog_{{guid}}" data-label="{{title}}">
 		<div class="js-dialog-document dialog_document">
 			<header class="dialog_header">
-				<h2 class="dialog_title" id="js-dialog-label">{{title}}</h2>
+				<h2 class="dialog_title">{{title}}</h2>
 			</header>
 			<div class="dialog_body">
 				<div class="dialog_description">
