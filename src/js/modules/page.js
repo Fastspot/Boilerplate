@@ -16,8 +16,8 @@ Site.modules.Page = (function($, Site) {
 			next: "<span class='fs-lightbox-icon-next'>" + Site.icon(next_icon) + "</span>"
 		}
 	};
-	var $fixed_header;
-	var fixed_header_height = 0;
+	var $fixed_header; // set to fixed header element
+	var fixed_header_height = null;
 
 	function init() {
 		$(".js-background").on("loaded.background", function() {
@@ -83,9 +83,7 @@ Site.modules.Page = (function($, Site) {
 
 	function resize() {
 		tableOverflow();
-		if (typeof $fixed_header !== "undefined") {
-			fixed_header_height = $fixed_header.outerHeight();
-		}
+		fixedHeader($fixed_header);
 	}
 
 	function respond() {}
@@ -268,6 +266,24 @@ Site.modules.Page = (function($, Site) {
 			$previous_button.html("<span class='fs-carousel-control-icon'>" + Site.icon(prev_icon) + "</span><span class='fs-carousel-control-label'>" + previous_text + "</span>");
 			$next_button.html("<span class='fs-carousel-control-icon'>" + Site.icon(next_icon) + "</span><span class='fs-carousel-control-label'>" + next_text + "</span>");
 		});
+	}
+
+	function fixedHeader($header) {
+		if (typeof $fixed_header !== "undefined") {
+			fixed_header_height = $header.outerHeight();
+			bt_bar_height = $("#bigtree_bar").outerHeight();
+			wp_bar_height = $("#wpadminbar").outerHeight();
+
+			if (bt_bar_height > 0) {
+				$header.css("top", bt_bar_height);
+				$("body").css("padding-top", bt_bar_height);
+				fixed_header_height = fixed_header_height + bt_bar_height;
+			} else if (wp_bar_height > 0) {
+				$header.css("top", wp_bar_height);
+				$("body").css("padding-top", wp_bar_height);
+				fixed_header_height = fixed_header_height + wp_bar_height;
+			}
+		}
 	}
 
 	Site.onInit.push(init);
