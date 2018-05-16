@@ -100,7 +100,7 @@
 	" ": "_"
 }) %}
 <div class="input_wrapper{% if class %} {{class}}_input_wrapper{% endif %}">
-	<label class="input_label{% if class %} {{class}}_input_label{% endif %}">{{label}}</label>
+	<label class="input_label{% if class %} {{class}}_input_label{% endif %}" for="{{id}}">{{label}}</label>
 	<input class="input_field{% if class %} {{class}}_input_field{% endif %}" type="{{type}}" id="{{id}}" {% if type == "text" %} placeholder="{{label}}"{% endif %} />
 </div>
 {% endmacro %}
