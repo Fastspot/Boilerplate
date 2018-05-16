@@ -126,7 +126,7 @@
 
 									{% include "../partials/navigation/main.twig" with {
 										modifier: "lg",
-										title: "Site Navigation",
+										title: "Site",
 										heading: false,
 										links: mainNavAlias,
 										active: activePage,
@@ -136,7 +136,7 @@
 									{% include "../partials/navigation/basic.twig" with {
 										class: "secondary_nav",
 										modifier: "lg",
-										title: "Secondary Navigation",
+										title: "Secondary",
 										heading: false,
 										links: secondaryNavAlias
 									} %}
@@ -283,13 +283,13 @@
 
 								{% include "../partials/navigation/basic.twig" with {
 									class: "footer_nav",
-									title: "Footer Navigation",
+									title: "Footer",
 									heading: false,
 									links: footerNavAlias
 								} %}
 
 								{% include "../partials/navigation/social.twig" with {
-									title: "Social Navigation",
+									title: "Social",
 									links: socialNavAlias
 								} %}
 							</div>
@@ -315,7 +315,7 @@
 
 			{% include "../partials/navigation/main.twig" with {
 				modifier: "sm",
-				title: "Mobile Site Navigation",
+				title: "Site",
 				links: mainNavAlias,
 				active: activePage,
 				icon: "caret_down"
@@ -324,7 +324,7 @@
 			{% include "../partials/navigation/basic.twig" with {
 				class: "secondary_nav",
 				modifier: "sm",
-				title: "Mobile Secondary Navigation",
+				title: "Secondary",
 				heading: false,
 				links: secondaryNavAlias
 			} %}
