@@ -6,7 +6,7 @@ Site.modules.Alert = (function($, Site) {
 
 	var $alert,
 	$alert_close,
-	alert_ime,
+	alert_time,
 	cookie_name;
 
 	function init() {
@@ -37,6 +37,7 @@ Site.modules.Alert = (function($, Site) {
 
 	function hideAlert() {
 		Site.modules.Page.ariaHide($alert);
+		$alert_close.blur();
 		$(window).trigger("resize");
 	}
 
