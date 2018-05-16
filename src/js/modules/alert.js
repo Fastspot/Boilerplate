@@ -4,45 +4,40 @@
 
 Site.modules.Alert = (function($, Site) {
 
-	var $alert;
-	var $alertClose;
-	var $alertTime;
-	var cookieName;
+	var $alert,
+	$alert_close,
+	alert_ime,
+	cookie_name;
 
 	function init() {
-		if ($(".alert").length) {
-			$alert = $(".alert");
-			$alertClose = $(".alert_close");
-			$alertTime = $alert.data("time");
-			cookieName = "alert-cookie";
-
-			if ($.cookie(cookieName) === $alertTime) {
-				hideAlert();
-			} else {
-				showAlert();
-			}
-
+		$alert = $(".js-alert");
+		if ($alert.length) {
 			bindUI();
 		}
 	}
 
 	function bindUI() {
-		$alertClose.on("click", function() {
+		$alert_close = $(".alert_close");
+		alert_time = $alert.data("time");
+		cookie_name = "fs-alert-cookie";
+
+		if ($.cookie(cookie_name) === alert_time) {
+			hideAlert();
+		}
+
+		$alert_close.on("activate.swap", function() {
 			setCookie();
 			hideAlert();
 		});
 	}
 
 	function setCookie() {
-		$.cookie(cookieName, $alertTime);
-	}
-
-	function showAlert() {
-		$alert.addClass("show_alert");
+		$.cookie(cookie_name, alert_time);
 	}
 
 	function hideAlert() {
-		$alert.removeClass("show_alert");
+		Site.modules.Page.ariaHide($alert);
+		$(window).trigger("resize");
 	}
 
 	Site.onInit.push(init);

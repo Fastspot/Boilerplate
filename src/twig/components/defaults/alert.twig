@@ -6,33 +6,36 @@
 		date: "2016-10-27 1:21:4",
 		href: "#",
 		title: "Alert",
-		description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
+		description: "Lorem ipsum dolor sit amet, <a href='#'>consectetuer</a> adipiscing elit."
 	} %}
 #}
 
 <!-- Alert -->
-<section class="alert{% if theme %} theme_{{theme}}{% endif %}" role="alert" data-time="{{time}}">
-	<div class="fs-row">
-		<div class="fs-cell">
-			<div class="alert_inner">
-				<button class="alert_close">
-					<span class="alert_close_icon">{{site.icon("close")}}</span>
-					<span class="alert_close_label">Close Alert</span>
-				</button>
-				<div class="alert_content">
-					<header class="alert_header">
-						<div class="alert_time">
-							<time class="alert_time_item" datetime="{{date|date("Y-m-d")}}">{{date|date("m.d.Y")}}</time>
+<section class="js-alert alert{% if theme %} theme_{{theme}}{% endif %}" role="alert" data-time="{{time}}">
+	<div class="alert_inner">
+		<div class="fs-row">
+			<div class="fs-cell">
+				<div class="alert_wrapper">
+					<div class="alert_content">
+						<header class="alert_header">
+							<div class="alert_time">
+								<time class="alert_time_item" datetime="{{date|date("Y-m-d")}}">{{date|date("m.d.Y")}}</time>
+							</div>
+							<h2 class="alert_title">
+								{% if href %}<a class="alert_title_link" href="{{href}}">{% endif %}
+								{{title}}
+								{% if href %}</a>{% endif %}
+							</h2>
+						</header>
+						<div class="alert_body">
+							<div class="alert_description">
+								<p>{{description}}</p>
+							</div>
 						</div>
-						<h2 class="alert_title">
-							{% if href %}<a class="alert_title_link" href="{{href}}">{% endif %}
-							{{title}}
-							{% if href %}</a>{% endif %}
-						</h2>
-					</header>
-					<div class="alert_description">
-						<p>{{description}}</p>
 					</div>
+					<button class="js-swap js-alert-close alert_close" aria-label="Close Alert" data-swap-target=".js-alert">
+						<span class="alert_close_icon">{{site.icon("close")}}</span>
+					</button>
 				</div>
 			</div>
 		</div>
