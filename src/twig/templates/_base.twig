@@ -127,6 +127,7 @@
 									{% include "../partials/navigation/main.twig" with {
 										modifier: "lg",
 										title: "Site Navigation",
+										heading: false,
 										links: mainNavAlias,
 										active: activePage,
 										icon: "caret_down"
@@ -136,6 +137,7 @@
 										class: "secondary_nav",
 										modifier: "lg",
 										title: "Secondary Navigation",
+										heading: false,
 										links: secondaryNavAlias
 									} %}
 
@@ -282,6 +284,7 @@
 								{% include "../partials/navigation/basic.twig" with {
 									class: "footer_nav",
 									title: "Footer Navigation",
+									heading: false,
 									links: footerNavAlias
 								} %}
 
@@ -322,6 +325,7 @@
 				class: "secondary_nav",
 				modifier: "sm",
 				title: "Mobile Secondary Navigation",
+				heading: false,
 				links: secondaryNavAlias
 			} %}
 		</div>

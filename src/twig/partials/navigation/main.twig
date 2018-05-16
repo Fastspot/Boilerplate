@@ -3,6 +3,7 @@
 	{% include "../partials/navigation/main.twig" with {
 		modifier: "lg",
 		title: "Site Navigation",
+		heading: false,
 		links: mainNavAlias,
 		active: activePage,
 		icon: "caret_down"
@@ -10,8 +11,13 @@
 
 #}
 
-<nav class="js-main-nav {% if modifier %}js-main-nav-{{modifier}} {% endif %}main_nav{% if modifier %} main_nav_{{modifier}}{% endif %}" aria-label="{{title}}" itemscope itemtype="http://schema.org/SiteNavigationElement">
-	<div class="main_nav_list" role="navigation">
+<nav class="js-main-nav {% if modifier %}js-main-nav-{{modifier}} {% endif %}main_nav{% if modifier %} main_nav_{{modifier}}{% endif %}"{% if heading == false and title %} aria-label="{{title}}"{% endif %} itemscope itemtype="http://schema.org/SiteNavigationElement">
+	{% if heading == true and title %}
+	<div class="{{class}}_header">
+		<h2 class="{{class}}_title">{{title}}</h2>
+	</div>
+	{% endif %}
+	<div class="main_nav_list">
 		{% for link in links %}
 		<div class="js-main-nav-item-{{loop.index}} main_nav_item{% if link.children %} main_nav_has_children{% endif %}{% if loop.index == active %} active{% endif %}{% if link.modifier %} {{link.modifier}}{% endif %}">
 			<div class="main_nav_item_wrapper">

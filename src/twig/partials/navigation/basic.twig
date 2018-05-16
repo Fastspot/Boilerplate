@@ -3,18 +3,19 @@
 	{% include "../partials/navigation/basic.twig" with {
 		modifier: "lg",
 		title: "Basic Navigation",
+		heading: false,
 		links: footerNavAlias
 	} %}
 
 #}
 
-<nav class="{{class}}{% if modifier %} {{class}}_{{modifier}}{% endif %}" aria-label="{{title}}" itemscope itemtype="http://schema.org/SiteNavigationElement">
-	{% if title %}
+<nav class="{{class}}{% if modifier %} {{class}}_{{modifier}}{% endif %}"{% if heading == false and title %} aria-label="{{title}}"{% endif %} itemscope itemtype="http://schema.org/SiteNavigationElement">
+	{% if heading == true and title %}
 	<div class="{{class}}_header">
 		<h2 class="{{class}}_title">{{title}}</h2>
 	</div>
 	{% endif %}
-	<div class="{{class}}_list" role="navigation">
+	<div class="{{class}}_list">
 		{% for link in links %}
 		<div class="{{class}}_item{% if link.modifier %} {{link.modifier}}{% endif %}{% if link.children %} {{class}}_item_has_children{% endif %}">
 			<a class="{{class}}_link{% if link.icon %} {{link.icon}}{% endif %}{% if loop.index == active %} active{% endif %}" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="url">
