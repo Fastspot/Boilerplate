@@ -25,8 +25,7 @@
 					<span class="main_nav_link_label" itemprop="name">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
 				</a>
 				{% if link.children and icon %}
-				<button class="js-swap js-main-nav-toggle main_nav_toggle" data-swap-target=".js-main-nav-item-{{loop.index}}" data-swap-group="main_nav">
-					<span class="main_nav_toggle_label">{{link.name}} Submenu</span>
+				<button class="js-swap js-main-nav-toggle main_nav_toggle" data-swap-target=".js-main-nav-item-{{loop.index}}" data-swap-group="main_nav" aria-label="{{link.name}} Submenu">
 					<span class="main_nav_toggle_icon">{{site.icon(icon)}}</span>
 				</button>
 				{% endif %}

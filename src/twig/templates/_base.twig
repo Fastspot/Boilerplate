@@ -153,7 +153,7 @@
 										{% include "../partials/search.twig" with {
 											modifier: "lg",
 											placeholder: "Search",
-											buttonText: "Submit Search Query"
+											buttonText: ""
 										} %}
 									</div>
 								</div>
@@ -303,14 +303,10 @@
 		<!-- END: page_wrapper -->
 
 		<div class="js-mobile-sidebar mobile_sidebar" id="mobile_sidebar" tabindex="-1">
-			<button class="js-swap js-mobile-sidebar-close mobile_sidebar_close" data-swap-target=".mobile_sidebar" data-swap-linked="mobile_sidebar" title="Close this mobile sidebar and return to the site's content">
-				<span class="mobile_sidebar_close_label">Close Mobile Sidebar</span>
-				<span class="mobile_sidebar_close_icon">{{site.icon("close")}}</span>
-			</button>
 			{% include "../partials/search.twig" with {
 				modifier: "sm",
 				placeholder: "Search",
-				buttonText: "Submit Search Query"
+				buttonText: ""
 			} %}
 
 			{% include "../partials/navigation/main.twig" with {
@@ -328,6 +324,10 @@
 				heading: false,
 				links: secondaryNavAlias
 			} %}
+
+			<button class="js-swap js-mobile-sidebar-close mobile_sidebar_close" data-swap-target=".mobile_sidebar" data-swap-linked="mobile_sidebar" aria-label="Close Menu">
+				<span class="mobile_sidebar_close_icon">{{site.icon("close")}}</span>
+			</button>
 		</div>
 
 		<script>
