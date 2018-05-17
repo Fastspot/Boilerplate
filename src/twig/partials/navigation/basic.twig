@@ -15,7 +15,7 @@
 		<h2 class="{{class}}_title">{{title}}</h2>
 	</div>
 	{% endif %}
-	<div class="{{class}}_list"{% if heading == true and title %} role="navigation"{% endif %}>
+	<div class="{{class}}_list">
 		{% for link in links %}
 		<div class="{{class}}_item{% if link.modifier %} {{link.modifier}}{% endif %}{% if link.children %} {{class}}_item_has_children{% endif %}">
 			<a class="{{class}}_link{% if link.icon %} {{link.icon}}{% endif %}{% if loop.index == active %} active{% endif %}" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="url">

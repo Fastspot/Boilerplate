@@ -23,7 +23,7 @@
 		<span class="sub_nav_handle_icon sub_nav_handle_icon_open">{{site.icon("caret_down")}}</span>
 		<span class="sub_nav_handle_icon sub_nav_handle_icon_close">{{site.icon("close")}}</span>
 	</button>
-	<div class="js-sub-nav-list sub_nav_list"{% if heading == true and title %} role="navigation"{% endif %}>
+	<div class="js-sub-nav-list sub_nav_list">
 		{% for link in links %}
 		<div class="sub_nav_item{% if link.modifier %} {{link.modifier}}{% endif %}">
 			<a class="sub_nav_link" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="url">
