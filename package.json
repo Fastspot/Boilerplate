@@ -24,7 +24,7 @@
   "vars": {
     "namespace": "fs",
     "name": "Client Name",
-    "domain": "www.example.com",
+    "domain": "example.dev.fastspot.com/site",
     "description": "",
     "schemaType": "Organization",
     "twitter": "TwitterName",
