@@ -17,9 +17,9 @@
 		<h2 class="{{class}}_title">{{title}}</h2>
 	</div>
 	{% endif %}
-	<div class="main_nav_list">
+	<ul class="main_nav_list">
 		{% for link in links %}
-		<div class="js-main-nav-item-{{loop.index}} main_nav_item{% if link.children %} main_nav_has_children{% endif %}{% if loop.index == active %} active{% endif %}{% if link.modifier %} {{link.modifier}}{% endif %}">
+		<li class="js-main-nav-item-{{loop.index}} main_nav_item{% if link.children %} main_nav_has_children{% endif %}{% if loop.index == active %} active{% endif %}{% if link.modifier %} {{link.modifier}}{% endif %}">
 			<div class="main_nav_item_wrapper">
 				<a class="main_nav_link" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="url"{% if link.children %} aria-haspopup="true"{% endif %}{% if loop.index == active %} aria-current="page"{% endif %}>
 					<span class="main_nav_link_label" itemprop="name">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
@@ -32,17 +32,17 @@
 				{% endif %}
 			</div>
 			{% if link.children %}
-			<div class="js-main-nav-children main_nav_children" aria-label="submenu">
+			<ul class="js-main-nav-children main_nav_children" aria-label="submenu">
 				{% for child in link.children %}
-				<div class="main_nav_child_item{% if child.modifier %} {{child.modifier}}{% endif %}">
+				<li class="main_nav_child_item{% if child.modifier %} {{child.modifier}}{% endif %}">
 					<a class="main_nav_child_link" href="{% if child.href %}{{child.href}}{% else %}#{% endif %}" itemprop="url">
 						<span class="main_nav_child_link_label" itemprop="name">{% if child.name %}{{child.name}}{% elseif child %}{{child}}{% endif %}</span>
 					</a>
-				</div>
+				</li>
 				{% endfor %}
-			</div>
+			</ul>
 			{% endif %}
-		</div>
+		</li>
 		{% endfor %}
-	</div>
+	</ul>
 </nav>

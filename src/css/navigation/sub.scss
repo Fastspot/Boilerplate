@@ -78,6 +78,10 @@
 .sub_nav_list {
 	@include focus_outline_none();
 
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
 	&.fs-swap-enabled {
 		display: none;
 	}
@@ -102,7 +106,11 @@
 // Sub Nav Children
 // =============================================================================
 
-.sub_nav_children {}
+.sub_nav_children {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
 
 .sub_nav_child_item {}
 

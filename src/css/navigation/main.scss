@@ -16,7 +16,11 @@
 // Main Nav Links
 // =============================================================================
 
-.main_nav_list {}
+.main_nav_list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
 
 .main_nav_item {}
 
@@ -88,6 +92,9 @@
 
 .main_nav_children {
 	display: block;
+	list-style: none;
+	margin: 0;
+	padding: 0;
 
 	.main_nav_lg & {
 		position: absolute;

@@ -23,35 +23,35 @@
 		<span class="sub_nav_handle_icon sub_nav_handle_icon_open">{{site.icon("caret_down")}}</span>
 		<span class="sub_nav_handle_icon sub_nav_handle_icon_close">{{site.icon("close")}}</span>
 	</button>
-	<div class="js-sub-nav-list sub_nav_list">
+	<ul class="js-sub-nav-list sub_nav_list">
 		{% for link in links %}
-		<div class="sub_nav_item{% if link.modifier %} {{link.modifier}}{% endif %}">
+		<li class="sub_nav_item{% if link.modifier %} {{link.modifier}}{% endif %}">
 			<a class="sub_nav_link" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="url">
 				<span class="sub_nav_link_label" itemprop="name">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
 			</a>
 			{% if link.children %}
-			<div class="sub_nav_children">
+			<ul class="sub_nav_children">
 				{% for child in link.children %}
-				<div class="sub_nav_child_item{% if link.modifier %} {{link.modifier}}{% endif %}">
+				<li class="sub_nav_child_item{% if link.modifier %} {{link.modifier}}{% endif %}">
 					<a class="sub_nav_child_link" href="{% if child.href %}{{child.href}}{% else %}#{% endif %}" itemprop="url">
 						<span class="sub_nav_child_link_label" itemprop="name">{% if child.name %}{{child.name}}{% elseif child %}{{child}}{% endif %}</span>
 					</a>
 					{% if child.children %}
-					<div class="sub_nav_grandchildren">
+					<ul class="sub_nav_grandchildren">
 						{% for child in child.children %}
-						<div class="sub_nav_grandchild_item{% if link.modifier %} {{link.modifier}}{% endif %}">
+						<li class="sub_nav_grandchild_item{% if link.modifier %} {{link.modifier}}{% endif %}">
 							<a class="sub_nav_grandchild_link" href="{% if child.href %}{{child.href}}{% else %}#{% endif %}" itemprop="url">
 								<span class="sub_nav_grandchild_link_label" itemprop="name">{% if child.name %}{{child.name}}{% elseif child %}{{child}}{% endif %}</span>
 							</a>
-						</div>
+						</li>
 						{% endfor %}
-					</div>
+					</ul>
 					{% endif %}
-				</div>
+				</li>
 				{% endfor %}
-			</div>
+			</ul>
 			{% endif %}
-		</div>
+		</li>
 		{% endfor %}
-	</div>
+	</ul>
 </nav>

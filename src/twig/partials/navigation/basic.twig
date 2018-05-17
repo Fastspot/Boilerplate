@@ -15,9 +15,9 @@
 		<h2 class="{{class}}_title">{{title}}</h2>
 	</div>
 	{% endif %}
-	<div class="{{class}}_list">
+	<ul class="{{class}}_list">
 		{% for link in links %}
-		<div class="{{class}}_item{% if link.modifier %} {{link.modifier}}{% endif %}{% if link.children %} {{class}}_item_has_children{% endif %}">
+		<li class="{{class}}_item{% if link.modifier %} {{link.modifier}}{% endif %}{% if link.children %} {{class}}_item_has_children{% endif %}">
 			<a class="{{class}}_link{% if link.icon %} {{link.icon}}{% endif %}{% if loop.index == active %} active{% endif %}" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="url">
 				{% if link.icon %}
 				<span class="{{class}}_link_icon">{{site.icon(link.icon)}}</span>
@@ -25,17 +25,17 @@
 				<span class="{{class}}_link_label" itemprop="name">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
 			</a>
 			{% if link.children %}
-			<div class="{{class}}_children">
+			<ul class="{{class}}_children">
 				{% for child in link.children %}
-				<div class="{{class}}_child_item{% if child.modifier %} {{child.modifier}}{% endif %}">
+				<li class="{{class}}_child_item{% if child.modifier %} {{child.modifier}}{% endif %}">
 					<a class="{{class}}_child_link" href="{% if child.href %}{{child.href}}{% else %}#{% endif %}" itemprop="url">
 						<span class="{{class}}_child_link_label" itemprop="name">{% if child.name %}{{child.name}}{% elseif child %}{{child}}{% endif %}</span>
 					</a>
-				</div>
+				</li>
 				{% endfor %}
-			</div>
+			</ul>
 			{% endif %}
-		</div>
+		</li>
 		{% endfor %}
-	</div>
+	</ul>
 </nav>
