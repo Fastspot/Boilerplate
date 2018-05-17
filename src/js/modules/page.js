@@ -46,11 +46,26 @@ Site.modules.Page = (function($, Site) {
 		bindGenericUI();
 		responsiveVideo();
 		tableOverflow();
-		ariaHide($(".js-mobile-sidebar, .js-main-nav-children, .js-sub-nav-list"));
+		ariaHide($(".js-mobile-sidebar, .js-main-nav-children"));
 		$(".main_nav_link").attr("aria-expanded", "false");
 		$(".js-sub-nav-handle")
 			.attr("aria-expanded", "false")
 			.attr("aria-haspopup", "true");
+
+		$.mediaquery("bind", "mq-key", "(min-width: " + Site.minLG + "px)", {
+			enter: function() {
+				ariaShow($(".js-sub-nav-list"));
+				$(".js-sub-nav-handle")
+					.removeAttr("aria-expanded")
+					.removeAttr("aria-haspopup");
+			},
+			leave: function() {
+				ariaHide($(".js-sub-nav-list"));
+				$(".js-sub-nav-handle")
+					.attr("aria-expanded", "false")
+					.attr("aria-haspopup", "true");
+			}
+		});
 
 		$(window).on("load", onPageLoad);
 		$(document).on("click touchstart", onDocumentClick);
