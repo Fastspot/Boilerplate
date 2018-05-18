@@ -67,8 +67,6 @@ button {
 	@include button_layout($layout);
 
 	display: inline-block;
-	margin-right: 8px;
-	margin-bottom: 8px;
 }
 
 @mixin button_block($layout: true) {
@@ -76,7 +74,6 @@ button {
 	@include button_layout($layout);
 
 	display: block;
-	margin-bottom: 8px;
 	text-align: center;
 }
 
@@ -86,7 +83,6 @@ button {
 
 	@media #{$min_sm} {
 		display: inline-block;
-		margin-right: 8px;
 		text-align: left;
 	}
 }
