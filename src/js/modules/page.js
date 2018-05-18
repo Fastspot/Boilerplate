@@ -177,6 +177,8 @@ Site.modules.Page = (function($, Site) {
 
 		carouselPagination($(".js-carousel"));
 
+		createSiteButtons($(".js-mobile-sidebar-handle"));
+
 		$(".js-toggle")
 			.not(".js-bound")
 			.on("click", ".js-toggle-handle", onToggleClick)
@@ -299,6 +301,25 @@ Site.modules.Page = (function($, Site) {
 				fixed_header_height = fixed_header_height + wp_bar_height;
 			}
 		}
+	}
+
+	function createSiteButtons($element) {
+		$this = $element;
+		$this.each(function() {
+			var attributes = $this.prop("attributes");
+			$this.swap("destroy")
+				.wrapInner("<button />");
+			$.each(attributes, function() {
+				$this.find("button")
+					.attr(this.name, this.value);
+			});
+			$this.find("button")
+				.unwrap()
+				.removeAttr("href")
+				.swap()
+				.on("activate.swap", onSidebarSwapActivate)
+				.on("deactivate.swap", onSidebarSwapDeactivate);
+		});
 	}
 
 	function getScrollbarWidth() {
