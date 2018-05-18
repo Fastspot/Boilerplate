@@ -22,10 +22,15 @@
 .breadcrumb_item {
 	display: inline-block;
 
-	&:not(:last-child) {
+	&:after {
+		content: "/";
+	}
+
+	&:last-child {
 
 		&:after {
-			content: "/";
+			opacity: 0;
+			visibility: hidden;
 		}
 	}
 }
