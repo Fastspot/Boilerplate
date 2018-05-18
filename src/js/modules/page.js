@@ -84,7 +84,8 @@ Site.modules.Page = (function($, Site) {
 	function onPageLoad() {
 		$("body").removeClass("preload");
 		$(window).trigger("resize");
-		if(window.location.hash) {
+		
+		if (window.location.hash) {
 			var id = window.location.hash;
 			scrollToElement(id);
 		}
