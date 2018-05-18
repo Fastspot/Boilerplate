@@ -25,6 +25,10 @@
 
 	background: #fff;
 
+	@media print {
+		display: none;
+	}
+
 	.js & {
 		width: 100%;
 		max-width: 320px;
@@ -42,10 +46,6 @@
 			opacity .35s,
 			transform .35s,
 			visibility .35s;
-	}
-
-	@media print {
-		display: none;
 	}
 
 	&.fs-swap-active {
