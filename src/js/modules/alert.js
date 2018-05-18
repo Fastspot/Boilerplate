@@ -22,6 +22,7 @@ Site.modules.Alert = (function($, Site) {
 		cookie_name = "fs-alert-cookie";
 
 		if ($.cookie(cookie_name) === alert_time) {
+			$alert_close.swap("activate");
 			hideAlert();
 		}
 
