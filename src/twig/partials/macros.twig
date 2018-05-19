@@ -32,8 +32,8 @@
 #}
 
 
-{% macro image(class, dimension, image) %}
-<img class="{{class}}_image" src="//images.fastspot.com/{{vars.namespace}}/{{dimension}}/{{image}}" alt="">
+{% macro image(class, dimension, image, itemprop) %}
+<img class="{{class}}_image" src="//images.fastspot.com/{{vars.namespace}}/{{dimension}}/{{image}}" alt=""{% if itemprop %} itemprop="{{itemprop}}"{% endif %}>
 {% endmacro %}
 
 

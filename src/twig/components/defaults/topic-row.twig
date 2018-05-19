@@ -1,3 +1,24 @@
+{#
+	{{site.anchor("Topic Row")}}
+	{% include "../components/in-content/topic-row.twig" with {
+		title: "",
+		topics: [
+			{
+				title: "Financial Aid",
+				image: 1,
+				description: "Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.",
+				links: [
+					{
+						href: "#",
+						name: "Learn More"
+					}
+				]
+			}
+		]
+	} %}
+#}
+
+<!-- Topic Block -->
 <div class="topic_block{% if theme %} theme_{{theme}}{% endif %}">
 	{% if title %}
 	<header class="topic_block_header">
@@ -18,8 +39,8 @@
 						<h3 class="topic_title">{{item.title}}</h3>
 					</header>
 					<div class="topic_body">
-						<div class="topic_caption">
-							<p>{{item.caption}}</p>
+						<div class="topic_description">
+							<p>{{item.description}}</p>
 						</div>
 					</div>
 					{% if item.links %}
@@ -35,3 +56,4 @@
 		{% endfor %}
 	</div>
 </div>
+<!-- END: Topic Block -->

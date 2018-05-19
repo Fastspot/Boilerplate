@@ -4,7 +4,7 @@
 		theme: "",
 		title: "",
 		name: "",
-		caption: "",
+		description: "",
 		phone: "",
 		fax: "",
 		email: "",
@@ -12,6 +12,7 @@
 	} %}
 #}
 
+<!-- Contact Card -->
 <div class="contact_card{% if theme %} theme_{{theme}}{% endif %}">
 	<header class="contact_card_header">
 		<h2 class="contact_card_title">{{title}}</h2>
@@ -19,7 +20,7 @@
 	<div class="contact_card_body">
 		<h3 class="contact_card_name">{{name}}</h3>
 		<div class="contact_card_info">
-			<div class="contact_card_caption">{{caption}}</div>
+			<div class="contact_card_description">{{description}}</div>
 		</div>
 		<div class="contact_card_types">
 			{% if phone %}
@@ -37,3 +38,4 @@
 		</div>
 	</div>
 </div>
+<!-- END: Contact Card -->

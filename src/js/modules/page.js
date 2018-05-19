@@ -16,6 +16,8 @@ Site.modules.Page = (function($, Site) {
 			next: "<span class='fs-lightbox-icon-next'>" + Site.icon(next_icon) + "</span>"
 		}
 	};
+	var $fixed_header; // set to fixed header element
+	var fixed_header_height = null;
 
 	function init() {
 		$(".js-background").on("loaded.background", function() {
@@ -44,7 +46,26 @@ Site.modules.Page = (function($, Site) {
 		bindGenericUI();
 		responsiveVideo();
 		tableOverflow();
-		ariaHide($(".js-mobile-sidebar, .js-main-nav-children, .js-sub-nav-list"));
+		ariaHide($(".js-mobile-sidebar, .js-main-nav-children"));
+		$(".main_nav_link").attr("aria-expanded", "false");
+		$(".js-sub-nav-handle")
+			.attr("aria-expanded", "false")
+			.attr("aria-haspopup", "true");
+
+		$.mediaquery("bind", "mq-key", "(min-width: " + Site.minLG + "px)", {
+			enter: function() {
+				ariaShow($(".js-sub-nav-list"));
+				$(".js-sub-nav-handle")
+					.removeAttr("aria-expanded")
+					.removeAttr("aria-haspopup");
+			},
+			leave: function() {
+				ariaHide($(".js-sub-nav-list"));
+				$(".js-sub-nav-handle")
+					.attr("aria-expanded", "false")
+					.attr("aria-haspopup", "true");
+			}
+		});
 
 		$(window).on("load", onPageLoad);
 		$(document).on("click touchstart", onDocumentClick);
@@ -77,6 +98,7 @@ Site.modules.Page = (function($, Site) {
 
 	function resize() {
 		tableOverflow();
+		fixedHeader($fixed_header);
 	}
 
 	function respond() {}
@@ -120,7 +142,7 @@ Site.modules.Page = (function($, Site) {
 
 	function scrollToPosition(top) {
 		$("html, body").animate({
-			scrollTop: top
+			scrollTop: top - fixed_header_height
 		});
 	}
 
@@ -138,23 +160,8 @@ Site.modules.Page = (function($, Site) {
 	}
 
 	function bindGenericUI() {
-		$(".js-main-nav-lg").find("a")
-			.focus(function() {
-				$(this).addClass("focused")
-					.attr("aria-expanded", "true");
-				ariaShow(
-					$(this).closest(".main_nav_item")
-					.find(".js-main-nav-children")
-				);
-			})
-			.blur(function() {
-				$(this).removeClass("focused")
-					.attr("aria-expanded", "false");
-				ariaHide(
-					$(this).closest(".main_nav_item")
-						.find(".js-main-nav-children")
-				);
-			})
+		$(".js-main-nav-lg")
+			.find("a")
 			.hover(function() {
 				$(this).attr("aria-expanded", "true");
 				ariaShow(
@@ -170,6 +177,8 @@ Site.modules.Page = (function($, Site) {
 		});
 
 		carouselPagination($(".js-carousel"));
+
+		createSiteButtons($(".js-mobile-sidebar-handle"));
 
 		$(".js-toggle")
 			.not(".js-bound")
@@ -277,11 +286,72 @@ Site.modules.Page = (function($, Site) {
 		});
 	}
 
+	function fixedHeader($header) {
+		if (typeof $fixed_header !== "undefined") {
+			fixed_header_height = $header.outerHeight();
+			bt_bar_height = $("#bigtree_bar").outerHeight();
+			wp_bar_height = $("#wpadminbar").outerHeight();
+
+			if (bt_bar_height > 0) {
+				$header.css("top", bt_bar_height);
+				fixed_header_height = fixed_header_height + bt_bar_height;
+			} else if (wp_bar_height > 0) {
+				$header.css("top", wp_bar_height);
+				fixed_header_height = fixed_header_height + wp_bar_height;
+			}
+		}
+	}
+
+	function createSiteButtons($element) {
+		$this = $element;
+		$this.each(function() {
+			var attributes = $this.prop("attributes");
+			$this.swap("destroy")
+				.wrapInner("<button />");
+			$.each(attributes, function() {
+				$this.find("button")
+					.attr(this.name, this.value);
+			});
+			$this.find("button")
+				.unwrap()
+				.removeAttr("href")
+				.swap()
+				.on("activate.swap", onSidebarSwapActivate)
+				.on("deactivate.swap", onSidebarSwapDeactivate);
+		});
+	}
+
+	function getScrollbarWidth() {
+		var outer = document.createElement("div");
+		outer.style.visibility = "hidden";
+		outer.style.width = "100px";
+		outer.style.msOverflowStyle = "scrollbar";
+
+		document.body.appendChild(outer);
+
+		var widthNoScroll = outer.offsetWidth;
+		// force scrollbars
+		outer.style.overflow = "scroll";
+
+		// add innerdiv
+		var inner = document.createElement("div");
+		inner.style.width = "100%";
+		outer.appendChild(inner);
+
+		var widthWithScroll = inner.offsetWidth;
+
+		// remove divs
+		outer.parentNode.removeChild(outer);
+
+		return widthNoScroll - widthWithScroll;
+	}
+
 	Site.onInit.push(init);
 
 	return {
 		ariaHide: ariaHide,
-		ariaShow: ariaShow
+		ariaShow: ariaShow,
+		getScrollbarWidth: getScrollbarWidth
 	};
 
 })(jQuery, Site);
