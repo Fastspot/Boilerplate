@@ -9,8 +9,8 @@
 
 #}
 
-<nav class="{{class}}{% if modifier %} {{class}}_{{modifier}}{% endif %}"{% if heading == false and title %} aria-label="{{title}}"{% endif %} itemscope itemtype="http://schema.org/SiteNavigationElement">
-	{% if heading == true and title %}
+<nav class="{{class}}{% if modifier %} {{class}}_{{modifier}}{% endif %}"{% if heading == false or heading == "" or heading == null and title %} aria-label="{{title}}"{% endif %} itemscope itemtype="http://schema.org/SiteNavigationElement">
+	{% if heading and title %}
 	<div class="{{class}}_header">
 		<h2 class="{{class}}_title">{{title}}</h2>
 	</div>

@@ -12,8 +12,8 @@
 	{% set navTitle = "In This Section" %}
 {% endif %}
 
-<nav class="sub_nav {% if modifier %} sub_nav_{{modifier}}{% endif %}"{% if heading == false and title %} aria-label="{{title}}"{% endif %} itemscope itemtype="http://schema.org/SiteNavigationElement">
-	{% if heading == true and title %}
+<nav class="sub_nav {% if modifier %} sub_nav_{{modifier}}{% endif %}"{% if heading == false or heading == "" or heading == null and title %} aria-label="{{title}}"{% endif %} itemscope itemtype="http://schema.org/SiteNavigationElement">
+	{% if heading and title %}
 	<div class="sub_nav_header">
 		<h2 class="sub_nav_title">{{navTitle}}</h2>
 	</div>

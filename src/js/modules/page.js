@@ -293,11 +293,9 @@ Site.modules.Page = (function($, Site) {
 
 			if (bt_bar_height > 0) {
 				$header.css("top", bt_bar_height);
-				$("body").css("padding-top", bt_bar_height);
 				fixed_header_height = fixed_header_height + bt_bar_height;
 			} else if (wp_bar_height > 0) {
 				$header.css("top", wp_bar_height);
-				$("body").css("padding-top", wp_bar_height);
 				fixed_header_height = fixed_header_height + wp_bar_height;
 			}
 		}
