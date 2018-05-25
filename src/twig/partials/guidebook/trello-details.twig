@@ -1,17 +1,62 @@
 <div class="gb_trello_details">
-	{% for group in deck %}
-		{% for item in group.cards %}
+	{% if trelloCards %}
+		{% for group in deck %}
+			{% for item in group.cards %}
+				{% if loop.index - 2 >= 0 %}
+					{% set prev = group.cards[loop.index - 2] %}
+				{% else %}
+					{% set prevSize = deck[loop.parent.loop.index - 2].cards.length - 1 %}
+					{% set prev = deck[loop.parent.loop.index - 2].cards[prevSize] %}
+				{% endif %}
+
+				{% if loop.index + 1 <= loop.length %}
+					{% set next = group.cards[loop.index] %}
+				{% else %}
+					{% set next = deck[loop.parent.loop.index].cards[0] %}
+				{% endif %}
+				<div class="gb_trello_detail" id="trello_{{item.id}}">
+					<div class="gb_trello_detail_ribbon">
+						{% if prev %}
+							<a href="#trello_{{prev.id}}" class="gb_trello_detail_pager gb_trello_detail_pager_prev{% if prev %} pager_active{% endif %}">{{prev.name}}</a>
+						{% endif %}
+						<a href="#" class="gb_trello_detail_close">View All Components</a>
+						{% if next is not empty %}
+							<a href="#trello_{{next.id}}" class="gb_trello_detail_pager gb_trello_detail_pager_next{% if next %} pager_active{% endif %}">{{next.name}}</a>
+						{% endif %}
+					</div>
+					<div class="gb_trello_detail_section fs-row">
+						<div class="gb_trello_detail_inner fs-lg-10 fs-xl-8 gb_typography">
+							<h1 class="gb_trello_detail_title">{{item.name}}</h1>
+						</div>
+					</div>
+					<div class="gb_trello_detail_section fs-row">
+						<div class="gb_trello_detail_inner fs-lg-10 fs-xl-8 gb_typography">
+							<div class="gb_trello_detail_cover" data-image="{% if item.attachments[0].previews[5].url %}{{item.attachments[0].previews[5].url}}{% else %}{{item.attachments[0].url}}{% endif %}">
+							</div>
+							<a class="gb_trello_detail_live" href="dev-{{item.type|lower}}.html#{{item.name|replace({
+								" ": "-",
+								"&": "and",
+								"/": "-"
+							})|lower}}" target="_blank">See Component Live</a>
+							<div class="gb_trello_detail_content gb_typography">{{item.desc}}</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		{% endfor %}
+	{% else %}
+		{% for item in templates %}
 			{% if loop.index - 2 >= 0 %}
-				{% set prev = group.cards[loop.index - 2] %}
+				{% set prev = templates[loop.index - 2] %}
 			{% else %}
-				{% set prevSize = deck[loop.parent.loop.index - 2].cards.length - 1 %}
-				{% set prev = deck[loop.parent.loop.index - 2].cards[prevSize] %}
+				{% set prevSize =  templates.length %}
+				{% set prev =  templates[prevSize] %}
 			{% endif %}
 
 			{% if loop.index + 1 <= loop.length %}
-				{% set next = group.cards[loop.index] %}
+				{% set next = templates[loop.index] %}
 			{% else %}
-				{% set next = deck[loop.parent.loop.index].cards[0] %}
+				{% set next = templates[loop.first] %}
 			{% endif %}
 			<div class="gb_trello_detail" id="trello_{{item.id}}">
 				<div class="gb_trello_detail_ribbon">
@@ -42,5 +87,5 @@
 				</div>
 			</div>
 		{% endfor %}
-	{% endfor %}
+	{% endif %}
 </div>

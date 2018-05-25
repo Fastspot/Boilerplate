@@ -1,0 +1,24 @@
+{% extends "_guidebook.twig" %}
+
+{% block page %}
+	{% set page = {
+		active: 4,
+		trello: true,
+		layout: "full",
+		title: "Templates",
+		caption: "Here’s your new site’s list of structured templates: select a template to learn more about how and when to use it most effectively.",
+		image: "components.svg"
+	} %}
+{% endblock %}
+
+{% block content %}
+	{% include '../partials/guidebook/trello-sections.twig' with {
+		templatesPage: true
+	} %}
+{% endblock %}
+
+{% block trelloDetails %}
+	{% include '../partials/guidebook/trello-details.twig' with {
+		templatesPage: true
+	} %}
+{% endblock %}

@@ -52,12 +52,14 @@ var source = {
 	readme: 'src/twig/README.twig',
 	trello: [
 		'src/twig/templates/fs-components.twig',
+		'src/twig/templates/fs-templates.twig',
 		'src/twig/templates/fs-content-strategy.twig'
 	],
 	twig: [
 		'src/twig/templates/*.twig',
 		'!src/twig/templates/_*.twig',
 		'!src/twig/templates/fs-components.twig',
+		'!src/twig/templates/fs-templates.twig',
 		'!src/twig/templates/fs-content-strategy.twig'
 	],
 	templates: 'static/templates/*.html',
@@ -75,6 +77,7 @@ var source = {
 var watch = {
 	trello: [
 		'src/twig/templates/fs-components.twig',
+		'src/twig/templates/fs-templates.twig',
 		'src/twig/templates/fs-content-strategy.twig',
 		'src/twig/partials/guidebook/trello-details.twig',
 		'src/twig/partials/guidebook/trello-sections.twig',
@@ -83,6 +86,7 @@ var watch = {
 	twig: [
 		'src/twig/**/*.twig',
 		'!src/twig/templates/fs-components.twig',
+		'!src/twig/templates/fs-templates.twig',
 		'!src/twig/templates/fs-content-strategy.twig',
 		'!src/twig/partials/guidebook/trello-details.twig',
 		'!src/twig/partials/guidebook/trello-sections.twig',
@@ -119,6 +123,7 @@ gulp.task('trello', function(done) {
 		var deck = [];
 		var cards = [];
 		var contentStrategy = [];
+		var templates = [];
 
 		trello.get('/1/boards/' + packageJSON.vars.idBoardTrello + '/cards', {
 			attachments: "cover",
@@ -145,12 +150,14 @@ gulp.task('trello', function(done) {
 							data[card].desc = markdown.toHTML(data[card].desc);
 
 							cards.push(data[card]);
+						} else if(data[card].labels.find(findTemplate)) {
+							templates.push(data[card]);
 						}
 					} else if(data[card].labels.find(findContent)) {
 						data[card].desc = markdown.toHTML(data[card].desc);
 
 						contentStrategy.push(data[card]);
-					}
+					} 
 				}
 
 				cards.sort(function(a, b) {
@@ -187,7 +194,8 @@ gulp.task('trello', function(done) {
 							links: packageJSON.links,
 							deck: deck,
 							types: types,
-							contentStrategy: contentStrategy
+							contentStrategy: contentStrategy,
+							templates: templates
 						}
 					}))
 					.pipe(rename({
@@ -201,8 +209,15 @@ gulp.task('trello', function(done) {
 			return label.name === "Strategy";
 		}
 
+		function findTemplate(label) {
+			return label.name === "Template";
+		}
+
 		function findType(label) {
-			return label.name === "Feature" || label.name === "In-Content" || label.name === "Full-Width" || label.name === "Sidebar";
+			return label.name === "Feature" || 
+						 label.name === "In-Content" || 
+						 label.name === "Full-Width" || 
+						 label.name === "Sidebar";
 		}
 	}
 
@@ -234,6 +249,8 @@ gulp.task('components', function(done) {
 					result += '{% block in_content_callouts %}';
 				} else if (folder === 'sidebar') {
 					result += '{% block sidebar %}';
+				} else if (folder == 'default') {
+					result += '{% block full-width %}';
 				}
 
 				mods.forEach(function(mod) {
@@ -659,7 +676,7 @@ gulp.task('reset', function(done) {
 gulp.task('watch', function() {
 
 	gulp.watch('package.json', gulp.series('reset', 'build', 'reload'));
-	gulp.watch(watch.trello, gulp.series('twig', gulp.parallel('trello', 'components'), 'reload'));
+	gulp.watch(watch.trello, gulp.series('twig', gulp.parallel('trello'), 'reload'));
 	gulp.watch(watch.twig, gulp.series('twig'));
 	gulp.watch(watch.sass, gulp.series('sass'));
 	gulp.watch(watch.js, gulp.series(gulp.parallel('js', 'jshint')));
