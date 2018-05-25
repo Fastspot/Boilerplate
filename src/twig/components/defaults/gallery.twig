@@ -6,13 +6,13 @@
 		items: [
 			{
 				video: "//www.youtube.com/watch?v=XPjQhvjQbSM",
-				symbol: "",
+				icon: "",
 				image: 1,
 				caption: "Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. <a href='#'>Phasellus viverra</a> nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui."
 			},
 			{
 				video: "",
-				symbol: "",
+				icon: "",
 				image: 2,
 				caption: ""
 			}
@@ -39,7 +39,7 @@
 				<figure class="media_gallery_item_figure" role="group"{% if item.caption %} aria-label="{{item.caption|striptags}}"{% endif %} itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
 					{% if item.video %}<a class="js-lightbox media_gallery_item_link" href="{{item.video}}" title="{{item.caption|striptags}}" itemprop="contentUrl">{% endif %}
 					{{site.image("media_gallery_item", img.wide.med, item.image)}}
-					<span class="media_gallery_item_icon">{{site.icon(symbol)}}</span>
+					<span class="media_gallery_item_icon">{{site.icon(icon)}}</span>
 					{% if item.video %}</a>{% endif %}
 					{% if item.caption %}
 					<figcaption class="media_gallery_item_figcaption" itemprop="caption description">
