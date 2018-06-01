@@ -7,10 +7,6 @@ html {
 	box-sizing: border-box;
 }
 
-.bleed {
-	@include bleed(50);
-}
-
 *,
 *:before,
 *:after {
