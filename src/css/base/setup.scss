@@ -673,7 +673,7 @@ $margin_xl: 80px;
 /* Not to be used with a form container */
 /* Use -webkit-overflow-scrolling: auto instead */
 @mixin fake_scroll($touch: true) {
-	overflow-y: scroll;
+	overflow-y: auto;
 
 	@if $touch {
 		-webkit-overflow-scrolling: touch;

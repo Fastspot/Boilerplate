@@ -26,6 +26,8 @@
 	background: #fff;
 
 	.js & {
+		@include fake_scroll(true);
+
 		width: 100%;
 		max-width: 320px;
 		height: 100%;
@@ -36,13 +38,11 @@
 		z-index: 400;
 
 		opacity: 0;
-		overflow-y: auto;
 		visibility: hidden;
 		transition:
 			opacity .35s,
 			transform .35s,
 			visibility .35s;
-		-webkit-overflow-scrolling: touch;
 	}
 
 	@media print {
