@@ -7,6 +7,10 @@ html {
 	box-sizing: border-box;
 }
 
+.bleed {
+	@include bleed(50);
+}
+
 *,
 *:before,
 *:after {
@@ -32,7 +36,7 @@ body {
 		opacity: 0;
 		pointer-events: none;
 		visibility: hidden;
-		transition: 
+		transition:
 			opacity .35s,
 			visibility .35s;
 	}

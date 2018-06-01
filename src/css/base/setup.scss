@@ -116,13 +116,13 @@ $margin_xl: 80px;
 	left: 0;
 }
 
-@mixin bleed() {
-	height: calc(100% + 20px);
-	width: calc(100% + 20px);
+@mixin bleed($edge: 20px) {
+	height: calc(100% + #{$edge});
+	width: calc(100% + #{$edge});
 
 	position: absolute;
-	top: -10px;
-	left: -10px;
+	top: -#{$edge / 2};
+	left: -#{$edge / 2};
 }
 
 // Cover Image:
