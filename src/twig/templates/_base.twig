@@ -31,7 +31,7 @@
 		<!-- G+ & Facebook -->
 		<meta property="og:title" content="{% if page.title %}{{page.title}}{% else %}{{vars.name}}{% endif %}">
 		<meta property="og:type" content="website">
-		<meta property="og:image" content="{% if page.metaImage %}{{page.metaImage}}{% else %}//{{vars.domain}}/images/social-sq.png{% endif %}">
+		<meta property="og:image" content="{% if page.metaImage %}{{page.metaImage}}{% else %}http://{{vars.domain}}/images/social-sq.png{% endif %}">
 		<meta property="og:image:width" content="{% if page.metaImageWidth %}{{page.metaImageWidth}}{% else %}800{% endif %}">
 		<meta property="og:image:height" content="{% if page.metaImageHeight %}{{page.metaImageHeight}}{% else %}800{% endif %}">
 		<meta property="og:description" content="{% if page.intro %}{{page.intro}}{% else %}{{vars.description}}{% endif %}">
@@ -45,7 +45,7 @@
 		<meta name="twitter:url" content="//twitter.com/{{vars.twitter}}">
 		<meta name="twitter:title" content="{% if page.title %}{{page.title}}{% else %}{{vars.name}}{% endif %}">
 		<meta name="twitter:description" content="{% if page.intro %}{{page.intro}}{% else %}{{vars.description}}{% endif %}">
-		<meta name="twitter:image" content="{% if page.metaImage %}{{page.metaImage}}{% else %}//{{vars.domain}}/images/social-sq.png{% endif %}">
+		<meta name="twitter:image" content="{% if page.metaImage %}{{page.metaImage}}{% else %}http://{{vars.domain}}/images/social-sq.png{% endif %}">
 		{% endif %}
 
 		<script src="//code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

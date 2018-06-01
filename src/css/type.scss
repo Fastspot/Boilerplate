@@ -172,7 +172,8 @@ strong {
 		width: auto;
 
 		display: table;
-		margin-bottom: 30px;
+		margin-top: 20px;
+		margin-bottom: 20px;
 		table-layout: fixed;
 
 		img {
@@ -201,6 +202,11 @@ strong {
 			float: none;
 			margin-right: 0;
 			margin-left: 0;
+		}
+
+		@media #{$min_sm} {
+			margin-top: 0;
+			margin-bottom: 30px;
 		}
 	}
 

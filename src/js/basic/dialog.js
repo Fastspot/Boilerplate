@@ -19,7 +19,6 @@ Site.modules.Dialog = (function($, Site) {
 	}
 
 	function bindUI() {
-		dialog_class = $dialog_wrap.data("dialog-class");
 		$dialog_document = $dialog_wrap.find(".js-dialog-document");
 		$dialog_trigger = $(".js-dialog-trigger");
 		$dialog_close = $(".js-dialog-close");
@@ -37,7 +36,7 @@ Site.modules.Dialog = (function($, Site) {
 		$dialog_document.attr("tabindex", "0")
 			.attr("role", "document");
 		$(".js-dialog").each(function() {
-			var label = $(this).closest(".js-dialog-wrapper").data("label");
+			var label = $(this).closest(".js-dialog-wrapper").data("dialog-label");
 			$(this).attr("aria-label", label);
 		});
 	}
@@ -50,9 +49,8 @@ Site.modules.Dialog = (function($, Site) {
 
 	function onTriggerClick(e) {
 		$dialog_triggered = $(this);
-		dialog_target = $dialog_triggered.data("target");
+		dialog_target = $dialog_triggered.data("dialog-target");
 		event.preventDefault();
-		$("html, body").addClass("dialog_open");
 		$("#" + dialog_target)
 			.find(".js-dialog")
 			.attr("open", "true")
@@ -62,7 +60,6 @@ Site.modules.Dialog = (function($, Site) {
 	}
 
 	function onCloseClick(e) {
-		$("html, body").removeClass("dialog_open");
 		$("#" + dialog_target)
 			.find(".js-dialog")
 			.removeAttr("open")
@@ -101,7 +98,7 @@ Site.modules.Dialog = (function($, Site) {
 	}
 
 	function onDocumentClick(e) {
-		if (!($(event.target).closest(".js-dialog").length || $(event.target).closest(".js-dialog-trigger").length) && $("body").hasClass("dialog_open")) {
+		if (!($(event.target).closest(".js-dialog").length || $(event.target).closest(".js-dialog-trigger").length) && $("#" + dialog_target).hasClass("dialog_open")) {
 			onCloseClick();
 		}
 	}

@@ -2,7 +2,7 @@
 	{{site.anchor("Topic Row")}}
 	{% include "../components/in-content/topic-row.twig" with {
 		title: "",
-		topics: [
+		items: [
 			{
 				title: "Financial Aid",
 				image: 1,
@@ -30,9 +30,11 @@
 		<article class="topic_row">
 			<div class="topic_row_inner">
 				{% if item.image %}
-				<figure class="topic_figure">
-					{{site.image("topic", img.square.xsml, item.image)}}
-				</figure>
+				<div class="topic_media">
+					<figure class="topic_figure">
+						{{site.image("topic", img.square.xsml, item.image)}}
+					</figure>
+				</div>
 				{% endif %}
 				<div class="topic_wrapper">
 					<header class="topic_header">

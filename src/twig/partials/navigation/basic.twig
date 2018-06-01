@@ -18,9 +18,9 @@
 	<ul class="{{class}}_list">
 		{% for link in links %}
 		<li class="{{class}}_item{% if link.modifier %} {{link.modifier}}{% endif %}{% if link.children %} {{class}}_item_has_children{% endif %}">
-			<a class="{{class}}_link{% if link.icon %} {{link.icon}}{% endif %}{% if loop.index == active %} active{% endif %}" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="url">
+			<a class="{{class}}_link{% if link.icon %} {{link.icon}}{% endif %}{% if loop.index == active %} active{% endif %}" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="url"{% if loop.index == active %} aria-current="page"{% endif %}>
 				{% if link.icon %}
-				<span class="{{class}}_link_icon">{{site.icon(link.icon)}}</span>
+				<span class="{{class}}_link_icon" aria-hidden="true">{{site.icon(link.icon)}}</span>
 				{% endif %}
 				<span class="{{class}}_link_label" itemprop="name">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
 			</a>

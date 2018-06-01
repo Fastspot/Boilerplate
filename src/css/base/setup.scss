@@ -116,6 +116,15 @@ $margin_xl: 80px;
 	left: 0;
 }
 
+@mixin bleed($edge: 20px) {
+	height: calc(100% + #{$edge});
+	width: calc(100% + #{$edge});
+
+	position: absolute;
+	top: -#{$edge / 2};
+	left: -#{$edge / 2};
+}
+
 // Cover Image:
 // Use on wrapping element of img (<figure>, <picture>)
 // Will work like background-size: cover; but with static images
@@ -656,7 +665,7 @@ $margin_xl: 80px;
 /* Not to be used with a form container */
 /* Use -webkit-overflow-scrolling: auto instead */
 @mixin fake_scroll($touch: true) {
-	overflow-y: scroll;
+	overflow-y: auto;
 
 	@if $touch {
 		-webkit-overflow-scrolling: touch;

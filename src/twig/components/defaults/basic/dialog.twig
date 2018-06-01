@@ -12,13 +12,13 @@
 
 {% set guid = random() %}
 <!-- Simple Dialog -->
-<a class="js-dialog-trigger" href="#dialog_{{guid}}" data-target="dialog_{{guid}}">{{trigger}}</a>
-<div class="js-dialog-wrapper" id="dialog_{{guid}}" data-label="{{title}}">
+<a class="js-dialog-trigger" href="#dialog_{{guid}}" data-dialog-target="dialog_{{guid}}">{{trigger}}</a>
+<div class="js-dialog-wrapper" id="dialog_{{guid}}" data-dialog-label="{{title}}">
 	<div class="js-dialog-document">
 		<h2>{{title}}</h2>
-		<button class="js-dialog-close">
+		<button class="js-dialog-close" aria-label="Close">
 			<span>Close</span>
-			<span aria-hidden="true">{{site.icon("close")}}</span>
+			<span>{{site.icon("close")}}</span>
 		</button>
 	</div>
 </div>
