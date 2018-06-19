@@ -151,6 +151,8 @@ gulp.task('trello', function(done) {
 
 							cards.push(data[card]);
 						} else if(data[card].labels.find(findTemplate)) {
+							data[card].desc = markdown.toHTML(data[card].desc);
+							
 							templates.push(data[card]);
 						}
 					} else if(data[card].labels.find(findContent)) {
