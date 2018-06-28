@@ -105,8 +105,7 @@
       "src/js/basic/accordion.js",
       "src/js/basic/dialog.js",
       "src/js/basic/tabs.js",
-      "src/js/modules/page.js",
-	  "src/js/modules/alert.js"
+      "src/js/modules/**/*.js"
     ]
   },
   "img": {
