@@ -113,9 +113,9 @@ Site.modules.Page = (function($, Site) {
 		}
 	}
 
-	function onDocumentClick() {
+	function onDocumentClick(e) {
 		if ($("body").hasClass("fs-mobile-lock")) {
-			if (!$(event.target).closest(".js-mobile-sidebar").length) {
+			if (!$(e.target).closest(".js-mobile-sidebar").length) {
 				$(".js-mobile-sidebar-handle").swap("deactivate");
 			}
 		}

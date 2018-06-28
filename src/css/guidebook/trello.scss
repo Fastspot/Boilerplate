@@ -163,7 +163,9 @@
 				margin-bottom: 50px;
 			}
 
-		.gb_trello_section_body {}
+		.gb_trello_section_body {
+			margin-top: 50px;
+		}
 
 			.gb_trello_detail {
 				@include clearfix;
