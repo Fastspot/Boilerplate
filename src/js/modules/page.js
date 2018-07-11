@@ -18,6 +18,7 @@ Site.modules.Page = (function($, Site) {
 	};
 	var $fixed_header; // set to fixed header element
 	var fixed_header_height = null;
+	var scrollYPosition = 0;
 
 	function init() {
 		$(".js-background").on("loaded.background", function() {
@@ -106,7 +107,7 @@ Site.modules.Page = (function($, Site) {
 	function onPageLoad() {
 		$("body").removeClass("preload");
 		$(window).trigger("resize");
-		
+
 		if (window.location.hash) {
 			var id = window.location.hash;
 			scrollToElement(id);
@@ -212,12 +213,14 @@ Site.modules.Page = (function($, Site) {
 
 	function onSidebarSwapActivate() {
 		$("body").addClass("fs-navigation-lock fs-mobile-lock");
+		saveScrollYPosition();
 		ariaShow($(".js-mobile-sidebar"));
 		$(".js-mobile-sidebar").focus();
 	}
 
 	function onSidebarSwapDeactivate() {
 		$("body").removeClass("fs-navigation-lock fs-mobile-lock");
+		restoreScrollYPosition();
 		ariaHide($(".js-mobile-sidebar"));
 		$(".js-mobile-sidebar-handle").focus();
 	}
@@ -319,6 +322,22 @@ Site.modules.Page = (function($, Site) {
 				.on("activate.swap", onSidebarSwapActivate)
 				.on("deactivate.swap", onSidebarSwapDeactivate);
 		});
+	}
+
+	function saveScrollYPosition() {
+		scrollYPosition = window.pageYOffset;
+		$("body").css({
+			"position": "fixed",
+			"top": (scrollYPosition * -1)
+		});
+	}
+
+	function restoreScrollYPosition() {
+		$("body").css({
+			"position": "",
+			"top": ""
+		});
+		$("html, body").scrollTop(scrollYPosition);
 	}
 
 	function getScrollbarWidth() {
