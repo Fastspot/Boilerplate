@@ -2,6 +2,8 @@
 	Module
 -------------------------------------------*/
 
+/* global Site, jQuery */
+
 Site.modules.Module = (function($, Site) {
 
 	var item;
