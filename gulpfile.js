@@ -66,10 +66,6 @@ var source = {
 	accessibility: 'static/templates/page*.html',
 	sitemap: 'src/twig/index.twig',
 	jshint: 'src/js/modules/*.js',
-	modernizr: [
-		'js/modules/*.js',
-		'css/site.css'
-	],
 	sprite: 'src/icons/*',
 	images: 'src/images/*'
 };
