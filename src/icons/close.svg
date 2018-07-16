@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
-    <title>Shape</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Mobile---Menu" stroke="none" stroke-width="1" fill="" fill-rule="evenodd" transform="translate(-275.000000, -22.000000)">
-        <path d="M273,33.75 L297,33.75 L297,30.25 L273,30.25 L273,33.75 Z M286.75,20 L283.25,20 L283.25,44 L286.75,44 L286.75,20 Z" id="Shape" fill="" fill-rule="nonzero" transform="translate(285.000000, 32.000000) rotate(45.000000) translate(-285.000000, -32.000000) "></path>
-    </g>
+    <path d="M10,7.52512627 L17.2478445,0.277281759 L19.7227182,2.75215549 L12.4748737,10 L19.7227182,17.2478445 L17.2478445,19.7227182 L10,12.4748737 L2.75215549,19.7227182 L0.277281759,17.2478445 L7.52512627,10 L0.277281759,2.75215549 L2.75215549,0.277281759 L10,7.52512627 Z"></path>
 </svg>
