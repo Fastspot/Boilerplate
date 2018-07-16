@@ -33,9 +33,9 @@ Site.modules.Page = (function($, Site) {
 		$(".js-lightbox").lightbox(lightboxOptions);
 		$(".js-swap").swap();
 
-		$(".js-mobile-sidebar-handle")
-			.on("activate.swap", onSidebarSwapActivate)
-			.on("deactivate.swap", onSidebarSwapDeactivate);
+		$(".js-menu-handle")
+			.on("activate.swap", onMenuSwapActivate)
+			.on("deactivate.swap", onMenuSwapDeactivate);
 		$(".js-main-nav-toggle")
 			.on("activate.swap", onMainSwapActivate)
 			.on("deactivate.swap", onMainSwapDeactivate);
@@ -49,7 +49,7 @@ Site.modules.Page = (function($, Site) {
 		bindGenericUI();
 		responsiveVideo();
 		tableOverflow();
-		ariaHide($(".js-mobile-sidebar, .js-main-nav-children"));
+		ariaHide($(".js-menu, .js-main-nav-children"));
 		$(".main_nav_link").attr("aria-expanded", "false");
 		$(".js-sub-nav-handle")
 			.attr("aria-expanded", "false")
@@ -117,9 +117,9 @@ Site.modules.Page = (function($, Site) {
 	}
 
 	function onDocumentClick(e) {
-		if ($("body").hasClass("fs-mobile-lock")) {
-			if (!$(e.target).closest(".js-mobile-sidebar").length) {
-				$(".js-mobile-sidebar-handle").swap("deactivate");
+		if ($("body").hasClass("fs-pagee-lock")) {
+			if (!$(e.target).closest(".js-menu").length) {
+				$(".js-menu-handle").swap("deactivate");
 			}
 		}
 	}
@@ -181,7 +181,7 @@ Site.modules.Page = (function($, Site) {
 
 		carouselPagination($(".js-carousel"));
 
-		createSiteButtons($(".js-mobile-sidebar-handle"));
+		createSiteButtons($(".js-menu-handle"));
 
 		$(".js-toggle")
 			.not(".js-bound")
@@ -213,18 +213,18 @@ Site.modules.Page = (function($, Site) {
 		});
 	}
 
-	function onSidebarSwapActivate() {
-		$("body").addClass("fs-navigation-lock fs-mobile-lock");
+	function onMenuSwapActivate() {
+		$("body").addClass("fs-navigation-lock fs-page-lock");
 		saveScrollYPosition();
-		ariaShow($(".js-mobile-sidebar"));
-		$(".js-mobile-sidebar").focus();
+		ariaShow($(".js-menu"));
+		$(".js-menu").focus();
 	}
 
-	function onSidebarSwapDeactivate() {
-		$("body").removeClass("fs-navigation-lock fs-mobile-lock");
+	function onMenuSwapDeactivate() {
+		$("body").removeClass("fs-navigation-lock fs-page-lock");
 		restoreScrollYPosition();
-		ariaHide($(".js-mobile-sidebar"));
-		$(".js-mobile-sidebar-handle").focus();
+		ariaHide($(".js-menu"));
+		$(".js-menu-handle").focus();
 	}
 
 	function onMainSwapActivate() {
@@ -321,8 +321,8 @@ Site.modules.Page = (function($, Site) {
 				.unwrap()
 				.removeAttr("href")
 				.swap()
-				.on("activate.swap", onSidebarSwapActivate)
-				.on("deactivate.swap", onSidebarSwapDeactivate);
+				.on("activate.swap", onMenuSwapActivate)
+				.on("deactivate.swap", onMenuSwapDeactivate);
 		});
 	}
 

@@ -1,8 +1,8 @@
 /* ==========================================================================
-	Mobile Sidebar
+	Menu
 ============================================================================= */
 
-.mobile_sidebar_handle_wrapper {
+.menu_handle_wrapper {
 	position: relative;
 
 	@media print {
@@ -14,13 +14,13 @@
 	}
 }
 
-.mobile_sidebar_handle {}
+.menu_handle {}
 
 
 // Sidebar
 // =============================================================================
 
-.mobile_sidebar {
+.menu {
 	@include focus_outline_none;
 
 	background: #fff;
