@@ -40,7 +40,6 @@
     "formstone": "1.4.3",
     "globby": "8.0.1",
     "gulp": "4.0.0",
-    "gulp-accessibility": "3.1.1",
     "gulp-concat-multi": "1.0.1",
     "gulp-cssnano": "2.1.2",
     "gulp-folder-index": "0.0.3",
