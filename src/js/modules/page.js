@@ -329,6 +329,7 @@ Site.modules.Page = (function($, Site) {
 	function saveScrollYPosition() {
 		scrollYPosition = window.pageYOffset;
 		$("body").css({
+			"width": "100%",
 			"position": "fixed",
 			"top": (scrollYPosition * -1)
 		});
@@ -336,6 +337,7 @@ Site.modules.Page = (function($, Site) {
 
 	function restoreScrollYPosition() {
 		$("body").css({
+			"width": "",
 			"position": "",
 			"top": ""
 		});
