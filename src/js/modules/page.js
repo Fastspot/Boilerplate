@@ -6,8 +6,8 @@
 
 Site.modules.Page = (function($, Site) {
 
-	var prev_icon = "caret_left";
-	var next_icon = "caret_right";
+	var prev_icon = "chevron_left";
+	var next_icon = "chevron_right";
 	var lightboxOptions = {
 		theme: "fs-light",
 		videoWidth: 1000,
