@@ -30,7 +30,8 @@ Site.modules.Menu = (function($, Site) {
 			.on("activate.swap", onMenuSwapActivate)
 			.on("deactivate.swap", onMenuSwapDeactivate);
 		$MenuClose.on("keydown", onCloseKeydown);
-		$Menu.on("keydown", onMenuKeydown)
+		$Menu.attr("tabindex", "0")
+			.on("keydown", onMenuKeydown)
 			.on("keyup", onMenuKeyup);
 	}
 
