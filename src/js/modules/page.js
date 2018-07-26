@@ -33,9 +33,6 @@ Site.modules.Page = (function($, Site) {
 		$(".js-lightbox").lightbox(lightboxOptions);
 		$(".js-swap").swap();
 
-		$(".js-menu-handle")
-			.on("activate.swap", onMenuSwapActivate)
-			.on("deactivate.swap", onMenuSwapDeactivate);
 		$(".js-main-nav-toggle")
 			.on("activate.swap", onMainSwapActivate)
 			.on("deactivate.swap", onMainSwapDeactivate);
@@ -49,7 +46,7 @@ Site.modules.Page = (function($, Site) {
 		bindGenericUI();
 		responsiveVideo();
 		tableOverflow();
-		ariaHide($(".js-menu, .js-main-nav-children"));
+		ariaHide($(".js-main-nav-children"));
 		$(".main_nav_link").attr("aria-expanded", "false");
 		$(".js-sub-nav-handle")
 			.attr("aria-expanded", "false")
@@ -71,7 +68,6 @@ Site.modules.Page = (function($, Site) {
 		});
 
 		$(window).on("load", onPageLoad);
-		$(document).on("click touchstart", onDocumentClick);
 
 		Site.onScroll.push(scroll);
 		Site.onResize.push(resize);
@@ -113,14 +109,6 @@ Site.modules.Page = (function($, Site) {
 		if (window.location.hash) {
 			var id = window.location.hash;
 			scrollToElement(id);
-		}
-	}
-
-	function onDocumentClick(e) {
-		if ($("body").hasClass("fs-pagee-lock")) {
-			if (!$(e.target).closest(".js-menu").length) {
-				$(".js-menu-handle").swap("deactivate");
-			}
 		}
 	}
 
@@ -181,8 +169,6 @@ Site.modules.Page = (function($, Site) {
 
 		carouselPagination($(".js-carousel"));
 
-		createSiteButtons($(".js-menu-handle"));
-
 		$(".js-toggle")
 			.not(".js-bound")
 			.on("click", ".js-toggle-handle", onToggleClick)
@@ -211,20 +197,6 @@ Site.modules.Page = (function($, Site) {
 				$(this).removeClass("table_wrapper_overflow");
 			}
 		});
-	}
-
-	function onMenuSwapActivate() {
-		$("body").addClass("fs-navigation-lock fs-page-lock");
-		saveScrollYPosition();
-		ariaShow($(".js-menu"));
-		$(".js-menu").focus();
-	}
-
-	function onMenuSwapDeactivate() {
-		$("body").removeClass("fs-navigation-lock fs-page-lock");
-		restoreScrollYPosition();
-		ariaHide($(".js-menu"));
-		$(".js-menu-handle").focus();
 	}
 
 	function onMainSwapActivate() {
@@ -307,25 +279,6 @@ Site.modules.Page = (function($, Site) {
 		}
 	}
 
-	function createSiteButtons($element) {
-		$this = $element;
-		$this.each(function() {
-			var attributes = $this.prop("attributes");
-			$this.swap("destroy")
-				.wrapInner("<button />");
-			$.each(attributes, function() {
-				$this.find("button")
-					.attr(this.name, this.value);
-			});
-			$this.find("button")
-				.unwrap()
-				.removeAttr("href")
-				.swap()
-				.on("activate.swap", onMenuSwapActivate)
-				.on("deactivate.swap", onMenuSwapDeactivate);
-		});
-	}
-
 	function saveScrollYPosition() {
 		scrollYPosition = window.pageYOffset;
 		$("body").css({
@@ -374,7 +327,9 @@ Site.modules.Page = (function($, Site) {
 	return {
 		ariaHide: ariaHide,
 		ariaShow: ariaShow,
-		getScrollbarWidth: getScrollbarWidth
+		getScrollbarWidth: getScrollbarWidth,
+		saveScrollYPosition: saveScrollYPosition,
+		restoreScrollYPosition: restoreScrollYPosition
 	};
 
 })(jQuery, Site);
