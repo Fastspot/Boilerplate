@@ -143,7 +143,7 @@
 
 									<div class="header_group">
 										{% include "../partials/handle.twig" with {
-											class: "mobile_sidebar",
+											class: "menu",
 											modifier: "primary",
 											label: "Menu"
 										} %}
@@ -278,7 +278,7 @@
 									city: "Baltimore",
 									state: "MD",
 									zip: "21211",
-									tel: "202-432-1200"
+									phone: "202-432-1200"
 								} %}
 
 								{% include "../partials/navigation/basic.twig" with {
@@ -302,7 +302,7 @@
 		</div>
 		<!-- END: page_wrapper -->
 
-		<div class="js-mobile-sidebar mobile_sidebar" id="mobile_sidebar" tabindex="-1">
+		<div class="js-menu menu" id="menu">
 			{% include "../partials/search.twig" with {
 				modifier: "sm",
 				placeholder: "Search",
@@ -325,8 +325,8 @@
 				links: secondaryNavAlias
 			} %}
 
-			<button class="js-swap js-mobile-sidebar-close mobile_sidebar_close" data-swap-target=".mobile_sidebar" data-swap-linked="mobile_sidebar" aria-label="Close Menu">
-				<span class="mobile_sidebar_close_icon">{{site.icon("close")}}</span>
+			<button class="js-swap js-menu-close menu_close" data-swap-target=".menu" data-swap-linked="menu" aria-label="Close Menu">
+				<span class="menu_close_icon">{{site.icon("close")}}</span>
 			</button>
 		</div>
 

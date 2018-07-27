@@ -1,8 +1,8 @@
 /* ==========================================================================
-	Mobile Sidebar
+	Menu
 ============================================================================= */
 
-.mobile_sidebar_handle_wrapper {
+.menu_handle {
 	position: relative;
 
 	@media print {
@@ -14,13 +14,11 @@
 	}
 }
 
-.mobile_sidebar_handle {}
-
 
 // Sidebar
 // =============================================================================
 
-.mobile_sidebar {
+.menu {
 	@include focus_outline_none;
 
 	background: #fff;
@@ -30,7 +28,7 @@
 	}
 
 	.js & {
-		@include fake_scroll(true);
+		@include fake_scroll();
 
 		width: 100%;
 		max-width: 320px;

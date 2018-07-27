@@ -13,8 +13,8 @@
 
 <nav class="js-main-nav {% if modifier %}js-main-nav-{{modifier}} {% endif %}main_nav{% if modifier %} main_nav_{{modifier}}{% endif %}"{% if heading == false or heading == "" or heading == null and title %} aria-label="{{title}}"{% endif %} itemscope itemtype="http://schema.org/SiteNavigationElement">
 	{% if heading and title %}
-	<div class="{{class}}_header">
-		<h2 class="{{class}}_title">{{title}}</h2>
+	<div class="main_nav_header">
+		<h2 class="main_nav_title">{{title}}</h2>
 	</div>
 	{% endif %}
 	<ul class="main_nav_list">
