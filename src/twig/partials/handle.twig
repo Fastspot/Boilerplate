@@ -8,7 +8,7 @@
 
 <a class="js-swap js-{{class|replace({"_": "-"})}}-handle {{class}}_handle {{class}}_handle_{{modifier}}" href="#{{class}}" data-swap-target=".{{class}}" data-swap-linked="{{class}}">
 	{% if icon %}
-	<span class="{{class}}_handle_icon {{class}}_handle_icon_{{modifier}}">{{site.icon(icon)}}</span>
+	<span class="{{class}}_handle_icon {{class}}_handle_icon_{{modifier}}" aria-hidden="true">{{site.icon(icon)}}</span>
 	{% endif %}
 	<span class="{{class}}_handle_label {{class}}_handle_label_{{modifier}}">{{label}}</span>
 </a>
