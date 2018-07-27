@@ -222,17 +222,185 @@
 	float: left;
 }
 
+
+/* Radios and Checkboxes
+============================================================================= */
+
 .form_builder_checkbox,
 .form_builder_radio {
-	display: flex;
+	position: relative;
+
 	margin-top: 10px;
 	margin-bottom: 10px;
 
 	&:last-child {
 		margin-bottom: 0;
 	}
+
+	input {
+		position: absolute;
+ 		z-index: -1;
+
+		opacity: 0;
+
+		&:checked {
+
+			~ .form_builder_checkbox_indicator,
+			~ .form_builder_radio_indicator {
+				background-color: #000;
+
+				&:before {
+					transform: scale(1);
+				}
+			}
+		}
+
+		&:focus {
+
+			~ .form_builder_checkbox_indicator,
+			~ .form_builder_radio_indicator {
+				box-shadow:
+					0 0 0 2px #fff,
+					0 0 0 4px #000;
+			}
+		}
+	}
 }
 
 .form_builder_for_checkbox {
-	margin-left: 6px;
+	cursor: pointer;
+	display: block;
+	padding-left: 28px;
+}
+
+.form_builder_checkbox_indicator,
+.form_builder_radio_indicator {
+	width: 20px;
+	height: 20px;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	background-color: $gray_20;
+	color: #fff;
+	display: block;
+	pointer-events: none;
+	text-align: center;
+	transition:
+		background-color $base_speed;
+	user-select: none;
+
+	&:before {
+		@include absolute_center;
+
+		display: block;
+		transform: scale(0);
+		transition: transform $base_speed;
+	}
+}
+
+.form_builder_checkbox_indicator {
+
+	&:before {
+		width: 14px;
+		height: 14px;
+
+		content:  "\2713";
+		font-size: 14px;
+		line-height: 1;
+	}
+}
+
+.form_builder_radio_indicator {
+	border-radius: 50%;
+
+	&:before {
+		width: 50%;
+		height: 50%;
+
+		background-color: #fff;
+		border-radius: inherit;
+		content: "";
+	}
+}
+
+
+/* Selects
+============================================================================= */
+
+.form_builder_select {
+	position: relative;
+
+	display: inline-block;
+
+	&:after {
+		position: absolute;
+		top: 50%;
+		right: 1.25rem;
+
+		width: 0;
+		height: 0;
+
+		border-top: .35rem solid;
+		border-right: .35rem solid transparent;
+		border-bottom: .35rem solid transparent;
+		border-left: .35rem solid transparent;
+		content: "";
+		display: inline-block;
+		margin-top: -.15rem;
+		pointer-events: none;
+	}
+
+	select {
+		width: 100%;
+
+		appearance: none;
+		background-color: $gray_20;
+		border: 0;
+		color: #000;
+		cursor: pointer;
+		display: inline-block;
+		line-height: 1.5;
+		margin: 0;
+		outline: 0;
+		padding: 10px 45px 10px 20px;
+
+		// Media query to target Firefox only
+		@-moz-document url-prefix() {
+			// Firefox hack to hide the arrow
+			text-indent: 0.01px;
+			text-overflow: "";
+		}
+
+		// Undo the Firefox inner focus ring
+		&:focus:-moz-focusring {
+			color: transparent;
+			text-shadow: 0 0 0 #000;
+		}
+
+		&:focus {
+			box-shadow:
+				0 0 0 2px #fff,
+				0 0 0 4px #000;
+		}
+
+		&:active {
+			color: #fff;
+			background-color: #000;
+		}
+
+		// Hide the arrow in IE10 and up
+		&::-ms-expand {
+			display: none;
+		}
+
+		option {
+
+			@-moz-document url-prefix() {
+				// <option> elements inherit styles from <select>, so reset them
+				background-color: #fff;
+			}
+		}
+	}
 }
