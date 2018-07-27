@@ -3,6 +3,7 @@
 ============================================================================= */
 
 .sub_nav {
+	position: relative;
 
 	@media print {
 		display: none;
@@ -20,19 +21,19 @@
 // =============================================================================
 
 .sub_nav_handle {
+	@include button_block;
+
+	width: 100%;
+
+	position: relative;
+
 	display: none;
+	margin-bottom: 0;
+	padding-right: 40px;
+	text-align: left;
 
 	.js & {
-		@include button_block;
-
-		width: 100%;
-
-		position: relative;
-
 		display: block;
-		margin-bottom: 0;
-		padding-right: 40px;
-		text-align: left;
 
 		@media #{$min_lg} {
 			display: none;
@@ -52,8 +53,12 @@
 	right: 20px;
 
 	pointer-events: none;
-	transform: translate(0, -50%);
-	transition: opacity .25s;
+	transform: 
+		translate(0, -50%)
+		scale(1);
+	transition: 
+		opacity .25s,
+		transform .25s;
 }
 
 .sub_nav_handle_icon_open {
@@ -72,24 +77,42 @@
 }
 
 
-// Sub Nav Links
+// Sub Nav List
 // =============================================================================
 
 .sub_nav_list {
 	@include focus_outline_none();
 
+	width: 100%;
+
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 2;
+
+	background: #fff;
+	display: block;
 	list-style: none;
 	margin: 0;
 	padding: 0;
+	transition:
+		opacity .25s,
+		visibility .25s;
 
 	&.fs-swap-enabled {
-		display: none;
+		opacity: 0;
+		visibility: hidden;
 	}
 
 	&.fs-swap-active {
-		display: block;
+		opacity: 1;
+		visibility: visible;
 	}
 }
+
+
+// Sub Nav Links
+// =============================================================================
 
 .sub_nav_item {}
 
