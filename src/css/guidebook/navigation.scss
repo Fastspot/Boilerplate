@@ -50,16 +50,19 @@
 	}
 }
 
-	.gb_main_nav_list {}
+	.gb_main_nav_list {
+		list-style: none;
+		margin: 0;
+		overflow-y: auto;
+		padding: 0;
+		white-space: nowrap;
+	}
 
 		.gb_main_nav_item {
+			display: inline-block;
+			margin-right: 20px;
 
-			@media screen and (min-width: 540px) {
-				display: inline-block;
-				margin-right: 20px;
-			}
-
-			@media #{$min_lg} {
+			@media #{$min_xl} {
 				margin-right: 45px;
 			}
 
