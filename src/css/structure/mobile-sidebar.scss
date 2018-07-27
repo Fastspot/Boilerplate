@@ -2,7 +2,7 @@
 	Menu
 ============================================================================= */
 
-.menu_handle_wrapper {
+.menu_handle {
 	position: relative;
 
 	@media print {
@@ -13,8 +13,6 @@
 		display: none;
 	}
 }
-
-.menu_handle {}
 
 
 // Sidebar
@@ -30,7 +28,7 @@
 	}
 
 	.js & {
-		@include fake_scroll(true);
+		@include fake_scroll();
 
 		width: 100%;
 		max-width: 320px;
