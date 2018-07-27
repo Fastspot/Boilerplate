@@ -13,9 +13,22 @@
 	}
 
 	fieldset {
+		@include clearfix;
+
 		border: 0;
-		margin: 0;
+		margin: 20px 0;
 		padding: 0;
+
+		> label {
+			display: block;
+		}
+
+		label {
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
 	}
 
 	legend {}
@@ -29,16 +42,17 @@
 ::-moz-placeholder,
 :-ms-input-placeholder {}
 
-@mixin label($theme: null) {}
-
-@mixin input($theme: null) {
-	appearance: none;
-	border: 1px solid #000;
-	border-radius: 0;
-	padding: 10px 20px;
+@mixin label($theme: null) {
+	@include body_text;
 }
 
-.form-builder {
+@mixin input($theme: null) {
+	border: 1px solid #000;
+	border-radius: 0;
+	padding: 10px;
+}
+
+.form_builder {
 
 	label:not(.fs-checkbox-label):not(.form_builder_sublabel) {
 		@include label;
@@ -47,10 +61,15 @@
 	}
 
 	.form_builder_sublabel {
-		@include h6;
+		@include caption_text;
 	}
 
-	input,
+	input[type=text],
+	input[type=email],
+	input[type=tel],
+	input[type=url],
+	input[type=number],
+	input[type=date],
 	textarea {
 		@include input;
 
@@ -74,14 +93,11 @@
 	}
 
 	select {
-		height: 40px;
 		width: 100%;
 
-		appearance: none;
 		border: 1px solid #000;
 		border-radius: 0;
 		cursor: pointer;
-		padding: 10px 40px 10px 20px;
 	}
 }
 
@@ -99,38 +115,123 @@
 // Custom Elements
 // =============================================================================
 
-.form-builder {
+.form_builder_wrap {
 
-	.input_wrapper,
-	.textarea_wrapper,
-	.choices_wrapper {
-		margin-bottom: 30px;
+	@media #{$min_sm} {
+		display: flex;
 	}
-}
 
-.form_column_flex {
-	display: flex;
+	> div {
+		margin-top: 10px;
+		margin-bottom: 10px;
 
-	> * {
-		margin-right: 16px;
+		@media #{$min_sm} {
+			margin-bottom: 0px;
+		}
 
 		&:last-child {
-			margin-right: 0;
+			margin-bottom: 0;
 		}
 	}
 }
 
-.form_column_auto {
+.form_builder_address {
+	@include clearfix;
 
-	> * {
-		display: inline-block;
-		margin-right: 16px;
+	> div {
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+
+	.form_builder_split {
+		margin-top: 0;
+	}
+
+	.form_builder_split_last_row {
+		margin-bottom: 0;
 	}
 }
 
-.form_column_2 {
+.form_builder_split {
+	width: calc(50% - 5px);
+
+	margin-right: 10px;
+	float: left;
 
 	@media #{$min_md} {
-		@include columns(2, 20px);
+		width: calc(50% - 10px);
+
+		margin-right: 20px;
 	}
+
+	&.form_builder_split_last_col {
+		margin-right: 0;
+	}
+}
+
+.form_builder_firstname {
+
+	@media #{$min_sm} {
+		flex: calc(100% - 5px);
+
+		margin-right: 10px;
+	}
+
+	@media #{$min_md} {
+		flex: calc(100% - 10px);
+
+		margin-right: 20px;
+	}
+}
+
+.form_builder_lastname {
+
+	@media #{$min_sm} {
+		width: calc(100% - 5px);
+	}
+
+	@media #{$min_md} {
+		width: calc(100% - 10px);
+	}
+}
+
+.form_builder_date_2 {
+	width: 50px;
+
+	float: left;
+	margin-right: 10px;
+}
+
+.form_builder_date_4 {
+	width: 100px;
+
+	float: left;
+}
+
+.form_builder_phone_3 {
+	width: 75px;
+
+	float: left;
+	margin-right: 10px;
+}
+
+.form_builder_phone_4 {
+	width: 100px;
+
+	float: left;
+}
+
+.form_builder_checkbox,
+.form_builder_radio {
+	display: flex;
+	margin-top: 10px;
+	margin-bottom: 10px;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.form_builder_for_checkbox {
+	margin-left: 6px;
 }
