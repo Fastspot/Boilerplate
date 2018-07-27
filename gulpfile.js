@@ -48,7 +48,10 @@ var source = {
 		'!src/twig/templates/fs-content-strategy.twig'
 	],
 	templates: 'static/templates/*.html',
-	accessibility: 'static/templates/page*.html',
+	accessibility: [
+		'static/templates/page*.html',
+		'!static/templates/page-form-builder.html',
+	],
 	sitemap: 'src/twig/index.twig',
 	jshint: 'src/js/modules/*.js',
 	sprite: 'src/icons/*',
@@ -133,14 +136,14 @@ gulp.task('trello', function(done) {
 							cards.push(data[card]);
 						} else if(data[card].labels.find(findTemplate)) {
 							data[card].desc = markdown.toHTML(data[card].desc);
-							
+
 							templates.push(data[card]);
 						}
 					} else if(data[card].labels.find(findContent)) {
 						data[card].desc = markdown.toHTML(data[card].desc);
 
 						contentStrategy.push(data[card]);
-					} 
+					}
 				}
 
 				cards.sort(function(a, b) {
@@ -197,9 +200,9 @@ gulp.task('trello', function(done) {
 		}
 
 		function findType(label) {
-			return label.name === "Feature" || 
-						 label.name === "In-Content" || 
-						 label.name === "Full-Width" || 
+			return label.name === "Feature" ||
+						 label.name === "In-Content" ||
+						 label.name === "Full-Width" ||
 						 label.name === "Sidebar";
 		}
 	}
