@@ -28,17 +28,6 @@ var gulp = require('gulp'),
 		realFavicon = require ('gulp-real-favicon'),
 		FAVICON_DATA_FILE = 'favicons/markup.json',
 		pa11y = require('pa11y'),
-		test = pa11y({
-			ignore: [
-				'notice',
-				'WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.Abs',
-				'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Abs',
-				'WCAG2AA.Principle1.Guideline1_1.1_1_1.H67.2',
-				'WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.BgImage',
-				'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.BgImage',
-				'WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.A.Placeholder'
-			]
-		}),
 		Trello = require('node-trello'),
 		trello = new Trello(trelloKeyToken.key(), trelloKeyToken.token()),
 		markdown = require('markdown').markdown;
@@ -553,7 +542,17 @@ gulp.task('accessibility-test', function(done) {
 		var absolutePath = path.resolve(url);
 		var base = path.basename(url, '.html');
 
-		test.run('file://' + absolutePath, function(error, results) {
+		pa11y('file://' + absolutePath, {
+			ignore: [
+				'notice',
+				'WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.Abs',
+				'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Abs',
+				'WCAG2AA.Principle1.Guideline1_1.1_1_1.H67.2',
+				'WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.BgImage',
+				'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.BgImage',
+				'WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.A.Placeholder'
+			]
+		}, function(error, results) {
 			if (error) return console.error(error.message);
 
 			console.log("scanning " + base + ".html");
@@ -561,14 +560,14 @@ gulp.task('accessibility-test', function(done) {
 			var errors = 0;
 			var warnings = 0;
 
-			for(result in results) {
-				if(results[result].type == "error") {
+			for(issue in results.issues) {
+				if(results.issues[issue].type == "error") {
 					errors++;
-				} else if(results[result].type == "warning") {
+				} else if(results.issues[issue].type == "warning") {
 					warnings++;
 				}
 
-				results[result].context = results[result].context.replace(/(\s\s+)/g, '');
+				results.issues[issue].context = results.issues[issue].context.replace(/(\s\s+)/g, '');
 			}
 
 			gulp.src('src/twig/templates/_accessibility.twig')

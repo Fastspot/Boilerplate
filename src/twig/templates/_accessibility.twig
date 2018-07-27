@@ -96,7 +96,7 @@
 			] %}
 			{% for type in accessList %}
 			<div id="{{type}}s">
-				{% for result in results %}
+				{% for result in results.issues %}
 				{% if type == result.type %}
 				<div class="report_item {{result.type}}">
 					<h3 class="report_item_title">{{result.message}}</h3>
