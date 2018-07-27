@@ -24,6 +24,7 @@
   "vars": {
     "namespace": "fs",
     "name": "Client Name",
+    "images": "kenyon-campaign",
     "domain": "example.dev.fastspot.com/site",
     "description": "",
     "schemaType": "Organization",
