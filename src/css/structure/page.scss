@@ -29,14 +29,19 @@
 	}
 }
 
-.aside_wrapper {
+.page_aside {
 
 	@media #{$min_lg} {
 		float: right;
 	}
 }
 
-.content_wrapper {
+.page_sub_nav {}
+
+.page_main_content {
+	@include focus_outline_none;
+
+	display: block;
 
 	@media #{$min_lg} {
 		float: left;
@@ -50,18 +55,12 @@
 	}
 }
 
-.main_content {
-	@include focus_outline_none;
-
-	display: block;
-}
-
 .page_header {}
 
 .page_title {
 	@include h1;
 }
 
-.sidebar_wrapper {
+.page_sidebar {
 	clear: right;
 }

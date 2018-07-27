@@ -182,7 +182,7 @@
 					<div class="fs-row">
 						{% if page.layout == "default" or page.layout == "style-guide" %}
 						<!-- Sub Nav -->
-						<div class="fs-cell-right fs-lg-4 aside_wrapper subnav_wrapper">
+						<div class="fs-cell-right fs-lg-4 page_aside page_sub_nav">
 							{% include "../partials/navigation/sub.twig" with {
 								title: sectionTitle,
 								links: subNavAlias
@@ -192,45 +192,43 @@
 						{% endif %}
 
 						<!-- Main Content -->
-						<div class="fs-cell{% if page.layout == "default" or page.layout == "style-guide" %} fs-lg-8{% elseif page.layout == "full" %} fs-lg-10 fs-all-justify-center{% endif %} content_wrapper">
-							<main class="main_content" id="main_content" itemprop="mainContentOfPage">
-								<!-- Page Header -->
-								{% block page_header %}
-								<div class="page_header">
-									{% include "../partials/navigation/breadcrumb.twig" with {
-										links: breadcrumbNav
-									} %}
+						<main class="fs-cell{% if page.layout == "default" or page.layout == "style-guide" %} fs-lg-8{% elseif page.layout == "full" %} fs-lg-10 fs-all-justify-center{% endif %} page_main_content" id="page_main_content" itemprop="mainContentOfPage">
+							<!-- Page Header -->
+							{% block page_header %}
+							<div class="page_header">
+								{% include "../partials/navigation/breadcrumb.twig" with {
+									links: breadcrumbNav
+								} %}
 
-									{% if page.title %}
-									<h1 class="page_title">{{page.title}}</h1>
-									{% endif %}
-								</div>
+								{% if page.title %}
+								<h1 class="page_title">{{page.title}}</h1>
+								{% endif %}
+							</div>
+							{% endblock %}
+							<!-- END: Page Header -->
+
+							<!-- WYSIWYG - wrap all WYSIWYG text areas in `.typography` -->
+							<div class="typography">
+								{% block typography %}
 								{% endblock %}
-								<!-- END: Page Header -->
+							</div>
+							<!-- END: WYSIWYG -->
 
-								<!-- WYSIWYG - wrap all WYSIWYG text areas in `.typography` -->
-								<div class="typography">
-									{% block typography %}
-									{% endblock %}
-								</div>
-								<!-- END: WYSIWYG -->
+							{% block after_typography %}
+							{% endblock %}
 
-								{% block after_typography %}
+							<!-- In Content Callouts -->
+							<div class="in_content_callouts">
+								{% block in_content_callouts %}
 								{% endblock %}
-
-								<!-- In Content Callouts -->
-								<div class="in_content_callouts">
-									{% block in_content_callouts %}
-									{% endblock %}
-								</div>
-								<!-- END: In Content Callouts -->
-							</main>
-						</div>
+							</div>
+							<!-- END: In Content Callouts -->
+						</main>
 						<!-- END: Main Content -->
 
 						{% if page.layout == "default" or page.layout == "style-guide" %}
 						<!-- Sidebar Callouts -->
-						<div class="fs-cell-right fs-lg-4 aside_wrapper sidebar_wrapper">
+						<div class="fs-cell-right fs-lg-4 page_aside page_sidebar">
 							<div class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
 								{% block sidebar %}
 								{% endblock %}
