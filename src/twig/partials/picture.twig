@@ -1,7 +1,6 @@
 {#
 	{% include par ~ "picture.twig" with {
 		class: "media",
-		fallback: "placeholder",
 		image: item.image,
 		itemprop: "",
 		sources: {
@@ -13,7 +12,7 @@
 
 <picture class="{{class}}_picture">
 	{% for key, source in sources %}
-	<source media="(min-width: {{key}})" srcset="{% if source == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{vars.images}}/{{source}}/{{image}}{% endif %}">
+	<source media="(min-width: {{key}})" srcset="//images.fastspot.com/{{vars.images}}/{{source}}/{{image}}">
 	{% endfor %}
-	<img class="{{class}}_image" src="{% if fallback == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{vars.images}}/{{fallback}}/{{image}}{% endif %}" alt=""{% if itemprop %} itemprop="{{itemprop}}"{% endif %}>
+	<img class="{{class}}_image" src="//images.fastspot.com/{{vars.images}}/{{sources|first}}/{{image}}" alt=""{% if itemprop %} itemprop="{{itemprop}}"{% endif %}>
 </picture>
