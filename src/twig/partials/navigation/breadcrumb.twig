@@ -13,7 +13,7 @@
 <div class="breadcrumb_nav{% if modifier %} breadcrumb_nav_{{modifier}}{% endif %}">
 	<div class="breadcrumb_list" itemscope itemtype="http://schema.org/BreadcrumbList">
 		<div class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-			<a class="breadcrumb_link" href="page-home.html" itemprop="item">
+			<a class="breadcrumb_pill breadcrumb_pill_link" href="page-home.html" itemprop="item">
 				<span class="breadcrumb_name" itemprop="name">
 					{% if icon %}
 					<span class="breadcrumb_name_icon">{{site.icon("home")}}</span>
@@ -26,13 +26,15 @@
 		{% for link in links %}
 		<div class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
 			{% if loop.last %}
-			<span class="breadcrumb_name" itemprop="item">
-				<span class="breadcrumb_name_label" itemprop="name">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
+			<span class="breadcrumb_pill" itemprop="item">
+				<span class="breadcrumb_name">
+					<span class="breadcrumb_name_label" itemprop="name">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
+				</span>
 			</span>
 			{% else %}
-			<a class="breadcrumb_link" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="item">
-				<span class="breadcrumb_name" itemprop="name">
-					<span class="breadcrumb_name_label">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
+			<a class="breadcrumb_pill breadcrumb_pill_link" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="item">
+				<span class="breadcrumb_name">
+					<span class="breadcrumb_name_label" itemprop="name">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
 				</span>
 			</a>
 			{% endif %}
