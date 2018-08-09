@@ -2,8 +2,6 @@
 	Page
 -------------------------------------------*/
 
-/* global Site, jQuery */
-
 Site.modules.Page = (function($, Site) {
 
 	var prev_icon = "chevron_left";

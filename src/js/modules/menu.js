@@ -2,8 +2,6 @@
 	Menu
 -------------------------------------------*/
 
-/* global Site, jQuery */
-
 Site.modules.Menu = (function($, Site) {
 
 	var $Menu,
