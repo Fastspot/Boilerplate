@@ -684,6 +684,7 @@ gulp.task('watch', function() {
 
 gulp.task('build', gulp.parallel(
 	'readme',
+	'sass',
 	gulp.series(
 		'sprite',
 		'twig',
@@ -693,7 +694,6 @@ gulp.task('build', gulp.parallel(
 		'pretty-html'
 	),
 	gulp.series(
-		'sass',
 		'js',
 		'jshint'
 	),
