@@ -31,64 +31,25 @@ Site.modules.Page = (function($, Site) {
 		$(".js-lightbox").lightbox(lightboxOptions);
 		$(".js-swap").swap();
 
-		$(".js-main-nav-toggle")
-			.on("activate.swap", onMainSwapActivate)
-			.on("deactivate.swap", onMainSwapDeactivate);
-		$(".js-sub-nav-handle")
-			.on("activate.swap", onSubSwapActivate)
-			.on("deactivate.swap", onSubSwapDeactivate)
-			.on("enable.swap", onSubSwapEnable)
-			.on("disable.swap", onSubSwapDisable);
-
 		fixIEsvg();
 		bindGenericUI();
 		responsiveVideo();
 		tableOverflow();
 		ariaHide($(".js-main-nav-children"));
+		carouselPagination($(".js-carousel"));
 		$(".main_nav_link").attr("aria-expanded", "false");
 		$(".js-sub-nav-handle")
 			.attr("aria-expanded", "false")
 			.attr("aria-haspopup", "true");
 
-		$.mediaquery("bind", "mq-key", "(min-width: " + Site.minLG + "px)", {
-			enter: function() {
-				ariaShow($(".js-sub-nav-list"));
-				$(".js-sub-nav-handle")
-					.removeAttr("aria-expanded")
-					.removeAttr("aria-haspopup");
-			},
-			leave: function() {
-				ariaHide($(".js-sub-nav-list"));
-				$(".js-sub-nav-handle")
-					.attr("aria-expanded", "false")
-					.attr("aria-haspopup", "true");
-			}
-		});
+		$(".typography table")
+			.wrap('<div class="table_wrapper"><div class="table_wrapper_inner"></div></div>');
 
 		$(window).on("load", onPageLoad);
 
 		Site.onScroll.push(scroll);
 		Site.onResize.push(resize);
 		Site.onRespond.push(respond);
-	}
-
-	function fixIEsvg() {
-		var ua = window.navigator.userAgent;
-		var msie = ua.indexOf("MSIE ");
-
-		if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
-			$.get(STATIC_ROOT + "images/icons.svg", function(data) {
-				var div = document.createElement("div");
-				$(div).hide();
-				div.innerHTML = new XMLSerializer().serializeToString(data.documentElement);
-				document.body.insertBefore(div, document.body.childNodes[0]);
-
-				$("svg use").each(function() {
-					var parts = $(this).attr("xlink:href").split("#");
-					$(this).attr("xlink:href", "#" + parts[1]);
-				});
-			});
-		}
 	}
 
 	function scroll() {}
@@ -106,6 +67,7 @@ Site.modules.Page = (function($, Site) {
 
 		if (window.location.hash) {
 			var id = window.location.hash;
+			
 			scrollToElement(id);
 		}
 	}
@@ -149,6 +111,15 @@ Site.modules.Page = (function($, Site) {
 	}
 
 	function bindGenericUI() {
+		$(".js-main-nav-toggle")
+			.on("activate.swap", onMainSwapActivate)
+			.on("deactivate.swap", onMainSwapDeactivate);
+		$(".js-sub-nav-handle")
+			.on("activate.swap", onSubSwapActivate)
+			.on("deactivate.swap", onSubSwapDeactivate)
+			.on("enable.swap", onSubSwapEnable)
+			.on("disable.swap", onSubSwapDisable);
+
 		$(".js-main-nav-lg")
 			.find("a")
 			.hover(function() {
@@ -165,8 +136,6 @@ Site.modules.Page = (function($, Site) {
 				);
 		});
 
-		carouselPagination($(".js-carousel"));
-
 		$(".js-toggle")
 			.not(".js-bound")
 			.on("click", ".js-toggle-handle", onToggleClick)
@@ -177,8 +146,20 @@ Site.modules.Page = (function($, Site) {
 			.on("click", onScrollTo)
 			.addClass("js-bound");
 
-		$(".typography table")
-			.wrap('<div class="table_wrapper"><div class="table_wrapper_inner"></div></div>');
+		$.mediaquery("bind", "mq-key", "(min-width: " + Site.minLG + "px)", {
+			enter: function() {
+				ariaShow($(".js-sub-nav-list"));
+				$(".js-sub-nav-handle")
+					.removeAttr("aria-expanded")
+					.removeAttr("aria-haspopup");
+			},
+			leave: function() {
+				ariaHide($(".js-sub-nav-list"));
+				$(".js-sub-nav-handle")
+					.attr("aria-expanded", "false")
+					.attr("aria-haspopup", "true");
+			}
+		});
 	}
 
 	function responsiveVideo() {
@@ -318,6 +299,25 @@ Site.modules.Page = (function($, Site) {
 		outer.parentNode.removeChild(outer);
 
 		return widthNoScroll - widthWithScroll;
+	}
+
+	function fixIEsvg() {
+		var ua = window.navigator.userAgent;
+		var msie = ua.indexOf("MSIE ");
+
+		if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+			$.get(STATIC_ROOT + "images/icons.svg", function(data) {
+				var div = document.createElement("div");
+				$(div).hide();
+				div.innerHTML = new XMLSerializer().serializeToString(data.documentElement);
+				document.body.insertBefore(div, document.body.childNodes[0]);
+
+				$("svg use").each(function() {
+					var parts = $(this).attr("xlink:href").split("#");
+					$(this).attr("xlink:href", "#" + parts[1]);
+				});
+			});
+		}
 	}
 
 	Site.onInit.push(init);
