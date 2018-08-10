@@ -96,6 +96,7 @@ $margin_xl: 80px;
 }
 
 // 1. IE 10/11 uses a non-standard
+// 2. Firefox
 
 @mixin columns($count, $gap: 0) {
 	column-count: $count;
@@ -104,6 +105,7 @@ $margin_xl: 80px;
 	& > * {
 		column-break-inside: avoid;
 		break-inside: avoid; // 1
+		page-break-inside: avoid; // 2
 	}
 }
 
@@ -188,7 +190,7 @@ $margin_xl: 80px;
 }
 
 @mixin gradient_right(
-	$startColor: black, 
+	$startColor: black,
 	$endColor: white
 ) {
 	background-color: $startColor;
@@ -201,7 +203,7 @@ $margin_xl: 80px;
 }
 
 @mixin gradient_down(
-	$startColor: black, 
+	$startColor: black,
 	$endColor: white
 ) {
 	background-color: $startColor;
