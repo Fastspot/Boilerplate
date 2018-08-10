@@ -1,0 +1,3 @@
+<?
+	// We draw nothing!
+?>

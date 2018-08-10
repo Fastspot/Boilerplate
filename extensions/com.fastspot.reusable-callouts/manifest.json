@@ -1,0 +1,149 @@
+{
+    "type": "extension",
+    "id": "com.fastspot.reusable-callouts",
+    "version": "1.3.3",
+    "revision": 18,
+    "compatibility": "4.2+",
+    "title": "Reusable Callouts",
+    "description": "Implements a module that allows users to create reusable callouts and a field type allowing end users to choose a pre-created callout when adding callouts.",
+    "keywords": [
+        "callouts",
+        "reusable",
+        "modular"
+    ],
+    "author": {
+        "name": "Tim Buckingham",
+        "url": "http://www.fastspot.com",
+        "email": "tim@fastspot.com"
+    },
+    "licenses": {
+        "LGPL v3": "http://opensource.org/licenses/LGPL-3.0"
+    },
+    "components": {
+        "module_groups": [],
+        "modules": [
+            {
+                "id": "6",
+                "group": null,
+                "name": "Reusable Callouts",
+                "route": "com.fastspot.reusable-callouts*reusable-callouts",
+                "class": "BTXReusableCallouts",
+                "icon": "gear",
+                "gbp": {
+                    "name": "",
+                    "table": "",
+                    "item_parser": "",
+                    "other_table": ""
+                },
+                "position": "0",
+                "extension": "com.fastspot.reusable-callouts",
+                "actions": [
+                    {
+                        "id": "27",
+                        "module": "6",
+                        "name": "View Reusable Callouts",
+                        "route": "",
+                        "in_nav": "on",
+                        "form": null,
+                        "view": "9",
+                        "report": null,
+                        "class": "list",
+                        "level": "0",
+                        "position": "0"
+                    },
+                    {
+                        "id": "28",
+                        "module": "6",
+                        "name": "Add Callout",
+                        "route": "add",
+                        "in_nav": "on",
+                        "form": null,
+                        "view": null,
+                        "report": null,
+                        "class": "add",
+                        "level": "0",
+                        "position": "0"
+                    },
+                    {
+                        "id": "29",
+                        "module": "6",
+                        "name": "Edit Callout",
+                        "route": "edit",
+                        "in_nav": "",
+                        "form": null,
+                        "view": null,
+                        "report": null,
+                        "class": "edit",
+                        "level": "0",
+                        "position": "0"
+                    }
+                ],
+                "views": [
+                    {
+                        "id": "9",
+                        "module": "6",
+                        "title": "Reusable Callouts",
+                        "description": "",
+                        "type": "grouped",
+                        "table": "btx_reusable_callouts",
+                        "fields": {
+                            "title": {
+                                "width": "708",
+                                "title": "Title",
+                                "parser": "",
+                                "numeric": false
+                            }
+                        },
+                        "options": {
+                            "filter": "",
+                            "group_field": "type",
+                            "sort": "`id` DESC",
+                            "other_table": "bigtree_callouts",
+                            "title_field": "name",
+                            "ot_sort_field": "name",
+                            "ot_sort_direction": "ASC",
+                            "group_parser": ""
+                        },
+                        "actions": {
+                            "report": "{\"name\":\"Report\",\"class\":\"icon_view\",\"route\":\"report\",\"function\":\"\"}",
+                            "archive": "on",
+                            "edit": "on",
+                            "delete": "on"
+                        },
+                        "preview_url": "",
+                        "related_form": null
+                    }
+                ],
+                "forms": [],
+                "embed_forms": [],
+                "reports": []
+            }
+        ],
+        "templates": [],
+        "callouts": [],
+        "settings": [],
+        "feeds": [],
+        "field_types": [
+            {
+                "id": "com.fastspot.reusable-callouts*callout-list",
+                "name": "Reusable Callout List",
+                "use_cases": {
+                    "callouts": "on"
+                },
+                "self_draw": "on",
+                "extension": "com.fastspot.reusable-callouts"
+            }
+        ],
+        "tables": {
+            "btx_reusable_callouts": "CREATE TABLE `btx_reusable_callouts` (   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,   `type` varchar(255) DEFAULT NULL,   `title` varchar(255) DEFAULT NULL,   `data` longtext,   `archived` char(2) NOT NULL DEFAULT '',   PRIMARY KEY (`id`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8"
+        }
+    },
+    "sql_revisions": {
+        "6": [
+            "ALTER TABLE `btx_reusable_callouts` MODIFY COLUMN `data` longtext NULL AFTER `title`"
+        ],
+        "9": [
+            "ALTER TABLE `btx_reusable_callouts` ADD COLUMN `archived` char(2) NOT NULL DEFAULT '' AFTER `data`"
+        ]
+    }
+}

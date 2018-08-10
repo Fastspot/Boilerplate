@@ -1,0 +1,55 @@
+{
+    "type": "extension",
+    "id": "com.fastspot.rawtext-field-types",
+    "version": "1.0",
+    "revision": 1,
+    "compatibility": "4.2+",
+    "title": "Raw Text Field Types",
+    "description": "Includes two field types: &quot;Raw Text&quot; and &quot;Raw Text Area&quot;. These behave almost exactly the same as the regular Text and Text Area fields with the exception that they do not escape HTML characters (so you can place HTML into them).",
+    "keywords": [
+        ""
+    ],
+    "author": {
+        "name": "Tim Buckingham",
+        "url": "http://www.fastspot.com",
+        "email": "tim@fastspot.com"
+    },
+    "licenses": {
+        "LGPL v3": "http://opensource.org/licenses/LGPL-3.0"
+    },
+    "components": {
+        "module_groups": [],
+        "modules": [],
+        "templates": [],
+        "callouts": [],
+        "settings": [],
+        "feeds": [],
+        "field_types": [
+            {
+                "id": "com.fastspot.rawtext-field-types*raw-text",
+                "name": "Raw Text",
+                "use_cases": {
+                    "templates": "on",
+                    "modules": "on",
+                    "callouts": "on",
+                    "settings": "on"
+                },
+                "self_draw": null,
+                "extension": "com.fastspot.rawtext-field-types"
+            },
+            {
+                "id": "com.fastspot.rawtext-field-types*raw-textarea",
+                "name": "Raw Text Area",
+                "use_cases": {
+                    "templates": "on",
+                    "modules": "on",
+                    "callouts": "on",
+                    "settings": "on"
+                },
+                "self_draw": null,
+                "extension": "com.fastspot.rawtext-field-types"
+            }
+        ],
+        "tables": []
+    }
+}

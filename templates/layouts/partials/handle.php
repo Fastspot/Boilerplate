@@ -13,7 +13,7 @@
 	<?php
 		if (!empty($icon)) {
 	?>
-	<span class="<?=$class?>_handle_icon <?=$class?>_handle_icon_<?=$modifier?>"><?=icon($icon)?></span>
+	<span class="<?=$class?>_handle_icon <?=$class?>_handle_icon_<?=$modifier?>" aria-hidden="true"><?=icon($icon)?></span>
 	<?php
 		}
 	?>

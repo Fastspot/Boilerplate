@@ -1,0 +1,56 @@
+{
+    "type": "extension",
+    "id": "com.fastspot.advanced-callouts",
+    "version": "1.0.3",
+    "revision": 8,
+    "compatibility": "4.2+",
+    "title": "Advanced Callout Field Types",
+    "description": "This extension implements two field types:\r\n\r\nPredefiend Callouts \u2014 Allows you to choose individual callouts to prefill a callout area. You can optionally turn on or off dragability and the option to add more callouts from other groups. \r\n\r\nInline Callout Set \u2014 Allows you to choose individual callouts to prefill a callout area but the callouts are drawn inline with section headers that you specify rather than in a dialog.",
+    "keywords": [
+        "callouts",
+        "predefined",
+        "inline"
+    ],
+    "author": {
+        "name": "Tim Buckingham",
+        "url": "http://www.fastspot.com",
+        "email": "tim@fastspot.com"
+    },
+    "licenses": {
+        "LGPL v3": "http://opensource.org/licenses/LGPL-3.0"
+    },
+    "components": {
+        "module_groups": [],
+        "modules": [],
+        "templates": [],
+        "callouts": [],
+        "settings": [],
+        "feeds": [],
+        "field_types": [
+            {
+                "id": "com.fastspot.advanced-callouts*inline-callout-set",
+                "name": "Inline Callout Set",
+                "use_cases": {
+                    "templates": "on",
+                    "modules": "on",
+                    "settings": "on"
+                },
+                "self_draw": "on",
+                "extension": "com.fastspot.advanced-callouts"
+            },
+            {
+                "id": "com.fastspot.advanced-callouts*predefined-callouts",
+                "name": "Predefined Callouts",
+                "use_cases": {
+                    "templates": "on",
+                    "modules": "on",
+                    "settings": "on"
+                },
+                "self_draw": "on",
+                "extension": "com.fastspot.advanced-callouts"
+            }
+        ],
+        "tables": []
+    },
+    "sql_revisions": []
+}

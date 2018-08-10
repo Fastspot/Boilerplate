@@ -1,7 +1,7 @@
 <?php
-	function button($class, $label, $url, $icon = "") {
+	function button($class, $label, $url, $icon = "", $aria = "") {
 ?>
-<a class="<?=$class?>_link" <?=href($url)?>>
+<a class="<?=$class?>_link" <?=href($url)?><?php if ($aria) { ?> aria-label="<?=$aria?>"<?php } ?>>
 	<span class="<?=$class?>_link_label"><?=$label?></span>
 	<?php
 		if ($icon) {
@@ -14,6 +14,18 @@
 	?>
 </a>
 <?php
+	}
+
+	function get_gallery_link($item, $autoplay = true) {
+		if (!empty($item["video"]["service"])) {
+			if ($item["video"]["service"] == "youtube") {
+				return "//www.youtube.com/embed/".$item["video"]["id"]."?rel=0&showinfo=0".($autoplay ? "&autoplay=true" : "");
+			} else {
+				return "//player.vimeo.com/video/".$item["video"]["id"]."?rel=0&showinfo=0".($autoplay ? "&autoplay=true" : "");
+			}
+		} else {
+			return $item["image"];
+		}
 	}
 
 	function get_pagination_array($current_page, $pages, $max_to_show = 10) {
@@ -119,8 +131,8 @@
 
 			// We don't have child pages, we want to draw the siblings of the current page AND the above level
 			$siblings = BigTreeCMS::getNavByParent($bigtree["page"]["parent"], 2);
-			$parent = sqlfetch(sqlquery("SELECT `id`, `parent`, `trunk`, `in_nav`, `path`, `nav_title` FROM bigtree_pages
-										 WHERE id = '".$bigtree["page"]["parent"]."'"));
+			$parent = SQL::fetch("SELECT `id`, `parent`, `trunk`, `in_nav`, `path`, `nav_title` FROM bigtree_pages
+								  WHERE id = ?", $bigtree["page"]["parent"]);
 
 			$site["sub_nav"] = $siblings;
 			$site["sub_nav_section"] = $parent;
@@ -138,8 +150,8 @@
 
 			// We don't have child pages, we want to draw the siblings of the current page AND the above level
 			$siblings = BigTreeCMS::getNavByParent($bigtree["page"]["parent"], 1);
-			$parent = sqlfetch(sqlquery("SELECT `id`, `parent`, `trunk`, `in_nav`, `path`, `nav_title` FROM bigtree_pages
-										 WHERE id = '".$bigtree["page"]["parent"]."'"));
+			$parent = SQL::fetch("SELECT `id`, `parent`, `trunk`, `in_nav`, `path`, `nav_title` FROM bigtree_pages
+								  WHERE id = ?", $bigtree["page"]["parent"]);
 
 			// If the parent's siblings would be top level, just return current siblings
 			if (count($siblings)) {
@@ -152,7 +164,8 @@
 			$ancestors = BigTreeCMS::getNavByParent($parent["parent"], 1);
 
 			$site["sub_nav"] = $ancestors;
-			$site["sub_nav_section"] = BigTreeCMS::getPage($parent["parent"], false);
+			$site["sub_nav_section"] = SQL::fetch("SELECT `id`, `parent`, `trunk`, `in_nav`, `path`, `nav_title` FROM bigtree_pages
+												   WHERE id = ?", $parent["parent"]);
 		} else {
 			$top_level = BigTreeCMS::getTopLevelNavigationId();
 			$site["sub_nav"] = BigTreeCMS::getNavByParent($top_level, $depth);

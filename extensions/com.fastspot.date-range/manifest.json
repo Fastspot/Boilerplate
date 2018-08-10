@@ -1,0 +1,43 @@
+{
+    "type": "extension",
+    "id": "com.fastspot.date-range",
+    "version": "1.0",
+    "revision": 1,
+    "compatibility": "4.2.x",
+    "title": "Date Range Field Type",
+    "description": "",
+    "keywords": [
+        ""
+    ],
+    "author": {
+        "name": "",
+        "email": "",
+        "url": ""
+    },
+    "licenses": {
+        "LGPL v3": "http://opensource.org/licenses/LGPL-3.0"
+    },
+    "components": {
+        "module_groups": [],
+        "modules": [],
+        "templates": [],
+        "callouts": [],
+        "settings": [],
+        "feeds": [],
+        "field_types": [
+            {
+                "id": "com.fastspot.date-range*date-range",
+                "name": "Date Range",
+                "use_cases": {
+                    "templates": "on",
+                    "modules": "on",
+                    "callouts": "on",
+                    "settings": "on"
+                },
+                "self_draw": null,
+                "extension": "com.fastspot.date-range"
+            }
+        ],
+        "tables": []
+    }
+}

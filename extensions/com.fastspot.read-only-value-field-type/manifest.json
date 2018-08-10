@@ -1,0 +1,44 @@
+{
+    "type": "extension",
+    "id": "com.fastspot.read-only-value-field-type",
+    "version": "1.0",
+    "revision": 2,
+    "compatibility": "4.2+",
+    "title": "Read Only Value",
+    "description": "A field type that implements a read-only value for display purposes but not editing.",
+    "keywords": [
+        "read only",
+        "read-only",
+        "read",
+        "uneditable"
+    ],
+    "author": {
+        "name": "Fastspot",
+        "url": "http://www.fastspot.com",
+        "email": "tim@fastspot.com"
+    },
+    "licenses": {
+        "LGPL v3": "http://opensource.org/licenses/LGPL-3.0"
+    },
+    "components": {
+        "module_groups": [],
+        "modules": [],
+        "templates": [],
+        "callouts": [],
+        "settings": [],
+        "feeds": [],
+        "field_types": [
+            {
+                "id": "com.fastspot.read-only-value-field-type*read-only-value",
+                "name": "Read Only Value",
+                "use_cases": {
+                    "modules": "on"
+                },
+                "self_draw": null,
+                "extension": "com.fastspot.read-only-value-field-type"
+            }
+        ],
+        "tables": []
+    },
+    "sql_revisions": []
+}

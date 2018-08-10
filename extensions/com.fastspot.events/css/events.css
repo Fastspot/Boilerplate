@@ -1,0 +1,52 @@
+/* Search Events */
+#btx_events_search .select { margin: 0 10px 0 0; }
+#btx_events_search .date_range_spacer { float: left; height: 32px; line-height: 32px; margin: 0 10px 0 0; }
+
+#btx_events_search_results div.table { border-radius: 2px; box-shadow: none; margin: 0; }
+#btx_events_search_results div.table > header { margin-top: 0; }
+#btx_events_search_results .table .view_action span { margin: 5px 0 0 0; }
+.table .btx_events_column_date { width: 65px; }
+.table .btx_events_column_title { width: 665px; }
+
+.btx_events_categories_table > section { padding: 0; }
+.btx_events_categories_table section ul { width: 958px; }
+.btx_events_categories_table li > span { float: left; height: 32px; text-align: center; }
+.btx_events_categories_table .btx_events_category_name { display: block; float: left; font-size: 15px; height: 32px; line-height: 32px; padding: 0 0 0 15px; text-align: left; width: 833px; }
+.btx_events_categories_table .depth_2 .btx_events_category_name { width: 823px; }
+.btx_events_categories_table .depth_3 .btx_events_category_name { width: 813px; }
+.btx_events_categories_table .depth_4 .btx_events_category_name { width: 803px; }
+.btx_events_categories_table .depth_5 .btx_events_category_name { width: 793px; }
+.btx_events_categories_table .depth_6 .btx_events_category_name { width: 783px; }
+.btx_events_categories_table .depth_7 .btx_events_category_name { width: 773px; }
+.btx_events_categories_table .depth_8 .btx_events_category_name { width: 763px; }
+.btx_events_categories_table .depth_9 .btx_events_category_name { width: 753px; }
+.btx_events_categories_table .depth_10 .btx_events_category_name { width: 743px; }
+
+/* Calendar */
+#btx_events_calendar { border: 1px solid #CCC; border-radius: 2px; overflow: hidden; }
+#btx_events_calendar a { color: #333; }
+#btx_events_calendar header { background: #EEE; border-bottom: 1px solid #CCC; border-radius: 2px 2px 0 0; height: 50px; overflow: hidden; }
+#btx_events_calendar header .today { background: #FAFAFA; border: 1px solid #CCC; border-radius: 2px; float: left; font-size: 10px; height: 30px; line-height: 30px; margin: 9px 0 0 10px; padding: 0 15px; text-align: center; }
+#btx_events_calendar header .today:hover { background: #FFF; }
+#btx_events_calendar header nav { margin: 18px 0 0 347px; position: absolute; }
+#btx_events_calendar header nav * { display: block; float: left; }
+#btx_events_calendar header nav span { color: #333; font-size: 14px; text-align: center; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8); width: 240px; }
+#btx_events_calendar header a.previous span { background: url("../../../images/icon-sprite.svg") no-repeat scroll -137px -116px transparent; display: block; height: 9px; overflow: hidden; text-indent: -1000em; width: 6px; }
+#btx_events_calendar header a.next span { background: url("../../../images/icon-sprite.svg") no-repeat scroll -137px -125px transparent; display: block; height: 9px; overflow: hidden; text-indent: -1000em; width: 6px; }
+#btx_events_calendar header a.previous, #btx_events_calendar header a.next { height: 9px; padding: 3px 5px; width: 6px; }
+
+#btx_events_calendar summary { background: #FFF; border-bottom: 1px solid #CCC; overflow: hidden; }
+#btx_events_calendar summary section { display: block; float: left; font-size: 12px; padding: 10px 0; text-align: center; width: 136px; }
+
+#btx_events_calendar .dates { background: #FCFCFC; margin: 0; overflow: hidden; }
+#btx_events_calendar .dates li { border: solid 1px #DDD; border-left: none; border-top: none; display: block; float: left; height: 116px; padding: 10px; width: 116px; }
+#btx_events_calendar .dates li.saturday { border-right: none; }
+#btx_events_calendar .dates li.last_row { border-bottom: none; }
+#btx_events_calendar .dates li a { color: #666; }
+#btx_events_calendar .dates li span { float: right; font-size: 11px; }
+#btx_events_calendar .dates li .not_active_month { color: #CCC; }
+#btx_events_calendar .dates li .search { display: block; font-size: 10px; line-height: 16px; margin-top: 12px; padding-left: 20px; }
+#btx_events_calendar .dates .active { background: #F4F4F4; }
+#btx_events_calendar .dates li ul { display: block; margin: 18px 0 0 0; overflow: hidden; }
+#btx_events_calendar .dates li ul li { border: none; display: block; font-size: 10px; height: 12px; line-height: 12px; margin: 8px 0 0 0; overflow: hidden; padding: 0; text-overflow: ellipsis; white-space: nowrap; width: 116px; }
+#btx_events_calendar .dates li ul li a:hover { background: #F3F3F3; border-radius: 3px; color: #333; margin: -3px 0 0 -6px; padding: 3px 6px; position: absolute; z-index: 500; }
