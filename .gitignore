@@ -6,3 +6,5 @@ trello.json
 cache/
 custom/environment.php
 site/files/
+/.htaccess
+backups/
