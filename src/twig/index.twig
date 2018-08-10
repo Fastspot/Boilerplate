@@ -48,14 +48,16 @@
 		wrap(fsPage);
 
 		function wrap(element) {
-			var group = document.createElement('div');
-			group.classList.add('sitemap_group');
+			if (element.length > 0) {
+				var group = document.createElement('div');
+				group.classList.add('sitemap_group');
 
-			for(var i = 0; i < element.length; i++) {
-				group.appendChild(element[i]);
+				for(var i = 0; i < element.length; i++) {
+					group.appendChild(element[i]);
+				}
+
+				sitemap.appendChild(group);
 			}
-
-			sitemap.appendChild(group);
 		}
 	</script>
 {% endblock %}

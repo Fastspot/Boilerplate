@@ -672,7 +672,7 @@ gulp.task('reset', function(done) {
 gulp.task('watch', function() {
 
 	gulp.watch('package.json', gulp.series('reset', 'build', 'reload'));
-	gulp.watch(watch.trello, gulp.series('twig', gulp.parallel('trello'), 'reload'));
+	gulp.watch(watch.trello, gulp.series('twig', 'trello', 'reload'));
 	gulp.watch(watch.twig, gulp.series('twig'));
 	gulp.watch(watch.sass, gulp.series('sass'));
 	gulp.watch(watch.js, gulp.series(gulp.parallel('js', 'jshint')));
@@ -684,6 +684,7 @@ gulp.task('watch', function() {
 
 gulp.task('build', gulp.parallel(
 	'readme',
+	'sass',
 	gulp.series(
 		'sprite',
 		'twig',
@@ -693,7 +694,6 @@ gulp.task('build', gulp.parallel(
 		'pretty-html'
 	),
 	gulp.series(
-		'sass',
 		'js',
 		'jshint'
 	),
