@@ -10,9 +10,7 @@
 	@include visually_hide;
 }
 
-.site_search_handle_icon {
-	pointer-events: none;
-}
+.site_search_handle_icon {}
 
 
 // Search Form
@@ -32,13 +30,13 @@
 	@include focus_outline_none;
 
 	width: 100%;
-	
+
 	appearance: none;
 	background: none;
 	border: 0;
 	border-radius: 0;
 	padding: 10px 50px 10px 10px;
-	
+
 	&::placeholder {
 		text-overflow: ellipsis;
 	}
