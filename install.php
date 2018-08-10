@@ -1,1 +1,0 @@
-bigtree/install.php
