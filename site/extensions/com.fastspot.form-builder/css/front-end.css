@@ -94,6 +94,14 @@
 	.form_builder .form_builder_phone_3 input.form_builder_text { text-align: center; width: 60px; }
 	.form_builder .form_builder_phone_4 { float: left; }
 	.form_builder .form_builder_phone_4 input.form_builder_text { text-align: center; width: 80px; }
+	.form_builder .form_builder_phone_country { float: left; margin: 0 10px 0 0; }
+	.form_builder .form_builder_phone_country:before { color: #999; content: "+"; float: left; font-family: OpenSansSemibold, sans-serif; font-size: 13px; font-style: normal; font-weight: normal; line-height: 40px; margin: 0 5px 0 0; }
+	.form_builder .form_builder_phone_country input.form_builder_text { text-align: center; width: 80px; }
+	.form_builder .form_builder_phone_country .form_builder_sublabel { padding-left: 12px; }
+	.form_builder .form_builder_phone_area { float: left; margin: 0 10px 0 0; }
+	.form_builder .form_builder_phone_area input.form_builder_text { text-align: center; width: 80px; }
+	.form_builder .form_builder_phone_number { float: left; margin: 0 10px 0 0; }
+	.form_builder .form_builder_phone_number input.form_builder_text { text-align: center; width: 120px; }
 	
 	.form_builder .error { border-color: #AD6672 !important; }
 	.form_builder .form_builder_captcha_error { background: #CC0000; border-radius: 3px; color: #FFF; margin: 0 0 10px 0; padding: 10px; }

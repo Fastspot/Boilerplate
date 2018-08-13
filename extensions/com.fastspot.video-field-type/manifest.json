@@ -1,8 +1,8 @@
 {
     "type": "extension",
     "id": "com.fastspot.video-field-type",
-    "version": "1.3.4",
-    "revision": 7,
+    "version": "1.4",
+    "revision": 8,
     "compatibility": "4.2+",
     "title": "Video Field",
     "description": "A field type that allows a user to input a YouTube or Vimeo URL. The field will grab the video's thumbnail image and allow you to create thumbnails and crops as well as storing the service type, video ID, URL, and embed code.\r\n\r\nVersion 1.1 supports the YouTube v3 API. The v2 API which allowed non-authenticated calls has been turned off.",

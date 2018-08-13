@@ -10,7 +10,11 @@
 		$field_data["label"] = "Phone";
 	}
 	
-	$value = $_POST[$field_name]["first"]."-".$_POST[$field_name]["second"]."-".$_POST[$field_name]["third"];
+	if (empty($field_data["international"])) {
+		$value = $_POST[$field_name]["first"]."-".$_POST[$field_name]["second"]."-".$_POST[$field_name]["third"];
+	} else {
+		$value = "+".$_POST[$field_name]["first"]." ".$_POST[$field_name]["second"]." ".$_POST[$field_name]["third"];
+	}
 	
 	$email_body .= $field_data["label"]."\n";
 	$email_body .= str_repeat("-", strlen($field_data["label"]))."\n";
