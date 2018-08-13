@@ -8,3 +8,4 @@ custom/environment.php
 site/files/
 /.htaccess
 backups/
+custom/settings.php
