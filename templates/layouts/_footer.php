@@ -21,7 +21,8 @@
 
 									include_with("partials/navigation/social.php", [
 										"title" => "Social",
-										"links" => $cms->getSetting("nav-social")
+										"links" => $cms->getSetting("nav-social"),
+										"icon" => true
 									]);
 								?>
 							</div>

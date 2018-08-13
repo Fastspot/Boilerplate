@@ -13,9 +13,6 @@
 		}
 	?>
 </div>
-<?php
-	}
-?>
 
 <div class="page_content">
 	<div class="fs-row">

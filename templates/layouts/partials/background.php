@@ -9,7 +9,7 @@
 		$source_array[$breakpoint] = BigTree::prefixFile($image, $prefix);
 	}
 
-	$bg_options["source"] = $bg_options;
+	$bg_options["source"] = $source_array;
 
 	if (isset($loop) && $loop === false) {
 		$bg_options["loop"] = false;

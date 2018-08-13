@@ -40,7 +40,7 @@
 		</div>
 		<?php
 			} else {
-				foreach (static::$Breadcrumbs as $item) {
+				foreach ($site["breadcrumbs"] as $item) {
 					$x++;
 		?>
 		<div class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">

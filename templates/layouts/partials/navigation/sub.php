@@ -25,7 +25,7 @@
 				$active = (strpos($current_url, $item["link"]) !== false);
 				$has_children = ($active && is_array($item["children"]) && count($item["children"]));
 		?>
-		<li class="sub_nav_item<?php if ($item["id"] == $bigtree["page"]["id"]) { ?> active<?php } if ($has_children)) { ?> open<?php } ?>">
+		<li class="sub_nav_item<?php if ($item["id"] == $bigtree["page"]["id"]) { ?> active<?php } if ($has_children) { ?> open<?php } ?>">
 			<a class="sub_nav_link" href="<?=$item["link"]?>"<?php if ($item["new_window"]) { ?> target="_blank"<?php } ?> itemprop="url">
 				<span class="sub_nav_link_label" itemprop="name"><?=$item["title"]?></span>
 			</a>
@@ -38,7 +38,7 @@
 						$active = (strpos($current_url, $child["link"]) !== false) && (rtrim($child["link"], "/") !== DOMAIN);
 						$has_children = ($active && is_array($child["children"]) && count($child["children"]));
 				?>
-				<li class="sub_nav_child_item<?php if ($active) { ?> active<?php } if ($has_children)) { ?> open<?php } ?>">
+				<li class="sub_nav_child_item<?php if ($active) { ?> active<?php } if ($has_children) { ?> open<?php } ?>">
 					<a class="sub_nav_child_link" href="<?=$child["link"]?>"<?php if ($child["new_window"]) { ?> target="_blank"<?php } ?> itemprop="url">
 						<span class="sub_nav_child_link_label" itemprop="name"><?=$child["title"]?></span>
 					</a>

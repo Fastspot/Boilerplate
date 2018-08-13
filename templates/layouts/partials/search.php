@@ -14,7 +14,7 @@
 		<input aria-live="polite" class="site_search_input" itemprop="query-input" type="text" id="search_term_string<?php if ($modifier) { echo "_".$modifier; } ?>" name="q" placeholder="<?=$placeholder?>">
 		<button class="site_search_button" type="submit" title="submit" aria-label="submit">
 			<span class="site_search_button_label"><?=$button_text?></span>
-			<span class="site_search_button_icon"><?php static::drawSymbol("search"); ?></span>
+			<span class="site_search_button_icon"><?=icon("search")?></span>
 		</button>
 	</form>
 </div>

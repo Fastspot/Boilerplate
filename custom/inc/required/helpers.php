@@ -16,6 +16,18 @@
 <?php
 	}
 
+	function get_video_url($video) {
+		if (!empty($video["service"])) {
+			if ($video["service"] == "youtube") {
+				return "https://www.youtube.com/watch?v=".$video["id"];
+			} else {
+				return "https://vimeo.com/".$video["id"];
+			}
+		} else {
+			return $video["image"];
+		}
+	}
+
 	function get_gallery_link($item, $autoplay = true) {
 		if (!empty($item["video"]["service"])) {
 			if ($item["video"]["service"] == "youtube") {
@@ -84,14 +96,19 @@
 		return $return;
 	}
 
-	function include_with($path, $variables) {
+	function include_with($path, $variables = []) {
 		global $site;
 
 		foreach ($variables as $key => $value) {
 			$$key = $value;
 		}
 
-		include $path;
+		// Allow for relative to layouts
+		if (file_exists($path)) {
+			include $path;
+		} else {
+			include SERVER_ROOT."templates/layouts/".$path;
+		}
 	}
 
 	function icon($name) {
