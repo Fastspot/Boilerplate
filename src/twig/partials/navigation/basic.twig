@@ -15,7 +15,7 @@
 		<h2 class="{{class}}_title">{{title}}</h2>
 	</div>
 	{% endif %}
-	<ul class="{{class}}_list">
+	<ul class="{{class}}_list"{% if title %} aria-label="{{title}}{% endif %}>
 		{% for link in links %}
 		<li class="{{class}}_item{% if link.modifier %} {{link.modifier}}{% endif %}{% if link.children %} {{class}}_item_has_children{% endif %}">
 			<a class="{{class}}_link{% if link.icon %} {{link.icon}}{% endif %}{% if loop.index == active %} active{% endif %}" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="url"{% if loop.index == active %} aria-current="page"{% endif %}>
