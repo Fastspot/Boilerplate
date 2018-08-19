@@ -75,6 +75,7 @@
   },
   "css": [
     "src/css/site.scss",
+    "src/css/tinymce.scss",
     "src/css/guidebook.scss"
   ],
   "js": {
