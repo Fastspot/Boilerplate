@@ -595,7 +595,7 @@ gulp.task('accessibility-test', function(done) {
 	}, 2);
 
 	queue.drain = function() {
-		console.log('All done running gulp access!');
+		console.log('All done! Check out your updated accessibility page.');
 	};
 
 	queue.push(urls);
