@@ -33,7 +33,7 @@
 			this.minMD = "740";
 			this.minLG = "980";
 			this.minXL = "1220";
-			this.minXXL = "1270";
+			this.minXXL = "1330";
 		};
 
 		$.extend(BaseController.prototype, {
@@ -118,7 +118,7 @@
 				var markup = '<svg class="icon icon_' + icon + '">';
 				var ua = window.navigator.userAgent;
     		var msie = ua.indexOf("MSIE ");
-	
+
 				if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
 					markup += '<use xlink:href="#' + icon + '">';
 				} else {
