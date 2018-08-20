@@ -92,7 +92,7 @@
   },
   "devDependencies": {
     "async": "2.6.1",
-    "autoprefixer": "9.1.0",
+    "autoprefixer": "9.1.2",
     "browser-sync": "2.24.6",
     "del": "3.0.0",
     "formstone": "1.4.10",
