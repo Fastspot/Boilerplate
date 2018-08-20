@@ -611,7 +611,6 @@ gulp.task('clean', function(done) {
 	del('favicons');
 	del('images');
 	del('js');
-	del('reports');
 	del('static');
 
 	del('src/twig/templates/dev-feature.twig');
