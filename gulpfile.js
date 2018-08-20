@@ -558,7 +558,7 @@ gulp.task('accessibility-test', function(done) {
 		}, function(error, results) {
 			if (error) return console.error(error.message);
 
-			console.log("scanning " + base + ".html");
+			console.log("Scanning " + base + ".html");
 
 			var errors = 0;
 			var warnings = 0;
