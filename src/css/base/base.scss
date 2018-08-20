@@ -80,3 +80,15 @@ hr {
 	border: none;
 	margin: 0;
 }
+
+a {
+	text-decoration: none;
+
+	&[href^=tel] {
+		color: inherit;
+	}
+}
+
+strong {
+	font-weight: 700;
+}

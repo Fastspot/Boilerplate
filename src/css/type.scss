@@ -62,18 +62,6 @@
 	line-height: (22 / 14);
 }
 
-a {
-	text-decoration: none;
-
-	&[href^=tel] {
-		color: inherit;
-	}
-}
-
-strong {
-	font-weight: 700;
-}
-
 
 // Typography
 // =============================================================================
