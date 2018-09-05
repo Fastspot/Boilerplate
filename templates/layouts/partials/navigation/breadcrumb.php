@@ -12,7 +12,7 @@
 <div class="breadcrumb_nav<?php if ($modifier) { ?> breadcrumb_nav_<?=$modifier?><?php } ?>">
 	<div class="breadcrumb_list" itemscope itemtype="http://schema.org/BreadcrumbList">
 		<div class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-			<a class="breadcrumb_link" itemprop="item" href="<?=WWW_ROOT?>">
+			<a class="breadcrumb_pill breadcrumb_pill_link" itemprop="item" href="<?=WWW_ROOT?>">
 				<span class="breadcrumb_name" itemprop="name">
 					<?php
 						if (!empty($icon)) {
@@ -33,8 +33,10 @@
 			if (defined("CUSTOM_BREADCRUMB")) {
 		?>
 		<div class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-			<span class="breadcrumb_label" itemprop="item">
-				<span class="breadcrumb_name" itemprop="name"><?=CUSTOM_BREADCRUMB?></span>
+			<span class="breadcrumb_pill" itemprop="item">
+				<span class="breadcrumb_name">
+					<span class="breadcrumb_name_label" itemprop="name"><?=CUSTOM_BREADCRUMB?></span>
+				</span>
 			</span>
 			<meta itemprop="position" content="2">
 		</div>
@@ -53,7 +55,7 @@
 			<?php
 					} else {
 			?>
-			<a class="breadcrumb_link" itemprop="item" href="<?=$item["link"]?>">
+			<a class="breadcrumb_pill breadcrumb_pill_link" itemprop="item" href="<?=$item["link"]?>">
 				<span class="breadcrumb_name" itemprop="name">
 					<span class="breadcrumb_name_label"><?=$item["title"]?></span>
 				</span>
