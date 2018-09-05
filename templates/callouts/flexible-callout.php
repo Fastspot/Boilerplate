@@ -21,7 +21,7 @@
 	?>
 	<div class="fs-row">
 		<div class="fs-cell">
-			<div class="flex_callout_wrapper">
+			<div class="flex_callout_inner">
 				<header class="flex_callout_header">
 					<?php
 						if (!empty($label)) {
