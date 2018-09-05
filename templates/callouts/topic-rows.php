@@ -17,12 +17,12 @@
 	<?php
 		}
 	?>
-	<div class="topic_items">
+	<div class="topic">
 		<?php
 			foreach ($rows as $row) {
 		?>
-		<article class="topic_row">
-			<div class="topic_row_inner">
+		<article class="topic">
+			<div class="topic_inner">
 				<?php
 					if (!empty($row["image"])) {
 				?>
