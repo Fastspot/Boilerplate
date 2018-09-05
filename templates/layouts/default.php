@@ -16,7 +16,7 @@
 
 <div class="page_content">
 	<div class="fs-row">
-		<div class="fs-cell-right fs-lg-4 aside_wrapper subnav_wrapper">
+		<div class="fs-cell-right fs-lg-4 page_aside page_sub_nav">
 			<?php
 				include_with("partials/navigation/sub.php", [
 					"title" => "",
@@ -25,47 +25,45 @@
 			?>
 		</div>
 
-		<div class="fs-cell fs-lg-8 content_wrapper">
-			<main class="main_content" id="main_content" itemprop="mainContentOfPage">
+		<main class="fs-cell fs-lg-8 page_main_content" id="page_main_content" itemprop="mainContentOfPage">
+			<?php
+				if (defined("PAGE_HEADER")) {
+					include PAGE_HEADER;
+				} else {
+			?>
+			<div class="page_header">
 				<?php
-					if (defined("PAGE_HEADER")) {
-						include PAGE_HEADER;
-					} else {
+					include_with("partials/navigation/breadcrumb.php");
+
+					if ($page_header) {
 				?>
-				<div class="page_header">
-					<?php
-						include_with("partials/navigation/breadcrumb.php");
-
-						if ($page_header) {
-					?>
-					<h1 class="page_title"><?=$page_header?></h1>
-					<?php
-						}
-					?>
-				</div>
-				<?php
-					}
-
-					echo $bigtree["content"];
-
-					if (!empty($in_content_callouts) && is_array($in_content_callouts)) {
-				?>
-				<div class="in_content_callouts">
-					<?php
-						foreach ($in_content_callouts as $callout) {
-							BTXReusableCallouts::check($callout);
-							$callout["_context"] = "in_content";
-							include_with(SERVER_ROOT."templates/callouts/".$callout["type"].".php", $callout);
-						}
-					?>
-				</div>
+				<h1 class="page_title"><?=$page_header?></h1>
 				<?php
 					}
 				?>
-			</main>
-		</div>
+			</div>
+			<?php
+				}
 
-		<div class="fs-cell-right fs-lg-4 aside_wrapper sidebar_wrapper">
+				echo $bigtree["content"];
+
+				if (!empty($in_content_callouts) && is_array($in_content_callouts)) {
+			?>
+			<div class="in_content_callouts">
+				<?php
+					foreach ($in_content_callouts as $callout) {
+						BTXReusableCallouts::check($callout);
+						$callout["_context"] = "in_content";
+						include_with(SERVER_ROOT."templates/callouts/".$callout["type"].".php", $callout);
+					}
+				?>
+			</div>
+			<?php
+				}
+			?>
+		</main>
+
+		<div class="fs-cell-right fs-lg-4 page_aside page_sidebar">
 			<div class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
 				<?php
 					if (!empty($sidebar_callouts) && is_array($sidebar_callouts)) {
