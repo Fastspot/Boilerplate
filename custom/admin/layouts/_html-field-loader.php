@@ -8,14 +8,15 @@
 			if (is_array($bigtree["html_fields"]) && count($bigtree["html_fields"])) {
 		?>
 		tinyMCE.init({
-  			content_css: "<?=STATIC_ROOT?>css/tinymce.css",
-  			theme: "modern",
+			content_css: "<?=STATIC_ROOT?>css/tinymce.css",
+			body_class: "typography",
+			theme: "modern",
 			mode: "exact",
 			elements: "<?=implode(",",$bigtree["html_fields"])?>",
 			file_browser_callback: BigTreeFileManager.tinyMCEOpen,
 			menubar: false,
-			plugins: "code,anchor,image,link,table,visualblocks,lists,hr",
-			toolbar: "undo redo | styleselect | bold italic underline | bullist numlist outdent indent | hr anchor link unlink image table | visualblocks code",
+			plugins: "code,anchor,image,link,table,visualblocks,lists,hr,template",
+			toolbar: "undo redo | styleselect | bold italic underline | bullist numlist outdent indent | hr anchor link unlink image table | template visualblocks code",
 			image_dimensions: false,
 			paste_remove_spans: true,
 			paste_remove_styles: true,
@@ -24,7 +25,12 @@
 			relative_urls: false,
 			remove_script_host: false,
 			browser_spellcheck: true,
-			extended_valid_elements : "*[*]"
+			extended_valid_elements : "*[*]",
+			templates: [
+				{ "title": "Quote w/ Attribution", content: '<figure class="quote"><blockquote class="quote_content"><p>Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean lacinia bibendum nulla sed consectetur. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum id ligula porta felis euismod semper.</p></blockquote><figcaption class="quote_caption"><span class="quote_caption_name">Aenean massa - </span><span class="quote_caption_title">Nullam dictum felis</span></figcaption></figure>'},
+				{ "title": "Image Block w/ Caption Right", content: '<figure class="block_right"><img src="https://images.fastspot.com/siena/300x300/" alt=""><figcaption>This is an image caption.</figcaption></figure>' },
+				{ "title": "Image Block w/ Caption Left", content: '<figure class="block_left"><img src="https://images.fastspot.com/siena/300x300/" alt=""><figcaption>This is an image caption.</figcaption></figure>' },
+			]
 			<?php if ($width) { ?>,width: "<?=$width?>"<?php } ?>
 			<?php if ($height) { ?>,height: "<?=$height?>"<?php } ?>
 		});
@@ -34,8 +40,9 @@
 			if (is_array($bigtree["simple_html_fields"]) && count($bigtree["simple_html_fields"])) {
 		?>
 		tinyMCE.init({
-  			content_css: "<?=STATIC_ROOT?>css/tinymce.css",
-  			theme: "modern",
+			content_css: "<?=STATIC_ROOT?>css/tinymce.css",
+			body_class: "typography",
+			theme: "modern",
 			mode: "exact",
 			elements: "<?=implode(",",$bigtree["simple_html_fields"])?>",
 			file_browser_callback: BigTreeFileManager.tinyMCEOpen,

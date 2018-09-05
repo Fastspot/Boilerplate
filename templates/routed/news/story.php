@@ -16,7 +16,7 @@
 		$bigtree["bar_edit_link"] = ADMIN_ROOT."news/edit/".$news["id"]."/";
 	}
 
-	$cms->setHeadContext("btx_news", $news["id"], $news["title"], $news["blurb"], $news["image"] ? BigTree::prefixFile($news["image"], "wide-med-"), "article");
+	$cms->setHeadContext("btx_news", $news["id"], $news["title"], $news["blurb"], $news["image"] ? BigTree::prefixFile($news["image"], "wide-med-") : "", "article");
 	
 	$page_header = $news["title"];
 	$in_content_callouts = $news["in_content_callouts"];

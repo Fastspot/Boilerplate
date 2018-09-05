@@ -1,5 +1,5 @@
 <?php
-	// Required "source" (array of breakpoints and image prefixes), "image", "class"
+	// Required "sources" (array of breakpoints and image prefixes), "image", "class"
 	// Optional "loop", "mute", "embedRatio", "lazy", "lazyEdge"
 
 	$bg_class = $customClass ?: "js-background";

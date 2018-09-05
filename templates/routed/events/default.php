@@ -138,12 +138,14 @@
 					</div>
 					<footer class="event_listing_footer">
 						<?php
-							include_with(SERVER_ROOT."templates/layouts/partials/pagination.php", [
-								"pagination_link" => $pagination_link,
-								"pages" => $pages,
-								"current_page" => $current_page,
-								"max_to_show" => 10
-							]);
+							if ($pages > 1) {
+								include_with(SERVER_ROOT."templates/layouts/partials/pagination.php", [
+									"pagination_link" => $pagination_link,
+									"pages" => $pages,
+									"current_page" => $current_page,
+									"max_to_show" => 10
+								]);
+							}
 						?>
 					</footer>
 				</div>

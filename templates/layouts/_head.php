@@ -4,8 +4,18 @@
 	 * @global array $site
 	 */
 
-	if (!$bigtree["config"]["debug"] && empty($site["tag_manager_id"])) {
-		die("Please enter a Google Tag Manager ID before launching the site.");
+	if (strpos(WWW_ROOT, "dev.fastspot.com") === false && strpos(WWW_ROOT, ".local") === false) {
+		if (empty($site["tag_manager_id"])) {
+			die("Please enter a Google Tag Manager ID before launching the site.");
+		}
+	
+		if (empty($site["favicon_color"])) {
+			die("Set a favicon color.");
+		}
+	}
+
+	if (empty($bigtree["page"]["open_graph"]["image"])) {
+		$bigtree["page"]["open_graph"]["image"] = $site["og_image_fallback"];
 	}
 ?>
 <head>
@@ -14,8 +24,16 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="mobile-web-app-capable" content="yes">
 
-	<link rel="shortcut icon" href="<?=STATIC_ROOT?>siena_favicon.png">
-	<meta name="theme-color" content="#1B4932">
+	<link rel="apple-touch-icon" sizes="180x180" href="<?=STATIC_ROOT?>favicons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="<?=STATIC_ROOT?>favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="<?=STATIC_ROOT?>favicons/favicon-16x16.png">
+	<link rel="manifest" href="<?=STATIC_ROOT?>favicons/site.webmanifest">
+	<link rel="mask-icon" href="<?=STATIC_ROOT?>favicons/safari-pinned-tab.svg" color="<?=$site["favicon_color"]?>">
+	<link rel="shortcut icon" href="<?=STATIC_ROOT?>favicons/favicon.ico">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="<?=STATIC_ROOT?>favicons/mstile-144x144.png">
+	<meta name="msapplication-config" content="<?=STATIC_ROOT?>favicons/browserconfig.xml">
+	<meta name="theme-color" content="<?=$site["favicon_color"]?>">
 
 	<?php BigTreeCMS::drawHeadTags($site["title"]); ?>
 

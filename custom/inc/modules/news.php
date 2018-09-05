@@ -5,7 +5,7 @@
 		public $Table = "btx_news";
 
 		public function __construct() {
-			$this->Page = WWW_ROOT.SQL::fetchSingle("SELECT path FROM bigtree_pages WHERE template = 'news'")."/";
+			$this->Page = BigTreeCMS::getLink(SQL::fetchSingle("SELECT id FROM bigtree_pages WHERE template = 'news'"));
 		}
 
 		static public function filterWithImages($list) {

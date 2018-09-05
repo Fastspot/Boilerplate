@@ -4,6 +4,7 @@
 		"schema_type" => "Organization",
 		"cse_key" => "",
 		"og_image_fallback" => null,
+		"favicon_color" => null,
 		"address" => [
 			"name" => "",
 			"street" => "",

@@ -11,7 +11,7 @@
 
 	$news = $newsMod->getPageForQuery($query, $category, $current_page);
 	$pages = $newsMod->getPageCountForQuery($query, $category);
-	$categories = $categoryMod->getCategories();
+	$categories = $categoryMod->getAllPositioned();
 
 	$page_link = $cms->getLink($bigtree["page"]["id"]);
 	$pagination_link_parts = [];
@@ -117,12 +117,14 @@
 					</div>
 					<footer class="news_listing_footer">
 						<?php
-							include_with(SERVER_ROOT."templates/layouts/partials/pagination.php", [
-								"pagination_link" => $pagination_link,
-								"pages" => $pages,
-								"current_page" => $current_page,
-								"max_to_show" => 10
-							]);
+							if ($pages > 1) {
+								include_with(SERVER_ROOT."templates/layouts/partials/pagination.php", [
+									"pagination_link" => $pagination_link,
+									"pages" => $pages,
+									"current_page" => $current_page,
+									"max_to_show" => 10
+								]);
+							}
 						?>
 					</footer>
 				</div>
