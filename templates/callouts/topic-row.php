@@ -10,9 +10,9 @@
 	 */
 ?>
 <div class="topic_block<?php if (!empty($theme)) { echo " theme_".$theme; } ?>">
-	<div class="topic_items">
-		<article class="topic_row">
-			<div class="topic_row_inner">
+	<div class="topics">
+		<article class="topic">
+			<div class="topic_inner">
 				<?php
 					if (!empty($image)) {
 				?>
