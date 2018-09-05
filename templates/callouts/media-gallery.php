@@ -37,9 +37,9 @@
 						?>
 						<a class="js-lightbox gallery_item_link" href="<?=get_gallery_link($item)?>" title="<?=strip_tags($item["info"]["caption"])?>" itemprop="contentUrl">
 							<img class="gallery_item_image" src="<?=BigTree::prefixFile($item["image"], "wide-med-")?>" alt="">
-							<span class="gallery_item_symbol">
-								<span class="gallery_item_symbol_icon"><?=icon("play")?></span>
-								<span class="gallery_item_symbol_label">Play</span>
+							<span class="gallery_item_play">
+								<span class="gallery_item_play_icon"><?=icon("play")?></span>
+								<span class="gallery_item_play_label">Play</span>
 							</span>
 						</a>
 						<?php
