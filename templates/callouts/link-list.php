@@ -26,22 +26,20 @@
 		}
 	?>
 	<div class="linked_list_body">
-		<ul class="linked_list_group">
+		<ul class="linked_list_items">
 			<?php
 				foreach ($links as $link) {
 			?>
 			<li class="linked_list_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
 				<a class="linked_list_link" <?=href($link["url"])?> itemprop="url"<?php if (!empty($link["aria"])) { ?> aria-label="<?=$link["aria"]?>"<?php } ?>>
-					<span class="linked_list_link_inner">
-						<span class="linked_list_label" itemprop="name"><?=$link["title"]?></span>
-						<?php
-							if (!empty($link["icon"])) {
-						?>
-						<span class="linked_list_icon"><?=icon($link["icon"])?></span>
-						<?php
-							}
-						?>
-					</span>
+					<span class="linked_list_label" itemprop="name"><?=$link["title"]?></span>
+					<?php
+						if (!empty($link["icon"])) {
+					?>
+					<span class="linked_list_icon"><?=icon($link["icon"])?></span>
+					<?php
+						}
+					?>
 				</a>
 			</li>
 			<?php
