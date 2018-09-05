@@ -3,7 +3,7 @@
 ?>
 
 <div class="page_content">
-	<main class="full_width_callouts" id="main_content" itemprop="mainContentOfPage">
+	<main class="full_width_callouts" id="page_main_content" itemprop="mainContentOfPage">
 		<?php
 			if (!empty($page_feature) && is_array($page_feature)) {
 				foreach ($page_feature as $callout) {
