@@ -674,7 +674,7 @@ gulp.task('watch', function() {
 	gulp.watch(watch.trello, gulp.series('twig', 'trello', 'reload'));
 	gulp.watch(watch.twig, gulp.series('twig'));
 	gulp.watch(watch.sass, gulp.series('sass'));
-	gulp.watch(watch.js, gulp.series(gulp.parallel('js', 'jshint')));
+	gulp.watch(watch.js, gulp.series('js', 'jshint'));
 	gulp.watch(watch.sprite, gulp.series('sprite', 'twig', 'reload'));
 	gulp.watch(watch.images, gulp.series('imagemin', 'reload'));
 
@@ -687,12 +687,9 @@ gulp.task('build', gulp.parallel(
 	gulp.series(
 		'sprite',
 		'twig',
-		'trello',
+		'pretty-html',
 		'create-sitemap',
 		'sitemap',
-		'pretty-html'
-	),
-	gulp.series(
 		'js',
 		'jshint'
 	),
@@ -702,10 +699,7 @@ gulp.task('build', gulp.parallel(
 
 gulp.task('default', gulp.series(
 	'build',
-	gulp.parallel(
-		'watch',
-		'browser-sync'
-	)
+	'dev'
 ));
 
 
@@ -716,8 +710,9 @@ gulp.task('dev', gulp.parallel(
 
 
 gulp.task('style-guide', gulp.series(
+	'trello',
 	'components',
-	'trello'
+	'twig'
 ));
 
 
@@ -729,8 +724,5 @@ gulp.task('access', gulp.series(
 		'create-sitemap',
 		'sitemap'
 	),
-	gulp.parallel(
-		'watch',
-		'browser-sync'
-	)
+	'dev'
 ));
