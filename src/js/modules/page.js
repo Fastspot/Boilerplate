@@ -21,7 +21,7 @@ Site.modules.Page = (function($, Site) {
 		Site.onResize.push(resize);
 		Site.onRespond.push(respond);
 		
-		$(window).on("load", onPageLoad);
+		Formstone.Ready(pageLoad);
 	}
 
 	function scroll() {}
@@ -33,7 +33,7 @@ Site.modules.Page = (function($, Site) {
 
 	function respond() {}
 
-	function onPageLoad() {
+	function pageLoad() {
 		$("body").removeClass("preload");
 
 		$(window).trigger("resize");
