@@ -154,6 +154,7 @@
 {% macro anchor(label) %}
 <h2 class="guidebook_component_title" id="{{label|replace({
 	" ": "-",
+	":": "",
 	"&": "and",
 	"/": "-"
 })|lower}}">
