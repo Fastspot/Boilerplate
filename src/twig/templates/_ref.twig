@@ -50,40 +50,35 @@
 						padding-left: 0;
 					}
 
-
-			/* Ref Group */
-
-			.ref_group > ul {
-				border-left: 8px solid #ddd;
-				margin-bottom: 40px;
-			}
-
-				.ref_group li {
-					padding: 13px 20px 12px;
-					transition:
-						background 0.25s,
-						color 0.25s;
-				}
-
-					.ref_group span {
-						display: block;
-						font-weight: 700;
-						margin: 0 0 14px;
-					}
-
-
 			/* Sitemap */
 
+			.sitemap_search {
+				width: 100%;
+
+				background: #f3f3f3;
+				border: 0;
+				font-size: 16px;
+				margin-bottom: 40px;
+				padding: 21px 30px;
+			}
+
 			.sitemap {
+				margin-top: 0;
 				margin-bottom: 80px;
 			}
 
-				.sitemap_group {
-					margin-bottom: 40px;
-				}
+				.sitemap_group {}
 
 					.sitemap_item {
 						border-left: 8px solid;
+					}
+
+					.sitemap_item.hide-item {
+						display: none;
+					}
+
+					.sitemap_item:not(.hide-item):last-of-type {
+						margin-bottom: 40px;
 					}
 
 					.fs-access {
@@ -111,7 +106,7 @@
 							display: block;
 							font-size: 18px;
 							font-weight: 700;
-							padding: 15px 20px;
+							padding: 11px 20px 10px;
 							text-decoration: none;
 							transition:
 								background 0.25s,
@@ -143,10 +138,36 @@
 			{% if accessibility %}
 			<h2>Accessibility Results</h2>
 			{% endif %}
+			<input class="sitemap_search" type="search" placeholder="Search for a template"/>
 		</header>
 		<main>
 			{% block main %}
 			{% endblock %}
 		</main>
+		<script>
+			var search = document.querySelector(".sitemap_search");
+			var items = document.querySelectorAll(".sitemap_item");
+			var query = "";
+
+			search.addEventListener("keyup", searchSitemap, false);
+
+			function searchSitemap() {
+				query = search.value;
+
+				if (query.length >= 3) {
+					items.forEach(function(item) {
+						if (item.innerText.indexOf(query) > -1) {
+							item.classList.remove("hide-item");
+						} else {
+							item.classList.add("hide-item");
+						}
+					});
+				} else {
+					items.forEach(function(item) {
+						item.classList.remove("hide-item");
+					});
+				}
+			}
+		</script>
 	</body>
 </html>
