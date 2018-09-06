@@ -697,15 +697,15 @@ gulp.task('build', gulp.parallel(
 ));
 
 
-gulp.task('default', gulp.series(
-	'build',
-	'dev'
-));
-
-
 gulp.task('dev', gulp.parallel(
 	'watch',
 	'browser-sync'
+));
+
+
+gulp.task('default', gulp.series(
+	'build',
+	'dev'
 ));
 
 
