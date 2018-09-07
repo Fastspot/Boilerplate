@@ -10,11 +10,11 @@
 
 #}
 
-<nav class="js-main-nav {% if modifier %}js-main-nav-{{modifier}} {% endif %}main_nav{% if modifier %} main_nav_{{modifier}}{% endif %}" aria-label="{{title|replace({ (" Navigation"): "" })}}" itemscope itemtype="http://schema.org/SiteNavigationElement">
+<nav class="js-main-nav {% if modifier %}js-main-nav-{{modifier}} {% endif %}main_nav{% if modifier %} main_nav_{{modifier}}{% endif %}" aria-label="{{title}}" itemscope itemtype="http://schema.org/SiteNavigationElement">
 	<div class="main_nav_header">
-		<h2 class="main_nav_title">{{title}}</h2>
+		<h2 class="main_nav_title">{{title}} Navigation</h2>
 	</div>
-	<ul class="main_nav_list" aria-label="{{title}}">
+	<ul class="main_nav_list" aria-label="{{title}} Navigation">
 		{% for link in links %}
 		<li class="js-main-nav-item-{{loop.index}} main_nav_item{% if link.children %} main_nav_has_children{% endif %}{% if loop.index == active %} active{% endif %}{% if link.modifier %} {{link.modifier}}{% endif %}">
 			<div class="main_nav_item_wrapper">

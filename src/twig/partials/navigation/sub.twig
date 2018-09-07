@@ -12,7 +12,7 @@
 	{% set navTitle = "In This Section" %}
 {% endif %}
 
-<nav class="sub_nav{% if modifier %} sub_nav_{{modifier}}{% endif %}" aria-label="{{title|replace({ (" Navigation"): "" })}}" itemscope itemtype="http://schema.org/SiteNavigationElement">
+<nav class="sub_nav{% if modifier %} sub_nav_{{modifier}}{% endif %}" aria-label="{{title}}" itemscope itemtype="http://schema.org/SiteNavigationElement">
 	<div class="sub_nav_header">
 		<h2 class="sub_nav_title">{{navTitle}}</h2>
 		<button class="js-swap js-sub-nav-handle sub_nav_handle" data-swap-options='{"maxWidth": "980px"}' data-swap-target=".sub_nav_list" data-swap-title="{{navTitle}}" >
