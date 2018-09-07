@@ -11,21 +11,19 @@
 
 <div class="social_nav{% if modifier %} social_nav_{{modifier}}{% endif %}" itemscope itemtype="http://schema.org/{{vars.schemaType}}">
 	<link itemprop="url" href="//{{vars.domain}}">
-	{% if title %}
 	<div class="social_nav_header">
 		<h2 class="social_nav_title">{{title}}</h2>
 	</div>
-	{% endif %}
-	<div class="social_nav_list">
+	<ul class="social_nav_list" aria-label="{{title}}">
 		{% for link in links %}
-		<div class="social_nav_item{% if link.modifier %} {{link.modifier}}{% endif %}">
+		<li class="social_nav_item{% if link.modifier %} {{link.modifier}}{% endif %}">
 			<a class="social_nav_link" href="{{link.href}}" target="_blank" itemprop="sameAs">
 				{% if link.icon %}
 				<span class="social_nav_icon">{{site.icon(link.icon)}}</span>
 				{% endif %}
 				<span class="social_nav_label">{{link.name}}</span>
 			</a>
-		</div>
+		</li>
 		{% endfor %}
-	</div>
+	</ul>
 </div>

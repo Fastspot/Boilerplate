@@ -27,6 +27,7 @@
 	@include focus_outline_none;
 
 	background: #fff;
+	display: block;
 
 	@media print {
 		display: none;

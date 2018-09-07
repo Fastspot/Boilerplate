@@ -14,7 +14,11 @@
 // Social Links
 // =============================================================================
 
-.social_nav_list {}
+.social_nav_list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
 
 .social_nav_item {
 	display: inline-block;
