@@ -13,6 +13,11 @@
 
 			this.window = null;
 			this.doc = null;
+			this.rafMethod = window.requestAnimationFrame ||
+				window.webkitRequestAnimationFrame ||
+				window.mozRequestAnimationFrame ||
+				window.msRequestAnimationFrame ||
+				window.oRequestAnimationFrame;
 
 			this.$window = null;
 			this.$doc = null;
@@ -24,6 +29,7 @@
 			this.modules = [];
 
 			this.onInit = [];
+			this.onRAF = [];
 			this.onRespond = [];
 			this.onResize = [];
 			this.onScroll = [];
@@ -74,6 +80,11 @@
 					.on("mqchange.mediaquery", onRespond)
 					.on(Controller.ns("resize"), onResize)
 					.on(Controller.ns("scroll"), onScroll);
+
+				// Don't jank up request frames if we're not doing anything
+				if (this.onRAF.length) {
+					this.rafMethod(onRAF);
+				}
 
 				this.resize();
 			},
@@ -144,6 +155,12 @@
 		// Media Query Change Handler
 		function onRespond(e, state) {
 			iterate(Controller.onRespond, state);
+		}
+
+		// Request Animation Frame Handler
+		function onRAF() {
+			iterate(Controller.onRAF);
+			Controller.rafMethod(onRAF);
 		}
 
 		// Resize Handler
