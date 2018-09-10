@@ -2,6 +2,13 @@
 	Site
 -------------------------------------------*/
 
+	// !RAF
+	var RAF = window.requestAnimationFrame ||
+			  window.webkitRequestAnimationFrame ||
+			  window.mozRequestAnimationFrame ||
+			  window.msRequestAnimationFrame ||
+			  window.oRequestAnimationFrame;
+
 	// !Site
 	var Site = (function($, window) {
 
@@ -13,11 +20,6 @@
 
 			this.window = null;
 			this.doc = null;
-			this.rafMethod = window.requestAnimationFrame ||
-				window.webkitRequestAnimationFrame ||
-				window.mozRequestAnimationFrame ||
-				window.msRequestAnimationFrame ||
-				window.oRequestAnimationFrame;
 
 			this.$window = null;
 			this.$doc = null;
@@ -83,7 +85,7 @@
 
 				// Don't jank up request frames if we're not doing anything
 				if (this.onRAF.length) {
-					this.rafMethod(onRAF);
+					RAF(onRAF);
 				}
 
 				this.resize();
@@ -160,7 +162,7 @@
 		// Request Animation Frame Handler
 		function onRAF() {
 			iterate(Controller.onRAF);
-			Controller.rafMethod(onRAF);
+			RAF(onRAF);
 		}
 
 		// Resize Handler
