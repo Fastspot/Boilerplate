@@ -112,7 +112,7 @@
 		{% import '../partials/macros.twig' as site %}
 
 		<!-- Skip-to-Content Link -->
-		<a class="skip_link" id="skip_to_content" href="#main_content">Skip to Main Content</a>
+		<a class="skip_link" id="skip_to_content" href="#page_main_content">Skip to Main Content</a>
 
 		<!-- Page Wrapper -->
 		<div class="page_wrapper">
@@ -243,7 +243,7 @@
 
 					<!-- Full Width Callouts -->
 					{% if page.layout == "home" %}
-					<main class="full_width_callouts" id="main_content" itemprop="mainContentOfPage">
+					<main class="full_width_callouts" id="page_main_content" itemprop="mainContentOfPage">
 					{% else %}
 					<div class="full_width_callouts">
 					{% endif %}
