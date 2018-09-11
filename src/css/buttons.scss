@@ -104,21 +104,10 @@ button {
 	padding: 10px 20px;
 	text-align: center;
 	transform: translate(-50%, -200%);
-	transition:
-		top .35s,
-		transform .35s;
+	transition: transform .35s;
 
 	&:focus,
 	&:active {
 		transform: translate(-50%, 40px);
-	}
-
-	.no-csstransforms & {
-		top: -300%;
-
-		&:focus,
-		&:active {
-			top: 40px;
-		}
 	}
 }

@@ -558,7 +558,7 @@ gulp.task('accessibility-test', function(done) {
 		}, function(error, results) {
 			if (error) return console.error(error.message);
 
-			console.log("scanning " + base + ".html");
+			console.log("Scanning " + base + ".html");
 
 			var errors = 0;
 			var warnings = 0;
@@ -595,7 +595,7 @@ gulp.task('accessibility-test', function(done) {
 	}, 2);
 
 	queue.drain = function() {
-		console.log('All done running gulp access!');
+		console.log('All done! Check out your updated accessibility page.');
 	};
 
 	queue.push(urls);
@@ -611,7 +611,6 @@ gulp.task('clean', function(done) {
 	del('favicons');
 	del('images');
 	del('js');
-	del('reports');
 	del('static');
 
 	del('src/twig/templates/dev-feature.twig');
@@ -675,7 +674,7 @@ gulp.task('watch', function() {
 	gulp.watch(watch.trello, gulp.series('twig', 'trello', 'reload'));
 	gulp.watch(watch.twig, gulp.series('twig'));
 	gulp.watch(watch.sass, gulp.series('sass'));
-	gulp.watch(watch.js, gulp.series(gulp.parallel('js', 'jshint')));
+	gulp.watch(watch.js, gulp.series('js', 'jshint'));
 	gulp.watch(watch.sprite, gulp.series('sprite', 'twig', 'reload'));
 	gulp.watch(watch.images, gulp.series('imagemin', 'reload'));
 
@@ -688,25 +687,13 @@ gulp.task('build', gulp.parallel(
 	gulp.series(
 		'sprite',
 		'twig',
-		'trello',
+		'pretty-html',
 		'create-sitemap',
 		'sitemap',
-		'pretty-html'
-	),
-	gulp.series(
 		'js',
 		'jshint'
 	),
 	'imagemin'
-));
-
-
-gulp.task('default', gulp.series(
-	'build',
-	gulp.parallel(
-		'watch',
-		'browser-sync'
-	)
 ));
 
 
@@ -716,9 +703,16 @@ gulp.task('dev', gulp.parallel(
 ));
 
 
+gulp.task('default', gulp.series(
+	'build',
+	'dev'
+));
+
+
 gulp.task('style-guide', gulp.series(
+	'trello',
 	'components',
-	'trello'
+	'twig'
 ));
 
 
@@ -730,8 +724,5 @@ gulp.task('access', gulp.series(
 		'create-sitemap',
 		'sitemap'
 	),
-	gulp.parallel(
-		'watch',
-		'browser-sync'
-	)
+	'dev'
 ));

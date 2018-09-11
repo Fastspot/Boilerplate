@@ -26,7 +26,7 @@
 	</a>
 	{% endif %}
 	{% if fax %}
-	<a class="footer_address_phone" itemprop="telephone" href="tel:{{fax|replace({ ("-"): "" })}}">
+	<a class="footer_address_fax" itemprop="fax" href="tel:{{fax|replace({ ("-"): "" })}}">
 		<span class="footer_address_label">{{fax}}</span>
 	</a>
 	{% endif %}

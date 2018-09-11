@@ -42,7 +42,10 @@
 	<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec id elit non mi porta gravida at eget metus. Curabitur blandit tempus porttitor. Curabitur blandit tempus porttitor. Etiam porta sem malesuada magna mollis euismod. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
 
 	<figure class="block_right">
-		{{site.image("test", img.wide.sml, 1)}}
+		{% include par ~ "image.twig" with {
+			image: 1,
+			dimension: img.wide.sml
+		} %}
 		<figcaption>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue.</figcaption>
 	</figure>
 
@@ -53,7 +56,10 @@
 	<p>Praesent elit nibh, mattis ut faucibus eu, varius et felis. Integer ex nulla, semper in mauris a, malesuada consectetur tellus. Nullam sit amet felis odio. Nunc venenatis condimentum mi, vitae sodales sapien congue at. Nam convallis orci eget elit rhoncus, quis euismod Sed laoreet nulla eu posuere luctus. Maecenas libero ligula.</p>
 
 	<figure class="block_left">
-		{{site.image("test", img.wide.sml, 2)}}
+		{% include par ~ "image.twig" with {
+			image: 2,
+			dimension: img.wide.sml
+		} %}
 	</figure>
 
 	<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor.</p>
@@ -63,7 +69,10 @@
 	<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor.</p>
 
 	<figure class="block_center">
-		{{site.image("test", img.wide.med, 3)}}
+		{% include par ~ "image.twig" with {
+			image: 3,
+			dimension: img.wide.med
+		} %}
 		<figcaption>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue.</figcaption>
 	</figure>
 

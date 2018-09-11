@@ -37,6 +37,8 @@
 	.main_nav_item:hover & {}
 }
 
+.main_nav_link_label {}
+
 .main_nav_toggle {
 	display: none;
 
@@ -83,7 +85,7 @@
 	transform: translate(-50%, -50%);
 	transition: transform $base_speed;
 
-	.fs-swap-active & {}
+	.main_nav_item.fs-swap-active & {}
 }
 
 
