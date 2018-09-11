@@ -13,14 +13,14 @@ Site.modules.Page = (function($, Site) {
 		fixIEsvg();
 		responsiveVideo();
 		tableOverflow();
-		
+
 		$(".typography table")
 			.wrap('<div class="table_wrapper"><div class="table_wrapper_inner"></div></div>');
 
 		Site.onScroll.push(scroll);
 		Site.onResize.push(resize);
 		Site.onRespond.push(respond);
-		
+
 		Formstone.Ready(pageLoad);
 	}
 
@@ -34,13 +34,13 @@ Site.modules.Page = (function($, Site) {
 	function respond() {}
 
 	function pageLoad() {
-		$("body").removeClass("preload");
+		$("body").removeClass("preload").addClass("loaded");
 
 		$(window).trigger("resize");
 
 		if (window.location.hash) {
 			var id = window.location.hash;
-			
+
 			scrollToElement(id);
 		}
 	}
@@ -110,7 +110,7 @@ Site.modules.Page = (function($, Site) {
 			}
 		});
 	}
-	
+
 	function ariaHide($element) {
 		$element.attr("aria-hidden", "true")
 			.attr("hidden", "");
