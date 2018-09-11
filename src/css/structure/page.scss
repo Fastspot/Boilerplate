@@ -43,7 +43,7 @@
 		float: left;
 	}
 
-	.layout_full & {
+	.page_layout_full & {
 
 		@media #{$min_lg} {
 			float: none;
