@@ -27,7 +27,7 @@
 			<meta itemprop="position" content="1">
 		</div>
 		<?php
-			$x = 1;
+			$x = 0;
 			$max = count($site["breadcrumbs"]);
 
 			if (defined("CUSTOM_BREADCRUMB")) {

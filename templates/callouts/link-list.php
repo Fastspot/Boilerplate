@@ -36,7 +36,7 @@
 					<?php
 						if (!empty($link["icon"])) {
 					?>
-					<span class="linked_list_icon"><?=icon($link["icon"])?></span>
+					<span class="linked_list_icon" aria-hidden="true"><?=icon($link["icon"])?></span>
 					<?php
 						}
 					?>

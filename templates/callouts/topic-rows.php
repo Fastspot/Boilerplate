@@ -7,7 +7,7 @@
 	 * @global array $rows
 	 */
 ?>
-<div class="topic_block<?php if (!empty($theme)) { echo " theme_".$theme; } ?>"">
+<div class="topic_block<?php if (!empty($theme)) { echo " theme_".$theme; } ?>">
 	<?php
 		if (!empty($title)) {
 	?>

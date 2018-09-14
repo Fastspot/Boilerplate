@@ -67,7 +67,7 @@
 			<div class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
 				<?php
 					if (!empty($sidebar_callouts) && is_array($sidebar_callouts)) {
-						foreach ($sidebar as $callout) {
+						foreach ($sidebar_callouts as $callout) {
 							BTXReusableCallouts::check($callout);
 							$callout["_context"] = "sidebar";
 							include_with(SERVER_ROOT."templates/callouts/".$callout["type"].".php", $callout);

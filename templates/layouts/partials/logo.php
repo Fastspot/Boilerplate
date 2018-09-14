@@ -1,5 +1,5 @@
 <?php
-	// Optional "modifier", "icon", "header", "print"
+	// Optional "modifier", "icon", "header", "print", "link"
 
 	$logo_classes = [
 		"logo"
@@ -13,10 +13,12 @@
 		$logo_classes[] = "logo_icon";
 	}
 
+	$link = !empty($link) ? $link : WWW_ROOT;
+
 	if (!empty($header)) {
 ?>
 <h1 class="<?=implode(" ", $logo_classes)?>" itemscope itemtype="http://schema.org/<?=$site["schema_type"]?>">
-	<a class="logo_link" itemprop="url" href="<?=WWW_ROOT?>">
+	<a class="logo_link" itemprop="url" href="<?=$link?>">
 		<span class="logo_link_label"><?=$site["title"]?></span>
 		<?php
 			if (!empty($icon)) {
@@ -39,7 +41,7 @@
 	} else {
 ?>
 <div class="<?=implode(" ", $logo_classes)?>" itemscope itemtype="http://schema.org/<?=$site["schema_type"]?>">
-	<a class="logo_link" itemprop="url" href="<?=WWW_ROOT?>">
+	<a class="logo_link" itemprop="url" href="<?=$link?>">
 		<span class="logo_link_label"><?=$site["title"]?></span>
 		<?php
 			if (!empty($icon)) {

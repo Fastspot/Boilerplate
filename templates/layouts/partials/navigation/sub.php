@@ -1,5 +1,6 @@
 <?php
 	// Optional "modifier", "heading", "title", "depth" (defaults to 2)
+	global $bigtree;
 
 	$current_url = WWW_ROOT.ltrim($_SERVER["REQUEST_URI"], "/");
 	set_subnav(!empty($depth) ? $depth : 2);
