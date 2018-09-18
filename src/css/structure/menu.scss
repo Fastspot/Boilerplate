@@ -19,6 +19,12 @@
 	}
 }
 
+.menu_handle_icon {}
+
+.menu_handle_label {
+	@include visually_hide;
+}
+
 
 // Menu Body
 // =============================================================================
