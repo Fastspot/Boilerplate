@@ -11,6 +11,7 @@ Site.modules.Menu = (function($, Site) {
 
 	function init() {
 		$Menu = $(".js-menu");
+		
 		if ($Menu.length) {
 			$MenuClose = $(".js-menu-close");
 			LockClass = "fs-navigation-lock fs-page-lock";

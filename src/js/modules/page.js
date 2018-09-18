@@ -4,31 +4,41 @@
 
 Site.modules.Page = (function($, Site) {
 
-	var $fixed_header; // set to fixed header element
-	var fixed_header_height = null;
+	var $fixedHeader; // set to fixed header element
+	var fixedHeaderHeight = null;
 	var scrollYPosition = 0;
 
 	function init() {
-		bindGenericUI();
+		bindUI();
 		fixIEsvg();
 		responsiveVideo();
+		tableOverflowPrep();
 		tableOverflow();
-		
-		$(".typography table")
-			.wrap('<div class="table_wrapper"><div class="table_wrapper_inner"></div></div>');
+	}
 
+	function bindUI() {
 		Site.onScroll.push(scroll);
 		Site.onResize.push(resize);
 		Site.onRespond.push(respond);
 		
 		Formstone.Ready(pageLoad);
+
+		$(".js-toggle")
+			.not(".js-bound")
+			.on("click", ".js-toggle-handle", onToggleClick)
+			.addClass("js-bound");
+
+		$(".js-scroll-to")
+			.not(".js-bound")
+			.on("click", onScrollTo)
+			.addClass("js-bound");
 	}
 
 	function scroll() {}
 
 	function resize() {
 		tableOverflow();
-		fixedHeader($fixed_header);
+		fixedHeader($fixedHeader);
 	}
 
 	function respond() {}
@@ -66,7 +76,7 @@ Site.modules.Page = (function($, Site) {
 
 	function scrollToPosition(top) {
 		$("html, body").animate({
-			scrollTop: top - fixed_header_height
+			scrollTop: top - fixedHeaderHeight
 		});
 	}
 
@@ -83,22 +93,14 @@ Site.modules.Page = (function($, Site) {
 		}
 	}
 
-	function bindGenericUI() {
-		$(".js-toggle")
-			.not(".js-bound")
-			.on("click", ".js-toggle-handle", onToggleClick)
-			.addClass("js-bound");
-
-		$(".js-scroll-to")
-			.not(".js-bound")
-			.on("click", onScrollTo)
-			.addClass("js-bound");
-	}
-
 	function responsiveVideo() {
 		$("iframe[src*='vimeo.com'], iframe[src*='youtube.com']", ".typography").each(function() {
 			$(this).wrap('<div class="video_frame"></div>');
 		});
+	}
+
+	function tableOverflowPrep() {
+		$(".typography table").wrap('<div class="table_wrapper"><div class="table_wrapper_inner"></div></div>');
 	}
 
 	function tableOverflow() {
@@ -122,19 +124,19 @@ Site.modules.Page = (function($, Site) {
 	}
 
 	function fixedHeader($header) {
-		if (typeof $fixed_header !== "undefined") {
-			fixed_header_height = $header.outerHeight();
-			bt_bar_height = $("#bigtree_bar").outerHeight();
-			wp_bar_height = $("#wpadminbar").outerHeight();
+		if (typeof $fixedHeader !== "undefined") {
+			fixedHeaderHeight = $header.outerHeight();
+			btBarHeight = $("#bigtree_bar").outerHeight();
+			wpBarHeight = $("#wpadminbar").outerHeight();
 
-			if (bt_bar_height > 0) {
-				$header.css("top", bt_bar_height);
+			if (btBarHeight > 0) {
+				$header.css("top", btBarHeight);
 
-				fixed_header_height = fixed_header_height + bt_bar_height;
-			} else if (wp_bar_height > 0) {
-				$header.css("top", wp_bar_height);
+				fixedHeaderHeight = fixedHeaderHeight + btBarHeight;
+			} else if (wpBarHeight > 0) {
+				$header.css("top", wpBarHeight);
 
-				fixed_header_height = fixed_header_height + wp_bar_height;
+				fixedHeaderHeight = fixedHeaderHeight + wpBarHeight;
 			}
 		}
 	}

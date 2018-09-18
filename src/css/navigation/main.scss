@@ -12,6 +12,12 @@
 	}
 }
 
+.main_nav_header {
+	@include visually_hide;
+}
+
+.main_nav_title {}
+
 
 // Main Nav Links
 // =============================================================================
