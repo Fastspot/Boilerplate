@@ -272,8 +272,12 @@
 									icon: "logo"
 								} %}
 
+								<div class="copyright">
+									<p class="copyright_info">&copy; <span itemprop="copyrightHolder" itemscope="" itemtype="http://schema.org/{{vars.schemaType}}">{{vars.name}}</span> <span itemprop="copyrightYear">{{"now"|date("Y")}}</span></p>
+								</div>
+
 								{% include "../partials/address.twig" with {
-									name: "Fastspot",
+									name: vars.name,
 									street: "2980 Falls Road",
 									city: "Baltimore",
 									state: "MD",
