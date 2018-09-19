@@ -55,9 +55,13 @@
 
 .page_title {
 	@include h1;
+
+	margin: 0;
 }
 
-.page_intro {}
+.page_intro {
+	margin: 0;
+}
 
 .page_sidebar {
 	clear: right;
