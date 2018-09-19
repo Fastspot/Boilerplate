@@ -83,30 +83,39 @@
 .sub_nav_list {
 	@include focus_outline_none();
 
-	width: 100%;
-
-	position: absolute;
-	top: 100%;
-	left: 0;
-	z-index: 2;
-
 	background: #fff;
 	display: block;
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	transition:
-		opacity .25s,
-		visibility .25s;
+
+	@media #{$max_lg} {
+		width: 100%;
+
+		position: absolute;
+		top: 100%;
+		left: 0;
+		z-index: 2;
+
+		transition:
+			opacity .25s,
+			visibility .25s;
+	}
 
 	&.fs-swap-enabled {
-		opacity: 0;
-		visibility: hidden;
+
+		@media #{$max_lg} {
+			opacity: 0;
+			visibility: hidden;
+		}
 	}
 
 	&.fs-swap-active {
-		opacity: 1;
-		visibility: visible;
+		
+		@media #{$max_lg} {
+			opacity: 1;
+			visibility: visible;
+		}
 	}
 }
 
