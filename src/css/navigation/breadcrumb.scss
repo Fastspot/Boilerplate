@@ -44,9 +44,12 @@
 	}
 }
 
-.breadcrumb_pill {}
+.breadcrumb_pill {
+	display: inline-block;
+}
 
 .breadcrumb_pill_link {
+	color: inherit;
 
 	&:focus,
 	&:hover {}
