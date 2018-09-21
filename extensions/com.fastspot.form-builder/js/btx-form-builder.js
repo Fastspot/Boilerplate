@@ -9,9 +9,13 @@ var BTXFormBuilder = (function() {
 	var ListScrollTimer = false;
 	var ListTop = false;
 	var ObjectCount = 0;
+	var PhoneFormat;
+	var PhoneDefaultCountry;
 	
-	function init(object_count) {
+	function init(object_count, default_phone_format, default_country_code) {
 		ObjectCount = object_count;
+		PhoneFormat = default_phone_format;
+		PhoneDefaultCountry = default_country_code;
 
 		// Cache some objects ahead of time	
 		List = $(".form_builder_elements");
@@ -389,22 +393,43 @@ var BTXFormBuilder = (function() {
 		}
 		
 		if (type == "phone") {
-			html += '<span class="icon"></span>' +
-					'<label>Phone Number</label>' +
-					'<div class="form_builder_object form_builder_phone">' +
-						'<input type="text" class="form_builder_text" />' +
-						'<label class="center">###</label>' +
-					'</div>' +
-					'<div class="form_builder_separator">-</div>' +
-					'<div class="form_builder_object form_builder_phone">' +
-						'<input type="text" class="form_builder_text" />' +
-						'<label class="center">###</label>' +
-					'</div>' +
-					'<div class="form_builder_separator">-</div>' +
-					'<div class="form_builder_object form_builder_phone_wide">' +
-						'<input type="text" class="form_builder_text" />' +
-						'<label class="center">####</label>' +
-					'</div>';
+			if (PhoneFormat == "intl") {
+				html += '<span class="icon"></span>' +
+						'<label>Phone Number</label>' +
+						'<div class="form_builder_separator">+</div>' +
+						'<div class="form_builder_object form_builder_phone">' +
+							'<input type="text" class="form_builder_text" value="' + PhoneDefaultCountry + '" />' +
+							'<label class="center">Country Code</label>' +
+						'</div>' +
+						'<div class="form_builder_separator">-</div>' +
+						'<div class="form_builder_object form_builder_phone">' +
+							'<input type="text" class="form_builder_text" />' +
+							'<label class="center">Area Code</label>' +
+						'</div>' +
+						'<div class="form_builder_separator">-</div>' +
+						'<div class="form_builder_object form_builder_phone form_builder_phone_wide">' +
+							'<input type="text" class="form_builder_text" />' +
+							'<label class="center">Phone Number</label>' +
+						'</div>';
+			} else {
+				html += '<span class="icon"></span>' +
+						'<label>Phone Number</label>' +
+						'<div class="form_builder_object form_builder_phone">' +
+							'<input type="text" class="form_builder_text" />' +
+							'<label class="center">###</label>' +
+						'</div>' +
+						'<div class="form_builder_separator">-</div>' +
+						'<div class="form_builder_object form_builder_phone">' +
+							'<input type="text" class="form_builder_text" />' +
+							'<label class="center">###</label>' +
+						'</div>' +
+						'<div class="form_builder_separator">-</div>' +
+						'<div class="form_builder_object form_builder_phone_wide">' +
+							'<input type="text" class="form_builder_text" />' +
+							'<label class="center">####</label>' +
+						'</div>';
+			}
+
 			object_data.label = "Phone Number";
 		}
 		

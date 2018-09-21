@@ -9,4 +9,6 @@
 		$bigtree["form"] = $form = [];
 	}
 
+	$action = "create";
+
 	include "_form.php";

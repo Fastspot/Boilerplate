@@ -1,4 +1,5 @@
 <?php
+	$settings = (array) $cms->getSetting("settings");
 	$required = false;
 	$label = "";
 	$key = htmlspecialchars(str_replace("form_builder_element_", "", $_POST["name"]));
@@ -26,7 +27,9 @@
 <input type="hidden" name="data[<?=$key?>]" value="<?=htmlspecialchars(json_encode($data))?>" />
 <div class="form_builder_wrapper">
 	<span class="icon"></span>
-	<?php include EXTENSION_ROOT."modules/btx-form-builder/field-types/redraw/$type.php" ?>
+	<?php
+		include EXTENSION_ROOT."modules/btx-form-builder/field-types/redraw/".BigTree::cleanFile($type).".php";
+	?>
 </div>
 <div class="form_builder_controls">
 	<a href="#" class="icon_small icon_small_edit"></a>

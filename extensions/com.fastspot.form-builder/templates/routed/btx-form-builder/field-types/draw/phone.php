@@ -8,6 +8,10 @@
 	 * @global int $count
 	 * @global string $field_name
 	 */
+
+	if (empty($default["first"]) && !empty($settings["phone_default_country_code"])) {
+		$default["first"] = $settings["phone_default_country_code"];
+	}
 ?>
 <fieldset>
 	<label for="form_builder_field_<?=$count?>">

@@ -6,8 +6,17 @@
 	 */
 
 	$current_page = !empty($_GET["page"]) ? intval($_GET["page"]) : 1;
-	$category = !empty($_GET["category"]) ? $categoryMod->getByRoute($_GET["category"]) : null;
 	$query = !empty($_GET["query"]) ? $_GET["query"] : null;
+
+	if (!empty($_GET["category"])) {
+		$category = $categoryMod->getByRoute($_GET["category"]);
+
+		if (!$category) {
+			$cms->catch404();
+		}
+	} else {
+		$category = null;
+	}
 
 	$news = $newsMod->getPageForQuery($query, $category, $current_page);
 	$pages = $newsMod->getPageCountForQuery($query, $category);

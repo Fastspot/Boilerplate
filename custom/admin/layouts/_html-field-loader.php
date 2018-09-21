@@ -28,8 +28,8 @@
 			extended_valid_elements : "*[*]",
 			templates: [
 				{ "title": "Quote w/ Attribution", content: '<figure class="quote"><blockquote class="quote_content"><p>Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean lacinia bibendum nulla sed consectetur. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum id ligula porta felis euismod semper.</p></blockquote><figcaption class="quote_caption"><span class="quote_caption_name">Aenean massa - </span><span class="quote_caption_title">Nullam dictum felis</span></figcaption></figure>'},
-				{ "title": "Image Block w/ Caption Right", content: '<figure class="block_right"><img src="https://images.fastspot.com/siena/300x300/" alt=""><figcaption>This is an image caption.</figcaption></figure>' },
-				{ "title": "Image Block w/ Caption Left", content: '<figure class="block_left"><img src="https://images.fastspot.com/siena/300x300/" alt=""><figcaption>This is an image caption.</figcaption></figure>' },
+				{ "title": "Image Block w/ Caption Right", content: '<figure class="block_right"><img src="https://images.fastspot.com/<?=$site["image_route"]?>/wide-xsml/" alt=""><figcaption>This is an image caption.</figcaption></figure>' },
+				{ "title": "Image Block w/ Caption Left", content: '<figure class="block_left"><img src="https://images.fastspot.com/<?=$site["image_route"]?>/wide-xsml/" alt=""><figcaption>This is an image caption.</figcaption></figure>' },
 			]
 			<?php if ($width) { ?>,width: "<?=$width?>"<?php } ?>
 			<?php if ($height) { ?>,height: "<?=$height?>"<?php } ?>

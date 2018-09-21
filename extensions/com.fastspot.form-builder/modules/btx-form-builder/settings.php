@@ -67,6 +67,20 @@
 				<label for="fb_field_secret_key"><strong>Secret</strong> Key</label>
 				<input id="fb_field_secret_key" type="text" name="recaptcha[secret_key]" value="<?=htmlspecialchars($settings["recaptcha"]["secret_key"])?>" />
 			</fieldset>
+
+			<hr>
+
+			<h3>Phone Numbers</h3>
+
+			<fieldset>
+				<label for="fb_field_country_phone">Default Country Code <small>(e.g. 1 for USA)</small></label>
+				<input id="fb_field_country_phone" type="text" name="phone_default_country_code" value="<?=$settings["phone_default_country_code"]?>" />
+			</fieldset>
+
+			<fieldset>
+				<input id="fb_field_intl_phone" type="checkbox"<?php if (!empty($settings["phone_default_intl"])) { ?> checked="checked"<?php } ?> name="phone_default_intl" />
+				<label for="fb_field_intl_phone" class="for_checkbox">Default to International Phone Number Field</label>
+			</fieldset>
 		</section>
 		<footer>
 			<input type="submit" class="button blue" value="Update" />

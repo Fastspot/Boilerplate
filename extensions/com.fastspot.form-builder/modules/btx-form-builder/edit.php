@@ -10,4 +10,6 @@
 		"title" => "View Pages Using This Form"
 	);
 
+	$action = "update";
+
 	include "_form.php";

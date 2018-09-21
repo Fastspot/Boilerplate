@@ -1,3 +1,10 @@
+<?php
+	/**
+	 * @global array $bigtree
+	 * @global array $form
+	 * @global string $action
+	 */
+?>
 <div class="container" style="overflow: initial;">
 	<header>
 		<div class="sticky_controls">
@@ -13,7 +20,7 @@
 		</div>
 	</header>
 
-	<form method="post" action="<?=MODULE_ROOT?><?php if (!empty($form["id"])) { ?>update/<?=$form["id"]?>/<?php } else { ?>create/<?php } ?>" class="module">
+	<form method="post" action="<?=MODULE_ROOT?><?php if ($action == "update") { echo "update/".$bigtree["form"]["id"]."/"; } else { echo "create"; } ?>/" class="module">
 		<section id="form_builder_properties_tab"<?php if (!empty($bigtree["form"]["id"]) && empty($_GET["template"])) { ?> style="display: none;"<?php } ?>>
 			<?php include "_properties.php" ?>
 		</section>
@@ -31,7 +38,7 @@
 		</section>
 		<footer>
 			<a href="#" class="next button">Next Step &raquo;</a>
-			<input type="submit" class="button blue" value="<?php if (!empty($form["id"])) { ?>Update<?php } else { ?>Create<?php } ?>" />	
+			<input type="submit" class="button blue" value="<?php if ($action == "update") { ?>Update<?php } else { ?>Create<?php } ?>" />	
 		</footer>
 	</form>
 </div>
@@ -40,7 +47,7 @@
 	BigTreeFormNavBar.init();
 
 	$(document).ready(function() {
-		BTXFormBuilder.init(<?=($form["object_count"] ? $form["object_count"] : "0")?>);
+		BTXFormBuilder.init(<?=($form["object_count"] ? $form["object_count"] : "0")?>, "<?=(!empty($settings["phone_default_intl"]) ? "intl" : "usa")?>", "<?=$settings["phone_default_country_code"]?>");
 	});
 </script>
 <?php

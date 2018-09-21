@@ -27,7 +27,7 @@
 			}
 		?>
 
-		<a class="skip_link" id="skip_to_content" href="#main_content">Skip to Main Content</a>
+		<a class="skip_link" id="skip_to_content" href="#page_main_content">Skip to Main Content</a>
 
 		<div class="page_wrapper">
 			<header class="header" id="header" itemscope itemtype="http://schema.org/WPHeader">

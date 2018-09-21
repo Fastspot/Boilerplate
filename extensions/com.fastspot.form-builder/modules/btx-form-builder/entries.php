@@ -36,7 +36,11 @@
 	
 	// We can only show four columns because we're limited on space
 	$columns = array_slice($get_table_header($form["fields"]), 0, 4);
-	$per_col = floor(744 / count($columns)) - 20;
+	$per_col = 0;
+
+	if (count($columns)) {
+		$per_col = floor(744 / count($columns)) - 20;
+	}
 ?>
 <h3>Entries in &ldquo;<?=$form["title"]?>&rdquo;</h3>
 <div class="table">

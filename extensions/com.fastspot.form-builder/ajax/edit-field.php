@@ -1,9 +1,10 @@
 <?php
+	$settings = (array) $cms->getSetting("settings");
 	$data = json_decode($_POST["data"], true);
 	$paid = $_POST["paid"];
 	$type = trim($_POST["type"]);
 
-	include EXTENSION_ROOT."modules/btx-form-builder/field-types/edit/$type.php";
+	include EXTENSION_ROOT."modules/btx-form-builder/field-types/edit/".BigTree::cleanFile($type).".php";
 		
 	if ($type != "section" && $type != "captcha") {
 ?>
@@ -13,3 +14,4 @@
 </fieldset>
 <?php
 	}
+?>

@@ -10,7 +10,11 @@
 										"modifier" => "footer",
 										"icon" => "logo"
 									]);
-
+								?>
+								<div class="copyright">
+ 									<p class="copyright_info">&copy; <span itemprop="copyrightHolder" itemscope="" itemtype="http://schema.org/<?=$site["schema_type"]?>"><?=$site["title"]?></span> <span itemprop="copyrightYear"><?=date("Y")?></span></p>
+ 								</div>
+ 								<?php
 									include_with("partials/address.php", $site["address"]);
 
 									include_with("partials/navigation/basic.php", [

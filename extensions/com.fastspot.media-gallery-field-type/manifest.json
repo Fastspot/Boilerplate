@@ -1,8 +1,8 @@
 {
     "type": "extension",
     "id": "com.fastspot.media-gallery-field-type",
-    "version": "1.5.1",
-    "revision": 14,
+    "version": "1.6",
+    "revision": 15,
     "compatibility": "4.2.7+",
     "title": "Media Gallery Field Type",
     "description": "This extension contains a field type which allows a user to enter either photos or videos from YouTube or Vimeo. It also allows for additional fields to be added (i.e. caption, description, etc) similar to the Matrix field type.\r\n\r\nYouTube video support requires the YouTube API to be setup in BigTree.",

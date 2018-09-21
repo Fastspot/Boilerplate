@@ -17,7 +17,7 @@
 	<input type="text" name="maxlength" value="<?=intval($data["maxlength"])?>" />
 </fieldset>
 <?php
-	if ($paid) {
+	if ($paid && $type == "text") {
 ?>
 <fieldset>
 	<input type="checkbox" name="price"<?php if ($data["price"]) { ?> checked<?php } ?>>

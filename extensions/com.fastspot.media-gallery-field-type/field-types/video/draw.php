@@ -8,13 +8,6 @@
 	} else {
 		$preview_image = false;
 	}
-
-	$youtube = new BigTreeYouTubeAPI;
-	if (!$youtube->Connected) {
-?>
-<p class="error_message">The <a href="<?=ADMIN_ROOT?>developer/services/youtube/">YouTube API</a> is not connected.</p>
-<?php
-	} else {
 ?>
 <div class="image_field">
 	<input<?php if ($field["required"]) { ?> class="required"<?php } ?> type="text" tabindex="<?=$field["tabindex"]?>" name="<?=$field["key"]?>[new]" id="<?=$field["id"]?>" placeholder="YouTube or Vimeo URL" />
@@ -29,6 +22,3 @@
 	</div>
 	<?php } ?>
 </div>
-<?php
-	}
-?>

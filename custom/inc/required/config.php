@@ -5,6 +5,7 @@
 		"cse_key" => "",
 		"og_image_fallback" => null,
 		"favicon_color" => null,
+		"image_route" => null,
 		"address" => [
 			"name" => "",
 			"street" => "",

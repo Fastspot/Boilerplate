@@ -2,16 +2,18 @@
 	function button($class, $label, $url, $icon = "", $aria = "") {
 ?>
 <a class="<?=$class?>_link" <?=href($url)?><?php if ($aria) { ?> aria-label="<?=$aria?>"<?php } ?>>
-	<span class="<?=$class?>_link_label"><?=$label?></span>
-	<?php
-		if ($icon) {
-	?>
-	<span class="<?=$class?>_link_icon" aria-hidden="true">
-		<?=icon($icon)?>
+	<span class="<?=$class?>_link_inner">
+		<span class="<?=$class?>_link_label"><?=$label?></span>
+		<?php
+			if ($icon) {
+		?>
+		<span class="<?=$class?>_link_icon" aria-hidden="true">
+			<?=icon($icon)?>
+		</span>
+		<?php
+			}
+		?>
 	</span>
-	<?php
-		}
-	?>
 </a>
 <?php
 	}

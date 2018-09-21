@@ -5,10 +5,23 @@
 	 */
 
 	$current_page = !empty($_GET["page"]) ? intval($_GET["page"]) : 1;
-	$category = !empty($_GET["category"]) ? $categoryMod->getByRoute($_GET["category"]) : null;
 	$query = !empty($_GET["query"]) ? $_GET["query"] : null;
+	$category = null;
 
-	$news = $newsMod->getPageForQuery($query, $category, $current_page);
+	if (!empty($_GET["category"])) {
+		$category = $eventsMod->getCategoryByRoute($_GET["category"]);
+
+		if (!$category) {
+			$cms->catch404();
+		}
+	} elseif ($query) {
+		$events = $eventsMod->getUpcomingSearchResultsPage($query, $current_page, 10);
+		$pages = $eventsMod->getUpcomingSearchResultsPageCount($query, 10);
+	} else {
+		$events = $eventsMod->getUpcomingEvents(10, false, $current_page);
+		$pages = $eventsMod->getUpcomingEventsPageCount(10);
+	}
+
 	$pages = $newsMod->getPageCountForQuery($query, $category);
 	$categories = $categoryMod->getCategories();
 

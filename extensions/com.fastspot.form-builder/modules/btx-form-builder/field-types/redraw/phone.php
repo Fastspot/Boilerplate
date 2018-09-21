@@ -16,7 +16,7 @@
 	?>
 </label>
 <?php
-	if (empty($data["international"])) {
+	if ($data["usa"] || (empty($settings["phone_default_intl"]) && empty($data["international"]))) {
 ?>
 <div class="form_builder_object form_builder_phone">
 	<input type="text" class="form_builder_text" />
@@ -37,7 +37,7 @@
 ?>
 <div class="form_builder_separator">+</div>
 <div class="form_builder_object form_builder_phone">
-	<input type="text" class="form_builder_text" />
+	<input type="text" class="form_builder_text" value="<?=$settings["phone_default_country_code"]?>" />
 	<label class="center">Country Code</label>
 </div>
 <div class="form_builder_separator">-</div>
