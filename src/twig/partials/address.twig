@@ -9,25 +9,25 @@
 	} %}
 #}
 
-<div class="footer_address" itemscope itemtype="http://schema.org/PostalAddress">
-	<span class="footer_address_name" itemprop="name">{{name}}</span>
-	<span class="footer_address_street" itemprop="streetAddress">{{street}}</span>
-	<span class="footer_address_city" itemprop="addressLocality">{{city}}</span>
-	<span class="footer_address_state" itemprop="addressRegion">{{state}}</span>
-	<span class="footer_address_zip" itemprop="postalCode">{{zip}}</span>
+<div class="address" itemscope itemtype="http://schema.org/PostalAddress">
+	<span class="address_name" itemprop="name">{{name}}</span>
+	<span class="address_street" itemprop="streetAddress">{{street}}</span>
+	<span class="address_city" itemprop="addressLocality">{{city}}</span>
+	<span class="address_state" itemprop="addressRegion">{{state}}</span>
+	<span class="address_zip" itemprop="postalCode">{{zip}}</span>
 	{% if email %}
-	<a class="footer_address_email" itemprop="email" href="mailto:{{email}}">
-		<span class="footer_address_label">{{email}}</span>
+	<a class="address_email" itemprop="email" href="mailto:{{email}}">
+		<span class="address_label">{{email}}</span>
 	</a>
 	{% endif %}
 	{% if phone %}
-	<a class="footer_address_phone" itemprop="telephone" href="tel:{{phone|replace({ ("-"): "" })}}">
-		<span class="footer_address_label">{{phone}}</span>
+	<a class="address_phone" itemprop="telephone" href="tel:{{phone|replace({ ("-"): "" })}}">
+		<span class="address_label">{{phone}}</span>
 	</a>
 	{% endif %}
 	{% if fax %}
-	<a class="footer_address_fax" itemprop="fax" href="tel:{{fax|replace({ ("-"): "" })}}">
-		<span class="footer_address_label">{{fax}}</span>
+	<a class="address_fax" itemprop="fax" href="tel:{{fax|replace({ ("-"): "" })}}">
+		<span class="address_label">{{fax}}</span>
 	</a>
 	{% endif %}
 </div>

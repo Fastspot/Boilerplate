@@ -10,6 +10,12 @@
 	}
 }
 
+.breadcrumb_nav_header {
+	@include visually_hide;
+}
+
+.breadcrumb_nav_title {}
+
 
 // Breadcrumb Links
 // =============================================================================
