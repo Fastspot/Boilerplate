@@ -4,6 +4,7 @@
 
 Site.modules.Formstone = (function($, Site) {
 
+	var backgroundsLoaded = false;
 	var prev_icon = "chevron_left";
 	var next_icon = "chevron_right";
 	var lightboxOptions = {
@@ -20,7 +21,7 @@ Site.modules.Formstone = (function($, Site) {
 	function init() {
 		$(".js-background").on("loaded.background", function() {
 			$(this).addClass("fs-background-loaded");
-		}).background();
+		});
 		$(".js-carousel").carousel();
 		$(".js-checkbox, .js-radio").checkbox();
 		$(".js-dropdown").dropdown();
@@ -28,7 +29,32 @@ Site.modules.Formstone = (function($, Site) {
 		$(".js-lightbox").lightbox(lightboxOptions);
 		$(".js-swap").swap();
 
+		bindUI();
+		loadBackgrounds();
 		carouselPagination($(".js-carousel"));
+	}
+
+	function bindUI() {
+		if ($(".js-background")) {
+			Site.onScroll.push(loadBackgrounds);
+		}
+	}
+
+	function loadBackgrounds() {
+		if (!backgroundsLoaded) {
+			var backgrounds = $(".js-background:not(.fs-background-loaded)");
+
+			if (backgrounds.length > 0) {
+				for (var i = 0; i < backgrounds.length; i++) {
+
+					if ($(backgrounds[i])[0].getBoundingClientRect().top < $(window).innerHeight()) {
+						$(backgrounds[i]).background();
+					}
+				}
+			} else {
+				backgroundsLoaded = true;
+			}
+		}
 	}
 
 	function carouselPagination($element) {
