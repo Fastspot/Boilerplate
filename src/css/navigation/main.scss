@@ -116,6 +116,15 @@
 
 	.main_nav_item:last-child & {}
 
+	.main_nav_item:focus &,
+	.main_nav_item:hover & {
+
+		.main_nav_lg & {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
 	.main_nav_item.fs-swap-enabled & {
 
 		.main_nav_sm & {
@@ -128,15 +137,6 @@
 		.main_nav_sm & {
 			display: block;
 		}
-
-		.main_nav_lg & {
-			opacity: 1;
-			visibility: visible;
-		}
-	}
-
-	.main_nav_item:focus &,
-	.main_nav_item:hover & {
 
 		.main_nav_lg & {
 			opacity: 1;
