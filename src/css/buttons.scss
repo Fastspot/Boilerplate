@@ -11,13 +11,7 @@ button {
 
 @mixin button() {
 	cursor: pointer;
-	padding: 10px;
-	transition:
-		background .25s,
-		border .25s,
-		box-shadow .25s,
-		color .25s,
-		transform .25s;
+	text-align: center;
 }
 
 @mixin button_layout($layout: true) {
@@ -50,6 +44,9 @@ button {
 ) {
 	background: $b;
 	color: $c;
+	transition:
+		background .25s,
+		color .25s;
 
 	&:focus,
 	&:hover {
@@ -74,7 +71,6 @@ button {
 	@include button_layout($layout);
 
 	display: block;
-	text-align: center;
 }
 
 @mixin button_mixed_block($layout: true) {
@@ -83,7 +79,6 @@ button {
 
 	@media #{$min_sm} {
 		display: inline-block;
-		text-align: left;
 	}
 }
 
