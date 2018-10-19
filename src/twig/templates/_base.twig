@@ -131,7 +131,6 @@
 
 									{% include "../partials/navigation/main.twig" with {
 										modifier: "lg",
-										title: "Site",
 										links: mainNavAlias,
 										active: activePage,
 										icon: "caret_down"
@@ -311,15 +310,8 @@
 		<!-- END: page_wrapper -->
 
 		<div class="js-menu menu" id="menu">
-			{% include "../partials/search.twig" with {
-				modifier: "sm",
-				placeholder: "Search",
-				buttonText: ""
-			} %}
-
 			{% include "../partials/navigation/main.twig" with {
 				modifier: "sm",
-				title: "Site",
 				links: mainNavAlias,
 				active: activePage,
 				icon: "caret_down"
@@ -334,6 +326,7 @@
 
 			<button class="js-swap js-menu-close menu_close" data-swap-target=".menu" data-swap-linked="menu" aria-label="Close Menu">
 				<span class="menu_close_icon">{{site.icon("close")}}</span>
+				<span class="menu_close_label">Close Menu</span>
 			</button>
 		</div>
 
@@ -341,7 +334,7 @@
 			var WWW_ROOT = "";
 			var STATIC_ROOT = "../../";
 		</script>
-		<script src="../../js/site.js?{{ 'now'|date('U') }}"></script>
+		<script src="../../js/site.js?{{'now'|date('U')}}"></script>
 
 		{% if page.scripts %}
 		{% for script in page.scripts %}
