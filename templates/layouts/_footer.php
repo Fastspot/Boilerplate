@@ -6,7 +6,7 @@
 						<div class="fs-cell">
 							<div class="footer_ribbon_inner">
 								<?php
-									include_with("partials/logo.php", [
+									include_with("logo.php", [
 										"modifier" => "footer",
 										"icon" => "logo"
 									]);
@@ -15,15 +15,15 @@
  									<p class="copyright_info">&copy; <span itemprop="copyrightHolder" itemscope="" itemtype="http://schema.org/<?=$site["schema_type"]?>"><?=$site["title"]?></span> <span itemprop="copyrightYear"><?=date("Y")?></span></p>
  								</div>
  								<?php
-									include_with("partials/address.php", $site["address"]);
+									include_with("address.php", $site["address"]);
 
-									include_with("partials/navigation/basic.php", [
+									include_with("navigation/basic.php", [
 										"class" => "footer_nav",
 										"title" => "Footer",
 										"links" => $cms->getSetting("nav-footer")
 									]);
 
-									include_with("partials/navigation/social.php", [
+									include_with("navigation/social.php", [
 										"title" => "Social",
 										"links" => $cms->getSetting("nav-social"),
 										"icon" => true
@@ -38,18 +38,18 @@
 
 		<div class="js-menu menu" id="menu">
 			<?php
-				include_with("partials/search.php", [
+				include_with("search.php", [
 					"modifier" => "sm",
 					"placeholder" => "Search"
 				]);
 
-				include_with("partials/navigation/main.php", [
+				include_with("navigation/main.php", [
 					"modifier" => "sm",
 					"title" => "Site",
 					"icon" => "caret_down"
 				]);
 
-				include_with("partials/navigation/basic.php", [
+				include_with("navigation/basic.php", [
 					"class" => "secondary_nav",
 					"modifier" => "sm",
 					"title" => "Secondary",

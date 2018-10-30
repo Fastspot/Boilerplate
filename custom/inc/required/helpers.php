@@ -109,7 +109,7 @@
 		if (file_exists($path)) {
 			include $path;
 		} else {
-			include SERVER_ROOT."templates/layouts/".$path;
+			include SERVER_ROOT."templates/partials/".$path;
 		}
 	}
 
@@ -119,6 +119,24 @@
 	<use xlink:href="<?=STATIC_ROOT?>images/icons.svg#<?=$name?>"></use>
 </svg>
 <?php
+	}
+
+	function not_empty_callout($array) {
+		if (!is_array($array)) {
+			return false;
+		}
+
+		foreach ($array as $key => $value) {
+			if (is_array($value)) {
+				if (not_empty_callout($value)) {
+					return true;
+				}
+			} elseif ($key != "type" && !empty($value)) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	function set_subnav($depth = 1) {

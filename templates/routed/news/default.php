@@ -58,7 +58,7 @@
 										<a class="news_item_media_link" <?=href($item["link"])?>>
 											<figure class="news_item_figure">
 												<?php
-													include_with(SERVER_ROOT."templates/layouts/partials/picture.php", [
+													include_with("picture.php", [
 														"class" => "news_item",
 														"image" => $item["image"],
 														"sources" => [
@@ -127,7 +127,7 @@
 					<footer class="news_listing_footer">
 						<?php
 							if ($pages > 1) {
-								include_with(SERVER_ROOT."templates/layouts/partials/pagination.php", [
+								include_with("pagination.php", [
 									"pagination_link" => $pagination_link,
 									"pages" => $pages,
 									"current_page" => $current_page,

@@ -4,7 +4,7 @@
 
 <div class="page_feature">
 	<?php
-		if (!empty($page_feature) && is_array($page_feature)) {
+		if (!empty($page_feature) && is_array($page_feature) && not_empty_callout($page_feature)) {
 			foreach ($page_feature as $callout) {
 				BTXReusableCallouts::check($callout);
 				$callout["_context"] = "feature";
@@ -18,7 +18,7 @@
 	<div class="fs-row">
 		<div class="fs-cell-right fs-lg-4 page_aside page_sub_nav">
 			<?php
-				include_with("partials/navigation/sub.php", [
+				include_with("navigation/sub.php", [
 					"title" => "",
 					"depth" => 2
 				]);
@@ -33,7 +33,7 @@
 			?>
 			<div class="page_header">
 				<?php
-					include_with("partials/navigation/breadcrumb.php");
+					include_with("navigation/breadcrumb.php");
 
 					if ($page_header) {
 				?>

@@ -13,6 +13,10 @@
 		$body_classes[] = "page_theme_".PAGE_THEME;
 	}
 
+	if (!empty($page_feature) && is_array($page_feature) && not_empty_callout($page_feature)) {
+		$body_classes[] = "has_page_feature";
+	}
+
 	$alert = BTXAlerts::getActive();
 ?>
 <!DOCTYPE html>
@@ -23,7 +27,7 @@
 	<body class="<?=implode(" ", $body_classes)?>">
 		<?php
 			if ($alert) {
-				include_with("partials/alert.php", $alert);
+				include_with("alert.php", $alert);
 			}
 		?>
 
@@ -36,18 +40,18 @@
 						<div class="fs-cell">
 							<div class="header_ribbon_inner">
 								<?php
-									include_with("partials/logo.php", [
+									include_with("logo.php", [
 										"modifier" => "header",
 										"icon" => "logo"
 									]);
 
-									include_with("partials/navigation/main.php", [
+									include_with("navigation/main.php", [
 										"modifier" => "lg",
 										"title" => "Site",
 										"icon" => "caret_down"
 									]);
 
-									include_with("partials/navigation/basic.php", [
+									include_with("navigation/basic.php", [
 										"class" => "secondary_nav",
 										"modifier" => "lg",
 										"title" => "Secondary",
@@ -57,14 +61,14 @@
 
 								<div class="header_group">
 									<?php
-										include_with("partials/handle.php", [
+										include_with("handle.php", [
 											"class" => "mobile_sidebar",
 											"modifier" => "primary"
 										]);
 
-										include_with("partials/search-handle.php", []);
+										include_with("search-handle.php", []);
 
-										include_with("partials/search.php", [
+										include_with("search.php", [
 											"modifier" => "lg",
 											"placeholder" => "Search"
 										]);

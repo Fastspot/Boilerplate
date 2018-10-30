@@ -10,7 +10,7 @@
 ?>
 <section class="flex_callout<?php if (!empty($theme)) { echo " theme_".$theme; } ?>">
 	<?php
-		include_with(SERVER_ROOT."templates/layouts/partials/background.php", [
+		include_with("background.php", [
 			"class" => "flex_callout",
 			"image" => $image,
 			"sources" => [

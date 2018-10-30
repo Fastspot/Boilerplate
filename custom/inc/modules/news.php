@@ -11,12 +11,12 @@
 		static public function filterWithImages($list) {
 			foreach ($list as $index => $item) {
 				if (is_array($item)) {
-					$news = SQL::fetchSingle("SELECT image FROM btx_news WHERE id = ?", $item["value"]);
+					$image = SQL::fetchSingle("SELECT image FROM btx_news WHERE id = ?", $item["value"]);
 				} else {
-					$news = SQL::fetchSingle("SELECT image FROM btx_news WHERE id = ?", $index);
+					$image = SQL::fetchSingle("SELECT image FROM btx_news WHERE id = ?", $index);
 				}
 
-				if (!$news) {
+				if (!$image) {
 					unset($list[$index]);
 				}
 			}
@@ -71,7 +71,11 @@
 								   WHERE btx_news_categories_rel.category = ? $exclude
 								   ORDER BY `date` DESC LIMIT $count", $category);
 
-			return BigTree::untranslateArray($news);
+			foreach ($news as $index => $item) {
+				$news[$index] = $this->get($item);
+			}
+
+			return $news;
 		}
 
 		public function getPageForQuery($query, $category, $page, $per_page = 10) {

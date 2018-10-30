@@ -65,7 +65,7 @@
 										<a class="event_item_media_link" <?=href($link)?>>
 											<figure class="event_item_figure">
 												<?php
-													include_with(SERVER_ROOT."templates/layouts/partials/picture.php", [
+													include_with("picture.php", [
 														"class" => "event_item",
 														"image" => $event["image"],
 														"sources" => [
@@ -152,7 +152,7 @@
 					<footer class="event_listing_footer">
 						<?php
 							if ($pages > 1) {
-								include_with(SERVER_ROOT."templates/layouts/partials/pagination.php", [
+								include_with("pagination.php", [
 									"pagination_link" => $pagination_link,
 									"pages" => $pages,
 									"current_page" => $current_page,

@@ -7,17 +7,11 @@
 		$site["main_nav"] = BigTreeCMS::getNavByParent(0, 2);
 	}
 ?>
-<nav class="js-main-nav main_nav<?php if (!empty($modifier)) { ?> js-main-nav-<?=$modifier?> main_nav_<?=$modifier?><?php } ?>"<?php if (empty($heading) && !empty($titlte)) { ?> aria-label="<?=$title?>"<?php } ?> itemscope itemtype="http://schema.org/SiteNavigationElement">
-	<?php
-		if (!empty($heading) && !empty($title)) {
-	?>
+<nav class="js-main-nav main_nav<?php if (!empty($modifier)) { ?> js-main-nav-<?=$modifier?> main_nav_<?=$modifier?><?php } ?>" aria-label="<?=str_replace(" Navigation", "", $title)?>" itemscope itemtype="http://schema.org/SiteNavigationElement">
 	<div class="main_nav_header">
-		<h2 class="main_nav_title">{{title}}</h2>
+		<h2 class="main_nav_title"><?=$title?></h2>
 	</div>
-	<?php
-		}
-	?>
-	<ul class="main_nav_list">
+	<ul class="main_nav_list" aria-label="<?=$title?>">
 		<?php
 			$x = 0;
 

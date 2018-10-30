@@ -24,7 +24,7 @@
 			?>
 			<div class="page_header">
 				<?php
-					include_with("partials/navigation/breadcrumb.php");
+					include_with("navigation/breadcrumb.php");
 
 					if ($page_header) {
 				?>
