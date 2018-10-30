@@ -141,38 +141,64 @@
 
 	function set_subnav($depth = 1) {
 		global $bigtree, $site;
+		static $previous_depth = 0;
 
-		if (!empty($site["sub_nav"])) {
+		if (!empty($site["sub_nav"]) && $previous_depth == $depth) {
 			return;
 		}
+
+		$previous_depth = $depth;
 
 		// Our complicated mess of finding out what nav level to draw when we're only drawing two levels
 		if ($depth == 2) {
 			// If our parent is the homepage, we're drawing one level of children no matter what -- we never draw top-level nav as siblings
 			if (!$bigtree["page"]["parent"] || $bigtree["page"]["trunk"]) {
-				$site["sub_nav"] = BigTreeCMS::getNavByParent($bigtree["page"]["id"], 2);
+				$site["sub_nav"] = BigTreeCMS::getNavByParent($bigtree["page"]["id"]);
 				$site["sub_nav_section"] = $bigtree["page"];
 
 				return;
 			}
 
-			$child_pages = BigTreeCMS::getNavByParent($bigtree["page"]["id"], 2);
+			$siblings = BigTreeCMS::getNavByParent($bigtree["page"]["parent"]);
+			$child_pages = BigTreeCMS::getNavByParent($bigtree["page"]["id"]);
+			$parent = SQL::fetch("SELECT `id`, `parent`, `trunk`, `in_nav`, `path`, `nav_title` FROM bigtree_pages
+								  WHERE id = ?", $bigtree["page"]["parent"]);
 
 			// If we have child pages, we're going to draw them and the siblings
 			if (count($child_pages)) {
-				$site["sub_nav"] = $child_pages;
-				$site["sub_nav_section"] = $bigtree["page"];
+				foreach ($siblings as $index => $sibling) {
+					if ($sibling["id"] == $bigtree["page"]["id"]) {
+						$siblings[$index]["children"] = $child_pages;
+					}
+				}
+
+				$site["sub_nav"] = $siblings;
+				$site["sub_nav_section"] = $parent;
+
+				return;
+			} elseif ($parent["parent"]) {
+				$ancestors = BigTreeCMS::getNavByParent($parent["parent"]);
+
+				foreach ($ancestors as $index => $ancestor) {
+					if ($ancestor["id"] == $parent["id"]) {
+						$ancestors[$index]["children"] = $siblings;
+					}
+				}
+
+
+
+				$site["sub_nav"] = $ancestors;
+				$site["sub_nav_section"] = SQL::fetch("SELECT `id`, `parent`, `trunk`, `in_nav`, `path`, `nav_title` FROM bigtree_pages
+								  					   WHERE id = ?", $parent["parent"]);
 
 				return;
 			}
 
 			// We don't have child pages, we want to draw the siblings of the current page AND the above level
-			$siblings = BigTreeCMS::getNavByParent($bigtree["page"]["parent"], 2);
-			$parent = SQL::fetch("SELECT `id`, `parent`, `trunk`, `in_nav`, `path`, `nav_title` FROM bigtree_pages
-								  WHERE id = ?", $bigtree["page"]["parent"]);
-
 			$site["sub_nav"] = $siblings;
 			$site["sub_nav_section"] = $parent;
+
+			return;
 		// Slightly less complicated for one depth
 		} elseif ($depth == 1) {
 			$child_pages = BigTreeCMS::getNavByParent($bigtree["page"]["id"], 1);
