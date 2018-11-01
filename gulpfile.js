@@ -43,6 +43,7 @@ var source = {
 	twig: [
 		'src/twig/templates/*.twig',
 		'!src/twig/templates/_*.twig',
+		'!src/twig/templates/dev-image-crops.twig',
 		'!src/twig/templates/fs-components.twig',
 		'!src/twig/templates/fs-templates.twig',
 		'!src/twig/templates/fs-content-strategy.twig'
@@ -69,6 +70,7 @@ var watch = {
 	],
 	twig: [
 		'src/twig/**/*.twig',
+		'!src/twig/templates/dev-image-crops.twig',
 		'!src/twig/templates/fs-components.twig',
 		'!src/twig/templates/fs-templates.twig',
 		'!src/twig/templates/fs-content-strategy.twig',
@@ -452,6 +454,68 @@ gulp.task('imagemin', function() {
 		.pipe(newer('images'))
 		.pipe(imagemin())
 		.pipe(gulp.dest('images'));
+
+});
+
+
+gulp.task('image-crops', function(done) {
+
+	var base = 'static/templates';
+	var exclude = ["16x16", "32x32", "144x144", "180x180"];
+	var crops = [];
+	var modCrops = [];
+	var steps = 1;
+	var fileCount;
+
+	fs.readdir(base, function(err, files) {
+		fileCount = files.toString().match(/page/g).length;
+
+		files.forEach(function(file) {
+			if (file.indexOf("page") > -1) {
+				fs.readFile(base + '/' + file, 'utf8', function(err, contents) {
+					var sizes = contents.match(/\d+x\d+/g);
+					
+					for (var x = 0; x < sizes.length; x++) {
+						
+						if (crops.indexOf(sizes[x]) == -1) {
+							if (exclude.indexOf(sizes[x]) == -1) {
+								crops.push(sizes[x]);
+							}
+						}
+					}
+
+					steps++;
+
+					if (steps == fileCount) {
+						crops = crops.sort();
+						
+						for (var x = 0; x < crops.length; x++) {
+							for (var cropRatio in packageJSON.img) {
+								for (var cropSize in packageJSON.img[cropRatio]) {
+									if (packageJSON.img[cropRatio][cropSize] == crops[x]) {
+										modCrops.push('<span class="crop-size">' + crops[x] + '</span><span class="crop-name"> ' + cropRatio + '.' + cropSize + '</span>');
+									}
+								}
+							}
+						}
+						
+						gulp.src('src/twig/templates/dev-image-crops.twig')
+							.pipe(twig({
+								data: {
+									crops: modCrops
+								}
+							}))
+							.pipe(rename({
+								extname: '.html'
+							}))
+							.pipe(gulp.dest('static/templates'));
+					}
+				});
+			}
+		});
+	});
+
+	done();
 
 });
 
