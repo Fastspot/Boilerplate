@@ -10,11 +10,11 @@
 
 #}
 
-<div class="breadcrumb_nav{% if modifier %} breadcrumb_nav_{{modifier}}{% endif %}">
+<nav class="breadcrumb_nav{% if modifier %} breadcrumb_nav_{{modifier}}{% endif %}" aria-label="Breadcrumb">
 	<div class="breadcrumb_nav_header">
-		<h2 class="breadcrumb_nav_title">Breadcrumb</h2>
+		<h2 class="breadcrumb_nav_title">You are here:</h2>
 	</div>
-	<ul class="breadcrumb_list" itemscope itemtype="http://schema.org/BreadcrumbList" aria-label="Breadcrumb">
+	<ol class="breadcrumb_list" itemscope itemtype="http://schema.org/BreadcrumbList" aria-label="Breadcrumb">
 		<li class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
 			<a class="breadcrumb_pill breadcrumb_pill_link" href="page-home.html" itemprop="item">
 				<span class="breadcrumb_name" itemprop="name">
@@ -44,5 +44,5 @@
 			<meta itemprop="position" content="{{loop.index + 1}}">
 		</li>
 		{% endfor %}
-	</ul>
-</div>
+	</ol>
+</nav>
