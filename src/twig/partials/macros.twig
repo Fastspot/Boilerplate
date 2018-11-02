@@ -27,6 +27,8 @@
 	{{site.title("title", "full")}}
 
 	{{site.content("<p>Copy</p>")}}
+
+	{{site.tel("number")}}
 #}
 
 
@@ -159,3 +161,5 @@
 	<span class="guidebook_component_title_label">{{label}}</span>
 </h2>
 {% endmacro %}
+
+{% macro tel(number) %}{{number|replace({ "-": "", " ": "", "(": "", ")": "" })}}{% endmacro %}

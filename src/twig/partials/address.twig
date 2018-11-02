@@ -21,12 +21,12 @@
 	</a>
 	{% endif %}
 	{% if phone %}
-	<a class="address_phone" itemprop="telephone" href="tel:{{phone|replace({ ("-"): "" })}}">
+	<a class="address_phone" itemprop="telephone" href="tel:{{site.tel(phone)}}">
 		<span class="address_label">{{phone}}</span>
 	</a>
 	{% endif %}
 	{% if fax %}
-	<a class="address_fax" itemprop="fax" href="tel:{{fax|replace({ ("-"): "" })}}">
+	<a class="address_fax" itemprop="fax" href="tel:{{site.tel(fax)}}">
 		<span class="address_label">{{fax}}</span>
 	</a>
 	{% endif %}
