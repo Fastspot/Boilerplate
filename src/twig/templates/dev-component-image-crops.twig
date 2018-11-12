@@ -63,14 +63,14 @@
 									background: #f2f2f2
 								}
 
-									.crop-size {
+									.crop_size {
 										width: 9ch;
 
 										display: inline-block;
 										font-weight: 700;
 									}
 
-									.crop-name {}
+									.crop_name {}
 
 							.crops_item_min {
 								position: relative;
@@ -99,6 +99,39 @@
 								.crops_item_min_size {
 									font-weight: 700;
 								}
+
+					.crop_indent_switcher {
+						height: 30px;
+						width: 30px;
+
+						position: fixed;
+						top: 10px;
+						left: 10px;
+
+						background: #fafafa;
+						border: 1px solid #eaeaea;
+						border-radius: 50%;
+						cursor: pointer;
+					}
+
+					.crop_indent_switcher:before {
+						position: absolute;
+						top: 50%;
+						left: 50%;
+
+						content: '-';
+						font-size: 16px;
+						font-weight: 700;
+						transform: translate(-50%, -50%);
+					}
+
+					.crop_indent_switcher.dashes:before {
+						content: '-';
+					}
+
+					.crop_indent_switcher.underscores:before {
+						content: '_';
+					}
 		</style>
 	</head>
 	<body>
@@ -159,6 +192,61 @@
 				largestNode.innerHTML = '<em class="crops_item_min_label">Min: </em><span class="crops_item_min_size">' + largestWidth + 'x' + largestHeight + '</span>';
 
 				crops[x].parentNode.appendChild(largestNode);
+			}
+
+			var switcher = document.createElement('button');
+			switcher.classList.add('crop_indent_switcher');
+			switcher.addEventListener('click', function() {
+				indentSwitch(false);
+			}, false);
+
+			if (localStorage.getItem('crop_switcher') == 'dashes') {
+				switcher.classList.add('dashes');
+			} else if (localStorage.getItem('crop_switcher') == 'underscores') {
+				switcher.classList.add('underscores');
+			} else {
+				localStorage.setItem('crop_switcher', 'dashes');
+
+				switcher.classList.add('dashes');
+			}
+
+			document.body.appendChild(switcher);
+
+			indentSwitch(true);
+
+			function indentSwitch(load) {
+				var cropNames = document.querySelectorAll('.crop_name');
+				var switchType = localStorage.getItem('crop_switcher');
+
+				if (!load) {
+					if (switchType == 'dashes') {
+						switchType = 'underscores';
+
+						switcher.classList.add('underscores');
+						switcher.classList.remove('dashes');
+
+						localStorage.setItem('crop_switcher', 'underscores');
+					} else {
+						switchType = 'dashes';
+
+						switcher.classList.add('dashes');
+						switcher.classList.remove('underscores');
+
+						localStorage.setItem('crop_switcher', 'dashes');
+					}
+				}
+
+				for (var x = 0; x < cropNames.length; x++) {
+					var name = cropNames[x].innerHTML;
+
+					if (switchType == 'dashes') {
+						name = name.replace('_', '-').replace('_', '-');
+					} else {
+						name = name.replace('-', '_').replace('-', '_');
+					}
+
+					cropNames[x].innerHTML = name;
+				}
 			}
 		</script>
 	</body>
