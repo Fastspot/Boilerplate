@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>Component Image Crops</title>
+		<style>
+			html {
+				font-family: "Neue Haas Grotesk Text Std", Helvetica, Arial, sans-serif;
+			}
+
+				body {
+					max-width: 740px;
+
+					margin: 0 auto;
+					padding: 0 20px;
+				}
+
+					h1, h2, h3, h4, h5, h6 {
+						font-family: "Neue Haas Grotesk Display Std", Helvetica, Arial, sans-serif;
+					}
+
+					h1 {
+						font-size: 8vmin;
+					}
+
+					.crops_section {
+						margin-bottom: 80px;
+					}
+
+						.crops_section_title {
+							background: #000;
+							color: #fff;
+							display: inline-block;
+							margin: 0;
+							padding: 4px 10px;
+							vertical-align: top;
+						}
+
+						.crops_item {
+							border: 1px solid #dadada;
+							margin: 40px 0;
+						}
+
+							.crops_item_title {
+								border-bottom: 1px solid #000;
+								margin: 0;
+								padding: 15px 10px 14px;
+							}
+
+							.crops {
+								list-style: none;
+								margin: 0;
+								padding: 0;
+							}
+
+								.crop {
+									position: relative;
+
+									padding: 6px 20px;
+								}
+
+								.crop:nth-of-type(odd) {
+									background: #f2f2f2
+								}
+
+									.crop-size {
+										width: 9ch;
+
+										display: inline-block;
+										font-weight: 700;
+									}
+
+									.crop-name {}
+
+							.crops_item_min {
+								position: relative;
+
+								border-top: 1px solid #999;
+								margin: 0;
+								padding: 12px 20px
+							}
+
+							.crops_item_min:before {
+								height: 8px;
+								width: 8px;
+
+								position: absolute;
+								top: 50%;
+								left: 0;
+
+								background: red;
+								border-radius: 50%;
+								content: "";
+								transform: translate(-50%, -50%);
+							}
+
+								.crops_item_min_label {}
+
+								.crops_item_min_size {
+									font-weight: 700;
+								}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>
+				<span class="title_label">Component Image Crops</span>
+			</h1>
+		</header>
+		<main>
+			{% for section in sections %}
+				{% if section.items %}
+					<div class="crops_section">
+						<h2 class="crops_section_title">{{section.type}}</h2>
+						{% for item in section.items %}
+							<div class="crops_item">
+								<h3 class="crops_item_title">{{item.name}}</h3>
+								<ul class="crops">
+									{% for size in item.sizes %}
+										{{size}}
+									{% endfor %}
+								</ul>
+							</div>
+						{% endfor %}
+					</div>
+				{% endif %}
+			{% endfor %}
+		</main>
+		<script>
+			var crops = document.querySelectorAll('.crops');
+
+			for (var x = 0; x < crops.length; x++) {
+				var sizes = crops[x].querySelectorAll('.crop');
+
+				var largest = 0;
+				var largestWidth = 0;
+				var largestHeight = 0;
+
+				for (var y = 0; y < sizes.length; y++) {
+					var size = sizes[y].dataset.cropSize;
+					var width = size.match(/(\d*)x/g);
+					width = parseInt(width[0].replace('x', ''));
+					var height = size.match(/x(\d*)/g);
+					height = parseInt(height[0].replace('x', ''));
+
+					if (width > largestWidth) {
+						largestWidth = width;
+						largest = y;
+					}
+
+					if (height > largestHeight) {
+						largestHeight = height;
+						largest = y;
+					}
+				}
+
+				var largestNode = document.createElement('p');
+				largestNode.classList.add('crops_item_min');
+				largestNode.innerHTML = '<em class="crops_item_min_label">Min: </em><span class="crops_item_min_size">' + largestWidth + 'x' + largestHeight + '</span>';
+
+				crops[x].parentNode.appendChild(largestNode);
+			}
+		</script>
+	</body>
+</html>
