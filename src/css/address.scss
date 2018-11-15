@@ -4,11 +4,17 @@
 
 .address {}
 
-.address_name {}
+.address_group {}
+
+.address_name {
+	@include visually_hide;
+}
 
 .address_location {}
 
 .address_street {}
+
+.address_set {}
 
 .address_city {}
 
@@ -22,13 +28,15 @@
 
 .address_details {}
 
-.address_detail {}
+.address_detail {
+	color: inherit;
+}
 
 .address_detail_email {}
 
-.address_detail_phone {
-	color: inherit;
-}
+.address_detail_phone {}
+
+.address_detail_fax {}
 
 .address_detail_icon {}
 

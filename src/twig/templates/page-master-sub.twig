@@ -12,6 +12,12 @@
 	} %}
 {% endblock %}
 
+{% block breadcrumbNav %}
+	{% set breadcrumbNav = [
+		page.title
+	] %}
+{% endblock %}
+
 {% block page_feature %}
 {% endblock %}
 
@@ -22,6 +28,10 @@
 {% endblock %}
 
 {% block sidebar %}
+{% endblock %}
+
+{% block subNav %}
+	{% set subNavAlias = links.subNav %}
 {% endblock %}
 
 {% block full_width_callouts %}
