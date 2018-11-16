@@ -12,9 +12,6 @@
 		<meta name="description" content="">
 		<link rel="stylesheet" href="../../css/site.css">
 		<link rel="stylesheet" href="../../css/guidebook.css">
-		{% if page.title == "Components" %}
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/{{page.code}}.min.css">
-		{% endif %}
 	</head>
 	<body class="fs-grid">
 		<figure style="display: none;">
@@ -24,11 +21,10 @@
 			<div class="gb_page_ribbon">
 				<div class="fs-row">
 					<div class="fs-cell">
-						<div class="gb_ribbon_group">
+						<div class="gb_ribbon_inner">
 							<a class="gb_ribbon_link" href="./fs-style-guide.html">{{vars.name}} Style Guide</a>
 							<div class="gb_ribbon_aside">
 								{% include "../partials/navigation/basic.twig" with {
-									title: "",
 									class: "gb_main_nav",
 									links: links.guidebook,
 									active: page.active
@@ -51,25 +47,25 @@
 			<div class="fs-row">
 				<header class="fs-cell gb_page_details">
 					{% if page.intro %}
-					<h2 class="gb_page_intro fs-lg-10 fs-xl-8">{{page.intro}}</h2>
+						<h2 class="gb_page_intro fs-lg-10 fs-xl-8">{{page.intro}}</h2>
 					{% endif %}
 					{% if page.title %}
-					<h4 class="gb_page_title fs-lg-10 fs-xl-8">
-						<span class="gb_page_title_label">{{page.title}}</span>
-						{% if page.trello %}
-						<button class="gb_trello_formatter">
-							<span class="gb_trello_format gb_trello_format_indicator"></span>
-							<span class="gb_trello_format gb_trello_format_grid"></span>
-							<span class="gb_trello_format gb_trello_format_list"></span>
-						</button>
-						{% endif %}
-					</h4>
+						<h4 class="gb_page_title fs-lg-10 fs-xl-8">
+							<span class="gb_page_title_label">{{page.title}}</span>
+							{% if page.trello %}
+								<button class="gb_trello_formatter">
+									<span class="gb_trello_format gb_trello_format_indicator"></span>
+									<span class="gb_trello_format gb_trello_format_grid"></span>
+									<span class="gb_trello_format gb_trello_format_list"></span>
+								</button>
+							{% endif %}
+						</h4>
 					{% endif %}
 					{% if page.caption %}
-					<p class="gb_page_caption fs-lg-10 fs-xl-8">{{page.caption}}</p>
+						<p class="gb_page_caption fs-lg-10 fs-xl-8">{{page.caption}}</p>
 					{% endif %}
 					{% if page.image %}
-					<img class="gb_page_image" src="../../images/{{page.image}}" />
+						<img class="gb_page_image" src="../../images/{{page.image}}" />
 					{% endif %}
 				</header>
 				<div class="fs-cell{% if page.layout == "default" %} fs-lg-10 fs-xl-8{% endif %} content_cell">
@@ -81,19 +77,14 @@
 			{% endblock %}
 		</div>
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-		<script src="../../js/site.js"></script>
-		{% if page.title == "Components" or page.title == "Templates" %}
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/he/1.1.1/he.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.4/beautify.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.4/beautify-html.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/twig.min.js"></script>
-		{% include '../partials/guidebook/trello-js.twig' %}
-		{% endif %}
 		<script>
 			var WWW_ROOT = "";
 			var STATIC_ROOT = "../../";
 		</script>
+		<script src="../../js/site.js"></script>
+		{% if page.title == "Components" or page.title == "Templates" %}
+			{% include '../partials/guidebook/trello-js.twig' %}
+		{% endif %}
 		<script>
 			var jumps = document.querySelectorAll('h2[id]');
 			var jumpNav = document.querySelector('.gb_jump_nav');

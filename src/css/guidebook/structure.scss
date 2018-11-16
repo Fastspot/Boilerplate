@@ -1,124 +1,126 @@
-// Header
-// =============================================================================
+/* ==========================================================================
+	Structure
+============================================================================= */
 
 .gb_page_header {
+	background: #000;
 	color: #fff;
 }
 
-	.gb_page_ribbon {
-		background: #000;
+.gb_page_ribbon {}
+
+.gb_ribbon_inner {
+
+	@media #{$min_lg} {
+		position: relative;
+
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
 	}
+}
 
-		.gb_ribbon_group {
+.gb_jump_ribbon {
+	width: 100%;
 
-			@media #{$min_lg} {
-				position: relative;
+	position: relative;
+	top: 0;
+	left: 0;
+	z-index: 8;
 
-				align-items: center;
-				display: flex;
-				justify-content: space-between;
-			}
-		}
+	background: #333;
 
-	.gb_jump_ribbon {
-		background: #333;
-
-		.pinned & {
-			width: 100%;
-
-			position: fixed;
-			top: 0;
-			left: 0;
-			z-index: 8;
-		}
+	.pinned & {
+		position: fixed;
 	}
+}
 
 
-// Content
-// =============================================================================
+/* Content
+============================================================================= */
 
 .gb_page_content {
 	background: #fff;
 	color: #000;
-	padding: calc(60px + 2vh) 0 200px;
+	padding: 80px 0 200px;
 }
 
-	.gb_page_details {
-		position: relative;
+.gb_page_details {
+	position: relative;
 
-		.gb_trello_detail_lock & {
-			display: none;
-		}
-
-		a {
-			color: inherit;
-			text-decoration-skip: ink;
-			text-decoration: underline;
-			transition: color .25s;
-
-			&:focus,
-			&:hover {
-				color: #DA2315;
-			}
-		}
+	.gb_trello_detail_lock & {
+		display: none;
 	}
 
-		.gb_page_intro {
-			@include h2;
+	a {
+		color: inherit;
+		text-decoration: underline;
+		transition: color .25s;
 
-			margin: 0 0 60px;
-
-			u {
-				color: #DA2315;
-				text-decoration: none;
-			}
+		&:focus,
+		&:hover {
+			color: #DA2315;
 		}
+	}
+}
 
-		.gb_page_title {
-			@include h1;
+.gb_page_intro {
+	@include h2;
 
-			margin: 0;
-		}
+	margin: 0;
 
-			.gb_page_title_label {
-				display: inline-block;
-				vertical-align: middle;
-			}
+	u {
+		color: #DA2315;
+		text-decoration: none;
+	}
+}
 
-		.gb_page_caption {
-			@include body_text;
+.gb_page_title {
+	@include h1;
 
-			margin: 12px 0 0;
-		}
+	margin: 0;
+}
 
-		.gb_page_image {
-			display: none;
+.gb_page_title_label {
+	display: inline-block;
+	vertical-align: middle;
+}
 
-			@media #{$min_lg} {
-				position: absolute;
-				top: 10px;
-				right: 0;
+.gb_page_caption {
+	@include body_text;
 
-				display: block;
-			}
-		}
+	margin: 12px 0 0;
+}
+
+.gb_page_image {
+	display: none;
+
+	@media #{$min_lg} {
+		position: absolute;
+		top: 50%;
+		right: 0;
+
+		display: block;
+		transform: translate(0, -50%);
+	}
+}
 
 
-// Section
-// =============================================================================
+/* Section
+============================================================================= */
 
 .gb_section {
 	margin: 80px 0;
 }
 
-	.gb_section_title {
-		@include h2;
+.gb_section_title {
+	@include h2;
 
-		margin: 0 0 20px;
-	}
+	margin: 0 0 20px;
+}
 
-	.gb_section_caption {
-		@include body_text;
+.gb_section_caption {
+	@include body_text;
 
-		margin: -20px 0 20px;
-	}
+	margin: -20px 0 40px;
+}

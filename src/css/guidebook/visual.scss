@@ -1,5 +1,6 @@
-// Colors
-// =============================================================================
+/* ==========================================================================
+	Colors
+============================================================================= */
 
 .gb_colors {
 
@@ -10,97 +11,96 @@
 	}
 }
 
-	.gb_color {
-		max-width: 260px;
+.gb_color {
+	max-width: 260px;
 
-		margin-bottom: 8%;
-		text-align: left;
+	margin-bottom: 8%;
+	text-align: left;
 
-		@media #{$min_sm} {
-			width: 42%;
-			margin-right: 4%;
-			margin-bottom: 4%;
-		}
-
-		@media #{$min_lg} {
-			width: 25.33%;
-		}
+	@media #{$min_sm} {
+		width: 42%;
+		margin-right: 4%;
+		margin-bottom: 4%;
 	}
 
-		.gb_color_block {
-			height: 100px;
+	@media #{$min_lg} {
+		width: 25.33%;
+	}
+}
 
-			box-shadow: inset 0 0 0 1px rgba(#000, .1);
-			margin-bottom: 5px;
-		}
+.gb_color_block {
+	height: 100px;
 
-		.gb_color_details {}
+	box-shadow: inset 0 0 0 1px rgba(#000, .1);
+	margin-bottom: 5px;
+}
 
-			.gb_color_label {
-				@include body_text;
+.gb_color_details {}
 
-				background: none;
-				border: 0;
-				display: block;
-				line-height: 1.25;
-				outline: 0;
-				padding: 0;
-			}
+.gb_color_label {
+	@include body_text;
 
-			.gb_color_copy {
-				@include nt(700);
+	background: none;
+	border: 0;
+	display: block;
+	line-height: 1.25;
+	outline: 0;
+	padding: 0;
+}
 
-				border-radius: 0;
-				cursor: pointer;
-				display: inline-block;
-				font-size: 12px;
-				line-height: 1.25;
-				margin: 2px 0;
-				opacity: 0;
-				text-decoration: underline;
-				text-decoration-skip: ink;
-				text-transform: uppercase;
-				transition: opacity .25s;
+.gb_color_copy {
+	@include nt(700);
 
-				.gb_color:focus &,
-				.gb_color:hover & {
-					opacity: 1;
-				}
-			}
+	border-radius: 0;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 12px;
+	line-height: 1.25;
+	margin: 2px 0;
+	opacity: 0;
+	text-decoration: underline;
+	text-transform: uppercase;
+	transition: opacity .25s;
+
+	.gb_color:focus &,
+	.gb_color:hover & {
+		opacity: 1;
+	}
+}
 
 
-// Types
-// =============================================================================
+/* Types
+============================================================================= */
 
 .gb_types {}
 
-	.gb_type {
-		margin-bottom: 30px;
+.gb_type {
+	margin-bottom: 30px;
 
-		&:last-child {
-			margin-bottom: 0;
-		}
+	&:last-child {
+		margin-bottom: 0;
 	}
+}
 
-		.gb_type_title {}
+.gb_type_title {}
 
-		.gb_type_item {
-			max-width: 170px;
-			width: 100%;
+.gb_type_item {
+	max-width: 170px;
+	width: 100%;
 
-			border: 1px solid #979797;
-			display: inline-block;
-			margin-right: 20px;
-			margin-bottom: 20px;
-			padding: 25px 20px 16px;
-		}
+	border: 1px solid #979797;
+	display: inline-block;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	padding: 25px 20px 16px;
+}
 
-			.gb_type_test {
-				display: block;
-				font-size: 58px;
-			}
+.gb_type_test {
+	display: block;
+	font-size: 58px;
+}
 
-			.gb_type_weight {
-				display: block;
-				font-size: 18px;
-			}
+.gb_type_weight {
+	display: block;
+	font-size: 18px;
+}

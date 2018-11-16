@@ -1,11 +1,17 @@
-// Common Type
-// =============================================================================
+/* ==========================================================================
+	Type
+============================================================================= */
 
 @mixin h1() {
 	@include nd(500);
 
-	font-size: 40px;
-	line-height: (48 / 40);
+	font-size: 34px;
+	line-height: (50 / 34);
+
+	@media #{$min_md} {
+		font-size: 40px;
+		line-height: (48 / 40);
+	}
 
 	@media #{$min_lg} {
 		font-size: 50px;
@@ -16,8 +22,13 @@
 @mixin h2() {
 	@include nd(500);
 
-	font-size: 34px;
-	line-height: (50 / 34);
+	font-size: 28px;
+	line-height: (38 / 28);
+
+	@media #{$min_md} {
+		font-size: 34px;
+		line-height: (50 / 34);
+	}
 
 	@media #{$min_lg} {
 		font-size: 40px;
@@ -28,15 +39,25 @@
 @mixin h3() {
 	@include nd(500);
 
-	font-size: 34px;
-	line-height: (44 / 34);
+	font-size: 28px;
+	line-height: (38 / 28);
+
+	@media #{$min_md} {
+		font-size: 34px;
+		line-height: (44 / 34);
+	}
 }
 
 @mixin h4() {
 	@include nd(500);
 
-	font-size: 28px;
-	line-height: (38 / 28);
+	font-size: 22px;
+	line-height: (32 / 22);
+
+	@media #{$min_md} {
+		font-size: 28px;
+		line-height: (38 / 28);
+	}
 }
 
 @mixin body_text() {
@@ -59,8 +80,8 @@
 }
 
 
-// Typography
-// =============================================================================
+/* Typography
+============================================================================= */
 
 .gb_typography {
 	@include body_text;
@@ -91,7 +112,6 @@
 
 	a {
 		color: inherit;
-		text-decoration-skip: ink;
 		text-decoration: underline;
 		transition: color .25s;
 
@@ -131,8 +151,8 @@
 }
 
 
-// Tools
-// =============================================================================
+/* Tools
+============================================================================= */
 
 .gb_text {
 
@@ -141,14 +161,14 @@
 	}
 }
 
-	.gb_label {
-		@include body_text;
+.gb_label {
+	@include body_text;
 
-		color: #a6a6a6;
-		display: block;
-		margin-top: 35px;
+	color: #a6a6a6;
+	display: block;
+	margin-top: 35px;
 
-		strong {
-			color: #868686;
-		}
+	strong {
+		color: #868686;
 	}
+}
