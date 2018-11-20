@@ -37,6 +37,14 @@
 			box-shadow: none;
 		}
 
+			#gs_tti50 {
+				padding: 0;
+
+				+ .gsib_b {
+					display: none;
+				}
+			}
+
 			input.gsc-input {
 				height: auto !important;
 				width: 100%;
