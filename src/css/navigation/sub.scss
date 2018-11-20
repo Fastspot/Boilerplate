@@ -130,17 +130,20 @@
 .sub_nav_item {}
 
 .sub_nav_link {
+	color: inherit;
 	display: block;
 
 	&:focus,
 	&:hover {}
 }
 
+.sub_nav_link_icon {}
+
 .sub_nav_link_label {}
 
 
-// Sub Nav Children
-// =============================================================================
+/* Sub Nav Children
+============================================================================= */
 
 .sub_nav_children {
 	list-style: none;

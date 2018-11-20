@@ -1,5 +1,5 @@
 {#
-	{{site.button("class", "Apply", "#", "chevron_right")}}
+	{{site.button("class", "Apply", "chevron_right", "#")}}
 
 	{{site.icon("chevron")}}
 
@@ -40,7 +40,7 @@
 
 
 {% macro button(class, label, icon, href) %}
-<a class="{{class}}_link" href="{% if href %}{{href}}{% else %}#{% endif %}">
+<a class="{{class}}_link" href="{{href ?: '#'}}">
 	<span class="{{class}}_link_label">{{label}}</span>
 	{% if icon %}
 	<span class="{{class}}_link_icon" aria-hidden="true">
@@ -142,15 +142,6 @@
 {% endmacro %}
 
 
-{% macro content(copy) %}
-<div class="wysiwyg_block">
-	<div class="typography">
-		{{copy}}
-	</div>
-</div>
-{% endmacro %}
-
-
 {% macro anchor(label) %}
 <h2 class="guidebook_component_title" id="{{label|replace({
 	" ": "-",
@@ -162,4 +153,12 @@
 </h2>
 {% endmacro %}
 
-{% macro tel(number) %}{{number|replace({ "-": "", " ": "", "(": "", ")": "" })}}{% endmacro %}
+
+{% macro tel(number) %}
+{{number|replace({ 
+	"-": "", 
+	" ": "", 
+	"(": "", 
+	")": "" 
+})}}
+{% endmacro %}

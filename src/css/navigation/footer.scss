@@ -11,8 +11,8 @@
 }
 
 
-// Footer Links
-// =============================================================================
+/* Footer Links
+============================================================================= */
 
 .footer_nav_list {
 	list-style: none;
@@ -23,6 +23,7 @@
 .footer_nav_item {}
 
 .footer_nav_link {
+	color: inherit;
 	display: block;
 
 	&:focus,
