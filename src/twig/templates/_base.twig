@@ -32,24 +32,24 @@
 
 		{% include "../partials/favicons.html" %}
 
-		<!-- G+ & Facebook -->
-		<meta property="og:title" content="{% if page.title %}{{page.title}}{% else %}{{vars.name}}{% endif %}">
+		<!-- Facebook -->
+		<meta property="og:title" content="{{page.title ?: vars.name}}">
 		<meta property="og:type" content="website">
-		<meta property="og:image" content="{% if page.metaImage %}{{page.metaImage}}{% else %}http://{{vars.domain}}/images/social-sq.png{% endif %}">
-		<meta property="og:image:width" content="{% if page.metaImageWidth %}{{page.metaImageWidth}}{% else %}800{% endif %}">
-		<meta property="og:image:height" content="{% if page.metaImageHeight %}{{page.metaImageHeight}}{% else %}800{% endif %}">
-		<meta property="og:description" content="{% if page.intro %}{{page.intro}}{% else %}{{vars.description}}{% endif %}">
+		<meta property="og:image" content="{{page.metaImage ?: 'http://' ~ vars.domain ~ '/images/social-sq.png'}}">
+		<meta property="og:image:width" content="{{page.metaImageWidth ?: 800}}">
+		<meta property="og:image:height" content="{{page.metaImageHeight ?: 800}}">
+		<meta property="og:description" content="{{page.intro ?: vars.description}}">
 		<meta property="og:site_name" content="{{vars.name}}">
 
 		{% if vars.twitter != "TwitterName" %}
 		<!-- Twitter -->
-		<meta name="twitter:card" content="{% if page.metaCard %}{{page.metaCard}}{% else %}summary{% endif %}">
+		<meta name="twitter:card" content="{{page.metaCard ?: 'summary'}}">
 		<meta name="twitter:site" content="@{{vars.twitter}}">
 		<meta name="twitter:creator" content="@{{vars.twitter}}">
 		<meta name="twitter:url" content="//twitter.com/{{vars.twitter}}">
-		<meta name="twitter:title" content="{% if page.title %}{{page.title}}{% else %}{{vars.name}}{% endif %}">
-		<meta name="twitter:description" content="{% if page.intro %}{{page.intro}}{% else %}{{vars.description}}{% endif %}">
-		<meta name="twitter:image" content="{% if page.metaImage %}{{page.metaImage}}{% else %}http://{{vars.domain}}/images/social-sq.png{% endif %}">
+		<meta name="twitter:title" content="{{page.title ?: vars.name}}">
+		<meta name="twitter:description" content="{{page.intro ?: vars.description}}">
+		<meta name="twitter:image" content="{{page.metaImage ?: 'http://' ~ vars.domain ~ '/images/social-sq.png'}}">
 		{% endif %}
 
 		<script src="//code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -112,7 +112,6 @@
 
 		{% import '../partials/macros.twig' as site %}
 
-		<!-- Skip-to-Content Link -->
 		<a class="skip_link" id="skip_to_content" href="#page_main_content">Skip to Main Content</a>
 
 		<!-- Page Wrapper -->
@@ -346,7 +345,6 @@
 		{% endif %}
 
 		{% if grid %}
-		<!-- Grid Bookmarklet -->
 		<script>
 			(function(){if(typeof FSGridBookmarklet==='undefined'){document.body.appendChild(document.createElement('script')).src='//formstone.it/js/bookmarklet/grid.js';}else{FSGridBookmarklet();}} )();
 		</script>
