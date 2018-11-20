@@ -1,11 +1,9 @@
 {#
-
 	{% include "../partials/navigation/basic.twig" with {
 		modifier: "lg",
 		title: "Basic Navigation",
 		links: footerNavAlias
 	} %}
-
 #}
 
 <nav class="{{class}}{% if modifier %} {{class}}_{{modifier}}{% endif %}" aria-label="{{title}}" itemscope itemtype="http://schema.org/SiteNavigationElement">
@@ -14,19 +12,19 @@
 	</div>
 	<ul class="{{class}}_list" aria-label="{{title}} Navigation">
 		{% for link in links %}
-		<li class="{{class}}_item{% if link.modifier %} {{link.modifier}}{% endif %}{% if link.children %} {{class}}_item_has_children{% endif %}">
-			<a class="{{class}}_link{% if link.icon %} {{link.icon}}{% endif %}{% if loop.index == active %} active{% endif %}" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="url"{% if loop.index == active %} aria-current="page"{% endif %}>
+		<li class="{{class}}_item{% if link.modifier %} {{class}}_item_{{link.modifier}}{% endif %}{% if link.children %} {{class}}_item_has_children{% endif %}">
+			<a class="{{class}}_link{% if loop.index == active %} active{% endif %}" href="{{link.href ?: '#'}}" itemprop="url"{% if loop.index == active %} aria-current="page"{% endif %}>
 				{% if link.icon %}
 				<span class="{{class}}_link_icon" aria-hidden="true">{{site.icon(link.icon)}}</span>
 				{% endif %}
-				<span class="{{class}}_link_label" itemprop="name">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
+				<span class="{{class}}_link_label" itemprop="name">{{link.name ?: link}}</span>
 			</a>
 			{% if link.children %}
 			<ul class="{{class}}_children">
 				{% for child in link.children %}
-				<li class="{{class}}_child_item{% if child.modifier %} {{child.modifier}}{% endif %}">
-					<a class="{{class}}_child_link" href="{% if child.href %}{{child.href}}{% else %}#{% endif %}" itemprop="url">
-						<span class="{{class}}_child_link_label" itemprop="name">{% if child.name %}{{child.name}}{% elseif child %}{{child}}{% endif %}</span>
+				<li class="{{class}}_child_item">
+					<a class="{{class}}_child_link" href="{{child.href ?: '#'}}" itemprop="url">
+						<span class="{{class}}_child_link_label" itemprop="name">{{child.name ?: child}}</span>
 					</a>
 				</li>
 				{% endfor %}

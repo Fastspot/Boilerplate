@@ -165,14 +165,14 @@
   "links": {
     "mainNav": [
       {
-        "name": "Main Link",
+        "name": "MainLinkOne",
         "children": [
           "One Child",
           "Two Child"
         ]
       },
       {
-        "name": "Main Link",
+        "name": "MainLinkTwo",
         "children": [
           "One Child",
           "Two Child"
@@ -182,12 +182,12 @@
     "secondaryNav": [
       {
         "modifier": "",
-        "name": "Secondary Link",
+        "name": "SecondaryLinkOne",
         "children": ""
       },
       {
         "modifier": "",
-        "name": "Secondary Link",
+        "name": "SecondaryLinkTwo",
         "children": ""
       }
     ],
