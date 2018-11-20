@@ -6,17 +6,17 @@
 
 <div class="pagination">
 	<div class="pagination_inner">
-		<a class="pagination_arrow pagination_arrow_left pagination_arrow_disabled" href="#previous">
-			<span class="pagination_arrow_label">Previous</span>
+		<a class="pagination_arrow pagination_arrow_left pagination_arrow_disabled" href="#">
 			<span class="pagination_arrow_icon">{{site.icon("chevron_left")}}</span>
+			<span class="pagination_arrow_label">Previous</span>
 		</a>
 		<nav class="pagination_nav">
 			{% for i in 1..pages %}
-			<a href="#{{i}}" class="pagination_link{% if loop.first %} active{% endif %}">{{i}}</a>
+			<a href="#" class="pagination_link{% if loop.first %} active{% endif %}">{{i}}</a>
 			{% endfor %}
 			<span class="pagination_link pagination_more">…</span>
 		</nav>
-		<a class="pagination_arrow pagination_arrow_right" href="#next">
+		<a class="pagination_arrow pagination_arrow_right" href="#">
 			<span class="pagination_arrow_label">Next</span>
 			<span class="pagination_arrow_icon">{{site.icon("chevron_right")}}</span>
 		</a>
