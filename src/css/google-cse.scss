@@ -184,6 +184,8 @@
 			.gsc-table-result {
 				font-family: inherit;
 				font-size: inherit;
+				padding-right: 0;
+				padding-left: 0;
 			}
 
 				.gsc-thumbnail {
@@ -207,6 +209,11 @@
 
 				.gsc-table-cell-snippet-close {
 					padding: 0;
+				}
+
+				.gsc-thumbnail-inside {
+					padding-right: 0;
+					padding-left: 0;
 				}
 
 				div.gs-title {
@@ -252,6 +259,11 @@
 					b {
 						font-weight: inherit;
 					}
+				}
+
+				.gs-richsnippet-box,
+				.gs-per-result-labels {
+					display: none !important;
 				}
 	}
 
