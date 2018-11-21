@@ -21,8 +21,7 @@ Site.modules.MainNAv = (function($, Site) {
 			.on("activate.swap", onMainSwapActivate)
 			.on("deactivate.swap", onMainSwapDeactivate);
 			
-		$(".js-main-nav-lg")
-			.find("a")
+		$(".js-main-nav-lg a")
 			.hover(function() {
 				$(this).attr("aria-expanded", "true");
 

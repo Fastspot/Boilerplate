@@ -13,17 +13,21 @@ Site.modules.Menu = (function($, Site) {
 		$Menu = $(".js-menu");
 		
 		if ($Menu.length) {
+			$MenuHandle = $(".js-menu-handle");
 			$MenuClose = $(".js-menu-close");
 			LockClass = "fs-navigation-lock fs-page-lock";
 
+			setup();
+			createSiteButtons($(".js-menu-handle"));
 			bindUI();
 		}
 	}
 
-	function bindUI() {
-		createSiteButtons($(".js-menu-handle"));
-		$MenuHandle = $(".js-menu-handle");
+	function setup() {
 		Site.modules.Page.ariaHide($Menu);
+	}
+
+	function bindUI() {
 		Site.$doc.on("click touchstart", onDocumentClick);
 		$MenuHandle
 			.on("activate.swap", onMenuSwapActivate)
@@ -81,17 +85,19 @@ Site.modules.Menu = (function($, Site) {
 		}
 	}
 
-	function createSiteButtons($element) {
-		$this = $element;
-		$this.each(function() {
+	function createSiteButtons($item) {
+		$item.each(function() {
 			var attributes = $this.prop("attributes");
-			$this.swap("destroy")
+
+			$(this).swap("destroy")
 				.wrapInner("<button />");
+
 			$.each(attributes, function() {
-				$this.find("button")
+				$(this).find("button")
 					.attr(this.name, this.value);
 			});
-			$this.find("button")
+			
+			$(this).find("button")
 				.unwrap()
 				.removeAttr("href")
 				.swap()
