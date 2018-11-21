@@ -85,19 +85,18 @@ Site.modules.Menu = (function($, Site) {
 		}
 	}
 
-	function createSiteButtons($item) {
-		$item.each(function() {
+	function createSiteButtons($element) {
+		$this = $element;
+		
+		$this.each(function() {
 			var attributes = $this.prop("attributes");
-
-			$(this).swap("destroy")
+			$this.swap("destroy")
 				.wrapInner("<button />");
-
 			$.each(attributes, function() {
-				$(this).find("button")
+				$this.find("button")
 					.attr(this.name, this.value);
 			});
-			
-			$(this).find("button")
+			$this.find("button")
 				.unwrap()
 				.removeAttr("href")
 				.swap()
