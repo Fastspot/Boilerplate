@@ -16,41 +16,20 @@
 				font-family: "Neue Haas Grotesk Text Std", Helvetica, Arial, sans-serif;
 			}
 
-				body {
-					max-width: 740px;
+			body {
+				max-width: 740px;
 
-					margin: 0 auto;
-					padding: 0 20px;
-				}
+				margin: 0 auto;
+				padding: 0 20px;
+			}
 
-					h1, h2, h3, h4, h5, h6 {
-						font-family: "Neue Haas Grotesk Display Std", Helvetica, Arial, sans-serif;
-					}
+			h1, h2, h3, h4, h5, h6 {
+				font-family: "Neue Haas Grotesk Display Std", Helvetica, Arial, sans-serif;
+			}
 
-					h1 {
-						font-size: 8vmin;
-					}
-
-					.title_logo {
-						background: #000;
-						color: #fff;
-						display: inline-block;
-						margin-right: 10px;
-						padding: 12px 8px 12px 6px;
-						vertical-align: middle;
-					}
-
-					.title_label {
-						display: inline-block;
-						vertical-align: middle;
-					}
-
-					ul {
-						list-style: none;
-						padding-left: 0;
-					}
-
-			/* Sitemap */
+			h1 {
+				font-size: 8vmin;
+			}
 
 			.sitemap_search {
 				width: 100%;
@@ -63,78 +42,74 @@
 			}
 
 			.sitemap {
+				list-style: none;
 				margin-top: 0;
 				margin-bottom: 80px;
+				padding-left: 0;
 			}
 
-				.sitemap_group {}
+			.sitemap_group {}
 
-					.sitemap_item {
-						border-left: 8px solid;
-					}
+			.sitemap_item {
+				border-left: 8px solid;
+			}
 
-					.sitemap_item.hide-item {
-						display: none;
-					}
+			.sitemap_item.hide-item {
+				display: none;
+			}
 
-					.sitemap_item:not(.hide-item):last-of-type {
-						margin-bottom: 40px;
-					}
+			.sitemap_item:not(.hide-item):last-of-type {
+				margin-bottom: 40px;
+			}
 
-					.fs-access {
-						border-left-color: #b30bea;
-					}
+			.sitemap_item_access {
+				border-left-color: #b30bea;
+			}
 
-					.fs-dev {
-						border-left-color: #0BEAC5;
-					}
+			.sitemap_item_dev {
+				border-left-color: #0BEAC5;
+			}
 
-					.fs-style-guide {
-						border-left-color: #0B35EA;
-					}
+			.sitemap_item_style_guide {
+				border-left-color: #0B35EA;
+			}
 
-					.fs-page {
-						border-left-color: #6DCF48;
-					}
+			.sitemap_item_page {
+				border-left-color: #6DCF48;
+			}
 
-					.fs-test {
-						border-left-color: #21D2AA;
-					}
+			.sitemap_link {
+				color: inherit;
+				display: block;
+				font-size: 18px;
+				font-weight: 700;
+				padding: 11px 20px 10px;
+				text-decoration: none;
+				transition:
+					background .25s,
+					color .25s;
+			}
 
-						.sitemap_link {
-							color: inherit;
-							display: block;
-							font-size: 18px;
-							font-weight: 700;
-							padding: 11px 20px 10px;
-							text-decoration: none;
-							transition:
-								background 0.25s,
-								color 0.25s;
-						}
+			.sitemap_link:hover,
+			.sitemap_link:focus {
+				background: #f2f2f2;
+			}
 
-						.sitemap_link:hover,
-						.sitemap_link:focus {
-							background: #f2f2f2;
-						}
+			.sitemap_link:visited {
+				color: inherit;
+			}
 
-						.sitemap_link:visited {
-							color: inherit;
-						}
+			@media print {
 
-						@media print {
-
-							.sitemap_link {
-								padding: 2px 0;
-							}
-						}
+				.sitemap_link {
+					padding: 2px 0;
+				}
+			}
 		</style>
 	</head>
 	<body>
 		<header>
-			<h1>
-				<span class="title_label">{{name}}</span>
-			</h1>
+			<h1>{{name}}</h1>
 			{% if accessibility %}
 			<h2>Accessibility Results</h2>
 			{% endif %}

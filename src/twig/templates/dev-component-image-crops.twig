@@ -8,137 +8,135 @@
 				font-family: "Neue Haas Grotesk Text Std", Helvetica, Arial, sans-serif;
 			}
 
-				body {
-					max-width: 740px;
+			body {
+				max-width: 740px;
 
-					margin: 0 auto;
-					padding: 0 20px;
-				}
+				margin: 0 auto;
+				padding: 0 20px;
+			}
 
-					h1, h2, h3, h4, h5, h6 {
-						font-family: "Neue Haas Grotesk Display Std", Helvetica, Arial, sans-serif;
-					}
+			h1, h2, h3, h4, h5, h6 {
+				font-family: "Neue Haas Grotesk Display Std", Helvetica, Arial, sans-serif;
+			}
 
-					h1 {
-						font-size: 8vmin;
-					}
+			h1 {
+				font-size: 8vmin;
+			}
 
-					.crops_section {
-						margin-bottom: 80px;
-					}
+			.crops_section {
+				margin-bottom: 80px;
+			}
 
-						.crops_section_title {
-							background: #000;
-							color: #fff;
-							display: inline-block;
-							margin: 0;
-							padding: 4px 10px;
-							vertical-align: top;
-						}
+			.crops_section_title {
+				background: #000;
+				color: #fff;
+				display: inline-block;
+				margin: 0;
+				padding: 4px 10px;
+				vertical-align: top;
+			}
 
-						.crops_item {
-							border: 1px solid #dadada;
-							margin: 40px 0;
-						}
+			.crops_item {
+				border: 1px solid #dadada;
+				margin: 40px 0;
+			}
 
-							.crops_item_title {
-								border-bottom: 1px solid #000;
-								margin: 0;
-								padding: 15px 10px 14px;
-							}
+			.crops_item_title {
+				border-bottom: 1px solid #000;
+				margin: 0;
+				padding: 15px 10px 14px;
+			}
 
-							.crops {
-								list-style: none;
-								margin: 0;
-								padding: 0;
-							}
+			.crops {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
 
-								.crop {
-									position: relative;
+			.crop {
+				position: relative;
 
-									padding: 6px 20px;
-								}
+				padding: 6px 20px;
+			}
 
-								.crop:nth-of-type(odd) {
-									background: #f2f2f2
-								}
+			.crop:nth-of-type(odd) {
+				background: #f2f2f2
+			}
 
-									.crop_size {
-										width: 9ch;
+			.crop_size {
+				width: 9ch;
 
-										display: inline-block;
-										font-weight: 700;
-									}
+				display: inline-block;
+				font-weight: 700;
+			}
 
-									.crop_name {}
+			.crop_name {}
 
-							.crops_item_min {
-								position: relative;
+			.crops_item_min {
+				position: relative;
 
-								border-top: 1px solid #999;
-								margin: 0;
-								padding: 12px 20px
-							}
+				border-top: 1px solid #999;
+				margin: 0;
+				padding: 12px 20px
+			}
 
-							.crops_item_min:before {
-								height: 8px;
-								width: 8px;
+			.crops_item_min:before {
+				height: 8px;
+				width: 8px;
 
-								position: absolute;
-								top: 50%;
-								left: 0;
+				position: absolute;
+				top: 50%;
+				left: 0;
 
-								background: red;
-								border-radius: 50%;
-								content: "";
-								transform: translate(-50%, -50%);
-							}
+				background: red;
+				border-radius: 50%;
+				content: "";
+				transform: translate(-50%, -50%);
+			}
 
-								.crops_item_min_label {}
+			.crops_item_min_label {}
 
-								.crops_item_min_size {
-									font-weight: 700;
-								}
+			.crops_item_min_size {
+				font-weight: 700;
+			}
 
-					.crop_indent_switcher {
-						height: 30px;
-						width: 30px;
+			.crop_indent_switcher {
+				height: 30px;
+				width: 30px;
 
-						position: fixed;
-						top: 10px;
-						left: 10px;
+				position: fixed;
+				top: 10px;
+				left: 10px;
 
-						background: #fafafa;
-						border: 1px solid #eaeaea;
-						border-radius: 50%;
-						cursor: pointer;
-					}
+				background: #fafafa;
+				border: 1px solid #eaeaea;
+				border-radius: 50%;
+				cursor: pointer;
+			}
 
-					.crop_indent_switcher:before {
-						position: absolute;
-						top: 50%;
-						left: 50%;
+			.crop_indent_switcher:before {
+				position: absolute;
+				top: 50%;
+				left: 50%;
 
-						content: '-';
-						font-size: 16px;
-						font-weight: 700;
-						transform: translate(-50%, -50%);
-					}
+				content: '-';
+				font-size: 16px;
+				font-weight: 700;
+				transform: translate(-50%, -50%);
+			}
 
-					.crop_indent_switcher.dashes:before {
-						content: '-';
-					}
+			.crop_indent_switcher.dashes:before {
+				content: '-';
+			}
 
-					.crop_indent_switcher.underscores:before {
-						content: '_';
-					}
+			.crop_indent_switcher.underscores:before {
+				content: '_';
+			}
 		</style>
 	</head>
 	<body>
 		<header>
-			<h1>
-				<span class="title_label">Component Image Crops</span>
-			</h1>
+			<h1>Component Image Crops</h1>
 		</header>
 		<main>
 			{% for section in sections %}

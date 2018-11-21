@@ -12,71 +12,71 @@
 				font-family: "Neue Haas Grotesk Text Std", Helvetica, Arial, sans-serif;
 			}
 
-				body {
-					max-width: 740px;
+			body {
+				max-width: 740px;
 
-					margin: 0 auto;
-					padding: 0 20px;
-				}
+				margin: 0 auto;
+				padding: 0 20px;
+			}
 
-					h1, h2, h3, h4, h5, h6 {
-						font-family: "Neue Haas Grotesk Display Std", Helvetica, Arial, sans-serif;
-					}
+			h1, h2, h3, h4, h5, h6 {
+				font-family: "Neue Haas Grotesk Display Std", Helvetica, Arial, sans-serif;
+			}
 
-					h4, h5, h6 {
-						font-weight: 400;
-					}
+			h4, h5, h6 {
+				font-weight: 400;
+			}
 
-					.results_header {
-						padding: 40px 0;
-					}
+			.results_header {
+				padding: 40px 0;
+			}
 
-						.results_title {}
+			.results_title {}
 
-						.results {}
+			.results {}
 
-							.result_type {
-								color: inherit;
-								display: inline-block;
-								margin-right: 10px;
-								padding: 6px 10px;
-								text-decoration: none;
-							}
+			.result_type {
+				color: inherit;
+				display: inline-block;
+				margin-right: 10px;
+				padding: 6px 10px;
+				text-decoration: none;
+			}
 
-							.error {
-								background: #ffcaca;
-								border: 1px solid #faabab;
-							}
+			.result_type_error {
+				background: #ffcaca;
+				border: 1px solid #faabab;
+			}
 
-							.warning {
-								background: #fffaca;
-								border: 1px solid #f0e8a0;
-							}
+			.result_type_warning {
+				background: #fffaca;
+				border: 1px solid #f0e8a0;
+			}
 
-					.report_item {
-						margin: 20px 0;
-						padding: 20px;
-					}
+			.report_item {
+				margin: 20px 0;
+				padding: 20px;
+			}
 
-						.report_item_title {
-							margin: 0 0 20px;
-						}
+			.report_item_title {
+				margin: 0 0 20px;
+			}
 
-						.report_item_code {
-							margin: 0 0 20px;
-						}
+			.report_item_code {
+				margin: 0 0 20px;
+			}
 
-						.report_item_context {
-							max-width: 100%;
+			.report_item_context {
+				max-width: 100%;
 
-							background: rgba(0, 0, 0, .05);
-							border-left: 3px solid;
-							display: inline-block;
-							font-size: 16px;
-							margin: 0;
-							overflow-x: auto;
-							padding: 20px;
-						}
+				background: rgba(0, 0, 0, .05);
+				border-left: 3px solid;
+				display: inline-block;
+				font-size: 16px;
+				margin: 0;
+				overflow-x: auto;
+				padding: 20px;
+			}
 		</style>
 	</head>
 	<body>
@@ -85,8 +85,8 @@
 				"-": " "
 			})|title}} Report</h1>
 			<div class="results">
-				<a class="result_type error" href="#errors"><strong>{{errors}}</strong> errors</a>
-				<a class="result_type warning" href="#warnings"><strong>{{warnings}}</strong> warnings</a>
+				<a class="result_type result_type_error" href="#errors"><strong>{{errors}}</strong> errors</a>
+				<a class="result_type result_type_warning" href="#warnings"><strong>{{warnings}}</strong> warnings</a>
 			</div>
 		</header>
 		<main>

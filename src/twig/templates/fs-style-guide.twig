@@ -8,29 +8,27 @@
 {% endblock %}
 
 {% block content %}
-	<div class="gb_section">
-		{% include '../partials/guidebook/topics.twig' with {
-			topics: [
-				{
-					image: "content_strategy.svg",
-					title: "Content Strategy",
-					link: "fs-content-strategy.html",
-					caption: "Guidance for voice and tone, plus how best to address your audiences.",
-					subcaption: "For content strategy specific to components, please refer to the <a href='fs-components.html'>Components</a> section."
-				},
-				{
-					image: "visual_styles.svg",
-					title: "Visual Styles",
-					link: "fs-visual-styles.html",
-					caption: "Your visual basics are all in here. Get a clear overview of the color system and typography."
-				},
-				{
-					image: "components.svg",
-					title: "Components",
-					link: "fs-components.html",
-					caption: "Here’s your set of editable components along with how best to use them, including content direction."
-				}
-			]
-		} %}
-	</div>
+	{% include '../partials/guidebook/topics.twig' with {
+		topics: [
+			{
+				image: "content_strategy.svg",
+				title: "Content Strategy",
+				link: "fs-content-strategy.html",
+				caption: "Guidance for voice and tone, plus how best to address your audiences.",
+				subcaption: "For content strategy specific to components, please refer to the <a href='fs-components.html'>Components</a> section."
+			},
+			{
+				image: "visual_styles.svg",
+				title: "Visual Styles",
+				link: "fs-visual-styles.html",
+				caption: "Your visual basics are all in here. Get a clear overview of the color system and typography."
+			},
+			{
+				image: "components.svg",
+				title: "Components",
+				link: "fs-components.html",
+				caption: "Here’s your set of editable components along with how best to use them, including content direction."
+			}
+		]
+	} %}
 {% endblock %}

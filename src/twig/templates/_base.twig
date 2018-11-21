@@ -56,7 +56,7 @@
 		<script src="https://www.youtube.com/iframe_api"></script>
 
 		{% if page.stylesheets %}
-		{% for styles in page.stylesheets %}
+		{% for styles in page.stylesheets %}a
 		<link rel="stylesheet" href="{{styles}}">
 		{% endfor %}
 		{% endif %}
@@ -70,12 +70,12 @@
 			{% set activePage = 0 %}
 		{% endblock %}
 
-		{% block sectionTitle %}
-			{% set sectionTitle = page.title %}
-		{% endblock %}
-
 		{% block mainNav %}
 			{% set mainNavAlias = links.mainNav %}
+		{% endblock %}
+
+		{% block secondaryNav %}
+			{% set secondaryNavAlias = links.secondaryNav %}
 		{% endblock %}
 
 		{% block breadcrumbNav %}
@@ -84,12 +84,12 @@
 			] %}
 		{% endblock %}
 
-		{% block subNav %}
-			{% set subNavAlias = links.subNav %}
+		{% block sectionTitle %}
+			{% set sectionTitle = page.title %}
 		{% endblock %}
 
-		{% block secondaryNav %}
-			{% set secondaryNavAlias = links.secondaryNav %}
+		{% block subNav %}
+			{% set subNavAlias = links.subNav %}
 		{% endblock %}
 
 		{% block utilityNav %}
@@ -112,63 +112,60 @@
 
 		{% import '../partials/macros.twig' as site %}
 
-		<a class="skip_link" id="skip_to_content" href="#page_main_content">Skip to Main Content</a>
+		<a class="skip_link" href="#page_main_content">Skip to Main Content</a>
 
 		<!-- Page Wrapper -->
 		<div class="page_wrapper">
-			{% if page.layout != "style-guide" %}
-				<!-- Header -->
-				<header class="header" id="header" itemscope itemtype="http://schema.org/WPHeader">
-					<div class="header_ribbon">
-						<div class="fs-row">
-							<div class="fs-cell">
-								<div class="header_ribbon_inner">
-									{% include "../partials/logo.twig" with {
-										modifier: "header",
-										icon: "logo"
+			<!-- Header -->
+			<header class="header" id="header" itemscope itemtype="http://schema.org/WPHeader">
+				<div class="header_ribbon">
+					<div class="fs-row">
+						<div class="fs-cell">
+							<div class="header_ribbon_inner">
+								{% include "../partials/logo.twig" with {
+									modifier: "header",
+									icon: "logo"
+								} %}
+
+								{% include "../partials/navigation/main.twig" with {
+									modifier: "lg",
+									active: activePage,
+									icon: "caret_down",
+									links: mainNavAlias
+								} %}
+
+								{% include "../partials/navigation/basic.twig" with {
+									class: "secondary_nav",
+									modifier: "lg",
+									title: "Secondary",
+									links: secondaryNavAlias
+								} %}
+
+								<div class="header_group">
+									{% include "../partials/handle.twig" with {
+										class: "menu",
+										modifier: "primary",
+										icon: "menu",
+										label: "Menu"
 									} %}
 
-									{% include "../partials/navigation/main.twig" with {
+									{% include "../partials/search-handle.twig" %}
+
+									{% include "../partials/search.twig" with {
 										modifier: "lg",
-										links: mainNavAlias,
-										active: activePage,
-										icon: "caret_down"
+										placeholder: "Search",
+										buttonText: ""
 									} %}
-
-									{% include "../partials/navigation/basic.twig" with {
-										class: "secondary_nav",
-										modifier: "lg",
-										title: "Secondary",
-										links: secondaryNavAlias
-									} %}
-
-									<div class="header_group">
-										{% include "../partials/handle.twig" with {
-											class: "menu",
-											modifier: "primary",
-											icon: "menu",
-											label: "Menu"
-										} %}
-
-										{% include "../partials/search-handle.twig" %}
-
-										{% include "../partials/search.twig" with {
-											modifier: "lg",
-											placeholder: "Search",
-											buttonText: ""
-										} %}
-									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</header>
-				<!-- END: Header -->
-			{% endif %}
+				</div>
+			</header>
+			<!-- END: Header -->
 
 			<!-- Page -->
-
-			<main class="page_inner" itemprop="mainContentOfPage">
+			<main class="page" itemprop="mainContentOfPage">
 				{% if page.layout != "home" %}
 				<!-- Page Feature -->
 				<div class="page_feature">
@@ -182,19 +179,17 @@
 				<div class="page_content">
 					{% if page.layout != "home" %}
 					<div class="fs-row">
-						{% if page.layout == "default" or page.layout == "style-guide" %}
-						<!-- Sub Nav -->
+						{% if page.layout == "default" %}
 						<div class="fs-cell-right fs-lg-4 page_aside page_sub_nav">
 							{% include "../partials/navigation/sub.twig" with {
 								title: sectionTitle,
 								links: subNavAlias
 							} %}
 						</div>
-						<!-- END: Sub Nav -->
 						{% endif %}
 
 						<!-- Main Content -->
-						<div class="fs-cell{% if page.layout == "default" or page.layout == "style-guide" %} fs-lg-8{% elseif page.layout == "full" %} fs-lg-10 fs-all-justify-center{% endif %} page_main_content" id="page_main_content" tabindex="-1">
+						<div class="fs-cell{% if page.layout == "default" %} fs-lg-8{% elseif page.layout == "full" %} fs-lg-10 fs-all-justify-center{% endif %} page_main_content" id="page_main_content" tabindex="-1">
 							<!-- Page Header -->
 							{% block page_header %}
 							<div class="page_header">
@@ -213,7 +208,7 @@
 							{% endblock %}
 							<!-- END: Page Header -->
 
-							<!-- WYSIWYG - wrap all WYSIWYG text areas in `.typography` -->
+							<!-- WYSIWYG -->
 							<div class="typography">
 								{% block typography %}
 								{% endblock %}
@@ -232,7 +227,7 @@
 						</div>
 						<!-- END: Main Content -->
 
-						{% if page.layout == "default" or page.layout == "style-guide" %}
+						{% if page.layout == "default" %}
 						<!-- Sidebar Callouts -->
 						<div class="fs-cell-right fs-lg-4 page_aside page_sidebar">
 							<div class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
@@ -246,25 +241,16 @@
 					{% endif %}
 
 					<!-- Full Width Callouts -->
-					{% if page.layout == "home" %}
-					<div class="full_width_callouts" id="page_main_content">
-					{% else %}
-					<div class="full_width_callouts">
-					{% endif %}
+					<div class="full_width_callouts"{% if page.layout == "home" %} id="page_main_content"{% endif %}>
 						{% block full_width_callouts %}
 						{% endblock %}
-					{% if page.layout == "home" %}
-				</div>
-					{% else %}
 					</div>
-					{% endif %}
 					<!-- END: Full Width Callouts -->
 				</div>
 				<!-- END: Page Content -->
 			</main>
 			<!-- END: Page -->
 
-			{% if page.layout != "style-guide" %}
 			<!-- Footer -->
 			<footer class="footer" id="footer" itemscope itemtype="http://schema.org/WPFooter">
 				<div class="footer_ribbon">
@@ -275,10 +261,6 @@
 									modifier: "footer",
 									icon: "logo"
 								} %}
-
-								<div class="copyright">
-									<p class="copyright_info">&copy; <span class="copyright_holder" itemprop="copyrightHolder" itemscope="" itemtype="http://schema.org/{{vars.schemaType}}">{{vars.name}}</span> <span class="copyright_year" itemprop="copyrightYear">{{"now"|date("Y")}}</span></p>
-								</div>
 
 								{% include "../partials/address.twig" with {
 									name: vars.name,
@@ -301,13 +283,14 @@
 									title: "Social",
 									links: socialNavAlias
 								} %}
+
+								{% include "../partials/copyright.twig" %}
 							</div>
 						</div>
 					</div>
 				</div>
 			</footer>
 			<!-- END: Footer -->
-			{% endif %}
 		</div>
 		<!-- END: page_wrapper -->
 
@@ -336,14 +319,12 @@
 			var WWW_ROOT = "";
 			var STATIC_ROOT = "../../";
 		</script>
-		<script src="../../js/site.js?{{'now'|date('U')}}"></script>
-
 		{% if page.scripts %}
 		{% for script in page.scripts %}
 		{{script}}
 		{% endfor %}
 		{% endif %}
-
+		<script src="../../js/site.js?{{'now'|date('U')}}"></script>
 		{% if grid %}
 		<script>
 			(function(){if(typeof FSGridBookmarklet==='undefined'){document.body.appendChild(document.createElement('script')).src='//formstone.it/js/bookmarklet/grid.js';}else{FSGridBookmarklet();}} )();

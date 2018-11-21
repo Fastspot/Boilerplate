@@ -15,7 +15,7 @@
 {% block main %}
 	<ul class="sitemap">
 		{% for link in sitemap %}
-		<li class="sitemap_item{% if 'fs' in link %} fs-style-guide{% elseif 'dev' in link %} fs-dev{% elseif 'page' in link %} fs-page{% elseif 'accessibility' in link %} fs-access{% endif %}">
+		<li class="sitemap_item{% if 'fs' in link %} sitemap_item_style_guide{% elseif 'dev' in link %} sitemap_item_dev{% elseif 'page' in link %} sitemap_item_page{% elseif 'accessibility' in link %} sitemap_item_access{% endif %}">
 			<a class="sitemap_link" href="{% if accessibility %}../accessibility{% else %}templates{% endif %}{{link}}">{{link|replace({
 				".html": "",
 				"-": " ",
@@ -30,7 +30,7 @@
 	</ul>
 	{% if trello == "" %}
 	<style>
-		.fs-style-guide {
+		.sitemap_item_style_guide {
 			display: none;
 		}
 	</style>
