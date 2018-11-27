@@ -1,7 +1,7 @@
 {#
-	{{site.button("class", "Apply", "chevron_right", "#")}}
-
 	{{site.icon("chevron")}}
+
+	{{site.button("class", "Apply", "chevron_right", "#")}}
 
 	{{site.table({
 		headers: [
@@ -26,7 +26,7 @@
 
 	{{site.title("title", "full")}}
 
-	{{site.content("<p>Copy</p>")}}
+	{{site.anchor("Component Trello Name")}}
 
 	{{site.tel("number")}}
 #}
@@ -142,14 +142,14 @@
 {% endmacro %}
 
 
-{% macro anchor(label) %}
-<h2 class="guidebook_component_title" id="{{label|replace({
+{% macro anchor(title) %}
+<h2 class="guidebook_component_title" id="{{title|replace({
 	" ": "-",
 	":": "",
 	"&": "and",
 	"/": "-"
 })|lower}}">
-	<span class="guidebook_component_title_label">{{label}}</span>
+	<span class="guidebook_component_title_label">{{title}}</span>
 </h2>
 {% endmacro %}
 
