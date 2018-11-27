@@ -23,8 +23,6 @@ Site.modules.Formstone = (function($, Site) {
 			$(this).addClass("fs-background-loaded");
 		});
 		$(".js-carousel").carousel();
-		$(".js-checkbox, .js-radio").checkbox();
-		$(".js-dropdown").dropdown();
 		$(".js-equalize").equalize();
 		$(".js-lightbox").lightbox(lightboxOptions);
 		$(".js-swap").swap();
