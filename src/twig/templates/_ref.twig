@@ -13,7 +13,10 @@
 		<title>{{name}} | {{page.tabTitle}}</title>
 		<style>
 			html {
+				height: 100%;
+
 				font-family: "Neue Haas Grotesk Text Std", Helvetica, Arial, sans-serif;
+				overflow-y: scroll;
 			}
 
 			body {
@@ -34,6 +37,8 @@
 			.sitemap_search {
 				width: 100%;
 
+				appearance: none;
+				-webkit-appearance: none;
 				background: #f3f3f3;
 				border: 0;
 				font-size: 16px;
@@ -52,6 +57,17 @@
 
 			.sitemap_item {
 				border-left: 8px solid;
+			}
+
+			@media print {
+
+				.sitemap_item {
+					border-left-width: 4px;
+				}
+			}
+
+			.sitemap_item:nth-of-type(odd) {
+				background: #fafafa;
 			}
 
 			.sitemap_item.hide-item {
