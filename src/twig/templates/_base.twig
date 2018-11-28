@@ -57,7 +57,7 @@
 		<script src="https://www.youtube.com/iframe_api"></script>
 
 		{% if page.stylesheets %}
-		{% for styles in page.stylesheets %}a
+		{% for styles in page.stylesheets %}
 		<link rel="stylesheet" href="{{styles}}">
 		{% endfor %}
 		{% endif %}
@@ -190,7 +190,7 @@
 						{% endif %}
 
 						<!-- Main Content -->
-						<div class="fs-cell{% if page.layout == "default" %} fs-lg-8{% elseif page.layout == "full" %} fs-lg-10 fs-all-justify-center{% endif %} page_main_content" id="page_main_content" tabindex="-1">
+						<div class="fs-cell{% if page.layout == "default" %} fs-lg-8{% else %} fs-lg-10 fs-all-justify-center{% endif %} page_main_content" id="page_main_content" tabindex="-1">
 							<!-- Page Header -->
 							{% block page_header %}
 							<div class="page_header">
@@ -230,11 +230,9 @@
 
 						{% if page.layout == "default" %}
 						<!-- Sidebar Callouts -->
-						<div class="fs-cell-right fs-lg-4 page_aside page_sidebar">
-							<div class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
-								{% block sidebar %}
-								{% endblock %}
-							</div>
+						<div class="fs-cell-right fs-lg-4 page_aside page_sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+							{% block sidebar %}
+							{% endblock %}
 						</div>
 						<!-- END: Sidebar Callouts -->
 						{% endif %}
@@ -295,6 +293,7 @@
 		</div>
 		<!-- END: page_wrapper -->
 
+		<!-- Menu -->
 		<div class="js-menu menu" id="menu">
 			{% include "../partials/navigation/main.twig" with {
 				modifier: "sm",
@@ -315,6 +314,7 @@
 				<span class="menu_close_label">Close Menu</span>
 			</button>
 		</div>
+		<!-- END: Menu -->
 
 		<script>
 			var WWW_ROOT = "";
