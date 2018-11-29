@@ -16,4 +16,4 @@
 #}
 
 <div class="{{customClass ?: 'js-background'}} {{class}}_background" data-background-options='{"source": { {% if poster %}"poster": "//images.fastspot.com/{{vars.images}}/{{poster}}/{{image}}", {% endif %}{% for key, source in sources %}"{{key}}": "{{source}}"{% if not loop.last %}, {% endif %}{% endfor %}
-}{% if autoPlay == "false" %}, "autoPlay": false{% endif %}{% if embedRatio %}, "embedRatio": {{embedRatio}}{% endif %}{% if loop == "false" %}, "loop": false{% endif %}{% if mute == "false" %}, "mute": false{% endif %}' aria-hidden="true"></div>
+}{% if autoPlay == "false" %}, "autoPlay": false{% endif %}{% if embedRatio %}, "embedRatio": {{embedRatio}}{% endif %}{% if loop == "false" %}, "loop": false{% endif %}{% if mute == "false" %}, "mute": false{% endif %}}' aria-hidden="true"></div>
