@@ -62,7 +62,9 @@
 	transform: translate(-50%, -50%);
 }
 
-.fs-carousel-control-label {}
+.fs-carousel-control-label {
+	@include visually_hide;
+}
 
 
 /* Carousel Control Themes
