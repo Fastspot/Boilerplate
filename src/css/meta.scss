@@ -1,0 +1,51 @@
+/* ==========================================================================
+	Meta
+============================================================================= */
+
+.meta {}
+
+.meta_logo {}
+
+.meta_logo_link {}
+
+.meta_logo_label {
+	@include visually_hide;
+}
+
+.meta_logo_icon {}
+
+
+/* Details
+============================================================================= */
+
+.meta_details {}
+
+.meta_detail {}
+
+.meta_address {}
+
+.meta_detail_icon {}
+
+.meta_detail_label {
+	color: inherit;
+}
+
+.meta_detail_label_address {}
+
+.meta_address_street {}
+
+.meta_address_group {}
+
+.meta_address_city {}
+
+.meta_address_state {}
+
+.meta_address_zip {}
+
+.meta_email {}
+
+.meta_detail_label_email {}
+
+.meta_detail_label_phone {}
+
+.meta_detail_label_fax {}
