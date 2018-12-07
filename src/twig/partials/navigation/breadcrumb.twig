@@ -1,13 +1,9 @@
 {#
-	Breadcrumb markup as defined by Google structured data
-	https://developers.google.com/structured-data/breadcrumbs
-
 	{% include "../partials/navigation/breadcrumb.twig" with {
 		modifier: "lg",
-		links: breadcrumbNav,
-		icon: true
+		icon: true,
+		links: breadcrumbNav
 	} %}
-
 #}
 
 <nav class="breadcrumb_nav{% if modifier %} breadcrumb_nav_{{modifier}}{% endif %}" aria-label="Breadcrumb">
@@ -17,29 +13,23 @@
 	<ol class="breadcrumb_list" itemscope itemtype="http://schema.org/BreadcrumbList" aria-label="Breadcrumb">
 		<li class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
 			<a class="breadcrumb_pill breadcrumb_pill_link" href="page-home.html" itemprop="item">
-				<span class="breadcrumb_name" itemprop="name">
-					{% if icon %}
-					<span class="breadcrumb_name_icon">{{site.icon("home")}}</span>
-					{% endif %}
-					<span class="breadcrumb_name_label">Home</span>
-				</span>
+				{% if icon %}
+				<span class="breadcrumb_pill_icon">{{site.icon("home")}}</span>
+				{% endif %}
+				<span class="breadcrumb_pill_label" itemprop="name">Home</span>
 			</a>
 			<meta itemprop="position" content="1">
 		</li>
 		{% for link in links %}
 		<li class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-			{% if loop.last %}
-			<span class="breadcrumb_pill" itemprop="item">
-				<span class="breadcrumb_name">
-					<span class="breadcrumb_name_label" itemprop="name">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
-				</span>
-			</span>
-			{% else %}
-			<a class="breadcrumb_pill breadcrumb_pill_link" href="{% if link.href %}{{link.href}}{% else %}#{% endif %}" itemprop="item">
-				<span class="breadcrumb_name">
-					<span class="breadcrumb_name_label" itemprop="name">{% if link.name %}{{link.name}}{% elseif link %}{{link}}{% endif %}</span>
-				</span>
+			{% if not loop.last %}
+			<a class="breadcrumb_pill breadcrumb_pill_link" href="{{link.href ?: '#'}}" itemprop="item">
+				<span class="breadcrumb_pill_label" itemprop="name">{{link.name ?: link}}</span>
 			</a>
+			{% else %}
+			<span class="breadcrumb_pill" itemprop="item">
+				<span class="breadcrumb_pill_label" itemprop="name">{{link.name ?: link}}</span>
+			</span>
 			{% endif %}
 			<meta itemprop="position" content="{{loop.index + 1}}">
 		</li>

@@ -1,5 +1,5 @@
 {#
-	{% include par ~ "background.twig" with {
+	{% include bg with {
 		customClass: "js-class",
 		class: "flex_callout",
 		image: image,
@@ -12,6 +12,6 @@
 	} %}
 #}
 
-<div class="{% if customClass %}{{customClass}}{% else %}js-background{% endif %} {{class}}_background" data-background-options='{"source": {
+<div class="{{customClass ?: 'js-background'}} {{class}}_background" data-background-options='{"source": {
 {% for key, source in sources %}"{{key}}": "{% if source == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{vars.images}}/{{source}}/{{image}}{% endif %}"{% if not loop.last %}, {% endif %}{% endfor %}
 }' aria-hidden="true"></div>

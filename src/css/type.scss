@@ -48,14 +48,20 @@
 	line-height: (24 / 16);
 }
 
-@mixin intro_text() {}
+@mixin intro_text() {
+	font-size: 20px;
+	line-height: (30 / 20);
+}
 
 @mixin body_text() {
 	font-size: 16px;
 	line-height: (24 / 16);
 }
 
-@mixin label_text() {}
+@mixin label_text() {
+	font-size: 14px;
+	line-height: (22 / 14);
+}
 
 @mixin caption_text() {
 	font-size: 14px;

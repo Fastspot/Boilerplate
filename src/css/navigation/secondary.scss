@@ -19,8 +19,8 @@
 }
 
 
-// Seconadry Links
-// =============================================================================
+/* Secondary Links
+============================================================================= */
 
 .secondary_nav_list {
 	list-style: none;
@@ -31,6 +31,7 @@
 .secondary_nav_item {}
 
 .secondary_nav_link {
+	color: inherit;
 	display: block;
 
 	&:focus,

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>Image Crops</title>
+		<style>
+			html {
+				font-family: "Neue Haas Grotesk Text Std", Helvetica, Arial, sans-serif;
+			}
+
+			body {
+				max-width: 740px;
+
+				margin: 0 auto;
+				padding: 0 20px;
+			}
+
+			h1, h2, h3, h4, h5, h6 {
+				font-family: "Neue Haas Grotesk Display Std", Helvetica, Arial, sans-serif;
+			}
+
+			h1 {
+				font-size: 8vmin;
+			}
+
+			.crops {
+				list-style: none;
+				margin: 40px 0;
+				padding: 0;
+			}
+
+			.crop {
+				padding: 6px 10px;
+			}
+
+			.crop:nth-of-type(even) {
+				background: #f2f2f2;
+			}
+
+			.crop-size {
+				width: 9ch;
+
+				display: inline-block;
+				font-weight: 700;
+			}
+
+			.crop-name {}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>Image Crops</h1>
+		</header>
+		<main>
+			<ul class="crops">
+				{% for crop in crops %}
+					<li class="crop">{{crop}}</li>
+				{% endfor %}
+			</ul>
+		</main>
+	</body>
+</html>

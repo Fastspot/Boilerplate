@@ -17,8 +17,8 @@
 .breadcrumb_nav_title {}
 
 
-// Breadcrumb Links
-// =============================================================================
+/* Breadcrumb Links
+============================================================================= */
 
 .breadcrumb_list {
 	list-style: none;
@@ -55,8 +55,6 @@
 	&:hover {}
 }
 
-.breadcrumb_name {}
+.breadcrumb_pill_icon {}
 
-.breadcrumb_name_icon {}
-
-.breadcrumb_name_label {}
+.breadcrumb_pill_label {}

@@ -35,6 +35,7 @@
 }
 
 .main_nav_link {
+	color: inherit;
 	display: inline-block;
 	vertical-align: top;
 
@@ -94,8 +95,8 @@
 }
 
 
-// Main Nav Children
-// =============================================================================
+/* Main Nav Children
+============================================================================= */
 
 .main_nav_children {
 	display: block;

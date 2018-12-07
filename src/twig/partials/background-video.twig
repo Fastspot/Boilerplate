@@ -1,22 +1,19 @@
 {#
-	{% include par ~ "background-video.twig" with {
+	{% include bgv with {
 		customClass: "js-class",
 		class: "background",
 		autoPlay: "false",
-		embedRatio: "1.777777",
+		embedRatio: "1.77",
 		loop: "false",
 		mute: "true",
 		poster: img.wide.lrg,
 		image: image,
 		sources: {
 			video: "https://www.youtube.com/watch?v=XPjQhvjQbSM",
-			webm: "http://example.com/video.webm",
-			mp4: "http://example.com/video.mp4",
-			ogg: "http://example.com/video.ogv"
+			mp4: "http://example.com/video.mp4"
 		}
 	} %}
 #}
 
-<div class="{% if customClass %}{{customClass}}{% else %}js-background{% endif %} {{class}}_background" data-background-options='{"source": {
-{% if poster %}"poster": "//images.fastspot.com/{{vars.images}}/{{poster}}/{{image}}", {% endif %}{% for key, source in sources %}"{{key}}": "{{source}}"{% if not loop.last %}, {% endif %}{% endfor %}
-}{% if autoPlay == "false" %}, "autoPlay": false{% endif %}{% if embedRatio %}, "embedRatio": {{embedRatio}}{% endif %}{% if loop == "false" %}, "loop": false{% endif %}{% if mute == "false" %}, "mute": false{% endif %}' aria-hidden="true"></div>
+<div class="{{customClass ?: 'js-background'}} {{class}}_background" data-background-options='{"source": { {% if poster %}"poster": "//images.fastspot.com/{{vars.images}}/{{poster}}/{{image}}", {% endif %}{% for key, source in sources %}"{{key}}": "{{source}}"{% if not loop.last %}, {% endif %}{% endfor %}
+}{% if autoPlay == "false" %}, "autoPlay": false{% endif %}{% if embedRatio %}, "embedRatio": {{embedRatio}}{% endif %}{% if loop == "false" %}, "loop": false{% endif %}{% if mute == "false" %}, "mute": false{% endif %}}' aria-hidden="true"></div>

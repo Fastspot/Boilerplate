@@ -1,5 +1,6 @@
-// Page link
-// =============================================================================
+/* ==========================================================================
+	Navigation
+============================================================================= */
 
 .gb_ribbon_link {
 	@include nd(500);
@@ -7,7 +8,7 @@
 	color: inherit;
 	display: block;
 	font-size: 24px;
-	padding: 31px 0 10px;
+	padding: 30px 0 10px;
 
 	@media #{$min_lg} {
 		padding-bottom: 30px;
@@ -15,112 +16,105 @@
 }
 
 .gb_ribbon_logo {
-	position: absolute;
-	top: 27px;
-	right: 20px;
-	z-index: 2;
-
-	color: inherit;
-	transform-origin: right center;
-	transform: scale(.75);
+	display: none;
 
 	@media #{$min_lg} {
+		position: absolute;
 		top: 50%;
 		right: 0;
 
+		color: inherit;
+		display: block;
 		transform: translate(0, -50%);
-	}
-
-	svg {
-		height: 33px;
-		width: 50px;
 	}
 }
 
 
-// Main Nav
-// =============================================================================
+/* Main Nav
+============================================================================= */
 
 .gb_main_nav {
 	padding-bottom: 22px;
 
 	@media #{$min_lg} {
-		padding-top: 22px;
-		padding-right: 95px;
+		padding: 19px 95px 20px 0;
 	}
 }
 
-	.gb_main_nav_list {
-		list-style: none;
-		margin: 0;
-		overflow-y: auto;
-		padding: 0;
-		white-space: nowrap;
+.gb_main_nav_header {}
+	
+.gb_main_nav_title {
+	@include visually_hide;
+}
+
+.gb_main_nav_list {
+	list-style: none;
+	margin: 0;
+	overflow-y: auto;
+	padding: 0;
+	white-space: nowrap;
+}
+
+.gb_main_nav_item {
+	display: inline-block;
+	margin-right: 20px;
+
+	@media #{$min_xl} {
+		margin-right: 45px;
 	}
 
-		.gb_main_nav_item {
-			display: inline-block;
-			margin-right: 20px;
+	&:last-child {
 
-			@media #{$min_xl} {
-				margin-right: 45px;
-			}
+		@media screen and (min-width: 540px) {
+			margin-right: 0;
+		}
+	}
+}
 
-			&:last-child {
+.gb_main_nav_link {
+	color: inherit;
+	display: block;
+	padding: 15px 0;
+}
 
-				@media screen and (min-width: 540px) {
-					margin-right: 0;
-				}
-			}
+.gb_main_nav_link_label {
+	@include nt(700);
+
+	position: relative;
+
+	color: inherit;
+	font-size: 13px;
+	text-transform: uppercase;
+
+	&:after {
+		height: 1px;
+		width: 100%;
+
+		position: absolute;
+		top: 100%;
+		left: 0;
+
+		background: #fff;
+		content: '';
+		margin-top: 4px;
+		transform: scaleX(0);
+		transition: transform .25s;
+
+		.gb_main_nav_link:focus &,
+		.gb_main_nav_link:hover &,
+		.active & {
+			transform: scaleX(1);
 		}
 
-			.gb_main_nav_link {
-				@include nt(700);
-
-				color: inherit;
-				display: block;
-				font-size: 13px;
-				padding: 15px 0;
-				text-transform: uppercase;
-			}
-
-				.gb_main_nav_link_label {
-					position: relative;
-
-					&:after {
-						height: 1px;
-						width: 100%;
-
-						position: absolute;
-						top: 100%;
-						left: 0;
-
-						background: #fff;
-						content: '';
-						margin-top: 4px;
-						transform: scaleX(0);
-						transition: transform .25s;
-						transform-origin: left center;
-
-						@media screen and (min-width: 540px) {
-							transform-origin: center center;
-						}
-
-						.gb_main_nav_link:focus &,
-						.gb_main_nav_link:hover &,
-						.active & {
-							transform: scaleX(1);
-						}
-
-						.active & {
-							height: 3px;
-						}
-					}
-				}
+		.active & {
+			height: 3px;
+		}
+	}
+}
 
 
-// Jump Nav
-// =============================================================================
+/* Jump Nav
+============================================================================= */
 
 .gb_jump_nav {
 	position: relative;
@@ -133,146 +127,155 @@
 	}
 }
 
-	.gb_jump_nav_link {
-		@include nt(700);
+.gb_jump_nav_link {
+	position: relative;
+	z-index: 2;
 
-		position: relative;
-		z-index: 2;
+	color: inherit;
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 35px;
+	overflow: hidden;
+	padding: 20px 0;
 
-		color: #fff;
-		display: inline-block;
-		vertical-align: top;
-		font-size: 13px;
-		line-height: (16 / 13);
-		margin-right: 40px;
-		overflow: hidden;
-		padding: 20px 0;
-		text-shadow: 0 0 2px #333;
-		text-transform: uppercase;
+	&:before {
+		height: 100%;
+		width: 1px;
+
+		position: absolute;
+		bottom: 100%;
+		left: 50%;
+		z-index: -2;
+
+		background: #fff;
+		content: "";
+		transform: translate(-50%, 0);
+	}
+
+	&:focus,
+	&:hover {
 
 		&:before {
-			height: 100%;
-			width: 1px;
-
-			position: absolute;
-			bottom: 100%;
-			left: 50%;
-			z-index: -2;
-
-			background: #fff;
-			content: "";
-			transform-origin: center bottom;
-			transform: translate(-50%, 0);
-		}
-
-		&:focus,
-		&:hover {
-
-			&:before {
-				animation: jump-down .5s forwards;
-			}
+			animation: jump-down .5s forwards;
 		}
 	}
+}
 
-	@keyframes jump-down {
+@keyframes jump-down {
 
-		100% {
-			transform: translate(-50%, 200%);
-		}
+	100% {
+		transform: translate(-50%, 200%);
+	}
+}
+
+.gb_jump_nav_link_label {
+	@include nt(700);
+
+	color: inherit;
+	font-size: 14px;
+	line-height: (17 / 14);
+}
+
+.gb_jump_nav_rocket {
+	height: 40px;
+	width: 40px;
+
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+
+	border-radius: 50%;
+	color: transparent;
+	overflow: hidden;
+	transform: scale(0);
+	transition: transform .25s;
+
+	@media #{$min_xl} {
+		height: 100%;
+
+		position: absolute;
+		top: 0;
+		bottom: auto;
+		right: 0;
+
+		background: none;
+		border-radius: 0;
 	}
 
-	.gb_jump_nav_rocket {
-		height: 40px;
-		width: 40px;
+	&:before {
+		height: 30px;
+		width: 30px;
 
-		position: fixed;
-		bottom: 20px;
-		right: 20px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
 
-		background: #333;
+		border: 2px solid #000;
 		border-radius: 50%;
-		color: transparent;
-		overflow: hidden;
-		transform: scale(0);
-		transition: transform .25s;
+		content: "";
+		transform: translate(-50%, -50%);
 
 		@media #{$min_xl} {
-			height: 100%;
-
-			position: absolute;
-			top: 0;
-			bottom: auto;
-			right: 0;
-
-			background: none;
-			border-radius: 0;
+			border-color: #fff;
 		}
+	}
 
-		&:before {
-			height: 30px;
-			width: 30px;
+	&:after {
+		height: 8px;
+		width: 8px;
 
-			position: absolute;
-			top: 50%;
-			left: 50%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
 
-			border: 2px solid #fff;
-			border-radius: 50%;
-			content: "";
-			transform: translate(-50%, -50%);
+		border-top: 2px solid #000;
+		border-left: 2px solid #000;
+		margin-top: 2px;
+		content: "";
+		transform:
+			translate(-50%, -50%)
+			rotate(45deg);
+
+		@media #{$min_xl} {
+			border-top-color: #fff;
+			border-left-color: #fff;
 		}
+	}
+
+	&:focus,
+	&:hover {
 
 		&:after {
-			height: 8px;
-			width: 8px;
-
-			position: absolute;
-			top: 50%;
-			left: 50%;
-
-			border-top: 2px solid #fff;
-			border-left: 2px solid #fff;
-			margin-top: 2px;
-			content: "";
-			transform:
-				translate(-50%, -50%)
-				rotate(45deg);
-		}
-
-		&:focus,
-		&:hover {
-
-			&:after {
-				animation: rocket-jump 3s infinite;
-			}
-		}
-
-		.pinned & {
-			transform: scale(1);
+			animation: rocket-jump 3s infinite;
 		}
 	}
 
-	@keyframes rocket-jump {
-
-		10% {
-			opacity: 0;
-			transform:
-				translate(-50%, -150%)
-				rotate(45deg);
-		}
-
-		20% {
-			opacity: 0;
-			transform:
-				translate(-50%, 50%)
-				rotate(45deg);
-		}
-
-		30%,
-		100% {
-			opacity: 1;
-			transform:
-				translate(-50%, -50%)
-				rotate(45deg);
-		}
+	.pinned & {
+		transform: scale(1);
 	}
+}
+
+@keyframes rocket-jump {
+
+	10% {
+		opacity: 0;
+		transform:
+			translate(-50%, -150%)
+			rotate(45deg);
+	}
+
+	20% {
+		opacity: 0;
+		transform:
+			translate(-50%, 50%)
+			rotate(45deg);
+	}
+
+	30%,
+	100% {
+		opacity: 1;
+		transform:
+			translate(-50%, -50%)
+			rotate(45deg);
+	}
+}

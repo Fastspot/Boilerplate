@@ -4,11 +4,17 @@
 
 .address {}
 
-.address_name {}
+.address_group {}
+
+.address_name {
+	@include visually_hide;
+}
 
 .address_location {}
 
 .address_street {}
+
+.address_set {}
 
 .address_city {}
 
@@ -17,19 +23,21 @@
 .address_zip {}
 
 
-// Address Details
-// =============================================================================
+/* Address Details
+============================================================================= */
 
 .address_details {}
 
 .address_detail {}
 
-.address_detail_email {}
+.address_detail_icon {}
 
-.address_detail_phone {
+.address_detail_label {
 	color: inherit;
 }
 
-.address_detail_icon {}
+.address_detail_label_email {}
 
-.address_detail_label {}
+.address_detail_label_phone {}
+
+.address_detail_label_fax {}

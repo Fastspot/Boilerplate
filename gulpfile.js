@@ -43,6 +43,8 @@ var source = {
 	twig: [
 		'src/twig/templates/*.twig',
 		'!src/twig/templates/_*.twig',
+		'!src/twig/templates/dev-component-image-crops.twig',
+		'!src/twig/templates/dev-image-crops.twig',
 		'!src/twig/templates/fs-components.twig',
 		'!src/twig/templates/fs-templates.twig',
 		'!src/twig/templates/fs-content-strategy.twig'
@@ -69,6 +71,8 @@ var watch = {
 	],
 	twig: [
 		'src/twig/**/*.twig',
+		'!src/twig/templates/dev-component-image-crops.twig',
+		'!src/twig/templates/dev-image-crops.twig',
 		'!src/twig/templates/fs-components.twig',
 		'!src/twig/templates/fs-templates.twig',
 		'!src/twig/templates/fs-content-strategy.twig',
@@ -452,6 +456,141 @@ gulp.task('imagemin', function() {
 		.pipe(newer('images'))
 		.pipe(imagemin())
 		.pipe(gulp.dest('images'));
+
+});
+
+
+gulp.task('image-crops', function(done) {
+
+	var base = 'static/templates';
+	var exclude = ["16x16", "32x32", "144x144", "180x180"];
+	var crops = [];
+	var modCrops = [];
+	var steps = 1;
+	var fileCount;
+
+	fs.readdir(base, function(err, files) {
+		fileCount = files.toString().match(/page/g).length;
+
+		files.forEach(function(file) {
+			if (file.indexOf("page") > -1) {
+				fs.readFile(base + '/' + file, 'utf8', function(err, contents) {
+					var sizes = contents.match(/\d+x\d+/g);
+					
+					for (var x = 0; x < sizes.length; x++) {
+						
+						if (crops.indexOf(sizes[x]) == -1) {
+							if (exclude.indexOf(sizes[x]) == -1) {
+								crops.push(sizes[x]);
+							}
+						}
+					}
+
+					steps++;
+
+					if (steps == fileCount) {
+						crops = crops.sort();
+						
+						for (var x = 0; x < crops.length; x++) {
+							for (var cropRatio in packageJSON.img) {
+								for (var cropSize in packageJSON.img[cropRatio]) {
+									if (packageJSON.img[cropRatio][cropSize] == crops[x]) {
+										modCrops.push('<span class="crop-size">' + crops[x] + '</span><span class="crop-name"> ' + cropRatio + '.' + cropSize + '</span>');
+									}
+								}
+							}
+						}
+						
+						gulp.src('src/twig/templates/dev-image-crops.twig')
+							.pipe(twig({
+								data: {
+									crops: modCrops
+								}
+							}))
+							.pipe(rename({
+								extname: '.html'
+							}))
+							.pipe(gulp.dest('static/templates'));
+					}
+				});
+			}
+		});
+	});
+
+	done();
+
+});
+
+
+gulp.task('component-image-crops', function(done) {
+
+	var base = 'src/twig/components';
+	var data = [];
+	var typeSteps = 1;
+	
+	fs.readdir(base, function(err, folders) {
+		folders.forEach(function(folder) {
+			fs.readdir(base + '/' + folder, function(err, mods) {
+				var type = folder.replace('-', ' ').replace(/^[a-z]/, l => l.toUpperCase()).replace(/ [a-z]/, l => l.toUpperCase());
+
+				data.push({
+					type: type,
+					items: []
+				});
+
+				mods.forEach(function(mod) {
+					var content = fs.readFileSync(base + '/' + folder + '/' + mod, 'utf8');
+					var name = "";
+					var sizes = content.match(/(img\.[a-z]*\.[a-z]*)/g);
+					var sizesMarkup = [];
+
+					if (/(site.anchor\(.*\))/.test(content)) {
+						name = content.match(/(site.anchor\(.*\))/g);
+						name = name[0].replace('site.anchor(', '').replace(')', '').replace(/"/g, '');
+					} else {
+						name = mod.replace(/(-)/g, ' ').replace('.twig', '').replace(/^[a-z]/, l => l.toUpperCase()).replace(/ [a-z]/g, l => l.toUpperCase());
+					}
+
+					if (sizes !== null) {
+						sizes = [...new Set(sizes)];
+						sizes = sizes.sort();
+
+						for (var x = 0; x < sizes.length; x++) {
+							for (var cropRatio in packageJSON.img) {
+								for (var cropSize in packageJSON.img[cropRatio]) {
+									if ('img.' + cropRatio + '.' + cropSize == sizes[x]) {
+										sizesMarkup.push('<li class="crop" data-crop-size="' + packageJSON.img[cropRatio][cropSize] + '"><span class="crop-size">' + packageJSON.img[cropRatio][cropSize] + '</span><span class="crop-name"> ' + cropRatio + '.' + cropSize + '</span></li>');
+									}
+								}
+							}
+						}
+
+						data[typeSteps - 1].items.push({
+							name: name,
+							sizes: sizesMarkup
+						});
+					}
+				});
+
+				typeSteps++;
+
+				if (typeSteps == folders.length) {
+					gulp.src('src/twig/templates/dev-component-image-crops.twig')
+						.pipe(twig({
+							data: {
+								sections: data
+							}
+						}))
+						.pipe(rename({
+							extname: '.html'
+						}))
+						.pipe(gulp.dest('static/templates'));
+				}
+			});
+		});
+	});
+
+	done();
 
 });
 

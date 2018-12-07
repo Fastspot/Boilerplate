@@ -15,12 +15,11 @@
 {% block main %}
 	<ul class="sitemap">
 		{% for link in sitemap %}
-		<li class="sitemap_item{% if 'fs' in link %} fs-style-guide{% elseif 'dev' in link %} fs-dev{% elseif 'page' in link %} fs-page{% elseif 'accessibility' in link %} fs-access{% endif %}">
+		<li class="sitemap_item{% if 'fs' in link %} sitemap_item_style_guide{% elseif 'dev' in link %} sitemap_item_dev{% elseif 'page' in link %} sitemap_item_page{% elseif 'accessibility' in link %} sitemap_item_access{% endif %}">
 			<a class="sitemap_link" href="{% if accessibility %}../accessibility{% else %}templates{% endif %}{{link}}">{{link|replace({
 				".html": "",
 				"-": " ",
-				"/": ""
-			})|replace({
+				"/": "",
 				"fs": "",
 				"dev": "",
 				"page": ""
@@ -30,17 +29,17 @@
 	</ul>
 	{% if trello == "" %}
 	<style>
-		.fs-style-guide {
+		.sitemap_item_style_guide {
 			display: none;
 		}
 	</style>
 	{% endif %}
 	<script>
 		var sitemap = document.querySelector('.sitemap');
-		var fsAccess = document.querySelectorAll('.fs-access');
-		var fsDev = document.querySelectorAll('.fs-dev');
-		var fsGuide = document.querySelectorAll('.fs-style-guide');
-		var fsPage = document.querySelectorAll('.fs-page');
+		var fsAccess = document.querySelectorAll('.sitemap_item_access');
+		var fsDev = document.querySelectorAll('.sitemap_item_dev');
+		var fsGuide = document.querySelectorAll('.sitemap_item_style_guide');
+		var fsPage = document.querySelectorAll('.sitemap_item_page');
 
 		wrap(fsAccess);
 		wrap(fsDev);

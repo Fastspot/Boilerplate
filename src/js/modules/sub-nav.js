@@ -1,52 +1,27 @@
 /*-------------------------------------------
-	Navigation
+	Sub Nav
 -------------------------------------------*/
 
-Site.modules.Navigation = (function($, Site) {
+Site.modules.SubNav = (function($, Site) {
 
 	function init() {
-		if ($(".main_nav").length) {
+		if ($(".js-sub-nav").length) {
 			bindUI();
 		}
 	}
 
-	function setup() {
-		Site.modules.Page.ariaHide($(".js-main-nav-children"));
-
-		$(".main_nav_link").attr("aria-expanded", "false");
+	function setup() {		
 		$(".js-sub-nav-handle")
 			.attr("aria-expanded", "false")
 			.attr("aria-haspopup", "true");
 	}
 
 	function bindUI() {
-		$(".js-main-nav-toggle")
-			.on("activate.swap", onMainSwapActivate)
-			.on("deactivate.swap", onMainSwapDeactivate);
-			
 		$(".js-sub-nav-handle")
 			.on("activate.swap", onSubSwapActivate)
 			.on("deactivate.swap", onSubSwapDeactivate)
 			.on("enable.swap", onSubSwapEnable)
 			.on("disable.swap", onSubSwapDisable);
-
-		$(".js-main-nav-lg")
-			.find("a")
-			.hover(function() {
-				$(this).attr("aria-expanded", "true");
-
-				Site.modules.Page.ariaShow(
-					$(this).closest(".main_nav_item")
-						.find(".js-main-nav-children")
-				);
-			}, function() {
-				$(this).attr("aria-expanded", "false");
-
-				Site.modules.Page.ariaHide(
-					$(this).closest(".main_nav_item")
-						.find(".js-main-nav-children")
-				);
-		});
 
 		$.mediaquery("bind", "mq-key", "(min-width: " + Site.minLG + "px)", {
 			enter: function() {
@@ -64,28 +39,6 @@ Site.modules.Navigation = (function($, Site) {
 					.attr("aria-haspopup", "true");
 			}
 		});
-	}
-
-	function onMainSwapActivate() {
-		$(this).closest(".main_nav_item")
-			.find(".main_nav_link")
-			.attr("aria-expanded", "true");
-
-		Site.modules.Page.ariaShow(
-			$(this).closest(".main_nav_item")
-				.find(".js-main-nav-children")
-		);
-	}
-
-	function onMainSwapDeactivate() {
-		$(this).closest(".main_nav_item")
-			.find(".main_nav_link")
-			.attr("aria-expanded", "false");
-
-		Site.modules.Page.ariaHide(
-			$(this).closest(".main_nav_item")
-				.find(".js-main-nav-children")
-		);
 	}
 
 	function onSubSwapActivate() {

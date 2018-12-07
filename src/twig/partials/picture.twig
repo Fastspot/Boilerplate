@@ -1,9 +1,9 @@
 {#
-	{% include par ~ "picture.twig" with {
+	{% include picture with {
 		class: "media",
-		fallback: "placeholder",
-		image: item.image,
 		itemprop: "",
+		image: item.image,
+		fallback: img.wide.xsml,
 		sources: {
 			"1220px": img.wide.med,
 			"500px": img.wide.sml

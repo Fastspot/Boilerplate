@@ -23,8 +23,6 @@ Site.modules.Formstone = (function($, Site) {
 			$(this).addClass("fs-background-loaded");
 		});
 		$(".js-carousel").carousel();
-		$(".js-checkbox, .js-radio").checkbox();
-		$(".js-dropdown").dropdown();
 		$(".js-equalize").equalize();
 		$(".js-lightbox").lightbox(lightboxOptions);
 		$(".js-swap").swap();
@@ -57,8 +55,8 @@ Site.modules.Formstone = (function($, Site) {
 		}
 	}
 
-	function carouselPagination($element) {
-		$element.each(function() {
+	function carouselPagination($item) {
+		$item.each(function() {
 			var $previous_button = $(this).find(".fs-carousel-control_previous");
 			var previous_text = $previous_button.text();
 			var $next_button = $(this).find(".fs-carousel-control_next");
