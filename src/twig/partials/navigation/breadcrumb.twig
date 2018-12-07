@@ -6,7 +6,7 @@
 	} %}
 #}
 
-<nav class="breadcrumb_nav{% if modifier %} breadcrumb_nav_{{modifier}}{% endif %}" aria-label="Breadcrumb">
+<nav class="breadcrumb_nav{% if modifier %} breadcrumb_nav_{{ modifier }}{% endif %}" aria-label="Breadcrumb">
 	<div class="breadcrumb_nav_header">
 		<h2 class="breadcrumb_nav_title">You are here:</h2>
 	</div>
@@ -14,7 +14,7 @@
 		<li class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
 			<a class="breadcrumb_pill breadcrumb_pill_link" href="page-home.html" itemprop="item">
 				{% if icon %}
-				<span class="breadcrumb_pill_icon">{{site.icon("home")}}</span>
+				<span class="breadcrumb_pill_icon">{{ site.icon("home") }}</span>
 				{% endif %}
 				<span class="breadcrumb_pill_label" itemprop="name">Home</span>
 			</a>
@@ -23,15 +23,15 @@
 		{% for link in links %}
 		{% if not loop.last %}
 		<li class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-			<a class="breadcrumb_pill breadcrumb_pill_link" href="{{link.href ?: '#'}}" itemprop="item">
-				<span class="breadcrumb_pill_label" itemprop="name">{{link.name ?: link}}</span>
+			<a class="breadcrumb_pill breadcrumb_pill_link" href="{{ link.href ?: '#' }}" itemprop="item">
+				<span class="breadcrumb_pill_label" itemprop="name">{{ link.name ?: link }}</span>
 			</a>
-			<meta itemprop="position" content="{{loop.index + 1}}">
+			<meta itemprop="position" content="{{ loop.index + 1 }}">
 		</li>
 		{% else %}
 		<li class="breadcrumb_item">
 			<span class="breadcrumb_pill">
-				<span class="breadcrumb_pill_label">{{link.name ?: link}}</span>
+				<span class="breadcrumb_pill_label">{{ link.name ?: link }}</span>
 			</span>
 		</li>
 		{% endif %}
