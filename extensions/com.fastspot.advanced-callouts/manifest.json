@@ -1,8 +1,8 @@
 {
     "type": "extension",
     "id": "com.fastspot.advanced-callouts",
-    "version": "1.0.3",
-    "revision": 8,
+    "version": "1.0.4",
+    "revision": 9,
     "compatibility": "4.2+",
     "title": "Advanced Callout Field Types",
     "description": "This extension implements two field types:\r\n\r\nPredefiend Callouts \u2014 Allows you to choose individual callouts to prefill a callout area. You can optionally turn on or off dragability and the option to add more callouts from other groups. \r\n\r\nInline Callout Set \u2014 Allows you to choose individual callouts to prefill a callout area but the callouts are drawn inline with section headers that you specify rather than in a dialog.",

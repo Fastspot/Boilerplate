@@ -20,7 +20,13 @@
 ?>
 <fieldset>
 	<label<?=$label_validation_class?>><?=$field["title"]?><?php if ($field["subtitle"]) { ?> <small><?=$field["subtitle"]?></small><?php } ?></label>
-	<?php include BigTree::path("admin/form-field-types/draw/list.php"); ?>
+	<?php
+		if (BIGTREE_REVISION > 300) {
+			include BigTree::path("admin/field-types/list/draw.php");
+		} else {
+			include BigTree::path("admin/form-field-types/draw/list.php");
+		}
+	?>
 </fieldset>
 <hr>
 <?php
@@ -50,10 +56,14 @@
 			SavedDisplayFieldValue = DisplayField.val();
 		});
 
-		<?php if ($existing_value) { ?>
+		<?php
+			if ($existing_value) {
+		?>
 		// Add a ready hook to disable other form elements if this is enabled
 		BigTree.ReadyHooks.push(saveInputStates);
-		<?php } ?>
+		<?php
+			}
+		?>
 
 		function saveInputStates() {
 			RequiredFields.each(function() {
@@ -64,7 +74,9 @@
 			OtherFieldsets.addClass("disabled");
 			DisplayField.val("<?=$field["key"]?>");
 
-			<?php if (BIGTREE_REVISION < 211) { ?>
+			<?php
+				if (BIGTREE_REVISION < 211) {
+			?>
 			OtherFields.each(function() {
 				$(this).attr("data-disabled-state", $(this).prop("disabled"));
 				$(this).prop("disabled", true);
@@ -73,7 +85,9 @@
 					$(this).get(0).customControl.disable();
 				}
 			});
-			<?php } ?>
+			<?php
+				}
+			?>
 		}
 
 		function resetInputStates() {
@@ -84,7 +98,9 @@
 			OtherFieldsets.removeClass("disabled");
 			DisplayField.val(SavedDisplayFieldValue);
 
-			<?php if (BIGTREE_REVISION < 211) { ?>
+			<?php
+				if (BIGTREE_REVISION < 211) {
+			?>
 			OtherFields.each(function() {
 				if ($(this).attr("data-disabled-state") == "false") {
 					$(this).prop("disabled", false);
@@ -94,7 +110,9 @@
 					}
 				}
 			});
-			<?php } ?>
+			<?php
+				}
+			?>
 		}
 
 		$("#<?=$field["id"]?>").change(function() {

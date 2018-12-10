@@ -497,5 +497,1003 @@
                 "id": "default"
             }
         }
+    },
+    {
+        "id": "file-metadata"
+    },
+    {
+        "name": "File Manager Preset",
+        "min_width": "1440",
+        "min_height": "1080",
+        "preview_prefix": "classic-xxsml-",
+        "crops": [
+            {
+                "prefix": "ultrawide-xlrg-",
+                "width": "1440",
+                "height": "617",
+                "grayscale": "",
+                "thumbs": {
+                    "1": {
+                        "prefix": "ultrawide-xxsml-",
+                        "width": "300",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    "2": {
+                        "prefix": "ultrawide-xsml-",
+                        "width": "500",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    "3": {
+                        "prefix": "ultrawide-sml-",
+                        "width": "740",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    "4": {
+                        "prefix": "ultrawide-med-",
+                        "width": "980",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    "5": {
+                        "prefix": "ultrawide-lrg-",
+                        "width": "1220",
+                        "height": "",
+                        "grayscale": ""
+                    }
+                }
+            },
+            {
+                "prefix": "wide-xlrg-",
+                "width": "1440",
+                "height": "810",
+                "grayscale": "",
+                "thumbs": [
+                    {
+                        "prefix": "wide-xxsml-",
+                        "width": "300",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "wide-xsml-",
+                        "width": "500",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "wide-sml-",
+                        "width": "740",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "wide-med-",
+                        "width": "980",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "wide-lrg-",
+                        "width": "1220",
+                        "height": "",
+                        "grayscale": ""
+                    }
+                ]
+            },
+            {
+                "prefix": "full-xlrg-",
+                "width": "1440",
+                "height": "1080",
+                "grayscale": "",
+                "thumbs": [
+                    {
+                        "prefix": "full-xxsml-",
+                        "width": "300",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "full-xsml-",
+                        "width": "500",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "full-sml-",
+                        "width": "740",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "full-med-",
+                        "width": "980",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "full-lrg-",
+                        "width": "1220",
+                        "height": "",
+                        "grayscale": ""
+                    }
+                ]
+            },
+            {
+                "prefix": "square-med-",
+                "width": "980",
+                "height": "980",
+                "grayscale": "",
+                "thumbs": [
+                    {
+                        "prefix": "square-xxsml-",
+                        "width": "300",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "square-xsml-",
+                        "width": "500",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "square-sml-",
+                        "width": "740",
+                        "height": "",
+                        "grayscale": ""
+                    }
+                ]
+            },
+            {
+                "prefix": "classic-xlrg-",
+                "width": "1440",
+                "height": "960",
+                "grayscale": "",
+                "thumbs": [
+                    {
+                        "prefix": "classic-xxsml-",
+                        "width": "300",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "classic-xsml-",
+                        "width": "500",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "classic-sml-",
+                        "width": "740",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "classic-med-",
+                        "width": "980",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "classic-lrg-",
+                        "width": "1220",
+                        "height": "",
+                        "grayscale": ""
+                    }
+                ]
+            },
+            {
+                "prefix": "portrait-full-med-",
+                "width": "735",
+                "height": "980",
+                "grayscale": "",
+                "thumbs": [
+                    {
+                        "prefix": "portrait-full-xxsml-",
+                        "width": "",
+                        "height": "300",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "portrait-full-xsml-",
+                        "width": "",
+                        "height": "500",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "portrait-full-sml-",
+                        "width": "",
+                        "height": "740",
+                        "grayscale": ""
+                    }
+                ]
+            },
+            {
+                "prefix": "portrait-classic-med-",
+                "width": "654",
+                "height": "980",
+                "grayscale": "",
+                "thumbs": [
+                    {
+                        "prefix": "portrait-classic-xxsml-",
+                        "width": "",
+                        "height": "300",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "portrait-classic-xsml-",
+                        "width": "",
+                        "height": "500",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "portrait-classic-sml-",
+                        "width": "",
+                        "height": "740",
+                        "grayscale": ""
+                    }
+                ]
+            }
+        ],
+        "thumbs": [
+            {
+                "prefix": "",
+                "width": "3000",
+                "height": "3000",
+                "grayscale": ""
+            }
+        ],
+        "id": "media-settings",
+        "presets": {
+            "default": {
+                "name": "File Manager Preset",
+                "min_width": "1440",
+                "min_height": "1080",
+                "preview_prefix": "classic-xxsml-",
+                "crops": [
+                    {
+                        "prefix": "ultrawide-xlrg-",
+                        "width": "1440",
+                        "height": "617",
+                        "grayscale": "",
+                        "thumbs": {
+                            "1": {
+                                "prefix": "ultrawide-xxsml-",
+                                "width": "300",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            "2": {
+                                "prefix": "ultrawide-xsml-",
+                                "width": "500",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            "3": {
+                                "prefix": "ultrawide-sml-",
+                                "width": "740",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            "4": {
+                                "prefix": "ultrawide-med-",
+                                "width": "980",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            "5": {
+                                "prefix": "ultrawide-lrg-",
+                                "width": "1220",
+                                "height": "",
+                                "grayscale": ""
+                            }
+                        }
+                    },
+                    {
+                        "prefix": "wide-xlrg-",
+                        "width": "1440",
+                        "height": "810",
+                        "grayscale": "",
+                        "thumbs": [
+                            {
+                                "prefix": "wide-xxsml-",
+                                "width": "300",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "wide-xsml-",
+                                "width": "500",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "wide-sml-",
+                                "width": "740",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "wide-med-",
+                                "width": "980",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "wide-lrg-",
+                                "width": "1220",
+                                "height": "",
+                                "grayscale": ""
+                            }
+                        ]
+                    },
+                    {
+                        "prefix": "full-xlrg-",
+                        "width": "1440",
+                        "height": "1080",
+                        "grayscale": "",
+                        "thumbs": [
+                            {
+                                "prefix": "full-xxsml-",
+                                "width": "300",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "full-xsml-",
+                                "width": "500",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "full-sml-",
+                                "width": "740",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "full-med-",
+                                "width": "980",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "full-lrg-",
+                                "width": "1220",
+                                "height": "",
+                                "grayscale": ""
+                            }
+                        ]
+                    },
+                    {
+                        "prefix": "square-med-",
+                        "width": "980",
+                        "height": "980",
+                        "grayscale": "",
+                        "thumbs": [
+                            {
+                                "prefix": "square-xxsml-",
+                                "width": "300",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "square-xsml-",
+                                "width": "500",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "square-sml-",
+                                "width": "740",
+                                "height": "",
+                                "grayscale": ""
+                            }
+                        ]
+                    },
+                    {
+                        "prefix": "classic-xlrg-",
+                        "width": "1440",
+                        "height": "960",
+                        "grayscale": "",
+                        "thumbs": [
+                            {
+                                "prefix": "classic-xxsml-",
+                                "width": "300",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "classic-xsml-",
+                                "width": "500",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "classic-sml-",
+                                "width": "740",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "classic-med-",
+                                "width": "980",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "classic-lrg-",
+                                "width": "1220",
+                                "height": "",
+                                "grayscale": ""
+                            }
+                        ]
+                    },
+                    {
+                        "prefix": "portrait-full-med-",
+                        "width": "735",
+                        "height": "980",
+                        "grayscale": "",
+                        "thumbs": [
+                            {
+                                "prefix": "portrait-full-xxsml-",
+                                "width": "",
+                                "height": "300",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "portrait-full-xsml-",
+                                "width": "",
+                                "height": "500",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "portrait-full-sml-",
+                                "width": "",
+                                "height": "740",
+                                "grayscale": ""
+                            }
+                        ]
+                    },
+                    {
+                        "prefix": "portrait-classic-med-",
+                        "width": "654",
+                        "height": "980",
+                        "grayscale": "",
+                        "thumbs": [
+                            {
+                                "prefix": "portrait-classic-xxsml-",
+                                "width": "",
+                                "height": "300",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "portrait-classic-xsml-",
+                                "width": "",
+                                "height": "500",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "portrait-classic-sml-",
+                                "width": "",
+                                "height": "740",
+                                "grayscale": ""
+                            }
+                        ]
+                    }
+                ],
+                "thumbs": [
+                    {
+                        "prefix": "",
+                        "width": "3000",
+                        "height": "3000",
+                        "grayscale": ""
+                    }
+                ],
+                "id": "default"
+            }
+        }
+    },
+    {
+        "id": "file-metadata"
+    },
+    {
+        "name": "File Manager Preset",
+        "min_width": "1440",
+        "min_height": "1080",
+        "preview_prefix": "classic-xxsml-",
+        "crops": [
+            {
+                "prefix": "ultrawide-xlrg-",
+                "width": "1440",
+                "height": "617",
+                "grayscale": "",
+                "thumbs": {
+                    "1": {
+                        "prefix": "ultrawide-xxsml-",
+                        "width": "300",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    "2": {
+                        "prefix": "ultrawide-xsml-",
+                        "width": "500",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    "3": {
+                        "prefix": "ultrawide-sml-",
+                        "width": "740",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    "4": {
+                        "prefix": "ultrawide-med-",
+                        "width": "980",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    "5": {
+                        "prefix": "ultrawide-lrg-",
+                        "width": "1220",
+                        "height": "",
+                        "grayscale": ""
+                    }
+                }
+            },
+            {
+                "prefix": "wide-xlrg-",
+                "width": "1440",
+                "height": "810",
+                "grayscale": "",
+                "thumbs": [
+                    {
+                        "prefix": "wide-xxsml-",
+                        "width": "300",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "wide-xsml-",
+                        "width": "500",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "wide-sml-",
+                        "width": "740",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "wide-med-",
+                        "width": "980",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "wide-lrg-",
+                        "width": "1220",
+                        "height": "",
+                        "grayscale": ""
+                    }
+                ]
+            },
+            {
+                "prefix": "full-xlrg-",
+                "width": "1440",
+                "height": "1080",
+                "grayscale": "",
+                "thumbs": [
+                    {
+                        "prefix": "full-xxsml-",
+                        "width": "300",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "full-xsml-",
+                        "width": "500",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "full-sml-",
+                        "width": "740",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "full-med-",
+                        "width": "980",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "full-lrg-",
+                        "width": "1220",
+                        "height": "",
+                        "grayscale": ""
+                    }
+                ]
+            },
+            {
+                "prefix": "square-med-",
+                "width": "980",
+                "height": "980",
+                "grayscale": "",
+                "thumbs": [
+                    {
+                        "prefix": "square-xxsml-",
+                        "width": "300",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "square-xsml-",
+                        "width": "500",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "square-sml-",
+                        "width": "740",
+                        "height": "",
+                        "grayscale": ""
+                    }
+                ]
+            },
+            {
+                "prefix": "classic-xlrg-",
+                "width": "1440",
+                "height": "960",
+                "grayscale": "",
+                "thumbs": [
+                    {
+                        "prefix": "classic-xxsml-",
+                        "width": "300",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "classic-xsml-",
+                        "width": "500",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "classic-sml-",
+                        "width": "740",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "classic-med-",
+                        "width": "980",
+                        "height": "",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "classic-lrg-",
+                        "width": "1220",
+                        "height": "",
+                        "grayscale": ""
+                    }
+                ]
+            },
+            {
+                "prefix": "portrait-full-med-",
+                "width": "735",
+                "height": "980",
+                "grayscale": "",
+                "thumbs": [
+                    {
+                        "prefix": "portrait-full-xxsml-",
+                        "width": "",
+                        "height": "300",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "portrait-full-xsml-",
+                        "width": "",
+                        "height": "500",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "portrait-full-sml-",
+                        "width": "",
+                        "height": "740",
+                        "grayscale": ""
+                    }
+                ]
+            },
+            {
+                "prefix": "portrait-classic-med-",
+                "width": "654",
+                "height": "980",
+                "grayscale": "",
+                "thumbs": [
+                    {
+                        "prefix": "portrait-classic-xxsml-",
+                        "width": "",
+                        "height": "300",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "portrait-classic-xsml-",
+                        "width": "",
+                        "height": "500",
+                        "grayscale": ""
+                    },
+                    {
+                        "prefix": "portrait-classic-sml-",
+                        "width": "",
+                        "height": "740",
+                        "grayscale": ""
+                    }
+                ]
+            }
+        ],
+        "thumbs": [
+            {
+                "prefix": "",
+                "width": "3000",
+                "height": "3000",
+                "grayscale": ""
+            }
+        ],
+        "id": "media-settings",
+        "presets": {
+            "default": {
+                "name": "File Manager Preset",
+                "min_width": "1440",
+                "min_height": "1080",
+                "preview_prefix": "classic-xxsml-",
+                "crops": [
+                    {
+                        "prefix": "ultrawide-xlrg-",
+                        "width": "1440",
+                        "height": "617",
+                        "grayscale": "",
+                        "thumbs": {
+                            "1": {
+                                "prefix": "ultrawide-xxsml-",
+                                "width": "300",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            "2": {
+                                "prefix": "ultrawide-xsml-",
+                                "width": "500",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            "3": {
+                                "prefix": "ultrawide-sml-",
+                                "width": "740",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            "4": {
+                                "prefix": "ultrawide-med-",
+                                "width": "980",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            "5": {
+                                "prefix": "ultrawide-lrg-",
+                                "width": "1220",
+                                "height": "",
+                                "grayscale": ""
+                            }
+                        }
+                    },
+                    {
+                        "prefix": "wide-xlrg-",
+                        "width": "1440",
+                        "height": "810",
+                        "grayscale": "",
+                        "thumbs": [
+                            {
+                                "prefix": "wide-xxsml-",
+                                "width": "300",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "wide-xsml-",
+                                "width": "500",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "wide-sml-",
+                                "width": "740",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "wide-med-",
+                                "width": "980",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "wide-lrg-",
+                                "width": "1220",
+                                "height": "",
+                                "grayscale": ""
+                            }
+                        ]
+                    },
+                    {
+                        "prefix": "full-xlrg-",
+                        "width": "1440",
+                        "height": "1080",
+                        "grayscale": "",
+                        "thumbs": [
+                            {
+                                "prefix": "full-xxsml-",
+                                "width": "300",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "full-xsml-",
+                                "width": "500",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "full-sml-",
+                                "width": "740",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "full-med-",
+                                "width": "980",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "full-lrg-",
+                                "width": "1220",
+                                "height": "",
+                                "grayscale": ""
+                            }
+                        ]
+                    },
+                    {
+                        "prefix": "square-med-",
+                        "width": "980",
+                        "height": "980",
+                        "grayscale": "",
+                        "thumbs": [
+                            {
+                                "prefix": "square-xxsml-",
+                                "width": "300",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "square-xsml-",
+                                "width": "500",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "square-sml-",
+                                "width": "740",
+                                "height": "",
+                                "grayscale": ""
+                            }
+                        ]
+                    },
+                    {
+                        "prefix": "classic-xlrg-",
+                        "width": "1440",
+                        "height": "960",
+                        "grayscale": "",
+                        "thumbs": [
+                            {
+                                "prefix": "classic-xxsml-",
+                                "width": "300",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "classic-xsml-",
+                                "width": "500",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "classic-sml-",
+                                "width": "740",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "classic-med-",
+                                "width": "980",
+                                "height": "",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "classic-lrg-",
+                                "width": "1220",
+                                "height": "",
+                                "grayscale": ""
+                            }
+                        ]
+                    },
+                    {
+                        "prefix": "portrait-full-med-",
+                        "width": "735",
+                        "height": "980",
+                        "grayscale": "",
+                        "thumbs": [
+                            {
+                                "prefix": "portrait-full-xxsml-",
+                                "width": "",
+                                "height": "300",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "portrait-full-xsml-",
+                                "width": "",
+                                "height": "500",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "portrait-full-sml-",
+                                "width": "",
+                                "height": "740",
+                                "grayscale": ""
+                            }
+                        ]
+                    },
+                    {
+                        "prefix": "portrait-classic-med-",
+                        "width": "654",
+                        "height": "980",
+                        "grayscale": "",
+                        "thumbs": [
+                            {
+                                "prefix": "portrait-classic-xxsml-",
+                                "width": "",
+                                "height": "300",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "portrait-classic-xsml-",
+                                "width": "",
+                                "height": "500",
+                                "grayscale": ""
+                            },
+                            {
+                                "prefix": "portrait-classic-sml-",
+                                "width": "",
+                                "height": "740",
+                                "grayscale": ""
+                            }
+                        ]
+                    }
+                ],
+                "thumbs": [
+                    {
+                        "prefix": "",
+                        "width": "3000",
+                        "height": "3000",
+                        "grayscale": ""
+                    }
+                ],
+                "id": "default"
+            }
+        }
     }
 ]

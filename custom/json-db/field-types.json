@@ -34,15 +34,6 @@
         "extension": "com.fastspot.date-range"
     },
     {
-        "id": "com.fastspot.events*date-chooser",
-        "name": "Events \u2014 Date Chooser",
-        "use_cases": {
-            "modules": "on"
-        },
-        "self_draw": "on",
-        "extension": "com.fastspot.events"
-    },
-    {
         "id": "com.fastspot.form-builder*form-builder-picker",
         "name": "Form Builder Form",
         "use_cases": {
@@ -143,5 +134,23 @@
         },
         "self_draw": null,
         "extension": "com.fastspot.video-field-type"
+    },
+    {
+        "id": "com.fastspot.2.events*date-chooser",
+        "name": "Events \u2014 Date Chooser",
+        "use_cases": {
+            "modules": "on"
+        },
+        "self_draw": "on",
+        "extension": "com.fastspot.2.events"
+    },
+    {
+        "id": "com.fastspot.2.events*event-actions",
+        "name": "Events \u2014 Event Actions",
+        "use_cases": {
+            "modules": "on"
+        },
+        "self_draw": "on",
+        "extension": "com.fastspot.2.events"
     }
 ]

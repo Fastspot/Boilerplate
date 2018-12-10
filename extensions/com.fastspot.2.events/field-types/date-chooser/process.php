@@ -32,27 +32,6 @@
 		}
 	}
 	
-	if ($bigtree["post_data"]["recurrence_type"]) {
-		$bigtree["entry"]["recurrence_type"] = $bigtree["post_data"]["recurrence_type"];
-		$bigtree["entry"]["recurrence_detail"] = $bigtree["post_data"]["recurrence_detail"];
-
-		$raw_recurring_end = BigTree::dateFormat($bigtree["post_data"]["recurring_end_date"],"U");
-		
-		if ($raw_recurring_end) {
-			if ($raw_recurring_end > $raw_start) {
-				$bigtree["entry"]["recurring_end_date"] = date("Y-m-d",$raw_recurring_end);
-			} else {
-				$bigtree["entry"]["recurring_end_date"] = "";
-				$bigtree["errors"][] = array("field" => "Recurring End Date", "error" => "The recurring end date you entered was earlier than the start date.");
-			}
-		}
-	} else {
-		$bigtree["entry"]["recurrence_type"] = "";
-		$bigtree["entry"]["recurrence_detail"] = "";
-		$bigtree["entry"]["recurring_end_date"] = "";
-		$bigtree["entry"]["canceled_recurrences"] = "";
-	}
-	
 	$field["ignore"] = true;
 
 	BigTreeAutoModule::clearCache("btx_events_date_cache");

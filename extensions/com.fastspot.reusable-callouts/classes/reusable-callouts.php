@@ -259,26 +259,29 @@
 		}
 
 		static function publishHook($table, $id, $changes, $many_to_many, $tags) {
-			// Figure out if the callout type has the field type yet
-			$callout = BigTreeAdmin::getCallout($changes["type"]);
-			$secret_field_exists = false;
-
-			foreach ($callout["resources"] as $resource) {
-				if ($resource["type"] == "com.fastspot.reusable-callouts*callout-list" && $resource["id"] == "__reusable_callout_id") {
-					$secret_field_exists = true;
+			// BigTree 4.4+ uses callout field hooks rather than modifying the database
+			if (BIGTREE_REVISION < 400) {
+				// Figure out if the callout type has the field type yet
+				$callout = BigTreeAdmin::getCallout($changes["type"]);
+				$secret_field_exists = false;
+	
+				foreach ($callout["resources"] as $resource) {
+					if ($resource["type"] == "com.fastspot.reusable-callouts*callout-list" && $resource["id"] == "__reusable_callout_id") {
+						$secret_field_exists = true;
+					}
 				}
-			}
-
-			// Field doesn't exist, update the callout
-			if (!$secret_field_exists) {
-				array_unshift($callout["resources"], array(
-					"id" => "__reusable_callout_id",
-					"type" => "com.fastspot.reusable-callouts*callout-list",
-					"title" => "Existing Callout",
-					"subtitle" => "(leave empty to create a custom callout)"
-				));
-
-				sqlquery("UPDATE bigtree_callouts SET resources = '".BigTree::json($callout["resources"], true)."' WHERE id = '".sqlescape($callout["id"])."'");
+	
+				// Field doesn't exist, update the callout
+				if (!$secret_field_exists) {
+					array_unshift($callout["resources"], array(
+						"id" => "__reusable_callout_id",
+						"type" => "com.fastspot.reusable-callouts*callout-list",
+						"title" => "Existing Callout",
+						"subtitle" => "(leave empty to create a custom callout)"
+					));
+	
+					sqlquery("UPDATE bigtree_callouts SET resources = '".BigTree::json($callout["resources"], true)."' WHERE id = '".sqlescape($callout["id"])."'");
+				}
 			}
 		}
 

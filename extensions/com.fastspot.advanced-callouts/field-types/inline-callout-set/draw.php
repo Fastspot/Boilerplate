@@ -24,9 +24,10 @@
 					"title" => $resource["title"],
 					"subtitle" => $resource["subtitle"],
 					"key" => $field["key"]."[$callout_number][".$resource["id"]."]",
+					"has_value" => isset($field["value"][$callout_number][$resource["id"]]),
 					"value" => isset($field["value"][$callout_number][$resource["id"]]) ? $field["value"][$callout_number][$resource["id"]] : "",
 					"tabindex" => $bigtree["tabindex"]++,
-					"options" => $resource["options"]
+					"options" => $resource["settings"] ?: $resource["options"]
 				);
 				
 				if (empty($callout_field["options"]["directory"])) {

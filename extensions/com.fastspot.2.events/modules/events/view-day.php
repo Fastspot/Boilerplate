@@ -1,5 +1,4 @@
 <?php
-	$eventsMod = new BTXEvents;
 	$items = $eventsMod->getEventsByDate($bigtree["commands"][0]);
 ?>
 <div class="container" id="btx_events_search_results">
@@ -21,7 +20,7 @@
 					<section class="view_action">
 						<span class="icon_repeat<?php if ($item["recurrence_type"]) { ?> icon_repeat_on<?php } ?>"></span>
 					</section>
-					<section class="view_action"><a href="<?=MODULE_ROOT?>edit-check/?event=<?=$item["id"]?>&date=<?=date("Y-m-d",strtotime($item["start"]))?>" class="icon_edit"></a></section>
+					<section class="view_action"><a href="<?=MODULE_ROOT?>edit/<?=$item["id"]?>/" class="icon_edit"></a></section>
 					<section class="view_action"><a href="#<?=$item["id"]?>" class="icon_delete"></a></section>
 				</li>
 				<?php } ?>

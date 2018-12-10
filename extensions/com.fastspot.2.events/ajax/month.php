@@ -10,12 +10,14 @@
 	$month = strtotime(date("F 1, Y",$month));
 	
 	// Get the events for this month
-	$e = BTXEvents::getEventsByDateRange(date("Y-m-1",$month),date("Y-m-t",$month));
+	$events = BTXEvents::getEventsByDateRange(date("Y-m-1",$month),date("Y-m-t",$month));
+
 	// Change the events into an array with the key being a date and the value being an array of events ocurring on that day
-	$month_of_events = BTXEvents::getKeyedDateRangeForEvents($e);
+	$month_of_events = BTXEvents::getKeyedDateRangeForEvents($events);
 ?>
 <div id="btx_events_calendar">
 	<header>
+		<a class="today" href="#<?=time()?>">Today is: <?=date("F j")?></a>
 		<nav>
 			<a href="#<?=($month-60*60)?>" class="previous month_button"><span>&laquo;</span></a>
 			<span><?=date("F Y",$month)?></span>
@@ -91,14 +93,14 @@
 
 			// See if there are any events for this day.
 			$items = $month_of_events[date("Y",$month)."-".date("m",$month)."-".$day];
-  			
-  			if (is_array($items) && count($items)) {
+
+  			if (!empty($items) && count($items)) {
   				echo '<ul class="calendar_events">';
   				$xx = 0;
 				
 				foreach ($items as $item) {
 					if ($xx < 4) {
-						echo '<li><a href="'.MODULE_ROOT."edit-check/?event=".$item["id"].'&date='.date("Y",$month)."-".date("m",$month)."-".$day.'">'.$item["title"]."</a></li>";
+						echo '<li><a href="'.MODULE_ROOT."edit/".$item["id"].'/">'.$item["title"]."</a></li>";
 					}
 					
 					$xx++;

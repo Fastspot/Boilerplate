@@ -1,8 +1,8 @@
 {
     "type": "extension",
     "id": "com.fastspot.reusable-callouts",
-    "version": "1.3.3",
-    "revision": 18,
+    "version": "1.3.4",
+    "revision": 19,
     "compatibility": "4.2+",
     "title": "Reusable Callouts",
     "description": "Implements a module that allows users to create reusable callouts and a field type allowing end users to choose a pre-created callout when adding callouts.",

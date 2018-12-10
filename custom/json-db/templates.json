@@ -105,88 +105,6 @@
         "extension": null
     },
     {
-        "id": "full",
-        "name": "Full Width",
-        "routed": "",
-        "resources": [
-            {
-                "id": "page_header",
-                "type": "text",
-                "title": "Page Header",
-                "subtitle": "",
-                "settings": null
-            },
-            {
-                "id": "page_content",
-                "type": "html",
-                "title": "Page Content",
-                "subtitle": "",
-                "settings": null
-            },
-            {
-                "id": "in_content_callouts",
-                "type": "callouts",
-                "title": "In Content Callouts",
-                "subtitle": "",
-                "settings": {
-                    "groups": [
-                        "2"
-                    ],
-                    "noun": "",
-                    "max": ""
-                }
-            },
-            {
-                "id": "full_width_callouts",
-                "type": "callouts",
-                "title": "Full Width Callouts",
-                "subtitle": "",
-                "settings": {
-                    "groups": [
-                        "1"
-                    ],
-                    "noun": "",
-                    "max": ""
-                }
-            }
-        ],
-        "hooks": null,
-        "module": null,
-        "level": "0",
-        "position": "5",
-        "extension": null
-    },
-    {
-        "id": "search",
-        "name": "Search",
-        "routed": "",
-        "resources": [
-            {
-                "id": "page_header",
-                "title": "Page Header",
-                "subtitle": "",
-                "type": "text",
-                "settings": null
-            }
-        ],
-        "hooks": null,
-        "module": null,
-        "level": "2",
-        "position": "4",
-        "extension": null
-    },
-    {
-        "id": "events",
-        "name": "Events",
-        "routed": "on",
-        "resources": [],
-        "hooks": null,
-        "module": null,
-        "level": "0",
-        "position": "3",
-        "extension": null
-    },
-    {
         "id": "com.fastspot.form-builder*btx-form-builder",
         "name": "Form Builder",
         "routed": "on",
@@ -255,8 +173,90 @@
         "hooks": null,
         "module": null,
         "level": "0",
-        "position": "2",
+        "position": "5",
         "extension": "com.fastspot.form-builder"
+    },
+    {
+        "id": "full",
+        "name": "Full Width",
+        "routed": "",
+        "resources": [
+            {
+                "id": "page_header",
+                "type": "text",
+                "title": "Page Header",
+                "subtitle": "",
+                "settings": null
+            },
+            {
+                "id": "page_content",
+                "type": "html",
+                "title": "Page Content",
+                "subtitle": "",
+                "settings": null
+            },
+            {
+                "id": "in_content_callouts",
+                "type": "callouts",
+                "title": "In Content Callouts",
+                "subtitle": "",
+                "settings": {
+                    "groups": [
+                        "2"
+                    ],
+                    "noun": "",
+                    "max": ""
+                }
+            },
+            {
+                "id": "full_width_callouts",
+                "type": "callouts",
+                "title": "Full Width Callouts",
+                "subtitle": "",
+                "settings": {
+                    "groups": [
+                        "1"
+                    ],
+                    "noun": "",
+                    "max": ""
+                }
+            }
+        ],
+        "hooks": null,
+        "module": null,
+        "level": "0",
+        "position": "4",
+        "extension": null
+    },
+    {
+        "id": "search",
+        "name": "Search",
+        "routed": "",
+        "resources": [
+            {
+                "id": "page_header",
+                "title": "Page Header",
+                "subtitle": "",
+                "type": "text",
+                "settings": null
+            }
+        ],
+        "hooks": null,
+        "module": null,
+        "level": "2",
+        "position": "3",
+        "extension": null
+    },
+    {
+        "id": "events",
+        "name": "Events",
+        "routed": "on",
+        "resources": [],
+        "hooks": null,
+        "module": null,
+        "level": "0",
+        "position": "2",
+        "extension": null
     },
     {
         "id": "news",
@@ -264,7 +264,7 @@
         "routed": "on",
         "resources": [],
         "hooks": null,
-        "module": "modules-15c0ed681008a4",
+        "module": "modules-15c0edde04d8fa",
         "level": "1",
         "position": "1",
         "extension": null
