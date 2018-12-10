@@ -18,6 +18,24 @@
 <?php
 	}
 
+	function button_icon_animate($class, $label, $url, $icon = "", $aria = "") {
+?>
+<a class="<?=$class?>_link" <?=href($url)?><?php if ($aria) { ?> aria-label="<?=$aria?>"<?php } ?>>
+	<span class="<?=$class?>_link_inner">
+		<span class="<?=$class?>_link_label"><?=$label?></span>
+		<span class="<?=$class?>_link_icon" aria-hidden="true">
+			<svg class="icon icon_on icon_<?=$icon?>">
+				<use xlink:href="<?=STATIC_ROOT?>images/icons.svg#<?=$icon?>"></use>
+			</svg>
+			<svg class="icon icon_off icon_<?=$icon?>">
+				<use xlink:href="<?=STATIC_ROOT?>images/icons.svg#<?=$icon?>"></use>
+			</svg>
+		</span>
+	</span>
+</a>
+<?php
+	}
+
 	function get_video_url($video) {
 		if (!empty($video["service"])) {
 			if ($video["service"] == "youtube") {
@@ -125,7 +143,7 @@
 		if (!is_array($array)) {
 			return false;
 		}
-
+		
 		foreach ($array as $key => $value) {
 			if (is_array($value)) {
 				if (not_empty_callout($value)) {
@@ -152,7 +170,7 @@
 		// Our complicated mess of finding out what nav level to draw when we're only drawing two levels
 		if ($depth == 2) {
 			// If our parent is the homepage, we're drawing one level of children no matter what -- we never draw top-level nav as siblings
-			if (!$bigtree["page"]["parent"] || $bigtree["page"]["trunk"]) {
+			if (!$bigtree["page"]["parent"] || $bigtree["page"]["trunk"] || !$bigtree["page"]["in_nav"]) {
 				$site["sub_nav"] = BigTreeCMS::getNavByParent($bigtree["page"]["id"]);
 				$site["sub_nav_section"] = $bigtree["page"];
 
@@ -176,6 +194,10 @@
 				$site["sub_nav_section"] = $parent;
 
 				return;
+			} elseif (!$parent["in_nav"]) {
+				$site["sub_nav"] = $siblings;
+				
+				return;
 			} elseif ($parent["parent"]) {
 				$ancestors = BigTreeCMS::getNavByParent($parent["parent"]);
 
@@ -184,8 +206,6 @@
 						$ancestors[$index]["children"] = $siblings;
 					}
 				}
-
-
 
 				$site["sub_nav"] = $ancestors;
 				$site["sub_nav_section"] = SQL::fetch("SELECT `id`, `parent`, `trunk`, `in_nav`, `path`, `nav_title` FROM bigtree_pages
@@ -233,4 +253,8 @@
 			$top_level = BigTreeCMS::getTopLevelNavigationId();
 			$site["sub_nav"] = BigTreeCMS::getNavByParent($top_level, $depth);
 		}
+	}
+
+	function tel_href($phone) {
+		return 'href="tel:'.preg_replace("/[^0-9]/", "", $phone).'"';
 	}

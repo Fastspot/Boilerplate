@@ -22,8 +22,7 @@
 		$pages = $eventsMod->getUpcomingEventsPageCount(10);
 	}
 
-	$pages = $newsMod->getPageCountForQuery($query, $category);
-	$categories = $categoryMod->getCategories();
+	$categories = $eventsMod->getCategories();
 
 	$page_link = $cms->getLink($bigtree["page"]["id"]);
 	$pagination_link_parts = [];

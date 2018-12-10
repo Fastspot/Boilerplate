@@ -43,7 +43,7 @@
 
 		if (!empty($phone)) {
 	?>
-	<a class="footer_address_phone" itemprop="telephone" href="tel:<?=preg_replace("/[^0-9]/", "", $phone)?>">
+	<a class="footer_address_phone" itemprop="telephone" <?=tel_href($phone)?>>
 		<span class="footer_address_label"><?=$phone?></span>
 	</a>
 	<?php
@@ -51,7 +51,7 @@
 
 		if (!empty($fax)) {
 	?>
-	<a class="footer_address_phone" itemprop="telephone" href="tel:<?=preg_replace("/[^0-9]/", "", $fax)?>">
+	<a class="footer_address_phone" itemprop="telephone" <?=tel_href($fax)?>>
 		<span class="footer_address_label"><?=$fax?></span>
 	</a>
 	<?php

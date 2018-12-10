@@ -5,7 +5,7 @@
 	 * @global array $items
 	 */
 ?>
-<div class="js-gallery gallery<?php if (!empty($theme)) { echo " theme_".$theme; } ?>"">
+<div class="js-gallery gallery<?php if (!empty($theme)) { echo " theme_".$theme; } ?>">
 	<?php
 		if (!empty($title)) {
 	?>
@@ -26,9 +26,9 @@
 			?>
 			<div class="gallery_item<?php if (empty($item["info"]["caption"])) { ?> gallery_item_no_caption<?php } if (!empty($item["video"]["id"])) { ?> gallery_item_video<?php } ?>">
 				<div class="gallery_count">
-					<span class="media_count_number"><?=printf($x, "%02d")?></span>
+					<span class="media_count_number"><?php if ($count > 9 && $x < 10) { echo "0"; } ?><?=$x?></span>
 					<span class="media_count_label">of</span>
-					<span class="media_count_number"><?=printf($count, "%02d")?></span>
+					<span class="media_count_number"><?=$count?></span>
 				</div>
 				<figure class="gallery_item_figure" role="group"<?php if (!empty($item["info"]["caption"])) { ?> aria-label="<?=strip_tags($item["info"]["caption"])?>"<?php } ?> itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
 					<span class="gallery_item_media">

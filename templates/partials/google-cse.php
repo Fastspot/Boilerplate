@@ -1,5 +1,6 @@
 <?php
 	// Requires $site["cse_key"]
+	global $site;
 	
 	if (empty($site["cse_key"])) {
 		die("Please enter the CSE key in /custom/inc/required/config.php");

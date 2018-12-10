@@ -1,4 +1,6 @@
 <?php
+	global $site;
+	
 	$cms->setHeadContext(null, null, "404 Page Not Found", "This page could not be located.", $site["og_image_fallback"]);
 	$page_header = $cms->getSetting("404-page-header");
 	$page_content = $cms->getSetting("404-page-content");
