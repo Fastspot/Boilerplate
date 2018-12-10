@@ -1,0 +1,1217 @@
+[
+    {
+        "id": "com.fastspot.advanced-callouts",
+        "type": "extension",
+        "name": "Advanced Callout Field Types",
+        "version": "1.0.3",
+        "last_updated": "2018-08-02 14:19:21",
+        "manifest": {
+            "type": "extension",
+            "id": "com.fastspot.advanced-callouts",
+            "version": "1.0.3",
+            "revision": 8,
+            "compatibility": "4.2+",
+            "title": "Advanced Callout Field Types",
+            "description": "This extension implements two field types:\r\n\r\nPredefiend Callouts \u2014 Allows you to choose individual callouts to prefill a callout area. You can optionally turn on or off dragability and the option to add more callouts from other groups. \r\n\r\nInline Callout Set \u2014 Allows you to choose individual callouts to prefill a callout area but the callouts are drawn inline with section headers that you specify rather than in a dialog.",
+            "keywords": [
+                "callouts",
+                "predefined",
+                "inline"
+            ],
+            "author": {
+                "name": "Tim Buckingham",
+                "url": "http://www.fastspot.com",
+                "email": "tim@fastspot.com"
+            },
+            "licenses": {
+                "LGPL v3": "http://opensource.org/licenses/LGPL-3.0"
+            },
+            "components": {
+                "module_groups": [],
+                "modules": [],
+                "templates": [],
+                "callouts": [],
+                "settings": [],
+                "feeds": [],
+                "field_types": [
+                    {
+                        "id": "com.fastspot.advanced-callouts*inline-callout-set",
+                        "name": "Inline Callout Set",
+                        "use_cases": {
+                            "templates": "on",
+                            "modules": "on",
+                            "settings": "on"
+                        },
+                        "self_draw": "on",
+                        "extension": "com.fastspot.advanced-callouts"
+                    },
+                    {
+                        "id": "com.fastspot.advanced-callouts*predefined-callouts",
+                        "name": "Predefined Callouts",
+                        "use_cases": {
+                            "templates": "on",
+                            "modules": "on",
+                            "settings": "on"
+                        },
+                        "self_draw": "on",
+                        "extension": "com.fastspot.advanced-callouts"
+                    }
+                ],
+                "tables": []
+            },
+            "sql_revisions": []
+        }
+    },
+    {
+        "id": "com.fastspot.date-range",
+        "type": "extension",
+        "name": "Date Range Field Type",
+        "version": "1.0",
+        "last_updated": "2018-08-02 14:19:26",
+        "manifest": {
+            "type": "extension",
+            "id": "com.fastspot.date-range",
+            "version": "1.0",
+            "revision": 1,
+            "compatibility": "4.2.x",
+            "title": "Date Range Field Type",
+            "description": "",
+            "keywords": [
+                ""
+            ],
+            "author": {
+                "name": "",
+                "email": "",
+                "url": ""
+            },
+            "licenses": {
+                "LGPL v3": "http://opensource.org/licenses/LGPL-3.0"
+            },
+            "components": {
+                "module_groups": [],
+                "modules": [],
+                "templates": [],
+                "callouts": [],
+                "settings": [],
+                "feeds": [],
+                "field_types": [
+                    {
+                        "id": "com.fastspot.date-range*date-range",
+                        "name": "Date Range",
+                        "use_cases": {
+                            "templates": "on",
+                            "modules": "on",
+                            "callouts": "on",
+                            "settings": "on"
+                        },
+                        "self_draw": null,
+                        "extension": "com.fastspot.date-range"
+                    }
+                ],
+                "tables": []
+            }
+        }
+    },
+    {
+        "id": "com.fastspot.events",
+        "type": "extension",
+        "name": "Events",
+        "version": "1.2.1",
+        "last_updated": "2018-08-02 14:19:32",
+        "manifest": {
+            "type": "extension",
+            "id": "com.fastspot.events",
+            "version": "1.2.1",
+            "revision": 6,
+            "compatibility": "4.2.4+",
+            "title": "Events",
+            "description": "A very fast (performance wise) events system that supports recurring events and a powerful class for pulling events into the front end of your site.",
+            "keywords": [
+                "events",
+                "recurring"
+            ],
+            "author": {
+                "name": "Tim Buckingham",
+                "url": "http://www.fastspot.com",
+                "email": "tim@fastspot.com"
+            },
+            "licenses": {
+                "LGPL v3": "http://opensource.org/licenses/LGPL-3.0"
+            },
+            "components": {
+                "module_groups": [],
+                "modules": [
+                    {
+                        "id": 1,
+                        "group": null,
+                        "name": "Events",
+                        "route": "com.fastspot.events*events",
+                        "class": "BTXEvents",
+                        "icon": "events",
+                        "gbp": {
+                            "name": "",
+                            "table": "",
+                            "other_table": ""
+                        },
+                        "position": "0",
+                        "extension": "com.fastspot.events",
+                        "actions": [
+                            {
+                                "id": "7",
+                                "module": "3",
+                                "name": "View Events",
+                                "route": "",
+                                "in_nav": "on",
+                                "form": null,
+                                "view": "4",
+                                "report": null,
+                                "class": "list",
+                                "level": "0",
+                                "position": "6"
+                            },
+                            {
+                                "id": "8",
+                                "module": "3",
+                                "name": "Search",
+                                "route": "search",
+                                "in_nav": "on",
+                                "form": null,
+                                "view": null,
+                                "report": null,
+                                "class": "search2",
+                                "level": "0",
+                                "position": "5"
+                            },
+                            {
+                                "id": "9",
+                                "module": "3",
+                                "name": "Calendar",
+                                "route": "calendar",
+                                "in_nav": "on",
+                                "form": null,
+                                "view": null,
+                                "report": null,
+                                "class": "calendar2",
+                                "level": "0",
+                                "position": "4"
+                            },
+                            {
+                                "id": "10",
+                                "module": "3",
+                                "name": "Add Event",
+                                "route": "add",
+                                "in_nav": "on",
+                                "form": "4",
+                                "view": null,
+                                "report": null,
+                                "class": "add",
+                                "level": "0",
+                                "position": "3"
+                            },
+                            {
+                                "id": "11",
+                                "module": "3",
+                                "name": "View Categories",
+                                "route": "categories",
+                                "in_nav": "on",
+                                "form": null,
+                                "view": "3",
+                                "report": null,
+                                "class": "category",
+                                "level": "0",
+                                "position": "2"
+                            },
+                            {
+                                "id": "12",
+                                "module": "3",
+                                "name": "Add Category",
+                                "route": "add-category",
+                                "in_nav": "on",
+                                "form": "3",
+                                "view": null,
+                                "report": null,
+                                "class": "add",
+                                "level": "0",
+                                "position": "1"
+                            },
+                            {
+                                "id": "13",
+                                "module": "3",
+                                "name": "Edit Event",
+                                "route": "edit",
+                                "in_nav": "",
+                                "form": "4",
+                                "view": null,
+                                "report": null,
+                                "class": "edit",
+                                "level": "0",
+                                "position": "0"
+                            },
+                            {
+                                "id": "14",
+                                "module": "3",
+                                "name": "Edit Category",
+                                "route": "edit-category",
+                                "in_nav": "",
+                                "form": "3",
+                                "view": null,
+                                "report": null,
+                                "class": "edit",
+                                "level": "0",
+                                "position": "0"
+                            }
+                        ],
+                        "views": [
+                            {
+                                "id": "3",
+                                "module": "3",
+                                "title": "Categories",
+                                "description": "",
+                                "type": "nested",
+                                "table": "btx_events_categories",
+                                "fields": {
+                                    "name": {
+                                        "width": "788",
+                                        "title": "Name",
+                                        "parser": "",
+                                        "numeric": false
+                                    }
+                                },
+                                "options": {
+                                    "nesting_column": "parent",
+                                    "filter": ""
+                                },
+                                "actions": {
+                                    "edit": "on",
+                                    "delete": "on"
+                                },
+                                "preview_url": "",
+                                "related_form": null
+                            },
+                            {
+                                "id": "4",
+                                "module": "3",
+                                "title": "Events",
+                                "description": "",
+                                "type": "searchable",
+                                "table": "btx_events_events",
+                                "fields": {
+                                    "start_date": {
+                                        "title": "Start Date",
+                                        "parser": "",
+                                        "width": "98",
+                                        "numeric": false
+                                    },
+                                    "title": {
+                                        "title": "Title",
+                                        "parser": "",
+                                        "width": "521",
+                                        "numeric": false
+                                    },
+                                    "recurrence_type": {
+                                        "title": "Recurring",
+                                        "parser": "",
+                                        "width": "89",
+                                        "numeric": false
+                                    }
+                                },
+                                "options": {
+                                    "sort_column": "start_date",
+                                    "sort_direction": "DESC",
+                                    "per_page": "15",
+                                    "filter": ""
+                                },
+                                "actions": {
+                                    "feature": "on",
+                                    "edit": "on",
+                                    "delete": "on"
+                                },
+                                "preview_url": "",
+                                "related_form": null
+                            }
+                        ],
+                        "forms": [
+                            {
+                                "id": "3",
+                                "module": "3",
+                                "title": "Category",
+                                "table": "btx_events_categories",
+                                "fields": [
+                                    {
+                                        "column": "parent",
+                                        "type": "list",
+                                        "title": "Parent Category",
+                                        "subtitle": "",
+                                        "options": {
+                                            "list_type": "db",
+                                            "allow-empty": "Yes",
+                                            "pop-table": "btx_events_categories",
+                                            "pop-description": "name",
+                                            "pop-sort": "`name` ASC",
+                                            "column": "parent"
+                                        }
+                                    },
+                                    {
+                                        "column": "name",
+                                        "type": "text",
+                                        "title": "Name",
+                                        "subtitle": "",
+                                        "options": {
+                                            "column": "name"
+                                        }
+                                    },
+                                    {
+                                        "column": "route",
+                                        "type": "route",
+                                        "title": "Route",
+                                        "subtitle": "",
+                                        "options": {
+                                            "source": "name",
+                                            "column": "route"
+                                        }
+                                    }
+                                ],
+                                "default_position": "Bottom",
+                                "return_view": "3",
+                                "return_url": "",
+                                "tagging": "",
+                                "hooks": null
+                            },
+                            {
+                                "id": "4",
+                                "module": "3",
+                                "title": "Event",
+                                "table": "btx_events_events",
+                                "fields": [
+                                    {
+                                        "column": "title",
+                                        "type": "text",
+                                        "title": "Title",
+                                        "subtitle": "",
+                                        "options": {
+                                            "column": "title"
+                                        }
+                                    },
+                                    {
+                                        "column": "description",
+                                        "type": "html",
+                                        "title": "Description",
+                                        "subtitle": "",
+                                        "options": {
+                                            "column": "description"
+                                        }
+                                    },
+                                    {
+                                        "column": "image",
+                                        "type": "upload",
+                                        "title": "Image",
+                                        "subtitle": "(crops to 600x400)",
+                                        "options": {
+                                            "directory": "files/events/",
+                                            "image": "on",
+                                            "min_width": "600",
+                                            "min_height": "400",
+                                            "preview_prefix": "",
+                                            "crops": {
+                                                "1": {
+                                                    "prefix": "",
+                                                    "width": "600",
+                                                    "height": "400",
+                                                    "grayscale": ""
+                                                }
+                                            },
+                                            "column": "image"
+                                        }
+                                    },
+                                    {
+                                        "column": "__mtm-1__",
+                                        "type": "many-to-many",
+                                        "title": "Categories",
+                                        "subtitle": "",
+                                        "options": {
+                                            "mtm-connecting-table": "btx_events_event_categories",
+                                            "mtm-my-id": "event",
+                                            "mtm-other-id": "category",
+                                            "mtm-other-table": "btx_events_categories",
+                                            "mtm-other-descriptor": "name",
+                                            "mtm-sort": "`name` ASC",
+                                            "mtm-list-parser": "BTXEvents::parseMTM",
+                                            "column": "__mtm-1__"
+                                        }
+                                    },
+                                    {
+                                        "column": "all_day",
+                                        "type": "com.fastspot.events*date-chooser",
+                                        "title": "Date Chooser",
+                                        "subtitle": "",
+                                        "options": {
+                                            "function": "BTXEvents::drawFormDateTime",
+                                            "process_function": "BTXEvents::parseFormDateTime",
+                                            "column": "all_day"
+                                        }
+                                    },
+                                    {
+                                        "column": "route",
+                                        "type": "route",
+                                        "title": "Route",
+                                        "subtitle": "",
+                                        "options": {
+                                            "source": "title",
+                                            "column": "route"
+                                        }
+                                    }
+                                ],
+                                "default_position": "",
+                                "return_view": "4",
+                                "return_url": "",
+                                "tagging": "",
+                                "hooks": {
+                                    "pre": "",
+                                    "post": "",
+                                    "publish": "BTXEvents::publishHook"
+                                }
+                            }
+                        ],
+                        "embed_forms": [],
+                        "reports": []
+                    }
+                ],
+                "templates": [],
+                "callouts": [],
+                "settings": [],
+                "feeds": [],
+                "field_types": [
+                    {
+                        "id": "com.fastspot.events*date-chooser",
+                        "name": "Events \u2014 Date Chooser",
+                        "use_cases": {
+                            "modules": "on"
+                        },
+                        "self_draw": "on",
+                        "extension": "com.fastspot.events"
+                    }
+                ],
+                "tables": {
+                    "btx_events_categories": "CREATE TABLE `btx_events_categories` (   `id` int(11) NOT NULL AUTO_INCREMENT,   `parent` int(11) DEFAULT NULL,   `name` varchar(255) NOT NULL DEFAULT '',   `route` varchar(255) NOT NULL DEFAULT '',   `position` int(11) NOT NULL,   PRIMARY KEY (`id`),   KEY `parent` (`parent`),   KEY `route` (`route`),   KEY `position` (`position`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8",
+                    "btx_events_date_cache": "CREATE TABLE `btx_events_date_cache` (   `id` int(11) NOT NULL AUTO_INCREMENT,   `event` int(11) NOT NULL,   `start` datetime NOT NULL,   `end` datetime NOT NULL,   `date_cached` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,   `title_route` varchar(255) NOT NULL DEFAULT '',   `date_route` varchar(255) NOT NULL DEFAULT '',   PRIMARY KEY (`id`),   KEY `event` (`event`),   KEY `start` (`start`),   KEY `end` (`end`),   KEY `title_route` (`title_route`),   KEY `date_route` (`date_route`),   KEY `date_cached` (`date_cached`),    FOREIGN KEY (`event`) REFERENCES `btx_events_events` (`id`) ON DELETE CASCADE ) ENGINE=InnoDB DEFAULT CHARSET=utf8",
+                    "btx_events_event_categories": "CREATE TABLE `btx_events_event_categories` (   `event` int(11) NOT NULL,   `category` int(11) NOT NULL,   KEY `event` (`event`),   KEY `category` (`category`),    FOREIGN KEY (`event`) REFERENCES `btx_events_events` (`id`) ON DELETE CASCADE,    FOREIGN KEY (`category`) REFERENCES `btx_events_categories` (`id`) ON DELETE CASCADE ) ENGINE=InnoDB DEFAULT CHARSET=utf8",
+                    "btx_events_events": "CREATE TABLE `btx_events_events` (   `id` int(11) NOT NULL AUTO_INCREMENT,   `title` varchar(255) NOT NULL DEFAULT '',   `description` mediumtext NOT NULL,   `image` varchar(255) NOT NULL,   `start_date` date DEFAULT NULL,   `end_date` date DEFAULT NULL,   `start_time` time DEFAULT NULL,   `end_time` time DEFAULT NULL,   `all_day` char(2) NOT NULL,   `recurrence_type` varchar(255) NOT NULL,   `recurrence_detail` varchar(255) NOT NULL,   `canceled_recurrences` text NOT NULL,   `recurring_end_date` date DEFAULT NULL,   `last_updated` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,   `featured` char(2) NOT NULL,   `route` varchar(255) DEFAULT NULL,   PRIMARY KEY (`id`),   KEY `start_date` (`start_date`),   KEY `end_date` (`end_date`),   KEY `recurring_end_date` (`recurring_end_date`),   KEY `recurrence_type` (`recurrence_type`),   KEY `featured` (`featured`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8"
+                }
+            },
+            "sql_revisions": []
+        }
+    },
+    {
+        "id": "com.fastspot.form-builder",
+        "type": "extension",
+        "name": "Form Builder",
+        "version": "2.2.1",
+        "last_updated": "2018-09-21 12:13:36",
+        "manifest": {
+            "type": "extension",
+            "id": "com.fastspot.form-builder",
+            "version": "2.2.1",
+            "revision": 32,
+            "compatibility": "4.2+",
+            "title": "Form Builder",
+            "description": "An easy to use form builder allowing the administrative users to easily add fields to a form that stores entries in the database and sends out emails. Also supports paid forms.",
+            "keywords": [
+                "forms",
+                "emails",
+                "submissions",
+                "form"
+            ],
+            "author": {
+                "name": "Tim Buckingham",
+                "url": "http://www.fastspot.com",
+                "email": "tim@fastspot.com"
+            },
+            "licenses": {
+                "LGPL v3": "http://opensource.org/licenses/LGPL-3.0"
+            },
+            "components": {
+                "module_groups": [],
+                "modules": [
+                    {
+                        "id": 7,
+                        "group": null,
+                        "name": "Form Builder",
+                        "route": "com.fastspot.form-builder*btx-form-builder",
+                        "class": "BTXFormBuilder",
+                        "icon": "form",
+                        "gbp": {
+                            "name": "",
+                            "table": "",
+                            "other_table": ""
+                        },
+                        "position": "0",
+                        "extension": "com.fastspot.form-builder",
+                        "actions": [
+                            {
+                                "id": "57",
+                                "module": "13",
+                                "name": "View Forms",
+                                "route": "",
+                                "in_nav": "on",
+                                "form": null,
+                                "view": "19",
+                                "report": null,
+                                "class": "list",
+                                "level": "0",
+                                "position": "3"
+                            },
+                            {
+                                "id": "58",
+                                "module": "13",
+                                "name": "Add Form",
+                                "route": "add",
+                                "in_nav": "on",
+                                "form": null,
+                                "view": null,
+                                "report": null,
+                                "class": "add",
+                                "level": "0",
+                                "position": "2"
+                            },
+                            {
+                                "id": "59",
+                                "module": "13",
+                                "name": "Settings",
+                                "route": "settings",
+                                "in_nav": "on",
+                                "form": null,
+                                "view": null,
+                                "report": null,
+                                "class": "server",
+                                "level": "2",
+                                "position": "1"
+                            }
+                        ],
+                        "views": [
+                            {
+                                "id": "19",
+                                "module": "13",
+                                "title": "Forms",
+                                "description": "",
+                                "type": "searchable",
+                                "table": "btx_form_builder_forms",
+                                "fields": {
+                                    "title": {
+                                        "title": "Title",
+                                        "parser": "",
+                                        "width": 222,
+                                        "numeric": false
+                                    },
+                                    "entries": {
+                                        "title": "Entries",
+                                        "parser": "",
+                                        "width": 222,
+                                        "numeric": true
+                                    },
+                                    "last_entry": {
+                                        "title": "Last Entry",
+                                        "parser": "if ($value) { $value = date(\"F j @ g:ia\",strtotime($value)); }",
+                                        "width": 222,
+                                        "numeric": false
+                                    }
+                                },
+                                "options": {
+                                    "sort_column": "title",
+                                    "sort_direction": "ASC",
+                                    "per_page": "15",
+                                    "filter": ""
+                                },
+                                "actions": {
+                                    "entries": "{\"name\":\"Entries\",\"class\":\"icon_view\",\"route\":\"entries\",\"function\":\"\"}",
+                                    "export": "{\"name\":\"Export\",\"class\":\"icon_export\",\"route\":\"export\",\"function\":\"\"}",
+                                    "edit": "on",
+                                    "delete": "on"
+                                },
+                                "preview_url": "",
+                                "related_form": null
+                            }
+                        ],
+                        "forms": [],
+                        "embed_forms": [],
+                        "reports": []
+                    }
+                ],
+                "templates": [
+                    {
+                        "id": "com.fastspot.form-builder*btx-form-builder",
+                        "name": "Form Builder",
+                        "routed": "on",
+                        "resources": [
+                            {
+                                "id": "page_header",
+                                "title": "Page Header",
+                                "subtitle": "",
+                                "type": "text",
+                                "options": []
+                            },
+                            {
+                                "id": "page_content",
+                                "title": "Page Content",
+                                "subtitle": "",
+                                "type": "html",
+                                "options": []
+                            },
+                            {
+                                "id": "form",
+                                "title": "Form",
+                                "subtitle": "",
+                                "type": "com.fastspot.form-builder*form-builder-picker",
+                                "options": {
+                                    "list_type": "db",
+                                    "allow-empty": "No",
+                                    "pop-table": "btx_form_builder_forms",
+                                    "pop-description": "title",
+                                    "pop-sort": "`title` ASC"
+                                }
+                            },
+                            {
+                                "id": "emails",
+                                "title": "Email Addresses",
+                                "subtitle": "(to send submissions notifications to \u2014 separate with commas)",
+                                "type": "textarea",
+                                "options": []
+                            },
+                            {
+                                "id": "thank_you_page_header",
+                                "title": "Thank You Page Header",
+                                "subtitle": "",
+                                "type": "text",
+                                "options": []
+                            },
+                            {
+                                "id": "thank_you_page_content",
+                                "title": "Thank You Page Content",
+                                "subtitle": "",
+                                "type": "html",
+                                "options": []
+                            }
+                        ],
+                        "module": "0",
+                        "level": "0",
+                        "position": "0",
+                        "extension": "com.fastspot.form-builder"
+                    }
+                ],
+                "callouts": [],
+                "settings": [],
+                "feeds": [],
+                "field_types": [
+                    {
+                        "id": "com.fastspot.form-builder*form-builder-picker",
+                        "name": "Form Builder Form",
+                        "use_cases": {
+                            "templates": "on",
+                            "modules": "on",
+                            "callouts": "on",
+                            "settings": "on"
+                        },
+                        "self_draw": "on",
+                        "extension": "com.fastspot.form-builder"
+                    }
+                ],
+                "tables": {
+                    "btx_form_builder_entries": "CREATE TABLE `btx_form_builder_entries` (   `id` int(11) NOT NULL AUTO_INCREMENT,   `form` int(11) NOT NULL,   `data` longtext NOT NULL,   `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',   PRIMARY KEY (`id`),   KEY `form` (`form`),    FOREIGN KEY (`form`) REFERENCES `btx_form_builder_forms` (`id`) ON DELETE CASCADE ) ENGINE=InnoDB DEFAULT CHARSET=utf8",
+                    "btx_form_builder_fields": "CREATE TABLE `btx_form_builder_fields` (   `id` int(11) NOT NULL AUTO_INCREMENT,   `form` int(11) NOT NULL,   `column` int(11) NOT NULL,   `alignment` char(5) NOT NULL,   `type` varchar(255) NOT NULL DEFAULT '',   `data` longtext NOT NULL,   `position` int(11) NOT NULL,   PRIMARY KEY (`id`),   KEY `form` (`form`),   KEY `column` (`column`),   KEY `position` (`position`),    FOREIGN KEY (`form`) REFERENCES `btx_form_builder_forms` (`id`) ON DELETE CASCADE ) ENGINE=InnoDB DEFAULT CHARSET=utf8",
+                    "btx_form_builder_forms": "CREATE TABLE `btx_form_builder_forms` (   `id` int(11) NOT NULL AUTO_INCREMENT,   `title` varchar(255) NOT NULL DEFAULT '',   `paid` char(2) NOT NULL DEFAULT '',   `base_price` float NOT NULL,   `early_bird_base_price` float NOT NULL,   `early_bird_date` datetime DEFAULT NULL,   `total_collected` float NOT NULL,   `entries` int(11) NOT NULL,   `limit_entries` char(2) NOT NULL DEFAULT '',   `max_entries` int(11) NOT NULL,   `scheduling` char(2) NOT NULL,   `scheduling_open_date` datetime DEFAULT NULL,   `scheduling_close_date` datetime DEFAULT NULL,   `scheduling_before_message` longtext,   `scheduling_after_message` longtext,   `last_entry` datetime DEFAULT NULL,   PRIMARY KEY (`id`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8"
+                }
+            },
+            "sql_revisions": {
+                "26": [
+                    "ALTER TABLE `btx_form_builder_forms` ADD COLUMN `scheduling` char(2) NOT NULL AFTER `max_entries`",
+                    "ALTER TABLE `btx_form_builder_forms` ADD COLUMN `scheduling_open_date` datetime NULL DEFAULT NULL AFTER `scheduling`",
+                    "ALTER TABLE `btx_form_builder_forms` ADD COLUMN `scheduling_close_date` datetime NULL DEFAULT NULL AFTER `scheduling_open_date`",
+                    "ALTER TABLE `btx_form_builder_forms` ADD COLUMN `scheduling_before_message` longtext NULL AFTER `scheduling_close_date`",
+                    "ALTER TABLE `btx_form_builder_forms` ADD COLUMN `scheduling_after_message` longtext NULL AFTER `scheduling_before_message`"
+                ]
+            }
+        }
+    },
+    {
+        "id": "com.fastspot.hidden-value-field-type",
+        "type": "extension",
+        "name": "Hidden Value",
+        "version": "1.0",
+        "last_updated": "2018-08-02 14:19:41",
+        "manifest": {
+            "type": "extension",
+            "id": "com.fastspot.hidden-value-field-type",
+            "version": "1.0",
+            "revision": 2,
+            "compatibility": "4.2+",
+            "title": "Hidden Value",
+            "description": "A field type that implements a hidden value (not editable by the user).",
+            "keywords": [
+                "hidden",
+                "value",
+                "hidden value"
+            ],
+            "author": {
+                "name": "Fastspot",
+                "url": "http://www.fastspot.com",
+                "email": "tim@fastspot.com"
+            },
+            "licenses": {
+                "LGPL v3": "http://opensource.org/licenses/LGPL-3.0"
+            },
+            "components": {
+                "module_groups": [],
+                "modules": [],
+                "templates": [],
+                "callouts": [],
+                "settings": [],
+                "feeds": [],
+                "field_types": [
+                    {
+                        "id": "com.fastspot.hidden-value-field-type*hidden-value",
+                        "name": "Hidden Value",
+                        "use_cases": {
+                            "templates": "on",
+                            "modules": "on",
+                            "callouts": "on",
+                            "settings": "on"
+                        },
+                        "self_draw": "on",
+                        "extension": "com.fastspot.hidden-value-field-type"
+                    }
+                ],
+                "tables": []
+            },
+            "sql_revisions": []
+        }
+    },
+    {
+        "id": "com.fastspot.link-finder-field-type",
+        "type": "extension",
+        "name": "Link Finder",
+        "version": "2.2",
+        "last_updated": "2018-08-02 14:19:48",
+        "manifest": {
+            "type": "extension",
+            "id": "com.fastspot.link-finder-field-type",
+            "version": "2.2",
+            "revision": 10,
+            "compatibility": "4.2+",
+            "title": "Link Finder",
+            "description": "A field type that allows a user to begin typing and find links to existing pages and files on the site through a search interface.",
+            "keywords": [
+                "link finder",
+                "links",
+                "search",
+                "files"
+            ],
+            "author": {
+                "name": "Fastspot",
+                "url": "http://www.fastspot.com",
+                "email": "tim@fastspot.com"
+            },
+            "licenses": {
+                "LGPL v3": "http://opensource.org/licenses/LGPL-3.0"
+            },
+            "components": {
+                "module_groups": [],
+                "modules": [],
+                "templates": [],
+                "callouts": [],
+                "settings": [],
+                "feeds": [],
+                "field_types": [
+                    {
+                        "id": "com.fastspot.link-finder-field-type*link-finder",
+                        "name": "Link Finder",
+                        "use_cases": {
+                            "templates": "on",
+                            "modules": "on",
+                            "callouts": "on",
+                            "settings": "on"
+                        },
+                        "self_draw": null,
+                        "extension": "com.fastspot.link-finder-field-type"
+                    }
+                ],
+                "tables": []
+            },
+            "sql_revisions": []
+        }
+    },
+    {
+        "id": "com.fastspot.media-gallery-field-type",
+        "type": "extension",
+        "name": "Media Gallery Field Type",
+        "version": "1.6",
+        "last_updated": "2018-09-21 12:13:32",
+        "manifest": {
+            "type": "extension",
+            "id": "com.fastspot.media-gallery-field-type",
+            "version": "1.6",
+            "revision": 15,
+            "compatibility": "4.2.7+",
+            "title": "Media Gallery Field Type",
+            "description": "This extension contains a field type which allows a user to enter either photos or videos from YouTube or Vimeo. It also allows for additional fields to be added (i.e. caption, description, etc) similar to the Matrix field type.\r\n\r\nYouTube video support requires the YouTube API to be setup in BigTree.",
+            "keywords": [
+                "media",
+                "video",
+                "photo",
+                "gallery"
+            ],
+            "author": {
+                "name": "Tim Buckingham",
+                "url": "http://www.fastspot.com",
+                "email": "tim@fastspot.com"
+            },
+            "licenses": {
+                "LGPL v3": "http://opensource.org/licenses/LGPL-3.0"
+            },
+            "components": {
+                "module_groups": [],
+                "modules": [],
+                "templates": [],
+                "callouts": [],
+                "settings": [],
+                "feeds": [],
+                "field_types": [
+                    {
+                        "id": "com.fastspot.media-gallery-field-type*media-gallery",
+                        "name": "Media Gallery",
+                        "use_cases": {
+                            "templates": "on",
+                            "modules": "on",
+                            "callouts": "on",
+                            "settings": "on"
+                        },
+                        "self_draw": null,
+                        "extension": "com.fastspot.media-gallery-field-type"
+                    }
+                ],
+                "tables": []
+            },
+            "sql_revisions": []
+        }
+    },
+    {
+        "id": "com.fastspot.rawtext-field-types",
+        "type": "extension",
+        "name": "Raw Text Field Types",
+        "version": "1.0",
+        "last_updated": "2018-08-02 14:20:01",
+        "manifest": {
+            "type": "extension",
+            "id": "com.fastspot.rawtext-field-types",
+            "version": "1.0",
+            "revision": 1,
+            "compatibility": "4.2+",
+            "title": "Raw Text Field Types",
+            "description": "Includes two field types: &quot;Raw Text&quot; and &quot;Raw Text Area&quot;. These behave almost exactly the same as the regular Text and Text Area fields with the exception that they do not escape HTML characters (so you can place HTML into them).",
+            "keywords": [
+                ""
+            ],
+            "author": {
+                "name": "Tim Buckingham",
+                "url": "http://www.fastspot.com",
+                "email": "tim@fastspot.com"
+            },
+            "licenses": {
+                "LGPL v3": "http://opensource.org/licenses/LGPL-3.0"
+            },
+            "components": {
+                "module_groups": [],
+                "modules": [],
+                "templates": [],
+                "callouts": [],
+                "settings": [],
+                "feeds": [],
+                "field_types": [
+                    {
+                        "id": "com.fastspot.rawtext-field-types*raw-text",
+                        "name": "Raw Text",
+                        "use_cases": {
+                            "templates": "on",
+                            "modules": "on",
+                            "callouts": "on",
+                            "settings": "on"
+                        },
+                        "self_draw": null,
+                        "extension": "com.fastspot.rawtext-field-types"
+                    },
+                    {
+                        "id": "com.fastspot.rawtext-field-types*raw-textarea",
+                        "name": "Raw Text Area",
+                        "use_cases": {
+                            "templates": "on",
+                            "modules": "on",
+                            "callouts": "on",
+                            "settings": "on"
+                        },
+                        "self_draw": null,
+                        "extension": "com.fastspot.rawtext-field-types"
+                    }
+                ],
+                "tables": []
+            }
+        }
+    },
+    {
+        "id": "com.fastspot.read-only-value-field-type",
+        "type": "extension",
+        "name": "Read Only Value",
+        "version": "1.0",
+        "last_updated": "2018-08-02 14:20:06",
+        "manifest": {
+            "type": "extension",
+            "id": "com.fastspot.read-only-value-field-type",
+            "version": "1.0",
+            "revision": 2,
+            "compatibility": "4.2+",
+            "title": "Read Only Value",
+            "description": "A field type that implements a read-only value for display purposes but not editing.",
+            "keywords": [
+                "read only",
+                "read-only",
+                "read",
+                "uneditable"
+            ],
+            "author": {
+                "name": "Fastspot",
+                "url": "http://www.fastspot.com",
+                "email": "tim@fastspot.com"
+            },
+            "licenses": {
+                "LGPL v3": "http://opensource.org/licenses/LGPL-3.0"
+            },
+            "components": {
+                "module_groups": [],
+                "modules": [],
+                "templates": [],
+                "callouts": [],
+                "settings": [],
+                "feeds": [],
+                "field_types": [
+                    {
+                        "id": "com.fastspot.read-only-value-field-type*read-only-value",
+                        "name": "Read Only Value",
+                        "use_cases": {
+                            "modules": "on"
+                        },
+                        "self_draw": null,
+                        "extension": "com.fastspot.read-only-value-field-type"
+                    }
+                ],
+                "tables": []
+            },
+            "sql_revisions": []
+        }
+    },
+    {
+        "id": "com.fastspot.reusable-callouts",
+        "type": "extension",
+        "name": "Reusable Callouts",
+        "version": "1.3.3",
+        "last_updated": "2018-08-02 14:20:11",
+        "manifest": {
+            "type": "extension",
+            "id": "com.fastspot.reusable-callouts",
+            "version": "1.3.3",
+            "revision": 18,
+            "compatibility": "4.2+",
+            "title": "Reusable Callouts",
+            "description": "Implements a module that allows users to create reusable callouts and a field type allowing end users to choose a pre-created callout when adding callouts.",
+            "keywords": [
+                "callouts",
+                "reusable",
+                "modular"
+            ],
+            "author": {
+                "name": "Tim Buckingham",
+                "url": "http://www.fastspot.com",
+                "email": "tim@fastspot.com"
+            },
+            "licenses": {
+                "LGPL v3": "http://opensource.org/licenses/LGPL-3.0"
+            },
+            "components": {
+                "module_groups": [],
+                "modules": [
+                    {
+                        "id": 3,
+                        "group": null,
+                        "name": "Reusable Callouts",
+                        "route": "com.fastspot.reusable-callouts*reusable-callouts",
+                        "class": "BTXReusableCallouts",
+                        "icon": "gear",
+                        "gbp": {
+                            "name": "",
+                            "table": "",
+                            "item_parser": "",
+                            "other_table": ""
+                        },
+                        "position": "0",
+                        "extension": "com.fastspot.reusable-callouts",
+                        "actions": [
+                            {
+                                "id": "27",
+                                "module": "6",
+                                "name": "View Reusable Callouts",
+                                "route": "",
+                                "in_nav": "on",
+                                "form": null,
+                                "view": "9",
+                                "report": null,
+                                "class": "list",
+                                "level": "0",
+                                "position": "0"
+                            },
+                            {
+                                "id": "28",
+                                "module": "6",
+                                "name": "Add Callout",
+                                "route": "add",
+                                "in_nav": "on",
+                                "form": null,
+                                "view": null,
+                                "report": null,
+                                "class": "add",
+                                "level": "0",
+                                "position": "0"
+                            },
+                            {
+                                "id": "29",
+                                "module": "6",
+                                "name": "Edit Callout",
+                                "route": "edit",
+                                "in_nav": "",
+                                "form": null,
+                                "view": null,
+                                "report": null,
+                                "class": "edit",
+                                "level": "0",
+                                "position": "0"
+                            }
+                        ],
+                        "views": [
+                            {
+                                "id": "9",
+                                "module": "6",
+                                "title": "Reusable Callouts",
+                                "description": "",
+                                "type": "grouped",
+                                "table": "btx_reusable_callouts",
+                                "fields": {
+                                    "title": {
+                                        "width": "708",
+                                        "title": "Title",
+                                        "parser": "",
+                                        "numeric": false
+                                    }
+                                },
+                                "options": {
+                                    "filter": "",
+                                    "group_field": "type",
+                                    "sort": "`id` DESC",
+                                    "other_table": "bigtree_callouts",
+                                    "title_field": "name",
+                                    "ot_sort_field": "name",
+                                    "ot_sort_direction": "ASC",
+                                    "group_parser": ""
+                                },
+                                "actions": {
+                                    "report": "{\"name\":\"Report\",\"class\":\"icon_view\",\"route\":\"report\",\"function\":\"\"}",
+                                    "archive": "on",
+                                    "edit": "on",
+                                    "delete": "on"
+                                },
+                                "preview_url": "",
+                                "related_form": null
+                            }
+                        ],
+                        "forms": [],
+                        "embed_forms": [],
+                        "reports": []
+                    }
+                ],
+                "templates": [],
+                "callouts": [],
+                "settings": [],
+                "feeds": [],
+                "field_types": [
+                    {
+                        "id": "com.fastspot.reusable-callouts*callout-list",
+                        "name": "Reusable Callout List",
+                        "use_cases": {
+                            "callouts": "on"
+                        },
+                        "self_draw": "on",
+                        "extension": "com.fastspot.reusable-callouts"
+                    }
+                ],
+                "tables": {
+                    "btx_reusable_callouts": "CREATE TABLE `btx_reusable_callouts` (   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,   `type` varchar(255) DEFAULT NULL,   `title` varchar(255) DEFAULT NULL,   `data` longtext,   `archived` char(2) NOT NULL DEFAULT '',   PRIMARY KEY (`id`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8"
+                }
+            },
+            "sql_revisions": {
+                "6": [
+                    "ALTER TABLE `btx_reusable_callouts` MODIFY COLUMN `data` longtext NULL AFTER `title`"
+                ],
+                "9": [
+                    "ALTER TABLE `btx_reusable_callouts` ADD COLUMN `archived` char(2) NOT NULL DEFAULT '' AFTER `data`"
+                ]
+            }
+        }
+    },
+    {
+        "id": "com.fastspot.video-field-type",
+        "type": "extension",
+        "name": "Video Field",
+        "version": "1.3.4",
+        "last_updated": "2018-08-02 14:20:15",
+        "manifest": {
+            "type": "extension",
+            "id": "com.fastspot.video-field-type",
+            "version": "1.3.4",
+            "revision": 7,
+            "compatibility": "4.2+",
+            "title": "Video Field",
+            "description": "A field type that allows a user to input a YouTube or Vimeo URL. The field will grab the video's thumbnail image and allow you to create thumbnails and crops as well as storing the service type, video ID, URL, and embed code.\r\n\r\nVersion 1.1 supports the YouTube v3 API. The v2 API which allowed non-authenticated calls has been turned off.",
+            "keywords": [
+                "video",
+                "youtube",
+                "vimeo"
+            ],
+            "author": {
+                "name": "Fastspot",
+                "url": "http://www.fastspot.com",
+                "email": "tim@fastspot.com"
+            },
+            "licenses": {
+                "LGPL v3": "http://opensource.org/licenses/LGPL-3.0"
+            },
+            "components": {
+                "module_groups": [],
+                "modules": [],
+                "templates": [],
+                "callouts": [],
+                "settings": [],
+                "feeds": [],
+                "field_types": [
+                    {
+                        "id": "com.fastspot.video-field-type*video",
+                        "name": "Video",
+                        "use_cases": {
+                            "templates": "on",
+                            "modules": "on",
+                            "callouts": "on",
+                            "settings": "on"
+                        },
+                        "self_draw": null,
+                        "extension": "com.fastspot.video-field-type"
+                    }
+                ],
+                "tables": []
+            },
+            "sql_revisions": []
+        }
+    }
+]

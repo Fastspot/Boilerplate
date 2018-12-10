@@ -1,0 +1,147 @@
+[
+    {
+        "id": "com.fastspot.advanced-callouts*inline-callout-set",
+        "name": "Inline Callout Set",
+        "use_cases": {
+            "templates": "on",
+            "modules": "on",
+            "settings": "on"
+        },
+        "self_draw": "on",
+        "extension": "com.fastspot.advanced-callouts"
+    },
+    {
+        "id": "com.fastspot.advanced-callouts*predefined-callouts",
+        "name": "Predefined Callouts",
+        "use_cases": {
+            "templates": "on",
+            "modules": "on",
+            "settings": "on"
+        },
+        "self_draw": "on",
+        "extension": "com.fastspot.advanced-callouts"
+    },
+    {
+        "id": "com.fastspot.date-range*date-range",
+        "name": "Date Range",
+        "use_cases": {
+            "templates": "on",
+            "modules": "on",
+            "callouts": "on",
+            "settings": "on"
+        },
+        "self_draw": null,
+        "extension": "com.fastspot.date-range"
+    },
+    {
+        "id": "com.fastspot.events*date-chooser",
+        "name": "Events \u2014 Date Chooser",
+        "use_cases": {
+            "modules": "on"
+        },
+        "self_draw": "on",
+        "extension": "com.fastspot.events"
+    },
+    {
+        "id": "com.fastspot.form-builder*form-builder-picker",
+        "name": "Form Builder Form",
+        "use_cases": {
+            "templates": "on",
+            "modules": "on",
+            "callouts": "on",
+            "settings": "on"
+        },
+        "self_draw": "on",
+        "extension": "com.fastspot.form-builder"
+    },
+    {
+        "id": "com.fastspot.hidden-value-field-type*hidden-value",
+        "name": "Hidden Value",
+        "use_cases": {
+            "templates": "on",
+            "modules": "on",
+            "callouts": "on",
+            "settings": "on"
+        },
+        "self_draw": "on",
+        "extension": "com.fastspot.hidden-value-field-type"
+    },
+    {
+        "id": "com.fastspot.link-finder-field-type*link-finder",
+        "name": "Link Finder",
+        "use_cases": {
+            "templates": "on",
+            "modules": "on",
+            "callouts": "on",
+            "settings": "on"
+        },
+        "self_draw": null,
+        "extension": "com.fastspot.link-finder-field-type"
+    },
+    {
+        "id": "com.fastspot.media-gallery-field-type*media-gallery",
+        "name": "Media Gallery",
+        "use_cases": {
+            "templates": "on",
+            "modules": "on",
+            "callouts": "on",
+            "settings": "on"
+        },
+        "self_draw": null,
+        "extension": "com.fastspot.media-gallery-field-type"
+    },
+    {
+        "id": "com.fastspot.rawtext-field-types*raw-text",
+        "name": "Raw Text",
+        "use_cases": {
+            "templates": "on",
+            "modules": "on",
+            "callouts": "on",
+            "settings": "on"
+        },
+        "self_draw": null,
+        "extension": "com.fastspot.rawtext-field-types"
+    },
+    {
+        "id": "com.fastspot.rawtext-field-types*raw-textarea",
+        "name": "Raw Text Area",
+        "use_cases": {
+            "templates": "on",
+            "modules": "on",
+            "callouts": "on",
+            "settings": "on"
+        },
+        "self_draw": null,
+        "extension": "com.fastspot.rawtext-field-types"
+    },
+    {
+        "id": "com.fastspot.read-only-value-field-type*read-only-value",
+        "name": "Read Only Value",
+        "use_cases": {
+            "modules": "on"
+        },
+        "self_draw": null,
+        "extension": "com.fastspot.read-only-value-field-type"
+    },
+    {
+        "id": "com.fastspot.reusable-callouts*callout-list",
+        "name": "Reusable Callout List",
+        "use_cases": {
+            "callouts": "on"
+        },
+        "self_draw": "on",
+        "extension": "com.fastspot.reusable-callouts"
+    },
+    {
+        "id": "com.fastspot.video-field-type*video",
+        "name": "Video",
+        "use_cases": {
+            "templates": "on",
+            "modules": "on",
+            "callouts": "on",
+            "settings": "on"
+        },
+        "self_draw": null,
+        "extension": "com.fastspot.video-field-type"
+    }
+]

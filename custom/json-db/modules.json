@@ -1,0 +1,1138 @@
+[
+    {
+        "id": "modules-15c0ed680f3107",
+        "group": null,
+        "name": "Events",
+        "route": "com.fastspot.events*events",
+        "class": "BTXEvents",
+        "icon": "events",
+        "gbp": {
+            "name": "",
+            "table": "",
+            "other_table": ""
+        },
+        "position": "0",
+        "extension": "com.fastspot.events",
+        "actions": [
+            {
+                "id": "actions-15c0ed680f3ab7",
+                "name": "View Events",
+                "route": "",
+                "in_nav": "on",
+                "form": null,
+                "view": "views-15c0ed680f3595",
+                "report": null,
+                "class": "list",
+                "level": "0",
+                "position": 8
+            },
+            {
+                "id": "actions-15c0ed680f3ac1",
+                "name": "Search",
+                "route": "search",
+                "in_nav": "on",
+                "form": null,
+                "view": null,
+                "report": null,
+                "class": "search2",
+                "level": "0",
+                "position": 7
+            },
+            {
+                "id": "actions-15c0ed680f3ac4",
+                "name": "Calendar",
+                "route": "calendar",
+                "in_nav": "on",
+                "form": null,
+                "view": null,
+                "report": null,
+                "class": "calendar2",
+                "level": "0",
+                "position": 6
+            },
+            {
+                "id": "actions-15c0ed680f3ac6",
+                "name": "Add Event",
+                "route": "add",
+                "in_nav": "on",
+                "form": "forms-15c0ed680f373c",
+                "view": null,
+                "report": null,
+                "class": "add",
+                "level": "0",
+                "position": 5
+            },
+            {
+                "id": "actions-15c0ed680f3aca",
+                "name": "View Categories",
+                "route": "categories",
+                "in_nav": "on",
+                "form": null,
+                "view": "views-15c0ed680f3582",
+                "report": null,
+                "class": "category",
+                "level": "0",
+                "position": 4
+            },
+            {
+                "id": "actions-15c0ed680f3acc",
+                "name": "Add Category",
+                "route": "add-category",
+                "in_nav": "on",
+                "form": "forms-15c0ed680f3721",
+                "view": null,
+                "report": null,
+                "class": "add",
+                "level": "0",
+                "position": 3
+            },
+            {
+                "id": "actions-15c0ed680f3ace",
+                "name": "Edit Event",
+                "route": "edit",
+                "in_nav": "",
+                "form": "forms-15c0ed680f373c",
+                "view": null,
+                "report": null,
+                "class": "edit",
+                "level": "0",
+                "position": 2
+            },
+            {
+                "id": "actions-15c0ed680f3ad1",
+                "name": "Edit Category",
+                "route": "edit-category",
+                "in_nav": "",
+                "form": "forms-15c0ed680f3721",
+                "view": null,
+                "report": null,
+                "class": "edit",
+                "level": "0",
+                "position": 1
+            }
+        ],
+        "embeddable-forms": [],
+        "forms": [
+            {
+                "id": "forms-15c0ed680f3721",
+                "title": "Category",
+                "table": "btx_events_categories",
+                "fields": [
+                    {
+                        "title": "Name",
+                        "subtitle": "",
+                        "type": "text",
+                        "settings": {
+                            "column": "name"
+                        },
+                        "column": "name"
+                    },
+                    {
+                        "title": "Route",
+                        "subtitle": "",
+                        "type": "route",
+                        "settings": {
+                            "source": "name",
+                            "column": "route"
+                        },
+                        "column": "route"
+                    }
+                ],
+                "default_position": "Bottom",
+                "return_view": "views-15c0ed680f3582",
+                "return_url": "",
+                "open_graph": "",
+                "tagging": "",
+                "hooks": {
+                    "pre": "",
+                    "post": "",
+                    "publish": ""
+                }
+            },
+            {
+                "id": "forms-15c0ed680f373c",
+                "title": "Event",
+                "table": "btx_events_events",
+                "fields": [
+                    {
+                        "title": "Title",
+                        "subtitle": "",
+                        "type": "text",
+                        "settings": {
+                            "validation": "required",
+                            "sub_type": "",
+                            "max_length": ""
+                        },
+                        "column": "title"
+                    },
+                    {
+                        "title": "Blurb",
+                        "subtitle": "(shows in list view, defaults to first 250 characters of Content)",
+                        "type": "textarea",
+                        "settings": null,
+                        "column": "blurb"
+                    },
+                    {
+                        "title": "Content",
+                        "subtitle": "",
+                        "type": "html",
+                        "settings": null,
+                        "column": "content"
+                    },
+                    {
+                        "title": "Image",
+                        "subtitle": "(min 980x552)",
+                        "type": "image",
+                        "settings": {
+                            "directory": "files/events/",
+                            "min_width": "980",
+                            "min_height": "552",
+                            "preview_prefix": "classic-xsml-",
+                            "crops": [
+                                {
+                                    "prefix": "wide-med-",
+                                    "width": "980",
+                                    "height": "552",
+                                    "grayscale": "",
+                                    "thumbs": [
+                                        null,
+                                        {
+                                            "prefix": "wide-xsml-",
+                                            "width": "500",
+                                            "height": "",
+                                            "grayscale": ""
+                                        },
+                                        {
+                                            "prefix": "wide-sml-",
+                                            "width": "740",
+                                            "height": "",
+                                            "grayscale": ""
+                                        }
+                                    ]
+                                },
+                                {
+                                    "prefix": "classic-sml-",
+                                    "width": "740",
+                                    "height": "494",
+                                    "grayscale": "",
+                                    "thumbs": [
+                                        null,
+                                        null,
+                                        null,
+                                        {
+                                            "prefix": "classic-xsml-",
+                                            "width": "500",
+                                            "height": "",
+                                            "grayscale": ""
+                                        }
+                                    ]
+                                }
+                            ],
+                            "thumbs": [
+                                {
+                                    "prefix": "",
+                                    "width": "1440",
+                                    "height": "1440",
+                                    "grayscale": ""
+                                }
+                            ]
+                        },
+                        "column": "image"
+                    },
+                    {
+                        "title": "Location",
+                        "subtitle": "",
+                        "type": "text",
+                        "settings": null,
+                        "column": "location"
+                    },
+                    {
+                        "title": "Link",
+                        "subtitle": "(overrides detail page, include http://)",
+                        "type": "com.fastspot.link-finder-field-type*link-finder",
+                        "settings": null,
+                        "column": "link"
+                    },
+                    {
+                        "title": "Categories",
+                        "subtitle": "",
+                        "type": "many-to-many",
+                        "settings": {
+                            "mtm-connecting-table": "btx_events_event_categories",
+                            "mtm-my-id": "event",
+                            "mtm-other-id": "category",
+                            "mtm-other-table": "btx_events_categories",
+                            "mtm-other-descriptor": "name",
+                            "mtm-sort": "`name` ASC",
+                            "mtm-list-parser": "BTXEvents::parseMTM",
+                            "column": "__mtm-1__"
+                        },
+                        "column": "__mtm-1__"
+                    },
+                    {
+                        "title": "Date Chooser",
+                        "subtitle": "",
+                        "type": "com.fastspot.events*date-chooser",
+                        "settings": {
+                            "function": "BTXEvents::drawFormDateTime",
+                            "process_function": "BTXEvents::parseFormDateTime",
+                            "column": "all_day"
+                        },
+                        "column": "all_day"
+                    },
+                    {
+                        "title": "Route",
+                        "subtitle": "",
+                        "type": "route",
+                        "settings": {
+                            "source": "title",
+                            "column": "route"
+                        },
+                        "column": "route"
+                    },
+                    {
+                        "title": "In Content Callouts",
+                        "subtitle": "",
+                        "type": "callouts",
+                        "settings": {
+                            "groups": [
+                                "2"
+                            ],
+                            "noun": "",
+                            "max": ""
+                        },
+                        "column": "in_content_callouts"
+                    },
+                    {
+                        "title": "Full Width Callouts",
+                        "subtitle": "",
+                        "type": "callouts",
+                        "settings": {
+                            "groups": [
+                                "1"
+                            ],
+                            "noun": "",
+                            "max": ""
+                        },
+                        "column": "full_width_callouts"
+                    }
+                ],
+                "default_position": "",
+                "return_view": "views-15c0ed680f3595",
+                "return_url": "",
+                "open_graph": "",
+                "tagging": "",
+                "hooks": {
+                    "pre": "",
+                    "post": "",
+                    "publish": "BTXEvents::publishHook"
+                }
+            }
+        ],
+        "reports": [],
+        "views": [
+            {
+                "id": "views-15c0ed680f3582",
+                "title": "Categories",
+                "description": "",
+                "type": "draggable",
+                "table": "btx_events_categories",
+                "fields": {
+                    "name": {
+                        "width": "788",
+                        "title": "Name",
+                        "parser": "",
+                        "numeric": false
+                    }
+                },
+                "settings": {
+                    "nesting_column": "parent",
+                    "filter": ""
+                },
+                "actions": {
+                    "edit": "on",
+                    "delete": "on"
+                },
+                "preview_url": "",
+                "related_form": null
+            },
+            {
+                "id": "views-15c0ed680f3595",
+                "title": "Events",
+                "description": "",
+                "type": "searchable",
+                "table": "btx_events_events",
+                "fields": {
+                    "start_date": {
+                        "title": "Start Date",
+                        "parser": "",
+                        "width": "98",
+                        "numeric": false
+                    },
+                    "title": {
+                        "title": "Title",
+                        "parser": "",
+                        "width": "521",
+                        "numeric": false
+                    },
+                    "recurrence_type": {
+                        "title": "Recurring",
+                        "parser": "",
+                        "width": "89",
+                        "numeric": false
+                    }
+                },
+                "settings": {
+                    "sort_column": "start_date",
+                    "sort_direction": "DESC",
+                    "per_page": "15",
+                    "filter": ""
+                },
+                "actions": {
+                    "feature": "on",
+                    "edit": "on",
+                    "delete": "on"
+                },
+                "preview_url": "",
+                "related_form": null
+            }
+        ]
+    },
+    {
+        "id": "modules-15c0ed680f3ad5",
+        "group": null,
+        "name": "Reusable Callouts",
+        "route": "com.fastspot.reusable-callouts*reusable-callouts",
+        "class": "BTXReusableCallouts",
+        "icon": "gear",
+        "gbp": {
+            "name": "",
+            "table": "",
+            "item_parser": "",
+            "other_table": ""
+        },
+        "position": "0",
+        "extension": "com.fastspot.reusable-callouts",
+        "actions": [
+            {
+                "id": "actions-15c0ed68100044",
+                "name": "View Reusable Callouts",
+                "route": "",
+                "in_nav": "on",
+                "form": null,
+                "view": "views-15c0ed680f3ee1",
+                "report": null,
+                "class": "list",
+                "level": "0",
+                "position": 3
+            },
+            {
+                "id": "actions-15c0ed6810004c",
+                "name": "Add Callout",
+                "route": "add",
+                "in_nav": "on",
+                "form": null,
+                "view": null,
+                "report": null,
+                "class": "add",
+                "level": "0",
+                "position": 2
+            },
+            {
+                "id": "actions-15c0ed6810004f",
+                "name": "Edit Callout",
+                "route": "edit",
+                "in_nav": "",
+                "form": null,
+                "view": null,
+                "report": null,
+                "class": "edit",
+                "level": "0",
+                "position": 1
+            }
+        ],
+        "embeddable-forms": [],
+        "forms": [],
+        "reports": [],
+        "views": [
+            {
+                "id": "views-15c0ed680f3ee1",
+                "title": "Reusable Callouts",
+                "description": "",
+                "type": "grouped",
+                "table": "btx_reusable_callouts",
+                "fields": {
+                    "title": {
+                        "width": "708",
+                        "title": "Title",
+                        "parser": "",
+                        "numeric": false
+                    }
+                },
+                "settings": {
+                    "filter": "",
+                    "group_field": "type",
+                    "sort": "`id` DESC",
+                    "other_table": "bigtree_callouts",
+                    "title_field": "name",
+                    "ot_sort_field": "name",
+                    "ot_sort_direction": "ASC",
+                    "group_parser": ""
+                },
+                "actions": {
+                    "report": "{\"name\":\"Report\",\"class\":\"icon_view\",\"route\":\"report\",\"function\":\"\"}",
+                    "archive": "on",
+                    "edit": "on",
+                    "delete": "on"
+                },
+                "preview_url": "",
+                "related_form": null
+            }
+        ]
+    },
+    {
+        "id": "modules-15c0ed68100052",
+        "group": null,
+        "name": "Alerts",
+        "route": "alerts",
+        "class": "BTXAlerts",
+        "icon": "target",
+        "gbp": {
+            "name": "",
+            "table": "",
+            "item_parser": "",
+            "other_table": ""
+        },
+        "position": "0",
+        "extension": null,
+        "actions": [
+            {
+                "id": "actions-15c0ed68100897",
+                "name": "View Alerts",
+                "route": "",
+                "in_nav": "on",
+                "form": null,
+                "view": "views-15c0ed681004d3",
+                "report": null,
+                "class": "list",
+                "level": "0",
+                "position": 3
+            },
+            {
+                "id": "actions-15c0ed6810089e",
+                "name": "Add Alert",
+                "route": "add",
+                "in_nav": "on",
+                "form": "forms-15c0ed68100613",
+                "view": null,
+                "report": null,
+                "class": "add",
+                "level": "0",
+                "position": 2
+            },
+            {
+                "id": "actions-15c0ed681008a1",
+                "name": "Edit Alert",
+                "route": "edit",
+                "in_nav": "",
+                "form": "forms-15c0ed68100613",
+                "view": null,
+                "report": null,
+                "class": "edit",
+                "level": "0",
+                "position": 1
+            }
+        ],
+        "embeddable-forms": [],
+        "forms": [
+            {
+                "id": "forms-15c0ed68100613",
+                "title": "Alert",
+                "table": "btx_alerts",
+                "fields": [
+                    {
+                        "title": "Title",
+                        "subtitle": "",
+                        "type": "text",
+                        "settings": {
+                            "validation": "required",
+                            "sub_type": "",
+                            "max_length": ""
+                        },
+                        "column": "title"
+                    },
+                    {
+                        "title": "Description",
+                        "subtitle": "(only line breaks, strong, italic, and links will show)",
+                        "type": "html",
+                        "settings": {
+                            "validation": "required",
+                            "simple": "on",
+                            "simple_by_permission": "0"
+                        },
+                        "column": "description"
+                    },
+                    {
+                        "title": "Link",
+                        "subtitle": "(include http://)",
+                        "type": "com.fastspot.link-finder-field-type*link-finder",
+                        "settings": null,
+                        "column": "link"
+                    },
+                    {
+                        "title": "Internal Notes",
+                        "subtitle": "(not displayed on the site)",
+                        "type": "textarea",
+                        "settings": {
+                            "column": "internal_notes"
+                        },
+                        "column": "internal_notes"
+                    },
+                    {
+                        "title": "Start Date",
+                        "subtitle": "(optional)",
+                        "type": "datetime",
+                        "settings": {
+                            "column": "start_date"
+                        },
+                        "column": "start_date"
+                    },
+                    {
+                        "title": "End Date",
+                        "subtitle": "(optional)",
+                        "type": "datetime",
+                        "settings": {
+                            "column": "end_date"
+                        },
+                        "column": "end_date"
+                    }
+                ],
+                "default_position": "",
+                "return_view": null,
+                "return_url": "",
+                "open_graph": "",
+                "tagging": "",
+                "hooks": []
+            }
+        ],
+        "reports": [],
+        "views": [
+            {
+                "id": "views-15c0ed681004d3",
+                "title": "Alerts",
+                "description": "",
+                "type": "grouped",
+                "table": "btx_alerts",
+                "fields": {
+                    "title": {
+                        "title": "Title",
+                        "parser": "",
+                        "width": 364,
+                        "numeric": false
+                    },
+                    "internal_notes": {
+                        "title": "Internal Notes",
+                        "parser": "",
+                        "width": 364,
+                        "numeric": false
+                    }
+                },
+                "settings": {
+                    "filter": "",
+                    "group_field": "archived",
+                    "sort": "`id` DESC",
+                    "other_table": "",
+                    "ot_sort_direction": "ASC",
+                    "group_parser": "if ($item[\"archived\"]) {\r\n   $value = \"Archived\";\r\n} else {\r\n   $value = \"Active\";\r\n}"
+                },
+                "actions": {
+                    "archive": "on",
+                    "edit": "on",
+                    "delete": "on"
+                },
+                "preview_url": "",
+                "related_form": null
+            }
+        ]
+    },
+    {
+        "id": "modules-15c0ed681008a4",
+        "group": "module-groups-15c0ed680f2f16",
+        "name": "News",
+        "route": "news",
+        "class": "BTXNews",
+        "icon": "news",
+        "gbp": null,
+        "position": "0",
+        "extension": null,
+        "actions": [
+            {
+                "id": "actions-15c0ed681010f8",
+                "name": "View News",
+                "route": "",
+                "in_nav": "on",
+                "form": null,
+                "view": "views-15c0ed68100ce7",
+                "report": null,
+                "class": "list",
+                "level": "0",
+                "position": 3
+            },
+            {
+                "id": "actions-15c0ed681010ff",
+                "name": "Add News",
+                "route": "add",
+                "in_nav": "on",
+                "form": "forms-15c0ed68100e1f",
+                "view": null,
+                "report": null,
+                "class": "add",
+                "level": "0",
+                "position": 2
+            },
+            {
+                "id": "actions-15c0ed68101102",
+                "name": "Edit News",
+                "route": "edit",
+                "in_nav": "",
+                "form": "forms-15c0ed68100e1f",
+                "view": null,
+                "report": null,
+                "class": "edit",
+                "level": "0",
+                "position": 1
+            }
+        ],
+        "embeddable-forms": [],
+        "forms": [
+            {
+                "id": "forms-15c0ed68100e1f",
+                "title": "News",
+                "table": "btx_news",
+                "fields": [
+                    {
+                        "title": "Date",
+                        "subtitle": "",
+                        "type": "date",
+                        "settings": {
+                            "validation": "required",
+                            "default_today": "on"
+                        },
+                        "column": "date"
+                    },
+                    {
+                        "title": "Title",
+                        "subtitle": "",
+                        "type": "text",
+                        "settings": {
+                            "validation": "required",
+                            "sub_type": "",
+                            "max_length": ""
+                        },
+                        "column": "title"
+                    },
+                    {
+                        "title": "Blurb",
+                        "subtitle": "",
+                        "type": "textarea",
+                        "settings": null,
+                        "column": "blurb"
+                    },
+                    {
+                        "title": "Content",
+                        "subtitle": "",
+                        "type": "html",
+                        "settings": {
+                            "validation": "required",
+                            "simple_by_permission": "0"
+                        },
+                        "column": "content"
+                    },
+                    {
+                        "title": "Image",
+                        "subtitle": "(min 980x552)",
+                        "type": "image",
+                        "settings": {
+                            "validation": "required",
+                            "directory": "files/news/",
+                            "min_width": "980",
+                            "min_height": "552",
+                            "preview_prefix": "classic-xsml-",
+                            "crops": [
+                                {
+                                    "prefix": "wide-med-",
+                                    "width": "980",
+                                    "height": "552",
+                                    "grayscale": "",
+                                    "thumbs": [
+                                        null,
+                                        {
+                                            "prefix": "wide-xsml-",
+                                            "width": "500",
+                                            "height": "",
+                                            "grayscale": ""
+                                        },
+                                        {
+                                            "prefix": "wide-sml-",
+                                            "width": "740",
+                                            "height": "",
+                                            "grayscale": ""
+                                        }
+                                    ]
+                                },
+                                {
+                                    "prefix": "classic-sml-",
+                                    "width": "740",
+                                    "height": "494",
+                                    "grayscale": "",
+                                    "thumbs": [
+                                        null,
+                                        null,
+                                        null,
+                                        {
+                                            "prefix": "classic-xsml-",
+                                            "width": "500",
+                                            "height": "",
+                                            "grayscale": ""
+                                        }
+                                    ]
+                                }
+                            ],
+                            "thumbs": [
+                                {
+                                    "prefix": "",
+                                    "width": "1440",
+                                    "height": "1440",
+                                    "grayscale": ""
+                                }
+                            ]
+                        },
+                        "column": "image"
+                    },
+                    {
+                        "title": "Link",
+                        "subtitle": "(overrides detail page, include http://)",
+                        "type": "com.fastspot.link-finder-field-type*link-finder",
+                        "settings": null,
+                        "column": "external_link"
+                    },
+                    {
+                        "title": "Categories",
+                        "subtitle": "",
+                        "type": "many-to-many",
+                        "settings": {
+                            "mtm-connecting-table": "btx_news_categories_rel",
+                            "mtm-my-id": "news",
+                            "mtm-other-id": "category",
+                            "mtm-other-table": "btx_news_categories",
+                            "mtm-other-descriptor": "title",
+                            "mtm-sort": "`title` ASC",
+                            "mtm-list-parser": "",
+                            "max": ""
+                        },
+                        "column": "__mtm-1__"
+                    },
+                    {
+                        "title": "In Content Callouts",
+                        "subtitle": "",
+                        "type": "callouts",
+                        "settings": {
+                            "groups": [
+                                "2"
+                            ],
+                            "noun": "",
+                            "max": ""
+                        },
+                        "column": "in_content_callouts"
+                    },
+                    {
+                        "title": "Full Width Callouts",
+                        "subtitle": "",
+                        "type": "callouts",
+                        "settings": {
+                            "groups": [
+                                "1"
+                            ],
+                            "noun": "",
+                            "max": ""
+                        },
+                        "column": "full_width_callouts"
+                    },
+                    {
+                        "title": "Route",
+                        "subtitle": "",
+                        "type": "route",
+                        "settings": {
+                            "source": [
+                                "title"
+                            ]
+                        },
+                        "column": "route"
+                    }
+                ],
+                "default_position": "",
+                "return_view": null,
+                "return_url": "",
+                "open_graph": "on",
+                "tagging": "",
+                "hooks": []
+            }
+        ],
+        "reports": [],
+        "views": [
+            {
+                "id": "views-15c0ed68100ce7",
+                "title": "News",
+                "description": "",
+                "type": "searchable",
+                "table": "btx_news",
+                "fields": {
+                    "date": {
+                        "title": "Date",
+                        "parser": "",
+                        "width": 364,
+                        "numeric": false
+                    },
+                    "title": {
+                        "title": "Title",
+                        "parser": "",
+                        "width": 364,
+                        "numeric": false
+                    }
+                },
+                "settings": {
+                    "filter": "",
+                    "sort": "`date` DESC",
+                    "per_page": "15"
+                },
+                "actions": {
+                    "feature": "on",
+                    "edit": "on",
+                    "delete": "on"
+                },
+                "preview_url": "",
+                "related_form": "forms-15c0ed68100e1f"
+            }
+        ]
+    },
+    {
+        "id": "modules-15c0ed68101106",
+        "group": "module-groups-15c0ed680f2f16",
+        "name": "Categories",
+        "route": "categories",
+        "class": "BTXNewsCategories",
+        "icon": "category",
+        "gbp": null,
+        "position": "0",
+        "extension": null,
+        "actions": [
+            {
+                "id": "actions-15c0ed68101b11",
+                "name": "View Categories",
+                "route": "",
+                "in_nav": "on",
+                "form": null,
+                "view": "views-15c0ed681016fd",
+                "report": null,
+                "class": "list",
+                "level": "0",
+                "position": 3
+            },
+            {
+                "id": "actions-15c0ed68101b19",
+                "name": "Add Category",
+                "route": "add",
+                "in_nav": "on",
+                "form": "forms-15c0ed68101849",
+                "view": null,
+                "report": null,
+                "class": "add",
+                "level": "0",
+                "position": 2
+            },
+            {
+                "id": "actions-15c0ed68101b1c",
+                "name": "Edit Category",
+                "route": "edit",
+                "in_nav": "",
+                "form": "forms-15c0ed68101849",
+                "view": null,
+                "report": null,
+                "class": "edit",
+                "level": "0",
+                "position": 1
+            }
+        ],
+        "embeddable-forms": [],
+        "forms": [
+            {
+                "id": "forms-15c0ed68101849",
+                "title": "Category",
+                "table": "btx_news_categories",
+                "fields": [
+                    {
+                        "title": "Title",
+                        "subtitle": "",
+                        "type": "text",
+                        "settings": null,
+                        "column": "title"
+                    },
+                    {
+                        "title": "Hide from Display",
+                        "subtitle": "(for internal categorization)",
+                        "type": "checkbox",
+                        "settings": null,
+                        "column": "hidden"
+                    },
+                    {
+                        "title": "Route",
+                        "subtitle": "",
+                        "type": "route",
+                        "settings": {
+                            "source": [
+                                "title"
+                            ]
+                        },
+                        "column": "route"
+                    }
+                ],
+                "default_position": "Bottom",
+                "return_view": null,
+                "return_url": "",
+                "open_graph": "",
+                "tagging": "",
+                "hooks": []
+            }
+        ],
+        "reports": [],
+        "views": [
+            {
+                "id": "views-15c0ed681016fd",
+                "title": "Categories",
+                "description": "",
+                "type": "draggable",
+                "table": "btx_news_categories",
+                "fields": {
+                    "title": {
+                        "title": "Title",
+                        "parser": "",
+                        "width": 384,
+                        "numeric": false
+                    },
+                    "hide_from_display": {
+                        "title": "Hidden",
+                        "parser": "",
+                        "width": 384,
+                        "numeric": false
+                    }
+                },
+                "settings": null,
+                "actions": {
+                    "edit": "on",
+                    "delete": "on"
+                },
+                "preview_url": "",
+                "related_form": "forms-15c0ed68101849"
+            }
+        ]
+    },
+    {
+        "id": "modules-15c0ed68101b21",
+        "group": null,
+        "name": "Form Builder",
+        "route": "com.fastspot.form-builder*btx-form-builder",
+        "class": "BTXFormBuilder",
+        "icon": "form",
+        "gbp": {
+            "name": "",
+            "table": "",
+            "other_table": ""
+        },
+        "position": "0",
+        "extension": "com.fastspot.form-builder",
+        "actions": [
+            {
+                "id": "actions-15c0ed68102367",
+                "name": "View Forms",
+                "route": "",
+                "in_nav": "on",
+                "form": null,
+                "view": "views-15c0ed68101f58",
+                "report": null,
+                "class": "list",
+                "level": "0",
+                "position": 3
+            },
+            {
+                "id": "actions-15c0ed68102370",
+                "name": "Add Form",
+                "route": "add",
+                "in_nav": "on",
+                "form": null,
+                "view": null,
+                "report": null,
+                "class": "add",
+                "level": "0",
+                "position": 2
+            },
+            {
+                "id": "actions-15c0ed68102372",
+                "name": "Settings",
+                "route": "settings",
+                "in_nav": "on",
+                "form": null,
+                "view": null,
+                "report": null,
+                "class": "server",
+                "level": "2",
+                "position": 1
+            }
+        ],
+        "embeddable-forms": [],
+        "forms": [],
+        "reports": [],
+        "views": [
+            {
+                "id": "views-15c0ed68101f58",
+                "title": "Forms",
+                "description": "",
+                "type": "searchable",
+                "table": "btx_form_builder_forms",
+                "fields": {
+                    "title": {
+                        "title": "Title",
+                        "parser": "",
+                        "width": 222,
+                        "numeric": false
+                    },
+                    "entries": {
+                        "title": "Entries",
+                        "parser": "",
+                        "width": 222,
+                        "numeric": true
+                    },
+                    "last_entry": {
+                        "title": "Last Entry",
+                        "parser": "if ($value) { $value = date(\"F j @ g:ia\",strtotime($value)); }",
+                        "width": 222,
+                        "numeric": false
+                    }
+                },
+                "settings": {
+                    "sort_column": "title",
+                    "sort_direction": "ASC",
+                    "per_page": "15",
+                    "filter": ""
+                },
+                "actions": {
+                    "entries": "{\"name\":\"Entries\",\"class\":\"icon_view\",\"route\":\"entries\",\"function\":\"\"}",
+                    "export": "{\"name\":\"Export\",\"class\":\"icon_export\",\"route\":\"export\",\"function\":\"\"}",
+                    "edit": "on",
+                    "delete": "on"
+                },
+                "preview_url": "",
+                "related_form": null
+            }
+        ]
+    }
+]

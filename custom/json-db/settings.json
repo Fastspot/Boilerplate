@@ -1,0 +1,173 @@
+[
+    {
+        "id": "404-page-content",
+        "type": "html",
+        "settings": null,
+        "name": "404 Page Content",
+        "description": "",
+        "locked": "",
+        "encrypted": "",
+        "extension": null
+    },
+    {
+        "id": "404-page-header",
+        "type": "text",
+        "settings": null,
+        "name": "404 Page Header",
+        "description": "",
+        "locked": "",
+        "encrypted": "",
+        "extension": null
+    },
+    {
+        "id": "bigtree-file-manager-thumbnail-sizes",
+        "type": "matrix",
+        "settings": {
+            "columns": [
+                {
+                    "id": "title",
+                    "type": "text",
+                    "title": "Title",
+                    "display_title": "on",
+                    "settings": null
+                },
+                {
+                    "id": "prefix",
+                    "type": "text",
+                    "title": "File Prefix (i.e. thumb_)",
+                    "display_title": "",
+                    "settings": null
+                },
+                {
+                    "id": "width",
+                    "type": "text",
+                    "title": "Width",
+                    "display_title": "",
+                    "settings": null
+                },
+                {
+                    "id": "height",
+                    "type": "text",
+                    "title": "Height",
+                    "display_title": "",
+                    "settings": null
+                }
+            ]
+        },
+        "name": "File Manager Thumbnail Sizes",
+        "description": "",
+        "locked": "on",
+        "encrypted": "",
+        "extension": null
+    },
+    {
+        "id": "bigtree-internal-disable-page-tagging",
+        "type": "checkbox",
+        "settings": null,
+        "name": "Disable Tagging in Pages",
+        "description": "<p>Disables the ability for users to tag pages. Check this box if you do not use tags on your front end for related content.</p>",
+        "locked": "",
+        "encrypted": "",
+        "extension": null
+    },
+    {
+        "id": "bigtree-internal-per-page",
+        "type": "text",
+        "settings": null,
+        "name": "Number of Items Per Page",
+        "description": "<p>This should be a numeric amount and controls the number of items per page in areas such as views, settings, users, etc.</p>",
+        "locked": "on",
+        "encrypted": "",
+        "extension": null
+    },
+    {
+        "id": "nav-footer",
+        "type": "matrix",
+        "settings": {
+            "max": "",
+            "style": "list",
+            "columns": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "title": "Title",
+                    "subtitle": "",
+                    "display_title": "on",
+                    "settings": "{\"validation\":\"required\",\"sub_type\":\"\",\"max_length\":\"\"}"
+                },
+                {
+                    "type": "com.fastspot.link-finder-field-type*link-finder",
+                    "id": "url",
+                    "title": "URL",
+                    "subtitle": "(include http://)",
+                    "settings": null
+                }
+            ]
+        },
+        "name": "Navigation - Footer",
+        "description": "",
+        "locked": "",
+        "encrypted": "",
+        "extension": null
+    },
+    {
+        "id": "nav-secondary",
+        "type": "matrix",
+        "settings": {
+            "max": "",
+            "style": "list",
+            "columns": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "title": "Title",
+                    "subtitle": "",
+                    "display_title": "on",
+                    "settings": "{\"validation\":\"required\",\"sub_type\":\"\",\"max_length\":\"\"}"
+                },
+                {
+                    "type": "com.fastspot.link-finder-field-type*link-finder",
+                    "id": "url",
+                    "title": "URL",
+                    "subtitle": "(include http://)",
+                    "settings": null
+                }
+            ]
+        },
+        "name": "Navigation - Secondary",
+        "description": "",
+        "locked": "",
+        "encrypted": "",
+        "extension": null
+    },
+    {
+        "id": "nav-social",
+        "type": "matrix",
+        "settings": {
+            "max": "",
+            "style": "list",
+            "columns": [
+                {
+                    "type": "list",
+                    "id": "title",
+                    "title": "Service",
+                    "subtitle": "",
+                    "display_title": "on",
+                    "settings": "{\"validation\":\"required\",\"list_type\":\"static\",\"allow-empty\":\"Yes\",\"list\":[{\"value\":\"Facebook\",\"description\":\"Facebook\"},{\"value\":\"Twitter\",\"description\":\"Twitter\"},{\"value\":\"Instagram\",\"description\":\"Instagram\"},{\"value\":\"Flickr\",\"description\":\"Flickr\"},{\"value\":\"LinkedIn\",\"description\":\"LinkedIn\"},{\"value\":\"Vimeo\",\"description\":\"Vimeo\"},{\"value\":\"YouTube\",\"description\":\"YouTube\"}],\"pop-table\":\"\",\"parser\":\"\"}"
+                },
+                {
+                    "type": "text",
+                    "id": "url",
+                    "title": "URL",
+                    "subtitle": "(include http://)",
+                    "settings": "{\"validation\":\"link required\",\"sub_type\":\"\",\"max_length\":\"\"}"
+                }
+            ]
+        },
+        "name": "Navigation - Social",
+        "description": "",
+        "locked": "",
+        "encrypted": "",
+        "extension": null
+    }
+]

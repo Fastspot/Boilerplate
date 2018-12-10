@@ -1,0 +1,34 @@
+[
+    {
+        "id": "1",
+        "name": "Full Width",
+        "callouts": [
+            "contact-info",
+            "facts-stats",
+            "flexible-callout",
+            "testimonial",
+            "wysiwyg"
+        ]
+    },
+    {
+        "id": "2",
+        "name": "In Content",
+        "callouts": [
+            "link-list",
+            "media-gallery",
+            "topic-row",
+            "topic-rows",
+            "wysiwyg"
+        ]
+    },
+    {
+        "id": "3",
+        "name": "Sidebar",
+        "callouts": null
+    },
+    {
+        "id": "4",
+        "name": "Home",
+        "callouts": null
+    }
+]

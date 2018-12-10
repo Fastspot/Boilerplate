@@ -1,0 +1,272 @@
+[
+    {
+        "id": "content",
+        "name": "Content",
+        "routed": "",
+        "resources": [
+            {
+                "id": "page_header",
+                "title": "Page Header",
+                "subtitle": "",
+                "type": "text",
+                "settings": null
+            },
+            {
+                "id": "page_content",
+                "title": "Page Content",
+                "subtitle": "",
+                "type": "html",
+                "settings": null
+            },
+            {
+                "id": "in_content_callouts",
+                "title": "In Content Callouts",
+                "subtitle": "",
+                "type": "callouts",
+                "settings": {
+                    "groups": [
+                        "2"
+                    ],
+                    "noun": "",
+                    "max": ""
+                }
+            },
+            {
+                "id": "sidebar_callouts",
+                "title": "Sidebar Callouts",
+                "subtitle": "",
+                "type": "callouts",
+                "settings": {
+                    "groups": [
+                        "3"
+                    ],
+                    "noun": "",
+                    "max": ""
+                }
+            },
+            {
+                "id": "full_width_callouts",
+                "title": "Full Width Callouts",
+                "subtitle": "",
+                "type": "callouts",
+                "settings": {
+                    "groups": [
+                        "1"
+                    ],
+                    "noun": "",
+                    "max": ""
+                }
+            }
+        ],
+        "hooks": null,
+        "module": null,
+        "level": "0",
+        "position": "7",
+        "extension": null
+    },
+    {
+        "id": "home",
+        "name": "Home",
+        "routed": "",
+        "resources": [
+            {
+                "id": "page_feature",
+                "title": "Feature",
+                "subtitle": "",
+                "type": "com.fastspot.advanced-callouts*inline-callout-set",
+                "settings": {
+                    "prefilled": [
+                        {
+                            "title": "Feature",
+                            "type": "home-feature"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "full_width_callouts",
+                "title": "Blocks",
+                "subtitle": "",
+                "type": "callouts",
+                "settings": {
+                    "groups": [
+                        "4",
+                        "1"
+                    ],
+                    "noun": "",
+                    "max": ""
+                }
+            }
+        ],
+        "hooks": null,
+        "module": null,
+        "level": "2",
+        "position": "6",
+        "extension": null
+    },
+    {
+        "id": "full",
+        "name": "Full Width",
+        "routed": "",
+        "resources": [
+            {
+                "id": "page_header",
+                "type": "text",
+                "title": "Page Header",
+                "subtitle": "",
+                "settings": null
+            },
+            {
+                "id": "page_content",
+                "type": "html",
+                "title": "Page Content",
+                "subtitle": "",
+                "settings": null
+            },
+            {
+                "id": "in_content_callouts",
+                "type": "callouts",
+                "title": "In Content Callouts",
+                "subtitle": "",
+                "settings": {
+                    "groups": [
+                        "2"
+                    ],
+                    "noun": "",
+                    "max": ""
+                }
+            },
+            {
+                "id": "full_width_callouts",
+                "type": "callouts",
+                "title": "Full Width Callouts",
+                "subtitle": "",
+                "settings": {
+                    "groups": [
+                        "1"
+                    ],
+                    "noun": "",
+                    "max": ""
+                }
+            }
+        ],
+        "hooks": null,
+        "module": null,
+        "level": "0",
+        "position": "5",
+        "extension": null
+    },
+    {
+        "id": "search",
+        "name": "Search",
+        "routed": "",
+        "resources": [
+            {
+                "id": "page_header",
+                "title": "Page Header",
+                "subtitle": "",
+                "type": "text",
+                "settings": null
+            }
+        ],
+        "hooks": null,
+        "module": null,
+        "level": "2",
+        "position": "4",
+        "extension": null
+    },
+    {
+        "id": "events",
+        "name": "Events",
+        "routed": "on",
+        "resources": [],
+        "hooks": null,
+        "module": null,
+        "level": "0",
+        "position": "3",
+        "extension": null
+    },
+    {
+        "id": "com.fastspot.form-builder*btx-form-builder",
+        "name": "Form Builder",
+        "routed": "on",
+        "resources": [
+            {
+                "id": "page_header",
+                "title": "Page Header",
+                "subtitle": "",
+                "type": "text",
+                "options": [],
+                "settings": []
+            },
+            {
+                "id": "page_content",
+                "title": "Page Content",
+                "subtitle": "",
+                "type": "html",
+                "options": [],
+                "settings": []
+            },
+            {
+                "id": "form",
+                "title": "Form",
+                "subtitle": "",
+                "type": "com.fastspot.form-builder*form-builder-picker",
+                "options": {
+                    "list_type": "db",
+                    "allow-empty": "No",
+                    "pop-table": "btx_form_builder_forms",
+                    "pop-description": "title",
+                    "pop-sort": "`title` ASC"
+                },
+                "settings": {
+                    "list_type": "db",
+                    "allow-empty": "No",
+                    "pop-table": "btx_form_builder_forms",
+                    "pop-description": "title",
+                    "pop-sort": "`title` ASC"
+                }
+            },
+            {
+                "id": "emails",
+                "title": "Email Addresses",
+                "subtitle": "(to send submissions notifications to \u2014 separate with commas)",
+                "type": "textarea",
+                "options": [],
+                "settings": []
+            },
+            {
+                "id": "thank_you_page_header",
+                "title": "Thank You Page Header",
+                "subtitle": "",
+                "type": "text",
+                "options": [],
+                "settings": []
+            },
+            {
+                "id": "thank_you_page_content",
+                "title": "Thank You Page Content",
+                "subtitle": "",
+                "type": "html",
+                "options": [],
+                "settings": []
+            }
+        ],
+        "hooks": null,
+        "module": null,
+        "level": "0",
+        "position": "2",
+        "extension": "com.fastspot.form-builder"
+    },
+    {
+        "id": "news",
+        "name": "News",
+        "routed": "on",
+        "resources": [],
+        "hooks": null,
+        "module": "modules-15c0ed681008a4",
+        "level": "1",
+        "position": "1",
+        "extension": null
+    }
+]
