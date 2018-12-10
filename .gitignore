@@ -9,3 +9,4 @@ site/files/
 /.htaccess
 backups/
 custom/settings.php
+.idea/
