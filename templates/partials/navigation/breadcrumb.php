@@ -9,65 +9,63 @@
 		}
 	}
 ?>
-<div class="breadcrumb_nav<?php if ($modifier) { ?> breadcrumb_nav_<?=$modifier?><?php } ?>">
-	<div class="breadcrumb_list" itemscope itemtype="http://schema.org/BreadcrumbList">
-		<div class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+<nav class="breadcrumb_nav<?php if ($modifier) { ?> breadcrumb_nav_<?=$modifier?><?php } ?>" aria-label="Breadcrumb">
+	<div class="breadcrumb_nav_header">
+		<h2 class="breadcrumb_nav_header">You are here:</h2>
+	</div>
+	
+	<ol class="breadcrumb_list" itemscope itemtype="http://schema.org/BreadcrumbList" aria-label="Breadcrumb Navigation">
+		<li class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
 			<a class="breadcrumb_pill breadcrumb_pill_link" itemprop="item" href="<?=WWW_ROOT?>">
-				<span class="breadcrumb_name" itemprop="name">
-					<?php
-						if (!empty($icon)) {
-					?>
-					<span class="breadcrumb_name_icon"><?=icon("home")?></span>
-					<?php
-						}
-					?>
-					<span class="breadcrumb_name_label">Home</span>
-				</span>
+				<?php
+					if (!empty($icon)) {
+				?>
+				<span class="breadcrumb_pill_icon"><?=icon("home")?></span>
+				<?php
+					}
+				?>
+				<span class="breadcrumb_pill_label" itemprop="name">Home</span>
 			</a>
 			<meta itemprop="position" content="1">
-		</div>
+		</li>
 		<?php
 			$x = 0;
 			$max = count($site["breadcrumbs"]);
 
 			if (defined("CUSTOM_BREADCRUMB")) {
 		?>
-		<div class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+		<li class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
 			<span class="breadcrumb_pill" itemprop="item">
-				<span class="breadcrumb_name">
-					<span class="breadcrumb_name_label" itemprop="name"><?=CUSTOM_BREADCRUMB?></span>
-				</span>
+				<span class="breadcrumb_pill_label" itemprop="name"><?=CUSTOM_BREADCRUMB?></span>
 			</span>
 			<meta itemprop="position" content="2">
-		</div>
+		</li>
 		<?php
 			} else {
 				foreach ($site["breadcrumbs"] as $item) {
 					$x++;
 		?>
-		<div class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+		<li class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
 			<?php
 					if ($x == $max) {
 			?>
-			<span class="breadcrumb_name" itemprop="item">
-				<span class="breadcrumb_name_label" itemprop="name"><?=$item["title"]?></span>
+			<span class="breadcrumb_pill" itemprop="item">
+				<span class="breadcrumb_pill_label" itemprop="name"><?=$item["title"]?></span>
 			</span>
 			<?php
 					} else {
 			?>
 			<a class="breadcrumb_pill breadcrumb_pill_link" itemprop="item" href="<?=$item["link"]?>">
-				<span class="breadcrumb_name" itemprop="name">
-					<span class="breadcrumb_name_label"><?=$item["title"]?></span>
-				</span>
+				<span class="breadcrumb_pill_label" itemprop="name"><?=$item["title"]?></span>
 			</a>
 			<?php
 					}
 			?>
 			<meta itemprop="position" content="<?=$x?>">
-		</div>
+		</li>
 		<?php
 				}
 			}
 		?>
-	</div>
-</div>
+	</ol>
+</nav>

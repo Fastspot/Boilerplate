@@ -3,7 +3,7 @@
 ?>
 
 <div class="page_content">
-	<main class="full_width_callouts" id="page_main_content" itemprop="mainContentOfPage">
+	<div class="full_width_callouts" id="page_main_content" tabindex="-1">
 		<?php
 			if (!empty($page_feature) && is_array($page_feature)) {
 				foreach ($page_feature as $callout) {
@@ -21,7 +21,7 @@
 				}
 			}
 		?>
-	</main>
+	</div>
 </div>
 
 <?php

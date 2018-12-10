@@ -1,26 +1,24 @@
 <?php
-	// Optional "modifier", "heading", "title", "depth" (defaults to 2)
+	// Requred: "title"
+	// Optional "modifier", "heading", "depth" (defaults to 2)
 	global $bigtree;
 
 	$current_url = WWW_ROOT.ltrim($_SERVER["REQUEST_URI"], "/");
 	set_subnav(!empty($depth) ? $depth : 2);
 ?>
-<nav class="sub_nav<?php if (!empty($modifier)) { echo " sub_nav_".$modifier; } ?>"<?php if (empty($heading) && !empty($title)) { ?> aria-label="<?=$title?>"<?php } ?> itemscope itemtype="http://schema.org/SiteNavigationElement">
-	<?php
-		if (!empty($heading) && !empty($title)) {
-	?>
+<nav class="js-sub-nav sub_nav<?php if (!empty($modifier)) { echo " sub_nav_".$modifier; } ?>" aria-label="<?=$title?>" itemscope itemtype="http://schema.org/SiteNavigationElement">
 	<div class="sub_nav_header">
-		<h2 class="sub_nav_title"><?=$title?></h2>
+		<h2 class="sub_nav_title"><?=$title?> Navigation</h2>
+		
+		<button class="js-swap js-sub-nav-handle sub_nav_handle" data-swap-options='{"maxWidth": "980px"}' data-swap-target=".sub_nav_list" data-swap-title="<?=$site["sub_nav_section"]["title"]?>">
+			<span class="sub_nav_handle_label"><?=$site["sub_nav_section"]["nav_title"]?></span>
+			<span class="sub_nav_handle_icons">
+				<span class="sub_nav_handle_icon sub_nav_handle_icon_open"><?=icon("caret_down")?></span>
+				<span class="sub_nav_handle_icon sub_nav_handle_icon_close"><?=icon("close")?></span>
+			</span>
+		</button>
 	</div>
-	<?php
-		}
-	?>
-	<button class="js-swap js-sub-nav-handle sub_nav_handle" data-swap-options='{"maxWidth": "980px"}' data-swap-target=".sub_nav_list" data-swap-title="<?=$site["sub_nav_section"]["title"]?>">
-		<span class="sub_nav_handle_label"><?=$site["sub_nav_section"]["nav_title"]?></span>
-		<span class="sub_nav_handle_icon sub_nav_handle_icon_open"><?=icon("caret_down")?></span>
-		<span class="sub_nav_handle_icon sub_nav_handle_icon_close"><?=icon("close")?></span>
-	</button>
-	<ul class="js-sub-nav-list sub_nav_list">
+	<ul class="js-sub-nav-list sub_nav_list" aria-label="<?=$title?> Navigation">
 		<?php
 			foreach ($site["sub_nav"] as $item) {
 				$active = (strpos($current_url, $item["link"]) !== false);

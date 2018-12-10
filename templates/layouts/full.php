@@ -16,7 +16,7 @@
 
 <div class="page_content">
 	<div class="fs-row">
-		<main class="fs-cell fs-lg-10 fs-all-justify-center page_main_content" id="page_main_content" itemprop="mainContentOfPage">
+		<div class="fs-cell fs-lg-10 fs-all-justify-center page_main_content" id="page_main_content" tabindex="-1">
 			<?php
 				if (defined("PAGE_HEADER")) {
 					include PAGE_HEADER;
@@ -52,7 +52,7 @@
 			<?php
 				}
 			?>
-		</main>
+		</div>
 	</div>
 
 	<div class="full_width_callouts">

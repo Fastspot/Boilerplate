@@ -1,59 +1,68 @@
 <?php
 	// Optional "name", "street", "city", "state", "zip", "email", "phone", "fax"
 ?>
-<div class="footer_address" itemscope itemtype="http://schema.org/PostalAddress">
+<div class="address" itemscope itemtype="http://schema.org/PostalAddress">
+	<span class="address_group">
+		<?php
+			if (!empty($name)) {
+		?>
+		<span class="address_name" itemprop="name"><?=$name?></span>
+		<?php
+			}
+	
+			if (!empty($street)) {
+		?>
+		<span class="address_street" itemprop="streetAddress"><?=$street?></span>
+		<?php
+			}
+		?>
+		<span class="address_set">
+			<?php
+				if (!empty($city)) {
+			?>
+			<span class="address_city" itemprop="addressLocality"><?=$city?></span>
+			<?php
+				}
+		
+				if (!empty($state)) {
+			?>
+			<span class="address_state" itemprop="addressRegion"><?=$state?></span>
+			<?php
+				}
+		
+				if (!empty($zip)) {
+			?>
+			<span class="address_zip" itemprop="postalCode"><?=$zip?></span>
+			<?php
+				}
+			?>
+		</span>
+	</span>
 	<?php
-		if (!empty($name)) {
-	?>
-	<span class="footer_address_name" itemprop="name"><?=$name?></span>
-	<?php
-		}
-
-		if (!empty($street)) {
-	?>
-	<span class="footer_address_street" itemprop="streetAddress"><?=$street?></span>
-	<?php
-		}
-
-		if (!empty($city)) {
-	?>
-	<span class="footer_address_city" itemprop="addressLocality"><?=$city?></span>
-	<?php
-		}
-
-		if (!empty($state)) {
-	?>
-	<span class="footer_address_state" itemprop="addressRegion"><?=$state?></span>
-	<?php
-		}
-
-		if (!empty($zip)) {
-	?>
-	<span class="footer_address_zip" itemprop="postalCode"><?=$zip?></span>
-	<?php
-		}
-
 		if (!empty($email)) {
 	?>
-	<a class="footer_address_email" itemprop="email" href="mailto:<?=$email?>">
-		<span class="footer_address_label"><?=$email?></span>
-	</a>
+	<span class="address_detail">
+		<span class="address_detail_icon"><?=icon("email")?></span>
+		<a class="address_detail_label address_detail_label_email" itemprop="email" href="mailto:<?=$email?>"><?=$email?></a>
+	</span>
 	<?php
 		}
 
 		if (!empty($phone)) {
 	?>
-	<a class="footer_address_phone" itemprop="telephone" <?=tel_href($phone)?>>
-		<span class="footer_address_label"><?=$phone?></span>
-	</a>
+	<span class="address_detail">
+		<span class="address_detail_icon"><?=icon("phone")?></span>
+		<a class="address_detail_label address_detail_label_phone" <?=tel_href($phone)?> itemprop="telephone"><?=$phone?></a>
+	</span>
 	<?php
 		}
 
 		if (!empty($fax)) {
 	?>
-	<a class="footer_address_phone" itemprop="telephone" <?=tel_href($fax)?>>
-		<span class="footer_address_label"><?=$fax?></span>
-	</a>
+	<span class="address_detail">
+		<span class="address_detail_icon"><?=icon("fax")?></span>
+		<a class="address_detail_label address_detail_label_fax" <?=tel_href($fax)?> itemprop="fax"><?=$fax?></a>
+	</span>
 	<?php
 		}
 	?>

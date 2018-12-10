@@ -30,4 +30,4 @@
 		$bg_options["lazyEdge"] = $lazyEdge;
 	}
 ?>
-<div class="<?=$bg_class?> <?=$class?>_background" data-background-options="<?=htmlspecialchars(json_encode($bg_options))?>"></div>
+<div class="<?=$bg_class?> <?=$class?>_background" data-background-options="<?=htmlspecialchars(json_encode($bg_options))?>" aria-hidden="true"></div>

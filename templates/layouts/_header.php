@@ -63,6 +63,7 @@
 									<?php
 										include_with("handle.php", [
 											"class" => "mobile_sidebar",
+											"icon" => "menu",
 											"modifier" => "primary"
 										]);
 
@@ -80,4 +81,4 @@
 				</div>
 			</header>
 
-			<div class="page_inner">
+			<main class="page_inner" itemprop="mainContentOfPage">

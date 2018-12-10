@@ -1,5 +1,5 @@
 <?php
-	// Optional "modifier", "heading", "title", "icon"
+	// Optional "modifier", "icon"
 	
 	$current_url = WWW_ROOT.ltrim($_SERVER["REQUEST_URI"], "/");
 
@@ -7,11 +7,11 @@
 		$site["main_nav"] = BigTreeCMS::getNavByParent(0, 2);
 	}
 ?>
-<nav class="js-main-nav main_nav<?php if (!empty($modifier)) { ?> js-main-nav-<?=$modifier?> main_nav_<?=$modifier?><?php } ?>" aria-label="<?=str_replace(" Navigation", "", $title)?>" itemscope itemtype="http://schema.org/SiteNavigationElement">
+<nav class="js-main-nav main_nav<?php if (!empty($modifier)) { ?> js-main-nav-<?=$modifier?> main_nav_<?=$modifier?><?php } ?>" aria-label="Site" itemscope itemtype="http://schema.org/SiteNavigationElement">
 	<div class="main_nav_header">
-		<h2 class="main_nav_title"><?=$title?></h2>
+		<h2 class="main_nav_title">Site Navigation</h2>
 	</div>
-	<ul class="main_nav_list" aria-label="<?=$title?>">
+	<ul class="main_nav_list" aria-label="Site Navigation">
 		<?php
 			$x = 0;
 
@@ -20,7 +20,7 @@
 				$active = (strpos($current_url, $item["link"]) !== false);
 				$has_children = (is_array($item["children"]) && count($item["children"]));
 		?>
-		<li class="js-main-nav-item-<?=$x?> main_nav_item<?php if ($has_children) { ?> main_nav_has_children<?php } if ($active) { ?> active<?php } ?>">
+		<li class="js-main-nav-item-<?=$x?> main_nav_item<?php if ($has_children) { ?> main_nav_item_has_children<?php } if ($active) { ?> active<?php } ?>">
 			<div class="main_nav_item_wrapper">
 				<a class="main_nav_link" href="<?=$item["link"]?>"<?php if ($item["new_window"]) { ?> target="_blank"<?php } ?> itemprop="url"<?php if ($has_children) { ?> aria-haspopup="true"<?php } if ($active) { ?> aria-current="page"<?php } ?>>
 					<span class="main_nav_link_label" itemprop="name"><?=$item["title"]?></span>

@@ -14,8 +14,8 @@
 ?>
 <div class="pagination">
 	<a class="pagination_arrow pagination_arrow_left<?php if ($current_page == 1) { ?> pagination_arrow_disabled<?php } ?>" href="<?=$pagination_link.$prev_page.$hash?>">
-		<span class="pagination_arrow_label">Previous</span>
 		<span class="pagination_arrow_icon"><?=icon("arrow_left")?></span>
+		<span class="pagination_arrow_label">Previous</span>
 	</a>
 	<nav class="pagination_nav">
 		<?php

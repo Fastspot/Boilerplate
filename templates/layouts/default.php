@@ -25,7 +25,7 @@
 			?>
 		</div>
 
-		<main class="fs-cell fs-lg-8 page_main_content" id="page_main_content" itemprop="mainContentOfPage">
+		<div class="fs-cell fs-lg-8 page_main_content" id="page_main_content" tabindex="-1">
 			<?php
 				if (defined("PAGE_HEADER")) {
 					include PAGE_HEADER;
@@ -38,6 +38,12 @@
 					if ($page_header) {
 				?>
 				<h1 class="page_title"><?=$page_header?></h1>
+				<?php
+					}
+
+					if ($page_intro) {
+				?>
+				<p class="page_intro"><?=nl2br($page_intro)?></p>
 				<?php
 					}
 				?>
@@ -61,20 +67,18 @@
 			<?php
 				}
 			?>
-		</main>
+		</div>
 
-		<div class="fs-cell-right fs-lg-4 page_aside page_sidebar">
-			<div class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
-				<?php
-					if (!empty($sidebar_callouts) && is_array($sidebar_callouts)) {
-						foreach ($sidebar_callouts as $callout) {
-							BTXReusableCallouts::check($callout);
-							$callout["_context"] = "sidebar";
-							include_with(SERVER_ROOT."templates/callouts/".$callout["type"].".php", $callout);
-						}
+		<div class="fs-cell-right fs-lg-4 page_aside page_sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+			<?php
+				if (!empty($sidebar_callouts) && is_array($sidebar_callouts)) {
+					foreach ($sidebar_callouts as $callout) {
+						BTXReusableCallouts::check($callout);
+						$callout["_context"] = "sidebar";
+						include_with(SERVER_ROOT."templates/callouts/".$callout["type"].".php", $callout);
 					}
-				?>
-			</div>
+				}
+			?>
 		</div>
 	</div>
 

@@ -4,14 +4,14 @@
 ?>
 <nav class="<?=$class?><?php if (!empty($modifier)) { echo " ".$class."_".$modifier; } ?>" aria-label="<?=$title?>" itemscope itemtype="http://schema.org/SiteNavigationElement">
 	<header class="<?=$class?>_header">
-		<h2 class="<?=$class?>_title"><?=$title?></h2>
+		<h2 class="<?=$class?>_title"><?=$title?> Navigation</h2>
 	</header>
 
-	<ul class="<?=$class?>_list" aria-label="<?=$title?>">
+	<ul class="<?=$class?>_list" aria-label="<?=$title?> Navigation">
 		<?php
 			foreach ($links as $link) {
 		?>
-		<li class="<?=$class?>_item<?php if (!empty($link["modifier"])) { echo " ".$link["modifier"]; } ?><?php if (is_array($link["children"]) && count($link["children"])) { echo " ".$class."_item_has_children"; } ?>">
+		<li class="<?=$class?>_item<?php if (!empty($link["modifier"])) { echo " ".$class."_item_".$link["modifier"]; } ?><?php if (is_array($link["children"]) && count($link["children"])) { echo " ".$class."_item_has_children"; } ?>">
 			<a class="<?=$class?>_link<?php if ($link["icon"]) { echo " ".$link["icon"]; } ?>" <?=href($link["url"])?> itemprop="url">
 				<?php
 					if (!empty($icon)) {

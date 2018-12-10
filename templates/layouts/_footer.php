@@ -1,4 +1,4 @@
-			</div>
+			</main>
 				
 			<footer class="footer" id="footer" itemscope itemtype="http://schema.org/WPFooter">
 				<div class="footer_ribbon">
@@ -12,7 +12,7 @@
 									]);
 								?>
 								<div class="copyright">
- 									<p class="copyright_info">&copy; <span itemprop="copyrightHolder" itemscope="" itemtype="http://schema.org/<?=$site["schema_type"]?>"><?=$site["title"]?></span> <span itemprop="copyrightYear"><?=date("Y")?></span></p>
+ 									<p class="copyright_info">&copy; <span class="copyright_holder" itemprop="copyrightHolder" itemscope="" itemtype="http://schema.org/<?=$site["schema_type"]?>"><?=$site["title"]?></span> <span <span class="copyright_year" itemprop="copyrightYear"><?=date("Y")?></span></p>
  								</div>
  								<?php
 									include_with("address.php", $site["address"]);
@@ -59,6 +59,7 @@
 
 			<button class="js-swap js-menu-close menu_close" data-swap-target=".menu" data-swap-linked="menu" aria-label="Close Menu">
 				<span class="menu_close_icon"><?=icon("close")?></span>
+ 				<span class="menu_close_label">Close Menu</span>
 			</button>
 		</div>
 
