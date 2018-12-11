@@ -143,46 +143,87 @@
 	<div class="cr_heading">Tables</div>
 
 	<!-- Table -->
-	{% for i in 1..2 %}
-		{{site.table({
-			headers: [
-				"Colors",
-				"Shapes",
-				"Numbers",
-				"Percentages"
+	{{ site.table({
+		headers: [
+			"Colors",
+			"Shapes",
+			"Numbers",
+			"Percentages"
+		],
+		rows: [
+			[
+				"Black",
+				"Circle",
+				"One",
+				"10% of Lorem ipsum dolor sit amet, consectetur."
 			],
-			rows: [
-				[
-					"Black",
-					"Circle",
-					"One",
-					"10% of Lorem ipsum dolor sit amet, consectetur."
-				],
-				[
-					"Blue",
-					"Square",
-					"Two",
-					"33% of Donec ullamcorper nulla non metus auctor."
-				],
-				[
-					"Green",
-					"Triangle",
-					"Three",
-					"5% of Integer posuere erat a ante venenatis."
-				],
-				[
-					"Red",
-					"Rectangle",
-					"Four",
-					"90% of Aenean eu leo quam vestibulum."
-				],
-				[
-					"White",
-					"Oval",
-					"Five",
-					"100% of Cum sociis natoque penatibus et mus."
-				]
+			[
+				"Blue",
+				"Square",
+				"Two",
+				"33% of Donec ullamcorper nulla non metus auctor."
+			],
+			[
+				"Green",
+				"Triangle",
+				"Three",
+				"5% of Integer posuere erat a ante venenatis."
+			],
+			[
+				"Red",
+				"Rectangle",
+				"Four",
+				"90% of Aenean eu leo quam vestibulum."
+			],
+			[
+				"White",
+				"Oval",
+				"Five",
+				"100% of Cum sociis natoque penatibus et mus."
 			]
-		})}}
-	{% endfor %}
+		]
+	}) }}
+
+	<table class="">
+		<thead>
+			<tr>
+				<td>Colors</td>
+				<td>Shapes</td>
+				<td>Numbers</td>
+				<td>Percentages</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Black</td>
+				<td>Circle</td>
+				<td>One</td>
+				<td>10% of Lorem ipsum dolor sit amet, consectetur.</td>
+			</tr>
+			<tr>
+				<td>Blue</td>
+				<td>Square</td>
+				<td>Two</td>
+				<td>33% of Donec ullamcorper nulla non metus auctor.</td>
+			</tr>
+			<tr>
+				<td>Green</td>
+				<td>Triangle</td>
+				<td>Three</td>
+				<td>5% of Integer posuere erat a ante venenatis.</td>
+			</tr>
+			<tr>
+				<td>Red</td>
+				<td>Rectangle</td>
+				<td>Four</td>
+				<td>90% of Aenean eu leo quam vestibulum.</td>
+			</tr>
+			<tr>
+				<td>White</td>
+				<td>Oval</td>
+				<td>Five</td>
+				<td>100% of Cum sociis natoque penatibus et mus.</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
