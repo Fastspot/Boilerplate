@@ -25,6 +25,8 @@
 		include "_head.php";
 	?>
 	<body class="<?=implode(" ", $body_classes)?>">
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<?=$site["tag_manager_id"]?>" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
 		<?php
 			if ($alert) {
 				include_with("alert.php", $alert);

@@ -6,6 +6,7 @@
 	 * @global string $phone
 	 * @global string $fax
 	 * @global string $email
+	 * @global string $link
 	 * @global array $social
 	 */
 ?>
@@ -28,7 +29,19 @@
 					<div class="contact_wrapper">
 						<div class="contact_header">
 							<h2 class="contact_name" itemprop="name">
+								<?php
+									if (!empty($link)) {
+								?>
+								<a class="contact_name_link" <?=href($link)?>>
+									<span class="contact_name_link_label"><?=$name?></span>
+								</a>
+								<?php
+									} else {
+								?>
 								<span class="contact_name_label"><?=$name?></span>
+								<?php
+									}
+								?>
 							</h2>
 							<?php
 								if (!empty($title)) {
@@ -57,7 +70,7 @@
 
 									if (!empty($phone)) {
 								?>
-								<a class="contact_type contact_type_link contact_type_phone" href="tel:<?=preg_replace('/[^0-9]/', '', $phone)?>">
+								<a class="contact_type contact_type_link contact_type_phone" <?=tel_href($phone)?>>
 									<span class="contact_type_label">
 										<span class="contact_type_label_icon"><?=icon("phone")?></span>
 										<span class="contact_type_label_text">Telephone</span>
@@ -69,7 +82,7 @@
 
 									if (!empty($fax)) {
 								?>
-								<a class="contact_type contact_type_link contact_type_fax" href="tel:<?=preg_replace('/[^0-9]/', '', $fax)?>">
+								<a class="contact_type contact_type_link contact_type_fax" <?=tel_href($fax)?>>
 									<span class="contact_type_label">
 										<span class="contact_type_label_icon"><?=icon("fax")?></span>
 										<span class="contact_type_label_text">Fax</span>

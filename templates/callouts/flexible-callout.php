@@ -8,7 +8,7 @@
 	 * @global array $links
 	 */
 ?>
-<section class="flex_callout<?php if (!empty($theme)) { echo " theme_".$theme; } ?>">
+<div class="flex_callout<?php if (!empty($theme)) { echo " theme_".$theme; } ?>">
 	<?php
 		include_with("background.php", [
 			"class" => "flex_callout",
@@ -23,6 +23,7 @@
 		<div class="fs-cell">
 			<div class="flex_callout_inner">
 				<header class="flex_callout_header">
+					<h2 class="flex_callout_title"><?=$title?></h2>
 					<?php
 						if (!empty($label)) {
 					?>
@@ -30,7 +31,6 @@
 					<?php
 						}
 					?>
-					<h2 class="flex_callout_title"><?=$title?></h2>
 				</header>
 				<div class="flex_callout_body">
 					<div class="flex_callout_description">
@@ -53,4 +53,4 @@
 			</div>
 		</div>
 	</div>
-</section>
+</div>

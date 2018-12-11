@@ -16,6 +16,7 @@
 		}
 	?>
 	<div class="gallery_body">
+		<div class="js-gallery-counter gallery_counter"></div>
 		<div class="js-carousel gallery_items" data-carousel-options='{"theme": "base_pagination", "contained": false}' itemscope itemtype="http://schema.org/ImageGallery">
 			<?php
 				$count = count($items);
@@ -24,7 +25,7 @@
 				foreach ($items as $item) {
 					$x++;
 			?>
-			<div class="gallery_item<?php if (empty($item["info"]["caption"])) { ?> gallery_item_no_caption<?php } if (!empty($item["video"]["id"])) { ?> gallery_item_video<?php } ?>">
+			<div class="gallery_item<?php if (empty($item["info"]["caption"])) { ?> gallery_item_no_caption<?php } ?> <?php if (!empty($item["video"]["id"])) { ?>gallery_item_video<?php } else { ?>gallery_item_image<?php } ?>">
 				<div class="gallery_count">
 					<span class="media_count_number"><?php if ($count > 9 && $x < 10) { echo "0"; } ?><?=$x?></span>
 					<span class="media_count_label">of</span>

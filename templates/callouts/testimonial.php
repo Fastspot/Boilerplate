@@ -16,7 +16,7 @@
 				<div class="testimonial" itemscope itemtype="http://schema.org/<?=$site["schema_type"]?>">
 					<meta itemprop="name" content="<?=$site["title"]?>">
 					<div class="testimonial_inner" itemprop="review" itemscope itemtype="http://schema.org/Review">
-						<div class="testimonial_media">
+						<div class="testimonial_media" aria-hidden="true">
 							<figure class="testimonial_figure">
 								<img class="testimonial" src="<?=BigTree::prefixFile($image, "portrait-full-xsml-")?>" alt="">
 							</figure>
@@ -32,17 +32,17 @@
 									</figcaption>
 								</figure>
 							</div>
-							<footer class="testimonial_footer">
-								<?php
-									if (!empty($link_title) && !empty($link_url)) {
-								?>
+							<?php
+								if (!empty($link_title) && !empty($link_url)) {
+							?>
+							<footer class="testimonial_links">
 								<a class="testimonial_link" <?=href($link_url)?> itemprop="url"<?php if (!empty($link_aria)) { ?> aria-label="<?=$link_aria?>"<?php } ?>>
 									<span class="testimonial_link_label"><?=$link_title?></span>
 								</a>
-								<?php
-									}
-								?>
 							</footer>
+							<?php
+								}
+							?>
 						</div>
 					</div>
 				</div>

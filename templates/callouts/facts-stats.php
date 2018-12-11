@@ -5,7 +5,7 @@
 	 * @global array $items
 	 */
 ?>
-<section class="facts_listing">
+<div class="facts_listing">
 	<div class="fs-row">
 		<div class="fs-cell">
 			<div class="facts_listing_inner">
@@ -33,7 +33,7 @@
 					}
 				?>
 				<div class="facts_listing_body">
-					<ul class="facts">
+					<ul class="facts"<?php if (!empty($title)) { ?> aria-label="<?=$title?>"<?php } ?>>
 						<?php
 							foreach ($items as $item) {
 						?>
@@ -80,4 +80,4 @@
 			</div>
 		</div>
 	</div>
-</section>
+</div>
