@@ -611,9 +611,7 @@
                             "value": "placeholder",
                             "description": "Placeholder"
                         }
-                    ],
-                    "pop-table": "",
-                    "parser": ""
+                    ]
                 }
             },
             {
@@ -622,10 +620,15 @@
                 "title": "Title",
                 "subtitle": "",
                 "settings": {
-                    "validation": "required",
-                    "sub_type": "",
-                    "max_length": ""
+                    "validation": "required"
                 }
+            },
+            {
+                "id": "label",
+                "type": "text",
+                "title": "Label",
+                "subtitle": "(appears above title)",
+                "settings": null
             },
             {
                 "id": "description",
@@ -634,8 +637,7 @@
                 "subtitle": "(only line breaks, bold, and italic will show)",
                 "settings": {
                     "validation": "required",
-                    "simple": "on",
-                    "simple_by_permission": "0"
+                    "simple": "on"
                 }
             },
             {
@@ -652,16 +654,13 @@
                         {
                             "prefix": "square-xsml-",
                             "width": "500",
-                            "height": "500",
-                            "grayscale": ""
+                            "height": "500"
                         }
                     ],
                     "thumbs": [
                         {
-                            "prefix": "",
                             "width": "1440",
-                            "height": "1440",
-                            "grayscale": ""
+                            "height": "1440"
                         }
                     ]
                 }
@@ -679,7 +678,6 @@
                             "type": "text",
                             "id": "title",
                             "title": "Title",
-                            "subtitle": "",
                             "display_title": "on",
                             "settings": "{\"validation\":\"required\",\"sub_type\":\"\",\"max_length\":\"\"}"
                         },
@@ -687,15 +685,13 @@
                             "type": "com.fastspot.link-finder-field-type*link-finder",
                             "id": "url",
                             "title": "URL",
-                            "subtitle": "(include http://)",
-                            "settings": null
+                            "subtitle": "(include http://)"
                         },
                         {
                             "type": "text",
                             "id": "aria",
                             "title": "Aria Label",
-                            "subtitle": "(optional, for screen readers)",
-                            "settings": null
+                            "subtitle": "(optional, for screen readers)"
                         }
                     ]
                 }
@@ -725,9 +721,7 @@
                             "value": "placeholder",
                             "description": "Placeholder"
                         }
-                    ],
-                    "pop-table": "",
-                    "parser": ""
+                    ]
                 }
             },
             {
@@ -743,16 +737,20 @@
                 "title": "Rows",
                 "subtitle": "",
                 "settings": {
-                    "max": "",
                     "style": "list",
                     "columns": [
                         {
                             "type": "text",
                             "id": "title",
                             "title": "Title",
-                            "subtitle": "",
                             "display_title": "on",
                             "settings": "{\"validation\":\"required\",\"sub_type\":\"\",\"max_length\":\"\"}"
+                        },
+                        {
+                            "type": "text",
+                            "id": "label",
+                            "title": "Label",
+                            "subtitle": "(appears above title)"
                         },
                         {
                             "type": "html",
@@ -772,7 +770,6 @@
                             "type": "matrix",
                             "id": "links",
                             "title": "Links",
-                            "subtitle": "",
                             "settings": "{\"max\":\"2\",\"style\":\"list\",\"columns\":[{\"type\":\"text\",\"id\":\"title\",\"title\":\"Title\",\"subtitle\":\"\",\"display_title\":\"on\",\"settings\":\"{\\\"validation\\\":\\\"required\\\",\\\"sub_type\\\":\\\"\\\",\\\"max_length\\\":\\\"\\\"}\"},{\"type\":\"com.fastspot.link-finder-field-type*link-finder\",\"id\":\"url\",\"title\":\"URL\",\"subtitle\":\"(include http:\\/\\/)\",\"settings\":null},{\"type\":\"text\",\"id\":\"aria\",\"title\":\"Aria Label\",\"subtitle\":\"(optional, for screen readers)\",\"settings\":null}]}"
                         }
                     ]

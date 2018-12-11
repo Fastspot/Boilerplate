@@ -4,6 +4,7 @@
 	/**
 	 * @global string $theme
 	 * @global string $title
+	 * @global string $label
 	 * @global string $description
 	 * @global string $image
 	 * @global array $links
@@ -28,6 +29,13 @@
 					<div class="topic_wrapper">
 						<header class="topic_header">
 							<h2 class="topic_title"><?=$title?></h2>
+							<?php
+								if (!empty($label)) {
+							?>
+							<div class="topic_label"><?=$label?></div>
+							<?php
+								}
+							?>
 						</header>
 						<div class="topic_body">
 							<div class="topic_description">
