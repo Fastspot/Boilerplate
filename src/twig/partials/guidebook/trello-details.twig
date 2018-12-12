@@ -29,13 +29,6 @@
 							<h1 class="gb_trello_detail_title">{{item.name}}</h1>
 							<div class="gb_trello_detail_cover" data-image="{% if item.attachments[0].previews[5].url %}{{item.attachments[0].previews[5].url}}{% else %}{{item.attachments[0].url}}{% endif %}">
 							</div>
-							<a class="gb_trello_detail_live" href="dev-{{item.type|lower}}.html#{{item.name|replace({
-								" ": "-",
-								":": "",
-								"&": "and",
-								"/": "-"
-							})|lower}}" target="_blank">See Component Live</a>
-							<div class="gb_trello_detail_content gb_typography">{{item.desc}}</div>
 						</div>
 					</div>
 				</div>
@@ -70,7 +63,6 @@
 						<h1 class="gb_trello_detail_title">{{item.name}}</h1>
 						<div class="gb_trello_detail_cover" data-image="{% if item.attachments[0].previews[5].url %}{{item.attachments[0].previews[5].url}}{% else %}{{item.attachments[0].url}}{% endif %}">
 						</div>
-						<div class="gb_trello_detail_content gb_typography">{{item.desc}}</div>
 					</div>
 				</div>
 			</div>

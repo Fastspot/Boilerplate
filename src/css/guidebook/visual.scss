@@ -24,7 +24,11 @@
 	}
 
 	@media #{$min_lg} {
-		width: 25.33%;
+		width: 25%;
+	}
+
+	@media #{$min_xl} {
+		width: 20%;
 	}
 }
 
@@ -82,7 +86,9 @@
 	}
 }
 
-.gb_type_title {}
+.gb_type_title {
+	margin: 0 0 10px;
+}
 
 .gb_type_item {
 	max-width: 170px;

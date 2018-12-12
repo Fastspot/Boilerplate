@@ -13,76 +13,41 @@
 .gb_topic {
 	max-width: 400px;
 
-	display: block;
-	margin-bottom: 8%;
+	position: relative;
+
+	border-bottom: 1px solid #ccc;
+	color: #000;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column-reverse;
+	flex-wrap: wrap;
+	padding-bottom: 8%;
+	text-decoration: underline;
+	transition: color .25s;
 
 	@media screen and (min-width: 600px) {
 		width: 50%;
 		margin-bottom: 4%;
 		padding-right: 8%;
+		padding-bottom: 4%;
 	}
 
 	@media #{$min_lg} {
 		width: 33.33%;
 	}
 
-	&_trello {
-		position: relative;
-
-		border-bottom: 1px solid #ccc;
-		cursor: pointer;
-		padding-bottom: 8%;
-
-		@media screen and (min-width: 600px) {
-			padding-bottom: 4%;
-		}
-
-		&:last-child {
-			border-bottom: 0;
-			margin-bottom: 0;
-			padding-bottom: 0;
-		}
-
-		&:nth-last-child(2) {
-
-			@media screen and (min-width: 600px) {
-				border-bottom: 0;
-				margin-bottom: 0;
-				padding-bottom: 0;
-			}
-		}
-
-		&:nth-last-child(3) {
-
-			@media #{$min_lg} {
-				border-bottom: 0;
-				margin-bottom: 0;
-				padding-bottom: 0;
-			}
-		}
-
-		.trello_format_list & {
-			max-width: 100%;
-			width: 100%;
-
-			border-bottom: 0;
-			margin-bottom: 10px;
-			padding-bottom: 0;
-		}
-	}
-}
-
-.gb_topic_header {}
-
-.gb_topic_link {
-	color: #000;
-	display: inline;
-	text-decoration: underline;
-	transition: color .25s;
-
 	&:focus,
 	&:hover {
 		color: #DA2315;
+	}
+
+	.trello_format_list & {
+		max-width: 100%;
+		width: 100%;
+
+		border-bottom: 0;
+		margin-bottom: 10px;
+		padding-bottom: 0;
 	}
 }
 
@@ -92,7 +57,7 @@
 	max-height: 340px;
 	max-width: 100%;
 
-	margin-bottom: 24px;
+	margin-bottom: 18px;
 
 	.trello_format_list & {
 		display: none;
@@ -100,32 +65,14 @@
 }
 
 .gb_topic_title {
-	@include h4;
+	@include h5;
 
 	color: inherit;
-	margin: 0 0 10px;
+	margin: 0;
 }
 
 .gb_topic_caption {
 	@include body_text;
 
 	margin: 0;
-}
-
-.gb_topic_subcaption {
-	@include label_text;
-
-	color: rgba(#000, .7);
-	margin: 8px 0 0;
-
-	a {
-		color: inherit;
-		text-decoration: underline;
-		transition: color .25s;
-
-		&:focus,
-		&:hover {
-			color: #DA2315;
-		}
-	}
 }

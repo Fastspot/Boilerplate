@@ -127,50 +127,14 @@
 
 .gb_trello_list {
 
-	.gb_trello_detail_lock & {
+	.gb_trello_lock & {
 		display: none;
 	}
 }
 
-.gb_trello_section {
-	margin: 0;
 
-	&.empty {
-		display: none;
-	}
-}
-
-.gb_trello_section_header {
-	margin-bottom: 30px;
-}
-
-.gb_trello_section_title {
-	@include h2;
-
-	position: relative;
-	z-index: 4;
-
-	color: #fff;
-	display: inline-block;
-	margin: 0;
-	padding-top: 80px;
-}
-
-.gb_trello_section_label {
-	background: #000;
-	display: block;
-	padding: 1px 10px;
-}
-
-.gb_trello_section_caption {
-	@include body_text;
-
-	margin-bottom: 50px;
-}
-
-.gb_trello_section_body {
-	margin-top: 50px;
-}
+/* Trello Detail View
+============================================================================= */
 
 .gb_trello_detail {
 	@include clearfix;
@@ -183,7 +147,11 @@
 	display: none;
 	overflow-y: auto;
 	-webkit-overflow-scrolling: touch;
-	padding-bottom: 100px;
+	padding: 54px 0 100px;
+
+	@media #{$min_xl} {
+		padding-top: 70px;
+	}
 
 	&.hash-swap-active,
 	&.fs-swap-active {
@@ -194,10 +162,14 @@
 .gb_trello_detail_ribbon {
 	@include clearfix;
 
-	position: relative;
+	width: 100%;
+
+	position: fixed;
+	top: 0;
+	left: 0;
 
 	background: #000;
-	margin-bottom: 2em;
+	margin-bottom: 80px;
 	padding: 0 20px;
 }
 
@@ -207,7 +179,7 @@
 	color: #fff;
 	display: none;
 	font-size: 13px;
-	padding: 37px 0;
+	padding: 28px 0;
 
 	@media #{$min_xl} {
 		display: inline-block;
@@ -272,7 +244,7 @@
 		top: 0;
 		left: 50%;
 
-		padding: 37px 35px;
+		padding: 28px 35px;
 		transform: translate(-50%, 0);
 	}
 
@@ -337,19 +309,16 @@
 
 .gb_trello_detail_inner {
 	margin: 0 auto;
+	padding-top: 80px;
 }
 
 .gb_trello_detail_title {
+	@include h2;
+	
 	margin: 0 0 30px;
 }
 
-.gb_trello_detail_component {
-	margin: 0 auto;
-}
-
-.gb_trello_detail_cover {
-	margin-bottom: 30px;
-}
+.gb_trello_detail_cover {}
 
 .gb_trello_detail_image {
 	max-width: 100%;
@@ -357,38 +326,3 @@
 	display: block;
 	margin: 0 auto;
 }
-
-.gb_trello_detail_live {
-
-	&:after {
-		height: 12px;
-		width: 12px;
-
-		background: #000;
-		border-radius: 50%;
-		box-shadow: 0 0 0 0 #DA2315;
-		content: "";
-		display: inline-block;
-		margin-left: 10px;
-		vertical-align: middle;
-		transition: background .25s;
-	}
-
-	&:focus,
-	&:hover {
-		
-		&:after {
-			animation: live 1s infinite;
-			background: #DA2315;
-		}
-	}
-}
-
-@keyframes live {
-
-	100% {
-		box-shadow: 0 0 0 4px transparent;
-	}
-}
-
-.gb_trello_detail_content {}

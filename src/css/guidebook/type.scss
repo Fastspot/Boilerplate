@@ -1,6 +1,5 @@
-/* ==========================================================================
-	Type
-============================================================================= */
+// Type
+// =============================================================================
 
 @mixin h1() {
 	@include nd(500);
@@ -60,11 +59,23 @@
 	}
 }
 
+@mixin h5() {
+	@include nd(400);
+
+	font-size: 20px;
+	line-height: (30 / 20);
+
+	@media #{$min_md} {
+		font-size: 24px;
+		line-height: (34 / 24);
+	}
+}
+
 @mixin body_text() {
 	@include nt(400);
 
-	font-size: 17px;
-	line-height: (30 / 17);
+	font-size: 16px;
+	line-height: (30 / 16);
 
 	@media #{$min_lg} {
 		font-size: 20px;
@@ -72,103 +83,70 @@
 	}
 }
 
+@mixin caption_text() {
+	@include nt(400);
+
+	font-size: 16px;
+	line-height: (30 / 16);
+
+	@media #{$min_lg} {
+		font-size: 18px;
+		line-height: (32 / 18);
+	}
+}
+
 @mixin label_text() {
 	@include nt(400);
 
-	font-size: 14px;
-	line-height: (22 / 14);
+	font-size: 16px;
+	line-height: (30 / 16);
 }
 
 
-/* Typography
-============================================================================= */
-
-.gb_typography {
-	@include body_text;
-
-	h1, h2, h3 {
-		margin: 60px 0 20px;
-	}
-
-	h1 {
-		@include h1;
-	}
-
-	h2 {
-		@include h2;
-
-		color: #DA2315;
-	}
-
-	h3 {
-		@include h3;
-	}
-
-	h4 {
-		@include h4;
-
-		margin: 40px 0 20px;
-	}
-
-	a {
-		color: inherit;
-		text-decoration: underline;
-		transition: color .25s;
-
-		&:focus,
-		&:hover {
-			color: #DA2315;
-		}
-	}
-
-	> p {
-		margin: 30px 0;
-	}
-
-	blockquote {
-		@include nd(700);
-
-		background: rgba(#D8D8D8, .2);
-		border-left: 6px solid #DA2315;
-		font-size: 16px;
-		line-height: (29 / 16);
-		margin: 30px 0;
-		padding: 20px;
-
-		@media #{$min_lg} {
-			padding: 35px;
-		}
-
-		p {
-			margin: 0;
-		}
-	}
-
-	ol,
-	ul {
-		margin: 30px 0;
-	}
-}
-
-
-/* Tools
+/* ==========================================================================
+	Type Tools
 ============================================================================= */
 
 .gb_text {
+	margin-bottom: 40px;
 
-	*:last-child {
-		margin-top: 0;
+	&:last-child {
+		margin-bottom: 0;
+	}
+	
+	h1, h2, h3, h4, h5, h6, p {
+		margin: 0;
 	}
 }
 
 .gb_label {
-	@include body_text;
+	@include label_text;
 
-	color: #a6a6a6;
 	display: block;
-	margin-top: 35px;
+	margin-bottom: 10px;
+}
 
-	strong {
-		color: #868686;
+.gb_label_strong {
+
+	[data-label*="H"] & {
+		position: relative;
+		margin: 0 14px 0 8px;
+	}
+
+	&:before {
+		
+		[data-label*="H"] & {
+			height: 40px;
+			width: 40px;
+
+			position: absolute;
+			top: 50%;
+			left: 50%;
+
+			border: 3px solid #000;
+			border-radius: 50%;
+			content: "";
+			transform: translate(-50%, -50%);
+		}
 	}
 }

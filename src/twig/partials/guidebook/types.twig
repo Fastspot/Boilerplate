@@ -1,17 +1,21 @@
 <div class="gb_section" id="typefaces">
-	<h2 class="gb_section_title">Typefaces</h2>
-	<p class="gb_section_caption">Served via {{fontsService}} service.</p>
-	<div class="gb_types">
-		{% for type in fonts %}
-			<div class="gb_type">
-				<h3 style="font-family: {{type.reference}};" class="gb_type_title">{{type.name}}</h3>
-				{% for weight in type.weights %}
-					<article class="gb_type_item" style="font-family: {{type.reference}}; font-weight: {% if weight.value == "light" %}300{% elseif weight.value == "normal" %}400{% elseif weight.value == "medium" %}500{% elseif weight.value == "semibold" %}600{% elseif weight.value == "bold" %}700{% elseif weight.value == "black" %}900{% elseif weight.value == "heavy" %}900{% endif %};{% if weight.style %} font-style: {{weight.style}};{% endif %}">
-						<span class="gb_type_test">Aa</span>
-						<span class="gb_type_weight">{{weight.value}} {{weight.style}}</span>
-					</article>
-				{% endfor %}
-			</div>
-		{% endfor %}
+	<div class="gb_section_header">
+		<h2 class="gb_section_title">Typefaces</h2>
+		<p class="gb_section_caption">Served via {{fontsService}} service.</p>
+	</div>
+	<div class="gb_section_body">
+		<div class="gb_types">
+			{% for type in fonts %}
+				<div class="gb_type">
+					<h3 style="font-family: {{type.reference}};" class="gb_type_title">{{type.name}}</h3>
+					{% for weight in type.weights %}
+						<article class="gb_type_item" style="font-family: {{type.reference}}; font-weight: {% if weight.value == "light" %}300{% elseif weight.value == "normal" %}400{% elseif weight.value == "medium" %}500{% elseif weight.value == "semibold" %}600{% elseif weight.value == "bold" %}700{% elseif weight.value == "black" %}900{% elseif weight.value == "heavy" %}900{% endif %};{% if weight.style %} font-style: {{weight.style}};{% endif %}">
+							<span class="gb_type_test">Aa</span>
+							<span class="gb_type_weight">{{weight.value}} {{weight.style}}</span>
+						</article>
+					{% endfor %}
+				</div>
+			{% endfor %}
+		</div>
 	</div>
 </div>

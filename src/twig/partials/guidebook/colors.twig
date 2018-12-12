@@ -1,30 +1,37 @@
 {% for key, group in colors %}
 	<div class="gb_section">
-		<h2 class="gb_section_title" id="{{key|title}}">{{key|title}} Colors</h2>
-		<div class="gb_colors">
-			{% for name, color in group %}
-				<button class="gb_color">
-					<div class="gb_color_block" style="background: {{color}};"></div>
-					<div class="gb_color_details">
-						<input class="gb_color_label" type="text" value="{{color}}">
-						<span class="gb_color_copy">Copy {{name}} to Clipboard</span>
-					</div>
-				</button>
-			{% endfor %}
+		<div class="gb_section_header">
+			<h2 class="gb_section_title" id="{{key|title}}">{{key|title}} Colors</h2>
 		</div>
+		<div class="gb_section_body">
+			<div class="gb_colors">
+				{% for name, color in group %}
+					<button class="gb_color">
+						<div class="gb_color_block" style="background: {{color}};"></div>
+						<div class="gb_color_details">
+							<input class="gb_color_label" type="text" value="{{color}}">
+							<span class="gb_color_copy">Copy {{name}} to Clipboard</span>
+						</div>
+					</button>
+				{% endfor %}
+			</div>
+		</div>
+		{% if loop.last %}
+			<script>
+				var clippy = document.querySelectorAll('.gb_color');
+
+				for(var i = 0; i < clippy.length; i++) {
+					clippy[i].addEventListener('click', function() {
+						var item = this.children[1].children[0];
+
+						item.select();
+						
+						document.execCommand("Copy");
+					});
+				}
+			</script>
+		{% endif %}
 	</div>
 {% endfor %}
 
-<script>
-	var clippy = document.querySelectorAll('.gb_color');
 
-	for(var i = 0; i < clippy.length; i++) {
-		clippy[i].addEventListener('click', function() {
-			var item = this.children[1].children[0];
-
-			item.select();
-			
-			document.execCommand("Copy");
-		});
-	}
-</script>
