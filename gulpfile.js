@@ -28,8 +28,6 @@ var gulp = require('gulp'),
 		realFavicon = require ('gulp-real-favicon'),
 		FAVICON_DATA_FILE = 'favicons/markup.json',
 		pa11y = require('pa11y'),
-		Trello = require('node-trello'),
-		trello = new Trello(trelloKeyToken.key(), trelloKeyToken.token()),
 		markdown = require('markdown').markdown;
 
 
@@ -84,6 +82,8 @@ var watch = {
 
 
 gulp.task('trello', function(done) {
+	var Trello = require('node-trello');
+	var trello = new Trello(trelloKeyToken.key(), trelloKeyToken.token());
 
 	if (packageJSON.vars.idBoardTrello !== "") {
 		var types = [
