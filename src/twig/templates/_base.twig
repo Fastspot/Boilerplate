@@ -256,13 +256,10 @@
 					<div class="fs-row">
 						<div class="fs-cell">
 							<div class="footer_ribbon_inner">
-								{% include "../partials/logo.twig" with {
-									modifier: "footer",
-									icon: "logo"
-								} %}
 
-								{% include "../partials/address.twig" with {
+								{% include "../partials/meta.twig" with {
 									name: vars.name,
+									icon: "logo",
 									street: "2980 Falls Road",
 									city: "Baltimore",
 									state: "MD",

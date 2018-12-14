@@ -4,7 +4,6 @@
 
 Site.modules.Formstone = (function($, Site) {
 
-	var backgroundsLoaded = false;
 	var prev_icon = "chevron_left";
 	var next_icon = "chevron_right";
 	var lightboxOptions = {
@@ -17,46 +16,69 @@ Site.modules.Formstone = (function($, Site) {
 			next: "<span class='fs-lightbox-icon-next'>" + Site.icon(next_icon) + "</span>"
 		}
 	};
+	var BackgroundOptions = {
+		labels: {
+			play: "Play",
+			pause: "Pause"
+		},
+		icons: {
+			play: Site.icon("play"),
+			pause: Site.icon("pause")
+		}
+	};
 
 	function init() {
 		$(".js-background").on("loaded.background", function() {
 			$(this).addClass("fs-background-loaded");
-		});
+			backgroundVideo(this);
+		}).background();
 		$(".js-carousel").carousel();
 		$(".js-equalize").equalize();
 		$(".js-lightbox").lightbox(lightboxOptions);
 		$(".js-swap").swap();
 
-		bindUI();
-		loadBackgrounds();
 		carouselPagination($(".js-carousel"));
 	}
 
-	function bindUI() {
-		if ($(".js-background")) {
-			Site.onScroll.push(loadBackgrounds);
-		}
-	}
+	function backgroundVideo(element) {
+		var $background = $(element);
 
-	function loadBackgrounds() {
-		if (!backgroundsLoaded) {
-			var backgrounds = $(".js-background:not(.fs-background-loaded)");
-
-			if (backgrounds.length > 0) {
-				for (var i = 0; i < backgrounds.length; i++) {
-
-					if ($(backgrounds[i])[0].getBoundingClientRect().top < $(window).innerHeight()) {
-						$(backgrounds[i]).background();
-					}
-				}
-			} else {
-				backgroundsLoaded = true;
+		if ($background.hasClass("js-background-video")) {
+			if ($background.find(".fs-background-controls").length == 0) {
+				$("<div class='fs-background-controls'><button class='fs-background-control fs-background-control-play fs-background-control-active' aria-pressed='true' aria-label='play'><span class='fs-background-control-icon'>" + BackgroundOptions.icons.play + "</span><span class='fs-background-control-label'>" + BackgroundOptions.labels.play + "<span></button><button class='fs-background-control fs-background-control-pause' aria-pressed='false' aria-label='pause'><span class='fs-background-control-icon'>" + BackgroundOptions.icons.pause + "</span><span class='fs-background-control-label'>" + BackgroundOptions.labels.pause + "<span></button></div>").appendTo($background);
 			}
+
+			$background.find(".fs-background-control-play").on("click", onPlayClick);
+			$background.find(".fs-background-control-pause").on("click", onPauseClick);
 		}
 	}
 
-	function carouselPagination($item) {
-		$item.each(function() {
+	function onPlayClick() {
+		var $background = $(this).closest(".js-background-video");
+
+		$background.background("play");
+		$background.find(".fs-background-control-play")
+			.addClass(".fs-background-control-active")
+			.attr("aria-pressed", "true");
+		$background.find(".fs-background-control-pause")
+			.removeClass("fs-background-control-active")
+			.attr("aria-pressed", "false");
+	}
+
+	function onPauseClick() {
+		var $background = $(this).closest(".js-background-video");
+
+		$background.background("pause");
+		$background.find(".fs-background-control-pause")
+			.addClass(".fs-background-control-active")
+			.attr("aria-pressed", "true");
+		$background.find(".fs-background-control-play")
+			.removeClass("fs-background-control-active")
+			.attr("aria-pressed", "false");
+	}
+
+	function carouselPagination($element) {
+		$element.each(function() {
 			var $previous_button = $(this).find(".fs-carousel-control_previous");
 			var previous_text = $previous_button.text();
 			var $next_button = $(this).find(".fs-carousel-control_next");

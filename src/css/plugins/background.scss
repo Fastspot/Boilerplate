@@ -1,0 +1,17 @@
+/* ==========================================================================
+	Background
+============================================================================= */
+
+.fs-background-container {
+	opacity: 0;
+	transition: opacity 0.3s;
+
+	.fs-background-loaded & {
+		opacity: 1;
+	}
+}
+
+.fs-background-controls {
+	position: absolute;
+	z-index: 1;
+}

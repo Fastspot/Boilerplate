@@ -1,10 +1,16 @@
-<div class="search_results{% if theme %} theme_{{theme}}{% endif %}">
+{#
+	{% include "../partials/google-cse.twig" with {
+		resultsUrl: "page-search.html"
+	} %}
+#}
+
+<div class="search_results{% if theme %} theme_{{ theme }}{% endif %}">
 	<div class="fs-row">
 		<div class="fs-cell">
 			<div class="search_results_inner">
 				<script>
 					(function() {
-						var cx = '{{vars.cseKey}}';
+						var cx = '{{ vars.cseKey }}';
 						var gcse = document.createElement('script');
 						gcse.type = 'text/javascript';
 						gcse.async = true;
@@ -13,10 +19,14 @@
 						s.parentNode.insertBefore(gcse, s);
 					})();
 				</script>
-				<div class="gcse-search"></div>
+				{% if resultsUrl %}
+				<gcse:searchbox-only resultsUrl="{{ resultsUrl }}"></gcse:searchbox-only>
+				{% else %}
+				<gcse:search></gcse:search>
+				{% endif %}
 				<noscript>
 					<div class="typography">
-						<p>The site search requires a JavaScript enabled browser. You can also search the site using <a href="//www.google.com/#q=site:{{vars.domain}}">Google</a>.</p>
+						<p>The site search requires a JavaScript enabled browser. You can also search the site using <a href="//www.google.com/#q=site:{{ vars.domain }}">Google</a>.</p>
 					</div>
 				</noscript>
 			</div>

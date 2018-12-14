@@ -105,10 +105,19 @@ Site.modules.Page = (function($, Site) {
 
 	function tableOverflow() {
 		$(".table_wrapper").each(function() {
-			if ($(this).find("table").outerWidth() > $(this).width() + 1) {
-				$(this).addClass("table_wrapper_overflow");
+			var $inner = $(this).find(".table_wrapper_inner");
+			var scrollWidth = $inner.get(0).scrollWidth;
+			var clientWidth = $inner.get(0).clientWidth;
+
+			if (scrollWidth > clientWidth) {
+				$(this).addClass("table_wrapper_overflow")
+					.attr({
+						"tabindex": "0",
+						"role": "group"
+					});
 			} else {
-				$(this).removeClass("table_wrapper_overflow");
+				$(this).removeClass("table_wrapper_overflow")
+					.removeAttr("tabindex role");
 			}
 		});
 	}

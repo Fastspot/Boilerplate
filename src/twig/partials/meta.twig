@@ -1,0 +1,54 @@
+{#
+	{% include "../partials/meta.twig" with {
+		name: "Fastspot",
+		icon: "logo",
+		street: "2980 Falls Road",
+		city: "Baltimore",
+		state: "MD",
+		zip: "21211",
+		email: "team@fastspot.com",
+		phone: "202-432-1200",
+		fax: "202-234-0012"
+	} %}
+#}
+
+<div class="meta" itemscope itemtype="http://schema.org/{{ vars.schemaType }}">
+	<div class="meta_logo">
+		<a class="meta_logo_link" itemprop="url" href="page-home.html">
+			<span class="meta_logo_label">{{ name }}</span>
+			<span class="meta_logo_icon">{{ site.icon(icon) }}</span>
+			<meta content="http://{{ vars.domain }}/images/logo-schema.png" itemprop="logo">
+		</a>
+	</div>
+	<div class="meta_details" itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+		<span class="meta_detail meta_address">
+			<span class="meta_detail_icon">{{ site.icon("place") }}</span>
+			<span class="meta_detail_label meta_detail_label_address">
+				<span class="meta_address_street" itemprop="streetAddress">{{ street }}</span>
+				<span class="meta_address_group">
+					<span class="meta_address_city" itemprop="addressLocality">{{ city }}</span>
+					<span class="meta_address_state" itemprop="addressRegion">{{ state }}</span>
+					<span class="meta_address_zip" itemprop="postalCode">{{ zip }}</span>
+				</span>
+			</span>
+		</span>
+		{% if email %}
+		<span class="meta_detail meta_email">
+			<span class="meta_detail_icon">{{ site.icon("mail") }}</span>
+			<a class="meta_detail_label meta_detail_label_email" href="mailto:{{ email }}" itemprop="email">{{ email }}</a>
+		</span>
+		{% endif %}
+		{% if phone %}
+		<span class="meta_detail">
+			<span class="meta_detail_icon">{{ site.icon("phone") }}</span>
+			<a class="meta_detail_label meta_detail_label_phone" href="tel:{{ site.tel(phone) }}" itemprop="telephone">{{ phone }}</a>
+		</span>
+		{% endif %}
+		{% if fax %}
+		<span class="meta_detail">
+			<span class="meta_detail_icon">{{ site.icon("fax") }}</span>
+			<a class="meta_detail_label meta_detail_label_fax" href="tel:{{ site.tel(fax) }}" itemprop="fax">{{ fax }}</a>
+		</span>
+		{% endif %}
+	</div>
+</div>
