@@ -2,7 +2,7 @@
 // =============================================================================
 
 @mixin h1() {
-	@include nd(500);
+	@include nd(700);
 
 	font-size: 34px;
 	line-height: (50 / 34);
@@ -122,6 +122,7 @@
 .gb_label {
 	@include label_text;
 
+	color: #6b6b6b;
 	display: block;
 	margin-bottom: 10px;
 }
@@ -143,7 +144,7 @@
 			top: 50%;
 			left: 50%;
 
-			border: 3px solid #000;
+			border: 1px solid #6b6b6b;
 			border-radius: 50%;
 			content: "";
 			transform: translate(-50%, -50%);

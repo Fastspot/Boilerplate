@@ -3,8 +3,8 @@
 ============================================================================= */
 
 .gb_page_header {
-	background: #000;
-	color: #fff;
+	background: #eee;
+	color: #000;
 }
 
 .gb_page_ribbon {}
@@ -28,7 +28,7 @@
 	left: 0;
 	z-index: 8;
 
-	background: #333;
+	background: #f6f6f6;
 
 	.pinned & {
 		position: fixed;
@@ -79,6 +79,7 @@
 
 .gb_page_caption {
 	@include body_text;
+	@include nt(500);
 
 	margin: 0;
 }
@@ -101,11 +102,9 @@
 ============================================================================= */
 
 .gb_section {
-	margin: 80px 0;
-
-	@media #{$min_lg} {
-		padding: 0 80px;
-	}
+	border-top: 1px solid #c4c4c4;
+	margin: 70px 0;
+	padding-top: 70px;
 
 	&:first-child {
 		margin-top: 0;
@@ -113,14 +112,6 @@
 
 	&:last-child {
 		margin-bottom: 0;
-	}
-
-	&:nth-of-type(odd) {
-
-		@media #{$min_lg} {
-			border: 5px solid #000;
-			padding: 80px;
-		}
 	}
 }
 
@@ -145,5 +136,6 @@
 .gb_section_caption {
 	@include caption_text;
 
+	color: #6b6b6b;
 	margin: 0;
 }
