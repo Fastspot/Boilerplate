@@ -3,7 +3,7 @@
 		{% for group in deck %}
 			<div class="gb_section" id="{{group.type}}">
 				<div class="gb_section_header">
-					<h2 class="gb_section_title gb_section_title_trello" id="trelloList[{{group.type}}]">{{group.type}}</h2>
+					<h2 class="gb_section_title" id="trelloList[{{group.type}}]">{{group.type}}</h2>
 					<p class="gb_section_caption fs-lg-10 fs-xl-8">{{types[loop.index - 1].caption}}</p>
 				</div>
 				<div class="gb_section_body">

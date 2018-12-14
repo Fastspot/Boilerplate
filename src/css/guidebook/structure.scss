@@ -30,6 +30,30 @@
 
 	background: #f6f6f6;
 
+	&:after {
+		height: 10px;
+		width: 100%;
+
+		position: absolute;
+		top: 100%;
+		left: 0;
+		z-index: 4;
+
+		background: 
+			linear-gradient(
+				to bottom,
+					rgba(#000, .085),
+					rgba(#000, 0)
+			);
+		content: "";
+		opacity: 0;
+		transition: opacity .25s;
+
+		.pinned & {
+			opacity: 1;
+		}
+	}
+
 	.pinned & {
 		position: fixed;
 	}
@@ -123,14 +147,6 @@
 	@include h2;
 
 	margin: 0;
-
-	&_trello {
-		background: #000;
-		color: #fff;
-		display: inline-block;
-		margin-bottom: 10px;
-		padding: 1px 10px;
-	}
 }
 
 .gb_section_caption {

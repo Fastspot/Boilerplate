@@ -4,9 +4,10 @@
 
 .gb_topics {
 
-	@media #{$min_sm} {
+	@media screen and (min-width: 600px) {
 		display: flex;
 		flex-wrap: wrap;
+		margin: 0 -20px;
 	}
 }
 
@@ -15,20 +16,26 @@
 
 	position: relative;
 
+	background: #f6f6f6;
+	border: 1px solid #d8d8d8;
 	color: #000;
 	cursor: pointer;
-	padding-bottom: 8%;
+	margin-bottom: 40px;
 	transition: color .25s;
 
 	@media screen and (min-width: 600px) {
-		width: 50%;
-		margin-bottom: 4%;
-		padding-right: 8%;
-		padding-bottom: 4%;
+		width: calc(50% - 40px);
+		
+		margin-right: 20px;
+		margin-left: 20px;
 	}
 
 	@media #{$min_lg} {
-		width: 33.33%;
+		width: calc(33.33% - 40px);
+	}
+
+	@media #{$min_xl} {
+		width: calc(25% - 40px);
 	}
 
 	&:focus,
@@ -49,19 +56,45 @@
 .gb_topic_title {
 	@include h5;
 
-	color: inherit;
-	margin: 0 0 10px;
+	background: #fff;
+	border-bottom: 1px solid #d8d8d8;
+	color: #6b6b6b;
+	margin: 0;
+	padding: 18px 20px;
 }
 
-.gb_topic_figure {}
+.gb_topic_figure {
+	max-height: 300px;
 
-.gb_topic_image {
-	max-height: 340px;
-	max-width: 100%;
+	position: relative;
 
-	margin-bottom: 18px;
+	overflow: hidden;
+	padding: 20px 20px 40px;
+
+	&:before {
+		height: 40px;
+		width: 100%;
+
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		z-index: 2;
+
+		background:
+			linear-gradient(
+				to top,
+					rgba(#f6f6f6, 1) 25%,
+					rgba(#f6f6f6, 0)
+			);
+		content: "";
+	}
 
 	.trello_format_list & {
 		display: none;
 	}
+}
+
+.gb_topic_image {
+	max-width: 100%;
+	width: 100%;
 }
