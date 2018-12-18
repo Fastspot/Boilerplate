@@ -190,7 +190,7 @@
 
 		function updateSizes() {
 			for(var i = 0; i < labels.length; i++) {
-				var styles = window.getComputedStyle(labels[i].nextElementSibling);
+				var styles = window.getComputedStyle(labels[i].nextElementSibling.children[0]);
 				var labelString = '<strong class="gb_label_strong">' + labels[i].getAttribute('data-label') + '</strong> ' + parseStyle(styles.getPropertyValue('font-size')) + ' / ' + parseStyle(styles.getPropertyValue('line-height')) + ' ~ ' + styles.getPropertyValue('font-family');
 
 				labels[i].innerHTML = labelString;
