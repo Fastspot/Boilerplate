@@ -137,6 +137,10 @@
 	&:last-child {
 		margin-bottom: 0;
 	}
+
+	&.empty {
+		display: none;
+	}
 }
 
 .gb_section_header {
