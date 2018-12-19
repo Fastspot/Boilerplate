@@ -291,28 +291,33 @@
     {
       "name": "Futura",
       "reference": "Futura",
-      "weights": [
+      "styles": [
         {
-          "value": "bold"
+          "type": "bold",
+          "weight": 700
         },
         {
-          "value": "normal"
+          "type": "normal",
+          "weight": 400
         }
       ]
     },
     {
       "name": "Avenir",
       "reference": "Avenir",
-      "weights": [
+      "styles": [
         {
-          "value": "bold"
+          "type": "bold",
+          "weight": 700
         },
         {
-          "value": "normal"
+          "type": "normal",
+          "weight": 400
         },
         {
-          "value": "normal",
-          "style": "italic"
+          "type": "normal",
+          "style": "italic",
+          "weight": 400
         }
       ]
     }
