@@ -1,23 +1,255 @@
 /* ==========================================================================
-	Forms
+	Formbuilder
 ============================================================================= */
 
-// Select Mixins
-// =============================================================================
+.form_builder {
+	@include margined_lg;
 
-@mixin select_base() {
+	h2 {
+		@include h2;
+	}
+
+	p {
+		@include body_text;
+	}
+
+	fieldset {
+		border: 0;
+		margin: 40px 0;
+		padding: 0;
+
+		> label {
+			display: block;
+			margin-bottom: 5px;
+		}
+	}
+
+	input:not([type="submit"]),
+	textarea {
+		width: 100%;
+
+		border: 1px solid #000;
+		padding: 10px;
+	}
+
+	input::-ms-clear {
+		width: 0;
+		height: 0;
+	}
+
+	textarea {
+		min-height: 220px;
+		resize: vertical;
+	}
+}
+
+
+/* Custom Elements
+============================================================================= */
+
+.form_builder_sublabel {
+	display: block;
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+
+.form_builder_wrap {
+
+	@media #{$min_sm} {
+		display: flex;
+	}
+}
+
+.form_builder_address {
+	@include clearfix;
+}
+
+.form_builder_split {
+	width: calc(50% - 5px);
+
+	float: left;
+	margin-right: 10px;
+
+	@media #{$min_md} {
+		width: calc(50% - 10px);
+
+		margin-right: 20px;
+	}
+
+	&.form_builder_split_last_col {
+		margin-right: 0;
+	}
+}
+
+.form_builder_firstname {
+
+	@media #{$min_sm} {
+		width: calc(50% - 10px);
+
+		margin-right: 10px;
+	}
+
+	@media #{$min_md} {
+		width: calc(50% - 20px);
+
+		margin-right: 20px;
+	}
+}
+
+.form_builder_lastname {
+
+	@media #{$min_sm} {
+		width: 50%;
+	}
+}
+
+.form_builder_date_2,
+.form_builder_phone_3 {
+	width: 80px;
+
+	float: left;
+	margin-right: 10px;
+
+	@media #{$min_md} {
+		margin-right: 20px;
+	}
+}
+
+.form_builder_date_4,
+.form_builder_phone_4 {
+	width: 110px;
+
+	float: left;
+}
+
+
+/* Checkboxes & Radios
+============================================================================= */
+
+.form_builder_checkbox,
+.form_builder_radio {
+	position: relative;
+
+	margin-bottom: 10px;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	input {
+		position: absolute;
+ 		z-index: -2;
+
+		opacity: 0;
+	}
+}
+
+.form_builder_checkbox_indicator,
+.form_builder_radio_indicator {
+	height: 20px;
+	width: 20px;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	background-color: $gray_20;
+	color: #fff;
+	pointer-events: none;
+	transition: background-color $base_speed;
+	user-select: none;
+
+	&:before {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+
+		transform: 
+			translate(-50%, -50%)
+			scale(0);
+		transition: transform $base_speed;
+
+		input:checked ~ & {
+			transform: 
+				translate(-50%, -50%)
+				scale(1);
+		}
+	}
+
+	input:focus ~ & {
+		box-shadow:
+			0 0 0 2px #fff,
+			0 0 0 4px #000;
+	}
+
+	input:checked ~ & {
+		background-color: #000;
+	}
+}
+
+.form_builder_checkbox {}
+
+.form_builder_checkbox_indicator {
+
+	&:before {
+		content:  "\2713";
+		font-size: 14px;
+	}
+}
+
+.form_builder_radio {}
+
+.form_builder_radio_indicator {
+	border-radius: 50%;
+
+	&:before {
+		height: 50%;
+		width: 50%;
+
+		background-color: #fff;
+		border-radius: inherit;
+		content: "";
+	}
+}
+
+.form_builder_for_checkbox {
+	cursor: pointer;
+	display: block;
+	padding-left: 28px;
+}
+
+
+/* Selects
+============================================================================= */
+
+.form_builder_select {
 	position: relative;
 
 	display: inline-block;
+
+	&:after {
+		position: absolute;
+		top: 50%;
+		right: 20px;
+
+		border: 6px solid transparent;
+		border-top-color: #000;
+		content: "";
+		margin-top: -3px;
+		pointer-events: none;
+	}
 
 	select {
 		width: 100%;
 
 		appearance: none;
+		background-color: $gray_20;
+		border: 0;
+		border-radius: 0;
+		color: #000;
 		border: 0;
 		cursor: pointer;
 		display: inline-block;
-		line-height: 1.5;
 		margin: 0;
 		outline: 0;
 		padding: 10px 45px 10px 20px;
@@ -27,6 +259,17 @@
 			// Firefox hack to hide the arrow
 			text-indent: 0.01px;
 			text-overflow: "";
+		}
+
+		&:focus {
+			box-shadow:
+				0 0 0 2px #fff,
+				0 0 0 4px #000;
+		}
+
+		&:active {
+			color: #fff;
+			background-color: #000;
 		}
 
 		// Undo the Firefox inner focus ring
@@ -50,495 +293,11 @@
 	}
 }
 
-@mixin select_triangle() {
 
-	&:after {
-		position: absolute;
-		top: 50%;
-		right: 1.25rem;
-
-		width: 0;
-		height: 0;
-
-		border-top: .35rem solid;
-		border-right: .35rem solid transparent;
-		border-bottom: .35rem solid transparent;
-		border-left: .35rem solid transparent;
-		content: "";
-		display: inline-block;
-		margin-top: -.15rem;
-		pointer-events: none;
-	}
-}
-
-@mixin select_gray() {
-
-	select {
-		background-color: $gray_20;
-		color: #000;
-
-		&:focus {
-			box-shadow:
-				0 0 0 2px #fff,
-				0 0 0 4px #000;
-		}
-
-		&:active {
-			color: #fff;
-			background-color: #000;
-		}
-	}
-}
-
-
-// Checkbox & Radio Mixins
-// =============================================================================
-
-@mixin checkbox_base() {
-	position: relative;
-
-	input {
-		position: absolute;
- 		z-index: -1;
-
-		opacity: 0;
-
-		&:checked {
-
-			~ [class$="indicator"] {
-
-				&:before {
-					transform: scale(1);
-				}
-			}
-		}
-	}
-
-	[class$="indicator"] {
-		@include checkbox_base_indicator;
-	}
-}
-
-@mixin checkbox_base_label() {
-	cursor: pointer;
-	display: block;
-	padding-left: 28px;
-}
-
-@mixin checkbox_base_indicator() {
-	width: 20px;
-	height: 20px;
-
-	position: absolute;
-	top: 0;
-	left: 0;
-
-	display: block;
-	pointer-events: none;
-	text-align: center;
-	transition:
-		background-color $base_speed;
-	user-select: none;
-
-	&:before {
-		@include absolute_center;
-
-		width: 14px;
-		height: 14px;
-
-		content:  "\2713";
-		display: block;
-		font-size: 14px;
-		line-height: 1;
-		transform: scale(0);
-		transition: transform $base_speed;
-	}
-}
-
-@mixin radio_base() {
-	position: relative;
-
-	input {
-		position: absolute;
- 		z-index: -1;
-
-		opacity: 0;
-
-		&:checked {
-
-			~ [class$="indicator"] {
-
-				&:before {
-					transform: scale(1);
-				}
-			}
-		}
-	}
-
-	[class$="indicator"] {
-		@include radio_base_indicator;
-	}
-}
-
-@mixin radio_base_label() {
-	cursor: pointer;
-	display: block;
-	padding-left: 28px;
-}
-
-
-@mixin radio_base_indicator() {
-	width: 20px;
-	height: 20px;
-
-	position: absolute;
-	top: 0;
-	left: 0;
-
-	display: block;
-	pointer-events: none;
-	border-radius: 50%;
-	text-align: center;
-	transition:
-		background-color $base_speed;
-	user-select: none;
-
-	&:before {
-		@include absolute_center;
-
-		width: 50%;
-		height: 50%;
-
-		border-radius: inherit;
-		content: "";
-		display: block;
-		transform: scale(0);
-		transition: transform $base_speed;
-	}
-}
-
-@mixin checkbox_gray() {
-
-	input {
-
-		&:checked {
-
-			~ [class$="indicator"] {
-				background-color: #000;
-			}
-		}
-
-		&:focus {
-
-			~ [class$="indicator"] {
-				box-shadow:
-					0 0 0 2px #fff,
-					0 0 0 4px #000;
-			}
-		}
-	}
-
-	[class$="indicator"] {
-		background-color: $gray_20;
-		color: #fff;
-	}
-}
-
-@mixin radio_gray() {
-
-	input {
-
-		&:checked {
-
-			~ [class$="indicator"] {
-				background-color: #000;
-			}
-		}
-
-		&:focus {
-
-			~ [class$="indicator"] {
-				box-shadow:
-					0 0 0 2px #fff,
-					0 0 0 4px #000;
-			}
-		}
-	}
-
-	[class$="indicator"] {
-		background-color: $gray_20;
-		color: #fff;
-
-		&:before {
-			background-color: #fff;
-		}
-	}
-}
-
-
-/* Forms Typography
+/* Submit
 ============================================================================= */
 
-.typography {
-
-	input,
-	textarea,
-	label,
-	select {
-		@include focus_outline_none;
-	}
-}
-
-
-/* Formbuilder
-============================================================================= */
-
-@mixin label($theme: null) {
-	@include body_text;
-}
-
-@mixin input($theme: null) {
-	border: 1px solid #000;
-	border-radius: 0;
-	padding: 10px;
-}
-
-.form_builder {
-	@include margined;
-
-	h2 {
-		@include h2;
-	}
-
-	p {
-		@include body_text;
-	}
-
-	fieldset {
-		@include clearfix;
-
-		border: 0;
-		margin: 20px 0;
-		padding: 0;
-
-		> label {
-			display: block;
-		}
-
-		label {
-
-			&:first-child {
-				margin-top: 0;
-			}
-		}
-	}
-
-	legend {}
-}
-
-
-/* Formbuilder Elements
-============================================================================= */
-
-.form_builder {
-
-	label:not(.fs-checkbox-label):not(.form_builder_sublabel) {
-		@include label;
-
-		display: block;
-	}
-
-	.form_builder_sublabel {
-		@include caption_text;
-	}
-
-	input[type=text],
-	input[type=email],
-	input[type=tel],
-	input[type=url],
-	input[type=number],
-	input[type=date],
-	textarea {
-		@include input;
-
-		width: 100%;
-	}
-
-	input {
-
-		&[type="submit"] {}
-	}
-
-	input::-ms-clear {
-		width: 0;
-		height: 0;
-	}
-
-	textarea {
-		display: block;
-		min-height: 220px;
-		resize: vertical;
-	}
-
-	select {
-		width: 100%;
-
-		border: 1px solid #000;
-		border-radius: 0;
-		cursor: pointer;
-	}
-}
-
-
-/* Formbuilder Custom Elements
-============================================================================= */
-
-.form_builder_wrap {
-
-	@media #{$min_sm} {
-		display: flex;
-	}
-
-	> div {
-		margin-top: 10px;
-		margin-bottom: 10px;
-
-		@media #{$min_sm} {
-			margin-bottom: 0px;
-		}
-
-		&:last-child {
-			margin-bottom: 0;
-		}
-	}
-}
-
-.form_builder_address {
-	@include clearfix;
-
-	> div {
-		margin-top: 10px;
-		margin-bottom: 10px;
-	}
-
-	.form_builder_split {
-		margin-top: 0;
-	}
-
-	.form_builder_split_last_row {
-		margin-bottom: 0;
-	}
-}
-
-.form_builder_split {
-	width: calc(50% - 5px);
-
-	margin-right: 10px;
-	float: left;
-
-	@media #{$min_md} {
-		width: calc(50% - 10px);
-
-		margin-right: 20px;
-	}
-
-	&.form_builder_split_last_col {
-		margin-right: 0;
-	}
-}
-
-.form_builder_firstname {
-
-	@media #{$min_sm} {
-		flex: calc(100% - 5px);
-
-		margin-right: 10px;
-	}
-
-	@media #{$min_md} {
-		flex: calc(100% - 10px);
-
-		margin-right: 20px;
-	}
-}
-
-.form_builder_lastname {
-
-	@media #{$min_sm} {
-		width: calc(100% - 5px);
-	}
-
-	@media #{$min_md} {
-		width: calc(100% - 10px);
-	}
-}
-
-.form_builder_date_2 {
-	width: 50px;
-
-	float: left;
-	margin-right: 10px;
-}
-
-.form_builder_date_4 {
-	width: 100px;
-
-	float: left;
-}
-
-.form_builder_phone_3 {
-	width: 75px;
-
-	float: left;
-	margin-right: 10px;
-}
-
-.form_builder_phone_4 {
-	width: 100px;
-
-	float: left;
-}
-
-
-/* Formbuilder Radios & Checkboxes
-============================================================================= */
-
-.form_builder_checkbox,
-.form_builder_radio {
-	margin-top: 10px;
-	margin-bottom: 10px;
-
-	&:last-child {
-		margin-bottom: 0;
-	}
-}
-
-.form_builder_checkbox {
-	@include checkbox_base;
-}
-
-.form_builder_radio {
-	@include radio_base;
-}
-
-.form_builder_checkbox {
-	@include checkbox_gray;
-}
-
-.form_builder_radio {
-	@include radio_gray;
-}
-
-.form_builder_for_checkbox {
-	@include checkbox_base_label;
-}
-
-
-/* Formbuilder Selects
-============================================================================= */
-
-.form_builder_select {
-	@include select_base;
-	@include select_triangle;
-	@include select_gray;
+.form_builder_submit {
+	@include button_inline;
+	@include button_fill;
 }
