@@ -16,14 +16,14 @@
 	<ul class="sitemap">
 		{% for link in sitemap %}
 		<li class="sitemap_item{% if 'fs' in link %} sitemap_item_style_guide{% elseif 'dev' in link %} sitemap_item_dev{% elseif 'page' in link %} sitemap_item_page{% elseif 'accessibility' in link %} sitemap_item_access{% endif %}">
-			<a class="sitemap_link" href="{% if accessibility %}../accessibility{% else %}templates{% endif %}{{link}}">{{link|replace({
+			<a class="sitemap_link" href="{% if accessibility %}../accessibility{% else %}templates{% endif %}{{ link }}">{{ link|replace({
 				".html": "",
 				"-": " ",
 				"/": "",
 				"fs": "",
 				"dev": "",
 				"page": ""
-			})}}</a>
+			}) }}</a>
 		</li>
 		{% endfor %}
 	</ul>

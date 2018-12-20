@@ -1,8 +1,8 @@
-# Syntax
+# Twig Syntax
 
 ```twig
 {# Variable Use #}
-{{variable}}
+{{ variable }}
 
 {# Including a file #}
 {% include "file.twig" with {
@@ -26,11 +26,13 @@
 	<p>Content</p>
 {% endblock %}
 
-{# Appending to a Block #}
+{# Prepending/Appending to a Block #}
 {% block name %}
-	{{parent()}}
+	<p>Prepended Content</p>
 
-	<p>Content</p>
+	{{ parent() }}
+
+	<p>Appended Content</p>
 {% endblock %}
 
 {# If Statement #}
@@ -48,11 +50,11 @@
 
 {# Loops With an Array #}
 {% for link in links %}
-	<a href="">{{link}}</a>
+	<a href="">{{ link }}</a>
 {% endfor %}
 
 {# Loops With an Associative Array #}
 {% for link in links %}
-	<a href="{{link.href}}">{{link.name}}</a>
+	<a href="{{ link.href }}">{{ link.name }}</a>
 {% endfor %}
 ```

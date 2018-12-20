@@ -142,13 +142,13 @@
 			{% for section in sections %}
 				{% if section.items %}
 					<div class="crops_section">
-						<h2 class="crops_section_title">{{section.type}}</h2>
+						<h2 class="crops_section_title">{{ section.type }}</h2>
 						{% for item in section.items %}
 							<div class="crops_item">
-								<h3 class="crops_item_title">{{item.name}}</h3>
+								<h3 class="crops_item_title">{{ item.name }}</h3>
 								<ul class="crops">
 									{% for size in item.sizes %}
-										{{size}}
+										{{ size }}
 									{% endfor %}
 								</ul>
 							</div>
