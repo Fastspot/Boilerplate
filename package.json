@@ -227,32 +227,26 @@
       },
       {
         "modifier": "",
-        "href": "dev-feature.html",
-        "name": "Page Feature Components",
-        "children": ""
-      },
-      {
-        "modifier": "",
-        "href": "dev-full-width.html",
-        "name": "Full Width Components",
-        "children": ""
-      },
-      {
-        "modifier": "",
-        "href": "dev-in-content.html",
-        "name": "In Content Components",
-        "children": ""
-      },
-      {
-        "modifier": "",
-        "href": "dev-sidebar.html",
-        "name": "Sidebar Components",
-        "children": ""
-      },
-      {
-        "modifier": "",
         "href": "dev-html.html",
-        "name": "HTML Elements",
+        "name": "HTML Guide",
+        "children": ""
+      },
+      {
+        "modifier": "",
+        "href": "page-404.html",
+        "name": "404",
+        "children": ""
+      },
+      {
+        "modifier": "",
+        "href": "page-form-builder.html",
+        "name": "Form Builder",
+        "children": ""
+      },
+      {
+        "modifier": "",
+        "href": "page-search.html",
+        "name": "Search",
         "children": ""
       }
     ],
