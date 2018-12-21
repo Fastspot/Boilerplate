@@ -18,6 +18,8 @@
 	@media print {
 		height: auto !important;
 		width: 100% !important;
+
+		page-break-inside: avoid;
 	}
 
 	&.fs-carousel-visible {}
