@@ -147,6 +147,18 @@ $margin_xl: 80px;
 	}
 }
 
+@mixin fallback_image() {
+	@include bleed;
+
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	@supports (filter: blur(10px)) {
+		filter: blur(10px);
+	}
+}
+
 @mixin center() {
 	position: absolute;
 	top: 50%;
