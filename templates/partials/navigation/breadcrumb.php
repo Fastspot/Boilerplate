@@ -29,7 +29,7 @@
 			<meta itemprop="position" content="1">
 		</li>
 		<?php
-			$x = 0;
+			$x = 1;
 			$max = count($site["breadcrumbs"]);
 
 			if (defined("CUSTOM_BREADCRUMB")) {
@@ -44,26 +44,27 @@
 			} else {
 				foreach ($site["breadcrumbs"] as $item) {
 					$x++;
+
+					if ($x == $max) {
+		?>
+		<li class="breadcrumb_item">
+			<span class="breadcrumb_name">
+				<span class="breadcrumb_name_label"><?=$item["title"]?></span>
+			</span>
+		</li>
+		<?php
+					} else {
 		?>
 		<li class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-			<?php
-					if ($x == $max) {
-			?>
-			<span class="breadcrumb_pill" itemprop="item">
-				<span class="breadcrumb_pill_label" itemprop="name"><?=$item["title"]?></span>
-			</span>
-			<?php
-					} else {
-			?>
 			<a class="breadcrumb_pill breadcrumb_pill_link" itemprop="item" href="<?=$item["link"]?>">
-				<span class="breadcrumb_pill_label" itemprop="name"><?=$item["title"]?></span>
+				<span class="breadcrumb_name" itemprop="name">
+					<span class="breadcrumb_name_label"><?=$item["title"]?></span>
+				</span>
 			</a>
-			<?php
-					}
-			?>
 			<meta itemprop="position" content="<?=$x?>">
 		</li>
 		<?php
+					}
 				}
 			}
 		?>
