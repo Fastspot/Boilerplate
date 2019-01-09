@@ -694,13 +694,13 @@ $margin_xl: 80px;
 [data-whatinput="mouse"] button:focus,
 [data-whatinput="touch"] a:focus,
 [data-whatinput="touch"] button:focus {
-	outline: none;
+	outline: 0;
 }
 
 @mixin focus_outline_none() {
 
 	[data-whatinput="mouse"] &:focus,
 	[data-whatinput="touch"] &:focus {
-		outline: none;
+		outline: 0;
 	}
 }
