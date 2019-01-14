@@ -43,8 +43,6 @@
 		<?php
 			} else {
 				foreach ($site["breadcrumbs"] as $item) {
-					$x++;
-
 					if ($x == $max) {
 		?>
 		<li class="breadcrumb_item">
@@ -61,7 +59,7 @@
 					<span class="breadcrumb_name_label"><?=$item["title"]?></span>
 				</span>
 			</a>
-			<meta itemprop="position" content="<?=$x?>">
+			<meta itemprop="position" content="<?=++$x?>">
 		</li>
 		<?php
 					}

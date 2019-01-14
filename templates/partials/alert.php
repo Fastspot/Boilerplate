@@ -27,7 +27,8 @@
 						</div>
 					</div>
 					<button class="js-swap js-alert-close alert_close" aria-label="Close Alert" data-swap-target=".js-alert">
-						<span class="alert_close_icon"><?=icon("close")?>/span>
+						<span class="alert_close_icon"><?=icon("close")?></span>
+						<span class="alert_close_label">Close Alert</span>
 					</button>
 				</div>
 			</div>
