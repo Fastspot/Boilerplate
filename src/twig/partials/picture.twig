@@ -20,5 +20,12 @@
 	</picture>
 </div>
 <noscript>
-	<img class="{{ class }}_image" src="{% if fallback == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{ vars.images }}/{{ fallback }}/{{ image }}{% endif %}" alt=""{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}>
+	<div class="{{ class }}_picture_wrapper">
+		<picture class="{{ class }}_picture">
+			{% for key, source in sources %}
+			<source media="(min-width: {{ key }})" srcset="{% if source == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{ vars.images }}/{{ source }}/{{ image }}{% endif %}">
+			{% endfor %}
+			<img class="{{ class }}_image" src="{% if fallback == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{ vars.images }}/{{ fallback }}/{{ image }}{% endif %}" alt=""{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}>
+		</picture>
+	</div>
 </noscript>
