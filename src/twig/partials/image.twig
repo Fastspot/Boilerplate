@@ -7,4 +7,11 @@
 	} %}
 #}
 
-<img class="{{class}}_image" src="//images.fastspot.com/{{vars.images}}/{{dimension}}/{{image}}" alt=""{% if itemprop %} itemprop="{{itemprop}}"{% endif %}>
+<div class="js-image {{ class }}_image_wrapper">
+	<img class="js-lazy js-lazyload {{ class }}_image" data-src="//images.fastspot.com/{{ vars.images }}/{{ dimension }}/{{ image }}" alt=""{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}>
+</div>
+<noscript>
+	<div class="{{ class }}_image_wrapper">
+		<img class="{{ class }}_image" src="//images.fastspot.com/{{ vars.images }}/{{ dimension }}/{{ image }}" alt=""{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}>
+	</div>
+</noscript>

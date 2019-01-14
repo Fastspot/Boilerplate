@@ -92,11 +92,11 @@
   },
   "devDependencies": {
     "async": "2.6.1",
-    "autoprefixer": "9.4.2",
+    "autoprefixer": "9.4.5",
     "browser-sync": "2.26.3",
     "del": "3.0.0",
     "formstone": "1.4.10",
-    "globby": "8.0.1",
+    "globby": "9.0.0",
     "gulp": "4.0.0",
     "gulp-concat-multi": "1.0.1",
     "gulp-cssnano": "2.1.3",
