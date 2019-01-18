@@ -78,7 +78,7 @@
 {% macro dropdown(class, label, items) %}
 {% set id = label|lower|replace({ " ": "_" }) %}
 
-<div class="{{ class }}_select_fieldset">
+<div class="{{ class }}_select_wrapper">
 	{% if label %}
 	<label class="{{ class }}_select_label" for="{{ id }}_select">{{ label }}</label>
 	{% endif %}
@@ -95,7 +95,7 @@
 {% set id = label|lower|replace({
 	" ": "_"
 }) %}
-<div class="{{ class }}_input_fieldset">
+<div class="{{ class }}_input_wrapper">
 	<label class="{{ class }}_input_label" for="{{ id }}">{{ label }}</label>
 	<input class="{{ class }}_input_field" id="{{ id }}" name="{{ id }}" type="{{ type }}"{% if type == "text" %} placeholder="{{ label }}"{% endif %} />
 </div>
@@ -106,7 +106,7 @@
 {% set id = label|lower|replace({
 	" ": "_"
 }) %}
-<div class="{{ class }}_textarea_fieldset">
+<div class="{{ class }}_textarea_wrapper">
 	<label class="{{ class }}_textarea_label" for="{{ id }}">{{ label }}</label>
 	<textarea class="{{ class }}_textarea_field" id="{{ id }}" name="{{ id }}"></textarea>
 </div>
@@ -122,7 +122,7 @@
 			" ": "_"
 		}) %}
 
-		<div class="{{ class }}_choice_fieldset">
+		<div class="{{ class }}_choice_wrapper">
 			<input class="{{ class }}_choice_field" id="{{ id }}" name="{{ group }}" type="{{ type }}" value="{{ item }}">
 			<label class="{{ class }}_choice_label" for="{{ id }}">{{ item }}</label>
 		</div>
