@@ -82,7 +82,7 @@
 	{% if label %}
 	<label class="{{ class }}_select_label" for="{{ id }}_select">{{ label }}</label>
 	{% endif %}
-	<div class="{{ class }}_select_field_wrapper">
+	<div class="{{ class }}_select_item">
 		<select class="{{ class }}_select_field" id="{{ id }}_select" name="{{ id }}_select">
 			{% for item in items %}
 			<option value="{{ item }}"{% if loop.first %} selected{% endif %}>{{ item }}</option>
