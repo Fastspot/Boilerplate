@@ -16,6 +16,8 @@
 @import "base/setup";
 @import "base/base";
 
+@import "plugins/*";
+
 @import "icons";
 @import "mixins";
 @import "type";
@@ -23,6 +25,7 @@
 @import "logo";
 @import "search";
 @import "meta";
+@import "google-cse";
 @import "google-search";
 @import "forms";
 
@@ -30,7 +33,6 @@
 
 @import "navigation/*";
 
-@import "plugins/*";
 
 @import "components/**/*";
 

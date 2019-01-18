@@ -181,7 +181,7 @@
 					{% if page.layout != "home" %}
 					<div class="fs-row">
 						{% if page.layout == "default" %}
-						<div class="fs-cell-right fs-lg-4 page_aside page_sub_nav">
+						<div class="fs-cell fs-lg-4 page_aside page_sub_nav">
 							{% include "../partials/navigation/sub.twig" with {
 								title: sectionTitle,
 								links: subNavAlias
@@ -230,7 +230,7 @@
 
 						{% if page.layout == "default" %}
 						<!-- Sidebar Callouts -->
-						<div class="fs-cell-right fs-lg-4 page_aside page_sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+						<div class="fs-cell fs-lg-4 page_aside page_sidebar" itemscope itemtype="http://schema.org/WPSideBar">
 							{% block sidebar %}
 							{% endblock %}
 						</div>
@@ -256,7 +256,6 @@
 					<div class="fs-row">
 						<div class="fs-cell">
 							<div class="footer_ribbon_inner">
-
 								{% include "../partials/meta.twig" with {
 									name: vars.name,
 									icon: "logo",
