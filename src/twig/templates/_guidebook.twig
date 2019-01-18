@@ -8,7 +8,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>{% if page.title %}{{page.title}} | {% endif %}{{vars.name}}</title>
+		<title>{% if page.title %}{{ page.title }} | {% endif %}{{ vars.name }}</title>
 		<meta name="description" content="">
 		<link rel="stylesheet" href="../../css/site.css">
 		<link rel="stylesheet" href="../../css/guidebook.css">
@@ -22,14 +22,14 @@
 				<div class="fs-row">
 					<div class="fs-cell">
 						<div class="gb_ribbon_inner">
-							<a class="gb_ribbon_link" href="./fs-style-guide.html">{{vars.name}} Style Guide</a>
+							<a class="gb_ribbon_link" href="./fs-visual-styles.html">{{ vars.name }} Style Guide</a>
 							<div class="gb_ribbon_aside">
 								{% include "../partials/navigation/basic.twig" with {
 									class: "gb_main_nav",
 									links: links.guidebook,
 									active: page.active
 								} %}
-								<a class="gb_ribbon_logo" href="https://www.fastspot.com/">{{site.icon("fs_logo")}}</a>
+								<a class="gb_ribbon_logo" href="https://www.fastspot.com/">{{ site.icon("fs_logo") }}</a>
 							</div>
 						</div>
 					</div>
@@ -47,11 +47,11 @@
 			<div class="fs-row">
 				<header class="fs-cell gb_page_details">
 					{% if page.intro %}
-						<h2 class="gb_page_intro fs-lg-10 fs-xl-8">{{page.intro}}</h2>
+						<h2 class="gb_page_intro fs-lg-10 fs-xl-8">{{ page.intro }}</h2>
 					{% endif %}
 					{% if page.title %}
 						<h4 class="gb_page_title fs-lg-10 fs-xl-8">
-							<span class="gb_page_title_label">{{page.title}}</span>
+							<span class="gb_page_title_label">{{ page.title }}</span>
 							{% if page.trello %}
 								<button class="gb_trello_formatter">
 									<span class="gb_trello_format gb_trello_format_indicator"></span>
@@ -62,10 +62,10 @@
 						</h4>
 					{% endif %}
 					{% if page.caption %}
-						<p class="gb_page_caption fs-lg-10 fs-xl-8">{{page.caption}}</p>
+						<p class="gb_page_caption fs-lg-10 fs-xl-8">{{ page.caption }}</p>
 					{% endif %}
 					{% if page.image %}
-						<img class="gb_page_image" src="../../images/{{page.image}}" />
+						<img class="gb_page_image" src="../../images/{{ page.image }}" />
 					{% endif %}
 				</header>
 				<div class="fs-cell content_cell">

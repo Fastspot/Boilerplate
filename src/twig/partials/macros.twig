@@ -16,13 +16,13 @@
 		]
 	}) }}
 
-	{{ site.dropdown("label", ["items"], "class") }}
+	{{ site.dropdown("class", "label", ["items"]) }}
 
-	{{ site.input("type", "label", "class") }}
+	{{ site.input("class", "type", "label") }}
 
-	{{ site.textarea("label", "class") }}
+	{{ site.textarea("class", "label") }}
 
-	{{ site.choices("type", ["items"], "class") }}
+	{{ site.choices("class", "type", ["items"]) }}
 
 	{{ site.title("title", "full") }}
 
@@ -75,53 +75,60 @@
 {% endmacro %}
 
 
-{% macro dropdown(label, items, class) %}
+{% macro dropdown(class, label, items) %}
 {% set id = label|lower|replace({ " ": "_" }) %}
-<div class="fs-dropdown-wrapper{% if class %} {{ class }}_dropdown_wrapper{% endif %}">
+
+<div class="{{ class }}_select_wrapper">
 	{% if label %}
-	<label class="dropdown_label{% if class %} {{ class }}_dropdown_label{% endif %}" for="{{ id }}_dropdown">{{ label }}</label>
+	<label class="{{ class }}_select_label" for="{{ id }}_select">{{ label }}</label>
 	{% endif %}
-	<select class="js-dropdown dropdown_field{% if class %} {{ class }}_dropdown_select{% endif %}" id="{{ id }}_dropdown" name="{{ id }}_dropdown">
-		{% for item in items %}
-		<option value="{{ item }}">{{ item }}</option>
-		{% endfor %}
-	</select>
+	<div class="{{ class }}_select_item">
+		<select class="{{ class }}_select_field" id="{{ id }}_select" name="{{ id }}_select">
+			{% for item in items %}
+			<option value="{{ item }}"{% if loop.first %} selected{% endif %}>{{ item }}</option>
+			{% endfor %}
+		</select>
+	</div>
 </div>
 {% endmacro %}
 
 
-{% macro input(type, label, class) %}
+{% macro input(class, type, label) %}
 {% set id = label|lower|replace({
 	" ": "_"
 }) %}
-<div class="input_wrapper{% if class %} {{ class }}_input_wrapper{% endif %}">
-	<label class="input_label{% if class %} {{ class }}_input_label{% endif %}" for="{{ id }}">{{ label }}</label>
-	<input class="input_field{% if class %} {{ class }}_input_field{% endif %}" type="{{ type }}" id="{{ id }}" {% if type == "text" %} placeholder="{{ label }}"{% endif %} />
+<div class="{{ class }}_input_wrapper">
+	<label class="{{ class }}_input_label" for="{{ id }}">{{ label }}</label>
+	<input class="{{ class }}_input_field" id="{{ id }}" name="{{ id }}" type="{{ type }}"{% if type == "text" %} placeholder="{{ label }}"{% endif %} />
 </div>
 {% endmacro %}
 
 
-{% macro textarea(label, class) %}
+{% macro textarea(class, label) %}
 {% set id = label|lower|replace({
 	" ": "_"
 }) %}
-<div class="textarea_wrapper{% if class %} {{ class }}_textarea_wrapper{% endif %}">
-	<label class="textarea_label{% if class %} {{ class }}_textarea_label{% endif %}" for="{{ id }}">{{ label }}</label>
-	<textarea class="textarea_field{% if class %} {{ class }}_textarea_field{% endif %}" id="{{ id }}"></textarea>
+<div class="{{ class }}_textarea_wrapper">
+	<label class="{{ class }}_textarea_label" for="{{ id }}">{{ label }}</label>
+	<textarea class="{{ class }}_textarea_field" id="{{ id }}" name="{{ id }}"></textarea>
 </div>
 {% endmacro %}
 
 
-{% macro choices(type, items, class) %}
-<div class="choices_wrapper{% if class %} {{ class }}_choices_wrapper{% endif %}">
+{% macro choices(class, type, items) %}
+<div class="{{ class }}_choices">
+	{% set group = random() %}
+
 	{% for item in items %}
 		{% set id = item|lower|replace({
 			" ": "_"
 		}) %}
-	<label class="choices_label{% if class %} {{ class }}_choices_label{% endif %}" for="{{ id }}">
-		<input class="choices_field{% if class %} {{ class }}_choices_field{% endif %}" type="{{ type }}" name="{{ id }}" id="{{ id }}" value="{{ item }}">
-		<span class="choices_name{% if class %} {{ class }}_choices_name{% endif %}">{{ item }}</span>
-		</label>
+
+		<div class="{{ class }}_choice_wrapper">
+			<input class="{{ class }}_choice_field" id="{{ id }}" name="{{ group }}" type="{{ type }}" value="{{ item }}">
+			<span class="{{ class }}_choice_indicator {{ class }}_choice_indicator_{{ type }}"></span>
+			<label class="{{ class }}_choice_label" for="{{ id }}">{{ item }}</label>
+		</div>
 	{% endfor %}
 </div>
 {% endmacro %}

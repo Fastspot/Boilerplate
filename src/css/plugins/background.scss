@@ -4,7 +4,7 @@
 
 .fs-background-container {
 	opacity: 0;
-	transition: opacity 0.3s;
+	transition: opacity .3s;
 
 	.fs-background-loaded & {
 		opacity: 1;
@@ -13,5 +13,5 @@
 
 .fs-background-controls {
 	position: absolute;
-	z-index: 1;
+	z-index: 4;
 }

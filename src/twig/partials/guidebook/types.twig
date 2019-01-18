@@ -1,17 +1,17 @@
 <div class="gb_section" id="typefaces">
 	<div class="gb_section_header">
 		<h2 class="gb_section_title">Typefaces</h2>
-		<p class="gb_section_caption">Served via {{fontsService}} service.</p>
+		<p class="gb_section_caption">Served via {{ fontsService }} service.</p>
 	</div>
 	<div class="gb_section_body">
 		<div class="gb_types">
 			{% for type in fonts %}
 				<div class="gb_type">
-					<h3 style="font-family: {{type.reference}};" class="gb_type_title">{{type.name}}</h3>
+					<h3 style="font-family: {{ type.reference }};" class="gb_type_title">{{ type.name }}</h3>
 					{% for style in type.styles %}
-						<article class="gb_type_item" style="font-family: {{type.reference}}; font-weight: {{style.weight|default("400")}};{% if style.style %} font-style: {{style.style}};{% endif %}">
+						<article class="gb_type_item" style="font-family: {{ type.reference }}; font-weight: {{ style.weight|default("400") }};{% if style.style %} font-style: {{ style.style }};{% endif %}">
 							<span class="gb_type_test">Aa</span>
-							<span class="gb_type_weight">{{style.type}} {{style.style}}</span>
+							<span class="gb_type_weight">{{ style.type }} {{ style.style }}</span>
 						</article>
 					{% endfor %}
 				</div>
