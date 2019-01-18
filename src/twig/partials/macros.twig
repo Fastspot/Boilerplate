@@ -82,11 +82,13 @@
 	{% if label %}
 	<label class="{{ class }}_select_label" for="{{ id }}_select">{{ label }}</label>
 	{% endif %}
-	<select class="{{ class }}_select_field" id="{{ id }}_select" name="{{ id }}_select">
-		{% for item in items %}
-		<option value="{{ item }}"{% if loop.first %} selected{% endif %}>{{ item }}</option>
-		{% endfor %}
-	</select>
+	<div class="{{ class }}_select_field_wrapper">
+		<select class="{{ class }}_select_field" id="{{ id }}_select" name="{{ id }}_select">
+			{% for item in items %}
+			<option value="{{ item }}"{% if loop.first %} selected{% endif %}>{{ item }}</option>
+			{% endfor %}
+		</select>
+	</div>
 </div>
 {% endmacro %}
 
@@ -124,6 +126,7 @@
 
 		<div class="{{ class }}_choice_wrapper">
 			<input class="{{ class }}_choice_field" id="{{ id }}" name="{{ group }}" type="{{ type }}" value="{{ item }}">
+			<span class="{{ class }}_choice_indicator {{ class }}_choice_indicator_{{ type }}"></span>
 			<label class="{{ class }}_choice_label" for="{{ id }}">{{ item }}</label>
 		</div>
 	{% endfor %}
