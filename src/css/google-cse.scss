@@ -183,13 +183,17 @@
 		}
 
 			.gsc-table-result {
+				width: 100%;
+
 				font-family: inherit;
 				font-size: inherit;
 				padding-right: 0;
 				padding-left: 0;
+				table-layout: fixed;
 			}
 
 				.gsc-thumbnail {
+					float: right;
 					padding: 0 20px 0 0;
 
 					.gs-image-box {
@@ -209,6 +213,7 @@
 				}
 
 				.gsc-table-cell-snippet-close {
+					float: left;
 					padding: 0;
 				}
 
