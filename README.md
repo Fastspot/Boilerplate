@@ -6,6 +6,7 @@
 ```sh
 npm install gulp-cli -g
 npm install
+npm link trello-module
 gulp
 ```
 
