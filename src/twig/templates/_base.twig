@@ -322,7 +322,7 @@
 		{{script}}
 		{% endfor %}
 		{% endif %}
-		<script src="../../js/site.js?{{'now'|date('d-h')}}"></script>
+		<script src="../../js/site.js?{{'now'|date('d-h')}}" async></script>
 		{% if grid %}
 		<script>
 			(function(){if(typeof FSGridBookmarklet==='undefined'){document.body.appendChild(document.createElement('script')).src='//formstone.it/js/bookmarklet/grid.js';}else{FSGridBookmarklet();}} )();
