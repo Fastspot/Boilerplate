@@ -39,31 +39,38 @@
 .menu {
 	@include focus_outline_none;
 
+	width: 100%;
+	max-width: 320px;
+
+	position: relative;
+	top: 0;
+	right: 0;
+	z-index: 400;
+
 	background: #fff;
 	display: block;
+	transition:
+		opacity .35s,
+		transform .35s,
+		visibility .35s;
 
 	@media print {
+		display: none;
+	}
+
+	@media #{$min_lg} {
 		display: none;
 	}
 
 	.js & {
 		@include fake_scroll();
 
-		width: 100%;
-		max-width: 320px;
 		height: 100%;
 
 		position: fixed;
-		top: 0;
-		right: 0;
-		z-index: 400;
 
 		opacity: 0;
 		visibility: hidden;
-		transition:
-			opacity .35s,
-			transform .35s,
-			visibility .35s;
 	}
 
 	&.fs-swap-active {
@@ -79,3 +86,5 @@
 .menu_close {}
 
 .menu_close_icon {}
+
+.menu_close_label {}

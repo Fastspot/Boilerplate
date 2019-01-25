@@ -66,13 +66,14 @@
 			right: 0;
 
 			background: url() no-repeat 50% 50% / 20px 20px;
+			margin-left: 0;
 		}
 
 			input.gsc-search-button,
 			button.gsc-search-button {
 				height: 100%;
 				min-width: 100%;
-				width: auto;
+				width: 60px;
 
 				border: 0;
 				border-radius: 0;
@@ -83,7 +84,7 @@
 				margin-top: 0;
 				margin-left: 0;
 				opacity: 0;
-				padding: 10px;
+				padding: 0;
 			}
 
 		td.gsc-clear-button {

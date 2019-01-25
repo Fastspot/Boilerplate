@@ -14,27 +14,27 @@
 #}
 
 {% if heading == true %}
-<h1 class="logo{% if modifier %} logo_{{modifier}}{% endif %}{% if icon %} logo_icon{% endif %}" itemscope itemtype="http://schema.org/{{vars.schemaType}}">
+<h1 class="logo{% if modifier %} logo_{{ modifier }}{% endif %}{% if icon %} logo_icon{% endif %}" itemscope itemtype="http://schema.org/{{ vars.schemaType }}">
 	<a class="logo_link" itemprop="url" href="page-home.html">
-		<span class="logo_link_label">{{vars.name}}</span>
+		<span class="logo_link_label">{{ vars.name }}</span>
 		{% if icon %}
-		<span class="logo_link_icon">{{site.icon(icon)}}</span>
+		<span class="logo_link_icon">{{ site.icon(icon) }}</span>
 		{% endif %}
 	</a>
-	<meta content="http://{{vars.domain}}/images/logo-schema.png" itemprop="logo"> {# 1 #}
+	<meta content="http://{{ vars.domain }}/images/logo-schema.png" itemprop="logo"> {# 1 #}
 	{% if print %}
 	<img class="logo_print" src="../../images/logo-print.png" alt=""> {# 2 #}
 	{% endif %}
 </h1>
 {% else %}
-<div class="logo{% if modifier %} logo_{{modifier}}{% endif %}{% if icon %} logo_icon{% endif %}" itemscope itemtype="http://schema.org/{{vars.schemaType}}">
+<div class="logo{% if modifier %} logo_{{ modifier }}{% endif %}{% if icon %} logo_icon{% endif %}" itemscope itemtype="http://schema.org/{{ vars.schemaType }}">
 	<a class="logo_link" itemprop="url" href="page-home.html">
-		<span class="logo_link_label">{{vars.name}}</span>
+		<span class="logo_link_label">{{ vars.name }}</span>
 		{% if icon %}
-		<span class="logo_link_icon">{{site.icon(icon)}}</span>
+		<span class="logo_link_icon">{{ site.icon(icon) }}</span>
 		{% endif %}
 	</a>
-	<meta content="http://{{vars.domain}}/images/logo-schema.png" itemprop="logo"> {# 1 #}
+	<meta content="http://{{ vars.domain }}/images/logo-schema.png" itemprop="logo"> {# 1 #}
 	{% if print %}
 	<img class="logo_print" src="../../images/logo-print.png" alt=""> {# 2 #}
 	{% endif %}
