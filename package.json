@@ -155,6 +155,7 @@
       "node_modules/formstone/dist/js/viewer.js",
       "node_modules/what-input/dist/what-input.js",
       "src/js/site.js",
+      "src/js/base/**/*.js",
       "src/js/modules/**/*.js",
       "!src/js/modules/module.js"
     ]
