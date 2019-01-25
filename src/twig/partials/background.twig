@@ -3,8 +3,6 @@
 		customClass: "js-class",
 		class: "flex_callout",
 		image: image,
-		lazy: true,
-		lazyEdge: "100",
 		sources: {
 			"0px": img.square.sml,
 			"740px": img.ultrawide.med,
@@ -16,4 +14,4 @@
 
 <div class="{% if customClass %}{{customClass}}{% else %}js-background{% endif %} {{class}}_background" data-background-options='{"source": {
 {% for key, source in sources %}"{{key}}": "{% if source == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{vars.images}}/{{source}}/{{image}}{% endif %}"{% if not loop.last %}, {% endif %}{% endfor %}
-}{% if lazy %}, "lazy": true{% endif %}{% if lazyEdge %}, "lazyEdge": "{{lazyEdge}}"{% endif %}}' aria-hidden="true"></div>
+}, "lazy": true}' aria-hidden="true"></div>
