@@ -6,45 +6,41 @@
 	} %}
 #}
 
-{% if title %}
-	{% set navTitle = title %}
-{% else %}
-	{% set navTitle = "In This Section" %}
-{% endif %}
+{% set navTitle = title ?: "In This Section" %}
 
-<nav class="js-sub-nav sub_nav{% if modifier %} sub_nav_{{modifier}}{% endif %}" aria-label="{{title}}" itemscope itemtype="http://schema.org/SiteNavigationElement">
+<nav class="js-sub-nav sub_nav{% if modifier %} sub_nav_{{ modifier }}{% endif %}" aria-label="{{ title }}" itemscope itemtype="http://schema.org/SiteNavigationElement">
 	<div class="sub_nav_header">
-		<h2 class="sub_nav_title">{{navTitle}}</h2>
-		<button class="js-swap js-sub-nav-handle sub_nav_handle" data-swap-target=".sub_nav_list" data-swap-title="{{navTitle}}" data-swap-options='{"maxWidth": "980px"}'>
-			<span class="sub_nav_handle_label">{{navTitle}}</span>
+		<h2 class="sub_nav_title">{{ navTitle }}</h2>
+		<button class="js-swap js-sub-nav-handle sub_nav_handle" data-swap-target=".sub_nav_list" data-swap-title="{{ navTitle }}" data-swap-options='{"maxWidth": "980px"}'>
+			<span class="sub_nav_handle_label">{{ navTitle }}</span>
 			<span class="sub_nav_handle_icons">
-				<span class="sub_nav_handle_icon sub_nav_handle_icon_open">{{site.icon("caret_down")}}</span>
-				<span class="sub_nav_handle_icon sub_nav_handle_icon_close">{{site.icon("close")}}</span>
+				<span class="sub_nav_handle_icon sub_nav_handle_icon_open">{{ site.icon("caret_down") }}</span>
+				<span class="sub_nav_handle_icon sub_nav_handle_icon_close">{{ site.icon("close") }}</span>
 			</span>
 		</button>
 	</div>
-	<ul class="js-sub-nav-list sub_nav_list" aria-label="{{navTitle}}">
+	<ul class="js-sub-nav-list sub_nav_list" aria-label="{{ navTitle }}">
 		{% for link in links %}
-		<li class="sub_nav_item{% if link.modifier %} sub_nav_item_{{link.modifier}}{% endif %}">
-			<a class="sub_nav_link" href="{{link.href ?: '#'}}" itemprop="url">
+		<li class="sub_nav_item{% if link.modifier %} sub_nav_item_{{ link.modifier }}{% endif %}">
+			<a class="sub_nav_link" href="{{ link.href ?: '#' }}" itemprop="url">
 				{% if link.icon %}
-				<span class="sub_nav_link_icon">{{site.icon(link.icon)}}</span>
+				<span class="sub_nav_link_icon">{{ site.icon(link.icon) }}</span>
 				{% endif %}
-				<span class="sub_nav_link_label" itemprop="name">{{link.name ?: link}}</span>
+				<span class="sub_nav_link_label" itemprop="name">{{ link.name ?: link }}</span>
 			</a>
 			{% if link.children %}
 			<ul class="sub_nav_children">
 				{% for child in link.children %}
 				<li class="sub_nav_child_item">
-					<a class="sub_nav_child_link" href="{{child.href ?: '#'}}" itemprop="url">
-						<span class="sub_nav_child_link_label" itemprop="name">{{child.name ?: child}}</span>
+					<a class="sub_nav_child_link" href="{{ child.href ?: '#' }}" itemprop="url">
+						<span class="sub_nav_child_link_label" itemprop="name">{{ child.name ?: child }}</span>
 					</a>
 					{% if child.children %}
 					<ul class="sub_nav_grandchildren">
 						{% for child in child.children %}
 						<li class="sub_nav_grandchild_item">
-							<a class="sub_nav_grandchild_link" href="{{child.href ?: '#'}}" itemprop="url">
-								<span class="sub_nav_grandchild_link_label" itemprop="name">{{child.name ?: child}}</span>
+							<a class="sub_nav_grandchild_link" href="{{ child.href ?: '#' }}" itemprop="url">
+								<span class="sub_nav_grandchild_link_label" itemprop="name">{{ child.name ?: child }}</span>
 							</a>
 						</li>
 						{% endfor %}

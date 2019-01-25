@@ -92,11 +92,11 @@
   },
   "devDependencies": {
     "async": "2.6.1",
-    "autoprefixer": "9.4.2",
+    "autoprefixer": "9.4.5",
     "browser-sync": "2.26.3",
     "del": "3.0.0",
     "formstone": "1.4.10",
-    "globby": "8.0.1",
+    "globby": "9.0.0",
     "gulp": "4.0.0",
     "gulp-concat-multi": "1.0.1",
     "gulp-cssnano": "2.1.3",
@@ -138,6 +138,7 @@
   "js": {
     "site.js": [
       "src/js/vendor/modernizr-custom.js",
+      "src/js/vendor/lazysizes.js",
       "node_modules/formstone/dist/js/core.js",
       "node_modules/formstone/dist/js/mediaquery.js",
       "node_modules/formstone/dist/js/analytics.js",
@@ -147,7 +148,6 @@
       "node_modules/formstone/dist/js/cookie.js",
       "node_modules/formstone/dist/js/equalize.js",
       "node_modules/formstone/dist/js/lightbox.js",
-      "node_modules/formstone/dist/js/pagination.js",
       "node_modules/formstone/dist/js/sticky.js",
       "node_modules/formstone/dist/js/swap.js",
       "node_modules/formstone/dist/js/touch.js",
@@ -227,32 +227,26 @@
       },
       {
         "modifier": "",
-        "href": "dev-feature.html",
-        "name": "Page Feature Components",
-        "children": ""
-      },
-      {
-        "modifier": "",
-        "href": "dev-full-width.html",
-        "name": "Full Width Components",
-        "children": ""
-      },
-      {
-        "modifier": "",
-        "href": "dev-in-content.html",
-        "name": "In Content Components",
-        "children": ""
-      },
-      {
-        "modifier": "",
-        "href": "dev-sidebar.html",
-        "name": "Sidebar Components",
-        "children": ""
-      },
-      {
-        "modifier": "",
         "href": "dev-html.html",
-        "name": "HTML Elements",
+        "name": "HTML Guide",
+        "children": ""
+      },
+      {
+        "modifier": "",
+        "href": "page-404.html",
+        "name": "404",
+        "children": ""
+      },
+      {
+        "modifier": "",
+        "href": "page-form-builder.html",
+        "name": "Form Builder",
+        "children": ""
+      },
+      {
+        "modifier": "",
+        "href": "page-search.html",
+        "name": "Search",
         "children": ""
       }
     ],
@@ -291,28 +285,33 @@
     {
       "name": "Futura",
       "reference": "Futura",
-      "weights": [
+      "styles": [
         {
-          "value": "bold"
+          "type": "bold",
+          "weight": 700
         },
         {
-          "value": "normal"
+          "type": "normal",
+          "weight": 400
         }
       ]
     },
     {
       "name": "Avenir",
       "reference": "Avenir",
-      "weights": [
+      "styles": [
         {
-          "value": "bold"
+          "type": "bold",
+          "weight": 700
         },
         {
-          "value": "normal"
+          "type": "normal",
+          "weight": 400
         },
         {
-          "value": "normal",
-          "style": "italic"
+          "type": "normal",
+          "style": "italic",
+          "weight": 400
         }
       ]
     }

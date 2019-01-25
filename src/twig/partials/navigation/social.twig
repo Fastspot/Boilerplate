@@ -6,17 +6,17 @@
 	} %}
 #}
 
-<div class="social_nav{% if modifier %} social_nav_{{modifier}}{% endif %}" itemscope itemtype="http://schema.org/{{vars.schemaType}}">
-	<link itemprop="url" href="//{{vars.domain}}">
+<div class="social_nav{% if modifier %} social_nav_{{ modifier }}{% endif %}" itemscope itemtype="http://schema.org/{{ vars.schemaType }}">
+	<link itemprop="url" href="//{{ vars.domain }}">
 	<div class="social_nav_header">
-		<h2 class="social_nav_title">{{title}} Navigation</h2>
+		<h2 class="social_nav_title">{{ title }} Navigation</h2>
 	</div>
-	<ul class="social_nav_list" aria-label="{{title}}">
+	<ul class="social_nav_list" aria-label="{{ title }}">
 		{% for link in links %}
-		<li class="social_nav_item{% if link.modifier %} social_nav_item_{{link.modifier}}{% endif %}">
-			<a class="social_nav_link" href="{{link.href}}" target="_blank" itemprop="sameAs">
-				<span class="social_nav_icon">{{site.icon(link.icon)}}</span>
-				<span class="social_nav_label">{{link.name}}</span>
+		<li class="social_nav_item{% if link.modifier %} social_nav_item_{{ link.modifier }}{% endif %}">
+			<a class="social_nav_link" href="{{ link.href }}" target="_blank" itemprop="sameAs">
+				<span class="social_nav_icon">{{ site.icon(link.icon) }}</span>
+				<span class="social_nav_label">{{ link.name }}</span>
 			</a>
 		</li>
 		{% endfor %}

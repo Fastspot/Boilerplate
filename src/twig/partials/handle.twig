@@ -6,9 +6,9 @@
 	} %}
 #}
 
-<a class="js-swap js-{{class|replace({"_": "-"})}}-handle {{class}}_handle{% if modifier %} {{class}}_handle_{{modifier}}{% endif %}" href="#{{class}}" data-swap-target=".{{class}}" data-swap-linked="{{class}}">
+<a class="js-swap js-{{ class|replace({"_": "-"}) }}-handle {{ class }}_handle{% if modifier %} {{ class }}_handle_{{ modifier }}{% endif %}" href="#{{ class }}" data-swap-target=".{{ class }}" data-swap-linked="{{ class }}">
 	{% if icon %}
-	<span class="{{class}}_handle_icon{% if modifier %} {{class}}_handle_icon_{{modifier}}{% endif %}" aria-hidden="true">{{site.icon(icon)}}</span>
+	<span class="{{ class }}_handle_icon{% if modifier %} {{ class }}_handle_icon_{{ modifier }}{% endif %}" aria-hidden="true">{{ site.icon(icon) }}</span>
 	{% endif %}
-	<span class="{{class}}_handle_label{% if modifier %} {{class}}_handle_label_{{modifier}}{% endif %}">{{label}}</span>
+	<span class="{{ class }}_handle_label{% if modifier %} {{ class }}_handle_label_{{ modifier }}{% endif %}">{{ label }}</span>
 </a>

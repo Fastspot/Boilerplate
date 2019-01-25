@@ -12,6 +12,11 @@
 	} %}
 #}
 
+<<<<<<< HEAD
 <div class="{% if customClass %}{{ customClass }}{% else %}js-background{% endif %} {{ class }}_background" data-background-options='{"source": {
 {% for key, source in sources %}"{{ key }}": "//images.fastspot.com/{{ vars.images }}/{{ source }}/{{ image }}"{% if not loop.last %}, {% endif %}{% endfor %}
 }, "lazy": true}' aria-hidden="true"></div>
+=======
+<div class="{{ customClass ?: 'js-background' }} {{ class }}_background" data-background-options='{"source": {
+{% for key, source in sources %}"{{ key }}": "{% if source == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{ vars.images }}/{{ source }}/{{ image }}{% endif %}"{% if not loop.last %}, {% endif %}{% endfor %}}, "lazy": true}' aria-hidden="true"></div>
+>>>>>>> d1b4cba854662b2d7cafbe8b6f5fa079c1a705f6

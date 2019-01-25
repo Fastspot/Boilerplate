@@ -1,16 +1,16 @@
 {% for key, group in colors %}
 	<div class="gb_section">
 		<div class="gb_section_header">
-			<h2 class="gb_section_title" id="{{key|title}}">{{key|title}} Colors</h2>
+			<h2 class="gb_section_title" id="{{ key|title }}">{{ key|title }} Colors</h2>
 		</div>
 		<div class="gb_section_body">
 			<div class="gb_colors">
 				{% for name, color in group %}
 					<button class="gb_color">
-						<div class="gb_color_block" style="background: {{color}};"></div>
+						<div class="gb_color_block" style="background: {{ color }};"></div>
 						<div class="gb_color_details">
-							<input class="gb_color_label" type="text" value="{{color}}">
-							<span class="gb_color_copy">Copy {{name}} to Clipboard</span>
+							<input class="gb_color_label" type="text" value="{{ color }}">
+							<span class="gb_color_copy">Copy {{ name }} to Clipboard</span>
 						</div>
 					</button>
 				{% endfor %}
@@ -26,7 +26,7 @@
 
 						item.select();
 						
-						document.execCommand("Copy");
+						document.execCommand('Copy');
 					});
 				}
 			</script>

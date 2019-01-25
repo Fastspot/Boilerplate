@@ -1,0 +1,26 @@
+/* ==========================================================================
+	Lazysizes
+============================================================================= */
+
+.lazy_image_wrapper {
+	position: relative;
+
+	.no-js & {
+		display: none;
+	}
+}
+
+.js-lazy {
+	width: 100%;
+	
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	opacity: 0;
+	transition: opacity .3s;
+}
+
+.js-lazyloaded {
+	opacity: 1;
+}

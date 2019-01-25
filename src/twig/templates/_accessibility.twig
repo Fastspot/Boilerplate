@@ -81,12 +81,12 @@
 	</head>
 	<body>
 		<header class="results_header">
-			<h1 class="results_title">{{page|replace({
+			<h1 class="results_title">{{ page|replace({
 				"-": " "
-			})|title}} Report</h1>
+			})|title }} Report</h1>
 			<div class="results">
-				<a class="result_type result_type_error" href="#errors"><strong>{{errors}}</strong> errors</a>
-				<a class="result_type result_type_warning" href="#warnings"><strong>{{warnings}}</strong> warnings</a>
+				<a class="result_type result_type_error" href="#errors"><strong>{{ errors }}</strong> errors</a>
+				<a class="result_type result_type_warning" href="#warnings"><strong>{{ warnings }}</strong> warnings</a>
 			</div>
 		</header>
 		<main>
@@ -95,13 +95,13 @@
 				"warning"
 			] %}
 			{% for type in accessList %}
-			<div id="{{type}}s">
+			<div id="{{ type }}s">
 				{% for result in results.issues %}
 				{% if type == result.type %}
-				<div class="report_item {{result.type}}">
-					<h3 class="report_item_title">{{result.message}}</h3>
-					<p class="report_item_code">{{result.code}}</p>
-					<pre class="report_item_context">{{result.context|e}}</pre>
+				<div class="report_item {{ result.type }}">
+					<h3 class="report_item_title">{{ result.message }}</h3>
+					<p class="report_item_code">{{ result.code }}</p>
+					<pre class="report_item_context">{{ result.context|e }}</pre>
 				</div>
 				{% endif %}
 				{% endfor %}
