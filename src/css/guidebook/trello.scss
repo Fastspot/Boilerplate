@@ -13,7 +13,7 @@
 	position: relative;
 
 	background: #fff;
-	border: 1px solid #000;
+	border: 1px solid #c4c4c4;
 	border-radius: 0;
 	display: inline-block;
 	margin-left: 20px;
@@ -34,7 +34,7 @@
 	&_indicator {
 		left: 0;
 
-		background: #000;
+		background: #eee;
 		border-radius: 0;
 		transform: translate(0, 0);
 		transform-origin: right center;
@@ -63,34 +63,21 @@
 			top: 50%;
 			left: 50%;
 
-			background: #fff;
+			background: #000;
 			box-shadow:
-				-6px 0 0 0 #fff,
-				-6px -6px 0 0 #fff,
-				0 -6px 0 0 #fff,
-				6px -6px 0 0 #fff,
-				6px 0 0 0 #fff,
-				6px 6px 0 0 #fff,
-				0 6px 0 0 #fff,
-				-6px 6px 0 0 #fff;
+				-6px 0 0 0 #000,
+				-6px -6px 0 0 #000,
+				0 -6px 0 0 #000,
+				6px -6px 0 0 #000,
+				6px 0 0 0 #000,
+				6px 6px 0 0 #000,
+				0 6px 0 0 #000,
+				-6px 6px 0 0 #000;
 			content: "";
 			transform: translate(-50%, -50%);
 			transition:
 				background .25s,
 				box-shadow .25s;
-
-			.trello_format_list & {
-				background: #000;
-				box-shadow:
-					-6px 0 0 0 #000,
-					-6px -6px 0 0 #000,
-					0 -6px 0 0 #000,
-					6px -6px 0 0 #000,
-					6px 0 0 0 #000,
-					6px 6px 0 0 #000,
-					0 6px 0 0 #000,
-					-6px 6px 0 0 #000;
-			}
 		}
 	}
 
@@ -114,63 +101,20 @@
 			transition:
 				background .25s,
 				box-shadow .25s;
-
-			.trello_format_list & {
-				background: #fff;
-				box-shadow:
-					0 -6px 0 0 #fff,
-					0 6px 0 0 #fff;
-			}
 		}
 	}
 }
 
 .gb_trello_list {
 
-	.gb_trello_detail_lock & {
+	.gb_trello_lock & {
 		display: none;
 	}
 }
 
-.gb_trello_section {
-	margin: 0;
 
-	&.empty {
-		display: none;
-	}
-}
-
-.gb_trello_section_header {
-	margin-bottom: 30px;
-}
-
-.gb_trello_section_title {
-	@include h2;
-
-	position: relative;
-	z-index: 4;
-
-	color: #fff;
-	display: inline-block;
-	margin: 0;
-	padding-top: 80px;
-}
-
-.gb_trello_section_label {
-	background: #000;
-	display: block;
-	padding: 1px 10px;
-}
-
-.gb_trello_section_caption {
-	@include body_text;
-
-	margin-bottom: 50px;
-}
-
-.gb_trello_section_body {
-	margin-top: 50px;
-}
+/* Trello Detail View
+============================================================================= */
 
 .gb_trello_detail {
 	@include clearfix;
@@ -183,7 +127,11 @@
 	display: none;
 	overflow-y: auto;
 	-webkit-overflow-scrolling: touch;
-	padding-bottom: 100px;
+	padding: 54px 0 100px;
+
+	@media #{$min_xl} {
+		padding-top: 70px;
+	}
 
 	&.hash-swap-active,
 	&.fs-swap-active {
@@ -194,20 +142,42 @@
 .gb_trello_detail_ribbon {
 	@include clearfix;
 
-	position: relative;
+	width: 100%;
 
-	background: #000;
-	margin-bottom: 2em;
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	background: #f6f6f6;
+	margin-bottom: 80px;
 	padding: 0 20px;
+
+	&:after {
+		height: 10px;
+		width: 100%;
+
+		position: absolute;
+		top: 100%;
+		left: 0;
+		z-index: 4;
+
+		background: 
+			linear-gradient(
+				to bottom,
+					rgba(#000, .085),
+					rgba(#000, 0)
+			);
+		content: "";
+	}
 }
 
 .gb_trello_detail_pager {
 	@include nt(500);
 
-	color: #fff;
+	color: #000;
 	display: none;
 	font-size: 13px;
-	padding: 37px 0;
+	padding: 28px 0;
 
 	@media #{$min_xl} {
 		display: inline-block;
@@ -218,7 +188,7 @@
 		height: 6px;
 		width: 6px;
 
-		border-bottom: 2px solid #fff;
+		border-bottom: 2px solid #000;
 		content: "";
 		display: inline-block;
 		margin-top: -3px;
@@ -229,7 +199,7 @@
 		float: left;
 
 		&:before {
-			border-left: 2px solid #fff;
+			border-left: 2px solid #000;
 			margin-right: 10px;
 			transform: rotate(45deg);
 		}
@@ -247,7 +217,7 @@
 		}
 
 		&:after {
-			border-right: 2px solid #fff;
+			border-right: 2px solid #000;
 			margin-left: 10px;
 			transform: rotate(-45deg);
 		}
@@ -259,7 +229,7 @@
 
 	position: relative;
 
-	color: #fff;
+	color: #000;
 	cursor: pointer;
 	border: 0;
 	border-radius: 4px;
@@ -272,7 +242,7 @@
 		top: 0;
 		left: 50%;
 
-		padding: 37px 35px;
+		padding: 28px 35px;
 		transform: translate(-50%, 0);
 	}
 
@@ -284,11 +254,11 @@
 		top: 50%;
 		left: 0;
 
-		background: #fff;
+		background: #000;
 		box-shadow:
-			11px 0 0 0 #fff,
-			0 11px 0 0 #fff,
-			11px 11px 0 0 #fff;
+			11px 0 0 0 #000,
+			0 11px 0 0 #000,
+			11px 11px 0 0 #000;
 		content: "";
 		margin-bottom: 6px;
 		margin-top: -6px;
@@ -303,7 +273,7 @@
 		top: 50%;
 		left: 50%;
 
-		box-shadow: inset 0 0 0 22px #fff;
+		box-shadow: inset 0 0 0 22px #000;
 		border-radius: 50%;
 		content: "";
 		transform:
@@ -327,7 +297,7 @@
 	}
 
 	100% {
-		box-shadow: inset 0 0 0 0 #fff;
+		box-shadow: inset 0 0 0 0 #000;
 		opacity: 0;
 		transform:
 			translate(-50%, -50%)
@@ -337,19 +307,16 @@
 
 .gb_trello_detail_inner {
 	margin: 0 auto;
+	padding-top: 80px;
 }
 
 .gb_trello_detail_title {
+	@include h2;
+	
 	margin: 0 0 30px;
 }
 
-.gb_trello_detail_component {
-	margin: 0 auto;
-}
-
-.gb_trello_detail_cover {
-	margin-bottom: 30px;
-}
+.gb_trello_detail_cover {}
 
 .gb_trello_detail_image {
 	max-width: 100%;
@@ -357,38 +324,3 @@
 	display: block;
 	margin: 0 auto;
 }
-
-.gb_trello_detail_live {
-
-	&:after {
-		height: 12px;
-		width: 12px;
-
-		background: #000;
-		border-radius: 50%;
-		box-shadow: 0 0 0 0 #DA2315;
-		content: "";
-		display: inline-block;
-		margin-left: 10px;
-		vertical-align: middle;
-		transition: background .25s;
-	}
-
-	&:focus,
-	&:hover {
-		
-		&:after {
-			animation: live 1s infinite;
-			background: #DA2315;
-		}
-	}
-}
-
-@keyframes live {
-
-	100% {
-		box-shadow: 0 0 0 4px transparent;
-	}
-}
-
-.gb_trello_detail_content {}

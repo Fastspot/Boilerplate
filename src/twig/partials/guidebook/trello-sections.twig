@@ -1,44 +1,39 @@
-<div class="gb_trello_wrapper">
+<div class="gb_trello_list">
 	{% if trelloCards %}
-		<div class="gb_trello_list">
-			{% for group in deck %}
-				<div class="gb_trello_section gb_section" id="{{group.type}}">
-					<h2 class="gb_trello_section_title" id="trelloList[{{group.type}}]">
-						<span class="gb_trello_section_label">{{group.type}}</span>
-					</h2>
-					<p class="gb_trello_section_caption fs-lg-10 fs-xl-8">{{types[loop.index - 1].caption}}</p>
-					<div class="gb_trello_section_body">
-						<div class="gb_topics" data-section="{{label}}">
-							{% for item in group.cards %}
-								<a class="gb_topic gb_topic_trello gb_topic_link trello_{{item.id}}" href="#trello_{{item.id}}">
-									<h3 class="gb_topic_title">{{item.name}}</h3>
-									<img class="gb_topic_image" src="{{item.attachments[0].previews[3].url}}" />
-								</a>
-							{% endfor %}
-						</div>
-					</div>
+		{% for group in deck %}
+			<div class="gb_section" id="{{group.type}}">
+				<div class="gb_section_header">
+					<h2 class="gb_section_title" id="trelloList[{{group.type}}]">{{group.type}}</h2>
+					<p class="gb_section_caption fs-lg-10 fs-xl-8">{{types[loop.index - 1].caption}}</p>
 				</div>
-			{% endfor %}
-		</div>
-	{% elseif templatesPage %}
-		<div class="gb_trello_section_body">
-			<div class="gb_topics" data-section="{{label}}">
-				{% for item in templates %}
-					<a class="gb_topic gb_topic_trello gb_topic_link trello_{{item.id}}" href="#trello_{{item.id}}">
-						<h3 class="gb_topic_title">{{item.name}}</h3>
-						<img class="gb_topic_image" src="{{item.attachments[0].previews[3].url}}" />
-					</a>
-				{% endfor %}
-			</div>
-		</div>
-	{% else %}
-		{% for item in contentStrategy %}
-			<div class="gb_section">
-				<h2 class="gb_section_title" id="{{item.id}}">{{item.name}}</h2>
-				<div class="gb_typography">
-					<div class="gb_detail_content">{{item.desc}}</div>
+				<div class="gb_section_body">
+					<div class="gb_topics" data-section="{{label}}">
+						{% for item in group.cards %}
+							<a class="gb_topic trello_{{item.id}}" href="#trello_{{item.id}}">
+								<h3 class="gb_topic_title">{{item.name}}</h3>
+								<div class="gb_topic_figure">
+									<img class="gb_topic_image" src="{{item.attachments[0].previews[3].url}}" />
+								</div>
+							</a>
+						{% endfor %}
+					</div>
 				</div>
 			</div>
 		{% endfor %}
+	{% elseif templatesPage %}
+		<div class="gb_section">
+			<div class="gb_section_body">
+				<div class="gb_topics" data-section="{{label}}">
+					{% for item in templates %}
+						<a class="gb_topic trello_{{item.id}}" href="#trello_{{item.id}}">
+							<h3 class="gb_topic_title">{{item.name}}</h3>
+							<div class="gb_topic_figure">
+								<img class="gb_topic_image" src="{{item.attachments[0].previews[3].url}}" />
+							</div>
+						</a>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
 	{% endif %}
 </div>

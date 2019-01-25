@@ -28,8 +28,6 @@ var gulp = require('gulp'),
 		realFavicon = require ('gulp-real-favicon'),
 		FAVICON_DATA_FILE = 'favicons/markup.json',
 		pa11y = require('pa11y'),
-		Trello = require('node-trello'),
-		trello = new Trello(trelloKeyToken.key(), trelloKeyToken.token()),
 		markdown = require('markdown').markdown;
 
 
@@ -37,8 +35,7 @@ var source = {
 	readme: 'src/twig/README.twig',
 	trello: [
 		'src/twig/templates/fs-components.twig',
-		'src/twig/templates/fs-templates.twig',
-		'src/twig/templates/fs-content-strategy.twig'
+		'src/twig/templates/fs-templates.twig'
 	],
 	twig: [
 		'src/twig/templates/*.twig',
@@ -46,8 +43,7 @@ var source = {
 		'!src/twig/templates/dev-component-image-crops.twig',
 		'!src/twig/templates/dev-image-crops.twig',
 		'!src/twig/templates/fs-components.twig',
-		'!src/twig/templates/fs-templates.twig',
-		'!src/twig/templates/fs-content-strategy.twig'
+		'!src/twig/templates/fs-templates.twig'
 	],
 	templates: 'static/templates/*.html',
 	accessibility: [
@@ -64,7 +60,6 @@ var watch = {
 	trello: [
 		'src/twig/templates/fs-components.twig',
 		'src/twig/templates/fs-templates.twig',
-		'src/twig/templates/fs-content-strategy.twig',
 		'src/twig/partials/guidebook/trello-details.twig',
 		'src/twig/partials/guidebook/trello-sections.twig',
 		'src/twig/partials/guidebook/trello-js.twig'
@@ -75,7 +70,6 @@ var watch = {
 		'!src/twig/templates/dev-image-crops.twig',
 		'!src/twig/templates/fs-components.twig',
 		'!src/twig/templates/fs-templates.twig',
-		'!src/twig/templates/fs-content-strategy.twig',
 		'!src/twig/partials/guidebook/trello-details.twig',
 		'!src/twig/partials/guidebook/trello-sections.twig',
 		'!src/twig/partials/guidebook/trello-js.twig'
@@ -88,6 +82,8 @@ var watch = {
 
 
 gulp.task('trello', function(done) {
+	var Trello = require('node-trello');
+	var trello = new Trello(trelloKeyToken.key(), trelloKeyToken.token());
 
 	if (packageJSON.vars.idBoardTrello !== "") {
 		var types = [
@@ -110,7 +106,6 @@ gulp.task('trello', function(done) {
 		];
 		var deck = [];
 		var cards = [];
-		var contentStrategy = [];
 		var templates = [];
 
 		trello.get('/1/boards/' + packageJSON.vars.idBoardTrello + '/cards', {
@@ -143,10 +138,6 @@ gulp.task('trello', function(done) {
 
 							templates.push(data[card]);
 						}
-					} else if(data[card].labels.find(findContent)) {
-						data[card].desc = markdown.toHTML(data[card].desc);
-
-						contentStrategy.push(data[card]);
 					}
 				}
 
@@ -184,7 +175,6 @@ gulp.task('trello', function(done) {
 							links: packageJSON.links,
 							deck: deck,
 							types: types,
-							contentStrategy: contentStrategy,
 							templates: templates
 						}
 					}))
@@ -194,10 +184,6 @@ gulp.task('trello', function(done) {
 					.pipe(gulp.dest('static/templates'));
 			}
 		});
-
-		function findContent(label) {
-			return label.name === "Strategy";
-		}
 
 		function findTemplate(label) {
 			return label.name === "Template";
@@ -210,56 +196,6 @@ gulp.task('trello', function(done) {
 						 label.name === "Sidebar";
 		}
 	}
-
-	done();
-
-});
-
-
-gulp.task('components', function(done) {
-
-	var base = 'src/twig/components';
-
-	fs.readdir(base, function(err, folders) {
-		folders.forEach(function(folder) {
-			fs.readdir(base + '/' + folder, function(err, mods) {
-				var result = '{% extends "_base.twig" %}' +
-					'{% block page %}' +
-						'{% set page = {' +
-							'title: "' + folder + '",' +
-							'layout: "style-guide"' +
-						'} %}' +
-					'{% endblock %}';
-
-				if (folder === 'feature') {
-					result += '{% block page_feature %}';
-				} else if (folder === 'full-width') {
-					result += '{% block full_width_callouts %}';
-				} else if (folder === 'in-content') {
-					result += '{% block in_content_callouts %}';
-				} else if (folder === 'sidebar') {
-					result += '{% block sidebar %}';
-				} else if (folder == 'default') {
-					result += '{% block full-width %}';
-				}
-
-				mods.forEach(function(mod) {
-					var content = fs.readFileSync(base + '/' + folder + '/' + mod, 'utf8');
-					var str = content.match(/({#)+[^]+(#})+/);
-
-					if(str) {
-						str[0] = str[0].replace('{#', '');
-						str[0] = str[0].replace('#}', '');
-						result += str[0];
-					}
-				});
-
-				result += '{% endblock %}';
-
-				fs.writeFileSync('src/twig/templates/dev-' + folder + '.twig', result);
-			});
-		});
-	});
 
 	done();
 
@@ -752,11 +688,6 @@ gulp.task('clean', function(done) {
 	del('js');
 	del('static');
 
-	del('src/twig/templates/dev-feature.twig');
-	del('src/twig/templates/dev-full-width.twig');
-	del('src/twig/templates/dev-in-content.twig');
-	del('src/twig/templates/dev-sidebar.twig');
-
 	done();
 
 });
@@ -850,7 +781,6 @@ gulp.task('default', gulp.series(
 
 gulp.task('style-guide', gulp.series(
 	'trello',
-	'components',
 	'twig'
 ));
 
