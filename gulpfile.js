@@ -45,10 +45,10 @@ var source = {
 		'!src/twig/templates/fs-components.twig',
 		'!src/twig/templates/fs-templates.twig'
 	],
-	templates: 'static/templates/*.html',
+	templates: 'static-html/templates/*.html',
 	accessibility: [
-		'static/templates/page*.html',
-		'!static/templates/page-form-builder.html',
+		'static-html/templates/page*.html',
+		'!static-html/templates/page-form-builder.html',
 	],
 	sitemap: 'src/twig/index.twig',
 	jshint: 'src/js/modules/*.js',
@@ -181,7 +181,7 @@ gulp.task('trello', function(done) {
 					.pipe(rename({
 						extname: '.html'
 					}))
-					.pipe(gulp.dest('static/templates'));
+					.pipe(gulp.dest('static-html/templates'));
 			}
 		});
 
@@ -234,7 +234,7 @@ gulp.task('twig', function() {
 		.pipe(rename({
 			extname: '.html'
 		}))
-		.pipe(gulp.dest('static/templates'))
+		.pipe(gulp.dest('static-html/templates'))
 		.pipe(browserSync.stream());
 
 });
@@ -248,7 +248,7 @@ gulp.task('pretty-html', function() {
 			"indent_char": "	",
 			"preserve_newlines": false
 		}))
-		.pipe(gulp.dest('static/templates'));
+		.pipe(gulp.dest('static-html/templates'));
 
 });
 
@@ -260,7 +260,7 @@ gulp.task('create-sitemap', function() {
 			extension: '.html',
 			filename: 'sitemap.json',
 		}))
-		.pipe(gulp.dest('static/'));
+		.pipe(gulp.dest('static-html/'));
 
 });
 
@@ -272,7 +272,7 @@ gulp.task('create-accessibility-sitemap', function() {
 			extension: '.html',
 			filename: 'accessibility-sitemap.json',
 		}))
-		.pipe(gulp.dest('static/'));
+		.pipe(gulp.dest('static-html/'));
 
 });
 
@@ -284,13 +284,13 @@ gulp.task('sitemap', function() {
 			data: {
 				name: packageJSON.vars.name,
 				trello: packageJSON.vars.idBoardTrello,
-				sitemap: require('./static/sitemap.json')
+				sitemap: require('./static-html/sitemap.json')
 			}
 		}))
 		.pipe(rename({
 			extname: '.html'
 		}))
-		.pipe(gulp.dest('static/'));
+		.pipe(gulp.dest('static-html/'));
 
 });
 
@@ -301,7 +301,7 @@ gulp.task('accessibility-sitemap', function() {
 		.pipe(twig({
 			data: {
 				name: packageJSON.vars.name,
-				sitemap: require('./static/accessibility-sitemap.json'),
+				sitemap: require('./static-html/accessibility-sitemap.json'),
 				accessibility: true
 			}
 		}))
@@ -309,7 +309,7 @@ gulp.task('accessibility-sitemap', function() {
 			basename: 'accessibility',
 			extname: '.html'
 		}))
-		.pipe(gulp.dest('static/templates'));
+		.pipe(gulp.dest('static-html/templates'));
 
 });
 
@@ -398,7 +398,7 @@ gulp.task('imagemin', function() {
 
 gulp.task('image-crops', function(done) {
 
-	var base = 'static/templates';
+	var base = 'static-html/templates';
 	var exclude = ["16x16", "32x32", "144x144", "180x180"];
 	var crops = [];
 	var modCrops = [];
@@ -412,9 +412,9 @@ gulp.task('image-crops', function(done) {
 			if (file.indexOf("page") > -1) {
 				fs.readFile(base + '/' + file, 'utf8', function(err, contents) {
 					var sizes = contents.match(/\d+x\d+/g);
-					
+
 					for (var x = 0; x < sizes.length; x++) {
-						
+
 						if (crops.indexOf(sizes[x]) == -1) {
 							if (exclude.indexOf(sizes[x]) == -1) {
 								crops.push(sizes[x]);
@@ -426,7 +426,7 @@ gulp.task('image-crops', function(done) {
 
 					if (steps == fileCount) {
 						crops = crops.sort();
-						
+
 						for (var x = 0; x < crops.length; x++) {
 							for (var cropRatio in packageJSON.img) {
 								for (var cropSize in packageJSON.img[cropRatio]) {
@@ -436,7 +436,7 @@ gulp.task('image-crops', function(done) {
 								}
 							}
 						}
-						
+
 						gulp.src('src/twig/templates/dev-image-crops.twig')
 							.pipe(twig({
 								data: {
@@ -446,7 +446,7 @@ gulp.task('image-crops', function(done) {
 							.pipe(rename({
 								extname: '.html'
 							}))
-							.pipe(gulp.dest('static/templates'));
+							.pipe(gulp.dest('static-html/templates'));
 					}
 				});
 			}
@@ -463,7 +463,7 @@ gulp.task('component-image-crops', function(done) {
 	var base = 'src/twig/components';
 	var data = [];
 	var typeSteps = 1;
-	
+
 	fs.readdir(base, function(err, folders) {
 		folders.forEach(function(folder) {
 			fs.readdir(base + '/' + folder, function(err, mods) {
@@ -520,7 +520,7 @@ gulp.task('component-image-crops', function(done) {
 						.pipe(rename({
 							extname: '.html'
 						}))
-						.pipe(gulp.dest('static/templates'));
+						.pipe(gulp.dest('static-html/templates'));
 				}
 			});
 		});
@@ -610,8 +610,8 @@ gulp.task('check-for-favicon-update', function(done) {
 
 gulp.task('accessibility-test', function(done) {
 
-	if (!fs.existsSync('static/accessibility')) {
-		fs.mkdirSync('static/accessibility');
+	if (!fs.existsSync('static-html/accessibility')) {
+		fs.mkdirSync('static-html/accessibility');
 	}
 
 	var urls = globby.sync(source.accessibility);
@@ -662,7 +662,7 @@ gulp.task('accessibility-test', function(done) {
 					basename: base,
 					extname: '.html'
 				}))
-				.pipe(gulp.dest('static/accessibility'));
+				.pipe(gulp.dest('static-html/accessibility'));
 
 			complete();
 		});
@@ -686,7 +686,7 @@ gulp.task('clean', function(done) {
 	del('favicons');
 	del('images');
 	del('js');
-	del('static');
+	del('static-html');
 
 	done();
 
@@ -699,7 +699,7 @@ gulp.task('browser-sync', function(done) {
 		logPrefix: packageJSON.vars.name,
 		ui: false,
 		server: './',
-		startPath: '/static/index.html',
+		startPath: '/static-html/index.html',
 		notify: {
 			styles: {
 				top: 'auto',

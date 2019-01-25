@@ -60,7 +60,7 @@
 		{% endfor %}
 		{% endif %}
 
-		<link rel="stylesheet" href="../../css/site.css?{{'now'|date('d-h')}}">
+		<link rel="stylesheet" href="../../css/site.css">
 	</head>
 
 	<body class="preload fs-grid page_layout_{{page.layout}}{% if page.theme %} page_theme_{{page.theme}}{% endif %}">
@@ -320,7 +320,7 @@
 		{{script}}
 		{% endfor %}
 		{% endif %}
-		<script src="../../js/site.js?{{'now'|date('d-h')}}" async></script>
+		<script src="../../js/site.js" async></script>
 		{% if grid %}
 		<script>
 			(function(){if(typeof FSGridBookmarklet==='undefined'){document.body.appendChild(document.createElement('script')).src='//formstone.it/js/bookmarklet/grid.js';}else{FSGridBookmarklet();}} )();
