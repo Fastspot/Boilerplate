@@ -11,7 +11,7 @@ Site.modules.Menu = (function($, Site) {
 
 	function init() {
 		$Menu = $(".js-menu");
-		
+
 		if ($Menu.length) {
 			$MenuHandle = $(".js-menu-handle");
 			$MenuClose = $(".js-menu-close");
@@ -50,7 +50,12 @@ Site.modules.Menu = (function($, Site) {
 		Site.$body.addClass(LockClass);
 		Site.modules.Page.saveScrollYPosition();
 		Site.modules.Page.ariaShow($Menu);
-		$Menu.focus();
+		$Menu.transition({
+			always: true,
+			property: "opacity"
+		}, function() {
+			$Menu.focus();
+		});
 	}
 
 	function onMenuSwapDeactivate() {
@@ -86,22 +91,8 @@ Site.modules.Menu = (function($, Site) {
 	}
 
 	function createSiteButtons($element) {
-		$this = $element;
-		
-		$this.each(function() {
-			var attributes = $this.prop("attributes");
-			$this.swap("destroy")
-				.wrapInner("<button />");
-			$.each(attributes, function() {
-				$this.find("button")
-					.attr(this.name, this.value);
-			});
-			$this.find("button")
-				.unwrap()
-				.removeAttr("href")
-				.swap()
-				.on("activate.swap", onMenuSwapActivate)
-				.on("deactivate.swap", onMenuSwapDeactivate);
+		$element.each(function() {
+			$element.attr("role", "button");
 		});
 	}
 
