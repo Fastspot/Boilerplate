@@ -292,7 +292,7 @@
 		<!-- END: page_wrapper -->
 
 		<!-- Menu -->
-		<div class="js-menu menu" id="menu">
+		<div class="js-menu menu" id="menu" aria-label="Site Menu">
 			{% include "../partials/navigation/main.twig" with {
 				modifier: "sm",
 				links: mainNavAlias,
@@ -307,9 +307,9 @@
 				links: secondaryNavAlias
 			} %}
 
-			<button class="js-swap js-menu-close menu_close" data-swap-target=".menu" data-swap-linked="menu" aria-label="Close Menu">
+			<button class="js-swap js-menu-close menu_close" data-swap-target=".menu" data-swap-linked="menu">
 				<span class="menu_close_icon">{{ site.icon("close") }}</span>
-				<span class="menu_close_label">Close Menu</span>
+				<span class="menu_close_label">Close Site Menu</span>
 			</button>
 		</div>
 		<!-- END: Menu -->
