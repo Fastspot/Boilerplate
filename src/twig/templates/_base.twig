@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en" itemscope="" itemtype="http://schema.org/WebPage">
 
-	{# Component Use #}
+	{# Shortcuts For Use Within Components #}
 	{% set feat = "../components/feature/" %}
 	{% set full = "../components/full-width/" %}
 	{% set inc = "../components/in-content/" %}
 	{% set side = "../components/sidebar/" %}
 	{% set par = "../../partials/" %}
-
-	{% set image = par ~ "image.twig" %}
-	{% set picture = par ~ "picture.twig" %}
 
 	{% set grid = true %}
 
@@ -319,11 +316,7 @@
 		{{ script }}
 		{% endfor %}
 		{% endif %}
-<<<<<<< HEAD
-		<script src="../../js/site.js?{{'now'|date('d-h')}}" async></script>
-=======
 		<script src="../../js/site.js?{{ 'now'|date('d-h') }}"></script>
->>>>>>> d1b4cba854662b2d7cafbe8b6f5fa079c1a705f6
 		{% if grid %}
 		<script>
 			(function(){if(typeof FSGridBookmarklet==='undefined'){document.body.appendChild(document.createElement('script')).src='//formstone.it/js/bookmarklet/grid.js';}else{FSGridBookmarklet();}} )();

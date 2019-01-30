@@ -39,11 +39,12 @@
 
 				appearance: none;
 				-webkit-appearance: none;
-				background: #f3f3f3;
-				border: 0;
+				background: #fafafa url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABQxJREFUeAHlmsuLHEUcx12NG42akHiJRsxBzYp4NwcPE0HxlIAHT4FdLxsinuIx8ezfkZMHBWO8BBKMEUQ0HkRECAs+QKIxvrK+c1A/nzAty1JdVT1d3TPT+cKXmanH71VVv6qunoVbyuBOxDwNn4JL8BG4E94D/4W/wZ/hGrwE34Fn4Z9wbrELy1fgKfg71NEmtM+bcAUarLnBXVh6Aq7DJg7H2ipLmdvgzGILlh2Bl2HMmTZ1yl6Ft8GZwh6suQjbONekr7rUORN4Aiu+hU0cKNHW2aDuqeIw2v+CJRyaRIa7hDZMBSqexOgu+nQWhIWa0Dr1LsCtNfWh4usUnoen4efQKSzF/WM+xudBeAAuwlw4C0fww9wObdqZfJqsedsehdsbKLWtfZroMZidJ0a3uo9hzjR2VF6BngsmhX2VkZtn3B063SKPoCDHeUduPywFZeXOhtVSSjfLcTScZqkAfEqbBzZ3LvBbmcpO6dfGTk6MJzKUO0pdOI/YG1B2zkw4Pm5f7GMXktZhLPqu05LTvs54dagrZss16os+QK0kFGqMyaovqCsWAOuWSxrjI21ModOyTbZvaqu6UkvBR+ki8DIj9Tzvnt031BkbFG3W9tY4hISYor+pb3LIaW3QWIA61R2z7WBbZbciwGNpDOepNEH2DXWqO4aU7bG+N+oMwKOJVqcT9V1Wp3QvtVVuAB5OCPHBZlpI6fbytRUMQGo/9eQ1LaR0p2zPstvH2FiiuTtLSjeNqmv1OvtMkq3gDJhnOHitYAB+TUjwMmNauC+h+EqiPlltAHxjE8M0A5DSXSQAazHvqfMaa1pI6S4SgEsJ71qfthLyY9Up3V/EOufWqaQuy1pupt2eK6xgO3WqO2bbsyX0+UAxjw9D3hloexH4aBmL9Cw+Dp8t4Xl1DngrIWw39ccSbUpWq0udMXiHUQweKddhbBY45fYX01gvSB3qitlylfriF6M39aWo42FE5+Fa/Bp27tDgLrCK0NjUq+pMiiWXg7JSd4CV7k5zka+dLmYGwXXa96sxM/8C7BR7kJ6zFKoRceSOwiaHJdvaJ3fU1fUDTD0b0KQMfD3unxMqJ3M+PbWdgS/CEdwHvUuQfh9B62yTOuGF9L1Ov2fgIuwFh9ESMmTaZd9j10uw86VglA1C05nQV4DexrYmy05/JoLL4TLsy7FKj2veaV/9Dn1+Rv1e2DlMjLm7Q8jQpmVmexOeaz7V9wptHKTO4Ra5CrucDR5yXobV+t7Kd9d8Kggu0+dhL9iGluNQY1OG5dZfHcsMnfBMeDly/hnL4KMf+AC1DH2UTt0nhBzwIOVU10GDWgdngwkvJCNUdpK2i3XCNpdXU21zedPfXkz4d/kDcAlu/Lv8dX67Tit+yfdz8F3o1M2B2f59+HhOY9q8B5+DP2a2n4tme7HyOxga9VDZGm33zYVnDYw02ztrQg6Hyn6i7QgOCmZ7E17I4VCZS/CFQUUAZ9yFQs7Gyl6lT6mcNxPxPDlBEDxZmrAHAbe6CzA26qG6j+izexARwIl7odk+5Gis7Gv6PAgHAbc6s33M4VDdB/S5fRARwIkRNNuHHI2VHev0r+cY1Be+QtE38FBDhVuGEgD9/gTeAZ/0RybMIYOC+/wbMDbtN9al/oU2l8Fxn3er2+ho3ffX5tLDDKPd593q6hy3/A/4EBws3Ofd6kJB0PnlwXq+wTH3eV+lef/wC3TNO+3/H/n/AEx/JdnIQWnhAAAAAElFTkSuQmCC') no-repeat 15px 50%;
+				background-size: 18px 18px;
+				border: 2px solid #e0e0e0;
 				font-size: 16px;
 				margin-bottom: 40px;
-				padding: 21px 30px;
+				padding: 21px 30px 21px 45px;
 			}
 
 			.sitemap {
@@ -56,14 +57,7 @@
 			.sitemap_group {}
 
 			.sitemap_item {
-				border-left: 8px solid;
-			}
-
-			@media print {
-
-				.sitemap_item {
-					border-left-width: 4px;
-				}
+				border-left: 4px solid;
 			}
 
 			.sitemap_item:nth-of-type(odd) {

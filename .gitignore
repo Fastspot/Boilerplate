@@ -1,8 +1,9 @@
+cache/
+custom/environment.php
 .DS_store
 node_cache/
 node_modules/
 package-lock.json
-trello.json
-cache/
-custom/environment.php
+shrinkwrap.yaml
 site/files/
+trello.json

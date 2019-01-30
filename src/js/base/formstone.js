@@ -6,16 +6,6 @@ Site.modules.Formstone = (function($, Site) {
 
 	var prev_icon = "chevron_left";
 	var next_icon = "chevron_right";
-	var lightboxOptions = {
-		theme: "fs-light",
-		videoWidth: 1000,
-		labels: {
-			close: "<span class='fs-lightbox-icon-close'>" + Site.icon("close") + "</span>",
-			previous: "<span class='fs-lightbox-icon-previous'>" + Site.icon(prev_icon) + "</span>",
-			count: "<span class='fs-lightbox-meta-divider'></span>",
-			next: "<span class='fs-lightbox-icon-next'>" + Site.icon(next_icon) + "</span>"
-		}
-	};
 	var BackgroundOptions = {
 		labels: {
 			play: "Play",
@@ -26,6 +16,15 @@ Site.modules.Formstone = (function($, Site) {
 			pause: Site.icon("pause")
 		}
 	};
+	var LightboxOptions = {
+		videoWidth: 1000,
+		labels: {
+			close: "<span class='fs-lightbox-icon-close'>" + Site.icon("close") + "</span>",
+			previous: "<span class='fs-lightbox-icon-previous'>" + Site.icon(prev_icon) + "</span>",
+			count: "<span class='fs-lightbox-meta-divider'></span>",
+			next: "<span class='fs-lightbox-icon-next'>" + Site.icon(next_icon) + "</span>"
+		}
+	};
 
 	function init() {
 		$(".js-background").on("loaded.background", function() {
@@ -34,7 +33,7 @@ Site.modules.Formstone = (function($, Site) {
 		}).background();
 		$(".js-carousel").carousel();
 		$(".js-equalize").equalize();
-		$(".js-lightbox").lightbox(lightboxOptions);
+		$(".js-lightbox").lightbox(LightboxOptions);
 		$(".js-swap").swap();
 
 		carouselPagination($(".js-carousel"));

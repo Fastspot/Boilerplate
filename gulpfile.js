@@ -27,8 +27,7 @@ var gulp = require('gulp'),
 		svgSprite = require('gulp-svg-sprite'),
 		realFavicon = require ('gulp-real-favicon'),
 		FAVICON_DATA_FILE = 'favicons/markup.json',
-		pa11y = require('pa11y'),
-		markdown = require('markdown').markdown;
+		pa11y = require('pa11y');
 
 
 var source = {
@@ -130,12 +129,8 @@ gulp.task('trello', function(done) {
 								data[card].type = data[card].labels.find(findType).name;
 							}
 
-							data[card].desc = markdown.toHTML(data[card].desc);
-
 							cards.push(data[card]);
 						} else if(data[card].labels.find(findTemplate)) {
-							data[card].desc = markdown.toHTML(data[card].desc);
-
 							templates.push(data[card]);
 						}
 					}
