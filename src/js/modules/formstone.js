@@ -58,7 +58,7 @@ Site.modules.Formstone = (function($, Site) {
 
 		$background.background("play");
 		$background.find(".fs-background-control-play")
-			.addClass(".fs-background-control-active")
+			.addClass("fs-background-control-active")
 			.attr("aria-pressed", "true");
 		$background.find(".fs-background-control-pause")
 			.removeClass("fs-background-control-active")
@@ -70,7 +70,7 @@ Site.modules.Formstone = (function($, Site) {
 
 		$background.background("pause");
 		$background.find(".fs-background-control-pause")
-			.addClass(".fs-background-control-active")
+			.addClass("fs-background-control-active")
 			.attr("aria-pressed", "true");
 		$background.find(".fs-background-control-play")
 			.removeClass("fs-background-control-active")
