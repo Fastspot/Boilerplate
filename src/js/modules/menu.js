@@ -50,6 +50,7 @@ Site.modules.Menu = (function($, Site) {
 		Site.$body.addClass(LockClass);
 		Site.modules.Page.saveScrollYPosition();
 		Site.modules.Page.ariaShow($Menu);
+		$MenuHandle.attr("aria-expanded", "true");
 		$Menu.transition({
 			always: true,
 			property: "opacity"
@@ -62,6 +63,7 @@ Site.modules.Menu = (function($, Site) {
 		Site.$body.removeClass(LockClass);
 		Site.modules.Page.restoreScrollYPosition();
 		Site.modules.Page.ariaHide($Menu);
+		$MenuHandle.attr("aria-expanded", "false");
 		$MenuHandle.focus();
 	}
 
@@ -92,7 +94,10 @@ Site.modules.Menu = (function($, Site) {
 
 	function createSiteButtons($element) {
 		$element.each(function() {
-			$element.attr("role", "button");
+			$element.attr({
+				"role": "button",
+				"aria-expanded": "false"
+			});
 		});
 	}
 
