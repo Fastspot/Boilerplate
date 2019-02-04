@@ -22,8 +22,8 @@ Site.modules.Formstone = (function($, Site) {
 			pause: "Pause"
 		},
 		icons: {
-			play: Site.icon("play"),
-			pause: Site.icon("pause")
+			play: Site.icon("video_play"),
+			pause: Site.icon("video_pause")
 		}
 	};
 
