@@ -87,6 +87,11 @@
     "schemaType": "Organization",
     "twitter": "TwitterName",
     "color": "",
+    "filters": [
+      "landing",
+      "listing",
+      "detail"
+    ],
     "cseKey": "011737558837375720776:mbfrjmyam1g",
     "idBoardTrello": "59918e10a8c7276a1754a904"
   },
@@ -95,7 +100,7 @@
     "autoprefixer": "9.4.7",
     "browser-sync": "2.26.3",
     "del": "3.0.0",
-    "formstone": "1.4.10",
+    "formstone": "1.4.11",
     "globby": "9.0.0",
     "gulp": "4.0.0",
     "gulp-concat-multi": "1.0.1",

@@ -279,7 +279,8 @@ gulp.task('sitemap', function() {
 			data: {
 				name: packageJSON.vars.name,
 				trello: packageJSON.vars.idBoardTrello,
-				sitemap: require('./static-html/sitemap.json')
+				filters: packageJSON.vars.filters,
+				sitemap: require('./static/sitemap.json')
 			}
 		}))
 		.pipe(rename({
