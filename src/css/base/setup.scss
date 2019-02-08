@@ -35,6 +35,8 @@ $and_max_lg: "and (max-width:" + ($mq_min_lg - 1px) + ")";
 $and_max_xl: "and (max-width:" + ($mq_min_xl - 1px) + ")";
 $and_max_xxl: "and (max-width:" + ($mq_min_xxl - 1px) + ")";
 
+$reduce: (prefers-reduced-motion: reduce);
+
 $margin_sm: 40px;
 $margin_md: 50px;
 $margin_lg: 60px;
