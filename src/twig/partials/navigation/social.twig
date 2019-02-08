@@ -14,7 +14,7 @@
 	<ul class="social_nav_list" aria-label="{{ title }}">
 		{% for link in links %}
 		<li class="social_nav_item{% if link.modifier %} social_nav_item_{{ link.modifier }}{% endif %}">
-			<a class="social_nav_link" href="{{ link.href }}" target="_blank" itemprop="sameAs">
+			<a class="social_nav_link" href="{{ link.href }}" target="_blank" rel="noopener" itemprop="sameAs">
 				<span class="social_nav_icon">{{ site.icon(link.icon) }}</span>
 				<span class="social_nav_label">{{ link.name }}</span>
 			</a>

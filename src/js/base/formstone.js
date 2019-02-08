@@ -12,8 +12,8 @@ Site.modules.Formstone = (function($, Site) {
 			pause: "Pause"
 		},
 		icons: {
-			play: Site.icon("play"),
-			pause: Site.icon("pause")
+			play: Site.icon("video_play"),
+			pause: Site.icon("video_pause")
 		}
 	};
 	var LightboxOptions = {
@@ -57,7 +57,7 @@ Site.modules.Formstone = (function($, Site) {
 
 		$background.background("play");
 		$background.find(".fs-background-control-play")
-			.addClass(".fs-background-control-active")
+			.addClass("fs-background-control-active")
 			.attr("aria-pressed", "true");
 		$background.find(".fs-background-control-pause")
 			.removeClass("fs-background-control-active")
@@ -69,7 +69,7 @@ Site.modules.Formstone = (function($, Site) {
 
 		$background.background("pause");
 		$background.find(".fs-background-control-pause")
-			.addClass(".fs-background-control-active")
+			.addClass("fs-background-control-active")
 			.attr("aria-pressed", "true");
 		$background.find(".fs-background-control-play")
 			.removeClass("fs-background-control-active")

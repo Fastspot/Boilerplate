@@ -48,8 +48,8 @@
 		<meta name="twitter:image" content="{{ page.metaImage ?: 'http://' ~ vars.domain ~ '/images/social-sq.png' }}">
 		{% endif %}
 
-		<script src="//code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-		<script src="https://www.youtube.com/iframe_api"></script>
+		<script src="//code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous" async></script>
+		<script src="https://www.youtube.com/iframe_api" async></script>
 
 		{% if page.stylesheets %}
 		{% for styles in page.stylesheets %}
@@ -57,7 +57,7 @@
 		{% endfor %}
 		{% endif %}
 
-		<link rel="stylesheet" href="../../css/site.css?{{ 'now'|date('d-h') }}">
+		<link rel="stylesheet" href="../../css/site.css">
 	</head>
 
 	<body class="preload fs-grid page_layout_{{ page.layout }}{% if page.theme %} page_theme_{{ page.theme }}{% endif %}">
@@ -285,7 +285,7 @@
 		<!-- END: page_wrapper -->
 
 		<!-- Menu -->
-		<div class="js-menu menu" id="menu">
+		<div class="js-menu menu" id="menu" aria-label="Site Menu">
 			{% include "../partials/navigation/main.twig" with {
 				modifier: "sm",
 				links: mainNavAlias,
@@ -300,9 +300,9 @@
 				links: secondaryNavAlias
 			} %}
 
-			<button class="js-swap js-menu-close menu_close" data-swap-target=".menu" data-swap-linked="menu" aria-label="Close Menu">
+			<button class="js-swap js-menu-close menu_close" data-swap-target=".menu" data-swap-linked="menu">
 				<span class="menu_close_icon">{{ site.icon("close") }}</span>
-				<span class="menu_close_label">Close Menu</span>
+				<span class="menu_close_label">Close Site Menu</span>
 			</button>
 		</div>
 		<!-- END: Menu -->
@@ -316,7 +316,7 @@
 		{{ script }}
 		{% endfor %}
 		{% endif %}
-		<script src="../../js/site.js?{{ 'now'|date('d-h') }}"></script>
+		<script src="../../js/site.js" async></script>
 		{% if grid %}
 		<script>
 			(function(){if(typeof FSGridBookmarklet==='undefined'){document.body.appendChild(document.createElement('script')).src='//formstone.it/js/bookmarklet/grid.js';}else{FSGridBookmarklet();}} )();

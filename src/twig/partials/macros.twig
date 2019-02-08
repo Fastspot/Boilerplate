@@ -161,11 +161,4 @@
 {% endmacro %}
 
 
-{% macro tel(number) %}
-{{ number|replace({
-	"-": "",
-	" ": "",
-	"(": "",
-	")": ""
-}) }}
-{% endmacro %}
+{% macro tel(number) %}{{ number|replace({ "-": "", " ": "", "(": "", ")": "" }) }}{% endmacro %}
