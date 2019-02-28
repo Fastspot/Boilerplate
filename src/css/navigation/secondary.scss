@@ -22,17 +22,11 @@
 /* Secondary Links
 ============================================================================= */
 
-.secondary_nav_list {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
+.secondary_nav_list {}
 
 .secondary_nav_item {}
 
 .secondary_nav_link {
-	color: inherit;
-	display: block;
 
 	&:focus,
 	&:hover {}

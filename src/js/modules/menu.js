@@ -52,7 +52,7 @@ Site.modules.Menu = (function($, Site) {
 		Site.modules.Page.ariaShow($Menu);
 		$MenuHandle.attr("aria-expanded", "true");
 		$Menu.transition({
-			always: true,
+			always: false,
 			property: "opacity"
 		}, function() {
 			$Menu.focus();
