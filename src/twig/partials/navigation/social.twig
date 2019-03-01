@@ -6,7 +6,7 @@
 	} %}
 #}
 
-<div class="social_nav{% if modifier %} social_nav_{{ modifier }}{% endif %}" itemscope itemtype="http://schema.org/{{ vars.schemaType }}">
+<div class="social_nav{% if modifier %} social_nav_{{ modifier }}{% endif %}" itemprop="creator" itemscope itemtype="http://schema.org/{{ vars.schemaType }}">
 	<link itemprop="url" href="//{{ vars.domain }}">
 	<div class="social_nav_header">
 		<h2 class="social_nav_title">{{ title }} Navigation</h2>

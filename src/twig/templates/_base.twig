@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en" itemscope="" itemtype="http://schema.org/WebPage">
+<html class="no-js" lang="en">
 
 	{# Shortcuts For Use Within Components #}
 	{% set feat = "../components/feature/" %}
@@ -60,7 +60,7 @@
 		<link rel="stylesheet" href="../../css/site.css">
 	</head>
 
-	<body class="preload fs-grid page_layout_{{ page.layout }}{% if page.theme %} page_theme_{{ page.theme }}{% endif %}">
+	<body class="preload fs-grid page_layout_{{ page.layout }}{% if page.theme %} page_theme_{{ page.theme }}{% endif %}" itemscope itemtype="http://schema.org/WebPage">
 
 		{% block activePage %}
 			{% set activePage = 0 %}
@@ -113,7 +113,7 @@
 		<!-- Page Wrapper -->
 		<div class="page_wrapper">
 			<!-- Header -->
-			<header class="header" id="header" itemscope itemtype="http://schema.org/WPHeader">
+			<header class="header" id="header">
 				<div class="header_ribbon">
 					<div class="fs-row">
 						<div class="fs-cell">
@@ -163,7 +163,7 @@
 			<!-- END: Header -->
 
 			<!-- Page -->
-			<main class="page" itemprop="mainContentOfPage">
+			<main class="page">
 				{% if page.layout != "home" %}
 				<!-- Page Feature -->
 				<div class="page_feature">
@@ -196,18 +196,18 @@
 								} %}
 
 								{% if page.title %}
-								<h1 class="page_title">{{ page.title }}</h1>
+								<h1 class="page_title" itemprop="name">{{ page.title }}</h1>
 								{% endif %}
 
 								{% if page.intro %}
-								<p class="page_intro">{{ page.intro }}</p>
+								<p class="page_intro" itemprop="description">{{ page.intro }}</p>
 								{% endif %}
 							</div>
 							{% endblock %}
 							<!-- END: Page Header -->
 
 							<!-- WYSIWYG -->
-							<div class="typography">
+							<div class="typography" itemprop="mainEntity">
 								{% block typography %}
 								{% endblock %}
 							</div>
@@ -227,7 +227,7 @@
 
 						{% if page.layout == "default" %}
 						<!-- Sidebar Callouts -->
-						<div class="fs-cell fs-lg-4 page_aside page_sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+						<div class="fs-cell fs-lg-4 page_aside page_sidebar">
 							{% block sidebar %}
 							{% endblock %}
 						</div>
@@ -248,7 +248,7 @@
 			<!-- END: Page -->
 
 			<!-- Footer -->
-			<footer class="footer" id="footer" itemscope itemtype="http://schema.org/WPFooter">
+			<footer class="footer" id="footer">
 				<div class="footer_ribbon">
 					<div class="fs-row">
 						<div class="fs-cell">
