@@ -64,7 +64,7 @@
 								<div class="header_group">
 									<?php
 										include_with("handle.php", [
-											"class" => "mobile_sidebar",
+											"class" => "menu",
 											"icon" => "menu",
 											"modifier" => "primary"
 										]);
