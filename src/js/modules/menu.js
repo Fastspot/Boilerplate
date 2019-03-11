@@ -59,6 +59,10 @@ Site.modules.Menu = (function($, Site) {
 			$Menu.focus();
 		})
 		.find(".js-nav-link, button, input").removeAttr("tabindex");
+
+		$(".header, .page, .footer").css("padding-right", Site.modules.Page.getScrollbarWidth());
+		$(".menu").css("margin-right", "");
+		$(".menu").css("width", "");
 	}
 
 	function onMenuSwapDeactivate() {
@@ -69,6 +73,10 @@ Site.modules.Menu = (function($, Site) {
 			.removeAttr("tabindex")
 			.find(".js-nav-link, button, input").attr("tabindex", "-1");
 		$MenuHandle.attr("aria-expanded", false).focus();
+
+		$(".header, .page, .footer").css("padding-right", "");
+		$(".menu").css("margin-right", Site.modules.Page.getScrollbarWidth() * -1);
+		$(".menu").css("width", "calc(100% + " + Site.modules.Page.getScrollbarWidth() + "px)");
 	}
 
 	function onCloseKeydown(e) {

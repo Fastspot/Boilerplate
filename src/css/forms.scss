@@ -19,12 +19,14 @@
 		padding: 0;
 
 		> label {
+			@include h5;
+
 			display: block;
 			margin-bottom: 5px;
 		}
 	}
 
-	input:not([type="submit"]),
+	input:not([type="submit"]):not([type="file"]),
 	textarea {
 		width: 100%;
 
@@ -47,7 +49,11 @@
 /* Custom Elements
 ============================================================================= */
 
+.form_builder_required_star {}
+
 .form_builder_sublabel {
+	@include h6;
+
 	display: block;
 	margin-top: 5px;
 	margin-bottom: 20px;
@@ -150,13 +156,14 @@
 	width: 20px;
 
 	position: absolute;
-	top: 0;
+	top: 50%;
 	left: 0;
 
 	background-color: $gray_20;
 	color: #fff;
 	pointer-events: none;
 	transition: background-color $base_speed;
+	transform: translate(0, -50%);
 	user-select: none;
 
 	&:before {
@@ -164,20 +171,11 @@
 		top: 50%;
 		left: 50%;
 
-		transform: 
-			translate(-50%, -50%)
-			scale(0);
 		transition: transform $base_speed;
-
-		input:checked ~ & {
-			transform: 
-				translate(-50%, -50%)
-				scale(1);
-		}
 	}
 
 	input:focus ~ & {
-		box-shadow:
+		box-shadow: 
 			0 0 0 2px #fff,
 			0 0 0 4px #000;
 	}
@@ -192,8 +190,24 @@
 .form_builder_checkbox_indicator {
 
 	&:before {
-		content:  "\2713";
-		font-size: 14px;
+		height: 10px;
+		width: 6px;
+
+		border-right: 2px solid #fff;
+		border-bottom: 2px solid #fff;
+		content:  "";
+		margin-top: -1px;
+		transform: 
+			translate(-50%, -50%)
+			scale(0)
+			rotate(45deg);
+
+		input:checked ~ & {
+			transform: 
+				translate(-50%, -50%)
+				scale(1)
+				rotate(45deg);
+		}
 	}
 }
 
@@ -209,6 +223,15 @@
 		background-color: #fff;
 		border-radius: inherit;
 		content: "";
+		transform:
+			translate(-50%, -50%)
+			scale(0);
+
+		input:checked ~ & {
+			transform: 
+				translate(-50%, -50%)
+				scale(1);
+		}
 	}
 }
 
@@ -225,6 +248,9 @@
 .form_builder_select {
 	position: relative;
 
+	max-width: 300px;
+	width: 100%;
+
 	display: inline-block;
 
 	&:after {
@@ -237,6 +263,7 @@
 		content: "";
 		margin-top: -3px;
 		pointer-events: none;
+		transform: scaleX(.85);
 	}
 
 	select {
@@ -246,13 +273,12 @@
 		background-color: $gray_20;
 		border: 0;
 		border-radius: 0;
-		color: #000;
-		border: 0;
+		color: inherit;
 		cursor: pointer;
 		display: inline-block;
 		margin: 0;
 		outline: 0;
-		padding: 10px 45px 10px 20px;
+		padding: 15px 45px 15px 20px;
 
 		// Media query to target Firefox only
 		@-moz-document url-prefix() {

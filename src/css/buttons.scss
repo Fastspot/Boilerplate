@@ -18,19 +18,19 @@ button {
 
 	@if $layout {
 
-		[class*="icon"] {
-			display: inline-block;
-			vertical-align: middle;
+		[class$="inner"] {
+			align-items: center;
+			display: flex;
+		}
+
+		[class$="icon"] {
 
 			@media print {
 				display: none;
 			}
 		}
 
-		[class*="label"] {
-			display: inline-block;
-			vertical-align: middle;
-		}
+		[class$="label"] {}
 	}
 }
 
@@ -54,9 +54,9 @@ button {
 		color: $hc;
 	}
 
-	[class*="icon"] {}
+	[class$="icon"] {}
 
-	[class*="label"] {}
+	[class$="label"] {}
 }
 
 @mixin button_inline($layout: true) {

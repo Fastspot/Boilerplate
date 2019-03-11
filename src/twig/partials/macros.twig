@@ -41,14 +41,16 @@
 
 {% macro button(class, label, icon, href) %}
 <a class="{{ class }}_link" href="{{ href ?: '#' }}">
-	<span class="{{ class }}_link_label">{{ label }}</span>
-	{% if icon %}
-	<span class="{{ class }}_link_icon" aria-hidden="true">
-		<svg class="icon icon_{{ icon }}">
-			<use xlink:href="../../images/icons.svg#{{ icon }}"></use>
-		</svg>
+	<span class="{{ class }}_link_inner">
+		<span class="{{ class }}_link_label">{{ label }}</span>
+		{% if icon %}
+		<span class="{{ class }}_link_icon" aria-hidden="true">
+			<svg class="icon icon_{{ icon }}">
+				<use xlink:href="../../images/icons.svg#{{ icon }}"></use>
+			</svg>
+		</span>
+		{% endif %}
 	</span>
-	{% endif %}
 </a>
 {% endmacro %}
 
