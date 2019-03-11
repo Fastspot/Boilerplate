@@ -14,9 +14,9 @@
 <div class="lazy_image_wrapper {{ class }}_picture_wrapper">
 	<picture class="{{ class }}_picture">
 		{% for key, source in sources %}
-		<source media="(min-width: {{ key }})" data-srcset="{% if source == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{ vars.images }}/{{ source }}/{{ image }}{% endif %}">
+		<source media="(min-width: {{ key }})" srcset="../../images/placeholder.png" data-srcset="{% if source == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{ vars.images }}/{{ source }}/{{ image }}{% endif %}">
 		{% endfor %}
-		<img class="js-lazy js-lazyload {{ class }}_image" data-src="{% if fallback == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{ vars.images }}/{{ fallback }}/{{ image }}{% endif %}" alt=""{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}>
+		<img class="js-lazy js-lazyload {{ class }}_image" src="../../images/placeholder.png" data-src="{% if fallback == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{ vars.images }}/{{ fallback }}/{{ image }}{% endif %}" alt=""{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}>
 	</picture>
 </div>
 <noscript>

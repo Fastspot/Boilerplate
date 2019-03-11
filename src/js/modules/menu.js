@@ -17,14 +17,13 @@ Site.modules.Menu = (function($, Site) {
 			$MenuClose = $(".js-menu-close");
 			LockClass = "fs-navigation-lock fs-page-lock";
 
-			setup();
+			$Menu
+				.attr("aria-hidden", true)
+				.find(".js-nav-link, button, input").attr("tabindex", "-1");
+
 			createSiteButtons($(".js-menu-handle"));
 			bindUI();
 		}
-	}
-
-	function setup() {
-		Site.modules.Page.ariaHide($Menu);
 	}
 
 	function bindUI() {
@@ -33,7 +32,7 @@ Site.modules.Menu = (function($, Site) {
 			.on("activate.swap", onMenuSwapActivate)
 			.on("deactivate.swap", onMenuSwapDeactivate);
 		$MenuClose.on("keydown", onCloseKeydown);
-		$Menu.attr("tabindex", "0")
+		$Menu
 			.on("keydown", onMenuKeydown)
 			.on("keyup", onMenuKeyup);
 	}
@@ -49,22 +48,27 @@ Site.modules.Menu = (function($, Site) {
 	function onMenuSwapActivate() {
 		Site.$body.addClass(LockClass);
 		Site.modules.Page.saveScrollYPosition();
-		Site.modules.Page.ariaShow($Menu);
-		$MenuHandle.attr("aria-expanded", "true");
-		$Menu.transition({
-			always: true,
+		$MenuHandle.attr("aria-expanded", true);
+		$Menu.attr({
+			"aria-hidden": false,
+			"tabindex": "0"
+		}).transition({
+			always: false,
 			property: "opacity"
 		}, function() {
 			$Menu.focus();
-		});
+		})
+		.find(".js-nav-link, button, input").removeAttr("tabindex");
 	}
 
 	function onMenuSwapDeactivate() {
 		Site.$body.removeClass(LockClass);
 		Site.modules.Page.restoreScrollYPosition();
-		Site.modules.Page.ariaHide($Menu);
-		$MenuHandle.attr("aria-expanded", "false");
-		$MenuHandle.focus();
+		$Menu
+			.attr("aria-hidden", true)
+			.removeAttr("tabindex")
+			.find(".js-nav-link, button, input").attr("tabindex", "-1");
+		$MenuHandle.attr("aria-expanded", false).focus();
 	}
 
 	function onCloseKeydown(e) {
@@ -95,8 +99,9 @@ Site.modules.Menu = (function($, Site) {
 	function createSiteButtons($element) {
 		$element.each(function() {
 			$element.attr({
-				"role": "button",
-				"aria-expanded": "false"
+				"aria-expanded": false,
+				"aria-haspopup": true,
+				"role": "button"
 			});
 		});
 	}

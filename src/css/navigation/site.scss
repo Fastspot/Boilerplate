@@ -1,0 +1,117 @@
+/* ==========================================================================
+	Site Navigation
+============================================================================= */
+
+.nav {}
+
+.nav_header {}
+
+.nav_title {}
+
+.nav_list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.nav_item {}
+
+.nav_item_wrapper {
+
+	.has_children & {
+		position: relative;
+
+		display: flex;
+	}
+}
+
+.nav_link {
+	color: inherit;
+	display: block;
+	flex: 1;
+}
+
+.nav_link_label {}
+
+.nav_link_icon {}
+
+.nav_toggle {
+	display: none;
+	flex-basis: 44px;
+	transition:
+		opacity $base_speed,
+		transform $base_speed;
+
+	.icon {
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	&.fs-swap-enabled {
+		display: block;
+
+		@media #{$min_lg} {
+			height: 100%;
+
+			position: absolute;
+			top: 0;
+			right: 0;
+
+			opacity: 0;
+			pointer-events: none;
+		}
+
+		&:focus {
+			opacity: 1;
+		}
+	}
+}
+
+.nav_toggle_icon {}
+
+.nav_children {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	@media #{$min_lg} {
+		position: absolute;
+
+		opacity: 0;
+		transition:
+			opacity $base_speed,
+			visibility $base_speed;
+		visibility: hidden;
+	}
+
+	.nav_item.fs-swap-enabled & {
+		display: none;
+
+		@media #{$min_lg} {
+			display: block;
+		}
+	}
+
+	.nav_item.fs-swap-active & {
+		display: block;
+	}
+
+	.nav_item.fs-swap-active &,
+	.nav_item:focus &,
+	.nav_item:hover & {
+
+		@media #{$min_lg} {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+}
+
+.nav_child_item {}
+
+.nav_child_link {
+	color: inherit;
+	display: block;
+}
+
+.nav_child_link_label {}

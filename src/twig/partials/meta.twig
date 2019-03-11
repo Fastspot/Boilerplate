@@ -12,15 +12,15 @@
 	} %}
 #}
 
-<div class="meta" itemscope itemtype="http://schema.org/{{ vars.schemaType }}">
+<div class="meta" itemprop="creator" itemscope itemtype="http://schema.org/{{ vars.schemaType }}">
 	<div class="meta_logo">
 		<a class="meta_logo_link" itemprop="url" href="page-home.html">
-			<span class="meta_logo_label">{{ name }}</span>
+			<span class="meta_logo_label" itemprop="name">{{ name }}</span>
 			<span class="meta_logo_icon">{{ site.icon(icon) }}</span>
 			<meta content="http://{{ vars.domain }}/images/logo-schema.png" itemprop="logo">
 		</a>
 	</div>
-	<div class="meta_details" itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+	<div class="meta_details" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
 		<span class="meta_detail meta_address">
 			<span class="meta_detail_icon">{{ site.icon("place") }}</span>
 			<span class="meta_detail_label meta_detail_label_address">

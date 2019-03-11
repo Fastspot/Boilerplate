@@ -7,7 +7,7 @@
 #}
 
 {% set id = random() %}
-<div class="site_search{% if modifier %} site_search_{{ modifier }}{% endif %}" id="site_search_{{ id }}" itemscope itemtype="http://schema.org/WebSite" role="search">
+<div class="site_search{% if modifier %} site_search_{{ modifier }}{% endif %}" id="site_search_{{ id }}" role="search">
 	<meta itemprop="url" content="http://{{ vars.domain }}">
 	<form class="site_search_form" action="/static/templates/page-search.html" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
 		<meta itemprop="target" content="http://{{ vars.domain }}/static/templates/page-search.html?q={q}">

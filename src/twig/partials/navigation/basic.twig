@@ -3,29 +3,37 @@
 		class: "basic_nav",
 		modifier: "lg",
 		title: "Basic Navigation",
+		icon: "chevron_down",
 		links: footerNavAlias
 	} %}
 #}
 
-<nav class="{{ class }}{% if modifier %} {{ class }}_{{ modifier }}{% endif %}" aria-label="{{ title }}" itemscope itemtype="http://schema.org/SiteNavigationElement">
-	<div class="{{ class }}_header">
-		<h2 class="{{ class }}_title">{{ title }} Navigation</h2>
+<nav class="js-nav js-{{ class|replace({ "_": "-" }) }}{% if modifier %} js-{{ class|replace({ "_": "-" }) }}-{{ modifier }}{% endif %} nav {{ class }}{% if modifier %} {{ class }}_{{ modifier }}{% endif %}" aria-label="{{ title }}" itemscope itemtype="http://schema.org/SiteNavigationElement">
+	<div class="nav_header {{ class }}_header">
+		<h2 class="nav_title {{ class }}_title">{{ title }} Navigation</h2>
 	</div>
-	<ul class="{{ class }}_list" aria-label="{{ title }} Navigation">
+	<ul class="js-nav-list js-{{ class|replace({ "_": "-" }) }}-list nav_list {{ class }}_list" aria-label="{{ title }} Navigation">
 		{% for link in links %}
-		<li class="{{ class }}_item{% if link.modifier %} {{ class }}_item_{{ link.modifier }}{% endif %}{% if link.children %} {{ class }}_item_has_children{% endif %}">
-			<a class="{{ class }}_link{% if loop.index == active %} active{% endif %}" href="{{ link.href ?: '#' }}" itemprop="url"{% if loop.index == active %} aria-current="page"{% endif %}>
-				{% if link.icon %}
-				<span class="{{ class }}_link_icon" aria-hidden="true">{{ site.icon(link.icon) }}</span>
+		<li class="js-nav-item js-{{ class|replace({ "_": "-" }) }}-item js-{{ class|replace({ "_": "-" }) }}-item-{{ loop.index }} nav_item {{ class }}_item{% if link.children %} has_children{% endif %}{% if loop.index == active %} active{% endif %}">
+			<div class="nav_item_wrapper {{ class }}_item_wrapper">
+				<a class="js-nav-link js-{{ class|replace({ "_": "-" }) }}-link nav_link {{ class }}_link{% if loop.index == active %} active{% endif %}" href="{{ link.href ?: '#' }}" itemprop="url"{% if loop.index == active %} aria-current="page"{% endif %}>
+					{% if link.icon %}
+					<span class="nav_link_icon {{ class }}_link_icon" aria-hidden="true">{{ site.icon(link.icon) }}</span>
+					{% endif %}
+					<span class="nav_link_label {{ class }}_link_label" itemprop="name">{{ link.name ?: link }}</span>
+				</a>
+				{% if link.children %}
+				<button class="js-swap js-nav-toggle js-{{ class|replace({ "_": "-" }) }}-toggle nav_toggle {{ class }}_toggle" data-swap-target=".js-{{ class|replace({ "_": "-" }) }}-item-{{ loop.index }}" data-swap-group="{{ class }}{% if modifier %}_{{ modifier }}{% endif %}" aria-label="{{ link.name ?: link }}" aria-haspopup="true" aria-expanded="false">
+					<span class="nav_toggle_icon {{ class }}_toggle_icon">{{ site.icon(icon) }}</span>
+				</button>
 				{% endif %}
-				<span class="{{ class }}_link_label" itemprop="name">{{ link.name ?: link }}</span>
-			</a>
+			</div>
 			{% if link.children %}
-			<ul class="{{ class }}_children">
+			<ul class="js-nav-children js-{{ class|replace({ "_": "-" }) }}-children nav_children {{ class }}_children" aria-label="{{ link.name ?: link }}">
 				{% for child in link.children %}
-				<li class="{{ class }}_child_item">
-					<a class="{{ class }}_child_link" href="{{ child.href ?: '#' }}" itemprop="url">
-						<span class="{{ class }}_child_link_label" itemprop="name">{{ child.name ?: child }}</span>
+				<li class="js-nav-child-item js-{{ class|replace({ "_": "-" }) }}-child-item nav_child_item {{ class }}_child_item">
+					<a class="js-nav-child-link js-{{ class|replace({ "_": "-" }) }}-child-link nav_child_link {{ class }}_child_link" href="{{ child.href ?: '#' }}" itemprop="url">
+						<span class="nav_child_link_label {{ class }}_child_link_label" itemprop="name">{{ child.name ?: child }}</span>
 					</a>
 				</li>
 				{% endfor %}
