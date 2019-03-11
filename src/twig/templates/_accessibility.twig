@@ -1,8 +1,14 @@
+{% block page_block %}
+	{% set pageData = {
+		title: ""
+	} %}
+{% endblock %}
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-		<title>Accessibility Report</title>
+		<title>{{ pageData.title }} Report</title>
 		<style>
 			* {
 				box-sizing: border-box;
@@ -28,86 +34,159 @@
 			}
 
 			.results_header {
-				padding: 40px 0;
+				margin-top: 50px;
 			}
 
-			.results_title {}
+			.results_title {
+				align-items: center;
+				display: flex;
+				margin: 0;
+			}
 
-			.results {}
+			.results_title_icon {
+				max-width: 60px;
 
-			.result_type {
+				margin-right: 20px;
+			}
+
+			.report_pages {}
+
+			.report_page {
+				border-radius: 4px;
+				box-shadow: 1px 2px 10px 0 rgba(0, 0, 0, .1);
+				margin: 50px 0;
+				padding: 20px;
+			}
+			
+			.report_page_cleared {
+				background: #E6F7F3;
+				box-shadow: none;
+				padding: 20px 30px;
+			}
+
+			.report_page_title {
+				position: relative;
+
+				margin: 0;
+			}
+
+			.report_page_title:before {
+				height: 10px;
+				width: 10px;
+
+				position: absolute;
+				top: 50%;
+				right: 100%;
+
+				background: #00B386;
+				border-radius: 50%;
+				content: "";
+				margin-right: 20px;
+
+				transform: translate(50%, -50%);
+			}
+
+			.report_page_cleared .report_page_title:before {
+				height: 40px;
+				width: 40px;
+
+				background: #fff;
+				border: 2px solid #00B386;
+				box-shadow: 1px 2px 10px 0 rgba(0, 0, 0, .1);
+				margin-right: 30px;
+			}
+
+			.report_page_cleared .report_page_title:after {
+			  height: 14px;
+				width: 6px;
+
+				position: absolute;
+				top: 50%;
+				right: 100%;
+
+				content: "";
+				border-right: 2px solid #00B386;
+				border-bottom: 2px solid #00B386;
+				margin-top: -2px;
+				margin-right: 26px;
+				transform: 
+					translate(0, -50%) 
+					rotate(45deg);
+			}
+
+			.report_page_title_link {
 				color: inherit;
-				display: inline-block;
-				margin-right: 10px;
-				padding: 6px 10px;
-				text-decoration: none;
 			}
 
-			.result_type_error {
-				background: #ffcaca;
-				border: 1px solid #faabab;
-			}
+			.report_page_body {}
 
-			.result_type_warning {
-				background: #fffaca;
-				border: 1px solid #f0e8a0;
+			.report_items {
+				list-style: none;
+				margin: 0;
+				padding: 0;
 			}
 
 			.report_item {
+				background: rgba(0, 0, 0, .05);
+				border-radius: 4px;
 				margin: 20px 0;
 				padding: 20px;
 			}
 
-			.report_item_title {
-				margin: 0 0 20px;
+			.report_item:last-child {
+				margin-bottom: 0;
 			}
 
-			.report_item_code {
-				margin: 0 0 20px;
+			.report_item_title {
+				margin: 0 0 15px;
+			}
+
+			.report_page_cleared .report_item_title {
+				margin-bottom: 0;
+			}
+
+			.report_item_title_link {
+				color: inherit;
+			}
+
+			.report_item_caption {
+				font-size: 14px;
+				margin: 0 0 5px;
 			}
 
 			.report_item_context {
-				max-width: 100%;
-
-				background: rgba(0, 0, 0, .05);
-				border-left: 3px solid;
-				display: inline-block;
-				font-size: 16px;
 				margin: 0;
 				overflow-x: auto;
-				padding: 20px;
+				padding: 10px 0;
 			}
 		</style>
 	</head>
 	<body>
-		<header class="results_header">
-			<h1 class="results_title">{{ page|replace({
-				"-": " "
-			})|title }} Report</h1>
-			<div class="results">
-				<a class="result_type result_type_error" href="#errors"><strong>{{ errors }}</strong> errors</a>
-				<a class="result_type result_type_warning" href="#warnings"><strong>{{ warnings }}</strong> warnings</a>
-			</div>
-		</header>
-		<main>
-			{% set accessList = [
-				"error",
-				"warning"
-			] %}
-			{% for type in accessList %}
-			<div id="{{ type }}s">
-				{% for result in results.issues %}
-				{% if type == result.type %}
-				<div class="report_item {{ result.type }}">
-					<h3 class="report_item_title">{{ result.message }}</h3>
-					<p class="report_item_code">{{ result.code }}</p>
-					<pre class="report_item_context">{{ result.context|e }}</pre>
-				</div>
-				{% endif %}
-				{% endfor %}
-			</div>
-			{% endfor %}
-		</main>
-		<script></script>
+    {% block body %}
+    {% endblock %}
+		<script>
+			if(window.location.hash) {
+				var item = document.querySelector(window.location.hash);
+				var pages = document.querySelector(".report_pages");
+				var content = document.createElement("div");
+				content.classList.add("report_page", "report_page_cleared");
+
+				if (item == null) {
+					content.innerHTML = 
+						`<h2 class="report_page_title">
+							<a class="report_page_title_link" href="${window.location.hash.replace("#", "")}.html">${window.location.hash.replace("#", "")}</a>
+						</h2>
+						<div class="report_page_body">
+							<ul class="report_items">
+								<li class="report_item">
+									<h3 class="report_item_title">This page has passed all accessibility requirements.</h3>
+								</li>
+							</ul>
+						</div>`;	
+
+					pages.prepend(content);
+				}
+			}
+		</script>
 	</body>
 </html>

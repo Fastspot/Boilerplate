@@ -1,62 +1,372 @@
-{% extends "templates/_ref.twig" %}
+{% import 'partials/macros.twig' as site %}
 
-{% block data %}
-	{% if accessibility %}
-		{% set page = {
-			tabTitle: "Accessibility Report"
-		} %}
-	{% else %}
-		{% set page = {
-			tabTitle: "Sitemap"
-		} %}
-	{% endif %}
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>{{ name }} | Sitemap</title>
+		<style>
+			html {
+				height: 100%;
 
-{% block main %}
-	<ul class="sitemap">
-		{% for link in sitemap %}
-		<li class="sitemap_item{% if 'fs' in link %} sitemap_item_style_guide{% elseif 'dev' in link %} sitemap_item_dev{% elseif 'page' in link %} sitemap_item_page{% elseif 'accessibility' in link %} sitemap_item_access{% endif %}">
-			<a class="sitemap_link" href="{% if accessibility %}../accessibility{% else %}templates{% endif %}{{ link }}">{{ link|replace({
+				font-family: "Neue Haas Grotesk Text Std", Helvetica, Arial, sans-serif;
+				overflow-y: scroll;
+			}
+
+			body {
+				max-width: 780px;
+
+				margin: 0 auto;
+				padding: 40px 20px;
+			}
+
+			.sitemap_header {
+				margin-bottom: 20px;
+			}
+
+			.sitemap_title {
+				margin: 0;
+			}
+
+			.sitemap_title_link {
+				color: inherit;
+				text-decoration: none;
+			}
+
+			.sitemap_main {}
+
+			.sitemap_tools {
+				margin-bottom: 40px;
+			}
+
+			@media print {
+
+				.sitemap_tools {
+					display: none;
+				}
+			}
+
+			.sitemap_search {
+				width: 100%;
+
+				appearance: none;
+				-webkit-appearance: none;
+				background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABQxJREFUeAHlmsuLHEUcx12NG42akHiJRsxBzYp4NwcPE0HxlIAHT4FdLxsinuIx8ezfkZMHBWO8BBKMEUQ0HkRECAs+QKIxvrK+c1A/nzAty1JdVT1d3TPT+cKXmanH71VVv6qunoVbyuBOxDwNn4JL8BG4E94D/4W/wZ/hGrwE34Fn4Z9wbrELy1fgKfg71NEmtM+bcAUarLnBXVh6Aq7DJg7H2ipLmdvgzGILlh2Bl2HMmTZ1yl6Ft8GZwh6suQjbONekr7rUORN4Aiu+hU0cKNHW2aDuqeIw2v+CJRyaRIa7hDZMBSqexOgu+nQWhIWa0Dr1LsCtNfWh4usUnoen4efQKSzF/WM+xudBeAAuwlw4C0fww9wObdqZfJqsedsehdsbKLWtfZroMZidJ0a3uo9hzjR2VF6BngsmhX2VkZtn3B063SKPoCDHeUduPywFZeXOhtVSSjfLcTScZqkAfEqbBzZ3LvBbmcpO6dfGTk6MJzKUO0pdOI/YG1B2zkw4Pm5f7GMXktZhLPqu05LTvs54dagrZss16os+QK0kFGqMyaovqCsWAOuWSxrjI21ModOyTbZvaqu6UkvBR+ki8DIj9Tzvnt031BkbFG3W9tY4hISYor+pb3LIaW3QWIA61R2z7WBbZbciwGNpDOepNEH2DXWqO4aU7bG+N+oMwKOJVqcT9V1Wp3QvtVVuAB5OCPHBZlpI6fbytRUMQGo/9eQ1LaR0p2zPstvH2FiiuTtLSjeNqmv1OvtMkq3gDJhnOHitYAB+TUjwMmNauC+h+EqiPlltAHxjE8M0A5DSXSQAazHvqfMaa1pI6S4SgEsJ71qfthLyY9Up3V/EOufWqaQuy1pupt2eK6xgO3WqO2bbsyX0+UAxjw9D3hloexH4aBmL9Cw+Dp8t4Xl1DngrIWw39ccSbUpWq0udMXiHUQweKddhbBY45fYX01gvSB3qitlylfriF6M39aWo42FE5+Fa/Bp27tDgLrCK0NjUq+pMiiWXg7JSd4CV7k5zka+dLmYGwXXa96sxM/8C7BR7kJ6zFKoRceSOwiaHJdvaJ3fU1fUDTD0b0KQMfD3unxMqJ3M+PbWdgS/CEdwHvUuQfh9B62yTOuGF9L1Ov2fgIuwFh9ESMmTaZd9j10uw86VglA1C05nQV4DexrYmy05/JoLL4TLsy7FKj2veaV/9Dn1+Rv1e2DlMjLm7Q8jQpmVmexOeaz7V9wptHKTO4Ra5CrucDR5yXobV+t7Kd9d8Kggu0+dhL9iGluNQY1OG5dZfHcsMnfBMeDly/hnL4KMf+AC1DH2UTt0nhBzwIOVU10GDWgdngwkvJCNUdpK2i3XCNpdXU21zedPfXkz4d/kDcAlu/Lv8dX67Tit+yfdz8F3o1M2B2f59+HhOY9q8B5+DP2a2n4tme7HyOxga9VDZGm33zYVnDYw02ztrQg6Hyn6i7QgOCmZ7E17I4VCZS/CFQUUAZ9yFQs7Gyl6lT6mcNxPxPDlBEDxZmrAHAbe6CzA26qG6j+izexARwIl7odk+5Gis7Gv6PAgHAbc6s33M4VDdB/S5fRARwIkRNNuHHI2VHev0r+cY1Be+QtE38FBDhVuGEgD9/gTeAZ/0RybMIYOC+/wbMDbtN9al/oU2l8Fxn3er2+ho3ffX5tLDDKPd593q6hy3/A/4EBws3Ofd6kJB0PnlwXq+wTH3eV+lef/wC3TNO+3/H/n/AEx/JdnIQWnhAAAAAElFTkSuQmCC') no-repeat 0 50%;
+				background-size: 18px 18px;
+				border: 0;
+				border-bottom: 2px solid #000;
+				font-size: 16px;
+				font-weight: 300;
+				margin-bottom: 20px;
+				padding: 15px 20px 15px 30px;
+			}
+
+			.sitemap_filter {
+				align-items: flex-start;
+				display: flex;
+			}
+
+			.sitemap_filter_label {
+				color: #888;
+				font-size: 12px;
+				font-weight: 300;
+				margin-right: 20px;
+				padding: 11px 0;
+				white-space: nowrap;
+			}
+
+			.sitemap_filter_items {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+
+			.sitemap_filter_item {
+				display: inline-block;
+				margin-bottom: 4px;
+			}
+
+			.sitemap_filter_button {
+				border: 2px solid #eee;
+				cursor: pointer;
+				font-size: 14px;
+				padding: 8px 10px 7px;
+				transition: background .25s;
+			}
+
+			.sitemap_filter_button:hover,
+			.sitemap_filter_button:focus {
+				background: #eee;
+			}
+
+			.sitemap_items {}
+
+			.sitemap_group {
+				margin-bottom: 50px;
+			}
+
+			.sitemap_group_title {
+				background: #eee;
+				display: inline-block;
+				font-size: 16px;
+				font-weight: 300;
+				margin: 0;
+				padding: 15px 20px;
+				text-align: center;
+			}
+
+			.sitemap_item {
+				position: relative;
+
+				border-top: 2px solid #eee;
+				display: none;
+			}
+
+			.sitemap_group .sitemap_item {
+				display: block;
+			}
+
+			.sitemap_item:nth-of-type(even) {
+				background: #fafafa;
+			}
+
+			.sitemap_item.hidden {
+				display: none;
+			}
+
+			.sitemap_link {
+				color: inherit;
+				display: block;
+				padding: 13px 20px 14px;
+				text-decoration: none;
+				transition:
+					background .25s,
+					color .25s;
+			}
+
+			.sitemap_item:hover .sitemap_link,
+			.sitemap_link:focus {
+				background: #eee;
+			}
+
+			.sitemap_link_label {
+				font-size: 18px;
+				font-weight: 700;
+			}
+
+			.sitemap_link_contents {
+				width: 1px;
+				height: 1px;
+
+				position: absolute;
+
+				border: 0;
+				clip: rect(0 0 0 0);
+				margin: -1px;
+				overflow: hidden;
+				padding: 0;
+			}
+
+			.sitemap_link_bubbles {
+				position: absolute;
+				top: 50%;
+				right: 5px;
+
+				align-items: center;
+				display: flex;
+				transform: translate(0, -50%);
+			}
+
+			@media print {
+
+				.sitemap_link_bubbles {
+					display: none;
+				}
+			}
+
+			.sitemap_link_bubble {
+				height: 36px;
+				width: 36px;
+
+				align-items: center;
+				background: #fff;
+				border: 2px solid #eee;
+				border-radius: 50%;
+				display: flex;
+				justify-content: center;
+				margin-left: 5px;
+				transition: border .25s;
+			}
+
+			.sitemap_link_bubble:hover,
+			.sitemap_link_bubble:focus {
+				border-color: #ddd;
+			}
+
+			.sitemap_link_bubble_icon {
+				width: 20px;
+			}
+
+			.sitemap_link_bubble_label {
+				width: 1px;
+				height: 1px;
+
+				position: absolute;
+
+				border: 0;
+				clip: rect(0 0 0 0);
+				margin: -1px;
+				overflow: hidden;
+				padding: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="sitemap_header">
+			<h1 class="sitemap_title">
+				<a class="sitemap_title_link" href="templates/page-home.html">{{ name }} Sitemap</a>
+			</h1>
+		</header>
+		<main class="sitemap_main">
+			<div class="sitemap_tools">
+				<input class="sitemap_search" type="search" placeholder="Search for a template or component"/>
+				<div class="sitemap_filter">
+					<span class="sitemap_filter_label">Filter By: </span>
+					<ul class="sitemap_filter_items">
+						<li class="sitemap_filter_item">
+							<button class="sitemap_filter_button">all</button>
+						</li>
+						{% for item in filters %}
+							<li class="sitemap_filter_item">
+								<button class="sitemap_filter_button">{{ item }}</button>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+			{% set nameReplace = {
 				".html": "",
 				"-": " ",
 				"/": "",
 				"fs": "",
 				"dev": "",
 				"page": ""
-			}) }}</a>
-		</li>
-		{% endfor %}
-	</ul>
-	{% if trello == "" %}
-	<style>
-		.sitemap_item_style_guide {
-			display: none;
-		}
-	</style>
-	{% endif %}
-	<script>
-		var sitemap = document.querySelector('.sitemap');
-		var fsAccess = document.querySelectorAll('.sitemap_item_access');
-		var fsDev = document.querySelectorAll('.sitemap_item_dev');
-		var fsGuide = document.querySelectorAll('.sitemap_item_style_guide');
-		var fsPage = document.querySelectorAll('.sitemap_item_page');
+			} %}
 
-		wrap(fsAccess);
-		wrap(fsDev);
-		wrap(fsGuide);
-		wrap(fsPage);
+			{% set contentsReplace = {
+				"class": "",
+				"=": "",
+				"\"": "",
+				"_": " "
+			} %}
+			<div class="sitemap_items">
+				{% for link in sitemap %}
+				<div class="sitemap_item{% if 'fs' in link.name %} sitemap_item_style_guide{% elseif 'dev' in link.name %} sitemap_item_dev{% elseif 'page' in link.name %} sitemap_item_page{% endif %}">
+					<a class="sitemap_link" href="templates/{{ link.name }}">
+						<span class="sitemap_link_label">{{ link.name|replace(nameReplace) }}</span>
+						<span class="sitemap_link_contents">{{ link.contents|replace(contentsReplace) }}{{ link.contents }}</span>
+					</a>
+					<div class="sitemap_link_bubbles">
+						{% if 'page' in link.name and 'form-builder' not in link.name %}
+							<a class="sitemap_link_bubble" href="templates/axe.html#{{ link.name|replace({
+								".html": ""
+							}) }}">
+								<img class="sitemap_link_bubble_icon" src="../images/axe.png" alt="axe logo" />
+								<span class="sitemap_link_bubble_label">axe</span>
+							</a>
+							<a class="sitemap_link_bubble" href="templates/pa11y.html#{{ link.name }}">
+								<img class="sitemap_link_bubble_icon" src="../images/pa11y.png" alt="pa11y logo" />
+								<span class="sitemap_link_bubble_label">pa11y</span>
+							</a>
+						{% endif %}
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</main>
+		<script>
+			var search = document.querySelector(".sitemap_search");
+			var filter = document.querySelectorAll('.sitemap_filter_button');
+			var items = document.querySelectorAll(".sitemap_item");
+			var query = "";
 
-		function wrap(element) {
-			if (element.length > 0) {
-				var group = document.createElement('div');
-				group.classList.add('sitemap_group');
+			search.addEventListener("keyup", searchSitemap, false);
+			search.addEventListener("search", searchSitemap, false);
+			
+			for (var i = 0; i < filter.length; i++) {
+				filter[i].addEventListener('click', triggerSearch, false);
+			}
 
-				for(var i = 0; i < element.length; i++) {
-					group.appendChild(element[i]);
+			function searchSitemap() {
+				query = search.value;
+
+				if (query.length >= 3) {
+					items.forEach(function(item) {
+						if (item.innerText.indexOf(query) > -1) {
+							item.classList.remove("hidden");
+						} else {
+							item.classList.add("hidden");
+						}
+					});
+				} else {
+					items.forEach(function(item) {
+						item.classList.remove("hidden");
+					});
+				}
+			}
+
+			function triggerSearch() {
+				if (this.innerHTML == "all") {
+					search.value = "";
+				} else {
+					search.value = this.innerHTML;
 				}
 
-				sitemap.appendChild(group);
+				searchSitemap();
 			}
-		}
-	</script>
-{% endblock %}
+
+			var sitemap = document.querySelector('.sitemap_items');
+			var fsGuide = document.querySelectorAll('.sitemap_item_style_guide');
+			var fsGuideArray = [].slice.call(fsGuide).sort(function (a, b) {
+        return a.textContent > b.textContent ? 1 : -1;
+    	});
+			var fsPage = document.querySelectorAll('.sitemap_item_page');
+			var fsPageArray = [].slice.call(fsPage).sort(function (a, b) {
+        return a.textContent > b.textContent ? 1 : -1;
+    	});
+
+			wrap(fsGuideArray, 'style_guide');
+			wrap(fsPageArray, 'page');
+
+			function wrap(element, groupName) {
+				if (element.length > 0) {
+					var group = document.createElement('div');
+					group.classList.add('sitemap_group', 'sitemap_group_' + groupName);
+					var title = "";
+
+					if (groupName == 'style_guide') {
+						title = createTitle('Reference Pages');
+					} else if (groupName == 'page') {
+						title = createTitle('Site Pages');	
+					}
+
+					group.appendChild(title);
+
+					for(var i = 0; i < element.length; i++) {
+						group.appendChild(element[i]);
+					}
+
+					sitemap.appendChild(group);
+				}
+			}
+
+			function createTitle(text) {
+				var title = document.createElement('h2');
+				title.classList.add('sitemap_group_title');
+				title.innerHTML = text;
+
+				return title;
+			}
+		</script>
+	</body>
+</html>

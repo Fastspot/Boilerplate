@@ -27,6 +27,7 @@ var gulp = require('gulp'),
 		svgSprite = require('gulp-svg-sprite'),
 		realFavicon = require ('gulp-real-favicon'),
 		FAVICON_DATA_FILE = 'favicons/markup.json',
+		axe = require('gulp-axe-webdriver'),
 		pa11y = require('pa11y');
 
 
@@ -39,15 +40,15 @@ var source = {
 	twig: [
 		'src/twig/templates/*.twig',
 		'!src/twig/templates/_*.twig',
-		'!src/twig/templates/dev-component-image-crops.twig',
-		'!src/twig/templates/dev-image-crops.twig',
+		'!src/twig/templates/fs-component-image-crops.twig',
+		'!src/twig/templates/fs-image-crops.twig',
 		'!src/twig/templates/fs-components.twig',
 		'!src/twig/templates/fs-templates.twig'
 	],
-	templates: 'static-html/templates/*.html',
+	templates: 'static/templates/*.html',
 	accessibility: [
-		'static-html/templates/page*.html',
-		'!static-html/templates/page-form-builder.html',
+		'static/templates/page*.html',
+		'!static/templates/page-form-builder.html',
 	],
 	sitemap: 'src/twig/index.twig',
 	jshint: 'src/js/modules/*.js',
@@ -65,8 +66,8 @@ var watch = {
 	],
 	twig: [
 		'src/twig/**/*.twig',
-		'!src/twig/templates/dev-component-image-crops.twig',
-		'!src/twig/templates/dev-image-crops.twig',
+		'!src/twig/templates/fs-component-image-crops.twig',
+		'!src/twig/templates/fs-image-crops.twig',
 		'!src/twig/templates/fs-components.twig',
 		'!src/twig/templates/fs-templates.twig',
 		'!src/twig/partials/guidebook/trello-details.twig',
@@ -176,7 +177,7 @@ gulp.task('trello', function(done) {
 					.pipe(rename({
 						extname: '.html'
 					}))
-					.pipe(gulp.dest('static-html/templates'));
+					.pipe(gulp.dest('static/templates'));
 			}
 		});
 
@@ -229,7 +230,7 @@ gulp.task('twig', function() {
 		.pipe(rename({
 			extname: '.html'
 		}))
-		.pipe(gulp.dest('static-html/templates'))
+		.pipe(gulp.dest('static/templates'))
 		.pipe(browserSync.stream());
 
 });
@@ -243,69 +244,51 @@ gulp.task('pretty-html', function() {
 			"indent_char": "	",
 			"preserve_newlines": false
 		}))
-		.pipe(gulp.dest('static-html/templates'));
+		.pipe(gulp.dest('static/templates'));
 
 });
 
 
-gulp.task('create-sitemap', function() {
+gulp.task('sitemap', function(done) {
 
-	return gulp.src(source.templates)
-		.pipe(directoryMap({
-			extension: '.html',
-			filename: 'sitemap.json',
-		}))
-		.pipe(gulp.dest('static-html/'));
+	var base = "static/templates";
+	var sitemap = [];
+	var steps = 1;
 
-});
+	fs.readdir(base, function(err, files) {
+		fileCount = files.toString().match(/page/g).length;
 
+		files.forEach(function(file) {
+			if (!(file.indexOf("_") > -1)) {
+				fs.readFile(base + '/' + file, 'utf8', function(err, contents) {
+					sitemap.push({
+						name: file,
+						contents: contents.match(/class="(\w*_\w*)"/g).toString()
+					});
 
-gulp.task('create-accessibility-sitemap', function() {
+					steps++;
 
-	return gulp.src(source.accessibility)
-		.pipe(directoryMap({
-			extension: '.html',
-			filename: 'accessibility-sitemap.json',
-		}))
-		.pipe(gulp.dest('static-html/'));
-
-});
-
-
-gulp.task('sitemap', function() {
-
-	return gulp.src(source.sitemap)
-		.pipe(twig({
-			data: {
-				name: packageJSON.vars.name,
-				trello: packageJSON.vars.idBoardTrello,
-				filters: packageJSON.vars.filters,
-				sitemap: require('./static/sitemap.json')
+					if (steps == fileCount) {
+						gulp.src(source.sitemap)
+							.pipe(twig({
+								data: {
+									name: packageJSON.vars.name,
+									trello: packageJSON.vars.idBoardTrello,
+									filters: packageJSON.vars.filters,
+									sitemap: sitemap
+								}
+							}))
+							.pipe(rename({
+								extname: '.html'
+							}))
+							.pipe(gulp.dest('static/'));
+					}
+				});
 			}
-		}))
-		.pipe(rename({
-			extname: '.html'
-		}))
-		.pipe(gulp.dest('static-html/'));
+		});
+	});
 
-});
-
-
-gulp.task('accessibility-sitemap', function() {
-
-	return gulp.src(source.sitemap)
-		.pipe(twig({
-			data: {
-				name: packageJSON.vars.name,
-				sitemap: require('./static-html/accessibility-sitemap.json'),
-				accessibility: true
-			}
-		}))
-		.pipe(rename({
-			basename: 'accessibility',
-			extname: '.html'
-		}))
-		.pipe(gulp.dest('static-html/templates'));
+	done();
 
 });
 
@@ -394,7 +377,7 @@ gulp.task('imagemin', function() {
 
 gulp.task('image-crops', function(done) {
 
-	var base = 'static-html/templates';
+	var base = 'static/templates';
 	var exclude = ["16x16", "32x32", "144x144", "180x180"];
 	var crops = [];
 	var modCrops = [];
@@ -408,9 +391,9 @@ gulp.task('image-crops', function(done) {
 			if (file.indexOf("page") > -1) {
 				fs.readFile(base + '/' + file, 'utf8', function(err, contents) {
 					var sizes = contents.match(/\d+x\d+/g);
-
+					
 					for (var x = 0; x < sizes.length; x++) {
-
+						
 						if (crops.indexOf(sizes[x]) == -1) {
 							if (exclude.indexOf(sizes[x]) == -1) {
 								crops.push(sizes[x]);
@@ -422,7 +405,7 @@ gulp.task('image-crops', function(done) {
 
 					if (steps == fileCount) {
 						crops = crops.sort();
-
+						
 						for (var x = 0; x < crops.length; x++) {
 							for (var cropRatio in packageJSON.img) {
 								for (var cropSize in packageJSON.img[cropRatio]) {
@@ -432,8 +415,8 @@ gulp.task('image-crops', function(done) {
 								}
 							}
 						}
-
-						gulp.src('src/twig/templates/dev-image-crops.twig')
+						
+						gulp.src('src/twig/templates/fs-image-crops.twig')
 							.pipe(twig({
 								data: {
 									crops: modCrops
@@ -442,7 +425,7 @@ gulp.task('image-crops', function(done) {
 							.pipe(rename({
 								extname: '.html'
 							}))
-							.pipe(gulp.dest('static-html/templates'));
+							.pipe(gulp.dest('static/templates'));
 					}
 				});
 			}
@@ -459,7 +442,7 @@ gulp.task('component-image-crops', function(done) {
 	var base = 'src/twig/components';
 	var data = [];
 	var typeSteps = 1;
-
+	
 	fs.readdir(base, function(err, folders) {
 		folders.forEach(function(folder) {
 			fs.readdir(base + '/' + folder, function(err, mods) {
@@ -507,7 +490,7 @@ gulp.task('component-image-crops', function(done) {
 				typeSteps++;
 
 				if (typeSteps == folders.length) {
-					gulp.src('src/twig/templates/dev-component-image-crops.twig')
+					gulp.src('src/twig/templates/fs-component-image-crops.twig')
 						.pipe(twig({
 							data: {
 								sections: data
@@ -516,7 +499,7 @@ gulp.task('component-image-crops', function(done) {
 						.pipe(rename({
 							extname: '.html'
 						}))
-						.pipe(gulp.dest('static-html/templates'));
+						.pipe(gulp.dest('static/templates'));
 				}
 			});
 		});
@@ -604,13 +587,47 @@ gulp.task('check-for-favicon-update', function(done) {
 });
 
 
-gulp.task('accessibility-test', function(done) {
+gulp.task('axe', function() {
 
-	if (!fs.existsSync('static-html/accessibility')) {
-		fs.mkdirSync('static-html/accessibility');
+  var options = {
+		folderOutputReport: 'static/',
+		headless: true,
+		saveOutputIn: 'axe.json',
+		showOnlyViolations: true,
+    urls: source.accessibility
+	};
+	
+	return axe(options);
+	
+});
+
+
+gulp.task('axe-page', function() {
+
+	return gulp.src('src/twig/templates/_axe.twig')
+		.pipe(twig({
+			data: {
+				vars: packageJSON.vars,
+				items: require('./static/axe.json')
+			}
+		}))
+		.pipe(rename({
+			basename: "axe",
+			extname: '.html'
+		}))
+		.pipe(gulp.dest('static/templates'));
+
+});
+
+
+gulp.task('pa11y', function(done) {
+
+	if (!fs.existsSync('static/pa11y')) {
+		fs.mkdirSync('static/pa11y');
 	}
 
 	var urls = globby.sync(source.accessibility);
+	var items = [];
 
 	var queue = async.queue(function(url, complete) {
 		var absolutePath = path.resolve(url);
@@ -618,18 +635,10 @@ gulp.task('accessibility-test', function(done) {
 
 		pa11y('file://' + absolutePath, {
 			ignore: [
-				'notice',
-				'WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.Abs',
-				'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Abs',
-				'WCAG2AA.Principle1.Guideline1_1.1_1_1.H67.2',
-				'WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.BgImage',
-				'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.BgImage',
-				'WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.A.Placeholder'
+				'notice'
 			]
 		}, function(error, results) {
 			if (error) return console.error(error.message);
-
-			console.log("Scanning " + base + ".html");
 
 			var errors = 0;
 			var warnings = 0;
@@ -644,21 +653,12 @@ gulp.task('accessibility-test', function(done) {
 				results.issues[issue].context = results.issues[issue].context.replace(/(\s\s+)/g, '');
 			}
 
-			gulp.src('src/twig/templates/_accessibility.twig')
-				.pipe(twig({
-					data: {
-						vars: packageJSON.vars,
-						page: base,
-						errors: errors,
-						warnings: warnings,
-						results: results
-					}
-				}))
-				.pipe(rename({
-					basename: base,
-					extname: '.html'
-				}))
-				.pipe(gulp.dest('static-html/accessibility'));
+			items.push({
+				page: base,
+				errors: errors,
+				warnings: warnings,
+				results: results
+			});
 
 			complete();
 		});
@@ -666,7 +666,20 @@ gulp.task('accessibility-test', function(done) {
 	}, 2);
 
 	queue.drain = function() {
-		console.log('All done! Check out your updated accessibility page.');
+		gulp.src('src/twig/templates/_pa11y.twig')
+			.pipe(twig({
+				data: {
+					vars: packageJSON.vars,
+					items: items
+				}
+			}))
+			.pipe(rename({
+				basename: 'pa11y',
+				extname: '.html'
+			}))
+			.pipe(gulp.dest('static/templates'));
+			
+		console.log('All done! All pa11y links should be functional now!');
 	};
 
 	queue.push(urls);
@@ -682,7 +695,7 @@ gulp.task('clean', function(done) {
 	del('favicons');
 	del('images');
 	del('js');
-	del('static-html');
+	del('static');
 
 	done();
 
@@ -695,7 +708,7 @@ gulp.task('browser-sync', function(done) {
 		logPrefix: packageJSON.vars.name,
 		ui: false,
 		server: './',
-		startPath: '/static-html/index.html',
+		startPath: '/static/index.html',
 		notify: {
 			styles: {
 				top: 'auto',
@@ -738,7 +751,7 @@ gulp.task('watch', function() {
 
 	gulp.watch('package.json', gulp.series('reset', 'build', 'reload'));
 	gulp.watch(watch.trello, gulp.series('twig', 'trello', 'reload'));
-	gulp.watch(watch.twig, gulp.series('twig'));
+	gulp.watch(watch.twig, gulp.series('twig', 'sitemap'));
 	gulp.watch(watch.sass, gulp.series('sass'));
 	gulp.watch(watch.js, gulp.series('js', 'jshint'));
 	gulp.watch(watch.sprite, gulp.series('sprite', 'twig', 'reload'));
@@ -754,7 +767,6 @@ gulp.task('build', gulp.parallel(
 		'sprite',
 		'twig',
 		'pretty-html',
-		'create-sitemap',
 		'sitemap',
 		'js',
 		'jshint'
@@ -782,12 +794,8 @@ gulp.task('style-guide', gulp.series(
 
 
 gulp.task('access', gulp.series(
-	'accessibility-test',
-	'create-accessibility-sitemap',
-	'accessibility-sitemap',
-	gulp.series(
-		'create-sitemap',
-		'sitemap'
-	),
+	'axe',
+	'axe-page',
+	'pa11y',
 	'dev'
 ));
