@@ -19,7 +19,7 @@ Site.modules.Menu = (function($, Site) {
 
 			$Menu
 				.attr("aria-hidden", true)
-				.find(".js-nav-link, button, input").attr("tabindex", -1);
+				.find(".js-nav-link, button, input").attr("tabindex", "-1");
 
 			createSiteButtons($(".js-menu-handle"));
 			bindUI();
@@ -51,7 +51,7 @@ Site.modules.Menu = (function($, Site) {
 		$MenuHandle.attr("aria-expanded", true);
 		$Menu.attr({
 			"aria-hidden": false,
-			"tabindex": 0
+			"tabindex": "0"
 		}).transition({
 			always: false,
 			property: "opacity"
@@ -67,7 +67,7 @@ Site.modules.Menu = (function($, Site) {
 		$Menu
 			.attr("aria-hidden", true)
 			.removeAttr("tabindex")
-			.find(".js-nav-link, button, input").attr("tabindex", -1);
+			.find(".js-nav-link, button, input").attr("tabindex", "-1");
 		$MenuHandle.attr("aria-expanded", false).focus();
 	}
 
