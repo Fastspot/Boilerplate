@@ -20,14 +20,14 @@ body {
 		left: 0;
 		z-index: 200;
 
-		background: rgba(#000, .75);
+		background: rgba(#000, 0.75);
 		content: "";
 		opacity: 0;
 		pointer-events: none;
 		visibility: hidden;
 		transition:
-			opacity .35s,
-			visibility .35s;
+			opacity 0.35s,
+			visibility 0.35s;
 	}
 
 	&.fs-page-lock {

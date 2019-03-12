@@ -3,9 +3,9 @@
 ============================================================================= */
 
 .fs-lightbox {
-	background: rgba(#000, .75);
+	background: rgba(#000, 0.75);
 	outline: 0;
-	
+
 	.fs-lightbox-close {
 		position: absolute;
 		top: auto;
@@ -89,7 +89,7 @@
 		right: 20px;
 		bottom: auto;
 	}
-	
+
 	.fs-lightbox-video_wrapper {
 		position: absolute;
 		top: 50%;
@@ -125,7 +125,7 @@
 
 		.fs-lightbox-meta {
 			height: auto !important;
-		
+
 			background: #fff;
 			color: #000;
 			padding: 20px;

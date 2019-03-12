@@ -291,9 +291,9 @@
 				margin-right: 5px;
 				padding: 0 5px;
 				text-decoration: none;
-				transition: 
-					background .25s,	
-					color .25s;
+				transition:
+					background $base_speed,
+					color $base_speed;
 
 				&:focus,
 				&:hover {
