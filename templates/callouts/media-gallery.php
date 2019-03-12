@@ -36,8 +36,10 @@
 						<?php
 							if (!empty($item["video"]["id"])) {
 						?>
-						<a class="js-lightbox gallery_item_link" href="<?=get_gallery_link($item)?>" title="<?=strip_tags($item["info"]["caption"])?>" itemprop="contentUrl">
-							<img class="gallery_item_image" src="<?=BigTree::prefixFile($item["image"], "wide-med-")?>" alt="">
+						<a class="js-video-appender gallery_item_link" href="<?=get_gallery_link($item)?>" title="<?=strip_tags($item["info"]["caption"])?>" itemprop="contentUrl">
+							<div class="lazy_image_wrapper gallery_item_image_wrapper">
+								<img class="js-lazy js-lazyload gallery_item_image" src="<?=BigTree::prefixFile($item["image"], "wide-med-")?>" alt="">
+							</div>
 							<span class="gallery_item_play">
 								<span class="gallery_item_play_icon"><?=icon("play")?></span>
 								<span class="gallery_item_play_label">Play</span>
@@ -46,7 +48,9 @@
 						<?php
 							} else {
 						?>
-						<img class="gallery_item_image" src="<?=BigTree::prefixFile($item["image"], "wide-med-")?>" alt="">		
+						<div class="lazy_image_wrapper gallery_item_image_wrapper">
+							<img class="js-lazy js-lazyload gallery_item_image" src="<?=BigTree::prefixFile($item["image"], "wide-med-")?>" alt="">		
+						</div>
 						<?php
 							}
 						?>
