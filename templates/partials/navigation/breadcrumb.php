@@ -46,8 +46,8 @@
 					if ($x == $max) {
 		?>
 		<li class="breadcrumb_item">
-			<span class="breadcrumb_name">
-				<span class="breadcrumb_name_label"><?=$item["title"]?></span>
+			<span class="breadcrumb_pill">
+				<span class="breadcrumb_pill_label"><?=$item["title"]?></span>
 			</span>
 		</li>
 		<?php
@@ -55,8 +55,8 @@
 		?>
 		<li class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
 			<a class="breadcrumb_pill breadcrumb_pill_link" itemprop="item" href="<?=$item["link"]?>">
-				<span class="breadcrumb_name" itemprop="name">
-					<span class="breadcrumb_name_label"><?=$item["title"]?></span>
+				<span class="breadcrumb_pill" itemprop="name">
+					<span class="breadcrumb_pill_label"><?=$item["title"]?></span>
 				</span>
 			</a>
 			<meta itemprop="position" content="<?=++$x?>">
