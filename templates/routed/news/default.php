@@ -105,9 +105,15 @@
 												<time class="news_item_date_time" datetime="<?=$item["date"]?>" itemprop="datePublished"><?=date("F j, Y", strtotime($item["date"]))?></time>
 											</div>
 										</div>
+										<?php
+											if ($item["blurb"]) {
+										?>
 										<div class="news_item_description" itemprop="description">
 											<p><?=nl2br($item["blurb"])?></p>
 										</div>
+										<?php
+											}
+										?>
 									</div>
 									<footer class="news_item_links">
 										<a class="news_item_link" <?=href($item["link"])?> aria-label="<?=$item["title"]?>" itemprop="url" tabindex="-1">
