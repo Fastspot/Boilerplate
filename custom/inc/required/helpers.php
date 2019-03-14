@@ -23,7 +23,7 @@
 <a class="<?=$class?>_link" <?=href($url)?><?php if ($aria) { ?> aria-label="<?=$aria?>"<?php } ?>>
 	<span class="<?=$class?>_link_inner">
 		<span class="<?=$class?>_link_label"><?=$label?></span>
-		<span class="<?=$class?>_link_icon" aria-hidden="true">
+		<span class="<?=$class?>_link_icons" aria-hidden="true">
 			<svg class="icon icon_on icon_<?=$icon?>">
 				<use xlink:href="<?=STATIC_ROOT?>images/icons.svg#<?=$icon?>"></use>
 			</svg>
