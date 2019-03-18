@@ -4,6 +4,7 @@ custom/environment.php
 node_cache/
 node_modules/
 package-lock.json
+pnpm-debug.log
 shrinkwrap.yaml
 site/files/
 trello.json
