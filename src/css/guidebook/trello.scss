@@ -42,6 +42,10 @@
 			border-radius $base_speed,
 			transform $base_speed;
 
+		@media #{$reduce} {
+			transition-duration: 0;
+		}
+
 		.gb_trello_section_formatter:focus &,
 		.gb_trello_section_formatter:hover & {
 			border-radius: 50%;

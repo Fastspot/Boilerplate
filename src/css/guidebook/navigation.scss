@@ -99,6 +99,10 @@
 		transform: scaleX(0);
 		transition: transform $base_speed;
 
+		@media #{$reduce} {
+			transition-duration: 0;
+		}
+
 		.gb_main_nav_link:focus &,
 		.gb_main_nav_link:hover &,
 		.active & {
@@ -189,6 +193,10 @@
 	overflow: hidden;
 	transform: scale(0);
 	transition: transform $base_speed;
+
+	@media #{$reduce} {
+		transition-duration: 0;
+	}
 
 	@media #{$min_xl} {
 		position: absolute;
