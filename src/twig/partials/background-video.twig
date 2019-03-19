@@ -8,15 +8,9 @@
 		mute: "true",
 		poster: img.wide.lrg,
 		image: image,
-		sources: {
-			video: "https://www.youtube.com/watch?v=XPjQhvjQbSM",
-			webm: "http://example.com/video.webm",
-			mp4: "http://example.com/video.mp4",
-			ogg: "http://example.com/video.ogv"
-		}
+		video: "http://example.com/video.mp4"
 	} %}
 #}
 
 <div class="{{ customClass ?: 'js-background' }} js-background-video {{ class }}_background" data-background-options='{"source": {
-{% if poster %}"poster": "//images.fastspot.com/{{ vars.images }}/{{ poster }}/{{ image }}", {% endif %}{% for key, source in sources %}"{{ key }}": "{{ source }}"{% if not loop.last %}, {% endif %}{% endfor %}
-}{% if autoPlay == "false" %}, "autoPlay": false{% endif %}{% if embedRatio %}, "embedRatio": {{ embedRatio }}{% endif %}{% if loop == "false" %}, "loop": false{% endif %}{% if mute == "false" %}, "mute": false{% endif %}, "lazy": true}' aria-hidden="true"></div>
+{% if poster %}"poster": "//images.fastspot.com/{{ vars.images }}/{{ poster }}/{{ image }}", {% endif %}"mp4": "{{ video }}"}{% if autoPlay == "false" %}, "autoPlay": false{% endif %}{% if embedRatio %}, "embedRatio": {{ embedRatio }}{% endif %}{% if loop == "false" %}, "loop": false{% endif %}{% if mute == "false" %}, "mute": false{% endif %}, "lazy": true}' aria-hidden="true"></div>
