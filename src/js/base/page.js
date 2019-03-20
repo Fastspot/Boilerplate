@@ -4,11 +4,14 @@
 
 Site.modules.Page = (function($, Site) {
 
-	var $fixedHeader; // set to fixed header element
-	var fixedHeaderHeight = null;
-	var scrollYPosition = 0;
+	var $FixedHeader, // set to fixed header element
+	FixedHeaderHeight,
+	ScrollYPosition;
 
 	function init() {
+		FixedHeaderHeight = null;
+		ScrollYPosition = 0;
+
 		bindUI();
 		fixIEsvg();
 		responsiveVideo();
@@ -42,7 +45,7 @@ Site.modules.Page = (function($, Site) {
 
 	function resize() {
 		tableOverflow();
-		fixedHeader($fixedHeader);
+		fixedHeader($FixedHeader);
 	}
 
 	function respond() {}
@@ -80,7 +83,7 @@ Site.modules.Page = (function($, Site) {
 
 	function scrollToPosition(top) {
 		$("html, body").animate({
-			scrollTop: top - fixedHeaderHeight
+			scrollTop: top - FixedHeaderHeight
 		});
 	}
 
@@ -127,30 +130,30 @@ Site.modules.Page = (function($, Site) {
 	}
 
 	function fixedHeader($header) {
-		if (typeof $fixedHeader !== "undefined") {
-			fixedHeaderHeight = $header.outerHeight();
+		if (typeof $FixedHeader !== "undefined") {
+			FixedHeaderHeight = $header.outerHeight();
 			btBarHeight = $("#bigtree_bar").outerHeight();
 			wpBarHeight = $("#wpadminbar").outerHeight();
 
 			if (btBarHeight > 0) {
 				$header.css("top", btBarHeight);
 
-				fixedHeaderHeight = fixedHeaderHeight + btBarHeight;
+				FixedHeaderHeight = FixedHeaderHeight + btBarHeight;
 			} else if (wpBarHeight > 0) {
 				$header.css("top", wpBarHeight);
 
-				fixedHeaderHeight = fixedHeaderHeight + wpBarHeight;
+				FixedHeaderHeight = FixedHeaderHeight + wpBarHeight;
 			}
 		}
 	}
 
 	function saveScrollYPosition() {
-		scrollYPosition = window.pageYOffset;
+		ScrollYPosition = window.pageYOffset;
 
 		$("body").css({
 			"width": "100%",
 			"position": "fixed",
-			"top": (scrollYPosition * -1)
+			"top": (ScrollYPosition * -1)
 		});
 	}
 
@@ -161,7 +164,7 @@ Site.modules.Page = (function($, Site) {
 			"top": ""
 		});
 
-		$("html, body").scrollTop(scrollYPosition);
+		$("html, body").scrollTop(ScrollYPosition);
 	}
 
 	function getScrollbarWidth() {
