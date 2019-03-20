@@ -126,16 +126,6 @@ Site.modules.Page = (function($, Site) {
 		});
 	}
 
-	function ariaHide($element) {
-		$element.attr("aria-hidden", "true")
-			.attr("hidden", "");
-	}
-
-	function ariaShow($element) {
-		$element.attr("aria-hidden", "false")
-			.removeAttr("hidden");
-	}
-
 	function fixedHeader($header) {
 		if (typeof $fixedHeader !== "undefined") {
 			fixedHeaderHeight = $header.outerHeight();
@@ -221,8 +211,6 @@ Site.modules.Page = (function($, Site) {
 	Site.onInit.push(init);
 
 	return {
-		ariaHide: ariaHide,
-		ariaShow: ariaShow,
 		getScrollbarWidth: getScrollbarWidth,
 		saveScrollYPosition: saveScrollYPosition,
 		restoreScrollYPosition: restoreScrollYPosition
