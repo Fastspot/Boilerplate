@@ -10,7 +10,7 @@ Site.modules.SubNav = (function($, Site) {
 		}
 	}
 
-	function setup() {		
+	function setup() {
 		$(".js-sub-nav-handle")
 			.attr("aria-expanded", "false")
 			.attr("aria-haspopup", "true");
@@ -33,7 +33,7 @@ Site.modules.SubNav = (function($, Site) {
 			},
 			leave: function() {
 				Site.modules.Page.ariaHide($(".js-sub-nav-list"));
-				
+
 				$(".js-sub-nav-handle")
 					.attr("aria-expanded", "false")
 					.attr("aria-haspopup", "true");
@@ -65,8 +65,8 @@ Site.modules.SubNav = (function($, Site) {
 		Site.modules.Page.ariaShow($(".js-sub-nav-list"));
 	}
 
-	Site.onInit.push(init);
-
-	return {};
+	return {
+		init: init
+	};
 
 })(jQuery, Site);

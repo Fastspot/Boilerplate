@@ -88,8 +88,8 @@ Site.modules.Formstone = (function($, Site) {
 		});
 	}
 
-	Site.onInit.push(init);
-
-	return {};
+	return {
+		init: init
+	};
 
 })(jQuery, Site);
