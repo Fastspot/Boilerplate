@@ -87,7 +87,13 @@
 /* Menu Close
 ============================================================================= */
 
-.menu_close {}
+.menu_close {
+	display: none;
+
+	.js & {
+		display: block;
+	}
+}
 
 .menu_close_icon {}
 
