@@ -106,10 +106,11 @@
 										<div class="event_details">
 											<?php
 												if (!empty($event["location"])) {
+													$location = BTXEvents::getEventLocation($event["location"]);
 											?>
 											<div class="event_detail event_detail_location" itemprop="location" itemscope itemtype="http://schema.org/Place">
 												<span class="event_detail_icon"><?=icon("place")?></span>
-												<span class="event_detail_label" itemprop="name"><?=$event["location"]?></span>
+												<span class="event_detail_label" itemprop="name"><?=$location["title"]?></span>
 											</div>
 											<?php
 												}
