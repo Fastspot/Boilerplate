@@ -13,4 +13,6 @@
 #}
 
 <div class="{{ customClass ?: 'js-background' }} js-background-video {{ class }}_background" data-background-options='{"source": {
-{% if dimension %}"poster": "//images.fastspot.com/{{ vars.images }}/{{ dimension.width }}x{{ dimension.height }}/{{ image }}", {% endif %}"mp4": "{{ video }}"}{% if autoPlay == "false" %}, "autoPlay": false{% endif %}{% if embedRatio %}, "embedRatio": {{ embedRatio }}{% endif %}{% if loop == "false" %}, "loop": false{% endif %}{% if mute == "false" %}, "mute": false{% endif %}, "lazy": true}' aria-hidden="true"></div>
+{% if dimension %}"poster": "//images.fastspot.com/{{ vars.images }}/{{ dimension.width }}x{{ dimension.height }}/{{ image }}", {% endif %}"mp4": "{{ video }}"}{% if autoPlay == "false" %}, "autoPlay": false{% endif %}{% if embedRatio %}, "embedRatio": {{ embedRatio }}{% endif %}{% if loop == "false" %}, "loop": false{% endif %}{% if mute == "false" %}, "mute": false{% endif %}, "lazy": true}' aria-hidden="true">
+	<div class="{{ class }}_background_fallback" style="background-image: url(' //images.fastspot.com/{{ vars.images }}//{{ img.ultrawide.xxsml.width }}x{{ img.ultrawide.xxsml.height }}/{{ image }}');"></div>
+</div>
