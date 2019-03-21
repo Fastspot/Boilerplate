@@ -126,6 +126,8 @@
 											?>
 										</div>
 										<?php
+											}
+											
 											if ($blurb) {
 										?>
 										<div class="event_description" itemprop="description">
