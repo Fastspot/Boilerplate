@@ -13,4 +13,4 @@
 #}
 
 <div class="{{ customClass ?: 'js-background' }} {{ class }}_background" data-background-options='{"source": {
-{% for key, source in sources %}"{{ key }}": "//images.fastspot.com/{{ vars.images }}/{{ source }}/{{ image }}"{% if not loop.last %}, {% endif %}{% endfor %}}, "lazy": true}' aria-hidden="true"></div>
+{% for key, source in sources %}"{{ key }}": "//images.fastspot.com/{{ vars.images }}/{{ source.width }}x{{ source.height }}/{{ image }}"{% if not loop.last %}, {% endif %}{% endfor %}}, "lazy": true}' aria-hidden="true"></div>
