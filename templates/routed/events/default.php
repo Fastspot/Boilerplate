@@ -14,6 +14,9 @@
 		if (!$category) {
 			$cms->catch404();
 		}
+
+		$events = $eventsMod->getPageOfUpcomingEventsInCategory($category["id"], $current_page, 10);
+		$pages = $eventsMod->getPageCountOfUpcomingEventsInCategory($category["id"], 10);
 	} elseif ($query) {
 		$events = $eventsMod->getUpcomingSearchResultsPage($query, $current_page, 10);
 		$pages = $eventsMod->getUpcomingSearchResultsPageCount($query, 10);
