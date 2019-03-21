@@ -36,6 +36,7 @@
 			.sitemap_main {}
 
 			.sitemap_tools {
+				display: none;
 				margin-bottom: 40px;
 			}
 
@@ -292,7 +293,7 @@
 
 			search.addEventListener("keyup", searchSitemap, false);
 			search.addEventListener("search", searchSitemap, false);
-			
+
 			for (var i = 0; i < filter.length; i++) {
 				filter[i].addEventListener('click', triggerSearch, false);
 			}
@@ -347,7 +348,7 @@
 					if (groupName == 'style_guide') {
 						title = createTitle('Reference Pages');
 					} else if (groupName == 'page') {
-						title = createTitle('Site Pages');	
+						title = createTitle('Site Pages');
 					}
 
 					group.appendChild(title);
