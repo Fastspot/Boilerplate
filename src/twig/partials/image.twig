@@ -1,6 +1,7 @@
 {#
 	{% include par ~ "image.twig" with {
 		class: "media",
+		alt: "",
 		itemprop: "",
 		image: item.image,
 		dimension: img.wide.med
@@ -8,10 +9,10 @@
 #}
 
 <div class="lazy_image_wrapper {{ class }}_image_wrapper">
-	<img class="js-lazy js-lazyload {{ class }}_image" src="../../images/placeholder.png" data-src="//images.fastspot.com/{{ vars.images }}/{{ dimension.width }}x{{ dimension.height }}/{{ image }}" alt=""{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}>
+	<img class="js-lazy js-lazyload {{ class }}_image" src="../../images/placeholder.png" data-src="//images.fastspot.com/{{ vars.images }}/{{ dimension.width }}x{{ dimension.height }}/{{ image }}" alt="{{ alt }}"{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}>
 </div>
 <noscript>
 	<div class="{{ class }}_image_wrapper">
-		<img class="{{ class }}_image" src="//images.fastspot.com/{{ vars.images }}/{{ dimension.width }}x{{ dimension.height }}/{{ image }}" alt=""{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}>
+		<img class="{{ class }}_image" src="//images.fastspot.com/{{ vars.images }}/{{ dimension.width }}x{{ dimension.height }}/{{ image }}" alt="{{ alt }}"{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}>
 	</div>
 </noscript>

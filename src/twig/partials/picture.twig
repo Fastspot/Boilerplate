@@ -1,6 +1,7 @@
 {#
 	{% include par ~ "picture.twig" with {
 		class: "media",
+		alt: "",
 		itemprop: "",
 		image: item.image,
 		fallback: img.wide.xsml,
@@ -16,7 +17,7 @@
 		{% for key, source in sources %}
 		<source media="(min-width: {{ key }})" srcset="../../images/placeholder.png" data-srcset="{% if source == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{ vars.images }}/{{ source.width }}x{{ source.height }}/{{ image }}{% endif %}">
 		{% endfor %}
-		<img class="js-lazy js-lazyload {{ class }}_image" src="../../images/placeholder.png" data-src="{% if fallback == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{ vars.images }}/{{ fallback.width }}x{{ fallback.height }}/{{ image }}{% endif %}" alt=""{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}>
+		<img class="js-lazy js-lazyload {{ class }}_image" src="../../images/placeholder.png" data-src="{% if fallback == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{ vars.images }}/{{ fallback.width }}x{{ fallback.height }}/{{ image }}{% endif %}" alt="{{ alt }}"{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}>
 	</picture>
 </div>
 <noscript>
@@ -25,7 +26,7 @@
 			{% for key, source in sources %}
 			<source media="(min-width: {{ key }})" srcset="{% if source == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{ vars.images }}/{{ source.width }}x{{ source.height }}/{{ image }}{% endif %}">
 			{% endfor %}
-			<img class="{{ class }}_image" src="{% if fallback == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{ vars.images }}/{{ fallback.width }}x{{ fallback.height }}/{{ image }}{% endif %}" alt=""{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}>
+			<img class="{{ class }}_image" src="{% if fallback == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{ vars.images }}/{{ fallback.width }}x{{ fallback.height }}/{{ image }}{% endif %}" alt="{{ alt }}"{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}>
 		</picture>
 	</div>
 </noscript>
