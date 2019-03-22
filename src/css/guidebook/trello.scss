@@ -39,8 +39,12 @@
 		transform: translate(0, 0);
 		transform-origin: right center;
 		transition:
-			border-radius .25s,
-			transform .25s;
+			border-radius $base_speed,
+			transform $base_speed;
+
+		@media #{$reduce} {
+			transition-duration: 0;
+		}
 
 		.gb_trello_section_formatter:focus &,
 		.gb_trello_section_formatter:hover & {
@@ -76,8 +80,8 @@
 			content: "";
 			transform: translate(-50%, -50%);
 			transition:
-				background .25s,
-				box-shadow .25s;
+				background $base_speed,
+				box-shadow $base_speed;
 		}
 	}
 
@@ -99,8 +103,8 @@
 			content: "";
 			transform: translate(-50%, -50%);
 			transition:
-				background .25s,
-				box-shadow .25s;
+				background $base_speed,
+				box-shadow $base_speed;
 		}
 	}
 }
@@ -161,10 +165,10 @@
 		left: 0;
 		z-index: 4;
 
-		background: 
+		background:
 			linear-gradient(
 				to bottom,
-					rgba(#000, .085),
+					rgba(#000, 0.085),
 					rgba(#000, 0)
 			);
 		content: "";
@@ -285,7 +289,7 @@
 	&:hover {
 
 		&:after {
-			animation: trello-burst .5s forwards;
+			animation: trello-burst 0.5s forwards;
 		}
 	}
 }
@@ -312,7 +316,7 @@
 
 .gb_trello_detail_title {
 	@include h2;
-	
+
 	margin: 0 0 30px;
 }
 

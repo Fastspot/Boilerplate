@@ -2,7 +2,7 @@
 	Navigation
 -------------------------------------------*/
 
-Site.modules.Navigation = (function($, Site) {
+Site.modules.Nav = (function($, Site) {
 
 	var $Nav,
 	$Children,
@@ -86,8 +86,8 @@ Site.modules.Navigation = (function($, Site) {
 		}
 	}
 
-	Site.onInit.push(init);
-
-	return {};
+	return {
+		init: init
+	};
 
 })(jQuery, Site);

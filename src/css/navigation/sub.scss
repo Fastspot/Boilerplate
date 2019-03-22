@@ -62,9 +62,9 @@
 	left: 50%;
 
 	transform: translate(-50%, -50%);
-	transition: 
-		opacity .25s,
-		transform .25s;
+	transition:
+		opacity $base_speed,
+		transform $base_speed;
 }
 
 .sub_nav_handle_icon_open {
@@ -94,18 +94,21 @@
 	margin: 0;
 	padding: 0;
 
-	@media #{$max_lg} {
-		width: 100%;
+	.js & {
 
-		position: absolute;
-		top: 100%;
-		left: 0;
-		z-index: 20;
+		@media #{$max_lg} {
+			width: 100%;
 
-		background: #fff;
-		transition:
-			opacity .25s,
-			visibility .25s;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			z-index: 20;
+
+			background: #fff;
+			transition:
+				opacity $base_speed,
+				visibility $base_speed;
+		}
 	}
 
 	&.fs-swap-enabled {
@@ -117,7 +120,7 @@
 	}
 
 	&.fs-swap-active {
-		
+
 		@media #{$max_lg} {
 			opacity: 1;
 			visibility: visible;

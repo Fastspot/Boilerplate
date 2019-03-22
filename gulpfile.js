@@ -263,7 +263,7 @@ gulp.task('sitemap', function(done) {
 				fs.readFile(base + '/' + file, 'utf8', function(err, contents) {
 					sitemap.push({
 						name: file,
-						contents: contents.match(/class="(\w*_\w*)"/g).toString()
+						contents: contents
 					});
 
 					steps++;
@@ -391,9 +391,9 @@ gulp.task('image-crops', function(done) {
 			if (file.indexOf("page") > -1) {
 				fs.readFile(base + '/' + file, 'utf8', function(err, contents) {
 					var sizes = contents.match(/\d+x\d+/g);
-					
+
 					for (var x = 0; x < sizes.length; x++) {
-						
+
 						if (crops.indexOf(sizes[x]) == -1) {
 							if (exclude.indexOf(sizes[x]) == -1) {
 								crops.push(sizes[x]);
@@ -405,7 +405,7 @@ gulp.task('image-crops', function(done) {
 
 					if (steps == fileCount) {
 						crops = crops.sort();
-						
+
 						for (var x = 0; x < crops.length; x++) {
 							for (var cropRatio in packageJSON.img) {
 								for (var cropSize in packageJSON.img[cropRatio]) {
@@ -415,7 +415,7 @@ gulp.task('image-crops', function(done) {
 								}
 							}
 						}
-						
+
 						gulp.src('src/twig/templates/fs-image-crops.twig')
 							.pipe(twig({
 								data: {
@@ -442,7 +442,7 @@ gulp.task('component-image-crops', function(done) {
 	var base = 'src/twig/components';
 	var data = [];
 	var typeSteps = 1;
-	
+
 	fs.readdir(base, function(err, folders) {
 		folders.forEach(function(folder) {
 			fs.readdir(base + '/' + folder, function(err, mods) {
@@ -596,9 +596,9 @@ gulp.task('axe', function() {
 		showOnlyViolations: true,
     urls: source.accessibility
 	};
-	
+
 	return axe(options);
-	
+
 });
 
 
@@ -678,7 +678,7 @@ gulp.task('pa11y', function(done) {
 				extname: '.html'
 			}))
 			.pipe(gulp.dest('static/templates'));
-			
+
 		console.log('All done! All pa11y links should be functional now!');
 	};
 

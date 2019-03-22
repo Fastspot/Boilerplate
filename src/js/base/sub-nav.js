@@ -4,20 +4,23 @@
 
 Site.modules.SubNav = (function($, Site) {
 
+	var $SubNavHandle,
+	$SubNavList;
+
 	function init() {
 		if ($(".js-sub-nav").length) {
+			$SubNavHandle = $(".js-sub-nav-handle");
+			$SubNavList = $(".js-sub-nav-list");
+
+			$SubNavHandle
+				.attr("aria-expanded", "false")
+				.attr("aria-haspopup", "true");
 			bindUI();
 		}
 	}
 
-	function setup() {		
-		$(".js-sub-nav-handle")
-			.attr("aria-expanded", "false")
-			.attr("aria-haspopup", "true");
-	}
-
 	function bindUI() {
-		$(".js-sub-nav-handle")
+		$SubNavHandle
 			.on("activate.swap", onSubSwapActivate)
 			.on("deactivate.swap", onSubSwapDeactivate)
 			.on("enable.swap", onSubSwapEnable)
@@ -25,16 +28,14 @@ Site.modules.SubNav = (function($, Site) {
 
 		$.mediaquery("bind", "mq-key", "(min-width: " + Site.minLG + "px)", {
 			enter: function() {
-				Site.modules.Page.ariaShow($(".js-sub-nav-list"));
-
-				$(".js-sub-nav-handle")
+				$SubNavList.attr("aria-hidden", "false");
+				$SubNavHandle
 					.removeAttr("aria-expanded")
 					.removeAttr("aria-haspopup");
 			},
 			leave: function() {
-				Site.modules.Page.ariaHide($(".js-sub-nav-list"));
-				
-				$(".js-sub-nav-handle")
+				$SubNavList.attr("aria-hidden", "true");
+				$SubNavHandle
 					.attr("aria-expanded", "false")
 					.attr("aria-haspopup", "true");
 			}
@@ -45,28 +46,26 @@ Site.modules.SubNav = (function($, Site) {
 		$(this).attr("aria-expanded", "true")
 			.find(".sub_nav_handle_label")
 			.text("Close");
-
-		Site.modules.Page.ariaShow($(".js-sub-nav-list"));
+		$SubNavList.attr("aria-hidden", "false");
 	}
 
 	function onSubSwapDeactivate() {
 		$(this).attr("aria-expanded", "false")
 			.find(".sub_nav_handle_label")
 			.text($(this).data("swap-title"));
-
-		Site.modules.Page.ariaHide($(".js-sub-nav-list"));
+		$SubNavList.attr("aria-hidden", "true");
 	}
 
 	function onSubSwapEnable() {
-		Site.modules.Page.ariaHide($(".js-sub-nav-list"));
+		$SubNavList.attr("aria-hidden", "true");
 	}
 
 	function onSubSwapDisable() {
-		Site.modules.Page.ariaShow($(".js-sub-nav-list"));
+		$SubNavList.attr("aria-hidden", "false");
 	}
 
-	Site.onInit.push(init);
-
-	return {};
+	return {
+		init: init
+	};
 
 })(jQuery, Site);

@@ -50,9 +50,13 @@
 	background: #fff;
 	display: block;
 	transition:
-		opacity .35s,
-		transform .35s,
-		visibility .35s;
+		opacity 0.35s,
+		transform 0.35s,
+		visibility 0.35s;
+
+	@media #{$reduce} {
+		transition-duration: 0.6s;
+	}
 
 	@media print {
 		display: none;
@@ -83,7 +87,13 @@
 /* Menu Close
 ============================================================================= */
 
-.menu_close {}
+.menu_close {
+	display: none;
+
+	.js & {
+		display: block;
+	}
+}
 
 .menu_close_icon {}
 

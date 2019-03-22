@@ -1,0 +1,61 @@
+			</main>
+			<!-- END: Page -->
+
+			<!-- Footer -->
+			<footer class="footer" id="footer">
+				<div class="footer_ribbon">
+					<div class="fs-row">
+						<div class="fs-cell">
+							<div class="footer_ribbon_inner">
+								{% include "../meta.twig" with {
+									name: vars.name,
+									icon: "logo",
+									street: "2980 Falls Road",
+									city: "Baltimore",
+									state: "MD",
+									zip: "21211",
+									email: "team@fastspot.com",
+									phone: "202-432-1200",
+									fax: "294-467-9876"
+								} %}
+
+								{% include "../navigation/basic.twig" with {
+									class: "footer_nav",
+									title: "Footer",
+									links: footerNavAlias
+								} %}
+
+								{% include "../navigation/social.twig" with {
+									title: "Social",
+									links: socialNavAlias
+								} %}
+
+								{% include "../copyright.twig" %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!-- END: Footer -->
+		</div>
+		<!-- END: page_wrapper -->
+
+		{% include "menu.twig" %}
+
+		<script>
+			var WWW_ROOT = "";
+			var STATIC_ROOT = "../../";
+		</script>
+		{% if page.scripts %}
+		{% for script in page.scripts %}
+		{{ script }}
+		{% endfor %}
+		{% endif %}
+		<script src="../../js/site.js" async></script>
+		{% if grid %}
+		<script>
+			(function(){if(typeof FSGridBookmarklet==='undefined'){document.body.appendChild(document.createElement('script')).src='//formstone.it/js/bookmarklet/grid.js';}else{FSGridBookmarklet();}} )();
+		</script>
+		{% endif %}
+	</body>
+</html>

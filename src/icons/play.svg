@@ -1,20 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="21px" height="20px" viewBox="0 0 21 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 50 (54983) - http://www.bohemiancoding.com/sketch -->
-    <title>Triangle 1</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Impact-Component-0118" stroke="none" stroke-width="1" fill="" fill-rule="evenodd">
-        <g id="03/05/18" transform="translate(-907.000000, -2444.000000)" fill="">
-            <g id="Group-5" transform="translate(0.000000, 2162.000000)">
-                <g id="Group-Copy">
-                    <g id="wide-lrg-tapas-with-teachers" transform="translate(492.000000, 26.000000)">
-                        <g id="Group-44" transform="translate(389.000000, 231.000000)">
-                            <polygon id="Triangle-1" points="26.9879208 44.8361278 26.9879208 25.0347958 46.4778938 34.9354618"></polygon>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <polygon fill="#000000" points="0 20 0 0 20 10"></polygon>
 </svg>

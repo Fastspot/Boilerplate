@@ -39,15 +39,15 @@
 		left: 0;
 		z-index: 4;
 
-		background: 
+		background:
 			linear-gradient(
 				to bottom,
-					rgba(#000, .085),
+					rgba(#000, 0.085),
 					rgba(#000, 0)
 			);
 		content: "";
 		opacity: 0;
-		transition: opacity .25s;
+		transition: opacity $base_speed;
 
 		.pinned & {
 			opacity: 1;
@@ -81,7 +81,7 @@
 	a {
 		color: inherit;
 		text-decoration: underline;
-		transition: color .25s;
+		transition: color $base_speed;
 
 		&:focus,
 		&:hover {

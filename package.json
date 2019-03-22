@@ -9,59 +9,182 @@
   },
   "img": {
     "ultrawide": {
-      "xxsml": "300x129",
-      "xsml": "500x214",
-      "sml": "740x317",
-      "med": "980x420",
-      "lrg": "1220x523",
-      "xlrg": "1440x617"
+      "xxsml": {
+        "width": 300,
+        "height": 129
+      },
+      "xsml": {
+        "width": 500,
+        "height": 214
+      },
+      "sml": {
+        "width": 740,
+        "height": 317
+      },
+      "med": {
+        "width": 980,
+        "height": 420
+      },
+      "lrg": {
+        "width": 1220,
+        "height": 523
+      },
+      "xlrg": {
+        "width": 1440,
+        "height": 617
+      }
     },
     "wide": {
-      "xxsml": "300x169",
-      "xsml": "500x282",
-      "sml": "740x416",
-      "med": "980x552",
-      "lrg": "1220x686",
-      "xlrg": "1440x810"
+      "xxsml": {
+        "width": 300,
+        "height": 169
+      },
+      "xsml": {
+        "width": 500,
+        "height": 282
+      },
+      "sml": {
+        "width": 740,
+        "height": 416
+      },
+      "med": {
+        "width": 980,
+        "height": 552
+      },
+      "lrg": {
+        "width": 1220,
+        "height": 686
+      },
+      "xlrg": {
+        "width": 1440,
+        "height": 810
+      }
     },
     "full": {
-      "xxsml": "300x225",
-      "xsml": "500x375",
-      "sml": "740x555",
-      "med": "980x735",
-      "lrg": "1220x915",
-      "xlrg": "1440x1080"
+      "xxsml": {
+        "width": 300,
+        "height": 225
+      },
+      "xsml": {
+        "width": 500,
+        "height": 375
+      },
+      "sml": {
+        "width": 740,
+        "height": 555
+      },
+      "med": {
+        "width": 980,
+        "height": 735
+      },
+      "lrg": {
+        "width": 1220,
+        "height": 915
+      },
+      "xlrg": {
+        "width": 1440,
+        "height": 1080
+      }
     },
     "square": {
-      "thumb": "100x100",
-      "xxsml": "300x300",
-      "xsml": "500x500",
-      "sml": "740x740",
-      "med": "980x980"
+      "thumb": {
+        "width": 100,
+        "height": 100
+      },
+      "xxsml": {
+        "width": 300,
+        "height": 300
+      },
+      "xsml": {
+        "width": 500,
+        "height": 500
+      },
+      "sml": {
+        "width": 740,
+        "height": 740
+      },
+      "med": {
+        "width": 980,
+        "height": 980
+      }
     },
     "classic": {
-      "xxsml": "300x200",
-      "xsml": "500x334",
-      "sml": "740x494",
-      "med": "980x654",
-      "lrg": "1220x814",
-      "xlrg": "1440x960"
+      "xxsml": {
+        "width": 300,
+        "height": 200
+      },
+      "xsml": {
+        "width": 500,
+        "height": 334
+      },
+      "sml": {
+        "width": 740,
+        "height": 494
+      },
+      "med": {
+        "width": 980,
+        "height": 654
+      },
+      "lrg": {
+        "width": 1220,
+        "height": 814
+      },
+      "xlrg": {
+        "width": 1440,
+        "height": 960
+      }
     },
     "portraitFull": {
-      "xxsml": "225x300",
-      "xsml": "375x500",
-      "sml": "555x740",
-      "med": "735x980",
-      "lrg": "915x1220",
-      "xlrg": "1080x1440"
+      "xxsml": {
+        "width": 225,
+        "height": 300
+      },
+      "xsml": {
+        "width": 375,
+        "height": 500
+      },
+      "sml": {
+        "width": 555,
+        "height": 740
+      },
+      "med": {
+        "width": 735,
+        "height": 980
+      },
+      "lrg": {
+        "width": 915,
+        "height": 1220
+      },
+      "xlrg": {
+        "width": 1080,
+        "height": 1440
+      }
     },
     "portraitClassic": {
-      "xxsml": "200x300",
-      "xsml": "334x500",
-      "sml": "494x740",
-      "med": "654x980",
-      "lrg": "814x1220",
-      "xlrg": "960x1440"
+      "xxsml": {
+        "width": 200,
+        "height": 300
+      },
+      "xsml": {
+        "width": 334,
+        "height": 500
+      },
+      "sml": {
+        "width": 494,
+        "height": 740
+      },
+      "med": {
+        "width": 654,
+        "height": 980
+      },
+      "lrg": {
+        "width": 814,
+        "height": 1220
+      },
+      "xlrg": {
+        "width": 960,
+        "height": 1440
+      }
     }
   },
   "urls": [

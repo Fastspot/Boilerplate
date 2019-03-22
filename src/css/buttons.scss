@@ -45,8 +45,8 @@ button {
 	background: $b;
 	color: $c;
 	transition:
-		background .25s,
-		color .25s;
+		background $base_speed,
+		color $base_speed;
 
 	&:focus,
 	&:hover {
@@ -99,7 +99,7 @@ button {
 	padding: 10px 20px;
 	text-align: center;
 	transform: translate(-50%, -200%);
-	transition: transform .35s;
+	transition: transform 0.35s;
 
 	&:focus,
 	&:active {

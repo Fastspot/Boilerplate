@@ -175,7 +175,7 @@
 	}
 
 	input:focus ~ & {
-		box-shadow: 
+		box-shadow:
 			0 0 0 2px #fff,
 			0 0 0 4px #000;
 	}
@@ -197,13 +197,13 @@
 		border-bottom: 2px solid #fff;
 		content:  "";
 		margin-top: -1px;
-		transform: 
+		transform:
 			translate(-50%, -50%)
 			scale(0)
 			rotate(45deg);
 
 		input:checked ~ & {
-			transform: 
+			transform:
 				translate(-50%, -50%)
 				scale(1)
 				rotate(45deg);
@@ -228,7 +228,7 @@
 			scale(0);
 
 		input:checked ~ & {
-			transform: 
+			transform:
 				translate(-50%, -50%)
 				scale(1);
 		}
@@ -263,7 +263,7 @@
 		content: "";
 		margin-top: -3px;
 		pointer-events: none;
-		transform: scaleX(.85);
+		transform: scaleX(0.85);
 	}
 
 	select {

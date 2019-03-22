@@ -21,11 +21,11 @@
 	color: #000;
 	cursor: pointer;
 	margin-bottom: 40px;
-	transition: color .25s;
+	transition: color $base_speed;
 
 	@media screen and (min-width: 600px) {
 		width: calc(50% - 40px);
-		
+
 		margin-right: 20px;
 		margin-left: 20px;
 	}

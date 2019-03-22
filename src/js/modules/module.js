@@ -14,8 +14,8 @@ Site.modules.Module = (function($, Site) {
 
 	function doSomething() {}
 
-	Site.onInit.push(init);
-
-	return {};
+	return {
+		init: init
+	};
 
 })(jQuery, Site);

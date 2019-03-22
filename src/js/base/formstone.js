@@ -4,29 +4,34 @@
 
 Site.modules.Formstone = (function($, Site) {
 
-	var prev_icon = "chevron_left";
-	var next_icon = "chevron_right";
-	var BackgroundOptions = {
-		labels: {
-			play: "Play",
-			pause: "Pause"
-		},
-		icons: {
-			play: Site.icon("video_play"),
-			pause: Site.icon("video_pause")
-		}
-	};
-	var LightboxOptions = {
-		videoWidth: 1000,
-		labels: {
-			close: "<span class='fs-lightbox-icon-close'>" + Site.icon("close") + "</span>",
-			previous: "<span class='fs-lightbox-icon-previous'>" + Site.icon(prev_icon) + "</span>",
-			count: "<span class='fs-lightbox-meta-divider'></span>",
-			next: "<span class='fs-lightbox-icon-next'>" + Site.icon(next_icon) + "</span>"
-		}
-	};
+	var PrevIcon,
+	NextIcon,
+	BackgroundOptions,
+	LightboxOptions;
 
 	function init() {
+		PrevIcon = "chevron_left";
+		NextIcon = "chevron_right";
+		BackgroundOptions = {
+			labels: {
+				play: "Play",
+				pause: "Pause"
+			},
+			icons: {
+				play: Site.icon("video_play"),
+				pause: Site.icon("video_pause")
+			}
+		};
+		LightboxOptions = {
+			videoWidth: 1000,
+			labels: {
+				close: "<span class='fs-lightbox-icon-close'>" + Site.icon("close") + "</span>",
+				previous: "<span class='fs-lightbox-icon-previous'>" + Site.icon(PrevIcon) + "</span>",
+				count: "<span class='fs-lightbox-meta-divider'></span>",
+				next: "<span class='fs-lightbox-icon-next'>" + Site.icon(NextIcon) + "</span>"
+			}
+		};
+
 		$(".js-background").on("loaded.background", function() {
 			$(this).addClass("fs-background-loaded");
 			backgroundVideo(this);
@@ -83,13 +88,13 @@ Site.modules.Formstone = (function($, Site) {
 			var $next_button = $(this).find(".fs-carousel-control_next");
 			var next_text = $next_button.text();
 
-			$previous_button.html("<span class='fs-carousel-control-icon'>" + Site.icon(prev_icon) + "</span><span class='fs-carousel-control-label'>" + previous_text + "</span>");
-			$next_button.html("<span class='fs-carousel-control-icon'>" + Site.icon(next_icon) + "</span><span class='fs-carousel-control-label'>" + next_text + "</span>");
+			$previous_button.html("<span class='fs-carousel-control-icon'>" + Site.icon(PrevIcon) + "</span><span class='fs-carousel-control-label'>" + previous_text + "</span>");
+			$next_button.html("<span class='fs-carousel-control-icon'>" + Site.icon(NextIcon) + "</span><span class='fs-carousel-control-label'>" + next_text + "</span>");
 		});
 	}
 
-	Site.onInit.push(init);
-
-	return {};
+	return {
+		init: init
+	};
 
 })(jQuery, Site);

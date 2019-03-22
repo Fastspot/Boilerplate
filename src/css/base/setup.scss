@@ -3,9 +3,9 @@
 
 $root_font_size: 16;
 
-$base_speed: .25s;
+$base_speed: 0.25s;
 $base_timing: ease;
-$base_delay: .05s;
+$base_delay: 0.05s;
 
 $mq_min_ht: 800;
 $mq_min_xs: 320;
@@ -15,25 +15,27 @@ $mq_min_lg: 980;
 $mq_min_xl: 1220;
 $mq_min_xxl: 1330;
 
-$min_xs: "screen and (min-width:" + ($mq_min_xs * 1px) + ")";
-$min_sm: "screen and (min-width:" + ($mq_min_sm * 1px) + ")";
-$min_md: "screen and (min-width:" + ($mq_min_md * 1px) + ")";
-$min_lg: "screen and (min-width:" + ($mq_min_lg * 1px) + ")";
-$min_xl: "screen and (min-width:" + ($mq_min_xl * 1px) + ")";
-$min_xxl: "screen and (min-width:" + ($mq_min_xxl * 1px) + ")";
+$min_xs: "(min-width:" + ($mq_min_xs * 1px) + ")";
+$min_sm: "(min-width:" + ($mq_min_sm * 1px) + ")";
+$min_md: "(min-width:" + ($mq_min_md * 1px) + ")";
+$min_lg: "(min-width:" + ($mq_min_lg * 1px) + ")";
+$min_xl: "(min-width:" + ($mq_min_xl * 1px) + ")";
+$min_xxl: "(min-width:" + ($mq_min_xxl * 1px) + ")";
 
-$max_xs: "screen and (max-width:" + ($mq_min_xs - 1px) + ")";
-$max_sm: "screen and (max-width:" + ($mq_min_sm - 1px) + ")";
-$max_md: "screen and (max-width:" + ($mq_min_md - 1px) + ")";
-$max_lg: "screen and (max-width:" + ($mq_min_lg - 1px) + ")";
-$max_xl: "screen and (max-width:" + ($mq_min_xl - 1px) + ")";
-$max_xxl: "screen and (max-width:" + ($mq_min_xxl - 1px) + ")";
+$max_xs: "(max-width:" + ($mq_min_xs - 1px) + ")";
+$max_sm: "(max-width:" + ($mq_min_sm - 1px) + ")";
+$max_md: "(max-width:" + ($mq_min_md - 1px) + ")";
+$max_lg: "(max-width:" + ($mq_min_lg - 1px) + ")";
+$max_xl: "(max-width:" + ($mq_min_xl - 1px) + ")";
+$max_xxl: "(max-width:" + ($mq_min_xxl - 1px) + ")";
 
 $and_max_sm: "and (max-width:" + ($mq_min_sm - 1px) + ")";
 $and_max_md: "and (max-width:" + ($mq_min_md - 1px) + ")";
 $and_max_lg: "and (max-width:" + ($mq_min_lg - 1px) + ")";
 $and_max_xl: "and (max-width:" + ($mq_min_xl - 1px) + ")";
 $and_max_xxl: "and (max-width:" + ($mq_min_xxl - 1px) + ")";
+
+$reduce: "(prefers-reduced-motion: reduce)";
 
 $margin_sm: 40px;
 $margin_md: 50px;

@@ -264,7 +264,7 @@
 				<div class="sitemap_item{% if 'fs' in link.name %} sitemap_item_style_guide{% elseif 'dev' in link.name %} sitemap_item_dev{% elseif 'page' in link.name %} sitemap_item_page{% endif %}">
 					<a class="sitemap_link" href="templates/{{ link.name }}">
 						<span class="sitemap_link_label">{{ link.name|replace(nameReplace) }}</span>
-						<span class="sitemap_link_contents">{{ link.contents|replace(contentsReplace) }}{{ link.contents }}</span>
+						<span class="sitemap_link_contents">{{ link.contents|e }}</span>
 					</a>
 					<div class="sitemap_link_bubbles">
 						{% if 'page' in link.name and 'form-builder' not in link.name %}
@@ -292,7 +292,7 @@
 
 			search.addEventListener("keyup", searchSitemap, false);
 			search.addEventListener("search", searchSitemap, false);
-			
+
 			for (var i = 0; i < filter.length; i++) {
 				filter[i].addEventListener('click', triggerSearch, false);
 			}
@@ -347,7 +347,7 @@
 					if (groupName == 'style_guide') {
 						title = createTitle('Reference Pages');
 					} else if (groupName == 'page') {
-						title = createTitle('Site Pages');	
+						title = createTitle('Site Pages');
 					}
 
 					group.appendChild(title);
