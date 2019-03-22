@@ -1,18 +1,16 @@
 {% extends "_base.twig" %}
 
-{% block page %}
-	{% set page = {
-		metaImage: "/images/temp/social-wide.jpg",
-		metaImageWidth: "1220",
-		metaImageHeight: "686",
-		metaCard: "summary_large_image",
-		title: "Home",
-		intro: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-		layout: "home"
-	} %}
-{% endblock %}
+{% set page = {
+	metaImage: "/images/temp/social-wide.jpg",
+	metaImageWidth: "1220",
+	metaImageHeight: "686",
+	metaCard: "summary_large_image",
+	title: "Home",
+	intro: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+	layout: "home"
+} %}
 
-{% block pageContent %}
+{% block main %}
 
 	<!-- Page Feature -->
 	<div class="page_feature" id="skip_content" tabindex="-1">

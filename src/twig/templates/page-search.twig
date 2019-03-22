@@ -1,24 +1,12 @@
 {% extends "_base.twig" %}
 
-{% block page %}
-	{% set page = {
-		title: "Search",
-		intro: "",
-		layout: "full"
-	} %}
-{% endblock %}
+{% set page = {
+	title: "Search",
+	intro: "",
+	layout: "full"
+} %}
 
-{% block breadcrumbNav %}
-	{% set breadcrumbNav = [
-		page.title
-	] %}
-{% endblock %}
-
-{% block sectionTitle %}
-	{% set sectionTitle = page.title %}
-{% endblock %}
-
-{% block pageContent %}
+{% block main %}
 
 	<!-- Page Content -->
 	<div class="page_content">

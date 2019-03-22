@@ -7,60 +7,20 @@
 
 {% set grid = true %}
 
-{% block page %}
-	{% set page = {
-		title: "Page",
-		layout: "default"
-	} %}
-{% endblock %}
-
-{% block activePage %}
-	{% set activePage = 0 %}
-{% endblock %}
-
-{% block mainNav %}
-	{% set mainNavAlias = links.mainNav %}
-{% endblock %}
-
-{% block secondaryNav %}
-	{% set secondaryNavAlias = links.secondaryNav %}
-{% endblock %}
-
-{% block breadcrumbNav %}
-	{% set breadcrumbNav = [
-		page.title
-	] %}
-{% endblock %}
-
-{% block sectionTitle %}
-	{% set sectionTitle = page.title %}
-{% endblock %}
-
-{% block subNav %}
-	{% set subNavAlias = links.subNav %}
-{% endblock %}
-
-{% block utilityNav %}
-	{% set utilityNavAlias = links.utilityNav %}
-{% endblock %}
-
-{% block quickNav %}
-	{% set quickNavAlias = links.quickNav %}
-{% endblock %}
-
-{% block footerNav %}
-	{% set footerNavAlias = links.footerNav %}
-{% endblock %}
-
-{% block socialNav %}
-	{% set socialNavAlias = links.socialNav %}
-{% endblock %}
-
 {% import '../partials/macros.twig' as site %}
 
-{% include '../partials/base/header.twig' %}
+{% include '../partials/base/header.twig' with {
+	layout: page.layout|default("default"),
+	theme: page.theme|default("default"),
+	activePage: page.activePage|default(0),
+	mainNav: page.mainNav|default(links.mainNav),
+	secondaryNav: page.secondaryNav|default(links.secondaryNav)
+} %}
 
-{% block pageContent %}
+{% block main %}
 {% endblock %}
 
-{% include '../partials/base/footer.twig' %}
+{% include '../partials/base/footer.twig' with {
+	footerNav: page.footerNav|default(links.footerNav),
+	socialNav: page.socialNav|default(links.socialNav)
+} %}

@@ -3,7 +3,7 @@
 
 	{% include "head.twig" %}
 
-	<body class="preload fs-grid page_layout_{{ page.layout }}{% if page.theme %} page_theme_{{ page.theme }}{% endif %}" itemscope itemtype="http://schema.org/WebPage">
+	<body class="preload fs-grid page_layout_{{ layout }} page_theme_{{ theme }}" itemscope itemtype="http://schema.org/WebPage">
 
 		{% include '../update-notice.twig' %}
 
@@ -28,14 +28,14 @@
 									title: "Site",
 									icon: "caret_down",
 									active: activePage,
-									links: mainNavAlias
+									links: mainNav
 								} %}
 
 								{% include "../navigation/basic.twig" with {
 									class: "secondary_nav",
 									modifier: "lg",
 									title: "Secondary",
-									links: secondaryNavAlias
+									links: secondaryNav
 								} %}
 
 								<div class="header_group">

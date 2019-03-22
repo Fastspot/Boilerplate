@@ -1,28 +1,16 @@
 {% extends "_base.twig" %}
 
-{% block page %}
-	{% set page = {
-		metaImage: "/images/temp/social-wide.jpg",
-		metaImageWidth: "1220",
-		metaImageHeight: "686",
-		metaCard: "summary_large_image",
-		title: "Master Sub",
-		intro: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-		layout: "default"
-	} %}
-{% endblock %}
+{% set page = {
+	metaImage: "/images/temp/social-wide.jpg",
+	metaImageWidth: "1220",
+	metaImageHeight: "686",
+	metaCard: "summary_large_image",
+	title: "Master Sub",
+	intro: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+	layout: "default"
+} %}
 
-{% block breadcrumbNav %}
-	{% set breadcrumbNav = [
-		page.title
-	] %}
-{% endblock %}
-
-{% block sectionTitle %}
-	{% set sectionTitle = page.title %}
-{% endblock %}
-
-{% block pageContent %}
+{% block main %}
 
 	<!-- Page Feature -->
 	<div class="page_feature">
@@ -35,10 +23,7 @@
 		<div class="fs-row">
 
 			<div class="fs-cell fs-lg-4 page_aside page_sub_nav">
-				{% include "../partials/navigation/sub.twig" with {
-					title: sectionTitle,
-					links: subNavAlias
-				} %}
+				{% include "../partials/navigation/sub.twig" %}
 			</div>
 
 			<!-- Main Content -->

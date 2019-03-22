@@ -1,24 +1,12 @@
 {% extends "_base.twig" %}
 
-{% block page %}
-	{% set page = {
-		title: "Form Builder",
-		intro: "This is the Kitchen Sink form with all available Form Builder fields showing an error message and a required field missing content.",
-		layout: "default"
-	} %}
-{% endblock %}
+{% set page = {
+	title: "Form Builder",
+	intro: "This is the Kitchen Sink form with all available Form Builder fields showing an error message and a required field missing content.",
+	layout: "default"
+} %}
 
-{% block breadcrumbNav %}
-	{% set breadcrumbNav = [
-		page.title
-	] %}
-{% endblock %}
-
-{% block sectionTitle %}
-	{% set sectionTitle = page.title %}
-{% endblock %}
-
-{% block pageContent %}
+{% block main %}
 
 	<!-- Page Content -->
 	<div class="page_content">

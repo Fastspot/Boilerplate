@@ -1,7 +1,7 @@
 <!-- Page Header -->
 <div class="page_header">
 	{% include "../partials/navigation/breadcrumb.twig" with {
-		links: breadcrumbNav
+		links: page.breadcrumbNav|default([page.title])
 	} %}
 
 	{% if page.title %}

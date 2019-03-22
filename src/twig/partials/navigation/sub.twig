@@ -6,9 +6,9 @@
 	} %}
 #}
 
-{% set navTitle = title ?: "In This Section" %}
+{% set navTitle = page.title ?: "In This Section" %}
 
-<nav class="js-sub-nav sub_nav{% if modifier %} sub_nav_{{ modifier }}{% endif %}" aria-label="{{ title }}" itemscope itemtype="http://schema.org/SiteNavigationElement">
+<nav class="js-sub-nav sub_nav{% if modifier %} sub_nav_{{ modifier }}{% endif %}" aria-label="{{ page.title }}" itemscope itemtype="http://schema.org/SiteNavigationElement">
 	<div class="sub_nav_header">
 		<h2 class="sub_nav_title">{{ navTitle }}</h2>
 		<button class="js-swap js-sub-nav-handle sub_nav_handle" data-swap-target=".sub_nav_list" data-swap-title="{{ navTitle }}" data-swap-options='{"maxWidth": "980px"}'>
@@ -20,7 +20,7 @@
 		</button>
 	</div>
 	<ul class="js-sub-nav-list sub_nav_list" aria-label="{{ navTitle }}">
-		{% for link in links %}
+		{% for link in page.subNav|default(links.subNav) %}
 		<li class="sub_nav_item{% if link.modifier %} sub_nav_item_{{ link.modifier }}{% endif %}">
 			<a class="sub_nav_link" href="{{ link.href ?: '#' }}" itemprop="url">
 				{% if link.icon %}
