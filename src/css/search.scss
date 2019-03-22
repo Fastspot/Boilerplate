@@ -22,9 +22,7 @@
 
 .site_search_form {}
 
-.site_search_label {
-	@include visually_hide;
-}
+.site_search_label {}
 
 .site_search_input {
 	width: 100%;
