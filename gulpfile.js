@@ -263,7 +263,7 @@ gulp.task('sitemap', function(done) {
 				fs.readFile(base + '/' + file, 'utf8', function(err, contents) {
 					sitemap.push({
 						name: file,
-						contents: ""
+						contents: contents
 					});
 
 					steps++;
