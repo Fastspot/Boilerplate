@@ -1,0 +1,24 @@
+<!-- Menu -->
+<div class="js-menu menu" id="menu" aria-label="Site Menu">
+	{% include "../navigation/basic.twig" with {
+		class: "main_nav",
+		modifier: "sm",
+		title: "Site",
+		icon: "caret_down",
+		active: activePage,
+		links: mainNavAlias
+	} %}
+
+	{% include "../navigation/basic.twig" with {
+		class: "secondary_nav",
+		modifier: "sm",
+		title: "Secondary",
+		links: secondaryNavAlias
+	} %}
+
+	<button class="js-swap js-menu-close menu_close" data-swap-target=".menu" data-swap-linked="menu">
+		<span class="menu_close_icon">{{ site.icon("close") }}</span>
+		<span class="menu_close_label">Close Site Menu</span>
+	</button>
+</div>
+<!-- END: Menu -->

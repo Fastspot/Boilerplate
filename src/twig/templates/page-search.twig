@@ -8,35 +8,42 @@
 	} %}
 {% endblock %}
 
-{% block full_width_callouts %}
-	{% include "../partials/google-cse.twig" with {
-		results: [
-			{
-				title: "<strong>The Beatles</strong>",
-				description: "Detailed history with information on their music, movies, news, and latest projects. Images, related links, and a showcase for their albums.ails",
-				link: "www.thebeatles.com/"
-			},
-			{
-				title: "<strong>The Beatles</strong> - Wikipedia",
-				description: "<strong>The Beatles</strong> were an English rock band, formed in Liverpool in 1960. With members John Lennon, Paul McCartney, George Harrison and Ringo Starr, they...",
-				link: "https://en.wikipedia.org/wiki/The_Beatles"
-			},
-			{
-				title: "(US) <strong>The Beatles</strong> – Eight Days A Week",
-				description: "<strong>The Beatles</strong> were an English rock band, formed in Liverpool in 1960. With members John Lennon, Paul McCartney, George Harrison and Ringo Starr, they...",
-				link: "thebeatleseightdaysaweek.com/"
-			},
-			{
-				title: "<strong>The Beatles</strong> | Biography, Albums, Streaming Links | AllMusic",
-				description: "Find <strong>The Beatles</strong> bio, music, credits, awards, & streaming links on AllMusic - The most popular and influential rock act of all…",
-				link: "www.allmusic.com/artist/the-beatles-mn0000754032"
-			},
-			{
-				title: "<strong>The Beatles</strong> | Rolling Stone",
-				description: "'Blindman': The Story Behind a Drunk Beatle's Spaghetti Western. 'Blindman': The...Watch the Rolling Stones Cover Beatles' 'Come Together' at Desert Trip.",
-				link: "www.rollingstone.com/music/artists/the-beatles"
-			}
-		],
-		pages: 8
-	} %}
+{% block breadcrumbNav %}
+	{% set breadcrumbNav = [
+		page.title
+	] %}
+{% endblock %}
+
+{% block sectionTitle %}
+	{% set sectionTitle = page.title %}
+{% endblock %}
+
+{% block pageContent %}
+
+	<!-- Page Content -->
+	<div class="page_content">
+
+		<div class="fs-row">
+
+			<!-- Main Content -->
+			<div class="fs-cell fs-lg-10 fs-all-justify-center page_main_content" id="page_main_content" tabindex="-1">
+
+				{% include "../partials/page-header.twig" %}
+
+			</div>
+			<!-- END: Main Content -->
+
+		</div>
+
+		<!-- Full Width Callouts -->
+		<div class="full_width_callouts">
+
+			{% include "../partials/google-cse.twig" %}
+
+		</div>
+		<!-- END: Full Width Callouts -->
+
+	</div>
+	<!-- END: Page Content -->
+
 {% endblock %}

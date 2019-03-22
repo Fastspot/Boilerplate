@@ -1,0 +1,15 @@
+<!-- Page Header -->
+<div class="page_header">
+	{% include "../partials/navigation/breadcrumb.twig" with {
+		links: breadcrumbNav
+	} %}
+
+	{% if page.title %}
+	<h1 class="page_title" itemprop="name">{{ page.title }}</h1>
+	{% endif %}
+
+	{% if page.intro %}
+	<p class="page_intro" itemprop="description">{{ page.intro }}</p>
+	{% endif %}
+</div>
+<!-- END: Page Header -->

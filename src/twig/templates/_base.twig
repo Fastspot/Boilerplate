@@ -1,330 +1,66 @@
-<!DOCTYPE html>
-<html class="no-js" lang="en">
+{# Shortcuts For Use Within Components #}
+{% set feat = "../components/feature/" %}
+{% set full = "../components/full-width/" %}
+{% set inc = "../components/in-content/" %}
+{% set side = "../components/sidebar/" %}
+{% set par = "../../partials/" %}
 
-	{# Shortcuts For Use Within Components #}
-	{% set feat = "../components/feature/" %}
-	{% set full = "../components/full-width/" %}
-	{% set inc = "../components/in-content/" %}
-	{% set side = "../components/sidebar/" %}
-	{% set par = "../../partials/" %}
+{% set grid = true %}
 
-	{% set grid = true %}
+{% block page %}
+	{% set page = {
+		title: "Page",
+		layout: "default"
+	} %}
+{% endblock %}
 
-	{% block page %}
-		{% set page = {
-			title: "Page",
-			layout: "default"
-		} %}
-	{% endblock %}
+{% block activePage %}
+	{% set activePage = 0 %}
+{% endblock %}
 
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="mobile-web-app-capable" content="yes">
+{% block mainNav %}
+	{% set mainNavAlias = links.mainNav %}
+{% endblock %}
 
-		<title>{{ page.title }} | {{ vars.name }}</title>
-		<meta name="description" content="{{ vars.description }}">
+{% block secondaryNav %}
+	{% set secondaryNavAlias = links.secondaryNav %}
+{% endblock %}
 
-		{% include "../partials/favicons.html" %}
+{% block breadcrumbNav %}
+	{% set breadcrumbNav = [
+		page.title
+	] %}
+{% endblock %}
 
-		<!-- Facebook -->
-		<meta property="og:title" content="{{ page.title ?: vars.name }}">
-		<meta property="og:type" content="website">
-		<meta property="og:image" content="{{ page.metaImage ?: 'http://' ~ vars.domain ~ '/images/social-sq.png' }}">
-		<meta property="og:image:width" content="{{ page.metaImageWidth ?: 800 }}">
-		<meta property="og:image:height" content="{{ page.metaImageHeight ?: 800 }}">
-		<meta property="og:description" content="{{ page.intro ?: vars.description }}">
-		<meta property="og:site_name" content="{{ vars.name }}">
+{% block sectionTitle %}
+	{% set sectionTitle = page.title %}
+{% endblock %}
 
-		{% if vars.twitter != "TwitterName" %}
-		<!-- Twitter -->
-		<meta name="twitter:card" content="{{ page.metaCard ?: 'summary' }}">
-		<meta name="twitter:site" content="@{{ vars.twitter }}">
-		<meta name="twitter:creator" content="@{{ vars.twitter }}">
-		<meta name="twitter:url" content="//twitter.com/{{ vars.twitter }}">
-		<meta name="twitter:title" content="{{ page.title ?: vars.name }}">
-		<meta name="twitter:description" content="{{ page.intro ?: vars.description }}">
-		<meta name="twitter:image" content="{{ page.metaImage ?: 'http://' ~ vars.domain ~ '/images/social-sq.png' }}">
-		{% endif %}
+{% block subNav %}
+	{% set subNavAlias = links.subNav %}
+{% endblock %}
 
-		<script src="//code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous" async></script>
-		<script src="https://www.youtube.com/iframe_api" async></script>
+{% block utilityNav %}
+	{% set utilityNavAlias = links.utilityNav %}
+{% endblock %}
 
-		{% if page.stylesheets %}
-		{% for styles in page.stylesheets %}
-		<link rel="stylesheet" href="{{ styles }}">
-		{% endfor %}
-		{% endif %}
+{% block quickNav %}
+	{% set quickNavAlias = links.quickNav %}
+{% endblock %}
 
-		<link rel="stylesheet" href="../../css/site.css">
-	</head>
+{% block footerNav %}
+	{% set footerNavAlias = links.footerNav %}
+{% endblock %}
 
-	<body class="preload fs-grid page_layout_{{ page.layout }}{% if page.theme %} page_theme_{{ page.theme }}{% endif %}" itemscope itemtype="http://schema.org/WebPage">
+{% block socialNav %}
+	{% set socialNavAlias = links.socialNav %}
+{% endblock %}
 
-		{% block activePage %}
-			{% set activePage = 0 %}
-		{% endblock %}
+{% import '../partials/macros.twig' as site %}
 
-		{% block mainNav %}
-			{% set mainNavAlias = links.mainNav %}
-		{% endblock %}
+{% include '../partials/base/header.twig' %}
 
-		{% block secondaryNav %}
-			{% set secondaryNavAlias = links.secondaryNav %}
-		{% endblock %}
+{% block pageContent %}
+{% endblock %}
 
-		{% block breadcrumbNav %}
-			{% set breadcrumbNav = [
-				page.title
-			] %}
-		{% endblock %}
-
-		{% block sectionTitle %}
-			{% set sectionTitle = page.title %}
-		{% endblock %}
-
-		{% block subNav %}
-			{% set subNavAlias = links.subNav %}
-		{% endblock %}
-
-		{% block utilityNav %}
-			{% set utilityNavAlias = links.utilityNav %}
-		{% endblock %}
-
-		{% block quickNav %}
-			{% set quickNavAlias = links.quickNav %}
-		{% endblock %}
-
-		{% block footerNav %}
-			{% set footerNavAlias = links.footerNav %}
-		{% endblock %}
-
-		{% block socialNav %}
-			{% set socialNavAlias = links.socialNav %}
-		{% endblock %}
-
-		{% include '../partials/update-notice.twig' %}
-
-		{% import '../partials/macros.twig' as site %}
-
-		<a class="skip_link" id="skip_link" href="#page_main_content">Skip to Main Content</a>
-
-		<!-- Page Wrapper -->
-		<div class="page_wrapper">
-			<!-- Header -->
-			<header class="header" id="header">
-				<div class="header_ribbon">
-					<div class="fs-row">
-						<div class="fs-cell">
-							<div class="header_ribbon_inner">
-								{% include "../partials/logo.twig" with {
-									modifier: "header",
-									icon: "logo"
-								} %}
-
-								{% include "../partials/navigation/basic.twig" with {
-									class: "main_nav",
-									modifier: "lg",
-									title: "Site",
-									icon: "caret_down",
-									active: activePage,
-									links: mainNavAlias
-								} %}
-
-								{% include "../partials/navigation/basic.twig" with {
-									class: "secondary_nav",
-									modifier: "lg",
-									title: "Secondary",
-									links: secondaryNavAlias
-								} %}
-
-								<div class="header_group">
-									{% include "../partials/handle.twig" with {
-										class: "menu",
-										target: "menu",
-										icon: "menu",
-										label: "Open Menu"
-									} %}
-
-									{% include "../partials/search-handle.twig" %}
-
-									{% include "../partials/search.twig" with {
-										modifier: "lg",
-										placeholder: "Search",
-										buttonText: ""
-									} %}
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</header>
-			<!-- END: Header -->
-
-			<!-- Page -->
-			<main class="page">
-				{% if page.layout != "home" %}
-				<!-- Page Feature -->
-				<div class="page_feature">
-					{% block page_feature %}
-					{% endblock %}
-				</div>
-				<!-- END: Page Feature -->
-				{% endif %}
-
-				<!-- Page Content -->
-				<div class="page_content">
-					{% if page.layout != "home" %}
-					<div class="fs-row">
-						{% if page.layout == "default" %}
-						<div class="fs-cell fs-lg-4 page_aside page_sub_nav">
-							{% include "../partials/navigation/sub.twig" with {
-								title: sectionTitle,
-								links: subNavAlias
-							} %}
-						</div>
-						{% endif %}
-
-						<!-- Main Content -->
-						<div class="fs-cell{% if page.layout == "default" %} fs-lg-8{% else %} fs-lg-10 fs-all-justify-center{% endif %} page_main_content" id="page_main_content" tabindex="-1">
-							<!-- Page Header -->
-							{% block page_header %}
-							<div class="page_header">
-								{% include "../partials/navigation/breadcrumb.twig" with {
-									links: breadcrumbNav
-								} %}
-
-								{% if page.title %}
-								<h1 class="page_title" itemprop="name">{{ page.title }}</h1>
-								{% endif %}
-
-								{% if page.intro %}
-								<p class="page_intro" itemprop="description">{{ page.intro }}</p>
-								{% endif %}
-							</div>
-							{% endblock %}
-							<!-- END: Page Header -->
-
-							<!-- WYSIWYG -->
-							<div class="typography" itemprop="mainEntity">
-								{% block typography %}
-								{% endblock %}
-							</div>
-							<!-- END: WYSIWYG -->
-
-							{% block after_typography %}
-							{% endblock %}
-
-							<!-- In Content Callouts -->
-							<div class="in_content_callouts">
-								{% block in_content_callouts %}
-								{% endblock %}
-							</div>
-							<!-- END: In Content Callouts -->
-						</div>
-						<!-- END: Main Content -->
-
-						{% if page.layout == "default" %}
-						<!-- Sidebar Callouts -->
-						<div class="fs-cell fs-lg-4 page_aside page_sidebar">
-							{% block sidebar %}
-							{% endblock %}
-						</div>
-						<!-- END: Sidebar Callouts -->
-						{% endif %}
-					</div>
-					{% endif %}
-
-					<!-- Full Width Callouts -->
-					<div class="full_width_callouts"{% if page.layout == "home" %} id="page_main_content"{% endif %}>
-						{% block full_width_callouts %}
-						{% endblock %}
-					</div>
-					<!-- END: Full Width Callouts -->
-				</div>
-				<!-- END: Page Content -->
-			</main>
-			<!-- END: Page -->
-
-			<!-- Footer -->
-			<footer class="footer" id="footer">
-				<div class="footer_ribbon">
-					<div class="fs-row">
-						<div class="fs-cell">
-							<div class="footer_ribbon_inner">
-								{% include "../partials/meta.twig" with {
-									name: vars.name,
-									icon: "logo",
-									street: "2980 Falls Road",
-									city: "Baltimore",
-									state: "MD",
-									zip: "21211",
-									email: "team@fastspot.com",
-									phone: "202-432-1200",
-									fax: "294-467-9876"
-								} %}
-
-								{% include "../partials/navigation/basic.twig" with {
-									class: "footer_nav",
-									title: "Footer",
-									links: footerNavAlias
-								} %}
-
-								{% include "../partials/navigation/social.twig" with {
-									title: "Social",
-									links: socialNavAlias
-								} %}
-
-								{% include "../partials/copyright.twig" %}
-							</div>
-						</div>
-					</div>
-				</div>
-			</footer>
-			<!-- END: Footer -->
-		</div>
-		<!-- END: page_wrapper -->
-
-		<!-- Menu -->
-		<div class="js-menu menu" id="menu" aria-label="Site Menu">
-			{% include "../partials/navigation/basic.twig" with {
-				class: "main_nav",
-				modifier: "sm",
-				title: "Site",
-				icon: "caret_down",
-				active: activePage,
-				links: mainNavAlias
-			} %}
-
-			{% include "../partials/navigation/basic.twig" with {
-				class: "secondary_nav",
-				modifier: "sm",
-				title: "Secondary",
-				links: secondaryNavAlias
-			} %}
-
-			<button class="js-swap js-menu-close menu_close" data-swap-target=".menu" data-swap-linked="menu">
-				<span class="menu_close_icon">{{ site.icon("close") }}</span>
-				<span class="menu_close_label">Close Site Menu</span>
-			</button>
-		</div>
-		<!-- END: Menu -->
-
-		<script>
-			var WWW_ROOT = "";
-			var STATIC_ROOT = "../../";
-		</script>
-		{% if page.scripts %}
-		{% for script in page.scripts %}
-		{{ script }}
-		{% endfor %}
-		{% endif %}
-		<script src="../../js/site.js" async></script>
-		{% if grid %}
-		<script>
-			(function(){if(typeof FSGridBookmarklet==='undefined'){document.body.appendChild(document.createElement('script')).src='//formstone.it/js/bookmarklet/grid.js';}else{FSGridBookmarklet();}} )();
-		</script>
-		{% endif %}
-	</body>
-</html>
+{% include '../partials/base/footer.twig' %}

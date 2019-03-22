@@ -18,21 +18,63 @@
 	] %}
 {% endblock %}
 
-{% block page_feature %}
+{% block sectionTitle %}
+	{% set sectionTitle = page.title %}
 {% endblock %}
 
-{% block typography %}
-{% endblock %}
+{% block pageContent %}
 
-{% block in_content_callouts %}
-{% endblock %}
+	<!-- Page Feature -->
+	<div class="page_feature">
+	</div>
+	<!-- END: Page Feature -->
 
-{% block sidebar %}
-{% endblock %}
+	<!-- Page Content -->
+	<div class="page_content">
 
-{% block subNav %}
-	{% set subNavAlias = links.subNav %}
-{% endblock %}
+		<div class="fs-row">
 
-{% block full_width_callouts %}
+			<div class="fs-cell fs-lg-4 page_aside page_sub_nav">
+				{% include "../partials/navigation/sub.twig" with {
+					title: sectionTitle,
+					links: subNavAlias
+				} %}
+			</div>
+
+			<!-- Main Content -->
+			<div class="fs-cell fs-lg-8 page_main_content" id="page_main_content" tabindex="-1">
+
+				{% include "../partials/page-header.twig" %}
+
+				<!-- WYSIWYG -->
+				<div class="typography" itemprop="mainEntity">
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+
+					<p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.</p>
+				</div>
+				<!-- END: WYSIWYG -->
+
+				<!-- In Content Callouts -->
+				<div class="in_content_callouts">
+				</div>
+				<!-- END: In Content Callouts -->
+
+			</div>
+			<!-- END: Main Content -->
+
+			<!-- Sidebar Callouts -->
+			<div class="fs-cell fs-lg-4 page_aside page_sidebar">
+			</div>
+			<!-- END: Sidebar Callouts -->
+
+		</div>
+
+		<!-- Full Width Callouts -->
+		<div class="full_width_callouts">
+		</div>
+		<!-- END: Full Width Callouts -->
+
+	</div>
+	<!-- END: Page Content -->
+
 {% endblock %}
