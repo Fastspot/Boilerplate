@@ -23,40 +23,40 @@ button {
 			display: flex;
 		}
 
+		[class$="label"] {}
+
 		[class$="icon"] {
 
 			@media print {
 				display: none;
 			}
 		}
-
-		[class$="label"] {}
 	}
 }
 
 @mixin button_text() {}
 
 @mixin button_fill(
-	$b: $gray_10,
-	$hb: $gray_20,
-	$c: $gray_60,
-	$hc: $gray_80
+	$background: #eee,
+	$hoverBackground: #222,
+	$color: #222,
+	$hoverColor: #eee
 ) {
-	background: $b;
-	color: $c;
+	background: $background;
+	color: $color;
 	transition:
 		background $base_speed,
 		color $base_speed;
 
 	&:focus,
 	&:hover {
-		background: $hb;
-		color: $hc;
+		background: $hoverBackground;
+		color: $hoverColor;
 	}
 
-	[class$="icon"] {}
-
 	[class$="label"] {}
+
+	[class$="icon"] {}
 }
 
 @mixin button_inline($layout: true) {

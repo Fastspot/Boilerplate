@@ -35,6 +35,7 @@ body {
 	}
 
 	&.fs-page-lock {
+		overflow-y: hidden;
 
 		&:before {
 			opacity: 1;

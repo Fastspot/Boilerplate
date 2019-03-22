@@ -6,7 +6,9 @@
 	display: block;
 	stroke: inherit;
 	fill: currentColor;
-	transition: fill $base_speed;
+	transition: 
+		fill $base_speed,
+		stroke $base_speed;
 
 	@media print {
 		display: none;
@@ -38,11 +40,11 @@
 		(youtube, 21, 15)
 	);
 
-	@each $label, $w, $h in $icons {
+	@each $label, $width, $height in $icons {
 
 		&_#{$label} {
-			height: $h#{px};
-			width: $w#{px};
+			height: $height#{px};
+			width: $width#{px};
 		}
 	}
 }

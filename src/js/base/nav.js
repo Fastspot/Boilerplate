@@ -13,10 +13,11 @@ Site.modules.Nav = (function($, Site) {
 
 	function init() {
 		$Nav = $(".js-nav");
+
 		if ($Nav.length) {
-			$Children = $Nav.find(".js-nav-children");
-			$Toggle = $Nav.find(".js-nav-toggle");
-			$ChildLink = $Nav.find(".js-nav-child-link");
+			$Children = $(".js-nav-children");
+			$ChildLink = $(".js-nav-child-link");
+			$Toggle = $(".js-nav-toggle");
 
 			$Children.attr("aria-hide", true);
 			$ChildLink.attr("tabindex", -1);

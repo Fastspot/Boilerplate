@@ -7,6 +7,7 @@ Site.modules.Menu = (function($, Site) {
 	var $Menu,
 	$MenuHandle,
 	$MenuClose,
+	$ShiftingElements,
 	LockClass;
 
 	function init() {
@@ -15,7 +16,8 @@ Site.modules.Menu = (function($, Site) {
 		if ($Menu.length) {
 			$MenuHandle = $(".js-menu-handle");
 			$MenuClose = $(".js-menu-close");
-			LockClass = "fs-navigation-lock fs-page-lock";
+			$ShiftingElements = $(".header, .page, .footer");
+			LockClass = "fs-page-lock";
 
 			$Menu
 				.attr("aria-hidden", true)
@@ -24,6 +26,16 @@ Site.modules.Menu = (function($, Site) {
 			createSiteButtons($(".js-menu-handle"));
 			bindUI();
 		}
+	}
+
+	function createSiteButtons($element) {
+		$element.each(function() {
+			$element.attr({
+				"aria-expanded": false,
+				"aria-haspopup": true,
+				"role": "button"
+			});
+		});
 	}
 
 	function bindUI() {
@@ -60,9 +72,9 @@ Site.modules.Menu = (function($, Site) {
 		})
 		.find(".js-nav-link, button, input").removeAttr("tabindex");
 
-		$(".header, .page, .footer").css("padding-right", Site.modules.Page.getScrollbarWidth());
-		$(".menu").css("margin-right", "");
-		$(".menu").css("width", "");
+		$ShiftingElements.css("padding-right", Site.modules.Page.getScrollbarWidth());
+		$Menu.css("margin-right", "");
+		$Menu.css("width", "");
 	}
 
 	function onMenuSwapDeactivate() {
@@ -74,14 +86,14 @@ Site.modules.Menu = (function($, Site) {
 			.find(".js-nav-link, button, input").attr("tabindex", "-1");
 		$MenuHandle.attr("aria-expanded", false).focus();
 
-		$(".header, .page, .footer").css("padding-right", "");
-		$(".menu").css("margin-right", Site.modules.Page.getScrollbarWidth() * -1);
-		$(".menu").css("width", "calc(100% + " + Site.modules.Page.getScrollbarWidth() + "px)");
+		$ShiftingElements.css("padding-right", "");
+		$Menu.css("margin-right", Site.modules.Page.getScrollbarWidth() * -1);
+		$Menu.css("width", "calc(100% + " + Site.modules.Page.getScrollbarWidth() + "px)");
 	}
 
 	function onCloseKeydown(e) {
-		if(e.keyCode === 9) { // tab
-			if(!(e.shiftKey)) {
+		if (e.keyCode === 9) { // tab
+			if (!(e.shiftKey)) {
 				$Menu.focus();
 			}
 		}
@@ -89,8 +101,8 @@ Site.modules.Menu = (function($, Site) {
 
 	function onMenuKeydown(e) {
 		if ($Menu.is(":focus")) {
-			if(e.keyCode === 9) { // tab
-				if(e.shiftKey) {
+			if (e.keyCode === 9) { // tab
+				if (e.shiftKey) {
 					e.preventDefault();
 					$MenuClose.focus();
 				}
@@ -102,16 +114,6 @@ Site.modules.Menu = (function($, Site) {
 		if (e.keyCode === 27) { // escape
 			$MenuHandle.swap("deactivate");
 		}
-	}
-
-	function createSiteButtons($element) {
-		$element.each(function() {
-			$element.attr({
-				"aria-expanded": false,
-				"aria-haspopup": true,
-				"role": "button"
-			});
-		});
 	}
 
 	return {

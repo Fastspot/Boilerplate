@@ -118,8 +118,13 @@
 			.sitemap_item {
 				position: relative;
 
-				border-top: 2px solid #eee;
+				border: 2px solid #eee;
+				border-bottom: 0;
 				display: none;
+			}
+
+			.sitemap_item:last-child {
+				border-bottom: 2px solid #eee;
 			}
 
 			.sitemap_group .sitemap_item {

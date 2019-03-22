@@ -17,6 +17,7 @@ Site.modules.Page = (function($, Site) {
 		responsiveVideo();
 		tableOverflowPrep();
 		tableOverflow();
+		
 		Site.modules.Formstone.init();
 		Site.modules.Menu.init();
 		Site.modules.Nav.init();
