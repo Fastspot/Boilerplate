@@ -6,13 +6,9 @@
 	display: block;
 	stroke: inherit;
 	fill: currentColor;
-	transition: 
+	transition:
 		fill $base_speed,
 		stroke $base_speed;
-
-	@media print {
-		display: none;
-	}
 
 	$icons: (
 		(caret_down, 20, 10),

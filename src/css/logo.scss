@@ -16,6 +16,14 @@
 	overflow: hidden;
 	user-select: none;
 	white-space: nowrap;
+
+	&:after {
+
+		@media print {
+			content: normal;
+			display: none;
+		}
+	}
 }
 
 .logo_link_label {

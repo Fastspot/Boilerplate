@@ -6,7 +6,16 @@
 
 .meta_logo {}
 
-.meta_logo_link {}
+.meta_logo_link {
+
+	&:after {
+
+		@media print {
+			content: normal;
+			display: none;
+		}
+	}
+}
 
 .meta_logo_label {
 	@include visually_hide;
@@ -28,6 +37,14 @@
 
 .meta_detail_label {
 	color: inherit;
+
+	&:after {
+
+		@media print {
+			content: normal;
+			display: none;
+		}
+	}
 }
 
 .meta_detail_label_address {}
