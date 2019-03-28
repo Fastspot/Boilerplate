@@ -5,10 +5,6 @@
 .footer {
 	background: #eee;
 	padding: 20px 0;
-
-	@media print {
-		display: none;
-	}
 }
 
 .footer_ribbon {}

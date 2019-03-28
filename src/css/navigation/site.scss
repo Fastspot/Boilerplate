@@ -2,7 +2,12 @@
 	Site Navigation
 ============================================================================= */
 
-.nav {}
+.nav {
+
+	@media print {
+		display: none;
+	}
+}
 
 .nav_header {}
 

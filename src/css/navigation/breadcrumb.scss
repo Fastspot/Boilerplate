@@ -5,6 +5,10 @@
 .breadcrumb_nav {
 	display: none;
 
+	@media print {
+		display: none !important;
+	}
+
 	@media #{$min_lg} {
 		display: block;
 	}

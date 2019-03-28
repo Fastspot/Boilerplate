@@ -2,7 +2,12 @@
 	Social Navigation
 ============================================================================= */
 
-.social_nav {}
+.social_nav {
+
+	@media print {
+		display: none;
+	}
+}
 
 .social_nav_header {}
 
