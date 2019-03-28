@@ -14,7 +14,9 @@
 	flex-grow: 1;
 }
 
-.page_feature {}
+.page_feature {
+	@include focus_outline_none;
+}
 
 .page_content {
 
@@ -61,7 +63,7 @@
 
 .page_intro {
 	@include intro_text;
-	
+
 	margin: 0;
 }
 
