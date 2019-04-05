@@ -69,7 +69,7 @@
 			?>
 		</div>
 
-		<div class="fs-cell-right fs-lg-4 page_aside page_sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+		<div class="fs-cell-right fs-lg-4 page_aside page_sidebar">
 			<?php
 				if (!empty($sidebar_callouts) && is_array($sidebar_callouts)) {
 					foreach ($sidebar_callouts as $callout) {
