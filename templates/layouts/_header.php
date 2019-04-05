@@ -33,10 +33,10 @@
 			}
 		?>
 
-		<a class="skip_link" id="skip_to_content" href="#page_main_content">Skip to Main Content</a>
+		<a class="skip_link" id="skip_link" href="#page_main_content">Skip to Main Content</a>
 
 		<div class="page_wrapper">
-			<header class="header" id="header" itemscope itemtype="http://schema.org/WPHeader">
+			<header class="header" id="header">
 				<div class="header_ribbon">
 					<div class="fs-row">
 						<div class="fs-cell">
@@ -83,4 +83,4 @@
 				</div>
 			</header>
 
-			<main class="page_inner" itemprop="mainContentOfPage">
+			<main class="page">
