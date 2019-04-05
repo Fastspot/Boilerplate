@@ -10,6 +10,10 @@
 		fill $base_speed,
 		stroke $base_speed;
 
+	@media print {
+		display: none;
+	}
+
 	$icons: (
 		(caret_down, 20, 10),
 		(chevron_left, 20, 20),
