@@ -1,21 +1,12 @@
 			</main>
 				
-			<footer class="footer" id="footer" itemscope itemtype="http://schema.org/WPFooter">
+			<footer class="footer" id="footer">
 				<div class="footer_ribbon">
 					<div class="fs-row">
 						<div class="fs-cell">
 							<div class="footer_ribbon_inner">
 								<?php
-									include_with("logo.php", [
-										"modifier" => "footer",
-										"icon" => "logo"
-									]);
-								?>
-								<div class="copyright">
- 									<p class="copyright_info">&copy; <span class="copyright_holder" itemprop="copyrightHolder" itemscope="" itemtype="http://schema.org/<?=$site["schema_type"]?>"><?=$site["title"]?></span> <span <span class="copyright_year" itemprop="copyrightYear"><?=date("Y")?></span></p>
- 								</div>
- 								<?php
-									include_with("address.php", $site["address"]);
+									include_with("meta.php", $site["address"]);
 
 									include_with("navigation/basic.php", [
 										"class" => "footer_nav",
@@ -29,6 +20,10 @@
 										"icon" => true
 									]);
 								?>
+
+								<div class="copyright">
+ 									<p class="copyright_info">&copy; <span class="copyright_holder" itemprop="copyrightHolder" itemscope="" itemtype="http://schema.org/<?=$site["schema_type"]?>"><?=$site["title"]?></span> <span <span class="copyright_year" itemprop="copyrightYear"><?=date("Y")?></span></p>
+ 								</div>
 							</div>
 						</div>
 					</div>
@@ -36,13 +31,8 @@
 			</footer>
 		</div>
 
-		<div class="js-menu menu" id="menu">
+		<div class="js-menu menu" id="menu" aria-label="Site Menu">
 			<?php
-				include_with("search.php", [
-					"modifier" => "sm",
-					"placeholder" => "Search"
-				]);
-
 				include_with("navigation/main.php", [
 					"modifier" => "sm",
 					"title" => "Site",
