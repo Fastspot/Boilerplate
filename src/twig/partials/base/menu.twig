@@ -6,14 +6,14 @@
 		title: "Site",
 		icon: "caret_down",
 		active: activePage,
-		links: mainNavAlias
+		links: mainNav
 	} %}
 
 	{% include "../navigation/basic.twig" with {
 		class: "secondary_nav",
 		modifier: "sm",
 		title: "Secondary",
-		links: secondaryNavAlias
+		links: secondaryNav
 	} %}
 
 	<button class="js-swap js-menu-close menu_close" data-swap-target=".menu" data-swap-linked="menu">

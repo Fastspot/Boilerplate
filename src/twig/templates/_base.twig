@@ -21,6 +21,8 @@
 {% endblock %}
 
 {% include '../partials/base/footer.twig' with {
+	mainNav: page.mainNav|default(links.mainNav),
+	secondaryNav: page.secondaryNav|default(links.secondaryNav),
 	footerNav: page.footerNav|default(links.footerNav),
 	socialNav: page.socialNav|default(links.socialNav)
 } %}
