@@ -48,12 +48,12 @@
 		}
 	}
 
-	function get_gallery_link($item, $autoplay = true) {
+	function get_gallery_link($item) {
 		if (!empty($item["video"]["service"])) {
-			if ($item["video"]["service"] == "youtube") {
-				return "//www.youtube.com/embed/".$item["video"]["id"]."?rel=0&showinfo=0".($autoplay ? "&autoplay=true" : "");
+			if ($item["video"]["service"] == "YouTube") {
+				return "//www.youtube.com/embed/".$item["video"]["id"];
 			} else {
-				return "//player.vimeo.com/video/".$item["video"]["id"]."?rel=0&showinfo=0".($autoplay ? "&autoplay=true" : "");
+				return "//vimeo.com/".$item["video"]["id"];
 			}
 		} else {
 			return $item["image"];
