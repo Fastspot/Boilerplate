@@ -20,12 +20,9 @@
 }
 
 .menu_handle_icon {
-	position: absolute;
-	top: 50%;
-	left: 50%;
+	@include center;
 
 	pointer-events: none;
-	transform: translate(-50%, -50%);
 }
 
 .menu_handle_label {
