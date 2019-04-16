@@ -46,10 +46,6 @@
 
 	background: #fff;
 	display: block;
-	transition:
-		opacity 0.35s,
-		transform 0.35s,
-		visibility 0.35s;
 
 	@media #{$reduce} {
 		transition-duration: 0.6s;
@@ -61,6 +57,13 @@
 
 	@media #{$min_lg} {
 		display: none;
+	}
+
+	.loaded & {
+		transition:
+			opacity 0.35s,
+			transform 0.35s,
+			visibility 0.35s;
 	}
 
 	.js & {
