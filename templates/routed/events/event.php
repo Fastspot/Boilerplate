@@ -13,7 +13,7 @@
 			$cms->catch404();
 		}
 
-		$bigtree["bar_edit_link"] = ADMIN_ROOT."com.fastspot.events*events/edit/".$event["id"]."/";
+		$bigtree["bar_edit_link"] = ADMIN_ROOT."com.fastspot.2.events*events/edit/".$event["id"]."/";
 	}
 
 	$cms->setHeadContext("btx_events_events", $event["id"], $event["title"], $event["blurb"], $event["image"] ? BigTree::prefixFile($event["image"], "wide-med-"), "event");

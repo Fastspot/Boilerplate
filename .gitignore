@@ -2,6 +2,8 @@
 node_cache/
 node_modules/
 package-lock.json
+pnpm-debug.log
+pnpm-lock.yaml
 trello.json
 cache/
 custom/environment.php
