@@ -114,7 +114,7 @@
 										$service = strtolower($link["service"]);
 								?>
 								<div class="contact_social contact_social_<?=$service?>">
-									<a class="contact_social_link" <?=href($link["url"])?> itemprop="sameAs">
+									<a class="contact_social_link" <?=href($link["url"])?> itemprop="sameAs" aria-label="<?=$link["service"]?> for <?=$name?>">
 										<span class="contact_social_icon"><?=icon($service)?></span>
 										<span class="contact_social_label"><?=$link["service"]?></span>
 									</a>
