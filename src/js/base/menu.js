@@ -32,7 +32,6 @@ Site.modules.Menu = (function($, Site) {
 		$element.each(function() {
 			$element.attr({
 				"aria-expanded": false,
-				"aria-haspopup": true,
 				"role": "button"
 			});
 		});
