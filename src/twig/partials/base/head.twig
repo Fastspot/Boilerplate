@@ -12,21 +12,21 @@
 	<!-- Facebook -->
 	<meta property="og:title" content="{{ page.title ?: vars.name }}">
 	<meta property="og:type" content="website">
-	<meta property="og:image" content="{{ page.metaImage ?: 'http://' ~ vars.domain ~ '/images/social-sq.png' }}">
-	<meta property="og:image:width" content="{{ page.metaImageWidth ?: 800 }}">
-	<meta property="og:image:height" content="{{ page.metaImageHeight ?: 800 }}">
+	<meta property="og:image" content="{{ page.metaImage ?: 'http://' ~ vars.domain ~ '/images/social.png' }}">
+	<meta property="og:image:width" content="{{ page.metaImageWidth ?: 1200 }}">
+	<meta property="og:image:height" content="{{ page.metaImageHeight ?: 600 }}">
 	<meta property="og:description" content="{{ page.intro ?: vars.description }}">
 	<meta property="og:site_name" content="{{ vars.name }}">
 
 	{% if vars.twitter != "TwitterName" %}
 	<!-- Twitter -->
-	<meta name="twitter:card" content="{{ page.metaCard ?: 'summary' }}">
+	<meta name="twitter:card" content="{{ page.metaCard ?: 'summary_large_image' }}">
 	<meta name="twitter:site" content="@{{ vars.twitter }}">
 	<meta name="twitter:creator" content="@{{ vars.twitter }}">
 	<meta name="twitter:url" content="//twitter.com/{{ vars.twitter }}">
 	<meta name="twitter:title" content="{{ page.title ?: vars.name }}">
 	<meta name="twitter:description" content="{{ page.intro ?: vars.description }}">
-	<meta name="twitter:image" content="{{ page.metaImage ?: 'http://' ~ vars.domain ~ '/images/social-sq.png' }}">
+	<meta name="twitter:image" content="{{ page.metaImage ?: 'http://' ~ vars.domain ~ '/images/social.png' }}">
 	{% endif %}
 
 	<script src="//code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous" async></script>

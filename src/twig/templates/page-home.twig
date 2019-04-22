@@ -1,14 +1,12 @@
 {% extends "_base.twig" %}
 
-{% set page = {
-	metaImage: "/images/temp/social-wide.jpg",
-	metaImageWidth: "1220",
-	metaImageHeight: "686",
-	metaCard: "summary_large_image",
-	title: "Home",
-	intro: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-	layout: "home"
-} %}
+{% block page %}
+	{% set page = {
+		title: "Home",
+		intro: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		layout: "home"
+	} %}
+{% endblock %}
 
 {% block main %}
 

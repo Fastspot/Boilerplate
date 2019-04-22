@@ -44,10 +44,10 @@ var source = {
 		'!src/twig/templates/fs-components.twig',
 		'!src/twig/templates/fs-templates.twig'
 	],
-	templates: 'static/templates/*.html',
+	templates: 'static-html/templates/*.html',
 	accessibility: [
-		'static/templates/page*.html',
-		'!static/templates/page-form-builder.html',
+		'static-html/templates/page*.html',
+		'!static-html/templates/page-form-builder.html',
 	],
 	sitemap: 'src/twig/index.twig',
 	jshint: 'src/js/modules/*.js',
@@ -176,7 +176,7 @@ gulp.task('trello', function(done) {
 					.pipe(rename({
 						extname: '.html'
 					}))
-					.pipe(gulp.dest('static/templates'));
+					.pipe(gulp.dest('static-html/templates'));
 			}
 		});
 
@@ -229,7 +229,7 @@ gulp.task('twig', function() {
 		.pipe(rename({
 			extname: '.html'
 		}))
-		.pipe(gulp.dest('static/templates'))
+		.pipe(gulp.dest('static-html/templates'))
 		.pipe(browserSync.stream());
 
 });
@@ -243,14 +243,14 @@ gulp.task('pretty-html', function() {
 			"indent_char": "	",
 			"preserve_newlines": false
 		}))
-		.pipe(gulp.dest('static/templates'));
+		.pipe(gulp.dest('static-html/templates'));
 
 });
 
 
 gulp.task('sitemap', function(done) {
 
-	var base = "static/templates";
+	var base = "static-html/templates";
 	var sitemap = [];
 	var steps = 1;
 
@@ -280,7 +280,7 @@ gulp.task('sitemap', function(done) {
 							.pipe(rename({
 								extname: '.html'
 							}))
-							.pipe(gulp.dest('static/'));
+							.pipe(gulp.dest('static-html/'));
 					}
 				});
 			}
@@ -376,7 +376,7 @@ gulp.task('imagemin', function() {
 
 gulp.task('image-crops', function(done) {
 
-	var base = 'static/templates';
+	var base = 'static-html/templates';
 	var exclude = ["16x16", "32x32", "144x144", "180x180"];
 	var crops = [];
 	var modCrops = [];
@@ -424,7 +424,7 @@ gulp.task('image-crops', function(done) {
 							.pipe(rename({
 								extname: '.html'
 							}))
-							.pipe(gulp.dest('static/templates'));
+							.pipe(gulp.dest('static-html/templates'));
 					}
 				});
 			}
@@ -498,7 +498,7 @@ gulp.task('component-image-crops', function(done) {
 						.pipe(rename({
 							extname: '.html'
 						}))
-						.pipe(gulp.dest('static/templates'));
+						.pipe(gulp.dest('static-html/templates'));
 				}
 			});
 		});
@@ -589,7 +589,7 @@ gulp.task('check-for-favicon-update', function(done) {
 gulp.task('axe', function() {
 
   var options = {
-		folderOutputReport: 'static/',
+		folderOutputReport: 'static-html/',
 		headless: true,
 		saveOutputIn: 'axe.json',
 		showOnlyViolations: true,
@@ -607,22 +607,22 @@ gulp.task('axe-page', function() {
 		.pipe(twig({
 			data: {
 				vars: packageJSON.vars,
-				items: require('./static/axe.json')
+				items: require('./static-html/axe.json')
 			}
 		}))
 		.pipe(rename({
 			basename: "axe",
 			extname: '.html'
 		}))
-		.pipe(gulp.dest('static/templates'));
+		.pipe(gulp.dest('static-html/templates'));
 
 });
 
 
 gulp.task('pa11y', function(done) {
 
-	if (!fs.existsSync('static/pa11y')) {
-		fs.mkdirSync('static/pa11y');
+	if (!fs.existsSync('static-html/pa11y')) {
+		fs.mkdirSync('static-html/pa11y');
 	}
 
 	var urls = globby.sync(source.accessibility);
@@ -676,7 +676,7 @@ gulp.task('pa11y', function(done) {
 				basename: 'pa11y',
 				extname: '.html'
 			}))
-			.pipe(gulp.dest('static/templates'));
+			.pipe(gulp.dest('static-html/templates'));
 
 		console.log('All done! All pa11y links should be functional now!');
 	};
@@ -694,7 +694,7 @@ gulp.task('clean', function(done) {
 	del('favicons');
 	del('images');
 	del('js');
-	del('static');
+	del('static-html');
 
 	done();
 
@@ -707,7 +707,7 @@ gulp.task('browser-sync', function(done) {
 		logPrefix: packageJSON.vars.name,
 		ui: false,
 		server: './',
-		startPath: '/static/index.html',
+		startPath: '/static-html/index.html',
 		notify: {
 			styles: {
 				top: 'auto',

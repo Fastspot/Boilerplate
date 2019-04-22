@@ -1,16 +1,25 @@
 {% extends "_base.twig" %}
 
-{% set page = {
-	metaImage: "/images/temp/social-wide.jpg",
-	metaImageWidth: "1220",
-	metaImageHeight: "686",
-	metaCard: "summary_large_image",
-	title: "Master Sub",
-	intro: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-	layout: "default"
-} %}
+{% block page %}
+	{% set page = {
+		metaImage: "/images/temp/social-wide.jpg",
+		title: "Master Sub",
+		intro: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		layout: "default"
+	} %}
+{% endblock %}
 
-{% block main %}
+{% block breadcrumbNav %}
+	{% set breadcrumbNav = [
+		page.title
+	] %}
+{% endblock %}
+
+{% block sectionTitle %}
+	{% set sectionTitle = page.title %}
+{% endblock %}
+
+{% block pageContent %}
 
 	<!-- Page Feature -->
 	<div class="page_feature">

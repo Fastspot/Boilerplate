@@ -1,12 +1,39 @@
 {% extends "_base.twig" %}
 
-{% block page %}
-	{% set page = {
-		title: "HTML Elements",
-		layout: "default"
-	} %}
-{% endblock %}
+{% set page = {
+	metaImage: "/images/temp/social-wide.jpg",
+	metaImageWidth: "1220",
+	metaImageHeight: "686",
+	metaCard: "summary_large_image",
+	title: "HTML Elements",
+	intro: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+	layout: "default"
+} %}
 
-{% block in_content_callouts %}
-	{% include '../partials/html-guide.twig' %}
+{% block main %}
+
+	<!-- Page Content -->
+	<div class="page_content">
+
+		<div class="fs-row">
+
+			<div class="fs-cell fs-lg-4 page_aside page_sub_nav">
+				{% include "../partials/navigation/sub.twig" %}
+			</div>
+
+			<!-- Main Content -->
+			<div class="fs-cell fs-lg-8 page_main_content" id="skip_content" tabindex="-1">
+
+				{% include "../partials/page-header.twig" %}
+
+				{% include '../partials/html-guide.twig' %}
+
+			</div>
+			<!-- END: Main Content -->
+
+		</div>
+
+	</div>
+	<!-- END: Page Content -->
+
 {% endblock %}
