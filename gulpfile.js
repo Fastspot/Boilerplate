@@ -1,33 +1,33 @@
-var gulp = require('gulp'),
-		reload = require('require-reload')(require),
-		async = require('async'),
-		fs = require('fs'),
-		path = require('path'),
-		globby = require('globby'),
-		packageJSON = require('./package.json'),
-		trelloKeyToken = require('trello-module'),
-		browserSync = require('browser-sync').create(),
-		del = require('del'),
-		gulpif = require('gulp-if'),
-		argv = require('yargs').argv,
-		newer = require('gulp-newer'),
-		twig = require('gulp-twig'),
-		htmlbeautify = require('gulp-html-beautify'),
-		sassGlob = require('gulp-sass-glob'),
-		sass = require('gulp-sass'),
-		postcss = require('gulp-postcss'),
-		cssnano = require('gulp-cssnano'),
-		rename = require('gulp-rename'),
-		concat = require('gulp-concat-multi'),
-		jshint = require('gulp-jshint'),
-		stylish = require('jshint-stylish'),
-		uglify = require('gulp-uglify'),
-		imagemin = require('gulp-imagemin'),
-		svgSprite = require('gulp-svg-sprite'),
-		realFavicon = require ('gulp-real-favicon'),
-		FAVICON_DATA_FILE = 'favicons/markup.json',
-		axe = require('gulp-axe-webdriver'),
-		pa11y = require('pa11y');
+const { src, dest, lastRun, series, parallel, watch } = require('gulp');
+const reload = require('require-reload')(require);
+const async = require('async');
+const fs = require('fs');
+const path = require('path');
+const globby = require('globby');
+const packageJSON = require('./package.json');
+const trelloKeyToken = require('trello-module');
+const browserSync = require('browser-sync').create();
+const del = require('del');
+const gulpif = require('gulp-if');
+const argv = require('yargs').argv;
+const newer = require('gulp-newer');
+const twig = require('gulp-twig');
+const htmlbeautify = require('gulp-html-beautify');
+const sassGlob = require('gulp-sass-glob');
+const sass = require('gulp-sass');
+const postcss = require('gulp-postcss');
+const cssnano = require('gulp-cssnano');
+const rename = require('gulp-rename');
+const concat = require('gulp-concat-multi');
+const jshint = require('gulp-jshint');
+const stylish = require('jshint-stylish');
+const uglify = require('gulp-uglify');
+const imagemin = require('gulp-imagemin');
+const svgSprite = require('gulp-svg-sprite');
+const realFavicon = require ('gulp-real-favicon');
+const FAVICON_DATA_FILE = 'favicons/markup.json';
+const axe = require('gulp-axe-webdriver');
+const pa11y = require('pa11y');
 
 
 var source = {
@@ -44,10 +44,10 @@ var source = {
 		'!src/twig/templates/fs-components.twig',
 		'!src/twig/templates/fs-templates.twig'
 	],
-	templates: 'static-html/templates/*.html',
+	templates: 'static/templates/*.html',
 	accessibility: [
-		'static-html/templates/page*.html',
-		'!static-html/templates/page-form-builder.html',
+		'static/templates/page*.html',
+		'!static/templates/page-form-builder.html',
 	],
 	sitemap: 'src/twig/index.twig',
 	jshint: 'src/js/modules/*.js',
@@ -55,32 +55,8 @@ var source = {
 	images: 'src/images/*'
 };
 
-var watch = {
-	trello: [
-		'src/twig/templates/fs-components.twig',
-		'src/twig/templates/fs-templates.twig',
-		'src/twig/partials/guidebook/trello-details.twig',
-		'src/twig/partials/guidebook/trello-sections.twig',
-		'src/twig/partials/guidebook/trello-js.twig'
-	],
-	twig: [
-		'src/twig/**/*.twig',
-		'!src/twig/templates/fs-component-image-crops.twig',
-		'!src/twig/templates/fs-image-crops.twig',
-		'!src/twig/templates/fs-components.twig',
-		'!src/twig/templates/fs-templates.twig',
-		'!src/twig/partials/guidebook/trello-details.twig',
-		'!src/twig/partials/guidebook/trello-sections.twig',
-		'!src/twig/partials/guidebook/trello-js.twig'
-	],
-	sass: 'src/css/**/**',
-	js: 'src/js/**/*.js',
-	sprite: 'src/icons/*',
-	images: 'src/images/*'
-};
 
-
-gulp.task('trello', function(done) {
+function trello(done) {
 	var Trello = require('node-trello');
 	var trello = new Trello(trelloKeyToken.key(), trelloKeyToken.token());
 
@@ -162,7 +138,7 @@ gulp.task('trello', function(done) {
 					}
 				}
 
-				gulp.src(source.trello)
+				src(source.trello)
 					.pipe(twig({
 						data: {
 							vars: packageJSON.vars,
@@ -176,7 +152,7 @@ gulp.task('trello', function(done) {
 					.pipe(rename({
 						extname: '.html'
 					}))
-					.pipe(gulp.dest('static-html/templates'));
+					.pipe(dest('static/templates'));
 			}
 		});
 
@@ -193,35 +169,23 @@ gulp.task('trello', function(done) {
 	}
 
 	done();
-
-});
-
-
-gulp.task('readme', function(done) {
-
-	fs.stat(source.readme, function(err, data) {
-		if (err) {
-			console.log(err);
-		} else {
-			gulp.src(source.readme)
-				.pipe(twig({
-					data: packageJSON
-				}))
-				.pipe(rename({
-					extname: '.md'
-				}))
-				.pipe(gulp.dest('./'));
-		}
-	});
-
-	done();
-
-});
+}
 
 
-gulp.task('twig', function() {
+function readme() {
+	return src(source.readme)
+		.pipe(twig({
+			data: packageJSON
+		}))
+		.pipe(rename({
+			extname: '.md'
+		}))
+		.pipe(dest('./'));
+}
 
-	return gulp.src(source.twig)
+
+function compileTwig() {
+	return src(source.twig)
 		.pipe(twig({
 			data: packageJSON,
 			cache: true
@@ -229,28 +193,24 @@ gulp.task('twig', function() {
 		.pipe(rename({
 			extname: '.html'
 		}))
-		.pipe(gulp.dest('static-html/templates'))
+		.pipe(dest('static/templates'))
 		.pipe(browserSync.stream());
+}
 
-});
 
-
-gulp.task('pretty-html', function() {
-
-	return gulp.src(source.templates)
+function prettyhtml() {
+	return src(source.templates)
 		.pipe(htmlbeautify({
 			"indent_size": 1,
 			"indent_char": "	",
 			"preserve_newlines": false
 		}))
-		.pipe(gulp.dest('static-html/templates'));
+		.pipe(dest('static/templates'));
+}
 
-});
 
-
-gulp.task('sitemap', function(done) {
-
-	var base = "static-html/templates";
+function sitemap(done) {
+	var base = "static/templates";
 	var sitemap = [];
 	var steps = 1;
 
@@ -268,7 +228,7 @@ gulp.task('sitemap', function(done) {
 					steps++;
 
 					if (steps == fileCount) {
-						gulp.src(source.sitemap)
+						src(source.sitemap)
 							.pipe(twig({
 								data: {
 									name: packageJSON.vars.name,
@@ -280,7 +240,7 @@ gulp.task('sitemap', function(done) {
 							.pipe(rename({
 								extname: '.html'
 							}))
-							.pipe(gulp.dest('static-html/'));
+							.pipe(dest('static/'));
 					}
 				});
 			}
@@ -288,13 +248,11 @@ gulp.task('sitemap', function(done) {
 	});
 
 	done();
+}
 
-});
 
-
-gulp.task('sass', function() {
-
-	return gulp.src(packageJSON.css)
+function compileSass() {
+	return src(packageJSON.css)
 		.pipe(sassGlob())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(postcss([
@@ -314,36 +272,30 @@ gulp.task('sass', function() {
 			})
 		]))
 		.pipe(gulpif(argv.production, cssnano()))
-		.pipe(gulp.dest('css'))
+		.pipe(dest('css'))
 		.pipe(browserSync.stream());
+}
 
-});
 
-
-gulp.task('js', function() {
-
+function compileJs() {
 	return concat(packageJSON.js)
 		.pipe(gulpif(argv.production, uglify()))
-		.pipe(gulp.dest('js'))
+		.pipe(dest('js'))
 		.pipe(browserSync.stream());
+}
 
-});
 
-
-gulp.task('jshint', function() {
-
-	return gulp.src(source.jshint, {
-		since: gulp.lastRun('jshint')
+function hintJs() {
+	return src(source.jshint, {
+		since: lastRun(hintJs)
 	})
 		.pipe(jshint())
 		.pipe(jshint.reporter(stylish));
+}
 
-});
 
-
-gulp.task('sprite', function() {
-
-	return gulp.src(source.sprite)
+function sprite() {
+	return src(source.sprite)
 		.pipe(svgSprite({
 			svg: {
 				xmlDeclaration: false,
@@ -359,24 +311,20 @@ gulp.task('sprite', function() {
 				}
 			}
 		}))
-		.pipe(gulp.dest('.'));
+		.pipe(dest('.'));
+}
 
-});
 
-
-gulp.task('imagemin', function() {
-
-	return gulp.src(source.images)
+function compressImages() {
+	return src(source.images)
 		.pipe(newer('images'))
 		.pipe(imagemin())
-		.pipe(gulp.dest('images'));
+		.pipe(dest('images'));
+}
 
-});
 
-
-gulp.task('image-crops', function(done) {
-
-	var base = 'static-html/templates';
+function imageCrops(done) {
+	var base = 'static/templates';
 	var exclude = ["16x16", "32x32", "144x144", "180x180"];
 	var crops = [];
 	var modCrops = [];
@@ -415,7 +363,7 @@ gulp.task('image-crops', function(done) {
 							}
 						}
 
-						gulp.src('src/twig/templates/fs-image-crops.twig')
+						src('src/twig/templates/fs-image-crops.twig')
 							.pipe(twig({
 								data: {
 									crops: modCrops
@@ -424,7 +372,7 @@ gulp.task('image-crops', function(done) {
 							.pipe(rename({
 								extname: '.html'
 							}))
-							.pipe(gulp.dest('static-html/templates'));
+							.pipe(dest('static/templates'));
 					}
 				});
 			}
@@ -432,12 +380,10 @@ gulp.task('image-crops', function(done) {
 	});
 
 	done();
+}
 
-});
 
-
-gulp.task('component-image-crops', function(done) {
-
+function componentImageCrops(done) {
 	var base = 'src/twig/components';
 	var data = [];
 	var typeSteps = 1;
@@ -489,7 +435,7 @@ gulp.task('component-image-crops', function(done) {
 				typeSteps++;
 
 				if (typeSteps == folders.length) {
-					gulp.src('src/twig/templates/fs-component-image-crops.twig')
+					src('src/twig/templates/fs-component-image-crops.twig')
 						.pipe(twig({
 							data: {
 								sections: data
@@ -498,18 +444,17 @@ gulp.task('component-image-crops', function(done) {
 						.pipe(rename({
 							extname: '.html'
 						}))
-						.pipe(gulp.dest('static-html/templates'));
+						.pipe(dest('static/templates'));
 				}
 			});
 		});
 	});
 
 	done();
+}
 
-});
 
-
-gulp.task('generate-favicon', function(done) {
+function generateFavicon(done) {
 	realFavicon.generateFavicon({
 		masterPicture: 'src/images/favicon.png',
 		dest: 'favicons',
@@ -566,30 +511,32 @@ gulp.task('generate-favicon', function(done) {
 	}, function() {
 		done();
 	});
-});
+}
 
 
-gulp.task('inject-favicon-markups', function() {
-	return gulp.src(['src/twig/partials/favicons.html' ])
+function injectFaviconMarkups() {
+	return src(['src/twig/partials/favicons.html' ])
 		.pipe(realFavicon.injectFaviconMarkups(JSON.parse(fs.readFileSync(FAVICON_DATA_FILE)).favicon.html_code))
-		.pipe(gulp.dest('src/twig/partials/'));
-});
+		.pipe(dest('src/twig/partials/'));
+}
 
 
-gulp.task('check-for-favicon-update', function(done) {
+function checkForFaviconUpdate(done) {
 	var currentVersion = JSON.parse(fs.readFileSync(FAVICON_DATA_FILE)).version;
+	
 	realFavicon.checkForUpdates(currentVersion, function(err) {
 		if (err) {
 			throw err;
 		}
 	});
-});
+
+	done();
+}
 
 
-gulp.task('axe', function() {
-
+function runAxe() {
   var options = {
-		folderOutputReport: 'static-html/',
+		folderOutputReport: 'static/',
 		headless: true,
 		saveOutputIn: 'axe.json',
 		showOnlyViolations: true,
@@ -597,32 +544,28 @@ gulp.task('axe', function() {
 	};
 
 	return axe(options);
+}
 
-});
 
-
-gulp.task('axe-page', function() {
-
-	return gulp.src('src/twig/templates/_axe.twig')
+function axePage() {
+	return src('src/twig/templates/_axe.twig')
 		.pipe(twig({
 			data: {
 				vars: packageJSON.vars,
-				items: require('./static-html/axe.json')
+				items: require('./static/axe.json')
 			}
 		}))
 		.pipe(rename({
 			basename: "axe",
 			extname: '.html'
 		}))
-		.pipe(gulp.dest('static-html/templates'));
+		.pipe(dest('static/templates'));
+}
 
-});
 
-
-gulp.task('pa11y', function(done) {
-
-	if (!fs.existsSync('static-html/pa11y')) {
-		fs.mkdirSync('static-html/pa11y');
+function runPa11y(done) {
+	if (!fs.existsSync('static/pa11y')) {
+		fs.mkdirSync('static/pa11y');
 	}
 
 	var urls = globby.sync(source.accessibility);
@@ -665,7 +608,7 @@ gulp.task('pa11y', function(done) {
 	}, 2);
 
 	queue.drain = function() {
-		gulp.src('src/twig/templates/_pa11y.twig')
+		src('src/twig/templates/_pa11y.twig')
 			.pipe(twig({
 				data: {
 					vars: packageJSON.vars,
@@ -676,7 +619,7 @@ gulp.task('pa11y', function(done) {
 				basename: 'pa11y',
 				extname: '.html'
 			}))
-			.pipe(gulp.dest('static-html/templates'));
+			.pipe(dest('static/templates'));
 
 		console.log('All done! All pa11y links should be functional now!');
 	};
@@ -684,12 +627,10 @@ gulp.task('pa11y', function(done) {
 	queue.push(urls);
 
 	done();
+}
 
-});
 
-
-gulp.task('clean', function(done) {
-
+function clean(done) {
 	del('css');
 	del('favicons');
 	del('images');
@@ -697,17 +638,15 @@ gulp.task('clean', function(done) {
 	del('static-html');
 
 	done();
+}
 
-});
 
-
-gulp.task('browser-sync', function(done) {
-
+function runBrowserSync(done) {
 	browserSync.init({
 		logPrefix: packageJSON.vars.name,
 		ui: false,
 		server: './',
-		startPath: '/static-html/index.html',
+		startPath: '/static/index.html',
 		notify: {
 			styles: {
 				top: 'auto',
@@ -720,81 +659,121 @@ gulp.task('browser-sync', function(done) {
 	});
 
 	done();
+}
 
-});
 
-
-gulp.task('reload', function(done) {
-
+function reloadSystem(done) {
 	browserSync.reload();
 
 	done();
+}
 
-});
 
-
-gulp.task('reset', function(done) {
-
+function resetPackage(done) {
 	try {
 		packageJSON = reload('./package.json');
 	} catch (e) {
-		console.error("Failed to reload package.json! Error: ", e);
+		console.error('Failed to reload package.json! Error: ', e);
 	}
 
 	done();
-
-});
-
-
-gulp.task('watch', function() {
-
-	gulp.watch('package.json', gulp.series('reset', 'build', 'reload'));
-	gulp.watch(watch.trello, gulp.series('twig', 'trello', 'reload'));
-	gulp.watch(watch.twig, gulp.series('twig', 'sitemap'));
-	gulp.watch(watch.sass, gulp.series('sass'));
-	gulp.watch(watch.js, gulp.series('js', 'jshint'));
-	gulp.watch(watch.sprite, gulp.series('sprite', 'twig', 'reload'));
-	gulp.watch(watch.images, gulp.series('imagemin', 'reload'));
-
-});
+}
 
 
-gulp.task('build', gulp.parallel(
-	'readme',
-	'sass',
-	gulp.series(
-		'sprite',
-		'twig',
-		'pretty-html',
-		'sitemap',
-		'js',
-		'jshint'
-	),
-	'imagemin'
-));
+function watchFileSystem(done) {
+	watch('package.json', series(
+		resetPackage, 
+		compileTwig,
+		reloadSystem
+	));
+
+	watch([
+		'src/twig/**/*.twig',
+		'!src/twig/templates/fs-component-image-crops.twig',
+		'!src/twig/templates/fs-image-crops.twig',
+		'!src/twig/templates/fs-components.twig',
+		'!src/twig/templates/fs-templates.twig',
+		'!src/twig/partials/guidebook/trello-details.twig',
+		'!src/twig/partials/guidebook/trello-sections.twig',
+		'!src/twig/partials/guidebook/trello-js.twig'
+	], series(
+		compileTwig
+	));
+
+	watch('src/css/**/**', series(
+		compileSass
+	));
+
+	watch('src/js/**/*.js', series(
+		compileJs, 
+		hintJs
+	));
+
+	watch('src/icons/*', series(
+		sprite, 
+		compileTwig, 
+		reloadSystem
+	));
+
+	watch('src/images/*', series(
+		imagemin, 
+		reloadSystem
+	));
+
+	done();
+}
 
 
-gulp.task('dev', gulp.parallel(
-	'watch',
-	'browser-sync'
-));
+exports.compileSass = compileSass;
+exports.compileJs = compileJs;
+exports.compileTwig = compileTwig;
+exports.imageCrops = imageCrops;
+exports.componentImageCrops = componentImageCrops;
+exports.clean = clean;
+
+exports.build = parallel(
+	readme,
+	compileSass,
+	compileJs,
+	compressImages,
+	series(
+		sprite,
+		compileTwig,
+		prettyhtml,
+		sitemap,
+	)
+);
 
 
-gulp.task('default', gulp.series(
-	'build',
-	'dev'
-));
+exports.dev = parallel(
+	watchFileSystem,
+	runBrowserSync
+);
 
 
-gulp.task('style-guide', gulp.series(
-	'trello',
-	'twig'
-));
+exports.default = series(
+	readme,
+	compileSass,
+	sprite,
+	compileTwig,
+	sitemap,
+	compileJs,
+	compressImages,
+	watchFileSystem,
+	runBrowserSync
+);
 
 
-gulp.task('access', gulp.series(
-	'axe',
-	'axe-page',
-	'pa11y',
-	'dev'
-));
+exports.styleGuide = series(
+	trello,
+	compileTwig
+);
+
+
+exports.access = series(
+	runAxe,
+	axePage,
+	runPa11y,
+	watchFileSystem,
+	runBrowserSync
+);

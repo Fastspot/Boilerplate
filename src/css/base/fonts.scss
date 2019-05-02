@@ -2,7 +2,6 @@
 // =============================================================================
 
 @mixin font-face($name, $list) {
-
 	@each $file, $weight, $style in $list {
 		@font-face {
 			font-family: $name;

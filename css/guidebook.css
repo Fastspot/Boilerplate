@@ -1,0 +1,956 @@
+.clearfix:after {
+  clear: both;
+  content: "";
+  display: table; }
+
+.visually_hide {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  border: 0;
+  clip: rect(0 0 0 0);
+  margin: -1px;
+  overflow: hidden;
+  padding: 0; }
+  .visually_hide.focusable:active, .visually_hide.focusable:focus {
+    width: auto;
+    height: auto;
+    position: static;
+    clip: auto;
+    margin: 0;
+    overflow: visible; }
+
+/* Not to be used with a form container */
+/* Use -webkit-overflow-scrolling: auto instead */
+[data-whatinput="mouse"] a:focus,
+[data-whatinput="mouse"] button:focus,
+[data-whatinput="touch"] a:focus,
+[data-whatinput="touch"] button:focus {
+  outline: 0; }
+
+@font-face {
+  font-family: "Neue Haas Grotesk Display Std";
+  src: url("../fonts/NHaasGroteskDSStd-55Rg.otf");
+  font-weight: 400; }
+
+@font-face {
+  font-family: "Neue Haas Grotesk Display Std";
+  src: url("../fonts/NHaasGroteskDSStd-65Md.otf");
+  font-weight: 500; }
+
+@font-face {
+  font-family: "Neue Haas Grotesk Display Std";
+  src: url("../fonts/NHaasGroteskDSStd-75Bd.otf");
+  font-weight: 700; }
+
+@font-face {
+  font-family: "Neue Haas Grotesk Text Std";
+  src: url("../fonts/NHaasGroteskTXStd-55Rg.otf");
+  font-weight: 400; }
+
+@font-face {
+  font-family: "Neue Haas Grotesk Text Std";
+  src: url("../fonts/NHaasGroteskTXStd-56It.otf");
+  font-weight: 400;
+  font-style: italic; }
+
+@font-face {
+  font-family: "Neue Haas Grotesk Text Std";
+  src: url("../fonts/NHaasGroteskTXStd-65Md.otf");
+  font-weight: 500; }
+
+@font-face {
+  font-family: "Neue Haas Grotesk Text Std";
+  src: url("../fonts/NHaasGroteskTXStd-75Bd.otf");
+  font-weight: 700; }
+
+/* ==========================================================================
+	Type Tools
+============================================================================= */
+.gb_text {
+  margin-bottom: 40px; }
+  .gb_text:last-child {
+    margin-bottom: 0; }
+  .gb_text h1, .gb_text h2, .gb_text h3, .gb_text h4, .gb_text h5, .gb_text h6, .gb_text p {
+    margin: 0; }
+
+.gb_label {
+  font-family: "Neue Haas Grotesk Text Std", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.875;
+  color: #6b6b6b;
+  display: block;
+  margin-bottom: 10px; }
+
+[data-label*="H"] .gb_label_strong {
+  position: relative;
+  margin: 0 14px 0 8px; }
+
+[data-label*="H"] .gb_label_strong:before {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid #6b6b6b;
+  border-radius: 50%;
+  content: "";
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%); }
+
+/* ==========================================================================
+	Navigation
+============================================================================= */
+.gb_ribbon_link {
+  font-family: "Neue Haas Grotesk Display Std", sans-serif;
+  font-weight: 700;
+  color: inherit;
+  display: block;
+  font-size: 24px;
+  font-size: 1.5rem;
+  padding: 30px 0 10px; }
+  @media (min-width: 980px) {
+    .gb_ribbon_link {
+      padding-bottom: 30px; } }
+
+.gb_ribbon_logo {
+  display: none; }
+  @media (min-width: 980px) {
+    .gb_ribbon_logo {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      color: inherit;
+      display: block;
+      -webkit-transform: translate(0, -50%);
+              transform: translate(0, -50%); } }
+
+/* Main Nav
+============================================================================= */
+.gb_main_nav {
+  padding-bottom: 22px; }
+  @media (min-width: 980px) {
+    .gb_main_nav {
+      padding: 19px 95px 20px 0; } }
+
+.gb_main_nav_title {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  border: 0;
+  clip: rect(0 0 0 0);
+  margin: -1px;
+  overflow: hidden;
+  padding: 0; }
+  .gb_main_nav_title.focusable:active, .gb_main_nav_title.focusable:focus {
+    width: auto;
+    height: auto;
+    position: static;
+    clip: auto;
+    margin: 0;
+    overflow: visible; }
+
+.gb_main_nav_list {
+  list-style: none;
+  margin: 0;
+  overflow-y: auto;
+  padding: 0;
+  white-space: nowrap; }
+
+.gb_main_nav_item {
+  display: inline-block;
+  margin-right: 20px; }
+  @media (min-width: 1220px) {
+    .gb_main_nav_item {
+      margin-right: 45px; } }
+  @media screen and (min-width: 540px) {
+    .gb_main_nav_item:last-child {
+      margin-right: 0; } }
+
+.gb_main_nav_link {
+  color: inherit;
+  display: block;
+  padding: 15px 0; }
+
+.gb_main_nav_link_label {
+  font-family: "Neue Haas Grotesk Text Std", sans-serif;
+  font-weight: 700;
+  position: relative;
+  color: inherit;
+  font-size: 16px;
+  font-size: 1rem; }
+  .gb_main_nav_link_label:after {
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #000;
+    content: '';
+    margin-top: 4px;
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    -webkit-transition: -webkit-transform 0.25s;
+    transition: -webkit-transform 0.25s;
+    transition: transform 0.25s;
+    transition: transform 0.25s, -webkit-transform 0.25s; }
+    @media (prefers-reduced-motion: reduce) {
+      .gb_main_nav_link_label:after {
+        -webkit-transition-duration: 0;
+                transition-duration: 0; } }
+    .gb_main_nav_link:focus .gb_main_nav_link_label:after,
+    .gb_main_nav_link:hover .gb_main_nav_link_label:after,
+    .active .gb_main_nav_link_label:after {
+      -webkit-transform: scaleX(1);
+              transform: scaleX(1); }
+    .active .gb_main_nav_link_label:after {
+      height: 2px; }
+
+/* Jump Nav
+============================================================================= */
+.gb_jump_nav {
+  position: relative;
+  overflow-x: auto;
+  white-space: nowrap; }
+  .gb_trello_detail_lock .gb_jump_nav {
+    display: none; }
+
+.gb_jump_nav_link {
+  position: relative;
+  z-index: 2;
+  color: inherit;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 35px;
+  overflow: hidden;
+  padding: 20px 0; }
+  .gb_jump_nav_link:before {
+    height: 100%;
+    width: 1px;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    z-index: -2;
+    background: #000;
+    content: "";
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0); }
+  .gb_jump_nav_link:focus:before, .gb_jump_nav_link:hover:before {
+    -webkit-animation: jump-down 0.5s forwards;
+            animation: jump-down 0.5s forwards; }
+
+@-webkit-keyframes jump-down {
+  100% {
+    -webkit-transform: translate(-50%, 200%);
+            transform: translate(-50%, 200%); } }
+
+@keyframes jump-down {
+  100% {
+    -webkit-transform: translate(-50%, 200%);
+            transform: translate(-50%, 200%); } }
+
+.gb_jump_nav_link_label {
+  font-family: "Neue Haas Grotesk Text Std", sans-serif;
+  font-weight: 500;
+  color: inherit;
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 1.21429; }
+
+.gb_jump_nav_rocket {
+  height: 40px;
+  width: 40px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #eee;
+  border-radius: 50%;
+  color: transparent;
+  overflow: hidden;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: -webkit-transform 0.25s;
+  transition: -webkit-transform 0.25s;
+  transition: transform 0.25s;
+  transition: transform 0.25s, -webkit-transform 0.25s; }
+  @media (prefers-reduced-motion: reduce) {
+    .gb_jump_nav_rocket {
+      -webkit-transition-duration: 0;
+              transition-duration: 0; } }
+  @media (min-width: 1220px) {
+    .gb_jump_nav_rocket {
+      position: absolute;
+      top: 50%;
+      bottom: auto;
+      right: 0;
+      background: none;
+      border: 2px solid #000;
+      -webkit-transform: translate(0, -50%) scale(0);
+              transform: translate(0, -50%) scale(0); } }
+  .gb_jump_nav_rocket:after {
+    height: 14px;
+    width: 14px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAPdJREFUWAntlTEOwjAMRQNn6wQDAomzMzAgJjgDC/xfFcmEunGcNFMsWbUC9nuyGgjBH3u0XpBX5ME/xtd5RNsL+Z6SNc+aRAxvKqHBm0ik4KtKWOGrSMzB5Qsood+azyovpgY/ASBhrHkWixVJLMHB+hPgWTWJFFwTqCJhgS8JFElY4SkBl0QO3CKQJaHBea5FfAu07yVn81/Nc32sAhTTJMgOd6QcZr27sod1KuYkyP4RsMLZlyvAnlhiFBjwAQvmuBI8LeER4Nwd8jblsOGJM+K1u2ZtnfBqbV2gb6BvoG+gb6BkA0/xeyxrcbxuecb4x5SsXfEBN/LdRcH308QAAAAASUVORK5CYII=");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: contain;
+    content: "";
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); }
+  .gb_jump_nav_rocket:focus:after, .gb_jump_nav_rocket:hover:after {
+    -webkit-animation: rocket-jump 3s infinite;
+            animation: rocket-jump 3s infinite; }
+  .pinned .gb_jump_nav_rocket {
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+    @media (min-width: 1220px) {
+      .pinned .gb_jump_nav_rocket {
+        -webkit-transform: translate(0, -50%) scale(1);
+                transform: translate(0, -50%) scale(1); } }
+
+@-webkit-keyframes rocket-jump {
+  10% {
+    opacity: 0;
+    -webkit-transform: translate(-50%, -150%);
+            transform: translate(-50%, -150%); }
+  20% {
+    opacity: 0;
+    -webkit-transform: translate(-50%, 50%);
+            transform: translate(-50%, 50%); }
+  30%,
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); } }
+
+@keyframes rocket-jump {
+  10% {
+    opacity: 0;
+    -webkit-transform: translate(-50%, -150%);
+            transform: translate(-50%, -150%); }
+  20% {
+    opacity: 0;
+    -webkit-transform: translate(-50%, 50%);
+            transform: translate(-50%, 50%); }
+  30%,
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); } }
+
+/* ==========================================================================
+	Structure
+============================================================================= */
+.gb_page_header {
+  background: #eee;
+  color: #000; }
+
+@media (min-width: 980px) {
+  .gb_ribbon_inner {
+    position: relative;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between; } }
+
+.gb_jump_ribbon {
+  width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 8;
+  background: #f6f6f6; }
+  .gb_jump_ribbon:after {
+    height: 10px;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 4;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.085)), to(rgba(0, 0, 0, 0)));
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.085), rgba(0, 0, 0, 0));
+    content: "";
+    opacity: 0;
+    -webkit-transition: opacity 0.25s;
+    transition: opacity 0.25s; }
+    .pinned .gb_jump_ribbon:after {
+      opacity: 1; }
+  .pinned .gb_jump_ribbon {
+    position: fixed; }
+
+/* Content
+============================================================================= */
+.gb_page_content {
+  background: #fff;
+  color: #000;
+  padding: 80px 0 200px; }
+
+.gb_page_details {
+  position: relative;
+  margin-bottom: 80px; }
+  .gb_trello_detail_lock .gb_page_details {
+    display: none; }
+  .gb_page_details a {
+    color: inherit;
+    text-decoration: underline;
+    -webkit-transition: color 0.25s;
+    transition: color 0.25s; }
+    .gb_page_details a:focus, .gb_page_details a:hover {
+      color: #DA2315; }
+
+.gb_page_title {
+  font-family: "Neue Haas Grotesk Display Std", sans-serif;
+  font-weight: 700;
+  font-size: 34px;
+  font-size: 2.125rem;
+  line-height: 1.47059;
+  margin: 0; }
+  @media (min-width: 740px) {
+    .gb_page_title {
+      font-size: 40px;
+      font-size: 2.5rem;
+      line-height: 1.2; } }
+  @media (min-width: 980px) {
+    .gb_page_title {
+      font-size: 50px;
+      font-size: 3.125rem;
+      line-height: 1.2; } }
+
+.gb_page_title_label {
+  display: inline-block;
+  vertical-align: middle; }
+
+.gb_page_caption {
+  font-family: "Neue Haas Grotesk Text Std", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.875;
+  font-family: "Neue Haas Grotesk Text Std", sans-serif;
+  font-weight: 500;
+  margin: 0; }
+  @media (min-width: 980px) {
+    .gb_page_caption {
+      font-size: 20px;
+      font-size: 1.25rem;
+      line-height: 1.7; } }
+
+.gb_page_image {
+  display: none; }
+  @media (min-width: 980px) {
+    .gb_page_image {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      display: block;
+      -webkit-transform: translate(0, -50%);
+              transform: translate(0, -50%); } }
+
+/* Section
+============================================================================= */
+.gb_section {
+  border-top: 1px solid #c4c4c4;
+  margin: 70px 0;
+  padding-top: 70px; }
+  .gb_section:first-child {
+    margin-top: 0; }
+  .gb_section:last-child {
+    margin-bottom: 0; }
+  .gb_section.empty {
+    display: none; }
+
+.gb_section_header {
+  margin-bottom: 40px; }
+
+.gb_section_title {
+  font-family: "Neue Haas Grotesk Display Std", sans-serif;
+  font-weight: 500;
+  font-size: 28px;
+  font-size: 1.75rem;
+  line-height: 1.35714;
+  margin: 0; }
+  @media (min-width: 740px) {
+    .gb_section_title {
+      font-size: 34px;
+      font-size: 2.125rem;
+      line-height: 1.47059; } }
+  @media (min-width: 980px) {
+    .gb_section_title {
+      font-size: 40px;
+      font-size: 2.5rem;
+      line-height: 1.2; } }
+
+.gb_section_caption {
+  font-family: "Neue Haas Grotesk Text Std", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.875;
+  color: #6b6b6b;
+  margin: 0; }
+  @media (min-width: 980px) {
+    .gb_section_caption {
+      font-size: 18px;
+      font-size: 1.125rem;
+      line-height: 1.77778; } }
+
+/* ==========================================================================
+	Topics
+============================================================================= */
+@media screen and (min-width: 600px) {
+  .gb_topics {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin: 0 -20px; } }
+
+.gb_topic {
+  max-width: 400px;
+  position: relative;
+  background: #f6f6f6;
+  border: 1px solid #d8d8d8;
+  color: #000;
+  cursor: pointer;
+  margin-bottom: 40px;
+  -webkit-transition: color 0.25s;
+  transition: color 0.25s; }
+  @media screen and (min-width: 600px) {
+    .gb_topic {
+      width: calc(50% - 40px);
+      margin-right: 20px;
+      margin-left: 20px; } }
+  @media (min-width: 980px) {
+    .gb_topic {
+      width: calc(33.33% - 40px); } }
+  @media (min-width: 1220px) {
+    .gb_topic {
+      width: calc(25% - 40px); } }
+  .gb_topic:focus, .gb_topic:hover {
+    color: #DA2315; }
+  .trello_format_list .gb_topic {
+    max-width: 100%;
+    width: 100%;
+    border-bottom: 0;
+    margin-bottom: 10px;
+    padding-bottom: 0; }
+
+.gb_topic_title {
+  font-family: "Neue Haas Grotesk Display Std", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1.44444;
+  background: #fff;
+  border-bottom: 1px solid #d8d8d8;
+  color: #6b6b6b;
+  margin: 0;
+  padding: 18px 20px; }
+
+.gb_topic_figure {
+  max-height: 300px;
+  position: relative;
+  overflow: hidden;
+  padding: 20px 20px 40px; }
+  .gb_topic_figure:before {
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(25%, #f6f6f6), to(rgba(246, 246, 246, 0)));
+    background: linear-gradient(to top, #f6f6f6 25%, rgba(246, 246, 246, 0));
+    content: ""; }
+  .trello_format_list .gb_topic_figure {
+    display: none; }
+
+.gb_topic_image {
+  max-width: 100%;
+  width: 100%; }
+
+/* ==========================================================================
+	Trello
+============================================================================= */
+.fs-trello-lock {
+  overflow: hidden; }
+
+.gb_trello_formatter {
+  height: 50px;
+  width: 100px;
+  position: relative;
+  background: #fff;
+  border: 1px solid #c4c4c4;
+  border-radius: 0;
+  display: inline-block;
+  margin-left: 20px;
+  vertical-align: middle; }
+  @media (max-width: 499px) {
+    .gb_trello_formatter {
+      display: none; } }
+
+.gb_trello_format {
+  height: 100%;
+  width: 50%;
+  position: absolute;
+  top: 0; }
+  .gb_trello_format_indicator {
+    left: 0;
+    background: #eee;
+    border-radius: 0;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    -webkit-transform-origin: right center;
+            transform-origin: right center;
+    -webkit-transition: border-radius 0.25s, -webkit-transform 0.25s;
+    transition: border-radius 0.25s, -webkit-transform 0.25s;
+    transition: border-radius 0.25s, transform 0.25s;
+    transition: border-radius 0.25s, transform 0.25s, -webkit-transform 0.25s; }
+    @media (prefers-reduced-motion: reduce) {
+      .gb_trello_format_indicator {
+        -webkit-transition-duration: 0;
+                transition-duration: 0; } }
+    .gb_trello_section_formatter:focus .gb_trello_format_indicator,
+    .gb_trello_section_formatter:hover .gb_trello_format_indicator {
+      border-radius: 50%; }
+    .trello_format_list .gb_trello_format_indicator {
+      -webkit-transform: translate(100%, 0);
+              transform: translate(100%, 0); }
+  .gb_trello_format_grid {
+    left: 0; }
+    .gb_trello_format_grid:before {
+      height: 4px;
+      width: 4px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background: #000;
+      -webkit-box-shadow: -6px 0 0 0 #000, -6px -6px 0 0 #000, 0 -6px 0 0 #000, 6px -6px 0 0 #000, 6px 0 0 0 #000, 6px 6px 0 0 #000, 0 6px 0 0 #000, -6px 6px 0 0 #000;
+              box-shadow: -6px 0 0 0 #000, -6px -6px 0 0 #000, 0 -6px 0 0 #000, 6px -6px 0 0 #000, 6px 0 0 0 #000, 6px 6px 0 0 #000, 0 6px 0 0 #000, -6px 6px 0 0 #000;
+      content: "";
+      -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
+      -webkit-transition: background 0.25s, -webkit-box-shadow 0.25s;
+      transition: background 0.25s, -webkit-box-shadow 0.25s;
+      transition: background 0.25s, box-shadow 0.25s;
+      transition: background 0.25s, box-shadow 0.25s, -webkit-box-shadow 0.25s; }
+  .gb_trello_format_list {
+    right: 0; }
+    .gb_trello_format_list:before {
+      height: 3px;
+      width: 16px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background: #000;
+      -webkit-box-shadow: 0 -6px 0 0 #000, 0 6px 0 0 #000;
+              box-shadow: 0 -6px 0 0 #000, 0 6px 0 0 #000;
+      content: "";
+      -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
+      -webkit-transition: background 0.25s, -webkit-box-shadow 0.25s;
+      transition: background 0.25s, -webkit-box-shadow 0.25s;
+      transition: background 0.25s, box-shadow 0.25s;
+      transition: background 0.25s, box-shadow 0.25s, -webkit-box-shadow 0.25s; }
+
+.gb_trello_lock .gb_trello_list {
+  display: none; }
+
+/* Trello Detail View
+============================================================================= */
+.gb_trello_detail {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 80;
+  background: #fff;
+  display: none;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 54px 0 100px; }
+  .gb_trello_detail:after {
+    clear: both;
+    content: "";
+    display: table; }
+  @media (min-width: 1220px) {
+    .gb_trello_detail {
+      padding-top: 70px; } }
+  .gb_trello_detail.hash-swap-active, .gb_trello_detail.fs-swap-active {
+    display: block; }
+
+.gb_trello_detail_ribbon {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #f6f6f6;
+  margin-bottom: 80px;
+  padding: 0 20px; }
+  .gb_trello_detail_ribbon:after {
+    clear: both;
+    content: "";
+    display: table; }
+  .gb_trello_detail_ribbon:after {
+    height: 10px;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 4;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.085)), to(rgba(0, 0, 0, 0)));
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.085), rgba(0, 0, 0, 0));
+    content: ""; }
+
+.gb_trello_detail_pager {
+  font-family: "Neue Haas Grotesk Text Std", sans-serif;
+  font-weight: 500;
+  color: #000;
+  display: none;
+  font-size: 13px;
+  font-size: 0.8125rem;
+  padding: 28px 0; }
+  @media (min-width: 1220px) {
+    .gb_trello_detail_pager {
+      display: inline-block; } }
+  .gb_trello_detail_pager:before, .gb_trello_detail_pager:after {
+    height: 6px;
+    width: 6px;
+    border-bottom: 2px solid #000;
+    content: "";
+    display: inline-block;
+    margin-top: -3px;
+    vertical-align: middle; }
+  .gb_trello_detail_pager_prev {
+    float: left; }
+    .gb_trello_detail_pager_prev:before {
+      border-left: 2px solid #000;
+      margin-right: 10px;
+      -webkit-transform: rotate(45deg);
+              transform: rotate(45deg); }
+    .gb_trello_detail_pager_prev:after {
+      display: none; }
+  .gb_trello_detail_pager_next {
+    float: right; }
+    .gb_trello_detail_pager_next:before {
+      display: none; }
+    .gb_trello_detail_pager_next:after {
+      border-right: 2px solid #000;
+      margin-left: 10px;
+      -webkit-transform: rotate(-45deg);
+              transform: rotate(-45deg); }
+
+.gb_trello_detail_close {
+  font-family: "Neue Haas Grotesk Text Std", sans-serif;
+  font-weight: 700;
+  position: relative;
+  color: #000;
+  cursor: pointer;
+  border: 0;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 13px;
+  font-size: 0.8125rem;
+  padding: 20px 35px; }
+  @media (min-width: 1220px) {
+    .gb_trello_detail_close {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      padding: 28px 35px;
+      -webkit-transform: translate(-50%, 0);
+              transform: translate(-50%, 0); } }
+  .gb_trello_detail_close:before {
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    background: #000;
+    -webkit-box-shadow: 11px 0 0 0 #000, 0 11px 0 0 #000, 11px 11px 0 0 #000;
+            box-shadow: 11px 0 0 0 #000, 0 11px 0 0 #000, 11px 11px 0 0 #000;
+    content: "";
+    margin-bottom: 6px;
+    margin-top: -6px;
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%); }
+  .gb_trello_detail_close:after {
+    height: 44px;
+    width: 44px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-box-shadow: inset 0 0 0 22px #000;
+            box-shadow: inset 0 0 0 22px #000;
+    border-radius: 50%;
+    content: "";
+    -webkit-transform: translate(-50%, -50%) scale(0);
+            transform: translate(-50%, -50%) scale(0); }
+  .gb_trello_detail_close:focus:after, .gb_trello_detail_close:hover:after {
+    -webkit-animation: trello-burst 0.5s forwards;
+            animation: trello-burst 0.5s forwards; }
+
+@-webkit-keyframes trello-burst {
+  80% {
+    opacity: 1; }
+  100% {
+    -webkit-box-shadow: inset 0 0 0 0 #000;
+            box-shadow: inset 0 0 0 0 #000;
+    opacity: 0;
+    -webkit-transform: translate(-50%, -50%) scale(1);
+            transform: translate(-50%, -50%) scale(1); } }
+
+@keyframes trello-burst {
+  80% {
+    opacity: 1; }
+  100% {
+    -webkit-box-shadow: inset 0 0 0 0 #000;
+            box-shadow: inset 0 0 0 0 #000;
+    opacity: 0;
+    -webkit-transform: translate(-50%, -50%) scale(1);
+            transform: translate(-50%, -50%) scale(1); } }
+
+.gb_trello_detail_inner {
+  margin: 0 auto;
+  padding-top: 80px; }
+
+.gb_trello_detail_title {
+  font-family: "Neue Haas Grotesk Display Std", sans-serif;
+  font-weight: 500;
+  font-size: 28px;
+  font-size: 1.75rem;
+  line-height: 1.35714;
+  margin: 0 0 30px; }
+  @media (min-width: 740px) {
+    .gb_trello_detail_title {
+      font-size: 34px;
+      font-size: 2.125rem;
+      line-height: 1.47059; } }
+  @media (min-width: 980px) {
+    .gb_trello_detail_title {
+      font-size: 40px;
+      font-size: 2.5rem;
+      line-height: 1.2; } }
+
+.gb_trello_detail_image {
+  max-width: 100%;
+  display: block;
+  margin: 0 auto; }
+
+/* ==========================================================================
+	Colors
+============================================================================= */
+@media (min-width: 500px) {
+  .gb_colors {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap; } }
+
+.gb_color {
+  max-width: 260px;
+  margin-bottom: 8%;
+  text-align: left; }
+  @media (min-width: 500px) {
+    .gb_color {
+      width: 42%;
+      margin-right: 4%;
+      margin-bottom: 4%; } }
+  @media (min-width: 980px) {
+    .gb_color {
+      width: 25%; } }
+  @media (min-width: 1220px) {
+    .gb_color {
+      width: 20%; } }
+
+.gb_color_block {
+  height: 50px;
+  -webkit-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+          box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+  margin-bottom: 5px; }
+
+.gb_color_label {
+  font-family: "Neue Haas Grotesk Text Std", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.875;
+  font-family: "Neue Haas Grotesk Text Std", sans-serif;
+  font-weight: 500;
+  background: none;
+  border: 0;
+  color: #6b6b6b;
+  display: block;
+  line-height: 1.25;
+  outline: 0;
+  padding: 0; }
+  @media (min-width: 980px) {
+    .gb_color_label {
+      font-size: 20px;
+      font-size: 1.25rem;
+      line-height: 1.7; } }
+
+.gb_color_copy {
+  font-family: "Neue Haas Grotesk Text Std", sans-serif;
+  font-weight: 700;
+  border-radius: 0;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 12px;
+  font-size: 0.75rem;
+  line-height: 1.25;
+  margin: 2px 0;
+  opacity: 0;
+  text-decoration: underline;
+  text-transform: uppercase;
+  -webkit-transition: opacity 0.25s;
+  transition: opacity 0.25s; }
+  .gb_color:focus .gb_color_copy,
+  .gb_color:hover .gb_color_copy {
+    opacity: 1; }
+
+/* Types
+============================================================================= */
+.gb_type {
+  margin-bottom: 30px; }
+  .gb_type:last-child {
+    margin-bottom: 0; }
+
+.gb_type_title {
+  margin: 0 0 10px; }
+
+.gb_type_item {
+  max-width: 170px;
+  width: 100%;
+  background: #f6f6f6;
+  display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding: 25px 20px 16px; }
+
+.gb_type_test {
+  display: block;
+  font-size: 58px;
+  font-size: 3.625rem; }
+
+.gb_type_weight {
+  display: block;
+  font-size: 18px;
+  font-size: 1.125rem; }

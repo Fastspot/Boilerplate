@@ -7,17 +7,13 @@
 } %}
 
 {% block main %}
-
 	<!-- Page Content -->
 	<div class="page_content">
-
 		<div class="fs-row">
 
 			<!-- Main Content -->
 			<div class="fs-cell fs-lg-10 fs-all-justify-center page_main_content" id="skip_content" tabindex="-1">
-
 				{% include "../partials/page-header.twig" %}
-
 			</div>
 			<!-- END: Main Content -->
 
@@ -25,15 +21,12 @@
 
 		<!-- Full Width Callouts -->
 		<div class="full_width_callouts">
-
 			{% include "../partials/google-cse.twig" with {
 				resultsUrl: "page-search.html"
 			} %}
-
 		</div>
 		<!-- END: Full Width Callouts -->
 
 	</div>
 	<!-- END: Page Content -->
-
 {% endblock %}

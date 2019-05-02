@@ -22,9 +22,7 @@ $gray_90: #222222;
 // =============================================================================
 
 @mixin theme_custom {
-
 	@each $label, $color in $theme_colors {
-
 		.theme_#{$label} & {}
 	}
 }
@@ -33,9 +31,7 @@ $gray_90: #222222;
 	$list: $theme_colors,
 	$style: "color"
 ) {
-
 	@each $label, $color in $list {
-
 		.theme_#{$label} & {
 			@if($style == "color") {
 				color: $color;
@@ -52,9 +48,7 @@ $gray_90: #222222;
 	$list: $theme_colors,
 	$style: "color"
 ) {
-
 	@each $label, $color in $list {
-
 		&.theme_#{$label} {
 			@if($style == "color") {
 				color: $color;

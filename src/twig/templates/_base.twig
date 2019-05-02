@@ -1,4 +1,3 @@
-{# Shortcuts For Use Within Components #}
 {% set feat = "../components/feature/" %}
 {% set full = "../components/full-width/" %}
 {% set inc = "../components/in-content/" %}
@@ -14,16 +13,15 @@
 	theme: page.theme|default("default"),
 	activePage: page.activePage|default(0),
 	mainNav: page.mainNav|default(links.mainNav),
-	secondaryNav: page.secondaryNav|default(links.secondaryNav)
+	secondaryNav: links.secondaryNav
 } %}
 
 {% block main %}
 {% endblock %}
 
 {% include '../partials/base/footer.twig' with {
-	activePage: page.activePage|default(0),
 	mainNav: page.mainNav|default(links.mainNav),
-	secondaryNav: page.secondaryNav|default(links.secondaryNav),
-	footerNav: page.footerNav|default(links.footerNav),
-	socialNav: page.socialNav|default(links.socialNav)
+	secondaryNav: links.secondaryNav,
+	footerNav: links.footerNav,
+	socialNav: links.socialNav
 } %}

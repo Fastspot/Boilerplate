@@ -57,11 +57,8 @@
 }
 
 .sub_nav_handle_icon {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-
-	transform: translate(-50%, -50%);
+	@include center;
+	
 	transition:
 		opacity $base_speed,
 		transform $base_speed;

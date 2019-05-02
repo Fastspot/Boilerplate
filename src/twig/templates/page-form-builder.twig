@@ -7,12 +7,9 @@
 } %}
 
 {% block main %}
-
 	<!-- Page Content -->
 	<div class="page_content">
-
 		<div class="fs-row">
-
 			<div class="fs-cell fs-lg-4 page_aside page_sub_nav">
 				{% include "../partials/navigation/sub.twig" with {
 					title: sectionTitle,
@@ -22,17 +19,13 @@
 
 			<!-- Main Content -->
 			<div class="fs-cell fs-lg-8 page_main_content" id="skip_content" tabindex="-1">
-
 				{% include "../partials/page-header.twig" %}
 
 				{% include "../partials/form-builder.twig" %}
-
 			</div>
 			<!-- END: Main Content -->
 
 		</div>
-
 	</div>
 	<!-- END: Page Content -->
-
 {% endblock %}

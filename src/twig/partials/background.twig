@@ -13,7 +13,6 @@
 	} %}
 #}
 
-<div class="{{ customClass ?: 'js-background' }} {{ class }}_background" data-background-options='{"source": {
-{% for key, source in sources %}"{{ key }}": "//images.fastspot.com/{{ vars.images }}/{{ source.width }}x{{ source.height }}/{{ image }}"{% if not loop.last %}, {% endif %}{% endfor %}}, "lazy": true{% if alt %}, "alt": "{{ alt }}"{% endif %}}' aria-hidden="true">
+<div class="{{ customClass ?: 'js-background' }} {{ class }}_background" data-background-options='{"source": { {% for key, source in sources %}"{{ key }}": "//images.fastspot.com/{{ vars.images }}/{{ source.width }}x{{ source.height }}/{{ image }}"{% if not loop.last %}, {% endif %}{% endfor %}}, "lazy": true, "alt": "{{ alt }}"}' aria-hidden="true">
 	<div class="{{ class }}_background_fallback" style="background-image: url(' //images.fastspot.com/{{ vars.images }}//{{ img.ultrawide.xxsml.width }}x{{ img.ultrawide.xxsml.height }}/{{ image }}');"></div>
 </div>

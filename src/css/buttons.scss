@@ -38,9 +38,9 @@ button {
 
 @mixin button_fill(
 	$background: #eee,
-	$hoverBackground: #222,
+	$hover_background: #222,
 	$color: #222,
-	$hoverColor: #eee
+	$hover_color: #eee
 ) {
 	background: $background;
 	color: $color;
@@ -50,8 +50,8 @@ button {
 
 	&:focus,
 	&:hover {
-		background: $hoverBackground;
-		color: $hoverColor;
+		background: $hover_background;
+		color: $hover_color;
 	}
 
 	[class$="label"] {}
@@ -73,11 +73,14 @@ button {
 	display: block;
 }
 
-@mixin button_mixed_block($layout: true) {
+@mixin button_mixed_block(
+	$layout: true,
+	$query: $min_sm
+) {
 	@include button_block;
 	@include button_layout($layout);
 
-	@media #{$min_sm} {
+	@media #{$query} {
 		display: inline-block;
 	}
 }

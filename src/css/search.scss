@@ -24,6 +24,10 @@
 
 .site_search_label {}
 
+.site_search_field {
+	position: relative;
+}
+
 .site_search_input {
 	width: 100%;
 
@@ -59,10 +63,7 @@
 }
 
 .site_search_button_icon {
-	position: absolute;
-	top: 50%;
-	left: 50%;
+	@include center;
 
 	pointer-events: none;
-	transform: translate(-50%, -50%);
 }

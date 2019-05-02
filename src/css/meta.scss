@@ -31,7 +31,13 @@
 
 .meta_detail {}
 
-.meta_address {}
+.meta_detail_address {}
+
+.meta_detail_email {}
+
+.meta_detail_phone {}
+
+.meta_detail_fax {}
 
 .meta_detail_icon {}
 
@@ -47,7 +53,11 @@
 	}
 }
 
-.meta_detail_label_address {}
+.meta_detail_label_email {}
+
+.meta_detail_label_phone {}
+
+.meta_detail_label_fax {}
 
 .meta_address_street {}
 
@@ -58,11 +68,3 @@
 .meta_address_state {}
 
 .meta_address_zip {}
-
-.meta_email {}
-
-.meta_detail_label_email {}
-
-.meta_detail_label_phone {}
-
-.meta_detail_label_fax {}

@@ -16,17 +16,13 @@
 		]
 	}) }}
 
-	{{ site.dropdown("class", "label", ["items"]) }}
+	{{ site.select("class", "label", ["items"]) }}
 
 	{{ site.input("class", "type", "label") }}
 
 	{{ site.textarea("class", "label") }}
 
 	{{ site.choices("class", "type", ["items"]) }}
-
-	{{ site.title("title", "full") }}
-
-	{{ site.anchor("Component Trello Name") }}
 
 	{{ site.tel("number") }}
 #}
@@ -77,7 +73,7 @@
 {% endmacro %}
 
 
-{% macro dropdown(class, label, items) %}
+{% macro select(class, label, items) %}
 {% set id = label|lower|replace({ " ": "_" }) %}
 
 <div class="{{ class }}_select_wrapper">
@@ -133,33 +129,6 @@
 		</div>
 	{% endfor %}
 </div>
-{% endmacro %}
-
-
-{% macro title(title, type) %}
-<div class="typography">
-	{% if type == "full" %}
-	<div class="fs-row">
-		<div class="fs-cell">
-	{% endif %}
-			<h4>{{ title }}</h4>
-	{% if type == "full" %}
-		</div>
-	</div>
-	{% endif %}
-</div>
-{% endmacro %}
-
-
-{% macro anchor(title) %}
-<h2 class="guidebook_component_title" id="{{ title|replace({
-	" ": "-",
-	":": "",
-	"&": "and",
-	"/": "-"
-})|lower }}">
-	<span class="guidebook_component_title_label">{{ title }}</span>
-</h2>
 {% endmacro %}
 
 
