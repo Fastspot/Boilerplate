@@ -4,7 +4,6 @@ const async = require('async');
 const fs = require('fs');
 const path = require('path');
 const globby = require('globby');
-const packageJSON = require('./package.json');
 const browserSync = require('browser-sync').create();
 const del = require('del');
 const gulpif = require('gulp-if');
@@ -27,6 +26,7 @@ const realFavicon = require ('gulp-real-favicon');
 const faviconFile = 'favicons/markup.json';
 const axe = require('gulp-axe-webdriver');
 const pa11y = require('pa11y');
+var packageJSON = require('./package.json');
 
 
 var source = {
