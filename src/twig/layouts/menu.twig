@@ -1,6 +1,6 @@
 <!-- Menu -->
 <div class="js-menu menu" id="menu" aria-label="Site Menu">
-	{% include "../navigation/basic.twig" with {
+	{% include "../partials/navigation/basic.twig" with {
 		class: "main_nav",
 		modifier: "sm",
 		title: "Site",
@@ -9,7 +9,7 @@
 		links: mainNav
 	} %}
 
-	{% include "../navigation/basic.twig" with {
+	{% include "../partials/navigation/basic.twig" with {
 		class: "secondary_nav",
 		modifier: "sm",
 		title: "Secondary",

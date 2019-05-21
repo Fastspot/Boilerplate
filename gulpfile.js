@@ -34,8 +34,8 @@ var source = {
 	twig: [
 		'src/twig/templates/*.twig',
 		'!src/twig/templates/_*.twig',
-		'!src/twig/templates/fs-component-image-crops.twig',
-		'!src/twig/templates/fs-image-crops.twig'
+		'!src/twig/templates/fs-image-crops.twig',
+		'!src/twig/templates/fs-component-image-crops.twig'
 	],
 	templates: 'static/templates/*.html',
 	accessibility: [
@@ -216,12 +216,13 @@ function imageCrops(done) {
 			if (file.indexOf("page") > -1) {
 				fs.readFile(base + '/' + file, 'utf8', function(err, contents) {
 					var sizes = contents.match(/\d+x\d+/g);
-
-					for (var x = 0; x < sizes.length; x++) {
-
-						if (crops.indexOf(sizes[x]) == -1) {
-							if (exclude.indexOf(sizes[x]) == -1) {
-								crops.push(sizes[x]);
+					
+					if (sizes != null) {
+						for (var x = 0; x < sizes.length; x++) {
+							if (crops.indexOf(sizes[x]) == -1) {
+								if (exclude.indexOf(sizes[x]) == -1) {
+									crops.push(sizes[x]);
+								}
 							}
 						}
 					}
@@ -234,7 +235,7 @@ function imageCrops(done) {
 						for (var x = 0; x < crops.length; x++) {
 							for (var cropRatio in packageJSON.img) {
 								for (var cropSize in packageJSON.img[cropRatio]) {
-									if (packageJSON.img[cropRatio][cropSize] == crops[x]) {
+									if (packageJSON.img[cropRatio][cropSize].width + "x" + packageJSON.img[cropRatio][cropSize].height == crops[x]) {
 										modCrops.push('<span class="crop-size">' + crops[x] + '</span><span class="crop-name"> ' + cropRatio + '.' + cropSize + '</span>');
 									}
 								}
@@ -275,54 +276,51 @@ function componentImageCrops(done) {
 					type: type,
 					items: []
 				});
+				
+				if (mods != undefined) {
+					mods.forEach(function(mod) {
+						var content = fs.readFileSync(base + '/' + folder + '/' + mod, 'utf8');
+						var name = "";
+						var sizes = content.match(/(img\.[a-z]*\.[a-z]*)/g);
+						var sizesMarkup = [];
 
-				mods.forEach(function(mod) {
-					var content = fs.readFileSync(base + '/' + folder + '/' + mod, 'utf8');
-					var name = "";
-					var sizes = content.match(/(img\.[a-z]*\.[a-z]*)/g);
-					var sizesMarkup = [];
-
-					if (/(site.anchor\(.*\))/.test(content)) {
-						name = content.match(/(site.anchor\(.*\))/g);
-						name = name[0].replace('site.anchor(', '').replace(')', '').replace(/"/g, '');
-					} else {
 						name = mod.replace(/(-)/g, ' ').replace('.twig', '').replace(/^[a-z]/, l => l.toUpperCase()).replace(/ [a-z]/g, l => l.toUpperCase());
-					}
 
-					if (sizes !== null) {
-						sizes = [...new Set(sizes)];
-						sizes = sizes.sort();
+						if (sizes !== null) {
+							sizes = [...new Set(sizes)];
+							sizes = sizes.sort();
 
-						for (var x = 0; x < sizes.length; x++) {
-							for (var cropRatio in packageJSON.img) {
-								for (var cropSize in packageJSON.img[cropRatio]) {
-									if ('img.' + cropRatio + '.' + cropSize == sizes[x]) {
-										sizesMarkup.push('<li class="crop" data-crop-size="' + packageJSON.img[cropRatio][cropSize] + '"><span class="crop-size">' + packageJSON.img[cropRatio][cropSize] + '</span><span class="crop-name"> ' + cropRatio + '.' + cropSize + '</span></li>');
+							for (var x = 0; x < sizes.length; x++) {
+								for (var cropRatio in packageJSON.img) {
+									for (var cropSize in packageJSON.img[cropRatio]) {
+										if ('img.' + cropRatio + '.' + cropSize == sizes[x]) {
+											sizesMarkup.push('<li class="crop" data-crop-size="' + packageJSON.img[cropRatio][cropSize].width + "x" + packageJSON.img[cropRatio][cropSize].height + '"><span class="crop-size">' + packageJSON.img[cropRatio][cropSize].width + "x" + packageJSON.img[cropRatio][cropSize].height + '</span><span class="crop-name"> ' + cropRatio + '.' + cropSize + '</span></li>');
+										}
 									}
 								}
 							}
+
+							data[typeSteps - 1].items.push({
+								name: name,
+								sizes: sizesMarkup
+							});
 						}
+					});
 
-						data[typeSteps - 1].items.push({
-							name: name,
-							sizes: sizesMarkup
-						});
+					typeSteps++;
+
+					if (typeSteps == folders.length) {
+						src('src/twig/templates/fs-component-image-crops.twig')
+							.pipe(twig({
+								data: {
+									sections: data
+								}
+							}))
+							.pipe(rename({
+								extname: '.html'
+							}))
+							.pipe(dest('static/templates'));
 					}
-				});
-
-				typeSteps++;
-
-				if (typeSteps == folders.length) {
-					src('src/twig/templates/fs-component-image-crops.twig')
-						.pipe(twig({
-							data: {
-								sections: data
-							}
-						}))
-						.pipe(rename({
-							extname: '.html'
-						}))
-						.pipe(dest('static/templates'));
 				}
 			});
 		});

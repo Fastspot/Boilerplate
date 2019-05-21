@@ -8,7 +8,7 @@
 
 {% import '../partials/macros.twig' as site %}
 
-{% include '../partials/base/header.twig' with {
+{% include '../layouts/header.twig' with {
 	layout: page.layout|default("default"),
 	theme: page.theme|default("default"),
 	activePage: page.activePage|default(0),
@@ -19,7 +19,7 @@
 {% block main %}
 {% endblock %}
 
-{% include '../partials/base/footer.twig' with {
+{% include '../layouts/footer.twig' with {
 	mainNav: page.mainNav|default(links.mainNav),
 	secondaryNav: links.secondaryNav,
 	footerNav: links.footerNav,

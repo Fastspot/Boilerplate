@@ -7,7 +7,7 @@
 					<div class="fs-row">
 						<div class="fs-cell">
 							<div class="footer_ribbon_inner">
-								{% include "../meta.twig" with {
+								{% include "../partials/meta.twig" with {
 									name: vars.name,
 									icon: "logo",
 									street: "2980 Falls Road",
@@ -19,18 +19,18 @@
 									fax: "294-467-9876"
 								} %}
 
-								{% include "../navigation/basic.twig" with {
+								{% include "../partials/navigation/basic.twig" with {
 									class: "footer_nav",
 									title: "Footer",
 									links: footerNav
 								} %}
 
-								{% include "../navigation/social.twig" with {
+								{% include "../partials/navigation/social.twig" with {
 									title: "Social",
 									links: socialNav
 								} %}
 
-								{% include "../copyright.twig" %}
+								{% include "../partials/copyright.twig" %}
 							</div>
 						</div>
 					</div>

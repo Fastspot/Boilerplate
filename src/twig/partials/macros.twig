@@ -74,7 +74,9 @@
 
 
 {% macro select(class, label, items) %}
-{% set id = label|lower|replace({ " ": "_" }) %}
+{% set id = label|lower|replace({
+	" ": "_"
+}) %}
 
 <div class="{{ class }}_select_wrapper">
 	{% if label %}
