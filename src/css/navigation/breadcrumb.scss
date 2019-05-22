@@ -3,14 +3,9 @@
 ============================================================================= */
 
 .breadcrumb_nav {
-	display: none;
 
 	@media print {
 		display: none !important;
-	}
-
-	@media #{$min_lg} {
-		display: block;
 	}
 }
 
@@ -45,6 +40,13 @@
 		&:after {
 			opacity: 0;
 			visibility: hidden;
+		}
+	}
+
+	&:not(:last-child) {
+
+		@media #{$max_lg} {
+			display: none;
 		}
 	}
 }
