@@ -19,7 +19,8 @@
 							<div class="header_ribbon_inner">
 								{% include "../logo.twig" with {
 									modifier: "header",
-									icon: "logo"
+									icon: "logo",
+									print: ""
 								} %}
 
 								{% include "../navigation/basic.twig" with {
@@ -35,6 +36,8 @@
 									class: "secondary_nav",
 									modifier: "lg",
 									title: "Secondary",
+									icon: "",
+									active: "",
 									links: secondaryNav
 								} %}
 

@@ -1,6 +1,8 @@
 <!-- Page Header -->
 <div class="page_header">
 	{% include "../partials/navigation/breadcrumb.twig" with {
+		modifier: "",
+		icon: "home",
 		links: page.breadcrumbNav|default([page.title])
 	} %}
 

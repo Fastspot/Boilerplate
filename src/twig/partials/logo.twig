@@ -5,7 +5,7 @@
 	{% include "../partials/logo.twig" with {
 		modifier: "header",
 		icon: "logo",
-		printLogo: "../../images/logo-print.png"
+		print: "../../images/logo-print.png"
 	} %}
 #}
 
@@ -16,7 +16,7 @@
 		<span class="logo_link_icon">{{ site.icon(icon) }}</span>
 		{% endif %}
 	</a>
-	{% if printLogo %}
+	{% if print %}
 	<img class="logo_print" src="{{ printLogo }}" alt="">
 	{% endif %}
 </div>

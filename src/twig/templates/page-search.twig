@@ -21,7 +21,9 @@
 
 		<!-- Full Width Callouts -->
 		<div class="full_width_callouts">
-			{% include "../partials/google-cse.twig" %}
+			{% include "../partials/google-cse.twig" with {
+				resultsUrl: ""
+			} %}
 		</div>
 		<!-- END: Full Width Callouts -->
 

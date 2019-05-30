@@ -5,7 +5,31 @@
 		metaImage: "/images/temp/social-wide.jpg",
 		title: "Master Sub",
 		intro: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-		layout: "default"
+		layout: "default",
+		breadcrumbNav: [
+			"Link 1"
+		],
+		subNav: [
+			{
+				modifier: "open",
+				href: "#",
+				name: "Link 1",
+				children: [
+					{
+						modifier: "active",
+						href: "#",
+						name: "Child Link 1",
+						children: ""
+					}
+				]
+			},
+			{
+				modifier: "",
+				href: "#",
+				name: "Link 2",
+				children: ""
+			}
+		]
 	} %}
 {% endblock %}
 
@@ -19,7 +43,7 @@
 	{% set sectionTitle = page.title %}
 {% endblock %}
 
-{% block pageContent %}
+{% block main %}
 	<!-- Page Feature -->
 	<div class="page_feature">
 	</div>
@@ -29,7 +53,9 @@
 	<div class="page_content">
 		<div class="fs-row">
 			<div class="fs-cell fs-lg-4 page_aside page_sub_nav">
-				{% include "../partials/navigation/sub.twig" %}
+				{% include "../partials/navigation/sub.twig" with {
+					modifier: ""
+				} %}
 			</div>
 
 			<!-- Main Content -->

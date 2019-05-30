@@ -1,7 +1,7 @@
 {#
 	{% include "../partials/navigation/breadcrumb.twig" with {
 		modifier: "lg",
-		icon: true,
+		icon: "home",
 		links: breadcrumbNav
 	} %}
 #}
@@ -14,7 +14,7 @@
 		<li class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
 			<a class="breadcrumb_pill breadcrumb_pill_link" href="page-home.html" itemprop="item">
 				{% if icon %}
-				<span class="breadcrumb_pill_icon">{{ site.icon("home") }}</span>
+				<span class="breadcrumb_pill_icon">{{ site.icon(icon) }}</span>
 				{% endif %}
 				<span class="breadcrumb_pill_label" itemprop="name">Home</span>
 			</a>

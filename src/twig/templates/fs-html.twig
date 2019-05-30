@@ -18,7 +18,9 @@
 		<div class="fs-row">
 
 			<div class="fs-cell fs-lg-4 page_aside page_sub_nav">
-				{% include "../partials/navigation/sub.twig" %}
+				{% include "../partials/navigation/sub.twig" with {
+					modifier: ""
+				} %}
 			</div>
 
 			<!-- Main Content -->
