@@ -71,11 +71,12 @@
 /* Carousel Control Themes
 ============================================================================= */
 
-.theme {
+.controls_base {
 
 	.fs-carousel-controls {}
 
 	.fs-carousel-control {
+		padding: 20px;
 
 		&.fs-carousel-visible {}
 
@@ -126,12 +127,21 @@
 /* Carousel Pagination Themes
 ============================================================================= */
 
-.theme {
+.pagination_dark {
 
 	.fs-carousel-pagination {}
 
 	.fs-carousel-page {
 
-		&.fs-carousel-active {}
+		&:before {
+			background-color: #999;
+		}
+	}
+
+	.fs-carousel-active {
+
+		&:before {
+			background-color: #000;
+		}
 	}
 }
