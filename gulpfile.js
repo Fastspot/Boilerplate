@@ -27,7 +27,6 @@ const svgSprite = require('gulp-svg-sprite');
 const realFavicon = require ('gulp-real-favicon');
 const FAVICON_DATA_FILE = 'favicons/markup.json';
 const axe = require('gulp-axe-webdriver');
-const pa11y = require('pa11y');
 
 
 var source = {
@@ -563,73 +562,6 @@ function axePage() {
 }
 
 
-function runPa11y(done) {
-	if (!fs.existsSync('static/pa11y')) {
-		fs.mkdirSync('static/pa11y');
-	}
-
-	var urls = globby.sync(source.accessibility);
-	var items = [];
-
-	var queue = async.queue(function(url, complete) {
-		var absolutePath = path.resolve(url);
-		var base = path.basename(url, '.html');
-
-		pa11y('file://' + absolutePath, {
-			ignore: [
-				'notice'
-			]
-		}, function(error, results) {
-			if (error) return console.error(error.message);
-
-			var errors = 0;
-			var warnings = 0;
-
-			for(issue in results.issues) {
-				if(results.issues[issue].type == "error") {
-					errors++;
-				} else if(results.issues[issue].type == "warning") {
-					warnings++;
-				}
-
-				results.issues[issue].context = results.issues[issue].context.replace(/(\s\s+)/g, '');
-			}
-
-			items.push({
-				page: base,
-				errors: errors,
-				warnings: warnings,
-				results: results
-			});
-
-			complete();
-		});
-
-	}, 2);
-
-	queue.drain = function() {
-		src('src/twig/templates/_pa11y.twig')
-			.pipe(twig({
-				data: {
-					vars: packageJSON.vars,
-					items: items
-				}
-			}))
-			.pipe(rename({
-				basename: 'pa11y',
-				extname: '.html'
-			}))
-			.pipe(dest('static/templates'));
-
-		console.log('All done! All pa11y links should be functional now!');
-	};
-
-	queue.push(urls);
-
-	done();
-}
-
-
 function clean(done) {
 	del('css');
 	del('favicons');
@@ -641,6 +573,7 @@ function clean(done) {
 		'!static/.htaccess',
 		'!static/index.php'
 	]);
+
 	done();
 }
 
@@ -777,7 +710,6 @@ exports.styleGuide = series(
 exports.access = series(
 	runAxe,
 	axePage,
-	runPa11y,
 	watchFileSystem,
 	runBrowserSync
 );
