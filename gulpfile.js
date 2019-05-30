@@ -523,7 +523,7 @@ function injectFaviconMarkups() {
 
 function checkForFaviconUpdate(done) {
 	var currentVersion = JSON.parse(fs.readFileSync(FAVICON_DATA_FILE)).version;
-	
+
 	realFavicon.checkForUpdates(currentVersion, function(err) {
 		if (err) {
 			throw err;
@@ -636,7 +636,11 @@ function clean(done) {
 	del('images');
 	del('js');
 	del('static-html');
-
+	del([
+		'static/*',
+		'!static/.htaccess',
+		'!static/index.php'
+	]);
 	done();
 }
 
@@ -682,7 +686,7 @@ function resetPackage(done) {
 
 function watchFileSystem(done) {
 	watch('package.json', series(
-		resetPackage, 
+		resetPackage,
 		compileTwig,
 		reloadSystem
 	));
@@ -705,18 +709,18 @@ function watchFileSystem(done) {
 	));
 
 	watch('src/js/**/*.js', series(
-		compileJs, 
+		compileJs,
 		hintJs
 	));
 
 	watch('src/icons/*', series(
-		sprite, 
-		compileTwig, 
+		sprite,
+		compileTwig,
 		reloadSystem
 	));
 
 	watch('src/images/*', series(
-		imagemin, 
+		imagemin,
 		reloadSystem
 	));
 
