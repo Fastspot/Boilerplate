@@ -1,7 +1,9 @@
 {#
 	{{ site.icon("chevron") }}
 
-	{{ site.button("class", "Apply", "chevron_right", "#") }}
+	{{ site.link("class_name", "Label", "icon", "#href", "aria") }}
+
+	{{ site.button("class_name", "Label", "icon", "aria") }}
 
 	{{ site.table({
 		headers: [
@@ -35,19 +37,16 @@
 {% endmacro %}
 
 
-{% macro button(class, label, icon, href) %}
-<a class="{{ class }}_link" href="{{ href ?: '#' }}">
-	<span class="{{ class }}_link_inner">
-		<span class="{{ class }}_link_label">{{ label }}</span>
-		{% if icon %}
-		<span class="{{ class }}_link_icon" aria-hidden="true">
-			<svg class="icon icon_{{ icon }}">
-				<use xlink:href="../../images/icons.svg#{{ icon }}"></use>
-			</svg>
-		</span>
-		{% endif %}
-	</span>
+{% macro link(class, label, icon, href, aria) %}
+<a class="{{ class }}_link" href="{{ href ?: '#' }}"{% if aria %} aria-label="{{ aria }}"{% endif %}>
+	<span class="{{ class }}_link_inner"><span class="{{ class }}_link_label">{{ label }}</span>{% if icon %}<span class="{{ class }}_link_icon" aria-hidden="true">&#xfeff;<svg class="icon icon_{{ icon }}"><use xlink:href="../../images/icons.svg#{{ icon }}"></use></svg></span>{% endif %}</span>
 </a>
+{% endmacro %}
+
+{% macro button(class, label, icon, aria) %}
+<button class="{{ class }}_button"{% if aria %} aria-label="{{ aria }}"{% endif %}>
+	<span class="{{ class }}_button_inner"><span class="{{ class }}_button_label">{{ label }}</span>{% if icon %}<span class="{{ class }}_button_icon" aria-hidden="true">&#xfeff;<svg class="icon icon_{{ icon }}"><use xlink:href="../../images/icons.svg#{{ icon }}"></use></svg></span>{% endif %}</span>
+</button>
 {% endmacro %}
 
 
