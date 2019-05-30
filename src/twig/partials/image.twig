@@ -12,11 +12,12 @@
 	} %}
 #}
 
-<div class="lazy_image_wrapper {{ class }}_image_wrapper">
+<span class="lazy_image_wrapper {{ class }}_image_wrapper {{ class }}_image_wrapper_lazy">
 	<img class="js-lazy js-lazyload {{ class }}_image"{% if sources %} data-sizes="auto"{% endif %} src="../../images/placeholder.png" data-src="//images.fastspot.com/{{ vars.images }}/{{ dimension.width }}x{{ dimension.height }}/{{ image }}"{% if sources %} data-srcset="{% for source in sources|reverse %}//images.fastspot.com/{{ vars.images }}/{{ source.width }}x{{ source.height }}/{{ image }} {{ source.width }}w{% if not loop.last %}, {% endif %}{% endfor %}"{% endif %} alt="{{ alt }}"{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}>
-</div>
+</span>
 <noscript>
-	<div class="{{ class }}_image_wrapper">
-		<img class="{{ class }}_image" src="//images.fastspot.com/{{ vars.images }}/{{ dimension.width }}x{{ dimension.height }}/{{ image }}"{% if sources %} srcset="{% for source in sources|reverse %}//images.fastspot.com/{{ vars.images }}/{{ source.width }}x{{ source.height }}/{{ image }} {{ source.width }}w{% if not loop.last %}, {% endif %}{% endfor %}"{% endif %} alt="{{ alt }}"{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}>
-	</div>
+	<span class="{{ class }}_image_wrapper">
+		<img class="{{ class }}_image" src="//images.fastspot.com/{{ vars.images }}/{{ dimension.width }}x{{ dimension.height }}/{{ image }}"{% if sources %} srcset="{% for source in sources|reverse %}//images.fastspot.com/{{ vars.images }}/{{ source.width }}x{{ source.height }}/{{ image }} {{ source.width }}w{% if not loop.last %}, {% endif %}{% endfor %}" sizes="100vw"{% endif %} alt="{{ alt }}"{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}>
+	</span>
 </noscript>
+
