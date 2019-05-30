@@ -162,7 +162,10 @@
 	.alignleft,
 	.alignright,
 	.aligncenter,
-	.alignnone {
+	.alignnone,
+	.align-left,
+	.align-right,
+	.align-center {
 		width: auto;
 
 		display: table;
@@ -187,7 +190,9 @@
 	.block_left,
 	.block_right,
 	.alignleft,
-	.alignright	{
+	.alignright,
+	.align-left,
+	.align-right	{
 		max-width: 50%;
 
 		@media #{$max_sm} {
@@ -205,7 +210,8 @@
 	}
 
 	.block_left,
-	.alignleft {
+	.alignleft,
+	.align-left {
 
 		@media #{$min_sm} {
 			float: left;
@@ -214,7 +220,8 @@
 	}
 
 	.block_right,
-	.alignright {
+	.alignright,
+	.align-right {
 
 		@media #{$min_sm} {
 			float: right;
@@ -223,7 +230,8 @@
 	}
 
 	.block_center,
-	.aligncenter {
+	.aligncenter,
+	.align-center {
 		text-align: center;
 
 		img {
