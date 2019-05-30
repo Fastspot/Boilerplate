@@ -43,10 +43,10 @@ var source = {
 		'!src/twig/templates/fs-components.twig',
 		'!src/twig/templates/fs-templates.twig'
 	],
-	templates: 'static/templates/*.html',
+	templates: 'static-html/templates/*.html',
 	accessibility: [
-		'static/templates/page*.html',
-		'!static/templates/page-form-builder.html',
+		'static-html/templates/page*.html',
+		'!static-html/templates/page-form-builder.html',
 	],
 	sitemap: 'src/twig/index.twig',
 	jshint: 'src/js/modules/*.js',
@@ -151,7 +151,7 @@ function trello(done) {
 					.pipe(rename({
 						extname: '.html'
 					}))
-					.pipe(dest('static/templates'));
+					.pipe(dest('static-html/templates'));
 			}
 		});
 
@@ -192,7 +192,7 @@ function compileTwig() {
 		.pipe(rename({
 			extname: '.html'
 		}))
-		.pipe(dest('static/templates'))
+		.pipe(dest('static-html/templates'))
 		.pipe(browserSync.stream());
 }
 
@@ -204,12 +204,12 @@ function prettyhtml() {
 			"indent_char": "	",
 			"preserve_newlines": false
 		}))
-		.pipe(dest('static/templates'));
+		.pipe(dest('static-html/templates'));
 }
 
 
 function sitemap(done) {
-	var base = "static/templates";
+	var base = "static-html/templates";
 	var sitemap = [];
 	var steps = 1;
 
@@ -239,7 +239,7 @@ function sitemap(done) {
 							.pipe(rename({
 								extname: '.html'
 							}))
-							.pipe(dest('static/'));
+							.pipe(dest('static-html/'));
 					}
 				});
 			}
@@ -323,7 +323,7 @@ function compressImages() {
 
 
 function imageCrops(done) {
-	var base = 'static/templates';
+	var base = 'static-html/templates';
 	var exclude = ["16x16", "32x32", "144x144", "180x180"];
 	var crops = [];
 	var modCrops = [];
@@ -371,7 +371,7 @@ function imageCrops(done) {
 							.pipe(rename({
 								extname: '.html'
 							}))
-							.pipe(dest('static/templates'));
+							.pipe(dest('static-html/templates'));
 					}
 				});
 			}
@@ -443,7 +443,7 @@ function componentImageCrops(done) {
 						.pipe(rename({
 							extname: '.html'
 						}))
-						.pipe(dest('static/templates'));
+						.pipe(dest('static-html/templates'));
 				}
 			});
 		});
@@ -535,7 +535,7 @@ function checkForFaviconUpdate(done) {
 
 function runAxe() {
   var options = {
-		folderOutputReport: 'static/',
+		folderOutputReport: 'static-html/',
 		headless: true,
 		saveOutputIn: 'axe.json',
 		showOnlyViolations: true,
@@ -551,14 +551,14 @@ function axePage() {
 		.pipe(twig({
 			data: {
 				vars: packageJSON.vars,
-				items: require('./static/axe.json')
+				items: require('./static-html/axe.json')
 			}
 		}))
 		.pipe(rename({
 			basename: "axe",
 			extname: '.html'
 		}))
-		.pipe(dest('static/templates'));
+		.pipe(dest('static-html/templates'));
 }
 
 
@@ -568,11 +568,6 @@ function clean(done) {
 	del('images');
 	del('js');
 	del('static-html');
-	del([
-		'static/*',
-		'!static/.htaccess',
-		'!static/index.php'
-	]);
 
 	done();
 }
@@ -583,7 +578,7 @@ function runBrowserSync(done) {
 		logPrefix: packageJSON.vars.name,
 		ui: false,
 		server: './',
-		startPath: '/static/index.html',
+		startPath: '/static-html/index.html',
 		notify: {
 			styles: {
 				top: 'auto',
