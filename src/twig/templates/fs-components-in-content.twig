@@ -1,0 +1,55 @@
+{% extends "_base.twig" %}
+
+{% set page = {
+	title: "In Content and Sidebar Components",
+	layout: "default"
+} %}
+
+{% block breadcrumbNav %}
+	{% set breadcrumbNav = [
+		page.title
+	] %}
+{% endblock %}
+
+{% block sectionTitle %}
+	{% set sectionTitle = page.title %}
+{% endblock %}
+
+{% block main %}
+	<!-- Page Content -->
+	<div class="page_content">
+		<div class="fs-row">
+			<div class="fs-cell fs-lg-4 page_aside page_sub_nav">
+				{% include "../partials/navigation/sub.twig" with {
+					modifier: ""
+				} %}
+			</div>
+
+			<!-- Main Content -->
+			<div class="fs-cell fs-lg-8 page_main_content" id="skip_content" tabindex="-1">
+				{% include "../partials/page-header.twig" %}
+
+				<!-- WYSIWYG -->
+				<div class="typography" itemprop="mainEntity">
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+					<p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.</p>
+				</div>
+				<!-- END: WYSIWYG -->
+
+				<!-- In Content Callouts -->
+				<div class="in_content_callouts">
+				</div>
+				<!-- END: In Content Callouts -->
+
+			</div>
+			<!-- END: Main Content -->
+
+			<!-- Sidebar Callouts -->
+			<div class="fs-cell fs-lg-4 page_aside page_sidebar">
+			</div>
+			<!-- END: Sidebar Callouts -->
+
+		</div>
+	</div>
+	<!-- END: Page Content -->
+{% endblock %}
