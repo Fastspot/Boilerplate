@@ -1,301 +1,45 @@
 /* ==========================================================================
-	Formbuilder
+	Forms
 ============================================================================= */
 
-.form_builder {
-	@include margined_lg;
+@mixin form_label($theme: null) {
+	@include body_text;
+}
 
-	h2 {
-		@include h2;
-	}
-
-	p {
-		@include body_text;
-	}
-
-	fieldset {
-		border: 0;
-		margin: 40px 0;
-		padding: 0;
-
-		> label {
-			@include h5;
-
-			display: block;
-			margin-bottom: 5px;
-		}
-	}
-
-	input:not([type="submit"]):not([type="file"]),
-	textarea {
-		width: 100%;
-
-		border: 1px solid #000;
-		padding: 10px;
-	}
-
-	input::-ms-clear {
-		width: 0;
-		height: 0;
-	}
-
-	textarea {
-		min-height: 220px;
-		resize: vertical;
-	}
+@mixin input($theme: null) {
+	border: 1px solid #000;
+	border-radius: 0;
+	padding: 10px;
 }
 
 
-/* Custom Elements
+/* Select
 ============================================================================= */
 
-.form_builder_required_star {}
-
-.form_builder_sublabel {
-	@include h6;
-
-	display: block;
-	margin-top: 5px;
-	margin-bottom: 20px;
-}
-
-.form_builder_wrap {
-
-	@media #{$min_sm} {
-		display: flex;
-	}
-}
-
-.form_builder_address {
-	@include clearfix;
-}
-
-.form_builder_split {
-	width: calc(50% - 5px);
-
-	float: left;
-	margin-right: 10px;
-
-	@media #{$min_md} {
-		width: calc(50% - 10px);
-
-		margin-right: 20px;
-	}
-
-	&.form_builder_split_last_col {
-		margin-right: 0;
-	}
-}
-
-.form_builder_firstname {
-
-	@media #{$min_sm} {
-		width: calc(50% - 10px);
-
-		margin-right: 10px;
-	}
-
-	@media #{$min_md} {
-		width: calc(50% - 20px);
-
-		margin-right: 20px;
-	}
-}
-
-.form_builder_lastname {
-
-	@media #{$min_sm} {
-		width: 50%;
-	}
-}
-
-.form_builder_date_2,
-.form_builder_phone_3 {
-	width: 80px;
-
-	float: left;
-	margin-right: 10px;
-
-	@media #{$min_md} {
-		margin-right: 20px;
-	}
-}
-
-.form_builder_date_4,
-.form_builder_phone_4 {
-	width: 110px;
-
-	float: left;
-}
-
-
-/* Checkboxes & Radios
-============================================================================= */
-
-.form_builder_checkbox,
-.form_builder_radio {
+@mixin select() {
 	position: relative;
-
-	margin-bottom: 10px;
-
-	&:last-child {
-		margin-bottom: 0;
-	}
-
-	input {
-		position: absolute;
- 		z-index: -2;
-
-		opacity: 0;
-	}
-}
-
-.form_builder_checkbox_indicator,
-.form_builder_radio_indicator {
-	height: 20px;
-	width: 20px;
-
-	position: absolute;
-	top: 50%;
-	left: 0;
-
-	background-color: $gray_20;
-	color: #fff;
-	pointer-events: none;
-	transition: background-color $base_speed;
-	transform: translate(0, -50%);
-	user-select: none;
-
-	&:before {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-
-		transition: transform $base_speed;
-	}
-
-	input:focus ~ & {
-		box-shadow:
-			0 0 0 2px #fff,
-			0 0 0 4px #000;
-	}
-
-	input:checked ~ & {
-		background-color: #000;
-	}
-}
-
-.form_builder_checkbox {}
-
-.form_builder_checkbox_indicator {
-
-	&:before {
-		height: 10px;
-		width: 6px;
-
-		border-right: 2px solid #fff;
-		border-bottom: 2px solid #fff;
-		content:  "";
-		margin-top: -1px;
-		transform:
-			translate(-50%, -50%)
-			scale(0)
-			rotate(45deg);
-
-		input:checked ~ & {
-			transform:
-				translate(-50%, -50%)
-				scale(1)
-				rotate(45deg);
-		}
-	}
-}
-
-.form_builder_radio {}
-
-.form_builder_radio_indicator {
-	border-radius: 50%;
-
-	&:before {
-		height: 50%;
-		width: 50%;
-
-		background-color: #fff;
-		border-radius: inherit;
-		content: "";
-		transform:
-			translate(-50%, -50%)
-			scale(0);
-
-		input:checked ~ & {
-			transform:
-				translate(-50%, -50%)
-				scale(1);
-		}
-	}
-}
-
-.form_builder_for_checkbox {
-	cursor: pointer;
-	display: block;
-	padding-left: 28px;
-}
-
-
-/* Selects
-============================================================================= */
-
-.form_builder_select {
-	position: relative;
-
-	max-width: 300px;
-	width: 100%;
 
 	display: inline-block;
-
-	&:after {
-		position: absolute;
-		top: 50%;
-		right: 20px;
-
-		border: 6px solid transparent;
-		border-top-color: #000;
-		content: "";
-		margin-top: -3px;
-		pointer-events: none;
-		transform: scaleX(0.85);
-	}
 
 	select {
 		width: 100%;
 
 		appearance: none;
-		background-color: $gray_20;
 		border: 0;
 		border-radius: 0;
 		color: inherit;
 		cursor: pointer;
 		display: inline-block;
+		line-height: normal;
 		margin: 0;
 		outline: 0;
-		padding: 15px 45px 15px 20px;
+		padding: 10px 45px 10px 20px;
 
 		// Media query to target Firefox only
 		@-moz-document url-prefix() {
 			// Firefox hack to hide the arrow
 			text-indent: 0.01px;
 			text-overflow: "";
-		}
-
-		&:focus {
-			box-shadow:
-				0 0 0 2px #fff,
-				0 0 0 4px #000;
-		}
-
-		&:active {
-			color: #fff;
-			background-color: #000;
 		}
 
 		// Undo the Firefox inner focus ring
@@ -309,6 +53,22 @@
 			display: none;
 		}
 
+		&:after {
+			position: absolute;
+			top: 50%;
+			right: 20px;
+
+			width: 0;
+			height: 0;
+
+			border: 6px solid transparent;
+			border-top-color: #000;
+			content: "";
+			display: inline-block;
+			margin-top: -3px;
+			pointer-events: none;
+		}
+
 		option {
 
 			@-moz-document url-prefix() {
@@ -319,11 +79,146 @@
 	}
 }
 
-
-/* Submit
+/* Select Themes
 ============================================================================= */
 
-.form_builder_submit {
-	@include button_inline;
-	@include button_fill;
+@mixin select_gray() {
+
+	select {
+		background-color: $gray_20;
+
+		&:focus {
+			box-shadow:
+				0 0 0 2px #fff,
+				0 0 0 4px #000;
+		}
+
+		&:active {
+			color: #fff;
+			background-color: #000;
+		}
+	}
+}
+
+
+/* Checkbox and Radio
+============================================================================= */
+
+@mixin option() {
+	position: relative;
+
+	input {
+		position: absolute;
+ 		z-index: -2;
+
+		opacity: 0;
+
+		&:checked {
+
+			~ [class$="indicator"] {
+
+				&:before {
+					transform: scale(1);
+				}
+			}
+		}
+	}
+
+	[class$="indicator"] {
+		width: 20px;
+		height: 20px;
+
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		display: block;
+		pointer-events: none;
+		text-align: center;
+		transition: background-color $base_speed;
+		user-select: none;
+
+		&:before {
+			@include absolute_center;
+
+			display: block;
+			transform: scale(0);
+			transition: transform $base_speed;
+		}
+	}
+}
+
+@mixin checkbox() {
+	@include option;
+
+	[class$="indicator"] {
+
+		&:before {
+			width: 14px;
+			height: 14px;
+
+			content:  "\2713";
+			font-size: 14px;
+			line-height: 1;
+		}
+	}
+}
+
+
+@mixin radio() {
+	@include option;
+
+	[class$="indicator"] {
+		border-radius: 50%;
+
+		&:before {
+			width: 50%;
+			height: 50%;
+
+			border-radius: inherit;
+			content: "";
+		}
+	}
+}
+
+@mixin option_gray() {
+
+	input {
+
+		&:checked {
+
+			~ [class$="indicator"] {
+				background-color: #000;
+			}
+		}
+
+		&:focus {
+
+			~ [class$="indicator"] {
+				box-shadow:
+					0 0 0 2px #fff,
+					0 0 0 4px #000;
+			}
+		}
+	}
+
+	[class$="indicator"] {
+		background-color: $gray_20;
+		color: #fff;
+	}
+}
+
+@mixin checkbox_gray() {
+	@include option_gray;
+}
+
+@mixin radio_gray() {
+	@include option_gray;
+
+	[class$="indicator"] {
+
+		&:before {
+			background-color: #fff;
+		}
+	}
 }
