@@ -27,6 +27,7 @@ const svgSprite = require('gulp-svg-sprite');
 const realFavicon = require ('gulp-real-favicon');
 const FAVICON_DATA_FILE = 'favicons/markup.json';
 const axe = require('gulp-axe-webdriver');
+const pa11y = require('pa11y');
 
 
 var source = {
@@ -43,10 +44,10 @@ var source = {
 		'!src/twig/templates/fs-components.twig',
 		'!src/twig/templates/fs-templates.twig'
 	],
-	templates: 'static-html/templates/*.html',
+	templates: 'static/templates/*.html',
 	accessibility: [
-		'static-html/templates/page*.html',
-		'!static-html/templates/page-form-builder.html',
+		'static/templates/page*.html',
+		'!static/templates/page-form-builder.html',
 	],
 	sitemap: 'src/twig/index.twig',
 	jshint: 'src/js/modules/*.js',
@@ -151,7 +152,7 @@ function trello(done) {
 					.pipe(rename({
 						extname: '.html'
 					}))
-					.pipe(dest('static-html/templates'));
+					.pipe(dest('static/templates'));
 			}
 		});
 
@@ -192,7 +193,7 @@ function compileTwig() {
 		.pipe(rename({
 			extname: '.html'
 		}))
-		.pipe(dest('static-html/templates'))
+		.pipe(dest('static/templates'))
 		.pipe(browserSync.stream());
 }
 
@@ -204,12 +205,12 @@ function prettyhtml() {
 			"indent_char": "	",
 			"preserve_newlines": false
 		}))
-		.pipe(dest('static-html/templates'));
+		.pipe(dest('static/templates'));
 }
 
 
 function sitemap(done) {
-	var base = "static-html/templates";
+	var base = "static/templates";
 	var sitemap = [];
 	var steps = 1;
 
@@ -239,7 +240,7 @@ function sitemap(done) {
 							.pipe(rename({
 								extname: '.html'
 							}))
-							.pipe(dest('static-html/'));
+							.pipe(dest('static/'));
 					}
 				});
 			}
@@ -323,7 +324,7 @@ function compressImages() {
 
 
 function imageCrops(done) {
-	var base = 'static-html/templates';
+	var base = 'static/templates';
 	var exclude = ["16x16", "32x32", "144x144", "180x180"];
 	var crops = [];
 	var modCrops = [];
@@ -371,7 +372,7 @@ function imageCrops(done) {
 							.pipe(rename({
 								extname: '.html'
 							}))
-							.pipe(dest('static-html/templates'));
+							.pipe(dest('static/templates'));
 					}
 				});
 			}
@@ -443,7 +444,7 @@ function componentImageCrops(done) {
 						.pipe(rename({
 							extname: '.html'
 						}))
-						.pipe(dest('static-html/templates'));
+						.pipe(dest('static/templates'));
 				}
 			});
 		});
@@ -535,7 +536,7 @@ function checkForFaviconUpdate(done) {
 
 function runAxe() {
   var options = {
-		folderOutputReport: 'static-html/',
+		folderOutputReport: 'static/',
 		headless: true,
 		saveOutputIn: 'axe.json',
 		showOnlyViolations: true,
@@ -551,14 +552,81 @@ function axePage() {
 		.pipe(twig({
 			data: {
 				vars: packageJSON.vars,
-				items: require('./static-html/axe.json')
+				items: require('./static/axe.json')
 			}
 		}))
 		.pipe(rename({
 			basename: "axe",
 			extname: '.html'
 		}))
-		.pipe(dest('static-html/templates'));
+		.pipe(dest('static/templates'));
+}
+
+
+function runPa11y(done) {
+	if (!fs.existsSync('static/pa11y')) {
+		fs.mkdirSync('static/pa11y');
+	}
+
+	var urls = globby.sync(source.accessibility);
+	var items = [];
+
+	var queue = async.queue(function(url, complete) {
+		var absolutePath = path.resolve(url);
+		var base = path.basename(url, '.html');
+
+		pa11y('file://' + absolutePath, {
+			ignore: [
+				'notice'
+			]
+		}, function(error, results) {
+			if (error) return console.error(error.message);
+
+			var errors = 0;
+			var warnings = 0;
+
+			for(issue in results.issues) {
+				if(results.issues[issue].type == "error") {
+					errors++;
+				} else if(results.issues[issue].type == "warning") {
+					warnings++;
+				}
+
+				results.issues[issue].context = results.issues[issue].context.replace(/(\s\s+)/g, '');
+			}
+
+			items.push({
+				page: base,
+				errors: errors,
+				warnings: warnings,
+				results: results
+			});
+
+			complete();
+		});
+
+	}, 2);
+
+	queue.drain = function() {
+		src('src/twig/templates/_pa11y.twig')
+			.pipe(twig({
+				data: {
+					vars: packageJSON.vars,
+					items: items
+				}
+			}))
+			.pipe(rename({
+				basename: 'pa11y',
+				extname: '.html'
+			}))
+			.pipe(dest('static/templates'));
+
+		console.log('All done! All pa11y links should be functional now!');
+	};
+
+	queue.push(urls);
+
+	done();
 }
 
 
@@ -568,7 +636,6 @@ function clean(done) {
 	del('images');
 	del('js');
 	del('static-html');
-
 	done();
 }
 
@@ -578,7 +645,7 @@ function runBrowserSync(done) {
 		logPrefix: packageJSON.vars.name,
 		ui: false,
 		server: './',
-		startPath: '/static-html/index.html',
+		startPath: '/static/index.html',
 		notify: {
 			styles: {
 				top: 'auto',
@@ -705,6 +772,7 @@ exports.styleGuide = series(
 exports.access = series(
 	runAxe,
 	axePage,
+	runPa11y,
 	watchFileSystem,
 	runBrowserSync
 );
