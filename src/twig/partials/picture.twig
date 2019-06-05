@@ -12,21 +12,19 @@
 	} %}
 #}
 
-<div class="lazy_image_wrapper {{ class }}_picture_wrapper">
+<span class="lazy_image_wrapper {{ class }}_picture_wrapper">
 	<picture class="{{ class }}_picture">
 		{% for key, source in sources %}
 		<source media="(min-width: {{ key }})" srcset="../../images/placeholder.png" data-srcset="{% if source == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{ vars.images }}/{{ source.width }}x{{ source.height }}/{{ image }}{% endif %}">
 		{% endfor %}
 		<img class="js-lazy js-lazyload {{ class }}_image" src="../../images/placeholder.png" data-src="//images.fastspot.com/{{ vars.images }}/{{ dimension.width }}x{{ dimension.height }}/{{ image }}" alt="{{ alt }}"{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}>
 	</picture>
-</div>
+</span>
 <noscript>
-	<div class="{{ class }}_picture_wrapper">
-		<picture class="{{ class }}_picture">
-			{% for key, source in sources %}
-			<source media="(min-width: {{ key }})" srcset="//images.fastspot.com/{{ vars.images }}/{{ source.width }}x{{ source.height }}/{{ image }} {{ source.width }}w">
-			{% endfor %}
-			<img class="{{ class }}_image" src="//images.fastspot.com/{{ vars.images }}/{{ dimension.width }}x{{ dimension.height }}/{{ image }}" alt="{{ alt }}"{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}>
-		</picture>
-	</div>
+	<picture class="{{ class }}_picture">
+		{% for key, source in sources %}
+		<source media="(min-width: {{ key }})" srcset="//images.fastspot.com/{{ vars.images }}/{{ source.width }}x{{ source.height }}/{{ image }} {{ source.width }}w">
+		{% endfor %}
+		<img class="{{ class }}_image" src="//images.fastspot.com/{{ vars.images }}/{{ dimension.width }}x{{ dimension.height }}/{{ image }}" alt="{{ alt }}"{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}>
+	</picture>
 </noscript>
