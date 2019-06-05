@@ -1,0 +1,13 @@
+.page_header {}
+
+.page_title {
+	@include h1;
+
+	margin: 0;
+}
+
+.page_intro {
+	@include intro_text;
+
+	margin: 0;
+}

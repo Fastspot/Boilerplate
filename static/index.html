@@ -1,10 +1,9 @@
-{% import 'partials/macros.twig' as site %}
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-		<title>{{ name }} | Sitemap</title>
+		<title>Client Name | Sitemap</title>
 		<style>
 			html {
 				height: 100%;
@@ -232,7 +231,7 @@
 	<body>
 		<header class="sitemap_header">
 			<h1 class="sitemap_title">
-				<a class="sitemap_title_link" href="templates/page-home.html">{{ name }} Sitemap</a>
+				<a class="sitemap_title_link" href="templates/page-home.html">Client Name Sitemap</a>
 			</h1>
 		</header>
 		<main class="sitemap_main">
@@ -244,52 +243,116 @@
 						<li class="sitemap_filter_item">
 							<button class="sitemap_filter_button">all</button>
 						</li>
-						{% for item in filters %}
-							<li class="sitemap_filter_item">
-								<button class="sitemap_filter_button">{{ item }}</button>
+													<li class="sitemap_filter_item">
+								<button class="sitemap_filter_button">landing</button>
 							</li>
-						{% endfor %}
-					</ul>
+													<li class="sitemap_filter_item">
+								<button class="sitemap_filter_button">listing</button>
+							</li>
+													<li class="sitemap_filter_item">
+								<button class="sitemap_filter_button">detail</button>
+							</li>
+											</ul>
 				</div>
 			</div>
-			{% set nameReplace = {
-				".html": "",
-				"-": " ",
-				"/": "",
-				"fs": "",
-				"dev": "",
-				"page": ""
-			} %}
-
-			{% set contentsReplace = {
-				"class": "",
-				"=": "",
-				"\"": "",
-				"_": " "
-			} %}
-			<div class="sitemap_items">
-				{% for link in sitemap %}
-				<div class="sitemap_item{% if 'fs' in link.name %} sitemap_item_style_guide{% elseif 'dev' in link.name %} sitemap_item_dev{% elseif 'page' in link.name %} sitemap_item_page{% endif %}">
-					<a class="sitemap_link" href="templates/{{ link.name }}">
-						<span class="sitemap_link_label">{{ link.name|replace(nameReplace) }}</span>
+			
+						<div class="sitemap_items">
+								<div class="sitemap_item">
+					<a class="sitemap_link" href="templates/pa11y.html">
+						<span class="sitemap_link_label">pa11y</span>
 					</a>
 					<div class="sitemap_link_bubbles">
-						{% if 'page' in link.name and 'form-builder' not in link.name %}
-							<a class="sitemap_link_bubble" href="templates/axe.html#{{ link.name|replace({
-								".html": ""
-							}) }}">
+											</div>
+				</div>
+								<div class="sitemap_item sitemap_item_style_guide">
+					<a class="sitemap_link" href="templates/fs-visual-styles.html">
+						<span class="sitemap_link_label"> visual styles</span>
+					</a>
+					<div class="sitemap_link_bubbles">
+											</div>
+				</div>
+								<div class="sitemap_item">
+					<a class="sitemap_link" href="templates/axe.html">
+						<span class="sitemap_link_label">axe</span>
+					</a>
+					<div class="sitemap_link_bubbles">
+											</div>
+				</div>
+								<div class="sitemap_item sitemap_item_page">
+					<a class="sitemap_link" href="templates/page-404.html">
+						<span class="sitemap_link_label"> 404</span>
+					</a>
+					<div class="sitemap_link_bubbles">
+													<a class="sitemap_link_bubble" href="templates/axe.html#page-404">
 								<img class="sitemap_link_bubble_icon" src="../images/axe.png" alt="axe logo" />
 								<span class="sitemap_link_bubble_label">axe</span>
 							</a>
-							<a class="sitemap_link_bubble" href="templates/pa11y.html#{{ link.name }}">
+							<a class="sitemap_link_bubble" href="templates/pa11y.html#page-404.html">
 								<img class="sitemap_link_bubble_icon" src="../images/pa11y.png" alt="pa11y logo" />
 								<span class="sitemap_link_bubble_label">pa11y</span>
 							</a>
-						{% endif %}
-					</div>
+											</div>
 				</div>
-				{% endfor %}
-			</div>
+								<div class="sitemap_item sitemap_item_page">
+					<a class="sitemap_link" href="templates/page-home.html">
+						<span class="sitemap_link_label"> home</span>
+					</a>
+					<div class="sitemap_link_bubbles">
+													<a class="sitemap_link_bubble" href="templates/axe.html#page-home">
+								<img class="sitemap_link_bubble_icon" src="../images/axe.png" alt="axe logo" />
+								<span class="sitemap_link_bubble_label">axe</span>
+							</a>
+							<a class="sitemap_link_bubble" href="templates/pa11y.html#page-home.html">
+								<img class="sitemap_link_bubble_icon" src="../images/pa11y.png" alt="pa11y logo" />
+								<span class="sitemap_link_bubble_label">pa11y</span>
+							</a>
+											</div>
+				</div>
+								<div class="sitemap_item sitemap_item_page">
+					<a class="sitemap_link" href="templates/page-search.html">
+						<span class="sitemap_link_label"> search</span>
+					</a>
+					<div class="sitemap_link_bubbles">
+													<a class="sitemap_link_bubble" href="templates/axe.html#page-search">
+								<img class="sitemap_link_bubble_icon" src="../images/axe.png" alt="axe logo" />
+								<span class="sitemap_link_bubble_label">axe</span>
+							</a>
+							<a class="sitemap_link_bubble" href="templates/pa11y.html#page-search.html">
+								<img class="sitemap_link_bubble_icon" src="../images/pa11y.png" alt="pa11y logo" />
+								<span class="sitemap_link_bubble_label">pa11y</span>
+							</a>
+											</div>
+				</div>
+								<div class="sitemap_item sitemap_item_page">
+					<a class="sitemap_link" href="templates/page-master-sub.html">
+						<span class="sitemap_link_label"> master sub</span>
+					</a>
+					<div class="sitemap_link_bubbles">
+													<a class="sitemap_link_bubble" href="templates/axe.html#page-master-sub">
+								<img class="sitemap_link_bubble_icon" src="../images/axe.png" alt="axe logo" />
+								<span class="sitemap_link_bubble_label">axe</span>
+							</a>
+							<a class="sitemap_link_bubble" href="templates/pa11y.html#page-master-sub.html">
+								<img class="sitemap_link_bubble_icon" src="../images/pa11y.png" alt="pa11y logo" />
+								<span class="sitemap_link_bubble_label">pa11y</span>
+							</a>
+											</div>
+				</div>
+								<div class="sitemap_item sitemap_item_style_guide">
+					<a class="sitemap_link" href="templates/fs-html.html">
+						<span class="sitemap_link_label"> html</span>
+					</a>
+					<div class="sitemap_link_bubbles">
+											</div>
+				</div>
+								<div class="sitemap_item sitemap_item_page">
+					<a class="sitemap_link" href="templates/page-form-builder.html">
+						<span class="sitemap_link_label"> form builder</span>
+					</a>
+					<div class="sitemap_link_bubbles">
+											</div>
+				</div>
+							</div>
 		</main>
 		<script>
 			var search = document.querySelector(".sitemap_search");

@@ -1,7 +1,12 @@
 <!-- Menu -->
+<<<<<<< HEAD:src/twig/partials/base/menu.twig
 <section class="js-menu menu" id="menu" aria-label="Site Menu">
 	<h2 class="menu_title">Site Menu</h2>
 	{% include "../navigation/basic.twig" with {
+=======
+<div class="js-menu menu" id="menu" aria-label="Site Menu">
+	{% include "../partials/navigation/basic.twig" with {
+>>>>>>> 5d9bc82566ff12442d38e0b93dae1d42d41291be:src/twig/layouts/menu.twig
 		class: "main_nav",
 		modifier: "sm",
 		title: "Site",
@@ -10,7 +15,7 @@
 		links: mainNav
 	} %}
 
-	{% include "../navigation/basic.twig" with {
+	{% include "../partials/navigation/basic.twig" with {
 		class: "secondary_nav",
 		modifier: "sm",
 		title: "Secondary",

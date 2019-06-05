@@ -7,7 +7,7 @@
 	<title>{{ page.title }} | {{ vars.name }}</title>
 	<meta name="description" content="{{ vars.description }}">
 
-	{% include "../favicons.html" %}
+	{% include "../partials/favicons.html" %}
 
 	<!-- Facebook -->
 	<meta property="og:title" content="{{ page.title ?: vars.name }}">
@@ -29,7 +29,7 @@
 	<meta name="twitter:image" content="{{ page.metaImage ?: 'http://' ~ vars.domain ~ '/images/social.png' }}">
 	{% endif %}
 
-	<script src="//code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous" async></script>
+	<script src="//code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
 	{% if page.stylesheets %}
 	{% for styles in page.stylesheets %}

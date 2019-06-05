@@ -4,8 +4,6 @@ const async = require('async');
 const fs = require('fs');
 const path = require('path');
 const globby = require('globby');
-const packageJSON = require('./package.json');
-const trelloKeyToken = require('trello-module');
 const browserSync = require('browser-sync').create();
 const del = require('del');
 const gulpif = require('gulp-if');
@@ -25,24 +23,19 @@ const uglify = require('gulp-uglify');
 const imagemin = require('gulp-imagemin');
 const svgSprite = require('gulp-svg-sprite');
 const realFavicon = require ('gulp-real-favicon');
-const FAVICON_DATA_FILE = 'favicons/markup.json';
+const faviconFile = 'favicons/markup.json';
 const axe = require('gulp-axe-webdriver');
 const pa11y = require('pa11y');
+var packageJSON = require('./package.json');
 
 
 var source = {
 	readme: 'src/twig/README.twig',
-	trello: [
-		'src/twig/templates/fs-components.twig',
-		'src/twig/templates/fs-templates.twig'
-	],
 	twig: [
 		'src/twig/templates/*.twig',
 		'!src/twig/templates/_*.twig',
-		'!src/twig/templates/fs-component-image-crops.twig',
 		'!src/twig/templates/fs-image-crops.twig',
-		'!src/twig/templates/fs-components.twig',
-		'!src/twig/templates/fs-templates.twig'
+		'!src/twig/templates/fs-component-image-crops.twig'
 	],
 	templates: 'static/templates/*.html',
 	accessibility: [
@@ -54,122 +47,6 @@ var source = {
 	sprite: 'src/icons/*',
 	images: 'src/images/*'
 };
-
-
-function trello(done) {
-	var Trello = require('node-trello');
-	var trello = new Trello(trelloKeyToken.key(), trelloKeyToken.token());
-
-	if (packageJSON.vars.idBoardTrello !== "") {
-		var types = [
-			{
-				name: "Feature",
-				caption: "These components are your strongest and boldest, often used in specific circumstances such as your homepage or on landing pages."
-			},
-			{
-				name: "Full-Width",
-				caption: "These components use 100% of your grid horizontally and should be used primarily to make a strong impression in cases you don’t need sub-navigation."
-			},
-			{
-				name: "In-Content",
-				caption: "These components are paired with WYSIWYG content and provide emphasis higher up on the page."
-			},
-			{
-				name: "Sidebar",
-				caption: "These components are paired with your sub-navigation and can be used alongside WYSIWYG content."
-			}
-		];
-		var deck = [];
-		var cards = [];
-		var templates = [];
-
-		trello.get('/1/boards/' + packageJSON.vars.idBoardTrello + '/cards', {
-			attachments: "cover",
-			attachment_fields: [
-				"url",
-				"previews"
-			],
-			fields: [
-				"name",
-				"labels",
-				"desc"
-			]
-		}, function(err, data) {
-			if(err) {
-				console.log(err);
-			} else {
-				for(card in data) {
-					if(data[card].attachments.length > 0) {
-						if(data[card].labels.find(findType)) {
-							for(label in data[card].labels) {
-								data[card].type = data[card].labels.find(findType).name;
-							}
-
-							cards.push(data[card]);
-						} else if(data[card].labels.find(findTemplate)) {
-							templates.push(data[card]);
-						}
-					}
-				}
-
-				cards.sort(function(a, b) {
-					var nameA = a.type.toUpperCase();
-					var nameB = b.type.toUpperCase();
-					if (nameA < nameB) {
-						return -1;
-					}
-					if (nameA > nameB) {
-						return 1;
-					}
-
-					return 0;
-				});
-
-				for (type in types) {
-					deck.push({
-						type: types[type].name,
-						cards: []
-					});
-
-					for (card in cards) {
-						if (cards[card].type == types[type].name) {
-							deck[type].cards.push(cards[card]);
-						}
-					}
-				}
-
-				src(source.trello)
-					.pipe(twig({
-						data: {
-							vars: packageJSON.vars,
-							img: packageJSON.img,
-							links: packageJSON.links,
-							deck: deck,
-							types: types,
-							templates: templates
-						}
-					}))
-					.pipe(rename({
-						extname: '.html'
-					}))
-					.pipe(dest('static/templates'));
-			}
-		});
-
-		function findTemplate(label) {
-			return label.name === "Template";
-		}
-
-		function findType(label) {
-			return label.name === "Feature" ||
-						 label.name === "In-Content" ||
-						 label.name === "Full-Width" ||
-						 label.name === "Sidebar";
-		}
-	}
-
-	done();
-}
 
 
 function readme() {
@@ -232,7 +109,6 @@ function sitemap(done) {
 							.pipe(twig({
 								data: {
 									name: packageJSON.vars.name,
-									trello: packageJSON.vars.idBoardTrello,
 									filters: packageJSON.vars.filters,
 									sitemap: sitemap
 								}
@@ -256,13 +132,6 @@ function compileSass() {
 		.pipe(sassGlob())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(postcss([
-			require('postcss-pxtorem')({
-				propList: [
-					'font-size',
-					'letter-spacing'
-				],
-				replace: false
-			}),
 			require('autoprefixer')({
 				browsers: [
 					'> 1%',
@@ -271,6 +140,15 @@ function compileSass() {
 				]
 			})
 		]))
+		.pipe(gulpif(argv.production, postcss([
+			require('postcss-pxtorem')({
+				propList: [
+					'font-size',
+					'letter-spacing'
+				],
+				replace: false
+			})
+		])))
 		.pipe(gulpif(argv.production, cssnano()))
 		.pipe(dest('css'))
 		.pipe(browserSync.stream());
@@ -338,12 +216,13 @@ function imageCrops(done) {
 			if (file.indexOf("page") > -1) {
 				fs.readFile(base + '/' + file, 'utf8', function(err, contents) {
 					var sizes = contents.match(/\d+x\d+/g);
-
-					for (var x = 0; x < sizes.length; x++) {
-
-						if (crops.indexOf(sizes[x]) == -1) {
-							if (exclude.indexOf(sizes[x]) == -1) {
-								crops.push(sizes[x]);
+					
+					if (sizes != null) {
+						for (var x = 0; x < sizes.length; x++) {
+							if (crops.indexOf(sizes[x]) == -1) {
+								if (exclude.indexOf(sizes[x]) == -1) {
+									crops.push(sizes[x]);
+								}
 							}
 						}
 					}
@@ -356,7 +235,7 @@ function imageCrops(done) {
 						for (var x = 0; x < crops.length; x++) {
 							for (var cropRatio in packageJSON.img) {
 								for (var cropSize in packageJSON.img[cropRatio]) {
-									if (packageJSON.img[cropRatio][cropSize] == crops[x]) {
+									if (packageJSON.img[cropRatio][cropSize].width + "x" + packageJSON.img[cropRatio][cropSize].height == crops[x]) {
 										modCrops.push('<span class="crop-size">' + crops[x] + '</span><span class="crop-name"> ' + cropRatio + '.' + cropSize + '</span>');
 									}
 								}
@@ -397,54 +276,51 @@ function componentImageCrops(done) {
 					type: type,
 					items: []
 				});
+				
+				if (mods != undefined) {
+					mods.forEach(function(mod) {
+						var content = fs.readFileSync(base + '/' + folder + '/' + mod, 'utf8');
+						var name = "";
+						var sizes = content.match(/(img\.[a-z]*\.[a-z]*)/g);
+						var sizesMarkup = [];
 
-				mods.forEach(function(mod) {
-					var content = fs.readFileSync(base + '/' + folder + '/' + mod, 'utf8');
-					var name = "";
-					var sizes = content.match(/(img\.[a-z]*\.[a-z]*)/g);
-					var sizesMarkup = [];
-
-					if (/(site.anchor\(.*\))/.test(content)) {
-						name = content.match(/(site.anchor\(.*\))/g);
-						name = name[0].replace('site.anchor(', '').replace(')', '').replace(/"/g, '');
-					} else {
 						name = mod.replace(/(-)/g, ' ').replace('.twig', '').replace(/^[a-z]/, l => l.toUpperCase()).replace(/ [a-z]/g, l => l.toUpperCase());
-					}
 
-					if (sizes !== null) {
-						sizes = [...new Set(sizes)];
-						sizes = sizes.sort();
+						if (sizes !== null) {
+							sizes = [...new Set(sizes)];
+							sizes = sizes.sort();
 
-						for (var x = 0; x < sizes.length; x++) {
-							for (var cropRatio in packageJSON.img) {
-								for (var cropSize in packageJSON.img[cropRatio]) {
-									if ('img.' + cropRatio + '.' + cropSize == sizes[x]) {
-										sizesMarkup.push('<li class="crop" data-crop-size="' + packageJSON.img[cropRatio][cropSize] + '"><span class="crop-size">' + packageJSON.img[cropRatio][cropSize] + '</span><span class="crop-name"> ' + cropRatio + '.' + cropSize + '</span></li>');
+							for (var x = 0; x < sizes.length; x++) {
+								for (var cropRatio in packageJSON.img) {
+									for (var cropSize in packageJSON.img[cropRatio]) {
+										if ('img.' + cropRatio + '.' + cropSize == sizes[x]) {
+											sizesMarkup.push('<li class="crop" data-crop-size="' + packageJSON.img[cropRatio][cropSize].width + "x" + packageJSON.img[cropRatio][cropSize].height + '"><span class="crop-size">' + packageJSON.img[cropRatio][cropSize].width + "x" + packageJSON.img[cropRatio][cropSize].height + '</span><span class="crop-name"> ' + cropRatio + '.' + cropSize + '</span></li>');
+										}
 									}
 								}
 							}
+
+							data[typeSteps - 1].items.push({
+								name: name,
+								sizes: sizesMarkup
+							});
 						}
+					});
 
-						data[typeSteps - 1].items.push({
-							name: name,
-							sizes: sizesMarkup
-						});
+					typeSteps++;
+
+					if (typeSteps == folders.length) {
+						src('src/twig/templates/fs-component-image-crops.twig')
+							.pipe(twig({
+								data: {
+									sections: data
+								}
+							}))
+							.pipe(rename({
+								extname: '.html'
+							}))
+							.pipe(dest('static/templates'));
 					}
-				});
-
-				typeSteps++;
-
-				if (typeSteps == folders.length) {
-					src('src/twig/templates/fs-component-image-crops.twig')
-						.pipe(twig({
-							data: {
-								sections: data
-							}
-						}))
-						.pipe(rename({
-							extname: '.html'
-						}))
-						.pipe(dest('static/templates'));
 				}
 			});
 		});
@@ -507,7 +383,7 @@ function generateFavicon(done) {
 			scalingAlgorithm: 'Mitchell',
 			errorOnImageTooSmall: false
 		},
-		markupFile: FAVICON_DATA_FILE
+		markupFile: faviconFile
 	}, function() {
 		done();
 	});
@@ -516,14 +392,19 @@ function generateFavicon(done) {
 
 function injectFaviconMarkups() {
 	return src(['src/twig/partials/favicons.html' ])
-		.pipe(realFavicon.injectFaviconMarkups(JSON.parse(fs.readFileSync(FAVICON_DATA_FILE)).favicon.html_code))
+		.pipe(realFavicon.injectFaviconMarkups(JSON.parse(fs.readFileSync(faviconFile)).favicon.html_code))
 		.pipe(dest('src/twig/partials/'));
 }
 
 
 function checkForFaviconUpdate(done) {
+<<<<<<< HEAD
 	var currentVersion = JSON.parse(fs.readFileSync(FAVICON_DATA_FILE)).version;
 
+=======
+	var currentVersion = JSON.parse(fs.readFileSync(faviconFile)).version;
+	
+>>>>>>> 5d9bc82566ff12442d38e0b93dae1d42d41291be
 	realFavicon.checkForUpdates(currentVersion, function(err) {
 		if (err) {
 			throw err;
@@ -689,12 +570,7 @@ function watchFileSystem(done) {
 	watch([
 		'src/twig/**/*.twig',
 		'!src/twig/templates/fs-component-image-crops.twig',
-		'!src/twig/templates/fs-image-crops.twig',
-		'!src/twig/templates/fs-components.twig',
-		'!src/twig/templates/fs-templates.twig',
-		'!src/twig/partials/guidebook/trello-details.twig',
-		'!src/twig/partials/guidebook/trello-sections.twig',
-		'!src/twig/partials/guidebook/trello-js.twig'
+		'!src/twig/templates/fs-image-crops.twig'
 	], series(
 		compileTwig
 	));
@@ -715,7 +591,11 @@ function watchFileSystem(done) {
 	));
 
 	watch('src/images/*', series(
+<<<<<<< HEAD
 		imagemin,
+=======
+		compressImages, 
+>>>>>>> 5d9bc82566ff12442d38e0b93dae1d42d41291be
 		reloadSystem
 	));
 
@@ -729,6 +609,20 @@ exports.compileTwig = compileTwig;
 exports.imageCrops = imageCrops;
 exports.componentImageCrops = componentImageCrops;
 exports.clean = clean;
+
+
+exports.default = series(
+	readme,
+	compileSass,
+	sprite,
+	compileTwig,
+	sitemap,
+	compileJs,
+	compressImages,
+	watchFileSystem,
+	runBrowserSync
+);
+
 
 exports.build = parallel(
 	readme,
@@ -747,25 +641,6 @@ exports.build = parallel(
 exports.dev = parallel(
 	watchFileSystem,
 	runBrowserSync
-);
-
-
-exports.default = series(
-	readme,
-	compileSass,
-	sprite,
-	compileTwig,
-	sitemap,
-	compileJs,
-	compressImages,
-	watchFileSystem,
-	runBrowserSync
-);
-
-
-exports.styleGuide = series(
-	trello,
-	compileTwig
 );
 
 

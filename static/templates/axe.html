@@ -1,0 +1,294 @@
+	
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>Axe Report</title>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+
+			html {
+				font-family: "Neue Haas Grotesk Text Std", Helvetica, Arial, sans-serif;
+			}
+
+			body {
+				max-width: 740px;
+
+				margin: 0 auto;
+				padding: 0 20px;
+			}
+
+			h1, h2, h3, h4, h5, h6 {
+				font-family: "Neue Haas Grotesk Display Std", Helvetica, Arial, sans-serif;
+			}
+
+			h4, h5, h6 {
+				font-weight: 400;
+			}
+
+			.results_header {
+				margin-top: 50px;
+			}
+
+			.results_title {
+				align-items: center;
+				display: flex;
+				margin: 0;
+			}
+
+			.results_title_icon {
+				max-width: 60px;
+
+				margin-right: 20px;
+			}
+
+			.report_pages {}
+
+			.report_page {
+				border-radius: 4px;
+				box-shadow: 1px 2px 10px 0 rgba(0, 0, 0, .1);
+				margin: 50px 0;
+				padding: 20px;
+			}
+			
+			.report_page_cleared {
+				background: #E6F7F3;
+				box-shadow: none;
+				padding: 20px 30px;
+			}
+
+			.report_page_title {
+				position: relative;
+
+				margin: 0;
+			}
+
+			.report_page_title:before {
+				height: 10px;
+				width: 10px;
+
+				position: absolute;
+				top: 50%;
+				right: 100%;
+
+				background: #00B386;
+				border-radius: 50%;
+				content: "";
+				margin-right: 20px;
+
+				transform: translate(50%, -50%);
+			}
+
+			.report_page_cleared .report_page_title:before {
+				height: 40px;
+				width: 40px;
+
+				background: #fff;
+				border: 2px solid #00B386;
+				box-shadow: 1px 2px 10px 0 rgba(0, 0, 0, .1);
+				margin-right: 30px;
+			}
+
+			.report_page_cleared .report_page_title:after {
+			  height: 14px;
+				width: 6px;
+
+				position: absolute;
+				top: 50%;
+				right: 100%;
+
+				content: "";
+				border-right: 2px solid #00B386;
+				border-bottom: 2px solid #00B386;
+				margin-top: -2px;
+				margin-right: 26px;
+				transform: 
+					translate(0, -50%) 
+					rotate(45deg);
+			}
+
+			.report_page_title_link {
+				color: inherit;
+			}
+
+			.report_page_body {}
+
+			.report_items {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+
+			.report_item {
+				background: rgba(0, 0, 0, .05);
+				border-radius: 4px;
+				margin: 20px 0;
+				padding: 20px;
+			}
+
+			.report_item:last-child {
+				margin-bottom: 0;
+			}
+
+			.report_item_title {
+				margin: 0 0 15px;
+			}
+
+			.report_page_cleared .report_item_title {
+				margin-bottom: 0;
+			}
+
+			.report_item_title_link {
+				color: inherit;
+			}
+
+			.report_item_caption {
+				font-size: 14px;
+				margin: 0 0 5px;
+			}
+
+			.report_item_context {
+				margin: 0;
+				overflow-x: auto;
+				padding: 10px 0;
+			}
+		</style>
+	</head>
+	<body>
+      <header class="results_header">
+		<h1 class="results_title">
+			<img class="results_title_icon" src="../../images/axe.png" alt="axe logo" />
+			<span class="results_title_label">Axe Report</span>
+		</h1>
+  </header>
+  <main>
+    <div class="report_pages">
+                        <div class="report_page" id="page-404">
+        <h2 class="report_page_title">
+					<a class="report_page_title_link" href="page-404.html"> 404</a>
+				</h2>
+        <div class="report_page_body">
+          <ul class="report_items">
+                        <li class="report_item">
+              <h3 class="report_item_title">
+                <a class="report_item_title_link" href="https://dequeuniversity.com/rules/axe/3.2/label-title-only?application=webdriverjs" target="_blank">Ensures that every form element is not solely labeled using the title or aria-describedby attributes</a>
+              </h3>
+              <p class="report_item_caption">Form elements should have a visible label</p>
+              <pre class="report_item_context">&lt;input autocomplete=&quot;off&quot; type=&quot;text&quot; size=&quot;10&quot; class=&quot;gsc-input&quot; name=&quot;search&quot; title=&quot;search&quot; id=&quot;gsc-i-id1&quot; placeholder=&quot;Custom Search&quot; style=&quot;width: 100%; padding: 0px; border: none; margin: -0.0625em 0px 0px; height: 1.25em; background: url(&amp;quot;http://www.google.com/cse/static/images/1x/googlelogo_lightgrey_46x16dp.png&amp;quot;) left center no-repeat rgb(255, 255, 255); text-indent: 48px; outline: none;&quot; dir=&quot;ltr&quot; spellcheck=&quot;false&quot;&gt;</pre>
+            </li>
+                        <li class="report_item">
+              <h3 class="report_item_title">
+                <a class="report_item_title_link" href="https://dequeuniversity.com/rules/axe/3.2/region?application=webdriverjs" target="_blank">Ensures all page content is contained by landmarks</a>
+              </h3>
+              <p class="report_item_caption">All page content must be contained by landmarks</p>
+              <pre class="report_item_context">&lt;html class=&quot;js supports svgclippaths no-touchevents csstransforms csstransforms3d&quot; lang=&quot;en&quot;&gt;</pre>
+            </li>
+                      </ul>
+        </div>
+      </div>
+                                    <div class="report_page" id="page-home">
+        <h2 class="report_page_title">
+					<a class="report_page_title_link" href="page-home.html"> Home</a>
+				</h2>
+        <div class="report_page_body">
+          <ul class="report_items">
+                        <li class="report_item">
+              <h3 class="report_item_title">
+                <a class="report_item_title_link" href="https://dequeuniversity.com/rules/axe/3.2/page-has-heading-one?application=webdriverjs" target="_blank">Ensure that the page, or at least one of its frames contains a level-one heading</a>
+              </h3>
+              <p class="report_item_caption">Page must contain a level-one heading</p>
+              <pre class="report_item_context">&lt;html class=&quot;js supports svgclippaths no-touchevents csstransforms csstransforms3d&quot; lang=&quot;en&quot;&gt;</pre>
+            </li>
+                        <li class="report_item">
+              <h3 class="report_item_title">
+                <a class="report_item_title_link" href="https://dequeuniversity.com/rules/axe/3.2/region?application=webdriverjs" target="_blank">Ensures all page content is contained by landmarks</a>
+              </h3>
+              <p class="report_item_caption">All page content must be contained by landmarks</p>
+              <pre class="report_item_context">&lt;html class=&quot;js supports svgclippaths no-touchevents csstransforms csstransforms3d&quot; lang=&quot;en&quot;&gt;</pre>
+            </li>
+                      </ul>
+        </div>
+      </div>
+                        <div class="report_page" id="page-master-sub">
+        <h2 class="report_page_title">
+					<a class="report_page_title_link" href="page-master-sub.html"> Master Sub</a>
+				</h2>
+        <div class="report_page_body">
+          <ul class="report_items">
+                        <li class="report_item">
+              <h3 class="report_item_title">
+                <a class="report_item_title_link" href="https://dequeuniversity.com/rules/axe/3.2/page-has-heading-one?application=webdriverjs" target="_blank">Ensure that the page, or at least one of its frames contains a level-one heading</a>
+              </h3>
+              <p class="report_item_caption">Page must contain a level-one heading</p>
+              <pre class="report_item_context">&lt;html class=&quot;js supports svgclippaths no-touchevents csstransforms csstransforms3d&quot; lang=&quot;en&quot;&gt;</pre>
+            </li>
+                        <li class="report_item">
+              <h3 class="report_item_title">
+                <a class="report_item_title_link" href="https://dequeuniversity.com/rules/axe/3.2/region?application=webdriverjs" target="_blank">Ensures all page content is contained by landmarks</a>
+              </h3>
+              <p class="report_item_caption">All page content must be contained by landmarks</p>
+              <pre class="report_item_context">&lt;html class=&quot;js supports svgclippaths no-touchevents csstransforms csstransforms3d&quot; lang=&quot;en&quot;&gt;</pre>
+            </li>
+                        <li class="report_item">
+              <h3 class="report_item_title">
+                <a class="report_item_title_link" href="https://dequeuniversity.com/rules/axe/3.2/skip-link?application=webdriverjs" target="_blank">Ensure all skip links have a focusable target</a>
+              </h3>
+              <p class="report_item_caption">The skip-link target should exist and be focusable</p>
+              <pre class="report_item_context">&lt;a class=&quot;skip_link&quot; id=&quot;skip_link&quot; href=&quot;#skip_content&quot;&gt;Skip to Main Content&lt;/a&gt;</pre>
+            </li>
+                      </ul>
+        </div>
+      </div>
+                        <div class="report_page" id="page-search">
+        <h2 class="report_page_title">
+					<a class="report_page_title_link" href="page-search.html"> Search</a>
+				</h2>
+        <div class="report_page_body">
+          <ul class="report_items">
+                        <li class="report_item">
+              <h3 class="report_item_title">
+                <a class="report_item_title_link" href="https://dequeuniversity.com/rules/axe/3.2/label-title-only?application=webdriverjs" target="_blank">Ensures that every form element is not solely labeled using the title or aria-describedby attributes</a>
+              </h3>
+              <p class="report_item_caption">Form elements should have a visible label</p>
+              <pre class="report_item_context">&lt;input autocomplete=&quot;off&quot; type=&quot;text&quot; size=&quot;10&quot; class=&quot;gsc-input&quot; name=&quot;search&quot; title=&quot;search&quot; id=&quot;gsc-i-id1&quot; placeholder=&quot;Custom Search&quot; style=&quot;width: 100%; padding: 0px; border: none; margin: -0.0625em 0px 0px; height: 1.25em; background: url(&amp;quot;http://www.google.com/cse/static/images/1x/googlelogo_lightgrey_46x16dp.png&amp;quot;) left center no-repeat rgb(255, 255, 255); text-indent: 48px; outline: none;&quot; dir=&quot;ltr&quot; spellcheck=&quot;false&quot;&gt;</pre>
+            </li>
+                        <li class="report_item">
+              <h3 class="report_item_title">
+                <a class="report_item_title_link" href="https://dequeuniversity.com/rules/axe/3.2/region?application=webdriverjs" target="_blank">Ensures all page content is contained by landmarks</a>
+              </h3>
+              <p class="report_item_caption">All page content must be contained by landmarks</p>
+              <pre class="report_item_context">&lt;html class=&quot;js supports svgclippaths no-touchevents csstransforms csstransforms3d&quot; lang=&quot;en&quot;&gt;</pre>
+            </li>
+                      </ul>
+        </div>
+      </div>
+                </div>
+  </main>
+		<script>
+			if(window.location.hash) {
+				var item = document.querySelector(window.location.hash);
+				var pages = document.querySelector(".report_pages");
+				var content = document.createElement("div");
+				content.classList.add("report_page", "report_page_cleared");
+
+				if (item == null) {
+					content.innerHTML = 
+						`<h2 class="report_page_title">
+							<a class="report_page_title_link" href="${window.location.hash.replace("#", "")}.html">${window.location.hash.replace("#", "")}</a>
+						</h2>
+						<div class="report_page_body">
+							<ul class="report_items">
+								<li class="report_item">
+									<h3 class="report_item_title">This page has passed all accessibility requirements.</h3>
+								</li>
+							</ul>
+						</div>`;	
+
+					pages.prepend(content);
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -42,15 +42,6 @@
 	&:hover {
 		color: #DA2315;
 	}
-
-	.trello_format_list & {
-		max-width: 100%;
-		width: 100%;
-
-		border-bottom: 0;
-		margin-bottom: 10px;
-		padding-bottom: 0;
-	}
 }
 
 .gb_topic_title {
@@ -87,10 +78,6 @@
 					rgba(#f6f6f6, 0)
 			);
 		content: "";
-	}
-
-	.trello_format_list & {
-		display: none;
 	}
 }
 

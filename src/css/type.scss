@@ -2,68 +2,68 @@
 	Type Base
 ============================================================================= */
 
-@mixin h1() {
+@mixin h1($query: $min_md) {
 	font-size: 30px;
 	line-height: (70 / 60);
 
-	@media #{$min_md} {
+	@media #{$query} {
 		font-size: 60px;
 	}
 }
 
-@mixin h2() {
+@mixin h2($query: $min_md) {
 	font-size: 26px;
 	line-height: (60 / 50);
 
-	@media #{$min_md} {
+	@media #{$query} {
 		font-size: 50px;
 	}
 }
 
-@mixin h3() {
+@mixin h3($query: $min_md) {
 	font-size: 24px;
 	line-height: (50 / 40);
 
-	@media #{$min_md} {
+	@media #{$query} {
 		font-size: 40px;
 	}
 }
 
-@mixin h4() {
+@mixin h4($query: $min_md) {
 	font-size: 22px;
 	line-height: (40 / 30);
 
-	@media #{$min_md} {
+	@media #{$query} {
 		font-size: 30px;
 	}
 }
 
-@mixin h5() {
+@mixin h5($query: $min_md) {
 	font-size: 20px;
 	line-height: (30 / 20);
 }
 
-@mixin h6() {
+@mixin h6($query: $min_md) {
 	font-size: 16px;
 	line-height: (24 / 16);
 }
 
-@mixin intro_text() {
+@mixin intro_text($query: $min_md) {
 	font-size: 20px;
 	line-height: (30 / 20);
 }
 
-@mixin body_text() {
+@mixin body_text($query: $min_md) {
 	font-size: 16px;
 	line-height: (24 / 16);
 }
 
-@mixin label_text() {
+@mixin label_text($query: $min_md) {
 	font-size: 14px;
 	line-height: (22 / 14);
 }
 
-@mixin caption_text() {
+@mixin caption_text($query: $min_md) {
 	font-size: 14px;
 	line-height: (22 / 14);
 }
@@ -175,7 +175,6 @@
 
 		img {
 			display: block;
-			max-width: 100%;
 		}
 
 		figcaption {

@@ -52,13 +52,6 @@
 					{% if page.title %}
 						<h4 class="gb_page_title fs-lg-10 fs-xl-8">
 							<span class="gb_page_title_label">{{ page.title }}</span>
-							{% if page.trello %}
-								<button class="gb_trello_formatter">
-									<span class="gb_trello_format gb_trello_format_indicator"></span>
-									<span class="gb_trello_format gb_trello_format_grid"></span>
-									<span class="gb_trello_format gb_trello_format_list"></span>
-								</button>
-							{% endif %}
 						</h4>
 					{% endif %}
 					{% if page.caption %}
@@ -73,8 +66,6 @@
 					{% endblock %}
 				</div>
 			</div>
-			{% block trelloDetails %}
-			{% endblock %}
 		</div>
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 		<script>
@@ -82,9 +73,6 @@
 			var STATIC_ROOT = "../../";
 		</script>
 		<script src="../../js/site.js"></script>
-		{% if page.title == "Components" or page.title == "Templates" %}
-			{% include '../partials/guidebook/trello-js.twig' %}
-		{% endif %}
 		<script>
 			var jumps = document.querySelectorAll('h2[id]');
 			var jumpNav = document.querySelector('.gb_jump_nav');

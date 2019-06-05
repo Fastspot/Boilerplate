@@ -531,6 +531,17 @@ $portraitClassic: 150%;
 	visibility: hidden;
 }
 
+@mixin visually_unhide() {
+	width: auto;
+	height: auto;
+
+	position: static;
+
+	clip: auto;
+	margin: 0;
+	overflow: visible;
+}
+
 @mixin visually_hide() {
 	width: 1px;
 	height: 1px;
@@ -545,14 +556,7 @@ $portraitClassic: 150%;
 
 	&.focusable:active,
 	&.focusable:focus {
-		width: auto;
-		height: auto;
-
-		position: static;
-
-		clip: auto;
-		margin: 0;
-		overflow: visible;
+		@include visually_unhide();
 	}
 }
 

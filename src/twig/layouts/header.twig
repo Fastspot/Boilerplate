@@ -5,7 +5,7 @@
 
 	<body class="preload fs-grid page_layout_{{ layout }} page_theme_{{ theme }}" itemscope itemtype="http://schema.org/WebPage">
 
-		{% include '../update-notice.twig' %}
+		{% include '../partials/update-notice.twig' %}
 
 		<a class="skip_link" id="skip_link" href="#skip_content">Skip to Main Content</a>
 
@@ -17,13 +17,13 @@
 					<div class="fs-row">
 						<div class="fs-cell">
 							<div class="header_ribbon_inner">
-								{% include "../logo.twig" with {
+								{% include "../partials/logo.twig" with {
 									modifier: "header",
 									icon: "logo",
 									print: ""
 								} %}
 
-								{% include "../navigation/basic.twig" with {
+								{% include "../partials/navigation/basic.twig" with {
 									class: "main_nav",
 									modifier: "lg",
 									title: "Site",
@@ -32,7 +32,7 @@
 									links: mainNav
 								} %}
 
-								{% include "../navigation/basic.twig" with {
+								{% include "../partials/navigation/basic.twig" with {
 									class: "secondary_nav",
 									modifier: "lg",
 									title: "Secondary",
@@ -42,16 +42,16 @@
 								} %}
 
 								<div class="header_group">
-									{% include "../handle.twig" with {
+									{% include "../partials/handle.twig" with {
 										class: "menu",
 										target: "menu",
 										icon: "menu",
 										label: "Open Menu"
 									} %}
 
-									{% include "../search-handle.twig" %}
+									{% include "../partials/search-handle.twig" %}
 
-									{% include "../search.twig" with {
+									{% include "../partials/search.twig" with {
 										modifier: "lg",
 										placeholder: "Search",
 										buttonText: ""
