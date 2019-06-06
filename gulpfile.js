@@ -398,13 +398,7 @@ function injectFaviconMarkups() {
 
 
 function checkForFaviconUpdate(done) {
-<<<<<<< HEAD
-	var currentVersion = JSON.parse(fs.readFileSync(FAVICON_DATA_FILE)).version;
-
-=======
 	var currentVersion = JSON.parse(fs.readFileSync(faviconFile)).version;
-	
->>>>>>> 5d9bc82566ff12442d38e0b93dae1d42d41291be
 	realFavicon.checkForUpdates(currentVersion, function(err) {
 		if (err) {
 			throw err;
@@ -591,11 +585,7 @@ function watchFileSystem(done) {
 	));
 
 	watch('src/images/*', series(
-<<<<<<< HEAD
-		imagemin,
-=======
-		compressImages, 
->>>>>>> 5d9bc82566ff12442d38e0b93dae1d42d41291be
+		compressImages,
 		reloadSystem
 	));
 
