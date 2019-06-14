@@ -34,7 +34,10 @@ button {
 	}
 }
 
-@mixin button_text() {}
+@mixin button_text(
+	$color: #000,
+	$hover_color: #666
+) {}
 
 @mixin button_fill(
 	$background: #eee,
@@ -101,7 +104,7 @@ button {
 	display: block;
 	padding: 10px 20px;
 	text-align: center;
-	transform: translate(-50%, -200%);
+	transform: translate(-50%, -125%);
 	transition: transform 0.35s;
 
 	&:focus,

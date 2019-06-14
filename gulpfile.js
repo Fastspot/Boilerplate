@@ -509,7 +509,9 @@ function clean(done) {
 	del('favicons');
 	del('images');
 	del('js');
+	del('static');
 	del('static-html');
+
 	done();
 }
 

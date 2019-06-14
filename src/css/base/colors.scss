@@ -21,42 +21,8 @@ $gray_90: #222222;
 // Themes
 // =============================================================================
 
-@mixin theme_custom {
-	@each $label, $color in $theme_colors {
+@mixin theme($list: $theme_colors) {
+	@each $label, $color in $list {
 		.theme_#{$label} & {}
-	}
-}
-
-@mixin theme(
-	$list: $theme_colors,
-	$style: "color"
-) {
-	@each $label, $color in $list {
-		.theme_#{$label} & {
-			@if($style == "color") {
-				color: $color;
-			} @else if($style == "background") {
-				background: $color;
-			} @else if($style == "border") {
-				border-color: $color;
-			}
-		}
-	}
-}
-
-@mixin theme_direct(
-	$list: $theme_colors,
-	$style: "color"
-) {
-	@each $label, $color in $list {
-		&.theme_#{$label} {
-			@if($style == "color") {
-				color: $color;
-			} @else if($style == "background") {
-				background: $color;
-			} @else if($style == "border") {
-				border-color: $color;
-			}
-		}
 	}
 }

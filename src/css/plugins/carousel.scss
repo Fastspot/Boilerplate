@@ -41,6 +41,10 @@
 	cursor: default;
 	pointer-events: none;
 
+	.controls_base & {
+		padding: 20px;
+	}
+
 	&.fs-carousel-visible {
 		cursor: pointer;
 		pointer-events: auto;
@@ -65,25 +69,6 @@
 
 .fs-carousel-control-label {
 	@include visually_hide;
-}
-
-
-/* Carousel Control Themes
-============================================================================= */
-
-.controls_base {
-
-	.fs-carousel-controls {}
-
-	.fs-carousel-control {
-		padding: 20px;
-
-		&.fs-carousel-visible {}
-
-		&.fs-carousel-control_previous {}
-
-		&.fs-carousel-control_next {}
-	}
 }
 
 
@@ -118,30 +103,19 @@
 		border-radius: 50%;
 		content: "";
 		transform: translate(-50%, -50%);
-	}
 
-	&.fs-carousel-active {}
-}
-
-
-/* Carousel Pagination Themes
-============================================================================= */
-
-.pagination_dark {
-
-	.fs-carousel-pagination {}
-
-	.fs-carousel-page {
-
-		&:before {
+		.pagination_dark & {
 			background-color: #999;
 		}
 	}
 
-	.fs-carousel-active {
-
+	&.fs-carousel-active {
+		
 		&:before {
-			background-color: #000;
+
+			.pagination_dark & {
+				background-color: #000;
+			}
 		}
 	}
 }

@@ -216,7 +216,7 @@
   "devDependencies": {
     "async": "3.0.1",
     "autoprefixer": "9.6.0",
-    "browser-sync": "2.26.5",
+    "browser-sync": "2.26.7",
     "del": "4.1.1",
     "formstone": "1.4.13",
     "globby": "9.2.0",
@@ -245,7 +245,7 @@
     "path": "0.12.7",
     "postcss-pxtorem": "4.0.1",
     "require-reload": "0.2.2",
-    "what-input": "5.2.1",
+    "what-input": "5.2.3",
     "yargs": "13.2.4"
   },
   "css": [
