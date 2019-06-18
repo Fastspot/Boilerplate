@@ -252,6 +252,11 @@
     "what-input": "5.2.3",
     "yargs": "13.2.4"
   },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "ie >= 10"
+  ],
   "css": [
     "src/css/site.scss",
     "src/css/tinymce.scss",

@@ -132,13 +132,7 @@ function compileSass() {
 		.pipe(sassGlob())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(postcss([
-			require('autoprefixer')({
-				browsers: [
-					'> 1%',
-					'last 2 versions',
-					'ie >= 10'
-				]
-			})
+			require('autoprefixer')()
 		]))
 		.pipe(gulpif(argv.production, postcss([
 			require('postcss-pxtorem')({
