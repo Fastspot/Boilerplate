@@ -10,8 +10,8 @@ Site.modules.Formstone = (function($, Site) {
 	LightboxOptions;
 
 	function init() {
-		PrevIcon = "chevron_left";
-		NextIcon = "chevron_right";
+		PrevIcon = "arrow_left";
+		NextIcon = "arrow_right";
 		BackgroundOptions = {
 			labels: {
 				play: "Play",
