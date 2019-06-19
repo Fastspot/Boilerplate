@@ -20,6 +20,8 @@
 ============================================================================= */
 
 .breadcrumb_list {
+	align-items: center;
+	display: flex;
 	list-style: none;
 	margin: 0;
 	overflow-x: auto;
@@ -29,10 +31,12 @@
 }
 
 .breadcrumb_item {
-	display: inline-block;
+	align-items: center;
+	display: flex;
 
 	&:after {
 		content: "/";
+		margin: 0 4px;
 	}
 
 	&:last-child {
@@ -52,7 +56,8 @@
 }
 
 .breadcrumb_pill {
-	display: inline-block;
+	align-items: center;
+	display: flex;
 }
 
 .breadcrumb_pill_link {
@@ -62,6 +67,8 @@
 	&:hover {}
 }
 
-.breadcrumb_pill_icon {}
+.breadcrumb_pill_icon {
+	margin-right: 4px;
+}
 
 .breadcrumb_pill_label {}
