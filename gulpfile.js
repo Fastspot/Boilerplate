@@ -618,7 +618,7 @@ exports.build = parallel(
 		sprite,
 		compileTwig,
 		prettyhtml,
-		sitemap,
+		sitemap
 	)
 );
 
