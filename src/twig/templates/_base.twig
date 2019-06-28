@@ -12,7 +12,7 @@
 	layout: page.layout|default("default"),
 	theme: page.theme|default("default"),
 	activePage: page.activePage|default(0),
-	mainNav: page.mainNav|default(links.mainNav),
+	mainNav: links.mainNav,
 	secondaryNav: links.secondaryNav
 } %}
 
@@ -20,7 +20,7 @@
 {% endblock %}
 
 {% include '../layouts/footer.twig' with {
-	mainNav: page.mainNav|default(links.mainNav),
+	mainNav: links.mainNav,
 	secondaryNav: links.secondaryNav,
 	footerNav: links.footerNav,
 	socialNav: links.socialNav
