@@ -37,10 +37,10 @@ var source = {
 		'!src/twig/templates/fs-image-crops.twig',
 		'!src/twig/templates/fs-component-image-crops.twig'
 	],
-	templates: 'static/templates/*.html',
+	templates: 'static-html/templates/*.html',
 	accessibility: [
-		'static/templates/page*.html',
-		'!static/templates/page-form-builder.html',
+		'static-html/templates/page*.html',
+		'!static-html/templates/page-form-builder.html',
 	],
 	sitemap: 'src/twig/index.twig',
 	jshint: 'src/js/modules/*.js',
@@ -49,6 +49,125 @@ var source = {
 };
 
 
+<<<<<<< HEAD
+=======
+function trello(done) {
+	var Trello = require('node-trello');
+	var trello = new Trello(trelloKeyToken.key(), trelloKeyToken.token());
+
+	if (packageJSON.vars.idBoardTrello !== "") {
+		var types = [
+			{
+				name: "Feature",
+				caption: "These components are your strongest and boldest, often used in specific circumstances such as your homepage or on landing pages."
+			},
+			{
+				name: "Full-Width",
+				caption: "These components use 100% of your grid horizontally and should be used primarily to make a strong impression in cases you don’t need sub-navigation."
+			},
+			{
+				name: "In-Content",
+				caption: "These components are paired with WYSIWYG content and provide emphasis higher up on the page."
+			},
+			{
+				name: "Sidebar",
+				caption: "These components are paired with your sub-navigation and can be used alongside WYSIWYG content."
+			}
+		];
+		var deck = [];
+		var cards = [];
+		var templates = [];
+
+		trello.get('/1/boards/' + packageJSON.vars.idBoardTrello + '/cards', {
+			attachments: "cover",
+			attachment_fields: [
+				"url",
+				"previews"
+			],
+			fields: [
+				"name",
+				"labels",
+				"desc"
+			]
+		}, function(err, data) {
+			if(err) {
+				console.log(err);
+			} else {
+				for(card in data) {
+					if(data[card].attachments.length > 0) {
+						if(data[card].labels.find(findType)) {
+							for(label in data[card].labels) {
+								data[card].type = data[card].labels.find(findType).name;
+							}
+
+							cards.push(data[card]);
+						} else if(data[card].labels.find(findTemplate)) {
+							templates.push(data[card]);
+						}
+					}
+				}
+
+				cards.sort(function(a, b) {
+					var nameA = a.type.toUpperCase();
+					var nameB = b.type.toUpperCase();
+					if (nameA < nameB) {
+						return -1;
+					}
+					if (nameA > nameB) {
+						return 1;
+					}
+
+					return 0;
+				});
+
+				for (type in types) {
+					deck.push({
+						type: types[type].name,
+						cards: []
+					});
+
+					for (card in cards) {
+						if (cards[card].type == types[type].name) {
+							deck[type].cards.push(cards[card]);
+						}
+					}
+				}
+
+				src(source.trello)
+					.pipe(twig({
+						data: {
+							vars: packageJSON.vars,
+							img: packageJSON.img,
+							links: packageJSON.links,
+							deck: deck,
+							types: types,
+							templates: templates
+						}
+					}))
+					.pipe(rename({
+						extname: '.html'
+					}))
+					.pipe(dest('static-html/templates'));
+			}
+		});
+
+		function findTemplate(label) {
+			return label.name === "Template";
+		}
+
+		function findType(label) {
+			return label.name === "Feature" ||
+						 label.name === "In-Content" ||
+						 label.name === "Full-Width" ||
+						 label.name === "Sidebar";
+		}
+	}
+
+	done();
+}
+
+
+>>>>>>> nick
 function readme() {
 	return src(source.readme)
 		.pipe(twig({
@@ -70,7 +189,7 @@ function compileTwig() {
 		.pipe(rename({
 			extname: '.html'
 		}))
-		.pipe(dest('static/templates'))
+		.pipe(dest('static-html/templates'))
 		.pipe(browserSync.stream());
 }
 
@@ -82,12 +201,12 @@ function prettyhtml() {
 			"indent_char": "	",
 			"preserve_newlines": false
 		}))
-		.pipe(dest('static/templates'));
+		.pipe(dest('static-html/templates'));
 }
 
 
 function sitemap(done) {
-	var base = "static/templates";
+	var base = "static-html/templates";
 	var sitemap = [];
 	var steps = 1;
 
@@ -116,7 +235,7 @@ function sitemap(done) {
 							.pipe(rename({
 								extname: '.html'
 							}))
-							.pipe(dest('static/'));
+							.pipe(dest('static-html/'));
 					}
 				});
 			}
@@ -202,7 +321,7 @@ function compressImages() {
 
 
 function imageCrops(done) {
-	var base = 'static/templates';
+	var base = 'static-html/templates';
 	var exclude = ["16x16", "32x32", "144x144", "180x180"];
 	var crops = [];
 	var modCrops = [];
@@ -251,7 +370,7 @@ function imageCrops(done) {
 							.pipe(rename({
 								extname: '.html'
 							}))
-							.pipe(dest('static/templates'));
+							.pipe(dest('static-html/templates'));
 					}
 				});
 			}
@@ -309,6 +428,7 @@ function componentImageCrops(done) {
 
 					typeSteps++;
 
+<<<<<<< HEAD
 					if (typeSteps == folders.length) {
 						src('src/twig/templates/fs-component-image-crops.twig')
 							.pipe(twig({
@@ -321,6 +441,19 @@ function componentImageCrops(done) {
 							}))
 							.pipe(dest('static/templates'));
 					}
+=======
+				if (typeSteps == folders.length) {
+					src('src/twig/templates/fs-component-image-crops.twig')
+						.pipe(twig({
+							data: {
+								sections: data
+							}
+						}))
+						.pipe(rename({
+							extname: '.html'
+						}))
+						.pipe(dest('static-html/templates'));
+>>>>>>> nick
 				}
 			});
 		});
@@ -417,7 +550,7 @@ function checkForFaviconUpdate(done) {
 
 function runAxe() {
   var options = {
-		folderOutputReport: 'static/',
+		folderOutputReport: 'static-html/',
 		headless: true,
 		saveOutputIn: 'axe.json',
 		showOnlyViolations: true,
@@ -433,20 +566,20 @@ function axePage() {
 		.pipe(twig({
 			data: {
 				vars: packageJSON.vars,
-				items: require('./static/axe.json')
+				items: require('./static-html/axe.json')
 			}
 		}))
 		.pipe(rename({
 			basename: "axe",
 			extname: '.html'
 		}))
-		.pipe(dest('static/templates'));
+		.pipe(dest('static-html/templates'));
 }
 
 
 function runPa11y(done) {
-	if (!fs.existsSync('static/pa11y')) {
-		fs.mkdirSync('static/pa11y');
+	if (!fs.existsSync('static-html/pa11y')) {
+		fs.mkdirSync('static-html/pa11y');
 	}
 
 	var urls = globby.sync(source.accessibility);
@@ -500,7 +633,7 @@ function runPa11y(done) {
 				basename: 'pa11y',
 				extname: '.html'
 			}))
-			.pipe(dest('static/templates'));
+			.pipe(dest('static-html/templates'));
 
 		console.log('All done! All pa11y links should be functional now!');
 	};
@@ -526,7 +659,7 @@ function runBrowserSync(done) {
 		logPrefix: packageJSON.vars.name,
 		ui: false,
 		server: './',
-		startPath: '/static/index.html',
+		startPath: '/static-html/index.html',
 		notify: {
 			styles: {
 				top: 'auto',
