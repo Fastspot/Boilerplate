@@ -44,10 +44,10 @@ var source = {
 		'!src/twig/templates/fs-components.twig',
 		'!src/twig/templates/fs-templates.twig'
 	],
-	templates: 'static/templates/*.html',
+	templates: 'static-html/templates/*.html',
 	accessibility: [
-		'static/templates/page*.html',
-		'!static/templates/page-form-builder.html',
+		'static-html/templates/page*.html',
+		'!static-html/templates/page-form-builder.html',
 	],
 	sitemap: 'src/twig/index.twig',
 	jshint: 'src/js/modules/*.js',
@@ -152,7 +152,7 @@ function trello(done) {
 					.pipe(rename({
 						extname: '.html'
 					}))
-					.pipe(dest('static/templates'));
+					.pipe(dest('static-html/templates'));
 			}
 		});
 
@@ -193,7 +193,7 @@ function compileTwig() {
 		.pipe(rename({
 			extname: '.html'
 		}))
-		.pipe(dest('static/templates'))
+		.pipe(dest('static-html/templates'))
 		.pipe(browserSync.stream());
 }
 
@@ -205,12 +205,12 @@ function prettyhtml() {
 			"indent_char": "	",
 			"preserve_newlines": false
 		}))
-		.pipe(dest('static/templates'));
+		.pipe(dest('static-html/templates'));
 }
 
 
 function sitemap(done) {
-	var base = "static/templates";
+	var base = "static-html/templates";
 	var sitemap = [];
 	var steps = 1;
 
@@ -240,7 +240,7 @@ function sitemap(done) {
 							.pipe(rename({
 								extname: '.html'
 							}))
-							.pipe(dest('static/'));
+							.pipe(dest('static-html/'));
 					}
 				});
 			}
@@ -324,7 +324,7 @@ function compressImages() {
 
 
 function imageCrops(done) {
-	var base = 'static/templates';
+	var base = 'static-html/templates';
 	var exclude = ["16x16", "32x32", "144x144", "180x180"];
 	var crops = [];
 	var modCrops = [];
@@ -372,7 +372,7 @@ function imageCrops(done) {
 							.pipe(rename({
 								extname: '.html'
 							}))
-							.pipe(dest('static/templates'));
+							.pipe(dest('static-html/templates'));
 					}
 				});
 			}
@@ -444,7 +444,7 @@ function componentImageCrops(done) {
 						.pipe(rename({
 							extname: '.html'
 						}))
-						.pipe(dest('static/templates'));
+						.pipe(dest('static-html/templates'));
 				}
 			});
 		});
@@ -536,7 +536,7 @@ function checkForFaviconUpdate(done) {
 
 function runAxe() {
   var options = {
-		folderOutputReport: 'static/',
+		folderOutputReport: 'static-html/',
 		headless: true,
 		saveOutputIn: 'axe.json',
 		showOnlyViolations: true,
@@ -552,20 +552,20 @@ function axePage() {
 		.pipe(twig({
 			data: {
 				vars: packageJSON.vars,
-				items: require('./static/axe.json')
+				items: require('./static-html/axe.json')
 			}
 		}))
 		.pipe(rename({
 			basename: "axe",
 			extname: '.html'
 		}))
-		.pipe(dest('static/templates'));
+		.pipe(dest('static-html/templates'));
 }
 
 
 function runPa11y(done) {
-	if (!fs.existsSync('static/pa11y')) {
-		fs.mkdirSync('static/pa11y');
+	if (!fs.existsSync('static-html/pa11y')) {
+		fs.mkdirSync('static-html/pa11y');
 	}
 
 	var urls = globby.sync(source.accessibility);
@@ -619,7 +619,7 @@ function runPa11y(done) {
 				basename: 'pa11y',
 				extname: '.html'
 			}))
-			.pipe(dest('static/templates'));
+			.pipe(dest('static-html/templates'));
 
 		console.log('All done! All pa11y links should be functional now!');
 	};
@@ -645,7 +645,7 @@ function runBrowserSync(done) {
 		logPrefix: packageJSON.vars.name,
 		ui: false,
 		server: './',
-		startPath: '/static/index.html',
+		startPath: '/static-html/index.html',
 		notify: {
 			styles: {
 				top: 'auto',
