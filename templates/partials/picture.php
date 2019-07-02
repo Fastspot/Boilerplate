@@ -6,7 +6,7 @@
 		$fallback = array_pop($sources);
 	}
 ?>
-<div class="js-image <?=$class?>_picture_wrapper">
+<div class="lazy_image_wrapper <?=$class?>_picture_wrapper">
 	<picture class="<?=$class?>_picture">
 		<?php
 			foreach ($sources as $key => $value) {

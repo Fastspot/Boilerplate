@@ -15,46 +15,6 @@
 </div>
 
 <div class="page_content">
-	<div class="fs-row">
-		<div class="fs-cell fs-lg-10 fs-all-justify-center page_main_content" id="page_main_content" tabindex="-1">
-			<?php
-				if (defined("PAGE_HEADER")) {
-					include PAGE_HEADER;
-				} else {
-			?>
-			<div class="page_header">
-				<?php
-					include_with("navigation/breadcrumb.php");
-
-					if ($page_header) {
-				?>
-				<h1 class="page_title"><?=$page_header?></h1>
-				<?php
-					}
-				?>
-			</div>
-			<?php
-				}
-
-				echo $bigtree["content"];
-
-				if (!empty($in_content_callouts) && is_array($in_content_callouts)) {
-			?>
-			<div class="in_content_callouts">
-				<?php
-					foreach ($in_content_callouts as $callout) {
-						BTXReusableCallouts::check($callout);
-						$callout["_context"] = "in_content";
-						include_with(SERVER_ROOT."templates/callouts/".$callout["type"].".php", $callout);
-					}
-				?>
-			</div>
-			<?php
-				}
-			?>
-		</div>
-	</div>
-
 	<div class="full_width_callouts">
 		<?php
 			if (!empty($full_width_callouts) && is_array($full_width_callouts)) {

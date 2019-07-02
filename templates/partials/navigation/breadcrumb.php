@@ -17,13 +17,7 @@
 	<ol class="breadcrumb_list" itemscope itemtype="http://schema.org/BreadcrumbList" aria-label="Breadcrumb Navigation">
 		<li class="breadcrumb_item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
 			<a class="breadcrumb_pill breadcrumb_pill_link" itemprop="item" href="<?=WWW_ROOT?>">
-				<?php
-					if (!empty($icon)) {
-				?>
 				<span class="breadcrumb_pill_icon"><?=icon("home")?></span>
-				<?php
-					}
-				?>
 				<span class="breadcrumb_pill_label" itemprop="name">Home</span>
 			</a>
 			<meta itemprop="position" content="1">
