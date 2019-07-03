@@ -3,10 +3,12 @@
 ============================================================================= */
 
 .lazy_image_wrapper {
-	position: relative;
+	display: none;
 
-	.no-js & {
-		display: none;
+	.js & {
+		position: relative;
+
+		display: block;
 	}
 }
 
