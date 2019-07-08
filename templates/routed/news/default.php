@@ -118,7 +118,7 @@
 									<footer class="news_item_links">
 										<a class="news_item_link" <?=href($item["link"])?> aria-label="<?=$item["title"]?>" itemprop="url" tabindex="-1">
 											<span class="news_item_link_label">Read More</span>
-											<span class="news_item_link_icon"><?=icon("chevron_right")?></span>
+											<span class="news_item_link_icon"><?=icon("arrow_right")?></span>
 										</a>
 									</footer>
 								</div>

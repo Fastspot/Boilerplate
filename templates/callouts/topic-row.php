@@ -48,7 +48,7 @@
 						<footer class="topic_links">
 							<?php
 								foreach ($links as $link) {
-									button("topic", $link["title"], $link["url"], "chevron_right", $link["aria"]);
+									button("topic", $link["title"], $link["url"], "arrow_right", $link["aria"]);
 								}
 							?>
 						</footer>

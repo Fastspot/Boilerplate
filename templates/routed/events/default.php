@@ -144,7 +144,7 @@
 									<footer class="event_links">
 										<a class="event_link" <?=href($link)?> aria-label="<?=$event["title"]?>" itemprop="url" tabindex="-1">
 											<span class="event_link_label">Read More</span>
-											<span class="event_link_icon"><?=icon("chevron_right")?></span>
+											<span class="event_link_icon"><?=icon("arrow_right")?></span>
 										</a>
 									</footer>
 								</div>
