@@ -58,6 +58,11 @@
 	line-height: (24 / 16);
 }
 
+@mixin body_small($query: $min_md) {
+	font-size: 16px;
+	line-height: (24 / 16);
+}
+
 @mixin label_text($query: $min_md) {
 	font-size: 14px;
 	line-height: (22 / 14);
@@ -134,6 +139,10 @@
 
 	.copy {
 		@include body_text;
+	}
+
+	.copy_small {
+		@include body_small;
 	}
 
 	.label {
