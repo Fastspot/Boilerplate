@@ -14,7 +14,7 @@
 		<meta itemprop="target" content="http://{{ vars.domain }}/static/templates/page-search.html?q={q}">
 		<label class="site_search_label" for="search_string_{{ id }}">Search</label>
 		<div class="site_search_field">
-			<input class="site_search_input" aria-live="polite" itemprop="query-input" type="search" id="search_string_{{ id }}" name="q" placeholder="{{ placeholder ?: 'Search' }}" required>
+			<input class="site_search_input" aria-live="polite" itemprop="query-input" type="search" id="search_string_{{ id }}" name="q"{% if placeholder %} placeholder="{{ placeholder }}{% endif %} required>
 			<button class="site_search_button" type="submit"{% if not buttonText %} aria-label="Search"{% endif %}>
 				{% if buttonText %}
 				<span class="site_search_button_label">{{ buttonText }}</span>
