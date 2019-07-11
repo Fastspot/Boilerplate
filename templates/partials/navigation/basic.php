@@ -3,9 +3,9 @@
 	// Optional "modifier", "icon"
 ?>
 <nav class="<?=$class?><?php if (!empty($modifier)) { echo " ".$class."_".$modifier; } ?> nav" aria-label="<?=$title?>" itemscope itemtype="http://schema.org/SiteNavigationElement">
-	<header class="<?=$class?>_header nav_header">
+	<div class="<?=$class?>_header nav_header">
 		<h2 class="<?=$class?>_title nav_title"><?=$title?> Navigation</h2>
-	</header>
+	</div>
 
 	<ul class="<?=$class?>_list nav_list" aria-label="<?=$title?> Navigation">
 		<?php
