@@ -230,7 +230,7 @@
     "gulp-cssnano": "2.1.3",
     "gulp-folder-index": "0.0.3",
     "gulp-html-beautify": "1.0.1",
-    "gulp-if": "2.0.2",
+    "gulp-if": "3.0.0",
     "gulp-imagemin": "6.0.0",
     "gulp-jshint": "2.1.0",
     "gulp-newer": "1.4.0",
@@ -250,7 +250,7 @@
     "postcss-pxtorem": "4.0.1",
     "require-reload": "0.2.2",
     "what-input": "5.2.3",
-    "yargs": "13.2.4"
+    "yargs": "13.3.0"
   },
   "browserslist": [
     "last 2 versions",
