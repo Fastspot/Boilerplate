@@ -302,6 +302,7 @@ function componentImageCrops(done) {
 					});
 
 					typeSteps++;
+				}
 
 				if (typeSteps == folders.length) {
 					src('src/twig/templates/fs-component-image-crops.twig')
