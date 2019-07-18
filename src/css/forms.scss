@@ -85,7 +85,7 @@
 @mixin select_gray() {
 
 	select {
-		background-color: $gray_20;
+		background-color: #ccc;
 
 		&:focus {
 			box-shadow:
@@ -203,7 +203,7 @@
 	}
 
 	[class$="indicator"] {
-		background-color: $gray_20;
+		background-color: #ccc;
 		color: #fff;
 	}
 }

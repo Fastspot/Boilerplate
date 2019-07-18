@@ -338,7 +338,7 @@
 		tr {
 
 			&:nth-child(odd) {
-				background: $gray_10;
+				background: #eaeaea;
 			}
 		}
 
@@ -348,7 +348,7 @@
 		th {
 			@include h6;
 
-			background: $gray_60;
+			background: #666;
 			color: #fff;
 			padding: 10px 20px;
 			text-align: left;
@@ -374,7 +374,10 @@
 	border: 1px solid #ccc;
 
 	&:after {
-		@include gradient_right(rgba(#000, 0), rgba(#000, 0.1));
+		@include gradient_right(
+			rgba(#000, 0), 
+			rgba(#000, 0.1)
+		);
 
 		width: 20px;
 		height: 100%;
