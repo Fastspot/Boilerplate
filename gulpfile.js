@@ -640,3 +640,9 @@ exports.access = series(
 	watchFileSystem,
 	runBrowserSync
 );
+
+
+exports.favicon = series(
+	generateFavicon,
+	injectFaviconMarkups
+);
