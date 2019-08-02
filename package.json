@@ -222,7 +222,7 @@
     "autoprefixer": "9.6.1",
     "browser-sync": "2.26.7",
     "del": "5.0.0",
-    "formstone": "1.4.13",
+    "formstone": "1.4.16",
     "globby": "10.0.1",
     "gulp": "4.0.2",
     "gulp-axe-webdriver": "^3.1.3",
