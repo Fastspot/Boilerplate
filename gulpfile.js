@@ -143,7 +143,11 @@ function compileSass() {
 				replace: false
 			})
 		])))
-		.pipe(gulpif(argv.production, cssnano()))
+		.pipe(gulpif(argv.production, cssnano({
+			minifyFontValues: false, 
+			discardUnused: false,
+			fontFace: false
+		})))
 		.pipe(dest('css'))
 		.pipe(browserSync.stream());
 }
