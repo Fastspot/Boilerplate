@@ -603,14 +603,18 @@ exports.clean = clean;
 
 exports.default = series(
 	readme,
-	compileSass,
 	sprite,
 	compileTwig,
 	sitemap,
-	compileJs,
-	compressImages,
-	watchFileSystem,
-	runBrowserSync
+	parallel(
+		compileSass,
+		compileJs,
+		compressImages
+	),
+	parallel(
+		watchFileSystem,
+		runBrowserSync
+	)
 );
 
 
@@ -638,6 +642,8 @@ exports.access = series(
 	runAxe,
 	axePage,
 	runPa11y,
-	watchFileSystem,
-	runBrowserSync
+	parallel(
+		watchFileSystem,
+		runBrowserSync
+	)
 );
