@@ -4,6 +4,7 @@
 		class: "flex_callout",
 		image: image,
 		alt: "",
+		fallback: img.square.sml,
 		sources: {
 			"0px": img.square.sml,
 			"740px": img.ultrawide.med,
@@ -14,5 +15,5 @@
 #}
 
 <div class="{{ customClass ?: 'js-background' }} {{ class }}_background" data-background-options='{"source": { {% for key, source in sources %}"{{ key }}": "//images.fastspot.com/{{ vars.images }}/{{ source.width }}x{{ source.height }}/{{ image }}"{% if not loop.last %}, {% endif %}{% endfor %}}, "lazy": true, "alt": "{{ alt }}"}' aria-hidden="true">
-	<div class="{{ class }}_background_fallback" style="background-image: url(' //images.fastspot.com/{{ vars.images }}//{{ img.ultrawide.xxsml.width }}x{{ img.ultrawide.xxsml.height }}/{{ image }}');"></div>
+	<div class="{{ class }}_background_fallback" style="background-image: url(' //images.fastspot.com/{{ vars.images }}//{{ img.fallback.width }}x{{ img.fallback.height }}/{{ image }}');"></div>
 </div>

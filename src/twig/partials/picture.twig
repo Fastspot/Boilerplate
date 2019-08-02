@@ -1,10 +1,10 @@
 {#
 	{% include par ~ "picture.twig" with {
 		class: "media",
+		image: item.image,
 		alt: "",
 		itemprop: "",
-		image: item.image,
-		dimension: img.wide.xsml,
+		fallback: img.wide.xsml,
 		sources: {
 			"1220px": img.wide.med,
 			"500px": img.wide.sml
@@ -17,7 +17,7 @@
 		{% for key, source in sources %}
 		<source media="(min-width: {{ key }})" srcset="../../images/placeholder.png" data-srcset="{% if source == "placeholder" %}../../images/placeholder.png{% else %}//images.fastspot.com/{{ vars.images }}/{{ source.width }}x{{ source.height }}/{{ image }}{% endif %}">
 		{% endfor %}
-		<img class="js-lazy js-lazyload {{ class }}_image" src="../../images/placeholder.png" data-src="//images.fastspot.com/{{ vars.images }}/{{ dimension.width }}x{{ dimension.height }}/{{ image }}" alt="{{ alt }}"{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}>
+		<img class="js-lazy js-lazyload {{ class }}_image" src="../../images/placeholder.png" data-src="//images.fastspot.com/{{ vars.images }}/{{ fallback.width }}x{{ fallback.height }}/{{ image }}" alt="{{ alt }}"{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}>
 	</picture>
 </span>
 <noscript>
@@ -25,6 +25,6 @@
 		{% for key, source in sources %}
 		<source media="(min-width: {{ key }})" srcset="//images.fastspot.com/{{ vars.images }}/{{ source.width }}x{{ source.height }}/{{ image }} {{ source.width }}w">
 		{% endfor %}
-		<img class="{{ class }}_image" src="//images.fastspot.com/{{ vars.images }}/{{ dimension.width }}x{{ dimension.height }}/{{ image }}" alt="{{ alt }}"{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}>
+		<img class="{{ class }}_image" src="//images.fastspot.com/{{ vars.images }}/{{ fallback.width }}x{{ fallback.height }}/{{ image }}" alt="{{ alt }}"{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}>
 	</picture>
 </noscript>
